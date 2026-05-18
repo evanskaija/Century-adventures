@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer | Century Adventures</title>
+    <meta name="description" content="Make a difference in Tanzania. Explore volunteering opportunities with Century Adventures.">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="scroll-progress"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html"><img src="assets/logo.png" alt="Century Adventures Logo"></a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html" data-en="Home" data-sw="Nyumbani">Home</a></li>
+                    <li><a href="about.html" data-en="About Us" data-sw="Kuhusu Sisi">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-en="Destinations" data-sw="Maeneo">Destinations <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="katavi.html" data-en="Katavi National Park" data-sw="Hifadhi ya Katavi">Katavi National Park</a></li>
+                            <li><a href="selous.html" data-en="Selous Game Reserve" data-sw="Hifadhi ya Selous">Selous Game Reserve</a></li>
+                            <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                            <li><a href="mikumi.html" data-en="Mikumi National Park" data-sw="Hifadhi ya Mikumi">Mikumi National Park</a></li>
+                            <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                            <li><a href="gombe.html" data-en="Gombe Stream National Park" data-sw="Hifadhi ya Gombe">Gombe Stream National Park</a></li>
+                            <li><a href="ngorongoro.html" data-en="Ngorongoro Conservation Area" data-sw="Ngorongoro">Ngorongoro Conservation Area</a></li>
+                            <li><a href="manyara.html" data-en="Lake Manyara National Park" data-sw="Hifadhi ya Manyara">Lake Manyara National Park</a></li>
+                            <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="safaris.html" data-en="Tours & Safaris" data-sw="Safari na Ziara">Tours & Safaris</a></li>
+                    <li><a href="experiences.html" data-en="Experiences" data-sw="Uzoefu">Experiences</a></li>
+                    <li><a href="volunteer.html" class="active" data-en="Volunteer" data-sw="Kujitolea">Volunteer</a></li>
+                    <li><a href="vehicles.html" data-en="Safari Vehicles" data-sw="Magari ya Safari">Safari Vehicles</a></li>
+                    <li><a href="contact.html" data-en="Contact Us" data-sw="Wasiliana Nasi">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="header-toggles">
+                    <button class="toggle-btn lang-toggle" onclick="toggleLang()">SWAHILI</button>
+                    <button class="toggle-btn theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i> DARK</button>
+                </div>
+                <a href="enquire.html" class="btn btn-primary enquire-btn" data-en="ENQUIRE" data-sw="ULIZA">ENQUIRE</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="hero page-hero" style="background-image: url('assets/hero.png'); height: 50vh;">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 data-en="Volunteer in Tanzania" data-sw="Kujitolea nchini Tanzania">Volunteer in Tanzania</h1>
+        </div>
+    </section>
+
+    <!-- Volunteer Intro -->
+    <section class="section volunteer-intro">
+        <div class="container">
+            <div class="experts-grid">
+                <div class="experts-text">
+                    <span class="sub-heading" data-en="MAKE A DIFFERENCE" data-sw="FANYA MABADILIKO">MAKE A DIFFERENCE</span>
+                    <h2 data-en="Volunteering with Century Adventures" data-sw="Kujitolea na Century Adventures">Volunteering with Century Adventures</h2>
+                    <p data-en="Our volunteering programs are designed to provide meaningful impact to local communities while offering volunteers a life-changing experience. Whether you're interested in education, healthcare, or wildlife conservation, we have a project for you."
+                       data-sw="Mipango yetu ya kujitolea imeundwa ili kutoa athari yenye maana kwa jamii za mitaa huku ikiwapa watu wanaojitolea uzoefu unaobadilisha maisha. Iwe una nia ya elimu, huduma ya afya, au uhifadhi wa wanyamapori, tuna mradi kwa ajili yako.">
+                       Our volunteering programs are designed to provide meaningful impact to local communities while offering volunteers a life-changing experience. Whether you're interested in education, healthcare, or wildlife conservation, we have a project for you.
+                    </p>
+                    <a href="enquire.html" class="btn btn-primary" data-en="JOIN US TODAY" data-sw="JIUNGE NASI LEO">JOIN US TODAY</a>
+                </div>
+                <div class="experts-image">
+                    <img src="assets/safari-jeep.png" alt="Volunteer Program">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Projects -->
+    <section class="section projects-section" style="background-color: var(--section-bg);">
+        <div class="container">
+            <span class="sub-heading" data-en="PROJECTS" data-sw="MIRADI">PROJECTS</span>
+            <h2 data-en="Our Current Volunteering Projects" data-sw="Miradi Yetu ya Sasa ya Kujitolea">Our Current Volunteering Projects</h2>
+            
+            <div class="safaris-grid">
+                <!-- Project 1 -->
+                <div class="safari-card">
+                    <div class="safari-content">
+                        <h3 data-en="Education & Teaching" data-sw="Elimu na Kufundisha">Education & Teaching</h3>
+                        <p data-en="Support local schools in Iringa by teaching English, math, or creative arts." data-sw="Saidia shule za mitaa Iringa kwa kufundisha Kiingereza, hisabati, au sanaa za ubunifu.">Support local schools in Iringa by teaching English, math, or creative arts.</p>
+                        <a href="enquire.html" class="btn btn-primary btn-card" data-en="LEARN MORE" data-sw="JIFUNZE ZAIDI">LEARN MORE</a>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="safari-card">
+                    <div class="safari-content">
+                        <h3 data-en="Healthcare Support" data-sw="Msaada wa Huduma ya Afya">Healthcare Support</h3>
+                        <p data-en="Assist in local clinics and hospitals, providing vital support to medical staff." data-sw="Saidia katika kliniki na hospitali za mitaa, kutoa msaada muhimu kwa wafanyakazi wa matibabu.">Assist in local clinics and hospitals, providing vital support to medical staff.</p>
+                        <a href="enquire.html" class="btn btn-primary btn-card" data-en="LEARN MORE" data-sw="JIFUNZE ZAIDI">LEARN MORE</a>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="safari-card">
+                    <div class="safari-content">
+                        <h3 data-en="Conservation Initiatives" data-sw="Mipango ya Uhifadhi">Conservation Initiatives</h3>
+                        <p data-en="Participate in wildlife protection and environmental preservation efforts." data-sw="Shiriki katika juhudi za kulinda wanyamapori na uhifadhi wa mazingira.">Participate in wildlife protection and environmental preservation efforts.</p>
+                        <a href="enquire.html" class="btn btn-primary btn-card" data-en="LEARN MORE" data-sw="JIFUNZE ZAIDI">LEARN MORE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer-top">
+        <div class="container">
+            <h2><i class="fas fa-phone-alt"></i> +255 719 042 046</h2>
+            <a href="enquire.html" class="btn enquire-btn" data-en="GET IN TOUCH TODAY!" data-sw="WASILIANA NASI LEO!">GET IN TOUCH TODAY!</a>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col info-col">
+                <h3 data-en="COMPANY INFO" data-sw="MAELEZO YA KAMPUNI">COMPANY INFO</h3>
+                <p><strong>Century Adventures</strong></p>
+                <p>Asasi Tower, 4th Floor</p>
+                <p>Kilimani Street</p>
+                <p>P.O. Box 2527, Iringa Tanzania</p>
+                <p><i class="fab fa-whatsapp"></i> +255 719 042 046</p>
+                <p><i class="fas fa-phone-alt"></i> +255 768 884 883</p>
+                <p><i class="fas fa-envelope"></i> info@mukutatraveltours.com</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                    <i class="fab fa-bitcoin"></i>
+                </div>
+            </div>
+            <div class="footer-col link-col">
+                <h3 data-en="TOP DESTINATIONS" data-sw="MAENEO MAARUFU">TOP DESTINATIONS</h3>
+                <ul>
+                    <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                    <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                    <li><a href="#" data-en="Nyerere National Park" data-sw="Hifadhi ya Nyerere">Nyerere National Park</a></li>
+                    <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                    <li><a href="mikumi.html" data-en="Mikumi National Park" data-sw="Hifadhi ya Mikumi">Mikumi National Park</a></li>
+                    <li><a href="#" data-en="Ngorongoro Crater" data-sw="Ngorongoro">Ngorongoro Crater</a></li>
+                    <li><a href="manyara.html" data-en="Lake Manyara National Park" data-sw="Hifadhi ya Manyara">Lake Manyara National Park</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col">
+                <h3 data-en="TRAVEL EXPERIENCES" data-sw="UZOEFU WA KUSAFIRI">TRAVEL EXPERIENCES</h3>
+                <ul>
+                    <li><a href="#" data-en="Family Safaris" data-sw="Safari za Familia">Family Safaris</a></li>
+                    <li><a href="#" data-en="Honeymoon Safaris" data-sw="Safari za Fungate">Honeymoon Safaris</a></li>
+                    <li><a href="#" data-en="Great Migration Safaris" data-sw="Safari za Uhamiaji">Great Migration Safaris</a></li>
+                    <li><a href="#" data-en="Volunteer Programs" data-sw="Mipango ya Kujitolea">Volunteer Programs</a></li>
+                    <li><a href="#" data-en="Zanzibar Beach Holiday" data-sw="Likizo ya Pwani ya Zanzibar">Zanzibar Beach Holiday</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <div class="tripadvisor-card">
+                    <img src="https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-66827-5.svg" alt="TripAdvisor">
+                    <h4 data-en="Review Century Adventures" data-sw="Toa Maoni Century Travel">Review Century Adventures</h4>
+                    <p>OOOOO (Click to rate)</p>
+                    <a href="#" class="btn btn-small" data-en="Continue" data-sw="Endelea">Continue</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+                <a href="#"><i class="fas fa-phone-alt"></i></a>
+            </div>
+            <p>&copy; Copyright 2012 - 2026 | Century Adventures</p>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>

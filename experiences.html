@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiences | Century Adventures</title>
+    <meta name="description" content="Discover unique Tanzanian travel experiences with Century Adventures.">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="scroll-progress"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html"><img src="assets/logo.png" alt="Century Adventures Logo"></a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html" data-en="Home" data-sw="Nyumbani">Home</a></li>
+                    <li><a href="about.html" data-en="About Us" data-sw="Kuhusu Sisi">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-en="Destinations" data-sw="Maeneo">Destinations <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="katavi.html" data-en="Katavi National Park" data-sw="Hifadhi ya Katavi">Katavi National Park</a></li>
+                            <li><a href="selous.html" data-en="Selous Game Reserve" data-sw="Hifadhi ya Selous">Selous Game Reserve</a></li>
+                            <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                            <li><a href="mikumi.html" data-en="Mikumi National Park" data-sw="Hifadhi ya Mikumi">Mikumi National Park</a></li>
+                            <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                            <li><a href="gombe.html" data-en="Gombe Stream National Park" data-sw="Hifadhi ya Gombe">Gombe Stream National Park</a></li>
+                            <li><a href="ngorongoro.html" data-en="Ngorongoro Conservation Area" data-sw="Ngorongoro">Ngorongoro Conservation Area</a></li>
+                            <li><a href="manyara.html" data-en="Lake Manyara National Park" data-sw="Hifadhi ya Manyara">Lake Manyara National Park</a></li>
+                            <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="safaris.html" data-en="Tours & Safaris" data-sw="Safari na Ziara">Tours & Safaris</a></li>
+                    <li><a href="experiences.html" class="active" data-en="Experiences" data-sw="Uzoefu">Experiences</a></li>
+                    <li><a href="volunteer.html" data-en="Volunteer" data-sw="Kujitolea">Volunteer</a></li>
+                    <li><a href="vehicles.html" data-en="Safari Vehicles" data-sw="Magari ya Safari">Safari Vehicles</a></li>
+                    <li><a href="contact.html" data-en="Contact Us" data-sw="Wasiliana Nasi">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="header-toggles">
+                    <button class="toggle-btn lang-toggle" onclick="toggleLang()">SWAHILI</button>
+                    <button class="toggle-btn theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i> DARK</button>
+                </div>
+                <a href="enquire.html" class="btn btn-primary enquire-btn" data-en="ENQUIRE" data-sw="ULIZA">ENQUIRE</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="hero page-hero" style="background-image: url('assets/hero.png'); height: 50vh;">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 data-en="Travel Experiences" data-sw="Uzoefu wa Kusafiri">Travel Experiences</h1>
+        </div>
+    </section>
+
+    <!-- Experiences List -->
+    <section class="section experiences-page">
+        <div class="container">
+            <div class="experiences-grid">
+                <!-- Exp 1 -->
+                <div class="experience-card">
+                    <img src="assets/safari-jeep.png" alt="Wildlife Experience">
+                    <div class="experience-content">
+                        <span class="card-category" data-en="WILDLIFE" data-sw="WANYAMAPORI">WILDLIFE</span>
+                        <h3 data-en="Big Five Safaris" data-sw="Safari za Big Five">Big Five Safaris</h3>
+                        <p data-en="Experience the thrill of tracking Africa's most iconic animals in their natural habitat." data-sw="Pata msisimko wa kufuatilia wanyama maarufu zaidi wa Afrika katika makazi yao ya asili.">Experience the thrill of tracking Africa's most iconic animals in their natural habitat.</p>
+                        <a href="enquire.html" class="btn btn-primary" style="margin-top: auto;" data-en="ENQUIRE" data-sw="ULIZA">ENQUIRE</a>
+                    </div>
+                </div>
+                <!-- Exp 2 -->
+                <div class="experience-card">
+                    <img src="assets/serengeti.png" alt="Cultural Experience">
+                    <div class="experience-content">
+                        <span class="card-category" data-en="CULTURE" data-sw="UTAMADUNI">CULTURE</span>
+                        <h3 data-en="Maasai Cultural Tours" data-sw="Ziara za Kitamaduni za Kimaasai">Maasai Cultural Tours</h3>
+                        <p data-en="Immerse yourself in the rich traditions and vibrant life of the Maasai people." data-sw="Jijumuishe katika mila tajiri na maisha ya kuvutia ya watu wa Kimaasai.">Immerse yourself in the rich traditions and vibrant life of the Maasai people.</p>
+                        <a href="enquire.html" class="btn btn-primary" style="margin-top: auto;" data-en="ENQUIRE" data-sw="ULIZA">ENQUIRE</a>
+                    </div>
+                </div>
+                <!-- Exp 3 -->
+                <div class="experience-card">
+                    <img src="assets/zanzibar.png" alt="Beach Experience">
+                    <div class="experience-content">
+                        <span class="card-category" data-en="RELAXATION" data-sw="KUPUMZIKA">RELAXATION</span>
+                        <h3 data-en="Zanzibar Beach Holidays" data-sw="Likizo za Pwani ya Zanzibar">Zanzibar Beach Holidays</h3>
+                        <p data-en="Unwind on the pristine white sands of Zanzibar's world-famous beaches." data-sw="Pumzika kwenye mchanga mweupe wa fukwe maarufu duniani za Zanzibar.">Unwind on the pristine white sands of Zanzibar's world-famous beaches.</p>
+                        <a href="enquire.html" class="btn btn-primary" style="margin-top: auto;" data-en="ENQUIRE" data-sw="ULIZA">ENQUIRE</a>
+                    </div>
+                </div>
+                <!-- Exp 4 -->
+                <div class="experience-card">
+                    <img src="assets/safari-jeep.png" alt="Adventure Experience">
+                    <div class="experience-content">
+                        <span class="card-category" data-en="ADVENTURE" data-sw="SAFARI">ADVENTURE</span>
+                        <h3 data-en="Mountain Expeditions" data-sw="Safari za Milimani">Mountain Expeditions</h3>
+                        <p data-en="Conquer the heights of Kilimanjaro or Meru with our expert mountain guides." data-sw="Shinda vilele vya Kilimanjaro au Meru na waongoza milima wetu wataalamu.">Conquer the heights of Kilimanjaro or Meru with our expert mountain guides.</p>
+                        <a href="enquire.html" class="btn btn-primary" style="margin-top: auto;" data-en="ENQUIRE" data-sw="ULIZA">ENQUIRE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer-top">
+        <div class="container">
+            <h2><i class="fas fa-phone-alt"></i> +255 719 042 046</h2>
+            <a href="enquire.html" class="btn enquire-btn" data-en="GET IN TOUCH TODAY!" data-sw="WASILIANA NASI LEO!">GET IN TOUCH TODAY!</a>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col info-col">
+                <h3 data-en="COMPANY INFO" data-sw="MAELEZO YA KAMPUNI">COMPANY INFO</h3>
+                <p><strong>Century Adventures</strong></p>
+                <p>Asasi Tower, 4th Floor</p>
+                <p>Kilimani Street</p>
+                <p>P.O. Box 2527, Iringa Tanzania</p>
+                <p><i class="fab fa-whatsapp"></i> +255 719 042 046</p>
+                <p><i class="fas fa-phone-alt"></i> +255 768 884 883</p>
+                <p><i class="fas fa-envelope"></i> info@mukutatraveltours.com</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                    <i class="fab fa-bitcoin"></i>
+                </div>
+            </div>
+            <div class="footer-col link-col">
+                <h3 data-en="TOP DESTINATIONS" data-sw="MAENEO MAARUFU">TOP DESTINATIONS</h3>
+                <ul>
+                    <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                    <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                    <li><a href="#" data-en="Nyerere National Park" data-sw="Hifadhi ya Nyerere">Nyerere National Park</a></li>
+                    <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                    <li><a href="mikumi.html" data-en="Mikumi National Park" data-sw="Hifadhi ya Mikumi">Mikumi National Park</a></li>
+                    <li><a href="#" data-en="Ngorongoro Crater" data-sw="Ngorongoro">Ngorongoro Crater</a></li>
+                    <li><a href="manyara.html" data-en="Lake Manyara National Park" data-sw="Hifadhi ya Manyara">Lake Manyara National Park</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col">
+                <h3 data-en="TRAVEL EXPERIENCES" data-sw="UZOEFU WA KUSAFIRI">TRAVEL EXPERIENCES</h3>
+                <ul>
+                    <li><a href="#" data-en="Family Safaris" data-sw="Safari za Familia">Family Safaris</a></li>
+                    <li><a href="#" data-en="Honeymoon Safaris" data-sw="Safari za Fungate">Honeymoon Safaris</a></li>
+                    <li><a href="#" data-en="Great Migration Safaris" data-sw="Safari za Uhamiaji">Great Migration Safaris</a></li>
+                    <li><a href="#" data-en="Volunteer Programs" data-sw="Mipango ya Kujitolea">Volunteer Programs</a></li>
+                    <li><a href="#" data-en="Zanzibar Beach Holiday" data-sw="Likizo ya Pwani ya Zanzibar">Zanzibar Beach Holiday</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <div class="tripadvisor-card">
+                    <img src="https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-66827-5.svg" alt="TripAdvisor">
+                    <h4 data-en="Review Century Adventures" data-sw="Toa Maoni Century Travel">Review Century Adventures</h4>
+                    <p>OOOOO (Click to rate)</p>
+                    <a href="#" class="btn btn-small" data-en="Continue" data-sw="Endelea">Continue</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+                <a href="#"><i class="fas fa-phone-alt"></i></a>
+            </div>
+            <p>&copy; Copyright 2012 - 2026 | Century Adventures</p>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
