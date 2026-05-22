@@ -40,6 +40,16 @@
     --accent-gold: #e6b84d; 
 }
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+img, picture, video, canvas, svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 a {
     text-decoration: none !important;
 }
@@ -561,7 +571,8 @@ h2 {
 
 @media (max-width: 992px) {
     .mobile-toggle {
-        display: flex;
+        display: flex !important;
+        z-index: 9999;
     }
 
     /* ── Slide-out nav panel ── */
@@ -1923,6 +1934,19 @@ h2 {
     margin-top: 50px;
 }
 
+@media (max-width: 992px) {
+    .tips-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .tips-grid,
+    .contact-grid-main {
+        grid-template-columns: 1fr;
+    }
+}
+
 .tip-card {
     background: var(--white);
     padding: 40px 30px;
@@ -2168,4 +2192,45 @@ iframe.goog-te-menu-frame {
     box-shadow: none !important;
 }
 
-
+/* Extra small devices (phones, 576px and down) */
+@media (max-width: 576px) {
+    .container {
+        padding: 0 15px;
+    }
+    .hero h1 {
+        font-size: 2.3rem;
+    }
+    .hero-tagline {
+        font-size: 1.1rem;
+    }
+    .section {
+        padding: 50px 0;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+    .marquee-wrapper .safari-card,
+    .marquee-wrapper .tip-card,
+    .marquee-wrapper .experience-card {
+        width: 290px;
+    }
+    .safaris-grid {
+        gap: 15px;
+    }
+    .btn-large {
+        padding: 12px 30px;
+        font-size: 0.95rem;
+    }
+    .header-toggles {
+        margin-right: 5px;
+        padding-right: 5px;
+    }
+    .toggle-btn {
+        padding: 4px 6px;
+        font-size: 0.6rem;
+    }
+    .mobile-toggle {
+        width: 38px;
+        height: 38px;
+    }
+}
