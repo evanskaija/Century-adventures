@@ -1,4 +1,30 @@
 // Century Adventures - Premium Safari Interactivity
+
+// ── Global: Mobile Menu Toggle (called via onclick from HTML) ──
+function toggleMobileMenu() {
+    const nav = document.querySelector('.nav');
+    const toggle = document.querySelector('.mobile-toggle');
+    const overlay = document.querySelector('.nav-overlay');
+
+    if (!nav || !toggle) return;
+
+    const isOpen = nav.classList.contains('active');
+
+    if (isOpen) {
+        // Close menu
+        nav.classList.remove('active');
+        toggle.classList.remove('open');
+        if (overlay) overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    } else {
+        // Open menu
+        nav.classList.add('active');
+        toggle.classList.add('open');
+        if (overlay) overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Century Adventures experience initialized!');
     
