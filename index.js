@@ -240,16 +240,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mobile Menu Toggle
     const nav = document.querySelector('.nav');
-    const headerContent = document.querySelector('.header-content');
 
-    // Build the 3-bar hamburger button
-    const mobileToggle = document.createElement('div');
-    mobileToggle.className = 'mobile-toggle';
-    mobileToggle.setAttribute('aria-label', 'Open navigation menu');
-    mobileToggle.innerHTML = '<span class="bar"></span><span class="bar"></span><span class="bar"></span>';
-    if (headerContent) {
-        headerContent.insertBefore(mobileToggle, document.querySelector('.header-actions'));
-    }
+    // Use the hamburger button that's already in the HTML
+    const mobileToggle = document.querySelector('.mobile-toggle');
 
     function openMenu() {
         nav.classList.add('active');

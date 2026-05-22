@@ -112,10 +112,10 @@ body {
 
 /* Consolidated Header Styles */
 .header {
-    background-color: var(--header-bg); /* Solid background always */
+    background-color: var(--header-bg);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    padding: 10px 0;
+    padding: 14px 0;
     position: fixed;
     top: 15px;
     width: 95%;
@@ -141,11 +141,11 @@ body {
 }
 
 .header .logo img {
-    height: 56px;
+    height: 70px;
 }
 
 .header.scrolled .logo img {
-    height: 70px;
+    height: 55px;
 }
 
 .header-content {
@@ -155,7 +155,7 @@ body {
 }
 
 .logo img {
-    height: 56px;
+    height: 70px;
     transition: var(--transition);
     object-fit: contain;
     display: block;
@@ -530,50 +530,67 @@ h2 {
     padding-left: 30px !important;
 }
 
-/* ── Mobile Navigation: Hamburger ── */
+/* ── Mobile Navigation: Hamburger (Three Lines) ── */
 .mobile-toggle {
     display: none;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 44px;
-    height: 44px;
-    padding: 11px 10px;
-    background: transparent;
+    width: 46px;
+    height: 46px;
+    padding: 10px;
+    background: var(--primary-green);
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
-    order: 3;
     z-index: 9999;
     flex-shrink: 0;
     transition: background 0.2s ease;
-    margin-left: 8px;
+    margin-left: 10px;
+    order: 3;
 }
 
 .mobile-toggle:hover {
-    background: rgba(0, 66, 37, 0.06);
+    background: #005a35;
+}
+
+[data-theme="dark"] .mobile-toggle {
+    background: var(--accent-gold);
 }
 
 [data-theme="dark"] .mobile-toggle:hover {
-    background: rgba(230,184,77,0.08);
+    background: #c5a044;
 }
 
 .mobile-toggle .bar {
-    width: 24px;
-    height: 2.5px;
-    background: var(--text-main);
+    width: 26px;
+    height: 3px;
+    background: #ffffff;
     border-radius: 3px;
     display: block;
     transition: all 0.3s ease;
 }
 
-[data-theme="dark"] .mobile-toggle .bar {
-    background: #e0e0e0;
-}
-
 /* Close button — hidden by default */
 .nav-close-btn {
     display: none;
+}
+
+/* ── Mobile Nav Overlay (dark backdrop behind slide-out menu) ── */
+.nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(2px);
+    z-index: 1999;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.nav-overlay.active {
+    display: block;
+    opacity: 1;
 }
 
 /* ── Scroll Reveal Animations ── */
