@@ -568,7 +568,21 @@ h2 {
     background: #ffffff;
     border-radius: 3px;
     display: block;
-    transition: all 0.3s ease;
+    transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+                opacity 0.25s ease,
+                background 0.25s ease;
+}
+
+/* ── Hamburger → ✕ close transformation ── */
+.mobile-toggle.open .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+.mobile-toggle.open .bar:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.mobile-toggle.open .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
 }
 
 /* Close button — hidden by default */
@@ -671,6 +685,31 @@ h2 {
     .nav.active {
         right: 0;
     }
+
+    /* ── Stagger slide-in animation for nav links ── */
+    @keyframes navLinkSlideIn {
+        from {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .nav.active ul li {
+        opacity: 0;
+        animation: navLinkSlideIn 0.4s ease forwards;
+    }
+    .nav.active ul li:nth-child(1) { animation-delay: 0.05s; }
+    .nav.active ul li:nth-child(2) { animation-delay: 0.12s; }
+    .nav.active ul li:nth-child(3) { animation-delay: 0.19s; }
+    .nav.active ul li:nth-child(4) { animation-delay: 0.26s; }
+    .nav.active ul li:nth-child(5) { animation-delay: 0.33s; }
+    .nav.active ul li:nth-child(6) { animation-delay: 0.40s; }
+    .nav.active ul li:nth-child(7) { animation-delay: 0.47s; }
+    .nav.active ul li:nth-child(8) { animation-delay: 0.54s; }
 
     /* ── Nav links ── */
     .nav ul {
