@@ -665,6 +665,24 @@ h2 {
         z-index: 9999;
     }
 
+    /* ── Mobile Header Size ── */
+    .header {
+        width: 96%;
+        padding: 8px 0;
+        top: 8px;
+        border-radius: 16px;
+    }
+
+    .header .logo img,
+    .logo img {
+        height: 48px !important;
+    }
+
+    .header-content {
+        padding: 0 14px;
+        gap: 8px;
+    }
+
     /* ── Slide-out nav panel ── */
     .nav {
         position: fixed;
