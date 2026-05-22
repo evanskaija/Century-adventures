@@ -754,12 +754,12 @@ h2 {
     /* ── Mobile Header Size ── */
     .header {
         width: 96% !important;
-        height: 60px !important;
+        height: 72px !important;
         display: flex !important;
         align-items: center !important;
-        padding: 0 16px !important;
-        top: 8px !important;
-        border-radius: 16px !important;
+        padding: 0 20px !important;
+        top: 10px !important;
+        border-radius: 18px !important;
         left: 50% !important;
         transform: translateX(-50%) !important;
         box-sizing: border-box !important;
@@ -767,15 +767,15 @@ h2 {
     }
 
     .header.scrolled {
-        height: 60px !important;
-        padding: 0 16px !important;
-        top: 8px !important;
+        height: 72px !important;
+        padding: 0 20px !important;
+        top: 10px !important;
     }
 
     .header .logo img,
     .logo img,
     .header.scrolled .logo img {
-        height: 38px !important;
+        height: 46px !important;
         width: auto !important;
     }
 

@@ -309,17 +309,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Dropdown accordion for mobile
-    const dropdowns = document.querySelectorAll('.dropdown');
-    dropdowns.forEach(dropdown => {
-        const link = dropdown.querySelector('a');
-        if (link) {
-            link.addEventListener('click', (e) => {
-                if (window.innerWidth <= 992) {
-                    e.preventDefault();
-                    dropdown.classList.toggle('active');
-                }
-            });
+    // Global delegation for mobile accordion dropdowns
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 992) {
+            const dropdownLink = e.target.closest('.dropdown > a');
+            if (dropdownLink) {
+                e.preventDefault();
+                e.stopPropagation();
+                const dropdown = dropdownLink.parentElement;
+                dropdown.classList.toggle('active');
+            }
         }
     });
 
@@ -344,7 +343,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Observe scroll-reveal elements
     document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale').forEach(el => observer.observe(el));
 
-    // ── Auto-apply scroll-reveal to key sections ──
+    // ── Auto-apply scroll-reveal to all elements across the entire website ──
+    document.querySelectorAll('section, .section, .itinerary-day, .info-col, .link-col, .tripadvisor-card, .footer-col, .about-content, .contact-grid > div, .form-container, .safari-card, .package-card, .blog-card, .detail-card, .faq-item, .gallery-item, .card, .container > p, .container > img').forEach((el) => {
+        if (!el.classList.contains('scroll-reveal') && !el.classList.contains('scroll-reveal-left') && !el.classList.contains('scroll-reveal-right') && !el.classList.contains('scroll-reveal-scale')) {
+            el.classList.add('scroll-reveal');
+        }
+        observer.observe(el);
+    });
+
     // Section headings animate in
     document.querySelectorAll('.section h2, .section .sub-heading, .section .section-desc').forEach(el => {
         el.classList.add('scroll-reveal');
