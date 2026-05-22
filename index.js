@@ -278,6 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (nav && nav.classList.contains('active')) {
             if (!nav.contains(e.target) && !mobileToggle.contains(e.target)) {
                 closeMenu();
+                navOverlay.classList.remove('active');
             }
         }
     });
@@ -294,10 +295,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Intersection Observer for fade-in animations
+    // Mobile nav overlay
+    const navOverlay = document.createElement('div');
+    navOverlay.className = 'nav-overlay';
+    document.body.appendChild(navOverlay);
+
+    navOverlay.addEventListener('click', () => {
+        closeMenu();
+        navOverlay.classList.remove('active');
+    });
+
+    // Patch mobileToggle to also toggle overlay
+    const originalToggleHandler = mobileToggle.onclick;
+    mobileToggle.addEventListener('click', () => {
+        if (nav.classList.contains('active')) {
+            navOverlay.classList.add('active');
+        } else {
+            navOverlay.classList.remove('active');
+        }
+    });
+
+    // ── Intersection Observer for ALL scroll animations──
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.08,
+        rootMargin: '0px 0px -40px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -308,6 +329,67 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, observerOptions);
+
+    // Observe .animate-in elements (existing)
+    document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
+
+    // Observe scroll-reveal elements
+    document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale').forEach(el => observer.observe(el));
+
+    // ── Auto-apply scroll-reveal to key sections ──
+    // Section headings animate in
+    document.querySelectorAll('.section h2, .section .sub-heading, .section .section-desc').forEach(el => {
+        el.classList.add('scroll-reveal');
+        observer.observe(el);
+    });
+
+    // Why Us items stagger
+    document.querySelectorAll('.why-us-item').forEach((el, i) => {
+        el.classList.add('scroll-reveal');
+        el.style.transitionDelay = `${i * 0.1}s`;
+        observer.observe(el);
+    });
+
+    // Destination cards
+    document.querySelectorAll('.destination-card').forEach((el, i) => {
+        el.classList.add('scroll-reveal');
+        el.style.transitionDelay = `${i * 0.12}s`;
+        observer.observe(el);
+    });
+
+    // Tip cards
+    document.querySelectorAll('.tip-card').forEach((el, i) => {
+        el.classList.add('scroll-reveal');
+        el.style.transitionDelay = `${i * 0.1}s`;
+        observer.observe(el);
+    });
+
+    // Feature cards
+    document.querySelectorAll('.feature-card').forEach((el, i) => {
+        el.classList.add('scroll-reveal');
+        el.style.transitionDelay = `${i * 0.1}s`;
+        observer.observe(el);
+    });
+
+    // Testimonials
+    document.querySelectorAll('.testimonial-card').forEach((el, i) => {
+        el.classList.add('scroll-reveal');
+        el.style.transitionDelay = `${i * 0.12}s`;
+        observer.observe(el);
+    });
+
+    // About section
+    const aboutImg = document.querySelector('.about-image');
+    if (aboutImg) { aboutImg.classList.add('scroll-reveal-left'); observer.observe(aboutImg); }
+    const aboutText = document.querySelector('.about-text');
+    if (aboutText) { aboutText.classList.add('scroll-reveal-right'); observer.observe(aboutText); }
+
+    // Contact items
+    document.querySelectorAll('.contact-item-box').forEach((el, i) => {
+        el.classList.add('scroll-reveal');
+        el.style.transitionDelay = `${i * 0.1}s`;
+        observer.observe(el);
+    });
 
     // Auto-scroll logic for horizontal grids
     const setupAutoScroll = (selector, step) => {

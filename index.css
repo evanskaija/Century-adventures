@@ -141,7 +141,7 @@ body {
 }
 
 .header .logo img {
-    height: 90px;
+    height: 56px;
 }
 
 .header.scrolled .logo img {
@@ -155,7 +155,7 @@ body {
 }
 
 .logo img {
-    height: 60px; /* Reduced to fit better */
+    height: 56px;
     transition: var(--transition);
     object-fit: contain;
     display: block;
@@ -530,43 +530,102 @@ h2 {
     padding-left: 30px !important;
 }
 
-/* Mobile Navigation Fixes */
+/* ── Mobile Navigation: Hamburger ── */
 .mobile-toggle {
     display: none;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 5px;
-    width: 42px;
-    height: 42px;
-    background: var(--primary-green);
-    border-radius: 10px;
+    width: 44px;
+    height: 44px;
+    padding: 11px 10px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
-    order: 2;
-    z-index: 1100;
+    order: 3;
+    z-index: 9999;
     flex-shrink: 0;
-    transition: var(--transition);
+    transition: background 0.2s ease;
+    margin-left: 8px;
+}
+
+.mobile-toggle:hover {
+    background: rgba(0, 66, 37, 0.06);
+}
+
+[data-theme="dark"] .mobile-toggle:hover {
+    background: rgba(230,184,77,0.08);
 }
 
 .mobile-toggle .bar {
-    width: 22px;
-    height: 2px;
-    background: #ffffff;
-    border-radius: 2px;
-    transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+    width: 24px;
+    height: 2.5px;
+    background: var(--text-main);
+    border-radius: 3px;
     display: block;
+    transition: all 0.3s ease;
 }
 
-
-
-[data-theme="dark"] .mobile-toggle {
-    background: var(--accent-gold);
+[data-theme="dark"] .mobile-toggle .bar {
+    background: #e0e0e0;
 }
 
-/* Close button — hidden by default (desktop) */
+/* Close button — hidden by default */
 .nav-close-btn {
     display: none;
 }
+
+/* ── Scroll Reveal Animations ── */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-reveal-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.scroll-reveal-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scroll-reveal-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.scroll-reveal-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scroll-reveal-scale {
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.scroll-reveal-scale.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Stagger delays for grid children */
+.scroll-reveal:nth-child(1) { transition-delay: 0.05s; }
+.scroll-reveal:nth-child(2) { transition-delay: 0.15s; }
+.scroll-reveal:nth-child(3) { transition-delay: 0.25s; }
+.scroll-reveal:nth-child(4) { transition-delay: 0.35s; }
 
 
 @media (max-width: 992px) {
@@ -764,6 +823,9 @@ h2 {
 
 .hero-logo-large {
     margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero-logo-large img {
@@ -2192,45 +2254,290 @@ iframe.goog-te-menu-frame {
     box-shadow: none !important;
 }
 
-/* Extra small devices (phones, 576px and down) */
-@media (max-width: 576px) {
+/* ═══════════════════════════════════════════════════
+   COMPREHENSIVE MOBILE RESPONSIVE — All Pages & Elements
+   ═══════════════════════════════════════════════════ */
+
+/* Tablet (992px) — hamburger appears, nav slides out */
+@media (max-width: 992px) {
+    /* Header pill adapts on smaller screens */
+    .header {
+        top: 10px;
+        width: 97%;
+    }
+}
+
+/* Phone (768px and down) */
+@media (max-width: 768px) {
+    /* ── Container ── */
     .container {
-        padding: 0 15px;
+        padding: 0 16px;
     }
+
+    /* ── Header ── */
+    .header {
+        top: 8px;
+        width: 95%;
+        border-radius: 16px;
+        padding: 8px 0;
+    }
+
+    .header .logo img,
+    .logo img {
+        height: 44px;
+    }
+
+    /* On mobile, nav is hidden (slide-out), so hide enquire too */
+    .header-actions .enquire-btn {
+        display: none;
+    }
+
+    /* Show lang and theme toggles, but compact */
+    .header-toggles {
+        gap: 4px;
+        margin-right: 4px;
+        padding-right: 4px;
+    }
+
+    .toggle-btn {
+        padding: 4px 7px;
+        font-size: 0.6rem;
+    }
+
+    /* ── Mobile nav overlay ── */
+    .nav-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 1999;
+        backdrop-filter: blur(3px);
+    }
+
+    .nav-overlay.active {
+        display: block;
+    }
+
+    /* ── Hero section ── */
+    .hero {
+        background-attachment: scroll; /* fix parallax on iOS */
+        height: 100svh;
+        padding-top: 80px;
+    }
+
+    .hero-content {
+        padding: 0 8px;
+        text-align: center;
+    }
+
+    .hero-logo-large img {
+        height: 120px;
+        margin: 0 auto;
+    }
+
     .hero h1 {
-        font-size: 2.3rem;
+        font-size: 2.2rem;
+        line-height: 1.2;
     }
+
     .hero-tagline {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
+
+    .btn-large {
+        padding: 14px 32px;
+        font-size: 0.9rem;
+    }
+
+    /* ── Typography ── */
+    h2 {
+        font-size: 2.2rem;
+    }
+
+    .section-desc {
+        font-size: 1rem;
+        margin-bottom: 40px;
+    }
+
     .section {
-        padding: 50px 0;
+        padding: 60px 0;
     }
-    .section-title {
-        font-size: 2rem;
+
+    /* ── Why Us Grid: 4-col → 2-col ── */
+    .why-us-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
     }
+
+    .why-us-item {
+        padding: 30px 18px;
+    }
+
+    /* ── Destinations Grid ── */
+    .destinations-grid-home {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .destination-card img {
+        height: 220px;
+    }
+
+    /* ── Marquee cards: narrower on phone ── */
     .marquee-wrapper .safari-card,
     .marquee-wrapper .tip-card,
     .marquee-wrapper .experience-card {
-        width: 290px;
+        width: 280px;
     }
-    .safaris-grid {
-        gap: 15px;
+
+    /* ── About grid ── */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
     }
-    .btn-large {
-        padding: 12px 30px;
-        font-size: 0.95rem;
+
+    /* ── Features grid ── */
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
     }
-    .header-toggles {
-        margin-right: 5px;
-        padding-right: 5px;
+
+    .feature-card {
+        padding: 30px 20px;
     }
-    .toggle-btn {
-        padding: 4px 6px;
-        font-size: 0.6rem;
+
+    /* ── Tips grid ── */
+    .tips-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
-    .mobile-toggle {
-        width: 38px;
+
+    /* ── Contact grid ── */
+    .contact-grid-main {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .contact-form-panel {
+        padding: 28px 18px;
+    }
+
+    /* ── Why volunteer grid ── */
+    .why-volunteer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    /* ── Opportunities grid ── */
+    .opportunities-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* ── Footer grid ── */
+    .footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 30px;
+    }
+
+    .footer-top {
+        padding: 50px 0;
+        text-align: center;
+    }
+
+    .footer-top h2 {
+        font-size: 2rem;
+    }
+
+    /* ── Experts section ── */
+    .experts-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    /* ── Promo box ── */
+    .promo-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* ── Testimonials ── */
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* ── Why us item text ── */
+    .why-us-item h3 {
+        font-size: 1.1rem;
+    }
+
+    .why-us-item i {
+        font-size: 2.5rem;
+    }
+
+    /* ── Vehicles grid ── */
+    .vehicles-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* ── Tripadvisor grid ── */
+    .tripadvisor-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* iPhone / small phones (480px and down) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    .header {
+        top: 6px;
+        border-radius: 12px;
+    }
+
+    .header .logo img,
+    .logo img {
         height: 38px;
+    }
+
+    /* Nav panel takes 85% of screen width on small phones */
+    .nav {
+        width: 85% !important;
+    }
+
+    .hero h1 {
+        font-size: 1.9rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .why-us-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .marquee-wrapper .safari-card,
+    .marquee-wrapper .tip-card,
+    .marquee-wrapper .experience-card {
+        width: 260px;
+    }
+
+    .hero-logo-large img {
+        height: 100px;
+    }
+
+    .toggle-btn {
+        padding: 3px 5px;
+        font-size: 0.55rem;
+    }
+
+    .btn-large {
+        padding: 12px 24px;
+        font-size: 0.85rem;
+    }
+
+    .section {
+        padding: 48px 0;
     }
 }
