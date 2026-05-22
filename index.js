@@ -238,73 +238,62 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollProgress.style.width = scrolled + "%";
     });
 
-    // Mobile Menu Toggle
+    // ── Mobile Menu Toggle ──
     const nav = document.querySelector('.nav');
-
-    // Use the hamburger button that's already in the HTML
     const mobileToggle = document.querySelector('.mobile-toggle');
 
-    function openMenu() {
-        nav.classList.add('active');
-        mobileToggle.classList.add('open');
-        mobileToggle.setAttribute('aria-label', 'Close navigation menu');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeMenu() {
-        nav.classList.remove('active');
-        mobileToggle.classList.remove('open');
-        mobileToggle.setAttribute('aria-label', 'Open navigation menu');
-        document.body.style.overflow = '';
-    }
-
-    mobileToggle.addEventListener('click', () => {
-        if (nav.classList.contains('active')) {
-            closeMenu();
-        } else {
-            openMenu();
-        }
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (nav && nav.classList.contains('active')) {
-            if (!nav.contains(e.target) && !mobileToggle.contains(e.target)) {
-                closeMenu();
-                navOverlay.classList.remove('active');
-            }
-        }
-    });
-
-    // Dropdown interactivity for mobile
-    const dropdowns = document.querySelectorAll('.dropdown');
-    dropdowns.forEach(dropdown => {
-        const link = dropdown.querySelector('a');
-        link.addEventListener('click', (e) => {
-            if (window.innerWidth <= 992) {
-                e.preventDefault();
-                dropdown.classList.toggle('active');
-            }
-        });
-    });
-
-    // Mobile nav overlay
+    // Create dark overlay backdrop
     const navOverlay = document.createElement('div');
     navOverlay.className = 'nav-overlay';
     document.body.appendChild(navOverlay);
 
-    navOverlay.addEventListener('click', () => {
-        closeMenu();
+    function openMenu() {
+        if (!nav || !mobileToggle) return;
+        nav.classList.add('active');
+        mobileToggle.classList.add('open');
+        navOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+        if (!nav || !mobileToggle) return;
+        nav.classList.remove('active');
+        mobileToggle.classList.remove('open');
         navOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Hamburger click — stop propagation so document handler doesn't fire immediately
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            nav.classList.contains('active') ? closeMenu() : openMenu();
+        });
+    }
+
+    // Click dark overlay to close
+    navOverlay.addEventListener('click', () => closeMenu());
+
+    // Click anywhere outside nav to close
+    document.addEventListener('click', (e) => {
+        if (nav && nav.classList.contains('active')) {
+            if (!nav.contains(e.target) && mobileToggle && !mobileToggle.contains(e.target)) {
+                closeMenu();
+            }
+        }
     });
 
-    // Patch mobileToggle to also toggle overlay
-    const originalToggleHandler = mobileToggle.onclick;
-    mobileToggle.addEventListener('click', () => {
-        if (nav.classList.contains('active')) {
-            navOverlay.classList.add('active');
-        } else {
-            navOverlay.classList.remove('active');
+    // Dropdown accordion for mobile
+    const dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach(dropdown => {
+        const link = dropdown.querySelector('a');
+        if (link) {
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 992) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                }
+            });
         }
     });
 
