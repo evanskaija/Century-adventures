@@ -418,8 +418,10 @@ h1, h2, h3 {
 
 .container {
     max-width: 1300px;
+    width: 100%;
     margin: 0 auto;
     padding: 0 30px;
+    box-sizing: border-box;
 }
 
 .section {
@@ -557,7 +559,7 @@ h2 {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     .mobile-toggle {
         display: flex;
     }
