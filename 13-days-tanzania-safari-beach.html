@@ -6,21 +6,27 @@
     <link rel="apple-touch-icon" href="assets/logo.png">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Century Adventures</title>
-    <meta name="description" content="Learn more about Century Adventures, your expert safari operator in Dar es Salaam, Tanzania.">
+    <title>13-Days Tanzania Safari and Beach Holiday in Zanzibar | Century Adventures</title>
+    <meta name="description" content="Experience a thrilling 13-day safari, allowing you to immerse yourself in the beauty of the bush and the wonders of Zanzibar.">
     <link rel="stylesheet" href="index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        (function() {
+            const theme = localStorage.getItem('century-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
     <meta property="og:type" content="website">
-    <meta property="og:title" content="About Us | Century Adventures">
-    <meta property="og:description" content="Learn more about Century Adventures, your expert safari operator in Dar es Salaam, Tanzania.">
+    <meta property="og:title" content="13-Days Tanzania Safari and Beach Holiday in Zanzibar | Century Adventures">
+    <meta property="og:description" content="Experience a thrilling 13-day safari, allowing you to immerse yourself in the beauty of the bush and the wonders of Zanzibar.">
     <meta property="og:image" content="assets/logo.png">
     <meta property="og:site_name" content="Century Adventures">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="assets/logo.png">
-    <meta name="twitter:title" content="About Us | Century Adventures">
+    <meta name="twitter:title" content="13-Days Tanzania Safari and Beach Holiday in Zanzibar | Century Adventures">
 </head>
 <body>
     <div class="scroll-progress"></div>
@@ -34,7 +40,7 @@
             <nav class="nav">
                 <ul>
                     <li><a href="index.html" data-en="Home" data-sw="Nyumbani">Home</a></li>
-                    <li><a href="about.html" class="active" data-en="About Us" data-sw="Kuhusu Sisi">About Us</a></li>
+                    <li><a href="about.html" data-en="About Us" data-sw="Kuhusu Sisi">About Us</a></li>
                     <li class="dropdown">
                         <a href="#" data-en="Destinations" data-sw="Maeneo">Destinations <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
@@ -49,7 +55,7 @@
                             <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
                         </ul>
                     </li>
-                    <li><a href="safaris.html" data-en="Tours & Safaris" data-sw="Safari na Ziara">Tours & Safaris</a></li>
+                    <li><a href="safaris.html" class="active" data-en="Tours & Safaris" data-sw="Safari na Ziara">Tours & Safaris</a></li>
                     <li><a href="experiences.html" data-en="Experiences" data-sw="Uzoefu">Experiences</a></li>
                     <li><a href="volunteer.html" data-en="Volunteer" data-sw="Kujitolea">Volunteer</a></li>
                     <li><a href="vehicles.html" data-en="Safari Vehicles" data-sw="Magari ya Safari">Safari Vehicles</a></li>
@@ -59,7 +65,7 @@
             <div class="header-actions">
                 <div class="header-toggles">
                     <button class="toggle-btn lang-toggle" onclick="toggleLang()">SW</button>
-                    <button class="toggle-btn theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+                    <button class="toggle-btn theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i> DARK</button>
                 </div>
                 <a href="enquire.html" class="btn btn-primary enquire-btn" data-en="ENQUIRE" data-sw="ULIZA">ENQUIRE</a>
             </div>
@@ -67,63 +73,80 @@
     </header>
 
     <!-- Page Hero -->
-    <section class="hero page-hero" style="background-image: url('assets/about-hero.png'); height: 50vh;">
+    <section class="hero page-hero" style="background-image: url('assets/zanzibar.png'); height: 60vh;">
         <div class="hero-overlay"></div>
         <div class="container hero-content">
-            <h1 data-en="About Us" data-sw="Kuhusu Sisi">About Us</h1>
+            <h1 data-en="13-Days Tanzania Safari" data-sw="Siku 13 Safari ya Tanzania">13-Days Tanzania Safari</h1>
+            <p style="color: #fff; font-size: 1.2rem; margin-top: 10px;">and Beach Holiday in Zanzibar</p>
         </div>
     </section>
 
-    <!-- About Content -->
-    <section class="section about-intro">
-        <div class="container">
-            <div class="experts-grid">
-                <div class="experts-text">
-                    <span class="sub-heading" data-en="LOCAL EXPERTISE" data-sw="UTAALAMU WA NDANI">LOCAL EXPERTISE</span>
-                    <h2 data-en="Century Adventures is a local tour operator" data-sw="Century Adventures ni opereta wa ndani">Century Adventures is a local tour operator</h2>
-                    <p data-en="Century Adventures is a local tour operator located in Dar es Salaam, Tanzania. With years of experience in the tourism industry, we offer a wide range of travel experiences, ranging from wildlife safaris to beach getaways, mountain expeditions, and volunteering opportunities in Tanzania."
-                       data-sw="Century Adventures ni opereta wa ndani wa kitalii anayepatikana Dar es Salaam, Tanzania. Kwa miaka mingi ya uzoefu katika sekta ya utalii, tunatoa uzoefu mbalimbali wa kusafiri, kuanzia safari za wanyamapori hadi mapumziko ya pwani, safari za milimani, na fursa za kujitolea nchini Tanzania.">
-                       Century Adventures is a local tour operator located in Dar es Salaam, Tanzania. With years of experience in the tourism industry, we offer a wide range of travel experiences, ranging from wildlife safaris to beach getaways, mountain expeditions, and volunteering opportunities in Tanzania.
-                    </p>
-                    <p data-en="We offer a variety of safari packages to cater to different preferences and budgets. Whether you’re a solo traveler, a couple on a romantic getaway, or a family looking for an adventure, we have the perfect itinerary for you. From short wildlife safaris to longer expeditions that include visits to historical sites and beach resorts, there is something for everyone."
-                       data-sw="Tunatoa vifurushi mbalimbali vya safari ili kukidhi mapendeleo na bajeti tofauti. Iwe wewe ni msafiri wa peke yako, wanandoa kwenye mapumziko ya kimapenzi, au familia inayotafuta adventure, tuna ratiba nzuri kwako. Kuanzia safari fupi za wanyamapori hadi safari ndefu zinazojumuisha kutembelea maeneo ya kihistoria na mapumziko ya pwani, kuna kitu kwa kila mtu.">
-                       We offer a variety of safari packages to cater to different preferences and budgets. Whether you’re a solo traveler, a couple on a romantic getaway, or a family looking for an adventure, we have the perfect itinerary for you. From short wildlife safaris to longer expeditions that include visits to historical sites and beach resorts, there is something for everyone.
-                    </p>
+    <!-- Content Section -->
+    <section class="section">
+        <div class="container" style="max-width: 900px; line-height: 1.8; font-size: 1.15rem; color: var(--text-muted);">
+            <p>Experience a thrilling 13-day safari with Century Adventures, allowing you to immerse yourself in the beauty of the bush and the wonders of Zanzibar. This tour offers the opportunity to spot the Big Five and a variety of intriguing wildlife.</p>
+
+            <p>Throughout your safari, enjoy the convenience of full board accommodation, a knowledgeable English-speaking guide, and exclusive use of a 4×4 Jeep equipped with cold drinks, snacks, power sockets, and binoculars.</p>
+            
+            <p>After an exhilarating safari adventure, unwind on the pristine beaches of Zanzibar. It’s the perfect way to conclude your unforgettable journey.</p>
+
+                        <h2 style="font-size: 2rem; margin-top: 40px; margin-bottom: 20px; color: var(--primary-green);">Gallery</h2>
+            <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 40px;">
+                <img src="assets/07TMMT-IM1107-mara-mara-tented-lodge-1475.jpg" alt="Gallery Image 1" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
+                <img src="assets/07TMMT-IM1507-mara-mara-tented-lodge-1475.jpg" alt="Gallery Image 2" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
+                <img src="assets/08TMMT-IM1108-mara-mara-tented-lodge-1475.jpg" alt="Gallery Image 3" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
+                <img src="assets/09TMMT-IM1109-mara-mara-tented-lodge-1475.jpg" alt="Gallery Image 4" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
+            </div>
+
+            <h2 style="font-size: 2rem; margin-top: 40px; margin-bottom: 20px; color: var(--primary-green);">Itinerary</h2>
+            <div class="itinerary">
+                <p><strong>Day 1: Arrival in Arusha</strong><br>Arrive in Arusha, where you will be picked up from the airport and transferred to Arusha Planet Lodge. Enjoy a delicious lunch followed by a relaxing evening.</p>
+                <p><strong>Day 2 : Tarangire National park</strong><br>Journey to Tarangire National Park for a guided game drive, exploring the diverse wildlife and stunning landscapes. After a day of adventure, settle in for the night at Lake Burunge Tented Camp.</p>
+                <p><strong>Day 3: Lake Manyara National park</strong><br>After breakfast, travel to Lake Manyara National Park. Famous for its tree-climbing lions and vast flocks of flamingos, enjoy a full-day game drive. Dinner and overnight stay at Manyara Serena Safari Lodge.</p>
+                <p><strong>Day 4-6: Serengeti National park</strong><br>Head into the endless plains of the Serengeti National Park. Spend three incredible days searching for the Big Five, observing predators on the hunt, and witnessing the spectacular Great Migration. Dinner and overnight at Serengeti Heritage Luxury Tented Camp.</p>
+                <p><strong>Day 7: Ngorongoro crater</strong><br>Drive to the Ngorongoro Conservation Area and descend into the world-famous crater. Enjoy a game drive surrounded by steep caldera walls, home to black rhinos, lions, and elephants. Dinner and overnight at Ngorongoro Serena Safari Lodge.</p>
+                <p><strong>Day 8: Lake Eyasi</strong><br>Travel to Lake Eyasi, a seasonal shallow soda lake. Meet the indigenous Hadzabe and Datoga tribes, learning about their ancient hunter-gatherer way of life. Dinner and overnight at Kisima Ngeda Tented Camp.</p>
+                <p><strong>Day 9: Fly from Arusha to Zanzibar</strong><br>Transfer back to Arusha for your flight to the spice island of Zanzibar. Upon arrival, transfer to your beach resort. Dinner and overnight at Breezes Beach Club & Spa.</p>
+                <p><strong>Day 10-12: Zanzibar</strong><br>Spend three days relaxing on the white sandy beaches, swimming in the turquoise waters, or exploring the historic streets of Stone Town and the local spice plantations. Dinner and overnight at Breezes Beach Club & Spa.</p>
+                <p><strong>Day 13: Departure</strong><br>After breakfast, transfer to Zanzibar International Airport for your departure flight back home.</p>
+            </div>
+            
+            <hr style="border: none; border-top: 1px solid var(--border-color); margin: 40px 0;">
+
+            <h3 style="font-size: 1.5rem; margin-bottom: 10px; color: var(--primary-green);">Rates Per Person</h3>
+            <p style="font-size: 1.25rem; font-weight: bold; color: var(--text-dark);">From $4,496</p>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 40px; margin-top: 30px;">
+                <div style="flex: 1; min-width: 300px;">
+                    <h4 style="color: var(--primary-green);">Included</h4>
+                    <ul style="list-style-type: disc; padding-left: 20px;">
+                        <li>Park fees</li>
+                        <li>All activities</li>
+                        <li>All accommodation</li>
+                        <li>A professional driver/guide</li>
+                        <li>All transportation</li>
+                        <li>All flights during the tour</li>
+                        <li>All Taxes/VAT</li>
+                        <li>Roundtrip airport transfer</li>
+                        <li>Meals</li>
+                        <li>Water on Safari</li>
+                    </ul>
                 </div>
-                <div class="experts-image">
-                    <img src="assets/about-1.png" alt="Safari Experience">
+                <div style="flex: 1; min-width: 300px;">
+                    <h4 style="color: #d32f2f;">Excluded</h4>
+                    <ul style="list-style-type: disc; padding-left: 20px;">
+                        <li>International flights</li>
+                        <li>Additional accommodation before and at the end of the tour</li>
+                        <li>Tips</li>
+                        <li>Personal items</li>
+                        <li>Government imposed increase of taxes and/or park fees</li>
+                        <li>Drinks</li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Why Choose Us -->
-    <section class="section why-choose-us" style="background-color: var(--section-bg);">
-        <div class="container">
-            <span class="sub-heading" data-en="WHY CHOOSE US?" data-sw="KWANINI UTUCHAGUE?">WHY CHOOSE US?</span>
-            <h2 data-en="Creating Memorable Experiences" data-sw="Kutengeneza Uzoefu Usiosehaulika">Creating Memorable Experiences</h2>
-            <p data-en="Choosing Century Adventures for your Tanzania safari means having a reliable and reputable company that will go above and beyond to create a memorable and unforgettable experience in the heart of Africa."
-               data-sw="Kuchagua Century Adventures kwa safari yako ya Tanzania inamaanisha kuwa na kampuni inayoaminika na yenye sifa nzuri ambayo itafanya kila liwezekanalo ili kuunda uzoefu usiosehaulika katika moyo wa Afrika.">
-               Choosing Century Adventures for your Tanzania safari means having a reliable and reputable company that will go above and beyond to create a memorable and unforgettable experience in the heart of Africa.
-            </p>
-
-            <div class="tips-grid" style="margin-top: 50px;">
-                <div class="tip-card animate-in">
-                    <div class="tip-icon"><i class="fas fa-users"></i></div>
-                    <h3 data-en="1. Experienced guides" data-sw="1. Waongoza wageni wenye uzoefu">1. Experienced guides</h3>
-                    <p data-en="The company has a team of experienced and knowledgeable guides who are passionate about their work. They are not only skilled in spotting wildlife but also in providing insightful information about the flora, fauna, and local cultures. They will ensure that you have a safe and informative safari experience."
-                       data-sw="Kampuni ina timu ya waongoza wageni wenye uzoefu na maarifa ambao wana shauku na kazi yao. Hawana ujuzi tu wa kuona wanyamapori lakini pia katika kutoa habari za kina kuhusu mimea, wanyama, na tamaduni za wenyeji. Watahakikisha kuwa una uzoefu salama na wa kuelimisha wa safari.">
-                       The company has a team of experienced and knowledgeable guides who are passionate about their work. They are not only skilled in spotting wildlife but also in providing insightful information about the flora, fauna, and local cultures. They will ensure that you have a safe and informative safari experience.
-                    </p>
-                </div>
-                <div class="tip-card animate-in">
-                    <div class="tip-icon"><i class="fas fa-map-marked-alt"></i></div>
-                    <h3 data-en="2. Tailor-made itineraries" data-sw="2. Ratiba maalum">2. Tailor-made itineraries</h3>
-                    <p data-en="Century Adventures offers personalized itineraries that cater to your specific interests, preferences, and budget. Whether you are looking for a luxury lodge safari, a budget camping adventure, a family-friendly tour, or a combination of different activities, we will create a customized itinerary to suit your needs."
-                       data-sw="Century Adventures inatoa ratiba za kibinafsi zinazokidhi maslahi yako maalum, mapendeleo, na bajeti. Iwe unatafuta safari ya kitalii ya anasa, safari ya kupiga kambi ya bajeti, ziara inayofaa kwa familia, au mchanganyiko wa shughuli tofauti, tutaunda ratiba maalum ili kukidhi mahitaji yako.">
-                       Century Adventures offers personalized itineraries that cater to your specific interests, preferences, and budget. Whether you are looking for a luxury lodge safari, a budget camping adventure, a family-friendly tour, or a combination of different activities, we will create a customized itinerary to suit your needs.
-                    </p>
-                </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="enquire.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 15px 40px;" data-en="BOOK YOUR SAFARI" data-sw="WEKA NAFASI YA SAFARI">BOOK YOUR SAFARI</a>
             </div>
         </div>
     </section>
@@ -170,7 +193,7 @@
                 <ul>
                     <li><a href="#" data-en="Family Safaris" data-sw="Safari za Familia">Family Safaris</a></li>
                     <li><a href="#" data-en="Honeymoon Safaris" data-sw="Safari za Fungate">Honeymoon Safaris</a></li>
-                    <li><a href="#" data-en="Great Migration Safaris" data-sw="Safari za Uhamiaji">Great Migration Safaris</a></li>
+                    <li><a href="migration-safaris.html" data-en="Great Migration Safaris" data-sw="Safari za Uhamiaji">Great Migration Safaris</a></li>
                     <li><a href="#" data-en="Volunteer Programs" data-sw="Mipango ya Kujitolea">Volunteer Programs</a></li>
                     <li><a href="#" data-en="Zanzibar Beach Holiday" data-sw="Likizo ya Pwani ya Zanzibar">Zanzibar Beach Holiday</a></li>
                 </ul>
@@ -201,3 +224,5 @@
     <script src="index.js"></script>
 </body>
 </html>
+
+

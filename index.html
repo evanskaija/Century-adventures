@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Century Adventures | Tanzania Safari Experts</title>
     <meta name="description" content="Experience the magic of Tanzania with Century Adventures. Top safaris, destinations, and travel experiences.">
@@ -16,6 +19,14 @@
             document.documentElement.setAttribute('data-theme', theme);
         })();
     </script>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Century Adventures | Tanzania Safari Experts">
+    <meta property="og:description" content="Experience the magic of Tanzania with Century Adventures. Top safaris, destinations, and travel experiences.">
+    <meta property="og:image" content="assets/logo.png">
+    <meta property="og:site_name" content="Century Adventures">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="assets/logo.png">
+    <meta name="twitter:title" content="Century Adventures | Tanzania Safari Experts">
 </head>
 <body>
     <div class="scroll-progress"></div>
@@ -116,27 +127,27 @@
             </p>
             
             <div class="destinations-grid-home">
-                <div class="destination-card">
+                <a href="serengeti.html" class="destination-card" style="color: inherit; text-decoration: none;">
                     <img src="assets/serengeti.png" alt="Serengeti">
                     <div class="card-overlay">
                         <h3 data-en="Serengeti" data-sw="Serengeti">Serengeti</h3>
                         <p data-en="The Endless Plains" data-sw="Mapori Yasiyo na Mwisho">The Endless Plains</p>
                     </div>
-                </div>
-                <div class="destination-card">
+                </a>
+                <a href="ngorongoro.html" class="destination-card" style="color: inherit; text-decoration: none;">
                     <img src="assets/ngorongoro.png" alt="Ngorongoro">
                     <div class="card-overlay">
                         <h3 data-en="Ngorongoro" data-sw="Ngorongoro">Ngorongoro</h3>
                         <p data-en="The World's Largest Crater" data-sw="Kreta Kubwa Zaidi Duniani">The World's Largest Crater</p>
                     </div>
-                </div>
-                <div class="destination-card">
+                </a>
+                <a href="zanzibar-beach.html" class="destination-card" style="color: inherit; text-decoration: none;">
                     <img src="assets/zanzibar.png" alt="Zanzibar">
                     <div class="card-overlay">
                         <h3 data-en="Zanzibar" data-sw="Zanzibar">Zanzibar</h3>
                         <p data-en="White Sandy Beaches" data-sw="Fukwe Nyeupe za Mchanga">White Sandy Beaches</p>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -152,6 +163,9 @@
             </p>
             
             <!-- Marquee Safaris (Scrolls Left) -->
+            <div class="marquee-container">
+                <button class="marquee-arrow marquee-arrow-left" aria-label="Scroll left"><i class="fas fa-chevron-left"></i></button>
+                <button class="marquee-arrow marquee-arrow-right" aria-label="Scroll right"><i class="fas fa-chevron-right"></i></button>
             <div class="marquee-wrapper">
                 <div class="marquee-track marquee-left">
                     <!-- Safari 1 -->
@@ -160,7 +174,7 @@
                         <div class="safari-content">
                             <h3 data-en="6 Day Northern Tanzania Safari Highlights" data-sw="Siku 6 Vivutio vya Safari ya Kaskazini">6 Day Northern Tanzania Safari Highlights</h3>
                             <p class="price" data-en="From $ 2,031" data-sw="Kuanzia $ 2,031">From $ 2,031</p>
-                            <a href="safaris.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
+                            <a href="6-day-northern-tanzania-highlights.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
                         </div>
                     </div>
                     <!-- Safari 2 -->
@@ -169,7 +183,7 @@
                         <div class="safari-content">
                             <h3 data-en="13-Days Tanzania Safari and Beach Holiday in Zanzibar" data-sw="Siku 13 Safari na Likizo ya Pwani Zanzibar">13-Days Tanzania Safari and Beach Holiday in Zanzibar</h3>
                             <p class="price" data-en="From $ 4,496" data-sw="Kuanzia $ 4,496">From $ 4,496</p>
-                            <a href="safaris.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
+                            <a href="13-days-tanzania-safari-beach.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
                         </div>
                     </div>
                     <!-- Safari 3 -->
@@ -178,7 +192,7 @@
                         <div class="safari-content">
                             <h3 data-en="12 Days Tanzania Wildlife Safari & Cultural Highlights" data-sw="Siku 12 Safari ya Wanyamapori & Vivutio vya Kitamaduni">12 Days Tanzania Wildlife Safari & Cultural Highlights</h3>
                             <p class="price" data-en="From $ 4,134" data-sw="Kuanzia $ 4,134">From $ 4,134</p>
-                            <a href="safaris.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
+                            <a href="12-days-wildlife-safari-cultural-highlights.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
                         </div>
                     </div>
                     <!-- Safari 4 -->
@@ -187,7 +201,7 @@
                         <div class="safari-content">
                             <h3 data-en="9 Days Your Ultimate Southern Tanzania Safari" data-sw="Siku 9 Safari Yako ya Kusini mwa Tanzania">9 Days Your Ultimate Southern Tanzania Safari</h3>
                             <p class="price" data-en="From $ 3,299" data-sw="Kuanzia $ 3,299">From $ 3,299</p>
-                            <a href="safaris.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
+                            <a href="9-days-ultimate-southern-tanzania.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
                         </div>
                     </div>
                     <!-- Safari 5 -->
@@ -196,7 +210,7 @@
                         <div class="safari-content">
                             <h3 data-en="11-Days Best of Northern Parks (Comfort) & Zanzibar" data-sw="Siku 11 Bora za Hifadhi za Kaskazini & Zanzibar">11-Days Best of Northern Parks (Comfort) & Zanzibar</h3>
                             <p class="price" data-en="From $ 3,729" data-sw="Kuanzia $ 3,729">From $ 3,729</p>
-                            <a href="safaris.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
+                            <a href="11-days-best-of-northern-parks-zanzibar.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
                         </div>
                     </div>
                     <!-- Safari 6 -->
@@ -205,7 +219,7 @@
                         <div class="safari-content">
                             <h3 data-en="10-Day Best of Tanzania Honeymoon Safari" data-sw="Siku 10 Safari Bora ya Fungate Tanzania">10-Day Best of Tanzania Honeymoon Safari</h3>
                             <p class="price" data-en="From $ 6,889" data-sw="Kuanzia $ 6,889">From $ 6,889</p>
-                            <a href="safaris.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
+                            <a href="10-day-best-of-tanzania-honeymoon.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
                         </div>
                     </div>
                     <!-- Safari 7 -->
@@ -214,7 +228,7 @@
                         <div class="safari-content">
                             <h3 data-en="10-Days Tanzania Great Migration Safari" data-sw="Siku 10 Safari ya Uhamiaji Mkuu Tanzania">10-Days Tanzania Great Migration Safari</h3>
                             <p class="price" data-en="From $ 3,772" data-sw="Kuanzia $ 3,772">From $ 3,772</p>
-                            <a href="safaris.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
+                            <a href="10-days-tanzania-great-migration.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
                         </div>
                     </div>
                     <!-- Safari 8 -->
@@ -223,7 +237,7 @@
                         <div class="safari-content">
                             <h3 data-en="8 Days Best of Tanzania Luxury Safari" data-sw="Siku 8 Safari Bora ya Anasa Tanzania">8 Days Best of Tanzania Luxury Safari</h3>
                             <p class="price" data-en="From $ 5,773" data-sw="Kuanzia $ 5,773">From $ 5,773</p>
-                            <a href="safaris.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
+                            <a href="8-days-best-tanzania-luxury.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
                         </div>
                     </div>
                     <!-- Safari 9 -->
@@ -232,34 +246,34 @@
                         <div class="safari-content">
                             <h3 data-en="10-Day Mikumi, Ruaha, & Matema Beach Safari" data-sw="Siku 10 Safari ya Mikumi, Ruaha & Matema">10-Day Mikumi, Ruaha, & Matema Beach Safari</h3>
                             <p class="price" data-en="From $ 3,113" data-sw="Kuanzia $ 3,113">From $ 3,113</p>
-                            <a href="safaris.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
+                            <a href="10-day-mikumi-ruaha-matema.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
                         </div>
                     </div>
                     <!-- Safari 10 -->
                     <div class="safari-card animate-in">
-                        <img src="assets/hero.png" alt="11-Days Fly in">
+                        <img src="assets/safari-jeep.png" alt="11-Days Fly in Safari">
                         <div class="safari-content">
-                            <h3 data-en="11-Days Fly in Safari - Wild of Southern Tanzania" data-sw="Siku 11 Safari ya Ndege - Nyika ya Kusini">11-Days Fly in Safari - Wild of Southern Tanzania</h3>
+                            <h3 data-en="11-Days Fly in Safari -wild of Southern Tanzania" data-sw="Siku 11 Safari ya Ndege Kusini mwa Tanzania">11-Days Fly in Safari -wild of Southern Tanzania</h3>
                             <p class="price" data-en="From $ 4,032" data-sw="Kuanzia $ 4,032">From $ 4,032</p>
-                            <a href="safaris.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
+                            <a href="11-days-fly-in-southern-tanzania.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
                         </div>
                     </div>
                     <!-- Safari 11 -->
                     <div class="safari-card animate-in">
-                        <img src="assets/safari-jeep.png" alt="10-Days Southern Tanzania Safari">
+                        <img src="assets/hero.png" alt="10-Days Southern Tanzania">
                         <div class="safari-content">
-                            <h3 data-en="10-Days Southern Tanzania Safari & Udzungwa Trek" data-sw="Siku 10 Safari ya Kusini & Trek ya Udzungwa">10-Days Southern Tanzania Safari & Udzungwa Trek</h3>
+                            <h3 data-en="10-Days Southern Tanzania Safari & Udzungwa Trek" data-sw="Siku 10 Safari ya Kusini mwa Tanzania & Udzungwa">10-Days Southern Tanzania Safari & Udzungwa Trek</h3>
                             <p class="price" data-en="From $ 3,319" data-sw="Kuanzia $ 3,319">From $ 3,319</p>
-                            <a href="safaris.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
+                            <a href="10-days-southern-tanzania-udzungwa.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
                         </div>
                     </div>
                     <!-- Safari 12 -->
                     <div class="safari-card animate-in">
-                        <img src="assets/serengeti.png" alt="7-Day Great Ruaha">
+                        <img src="assets/destination1.png" alt="7-Day Great Ruaha">
                         <div class="safari-content">
-                            <h3 data-en="7-Day Great Ruaha & Mikumi National Park Safari" data-sw="Siku 7 Safari ya Ruaha Kuu & Mikumi">7-Day Great Ruaha & Mikumi National Park Safari</h3>
+                            <h3 data-en="7-Day Great Ruaha & Mikumi National Park Safari" data-sw="Siku 7 Safari ya Ruaha na Mikumi Mkuu">7-Day Great Ruaha & Mikumi National Park Safari</h3>
                             <p class="price" data-en="From $ 2,265" data-sw="Kuanzia $ 2,265">From $ 2,265</p>
-                            <a href="safaris.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
+                            <a href="7-day-great-ruaha-mikumi.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
                         </div>
                     </div>
                     <!-- Safari 13 -->
@@ -268,7 +282,7 @@
                         <div class="safari-content">
                             <h3 data-en="10 Days From Bush to beach: Ruaha, Mikumi & Zanzibar" data-sw="Siku 10 Kutoka Pori hadi Pwani">10 Days From Bush to beach: Ruaha, Mikumi & Zanzibar</h3>
                             <p class="price" data-en="From $ 3,610" data-sw="Kuanzia $ 3,610">From $ 3,610</p>
-                            <a href="safaris.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
+                            <a href="10-days-bush-to-beach.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
                         </div>
                     </div>
                     <!-- Safari 14 -->
@@ -277,7 +291,7 @@
                         <div class="safari-content">
                             <h3 data-en="12 Days The best of South and Northern Tanzania Safari" data-sw="Siku 12 Bora ya Safari ya Kusini na Kaskazini">12 Days The best of South and Northern Tanzania Safari</h3>
                             <p class="price" data-en="From $ 5,221" data-sw="Kuanzia $ 5,221">From $ 5,221</p>
-                            <a href="safaris.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
+                            <a href="12-days-best-of-south-and-north.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
                         </div>
                     </div>
                     <!-- Safari 15 -->
@@ -286,7 +300,7 @@
                         <div class="safari-content">
                             <h3 data-en="11 Days Serengeti & Zanzibar: A Match Made in Heaven" data-sw="Siku 11 Serengeti & Zanzibar">11 Days Serengeti & Zanzibar: A Match Made in Heaven</h3>
                             <p class="price" data-en="From $ 5,875" data-sw="Kuanzia $ 5,875">From $ 5,875</p>
-                            <a href="safaris.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
+                            <a href="11-days-serengeti-zanzibar.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
                         </div>
                     </div>
                     <!-- Safari 16 -->
@@ -295,7 +309,7 @@
                         <div class="safari-content">
                             <h3 data-en="10 Days Luxury Safari and Zanzibar Beach Retreat" data-sw="Siku 10 Safari ya Anasa na Zanzibar">10 Days Luxury Safari and Zanzibar Beach Retreat</h3>
                             <p class="price" data-en="From $ 8,522" data-sw="Kuanzia $ 8,522">From $ 8,522</p>
-                            <a href="safaris.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
+                            <a href="10-days-luxury-safari-zanzibar.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
                         </div>
                     </div>
 
@@ -305,7 +319,7 @@
                         <div class="safari-content">
                             <h3 data-en="6 Day Northern Tanzania Safari Highlights" data-sw="Siku 6 Vivutio vya Safari ya Kaskazini">6 Day Northern Tanzania Safari Highlights</h3>
                             <p class="price" data-en="From $ 2,031" data-sw="Kuanzia $ 2,031">From $ 2,031</p>
-                            <a href="safaris.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
+                            <a href="6-day-northern-tanzania-highlights.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
                         </div>
                     </div>
                     <div class="safari-card animate-in">
@@ -313,7 +327,7 @@
                         <div class="safari-content">
                             <h3 data-en="13-Days Tanzania Safari and Beach Holiday in Zanzibar" data-sw="Siku 13 Safari na Likizo ya Pwani Zanzibar">13-Days Tanzania Safari and Beach Holiday in Zanzibar</h3>
                             <p class="price" data-en="From $ 4,496" data-sw="Kuanzia $ 4,496">From $ 4,496</p>
-                            <a href="safaris.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
+                            <a href="13-days-tanzania-safari-beach.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
                         </div>
                     </div>
                     <div class="safari-card animate-in">
@@ -321,7 +335,7 @@
                         <div class="safari-content">
                             <h3 data-en="12 Days Tanzania Wildlife Safari & Cultural Highlights" data-sw="Siku 12 Safari ya Wanyamapori & Vivutio vya Kitamaduni">12 Days Tanzania Wildlife Safari & Cultural Highlights</h3>
                             <p class="price" data-en="From $ 4,134" data-sw="Kuanzia $ 4,134">From $ 4,134</p>
-                            <a href="safaris.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
+                            <a href="12-days-wildlife-safari-cultural-highlights.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
                         </div>
                     </div>
                     <div class="safari-card animate-in">
@@ -329,14 +343,18 @@
                         <div class="safari-content">
                             <h3 data-en="9 Days Your Ultimate Southern Tanzania Safari" data-sw="Siku 9 Safari Yako ya Kusini mwa Tanzania">9 Days Your Ultimate Southern Tanzania Safari</h3>
                             <p class="price" data-en="From $ 3,299" data-sw="Kuanzia $ 3,299">From $ 3,299</p>
-                            <a href="safaris.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
+                            <a href="9-days-ultimate-southern-tanzania.html" class="btn btn-primary btn-card" data-en="VIEW TRIP" data-sw="ANGALIA SAFARI">VIEW TRIP</a>
                         </div>
                     </div>
                 </div>
             </div>
+            </div>
 
             <!-- Marquee Travel Tips (Scrolls Right) -->
             <h3 class="tips-column-title" data-en="Tanzania Travel Tips" data-sw="Maujanja ya Kusafiri">Tanzania Travel Tips</h3>
+            <div class="marquee-container">
+                <button class="marquee-arrow marquee-arrow-left" aria-label="Scroll left"><i class="fas fa-chevron-left"></i></button>
+                <button class="marquee-arrow marquee-arrow-right" aria-label="Scroll right"><i class="fas fa-chevron-right"></i></button>
             <div class="marquee-wrapper">
                 <div class="marquee-track marquee-right">
                         <div class="tip-card animate-in">
@@ -344,7 +362,7 @@
                             <div>
                                 <h3 data-en="Obtaining a Visa" data-sw="Kupata Visa">Obtaining a Visa</h3>
                                 <p data-en="The Complete Guide to Obtaining a Visa for Tanzania." data-sw="Mwongozo Kamili wa Kupata Visa ya Tanzania.">The Complete Guide to Obtaining a Visa for Tanzania.</p>
-                                <a href="#" class="btn-text" data-en="Read More &rarr;" data-sw="Soma Zaidi &rarr;">Read More &rarr;</a>
+                                <a href="obtaining-visa-tanzania.html" class="btn-text" data-en="Read More &rarr;" data-sw="Soma Zaidi &rarr;">Read More &rarr;</a>
                             </div>
                         </div>
                         <div class="tip-card animate-in">
@@ -352,7 +370,7 @@
                             <div>
                                 <h3 data-en="Solo Female Travel" data-sw="Safari za Wanawake Peke Yao">Solo Female Travel</h3>
                                 <p data-en="Is Tanzania Safe for Solo Female Travelers?" data-sw="Je, Tanzania ni Salama kwa Wanawake Wanaosafiri Peke Yao?">Is Tanzania Safe for Solo Female Travelers?</p>
-                                <a href="#" class="btn-text" data-en="Read More &rarr;" data-sw="Soma Zaidi &rarr;">Read More &rarr;</a>
+                                <a href="solo-female-travel-tanzania.html" class="btn-text" data-en="Read More &rarr;" data-sw="Soma Zaidi &rarr;">Read More &rarr;</a>
                             </div>
                         </div>
                         <div class="tip-card animate-in">
@@ -366,9 +384,9 @@
                         <div class="tip-card animate-in">
                             <div class="tip-icon"><i class="fas fa-map-marked-alt"></i></div>
                             <div>
-                                <h3 data-en="Iringa Highlights" data-sw="Vivutio vya Iringa">Iringa Highlights</h3>
-                                <p data-en="Experience the Best of Iringa: Must-Do Activities." data-sw="Uzoefu Bora wa Iringa: Shughuli za Lazima Kufanya.">Experience the Best of Iringa: Must-Do Activities.</p>
-                                <a href="#" class="btn-text" data-en="Read More &rarr;" data-sw="Soma Zaidi &rarr;">Read More &rarr;</a>
+                                <h3 data-en="Dar es Salaam Highlights" data-sw="Vivutio vya Dar es Salaam">Dar es Salaam Highlights</h3>
+                                <p data-en="Top Things to Do in Dar es Salaam: Exploring the Hidden Gems." data-sw="Mambo Bora ya Kufanya Dar es Salaam: Kuchunguza Vivutio Vilivyofichika.">Top Things to Do in Dar es Salaam: Exploring the Hidden Gems.</p>
+                                <a href="dar-es-salaam-highlights.html" class="btn-text" data-en="Read More &rarr;" data-sw="Soma Zaidi &rarr;">Read More &rarr;</a>
                             </div>
                         </div>
                         <div class="tip-card animate-in">
@@ -376,7 +394,7 @@
                             <div>
                                 <h3 data-en="What to Wear" data-sw="Nini cha Kuvaa">What to Wear</h3>
                                 <p data-en="What to Wear on Safari in Tanzania." data-sw="Nini cha Kuvaa Kwenye Safari nchini Tanzania.">What to Wear on Safari in Tanzania.</p>
-                                <a href="#" class="btn-text" data-en="Read More &rarr;" data-sw="Soma Zaidi &rarr;">Read More &rarr;</a>
+                                <a href="what-to-wear-safari.html" class="btn-text" data-en="Read More &rarr;" data-sw="Soma Zaidi &rarr;">Read More &rarr;</a>
                             </div>
                         </div>
                         <div class="tip-card animate-in">
@@ -384,7 +402,7 @@
                             <div>
                                 <h3 data-en="Best Time to Visit" data-sw="Wakati Bora wa Kutembelea">Best Time to Visit</h3>
                                 <p data-en="When is the Best Time to Visit Tanzania?" data-sw="Ni Lini Wakati Bora wa Kutembelea Tanzania?">When is the Best Time to Visit Tanzania?</p>
-                                <a href="#" class="btn-text" data-en="Read More &rarr;" data-sw="Soma Zaidi &rarr;">Read More &rarr;</a>
+                                <a href="best-time-to-visit-tanzania.html" class="btn-text" data-en="Read More &rarr;" data-sw="Soma Zaidi &rarr;">Read More &rarr;</a>
                             </div>
                         </div>
 
@@ -394,7 +412,7 @@
                             <div>
                                 <h3 data-en="Obtaining a Visa" data-sw="Kupata Visa">Obtaining a Visa</h3>
                                 <p data-en="The Complete Guide to Obtaining a Visa for Tanzania." data-sw="Mwongozo Kamili wa Kupata Visa ya Tanzania.">The Complete Guide to Obtaining a Visa for Tanzania.</p>
-                                <a href="#" class="btn-text" data-en="Read More &rarr;" data-sw="Soma Zaidi &rarr;">Read More &rarr;</a>
+                                <a href="obtaining-visa-tanzania.html" class="btn-text" data-en="Read More &rarr;" data-sw="Soma Zaidi &rarr;">Read More &rarr;</a>
                             </div>
                         </div>
                         <div class="tip-card animate-in">
@@ -402,7 +420,7 @@
                             <div>
                                 <h3 data-en="Solo Female Travel" data-sw="Safari za Wanawake Peke Yao">Solo Female Travel</h3>
                                 <p data-en="Is Tanzania Safe for Solo Female Travelers?" data-sw="Je, Tanzania ni Salama kwa Wanawake Wanaosafiri Peke Yao?">Is Tanzania Safe for Solo Female Travelers?</p>
-                                <a href="#" class="btn-text" data-en="Read More &rarr;" data-sw="Soma Zaidi &rarr;">Read More &rarr;</a>
+                                <a href="solo-female-travel-tanzania.html" class="btn-text" data-en="Read More &rarr;" data-sw="Soma Zaidi &rarr;">Read More &rarr;</a>
                             </div>
                         </div>
                         <div class="tip-card animate-in">
@@ -416,9 +434,9 @@
                         <div class="tip-card animate-in">
                             <div class="tip-icon"><i class="fas fa-map-marked-alt"></i></div>
                             <div>
-                                <h3 data-en="Iringa Highlights" data-sw="Vivutio vya Iringa">Iringa Highlights</h3>
-                                <p data-en="Experience the Best of Iringa: Must-Do Activities." data-sw="Uzoefu Bora wa Iringa: Shughuli za Lazima Kufanya.">Experience the Best of Iringa: Must-Do Activities.</p>
-                                <a href="#" class="btn-text" data-en="Read More &rarr;" data-sw="Soma Zaidi &rarr;">Read More &rarr;</a>
+                                <h3 data-en="Dar es Salaam Highlights" data-sw="Vivutio vya Dar es Salaam">Dar es Salaam Highlights</h3>
+                                <p data-en="Top Things to Do in Dar es Salaam: Exploring the Hidden Gems." data-sw="Mambo Bora ya Kufanya Dar es Salaam: Kuchunguza Vivutio Vilivyofichika.">Top Things to Do in Dar es Salaam: Exploring the Hidden Gems.</p>
+                                <a href="dar-es-salaam-highlights.html" class="btn-text" data-en="Read More &rarr;" data-sw="Soma Zaidi &rarr;">Read More &rarr;</a>
                             </div>
                         </div>
                         <div class="tip-card animate-in">
@@ -426,7 +444,7 @@
                             <div>
                                 <h3 data-en="What to Wear" data-sw="Nini cha Kuvaa">What to Wear</h3>
                                 <p data-en="What to Wear on Safari in Tanzania." data-sw="Nini cha Kuvaa Kwenye Safari nchini Tanzania.">What to Wear on Safari in Tanzania.</p>
-                                <a href="#" class="btn-text" data-en="Read More &rarr;" data-sw="Soma Zaidi &rarr;">Read More &rarr;</a>
+                                <a href="what-to-wear-safari.html" class="btn-text" data-en="Read More &rarr;" data-sw="Soma Zaidi &rarr;">Read More &rarr;</a>
                             </div>
                         </div>
                         <div class="tip-card animate-in">
@@ -434,11 +452,12 @@
                             <div>
                                 <h3 data-en="Best Time to Visit" data-sw="Wakati Bora wa Kutembelea">Best Time to Visit</h3>
                                 <p data-en="When is the Best Time to Visit Tanzania?" data-sw="Ni Lini Wakati Bora wa Kutembelea Tanzania?">When is the Best Time to Visit Tanzania?</p>
-                                <a href="#" class="btn-text" data-en="Read More &rarr;" data-sw="Soma Zaidi &rarr;">Read More &rarr;</a>
+                                <a href="best-time-to-visit-tanzania.html" class="btn-text" data-en="Read More &rarr;" data-sw="Soma Zaidi &rarr;">Read More &rarr;</a>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
         </div>
     </section>
@@ -453,67 +472,130 @@
                Whether you are dreaming of a first-hand meeting with the Big 5, getting up close and personal to a Chimpanzee, witnessing one of the planet's most spectacular natural events, or simply relaxing on a pristine beach, our experts will tell you how and where to do it.
             </p>
             
-            <div class="experiences-grid">
-                <!-- Exp 1 -->
-                <div class="experience-card animate-in">
-                    <img src="assets/zanzibar.png" alt="Honeymoon Safaris">
-                    <div class="experience-content">
-                        <span class="card-category" data-en="EXPERIENCES" data-sw="UZOEFU">EXPERIENCES</span>
-                        <h3 data-en="Honeymoon Safaris" data-sw="Safari za Fungate">Honeymoon Safaris</h3>
-                        <p data-en="Tanzania Honeymoon Safaris Tanzania is a diverse and breathtaking country located in East Africa, making..." 
-                           data-sw="Safari za Fungate Tanzania. Tanzania ni nchi yenye utajiri na ya kuvutia iliyoko Afrika Mashariki, ikifanya...">
-                           Tanzania Honeymoon Safaris Tanzania is a diverse and breathtaking country located in East Africa, making...
-                        </p>
-                    </div>
+            <div class="marquee-container">
+                <button class="marquee-arrow marquee-arrow-left" aria-label="Scroll left"><i class="fas fa-chevron-left"></i></button>
+                <button class="marquee-arrow marquee-arrow-right" aria-label="Scroll right"><i class="fas fa-chevron-right"></i></button>
+            <div class="marquee-wrapper">
+                <div class="marquee-track marquee-left">
+                    <!-- Exp 1 -->
+                    <a href="honeymoon-safaris.html" class="experience-card animate-in" style="color: inherit; text-decoration: none;">
+                        <img src="assets/zanzibar.png" alt="Honeymoon Safaris">
+                        <div class="experience-content">
+                            <span class="card-category" data-en="EXPERIENCES" data-sw="UZOEFU">EXPERIENCES</span>
+                            <h3 data-en="Honeymoon Safaris" data-sw="Safari za Fungate">Honeymoon Safaris</h3>
+                            <p data-en="Tanzania Honeymoon Safaris Tanzania is a diverse and breathtaking country located in East Africa, making..." 
+                               data-sw="Safari za Fungate Tanzania. Tanzania ni nchi yenye utajiri na ya kuvutia iliyoko Afrika Mashariki, ikifanya...">
+                               Tanzania Honeymoon Safaris Tanzania is a diverse and breathtaking country located in East Africa, making...
+                            </p>
+                        </div>
+                    </a>
+                    <!-- Exp 2 -->
+                    <a href="volunteer.html" class="experience-card animate-in" style="color: inherit; text-decoration: none;">
+                        <img src="assets/safari-jeep.png" alt="Volunteer in Tanzania">
+                        <div class="experience-content">
+                            <span class="card-category" data-en="EXPERIENCES" data-sw="UZOEFU">EXPERIENCES</span>
+                            <h3 data-en="Volunteer in Tanzania" data-sw="Kujitolea nchini Tanzania">Volunteer in Tanzania</h3>
+                            <p data-en="Volunteer in Tanzania What project should you do when you volunteer in Tanzania? Does your head..." 
+                               data-sw="Kujitolea nchini Tanzania. Je, ni mradi gani unapaswa kufanya unapojitolea nchini Tanzania? Je, kichwa chako...">
+                               Volunteer in Tanzania What project should you do when you volunteer in Tanzania? Does your head...
+                            </p>
+                        </div>
+                    </a>
+                    <!-- Exp 3 -->
+                    <a href="migration-safaris.html" class="experience-card animate-in" style="color: inherit; text-decoration: none;">
+                        <img src="assets/serengeti.png" alt="Migration Safaris">
+                        <div class="experience-content">
+                            <span class="card-category" data-en="EXPERIENCES" data-sw="UZOEFU">EXPERIENCES</span>
+                            <h3 data-en="Migration Safaris" data-sw="Safari za Uhamiaji">Migration Safaris</h3>
+                            <p data-en="The Great Wildebeest Migration in Tanzania The Great Wildebeest Migration in Tanzania is an..." 
+                               data-sw="Uhamiaji Mkuu wa Nyumbu nchini Tanzania. Uhamiaji Mkuu wa Nyumbu nchini Tanzania ni...">
+                               The Great Wildebeest Migration in Tanzania The Great Wildebeest Migration in Tanzania is an...
+                            </p>
+                        </div>
+                    </a>
+                    <!-- Exp 4 -->
+                    <a href="family-safaris.html" class="experience-card animate-in" style="color: inherit; text-decoration: none;">
+                        <img src="assets/hero.png" alt="Family Safaris">
+                        <div class="experience-content">
+                            <span class="card-category" data-en="EXPERIENCES" data-sw="UZOEFU">EXPERIENCES</span>
+                            <h3 data-en="Tanzania Family Safaris" data-sw="Safari za Familia Tanzania">Tanzania Family Safaris</h3>
+                            <p data-en="Tanzania Family Safaris Are you looking for the perfect destination for an unforgettable family vacation? Look..." 
+                               data-sw="Safari za Familia Tanzania. Je, unatafuta eneo bora kwa ajili ya likizo ya familia isiyosahaulika? Angalia...">
+                               Tanzania Family Safaris Are you looking for the perfect destination for an unforgettable family vacation? Look...
+                            </p>
+                        </div>
+                    </a>
+                    <!-- Exp 5 -->
+                    <a href="zanzibar-beach.html" class="experience-card animate-in" style="color: inherit; text-decoration: none;">
+                        <img src="assets/zanzibar.png" alt="Zanzibar Beach holiday">
+                        <div class="experience-content">
+                            <span class="card-category" data-en="EXPERIENCES" data-sw="UZOEFU">EXPERIENCES</span>
+                            <h3 data-en="Zanzibar Beach holiday" data-sw="Likizo ya Pwani ya Zanzibar">Zanzibar Beach holiday</h3>
+                            <p data-en="Zanzibar beach holidays Zanzibar, the tropical paradise nestled off the coast of Tanzania, is a dream..." 
+                               data-sw="Likizo za pwani ya Zanzibar. Zanzibar, paradiso ya kitropiki iliyoko karibu na pwani ya Tanzania, ni ndoto...">
+                               Zanzibar beach holidays Zanzibar, the tropical paradise nestled off the coast of Tanzania, is a dream...
+                            </p>
+                        </div>
+                    </a>
+
+                    <!-- REPEAT FOR MARQUEE LOOP -->
+                    <a href="honeymoon-safaris.html" class="experience-card animate-in" style="color: inherit; text-decoration: none;">
+                        <img src="assets/zanzibar.png" alt="Honeymoon Safaris">
+                        <div class="experience-content">
+                            <span class="card-category" data-en="EXPERIENCES" data-sw="UZOEFU">EXPERIENCES</span>
+                            <h3 data-en="Honeymoon Safaris" data-sw="Safari za Fungate">Honeymoon Safaris</h3>
+                            <p data-en="Tanzania Honeymoon Safaris Tanzania is a diverse and breathtaking country located in East Africa, making..." 
+                               data-sw="Safari za Fungate Tanzania. Tanzania ni nchi yenye utajiri na ya kuvutia iliyoko Afrika Mashariki, ikifanya...">
+                               Tanzania Honeymoon Safaris Tanzania is a diverse and breathtaking country located in East Africa, making...
+                            </p>
+                        </div>
+                    </a>
+                    <a href="volunteer.html" class="experience-card animate-in" style="color: inherit; text-decoration: none;">
+                        <img src="assets/safari-jeep.png" alt="Volunteer in Tanzania">
+                        <div class="experience-content">
+                            <span class="card-category" data-en="EXPERIENCES" data-sw="UZOEFU">EXPERIENCES</span>
+                            <h3 data-en="Volunteer in Tanzania" data-sw="Kujitolea nchini Tanzania">Volunteer in Tanzania</h3>
+                            <p data-en="Volunteer in Tanzania What project should you do when you volunteer in Tanzania? Does your head..." 
+                               data-sw="Kujitolea nchini Tanzania. Je, ni mradi gani unapaswa kufanya unapojitolea nchini Tanzania? Je, kichwa chako...">
+                               Volunteer in Tanzania What project should you do when you volunteer in Tanzania? Does your head...
+                            </p>
+                        </div>
+                    </a>
+                    <a href="migration-safaris.html" class="experience-card animate-in" style="color: inherit; text-decoration: none;">
+                        <img src="assets/serengeti.png" alt="Migration Safaris">
+                        <div class="experience-content">
+                            <span class="card-category" data-en="EXPERIENCES" data-sw="UZOEFU">EXPERIENCES</span>
+                            <h3 data-en="Migration Safaris" data-sw="Safari za Uhamiaji">Migration Safaris</h3>
+                            <p data-en="The Great Wildebeest Migration in Tanzania The Great Wildebeest Migration in Tanzania is an..." 
+                               data-sw="Uhamiaji Mkuu wa Nyumbu nchini Tanzania. Uhamiaji Mkuu wa Nyumbu nchini Tanzania ni...">
+                               The Great Wildebeest Migration in Tanzania The Great Wildebeest Migration in Tanzania is an...
+                            </p>
+                        </div>
+                    </a>
+                    <a href="family-safaris.html" class="experience-card animate-in" style="color: inherit; text-decoration: none;">
+                        <img src="assets/hero.png" alt="Family Safaris">
+                        <div class="experience-content">
+                            <span class="card-category" data-en="EXPERIENCES" data-sw="UZOEFU">EXPERIENCES</span>
+                            <h3 data-en="Tanzania Family Safaris" data-sw="Safari za Familia Tanzania">Tanzania Family Safaris</h3>
+                            <p data-en="Tanzania Family Safaris Are you looking for the perfect destination for an unforgettable family vacation? Look..." 
+                               data-sw="Safari za Familia Tanzania. Je, unatafuta eneo bora kwa ajili ya likizo ya familia isiyosahaulika? Angalia...">
+                               Tanzania Family Safaris Are you looking for the perfect destination for an unforgettable family vacation? Look...
+                            </p>
+                        </div>
+                    </a>
+                    <a href="zanzibar-beach.html" class="experience-card animate-in" style="color: inherit; text-decoration: none;">
+                        <img src="assets/zanzibar.png" alt="Zanzibar Beach holiday">
+                        <div class="experience-content">
+                            <span class="card-category" data-en="EXPERIENCES" data-sw="UZOEFU">EXPERIENCES</span>
+                            <h3 data-en="Zanzibar Beach holiday" data-sw="Likizo ya Pwani ya Zanzibar">Zanzibar Beach holiday</h3>
+                            <p data-en="Zanzibar beach holidays Zanzibar, the tropical paradise nestled off the coast of Tanzania, is a dream..." 
+                               data-sw="Likizo za pwani ya Zanzibar. Zanzibar, paradiso ya kitropiki iliyoko karibu na pwani ya Tanzania, ni ndoto...">
+                               Zanzibar beach holidays Zanzibar, the tropical paradise nestled off the coast of Tanzania, is a dream...
+                            </p>
+                        </div>
+                    </a>
                 </div>
-                <!-- Exp 2 -->
-                <div class="experience-card animate-in">
-                    <img src="assets/safari-jeep.png" alt="Volunteer in Tanzania">
-                    <div class="experience-content">
-                        <span class="card-category" data-en="EXPERIENCES" data-sw="UZOEFU">EXPERIENCES</span>
-                        <h3 data-en="Volunteer in Tanzania" data-sw="Kujitolea nchini Tanzania">Volunteer in Tanzania</h3>
-                        <p data-en="Volunteer in Tanzania What project should you do when you volunteer in Tanzania? Does your head..." 
-                           data-sw="Kujitolea nchini Tanzania. Je, ni mradi gani unapaswa kufanya unapojitolea nchini Tanzania? Je, kichwa chako...">
-                           Volunteer in Tanzania What project should you do when you volunteer in Tanzania? Does your head...
-                        </p>
-                    </div>
-                </div>
-                <!-- Exp 3 -->
-                <div class="experience-card animate-in">
-                    <img src="assets/serengeti.png" alt="Migration Safaris">
-                    <div class="experience-content">
-                        <span class="card-category" data-en="EXPERIENCES" data-sw="UZOEFU">EXPERIENCES</span>
-                        <h3 data-en="Migration Safaris" data-sw="Safari za Uhamiaji">Migration Safaris</h3>
-                        <p data-en="The Great Wildebeest Migration in Tanzania The Great Wildebeest Migration in Tanzania is an..." 
-                           data-sw="Uhamiaji Mkuu wa Nyumbu nchini Tanzania. Uhamiaji Mkuu wa Nyumbu nchini Tanzania ni...">
-                           The Great Wildebeest Migration in Tanzania The Great Wildebeest Migration in Tanzania is an...
-                        </p>
-                    </div>
-                </div>
-                <!-- Exp 4 -->
-                <div class="experience-card animate-in">
-                    <img src="assets/hero.png" alt="Family Safaris">
-                    <div class="experience-content">
-                        <span class="card-category" data-en="EXPERIENCES" data-sw="UZOEFU">EXPERIENCES</span>
-                        <h3 data-en="Tanzania Family Safaris" data-sw="Safari za Familia Tanzania">Tanzania Family Safaris</h3>
-                        <p data-en="Tanzania Family Safaris Are you looking for the perfect destination for an unforgettable family vacation? Look..." 
-                           data-sw="Safari za Familia Tanzania. Je, unatafuta eneo bora kwa ajili ya likizo ya familia isiyosahaulika? Angalia...">
-                           Tanzania Family Safaris Are you looking for the perfect destination for an unforgettable family vacation? Look...
-                        </p>
-                    </div>
-                </div>
-                <!-- Exp 5 -->
-                <div class="experience-card animate-in">
-                    <img src="assets/zanzibar.png" alt="Zanzibar Beach holiday">
-                    <div class="experience-content">
-                        <span class="card-category" data-en="EXPERIENCES" data-sw="UZOEFU">EXPERIENCES</span>
-                        <h3 data-en="Zanzibar Beach holiday" data-sw="Likizo ya Pwani ya Zanzibar">Zanzibar Beach holiday</h3>
-                        <p data-en="Zanzibar beach holidays Zanzibar, the tropical paradise nestled off the coast of Tanzania, is a dream..." 
-                           data-sw="Likizo za pwani ya Zanzibar. Zanzibar, paradiso ya kitropiki iliyoko karibu na pwani ya Tanzania, ni ndoto...">
-                           Zanzibar beach holidays Zanzibar, the tropical paradise nestled off the coast of Tanzania, is a dream...
-                        </p>
-                    </div>
-                </div>
+            </div>
             </div>
         </div>
     </section>
@@ -573,7 +655,7 @@
     <!-- Footer -->
     <div class="footer-top">
         <div class="container">
-            <h2><i class="fas fa-phone-alt"></i> +255 719 042 046</h2>
+            <h2><i class="fas fa-phone-alt"></i> +255 747 115 390</h2>
             <a href="enquire.html" class="btn enquire-btn" data-en="GET IN TOUCH TODAY!" data-sw="WASILIANA NASI LEO!">GET IN TOUCH TODAY!</a>
         </div>
     </div>
@@ -583,9 +665,9 @@
                 <h3 data-en="COMPANY INFO" data-sw="MAELEZO YA KAMPUNI">COMPANY INFO</h3>
                 <p><strong>Century Adventures</strong></p>
                 <p>Asasi Tower, 4th Floor</p>
-                <p>Kilimani Street</p>
-                <p>P.O. Box 2527, Iringa Tanzania</p>
-                <p><i class="fab fa-whatsapp"></i> +255 719 042 046</p>
+                <p>Ohio Street</p>
+                <p>P.O. Box 2527, Dar es Salaam, Tanzania</p>
+                <p><i class="fab fa-whatsapp"></i> +255 747 115 390</p>
                 <p><i class="fas fa-phone-alt"></i> +255 768 884 883</p>
                 <p><i class="fas fa-envelope"></i> info@centurytraveltours.com</p>
                 <div class="payment-methods">
@@ -622,7 +704,7 @@
                     <img src="https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-66827-5.svg" alt="TripAdvisor">
                     <h4 data-en="Review Century Adventures" data-sw="Toa Maoni Century Travel">Review Century Adventures</h4>
                     <p data-en="Ranked #1 on TripAdvisor" data-sw="Imeorodheshwa #1 TripAdvisor">Ranked #1 on TripAdvisor</p>
-                    <a href="https://www.tripadvisor.com/UserReviewEdit-g1602943-d23659702-Mukuta_Travels_Tours-Iringa_Iringa_Region.html" target="_blank" class="btn btn-small" data-en="Read More Reviews" data-sw="Soma Maoni Zaidi">Read More Reviews</a>
+                    <a href="https://www.tripadvisor.com/UserReviewEdit-g1602943-d23659702-Mukuta_Travels_Tours-Dar_es_Salaam_Dar_es_Salaam_Region.html" target="_blank" class="btn btn-small" data-en="Read More Reviews" data-sw="Soma Maoni Zaidi">Read More Reviews</a>
                 </div>
             </div>
         </div>
