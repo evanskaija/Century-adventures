@@ -17,8 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="header-top-bar">
                 <div class="header-top-content">
                     <div class="top-info">
-                        <span class="top-info-item"><i class="fas fa-phone-alt"></i> +255 747 123 456</span>
-                        <span class="top-info-item"><i class="fas fa-envelope"></i> infor@century-adventures.com</span>
                     </div>
                     <div class="top-socials">
                         <a href="https://www.facebook.com/profile.php?id=61577731823809" target="_blank"><i class="fab fa-facebook-f"></i></a>
