@@ -17,13 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="header-top-bar">
                 <div class="header-top-content">
                     <div class="top-info">
-                        <span class="top-info-item"><i class="fas fa-phone-alt"></i> +255 754 123 456</span>
-                        <span class="top-info-item"><i class="fas fa-envelope"></i> info@century-adventures.com</span>
+                        <span class="top-info-item"><i class="fas fa-phone-alt"></i> +255 747 123 456</span>
+                        <span class="top-info-item"><i class="fas fa-envelope"></i> infor@century-adventures.com</span>
                     </div>
                     <div class="top-socials">
                         <a href="https://www.facebook.com/profile.php?id=61577731823809" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/century_adventures?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.youtube.com/@CenturyAdventures" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.tripadvisor.com/" target="_blank"><i class="fab fa-tripadvisor"></i></a>
                     </div>
                 </div>
             </div>

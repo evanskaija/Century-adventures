@@ -11253,3 +11253,402 @@ body.admin-theme:not(.dark-mode) [style*="color: #15803d"] { color: #15803d !imp
 body.admin-theme:not(.dark-mode) [style*="color:#15803d"] { color: #15803d !important; }
 body.admin-theme:not(.dark-mode) [style*="color: #0f766e"] { color: #0f766e !important; }
 body.admin-theme:not(.dark-mode) [style*="color:#0f766e"] { color: #0f766e !important; }
+
+/* ==========================================
+   CENTURY ADVENTURES - PREMIUM HEADER & HERO
+   ========================================== */
+
+/* Top bar and general header layout overrides */
+.header-top-bar {
+    background: #0B1A13 !important;
+    height: 38px !important;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.header-top-content {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.top-info-item {
+    color: #ffffff !important;
+    font-size: 0.8rem !important;
+}
+
+.top-info-item i {
+    color: var(--accent-gold) !important; /* Gold icons */
+    margin-right: 6px;
+}
+
+.top-socials a {
+    color: #ffffff !important;
+    font-size: 0.85rem !important;
+    margin-left: 14px;
+    transition: color 0.3s ease;
+}
+
+.top-socials a:hover {
+    color: var(--accent-gold) !important;
+}
+
+/* Sticky Transparent Navigation Over Hero */
+.header:not(.scrolled) {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+.header.scrolled {
+    background: rgba(11, 26, 19, 0.92) !important; /* Dark safari green with opacity */
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* Premium dropdown styles (White background, black text, shadow, rounded) */
+.dropdown-menu {
+    background: #ffffff !important;
+    border-radius: 12px !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(15px) !important;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease !important;
+    padding: 12px 0 !important;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+.dropdown-menu li a {
+    color: #1a1a1a !important; /* Black text */
+    font-size: 0.92rem !important;
+    font-weight: 600 !important;
+    padding: 10px 24px !important;
+    transition: all 0.3s ease !important;
+    border-left: 3px solid transparent;
+}
+
+.dropdown-menu li a:hover {
+    background: rgba(212, 175, 55, 0.08) !important;
+    color: var(--accent-gold) !important; /* Gold active text */
+    padding-left: 28px !important;
+    border-left-color: var(--accent-gold);
+}
+
+/* Override dark theme dropdown menu to also match premium layout, slightly darker white/grey */
+[data-theme="dark"] .dropdown-menu {
+    background: #111e17 !important; /* Premium dark forest menu */
+    border-color: rgba(212, 175, 55, 0.2) !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .dropdown-menu li a {
+    color: #eeeeee !important;
+}
+
+[data-theme="dark"] .dropdown-menu li a:hover {
+    background: rgba(212, 175, 55, 0.12) !important;
+    color: var(--accent-gold) !important;
+}
+
+/* Active Nav State Style */
+.header .nav ul li a.active {
+    color: var(--accent-gold) !important;
+}
+
+/* Book Now Premium Style */
+.header-actions .btn-primary.enquire-btn {
+    background: var(--accent-gold) !important;
+    border: none !important;
+    color: #000000 !important;
+    font-weight: 700 !important;
+    border-radius: 50px !important;
+    padding: 10px 24px !important;
+    transition: all 0.3s ease !important;
+}
+
+.header-actions .btn-primary.enquire-btn:hover {
+    background: #ffffff !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.25) !important;
+}
+
+/* Homepage Left-Aligned Hero Section styling */
+.home-hero {
+    height: 95vh !important;
+    min-height: 700px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    padding-top: 120px !important;
+    position: relative !important;
+}
+
+.home-hero .hero-overlay {
+    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.45)) !important;
+}
+
+.home-hero .hero-content {
+    max-width: 850px !important;
+    margin: 0 !important;
+    padding-left: 6% !important;
+    padding-right: 24px !important;
+}
+
+.home-hero h1.hero-main-title {
+    font-size: clamp(3rem, 6.5vw, 5.5rem) !important;
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 800 !important;
+    line-height: 1.05 !important;
+    margin-bottom: 20px !important;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.4) !important;
+    text-transform: uppercase !important;
+    letter-spacing: -1px !important;
+}
+
+.home-hero h1.hero-main-title .discover-word {
+    color: #ffffff !important;
+    display: block !important;
+}
+
+.home-hero h1.hero-main-title .tanzania-word {
+    color: var(--accent-gold) !important;
+    display: block !important;
+}
+
+.home-hero .hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.25rem) !important;
+    font-weight: 600 !important;
+    letter-spacing: 1.5px !important;
+    margin-bottom: 20px !important;
+    color: #ffffff !important;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3) !important;
+}
+
+.home-hero .hero-description {
+    font-size: clamp(0.95rem, 2vw, 1.1rem) !important;
+    line-height: 1.75 !important;
+    margin-bottom: 35px !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    max-width: 680px !important;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3) !important;
+}
+
+.home-hero .hero-btn-group {
+    display: flex !important;
+    gap: 20px !important;
+    flex-wrap: wrap !important;
+    margin-bottom: 0 !important;
+    justify-content: flex-start !important;
+}
+
+.home-hero .hero-btn-group .btn {
+    border-radius: 50px !important;
+    padding: 16px 36px !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem !important;
+    letter-spacing: 0.5px !important;
+    transition: all 0.3s ease !important;
+    text-transform: uppercase !important;
+}
+
+.home-hero .hero-btn-group .btn-primary {
+    background: var(--accent-gold) !important;
+    color: #000000 !important;
+    border: none !important;
+}
+
+.home-hero .hero-btn-group .btn-primary:hover {
+    background: #ffffff !important;
+    color: #000000 !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3) !important;
+}
+
+.home-hero .hero-btn-group .btn-outline {
+    background: transparent !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+}
+
+.home-hero .hero-btn-group .btn-outline:hover {
+    background: #ffffff !important;
+    color: #000000 !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Feature Strip Overlapping Hero */
+.hero-feature-strip {
+    position: relative;
+    z-index: 100;
+    margin-top: -50px;
+    padding: 0 24px;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.feature-strip-card {
+    background: #0B1A13 !important;
+    border: 1px solid rgba(212, 175, 55, 0.25) !important;
+    border-radius: 16px !important;
+    padding: 24px 30px !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25) !important;
+    display: flex !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 20px !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.feature-strip-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    letter-spacing: 0.5px !important;
+    transition: transform 0.3s ease !important;
+}
+
+.feature-strip-item:hover {
+    transform: translateY(-2px) !important;
+}
+
+.feature-strip-item i {
+    color: var(--accent-gold) !important;
+    font-size: 1.3rem !important;
+}
+
+/* Mobile Responsive Styling Overrides */
+@media (max-width: 768px) {
+    /* Mobile Header/Top Bar */
+    .header-top-bar {
+        height: auto !important;
+        padding: 6px 0 !important;
+    }
+    .header-top-content {
+        flex-direction: column !important;
+        gap: 6px !important;
+        padding: 0 16px !important;
+    }
+    .top-info {
+        gap: 12px !important;
+        justify-content: center !important;
+    }
+    .top-info-item {
+        font-size: 0.72rem !important;
+    }
+    .top-socials {
+        display: none !important; /* Hide socials in mobile top bar to save space */
+    }
+
+    /* Mobile Hero Layout */
+    .home-hero {
+        height: auto !important;
+        min-height: 95vh !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        padding-top: 130px !important;
+        padding-bottom: 80px !important;
+    }
+    .home-hero .hero-content {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+    .home-hero h1.hero-main-title {
+        font-size: clamp(2.2rem, 5vw, 3rem) !important;
+        margin-bottom: 15px !important;
+    }
+    .home-hero h1.hero-main-title .discover-word,
+    .home-hero h1.hero-main-title .tanzania-word {
+        display: inline !important;
+    }
+    .home-hero h1.hero-main-title .tanzania-word {
+        margin-left: 8px !important;
+    }
+    .home-hero .hero-subtitle {
+        font-size: 1rem !important;
+        margin-bottom: 15px !important;
+    }
+    .home-hero .hero-description {
+        font-size: 0.88rem !important;
+        margin-bottom: 25px !important;
+        line-height: 1.65 !important;
+        text-align: center !important;
+    }
+    .home-hero .hero-btn-group {
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 12px !important;
+    }
+    .home-hero .hero-btn-group .btn {
+        width: 85% !important;
+        max-width: 280px !important;
+        padding: 14px 28px !important;
+        text-align: center !important;
+    }
+
+    /* Floating Feature Strip in Mobile: Convert to 2-column cards */
+    .hero-feature-strip {
+        margin-top: -40px !important;
+        padding: 0 16px !important;
+    }
+    .feature-strip-card {
+        padding: 20px !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        display: grid !important;
+        gap: 15px !important;
+    }
+    .feature-strip-item {
+        font-size: 0.82rem !important;
+        justify-content: flex-start !important;
+    }
+    /* Make the 5th item take full width in 2-column layout */
+    .feature-strip-item:nth-child(5) {
+        grid-column: span 2 !important;
+        justify-content: center !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .feature-strip-card {
+        grid-template-columns: 1fr !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+    .feature-strip-item:nth-child(5) {
+        grid-column: span 1 !important;
+        justify-content: flex-start !important;
+    }
+}
+
