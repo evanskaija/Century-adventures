@@ -1,0 +1,660 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Great Wildebeest Migration in Tanzania | Century Adventures</title>
+    <meta name="description" content="Witness the Great Wildebeest Migration in Tanzania. One of the most impressive natural spectacles on Earth.">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        (function() {
+            const theme = localStorage.getItem('century-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="The Great Wildebeest Migration in Tanzania | Century Adventures">
+    <meta property="og:description" content="Witness the Great Wildebeest Migration in Tanzania. One of the most impressive natural spectacles on Earth.">
+    <meta property="og:image" content="assets/logo.png">
+    <meta property="og:site_name" content="Century Adventures">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="assets/logo.png">
+    <meta name="twitter:title" content="The Great Wildebeest Migration in Tanzania | Century Adventures">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="scroll-progress"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html"><img src="assets/logo.png" alt="Century Adventures Logo"></a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html" data-en="Home" data-sw="Nyumbani">Home</a></li>
+                    <li><a href="about.html" data-en="About Us" data-sw="Kuhusu Sisi">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-en="Destinations" data-sw="Maeneo">Destinations <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="katavi.html" data-en="Katavi National Park" data-sw="Hifadhi ya Katavi">Katavi National Park</a></li>
+                            <li><a href="selous.html" data-en="Selous Game Reserve" data-sw="Hifadhi ya Selous">Selous Game Reserve</a></li>
+                            <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                            <li><a href="mikumi.html" data-en="Mikumi National Park" data-sw="Hifadhi ya Mikumi">Mikumi National Park</a></li>
+                            <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                            <li><a href="gombe.html" data-en="Gombe Stream National Park" data-sw="Hifadhi ya Gombe">Gombe Stream National Park</a></li>
+                            <li><a href="ngorongoro.html" data-en="Ngorongoro Conservation Area" data-sw="Ngorongoro">Ngorongoro Conservation Area</a></li>
+                            <li><a href="manyara.html" data-en="Lake Manyara National Park" data-sw="Hifadhi ya Manyara">Lake Manyara National Park</a></li>
+                            <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="safaris.html" data-en="TOURS & SAFARIS" data-sw="SAFARI NA ZIARA">TOURS & SAFARIS</a></li>
+                    <li><a href="experiences.html" class="active" data-en="Experiences" data-sw="Uzoefu">Experiences</a></li>
+                    <li><a href="volunteer.html" data-en="Volunteer" data-sw="Kujitolea">Volunteer</a></li>
+                    <li><a href="vehicles.html" data-en="Safari Vehicles" data-sw="Magari ya Safari">Safari Vehicles</a></li>
+                    <li><a href="contact.html" data-en="Contact Us" data-sw="Wasiliana Nasi">Contact Us</a></li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Hamburger Menu -->
+            <button class="mobile-toggle" id="mobile-toggle" onclick="toggleMobileMenu()" aria-label="Open navigation menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <div class="header-actions">
+                <div class="header-toggles">
+                    <button class="toggle-btn lang-toggle" onclick="toggleLang()">SW</button>
+                    <button class="toggle-btn theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i> DARK</button>
+                </div>
+                <a href="enquire.html" class="btn btn-primary enquire-btn" data-en="ENQUIRE" data-sw="ULIZA">ENQUIRE</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="hero page-hero" style="background-image: url('assets/KTA13Serengeti Nationa.webp'); height: 60vh;">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 data-en="Migration Safaris" data-sw="Safari za Uhamiaji">Migration Safaris</h1>
+            <p class="hero-tagline" data-en="Witness Nature's Greatest Spectacle" data-sw="Shuhudia Maonyesho Makubwa ya Asili">Witness Nature's Greatest Spectacle</p>
+        </div>
+    </section>
+
+    <!-- Overview & Stats -->
+    <section class="section">
+        <div class="container">
+            <div class="migration-grid-2">
+                <div class="scroll-reveal-left">
+                    <span class="sub-heading" data-en="ABOUT MIGRATION SAFARIS" data-sw="KUHUSU SAFARI ZA UHAMIAJI">ABOUT MIGRATION SAFARIS</span>
+                    <h2 data-en="Witness the Greatest Wildlife Spectacle on Earth" data-sw="Shuhudia Maonyesho Makubwa Zaidi ya Wanyamapori Duniani">Witness the Greatest Wildlife Spectacle on Earth</h2>
+                    <p data-en="A Migration Safari offers a front-row seat to one of nature's most breathtaking events - the Great Wildebeest Migration. Every year, more than two million wildebeest, zebras, and gazelles embark on an incredible journey across the vast plains of the Serengeti ecosystem in search of fresh grazing lands and water." data-sw="Safari ya Uhamiaji inakupa nafasi ya mbele kushuhudia moja ya matukio ya kusisimua ya asili - Uhamiaji Mkuu wa Nyumbu. Kila mwaka, zaidi ya nyumbu, pundamilia, na swala milioni mbili huanza safari ya ajabu kwenye nyanda pana za mfumo wa ikolojia wa Serengeti kutafuta malisho mapya na maji.">
+                        A Migration Safari offers a front-row seat to one of nature's most breathtaking events - the Great Wildebeest Migration. Every year, more than two million wildebeest, zebras, and gazelles embark on an incredible journey across the vast plains of the Serengeti ecosystem in search of fresh grazing lands and water.
+                    </p>
+                    <p data-en="This remarkable movement is driven by seasonal rainfall and follows an ancient natural cycle that has taken place for thousands of years. Along the way, the herds face numerous challenges, including dangerous river crossings, hungry predators, and changing weather conditions, creating some of the most dramatic wildlife encounters in Africa." data-sw="Harakati hii ya kushangaza inaendeshwa na mvua za msimu na kufuata mzunguko wa kale wa asili ambao umefanyika kwa maelfu ya miaka. Njiani, makundi yanakabiliwa na changamoto nyingi, ikiwa ni pamoja na uvukaji wa mito yenye hatari, wanyama wanaowinda wenye njaa, na mabadiliko ya hali ya hewa, na kuunda baadhi ya matukio ya kusisimua zaidi ya wanyamapori barani Afrika.">
+                        This remarkable movement is driven by seasonal rainfall and follows an ancient natural cycle that has taken place for thousands of years. Along the way, the herds face numerous challenges, including dangerous river crossings, hungry predators, and changing weather conditions, creating some of the most dramatic wildlife encounters in Africa.
+                    </p>
+                    <p data-en="The Great Migration is often described as the 'Greatest Wildlife Show on Earth' and is considered one of the Seven Natural Wonders of Africa. It is a truly unforgettable experience that attracts travelers, photographers, filmmakers, and wildlife enthusiasts from around the world." data-sw="Uhamiaji Mkuu mara nyingi hufafanuliwa kama 'Onyesho Kubwa Zaidi la Wanyamapori Duniani' na unachukuliwa kuwa moja ya Maajabu Saba ya Asili ya Afrika. Ni uzoefu usiosahaulika kweli ambao huvutia wasafiri, wapiga picha, watengeneza filamu, na wapenda wanyamapori kutoka kote ulimwenguni.">
+                        The Great Migration is often described as the "Greatest Wildlife Show on Earth" and is considered one of the Seven Natural Wonders of Africa. It is a truly unforgettable experience that attracts travelers, photographers, filmmakers, and wildlife enthusiasts from around the world.
+                    </p>
+                    
+                    <!-- An Ever-Changing Adventure -->
+                    <div class="ever-changing-card">
+                        <h3 data-en="An Ever-Changing Adventure" data-sw="Adha Inayobadilika Kila Wakati">An Ever-Changing Adventure</h3>
+                        <p data-en="Unlike a traditional safari, the migration is constantly moving. Depending on the time of year, visitors can witness different stages of this incredible journey - from the calving season in the southern Serengeti, where thousands of newborn wildebeest take their first steps, to the dramatic river crossings in the northern Serengeti, where massive herds brave crocodile-filled waters." data-sw="Tofauti na safari ya kawaida, uhamiaji unasonga mbele kila wakati. Kulingana na wakati wa mwaka, wageni wanaweza kushuhudia hatua tofauti za safari hii ya ajabu - kuanzia msimu wa kuzaa katika kusini mwa Serengeti, ambapo maelfu ya nyumbu wachanga hupiga hatua zao za kwanza, hadi uvukaji wa mito wa kusisimua kaskazini mwa Serengeti, ambapo makundi makubwa yanajitosa kwenye maji yenye mamba.">
+                            Unlike a traditional safari, the migration is constantly moving. Depending on the time of year, visitors can witness different stages of this incredible journey - from the calving season in the southern Serengeti, where thousands of newborn wildebeest take their first steps, to the dramatic river crossings in the northern Serengeti, where massive herds brave crocodile-filled waters.
+                        </p>
+                        <p data-en="Each season offers a unique perspective and unforgettable wildlife experiences." data-sw="Kila msimu unatoa mtazamo wa kipekee na uzoefu wa wanyamapori usiosahaulika.">
+                            Each season offers a unique perspective and unforgettable wildlife experiences.
+                        </p>
+                    </div>
+                </div>
+                <div class="scroll-reveal-right">
+                    <img src="assets/zebla moving.jpg" alt="Great Migration Wildebeest and Zebras" style="border-radius: var(--border-radius); box-shadow: var(--shadow-hover); width: 100%; transition: var(--transition);" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                    
+                    <!-- Stats preserved alongside narrative -->
+                    <div class="migration-stats" style="margin-top: 30px;">
+                        <div class="migration-stat-card">
+                            <div class="stat-icon">🚙</div>
+                            <div>
+                                <h3 data-en="1.5M+" data-sw="Milioni 1.5+">1.5M+</h3>
+                                <p data-en="Wildebeest on the move" data-sw="Nyumbu wanaohama">Wildebeest on the move</p>
+                            </div>
+                        </div>
+                        <div class="migration-stat-card">
+                            <div class="stat-icon">🦓</div>
+                            <div>
+                                <h3 data-en="200k+" data-sw="Laki 2+">200k+</h3>
+                                <p data-en="Zebras leading the way" data-sw="Pundamilia wanaoongoza">Zebras leading the way</p>
+                            </div>
+                        </div>
+                        <div class="migration-stat-card">
+                            <div class="stat-icon">🦌</div>
+                            <div>
+                                <h3 data-en="Thousands" data-sw="Maelfu">Thousands</h3>
+                                <p data-en="Gazelles running along" data-sw="Swala wanaokimbia nao">Gazelles running along</p>
+                            </div>
+                        </div>
+                        <div class="migration-stat-card">
+                            <div class="stat-icon">🦁</div>
+                            <div>
+                                <h3 data-en="Hundreds" data-sw="Mamia">Hundreds</h3>
+                                <p data-en="Predators tracking herds" data-sw="Wawindaji wanaofuatilia">Predators tracking herds</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- An Experience Like No Other -->
+    <section class="section" style="background-color: var(--cream-bg);">
+        <div class="container" style="max-width: 900px; text-align: center; line-height: 1.8;">
+            <span class="sub-heading" style="display: block;" data-en="THE HEART OF THE WILD" data-sw="MOYO WA NYIKANI">THE HEART OF THE WILD</span>
+            <h2 style="margin-bottom: 25px;" data-en="An Experience Like No Other" data-sw="Uzoefu Usio na Mfano">An Experience Like No Other</h2>
+            <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 20px;" data-en="The Great Migration is more than just a safari; it is a journey into the heart of the wild. The sights, sounds, and energy of thousands of animals moving together across the African plains create an experience that few natural events can match." data-sw="Uhamiaji Mkuu ni zaidi ya safari tu; ni safari ya kuingia ndani ya moyo wa wanyamapori. Mandhari, sauti, na nishati ya maelfu ya wanyama wanaosafiri pamoja kwenye nyanda za Afrika huunda uzoefu ambao ni matukio machache sana ya asili yanaweza kulingana nao.">
+                The Great Migration is more than just a safari; it is a journey into the heart of the wild. The sights, sounds, and energy of thousands of animals moving together across the African plains create an experience that few natural events can match.
+            </p>
+            <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 30px;" data-en="Whether you're a first-time visitor to Africa or a seasoned safari traveler, a Migration Safari promises extraordinary wildlife encounters, unforgettable moments, and memories that will last a lifetime. Join us and discover why the Great Migration is considered one of the world's most remarkable natural wonders." data-sw="Iwe wewe ni mgeni wa kwanza barani Afrika au msafiri mzoefu wa safari, Safari ya Uhamiaji inakuahidi makutano yasiyo ya kawaida ya wanyamapori, matukio yasiyosahaulika, na kumbukumbu ambazo zitadumu maisha yote. Jiunge nasi na ugundue kwa nini Uhamiaji Mkuu unachukuliwa kuwa moja ya maajabu ya asili ya kushangaza zaidi ulimwenguni.">
+                Whether you're a first-time visitor to Africa or a seasoned safari traveler, a Migration Safari promises extraordinary wildlife encounters, unforgettable moments, and memories that will last a lifetime. Join us and discover why the Great Migration is considered one of the world's most remarkable natural wonders.
+            </p>
+            <div style="font-size: 2.5rem; letter-spacing: 15px; margin-top: 30px; opacity: 0.85;">
+                🦁 🚙 🌍 ✨
+            </div>
+        </div>
+    </section>
+
+    <!-- Migration Highlights -->
+    <section class="section" style="background-color: var(--section-bg);">
+        <div class="container">
+            <span class="sub-heading" style="text-align: center; display: block;" data-en="MIGRATION HIGHLIGHTS" data-sw="MAMBO MUHIMU YA UHAMIAJI">MIGRATION HIGHLIGHTS</span>
+            <h2 style="text-align: center; margin-bottom: 50px;" data-en="Witness the Drama of Survival" data-sw="Shuhudia Mchezo wa Kuishi">Witness the Drama of Survival</h2>
+            
+            <div class="highlight-container">
+                <!-- Highlight 1 -->
+                <div class="highlight-card animate-in">
+                    <div class="highlight-card-icon"><i class="fas fa-water"></i></div>
+                    <h3 data-en="River Crossings" data-sw="Uvukaji wa Mito">River Crossings</h3>
+                    <p data-en="Watch thousands of wildebeest plunge into crocodile-filled rivers as they attempt one of the most dangerous stages of their migration." data-sw="Tazama maelfu ya nyumbu wakijitosa kwenye mito iliyojaa mamba wanapojaribu moja ya hatua hatari zaidi za uhamiaji wao.">
+                        Watch thousands of wildebeest plunge into crocodile-filled rivers as they attempt one of the most dangerous stages of their migration.
+                    </p>
+                </div>
+                
+                <!-- Highlight 2 -->
+                <div class="highlight-card animate-in">
+                    <div class="highlight-card-icon"><i class="fas fa-baby-carriage"></i></div>
+                    <h3 data-en="Calving Season" data-sw="Msimu wa Kuzaa">Calving Season</h3>
+                    <p data-en="Witness thousands of newborn wildebeest taking their first steps on the southern Serengeti plains." data-sw="Shuhudia maelfu ya nyumbu wachanga wakipiga hatua zao za kwanza kwenye nyanda za kusini za Serengeti.">
+                        Witness thousands of newborn wildebeest taking their first steps on the southern Serengeti plains.
+                    </p>
+                </div>
+                
+                <!-- Highlight 3 -->
+                <div class="highlight-card animate-in">
+                    <div class="highlight-card-icon"><i class="fas fa-paw"></i></div>
+                    <h3 data-en="Predator Action" data-sw="Matukio ya Wawindaji">Predator Action</h3>
+                    <p data-en="Experience thrilling sightings of lions, cheetahs, leopards, and hyenas taking advantage of the abundance of prey." data-sw="Pata mionekano ya kusisimua ya simba, duma, chui, na fisi wakitumia fursa ya wingi wa mawindo.">
+                        Experience thrilling sightings of lions, cheetahs, leopards, and hyenas taking advantage of the abundance of prey.
+                    </p>
+                </div>
+                
+                <!-- Highlight 4 -->
+                <div class="highlight-card animate-in">
+                    <div class="highlight-card-icon"><i class="fas fa-mountain"></i></div>
+                    <h3 data-en="Endless Herds" data-sw="Makundi Yasiyo na Mwisho">Endless Herds</h3>
+                    <p data-en="See vast landscapes covered by moving wildlife stretching as far as the eye can see." data-sw="Ona mandhari kubwa yaliyofunikwa na wanyamapori wanaotembea wakienea mbali kama jicho linavyoweza kuona.">
+                        See vast landscapes covered by moving wildlife stretching as far as the eye can see.
+                    </p>
+                </div>
+                
+                <!-- Highlight 5 -->
+                <div class="highlight-card animate-in">
+                    <div class="highlight-card-icon"><i class="fas fa-camera"></i></div>
+                    <h3 data-en="Spectacular Photography" data-sw="Upigaji Picha wa Kipekee">Spectacular Photography</h3>
+                    <p data-en="Capture unforgettable moments, dramatic wildlife interactions, and stunning African landscapes." data-sw="Nasa matukio yasiyosahaulika, mwingiliano wa wanyamapori wa kusisimua, na mandhari ya kuvutia ya Afrika.">
+                        Capture unforgettable moments, dramatic wildlife interactions, and stunning African landscapes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Time to Experience -->
+    <section class="section">
+        <div class="container">
+            <span class="sub-heading" style="text-align: center; display: block;" data-en="PLANNING CALENDAR" data-sw="RATIBA YA MWAKA">PLANNING CALENDAR</span>
+            <h2 style="text-align: center; margin-bottom: 10px;" data-en="Best Time to Experience the Migration" data-sw="Wakati Bora wa Kushuhudia Uhamiaji">Best Time to Experience the Migration</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 50px auto; color: var(--text-muted);" data-en="The Great Migration is a year-round cycle driven by seasonal rainfall. Use our calendar to align your safari goals with the herds' location." data-sw="Uhamiaji Mkuu ni mzunguko wa mwaka mzima unaoendeshwa na mvua za msimu. Tumia ratiba yetu kupatanisha safari yako na eneo la makundi ya wanyama.">The Great Migration is a year-round cycle driven by seasonal rainfall. Use our calendar to align your safari goals with the herds' location.</p>
+            
+            <div class="season-timeline">
+                <!-- Jan - Mar -->
+                <div class="season-card scroll-reveal">
+                    <div>
+                        <div class="season-badge" data-en="Jan - Mar" data-sw="Jan - Machi">Jan - Mar</div>
+                        <h3 data-en="Calving Season" data-sw="Msimu wa Kuzaa">Calving Season</h3>
+                        <p class="season-desc" data-en="The southern Serengeti becomes a nursery as hundreds of thousands of wildebeest give birth within a short period." data-sw="Serengeti ya kusini inakuwa kitalu cha kulelea wanyama huku mamia ya maelfu ya nyumbu wakizaa kwa kipindi kifupi.">
+                            The southern Serengeti becomes a nursery as hundreds of thousands of wildebeest give birth within a short period.
+                        </p>
+                    </div>
+                    <div class="season-best-for">
+                        <h4 data-en="Best For:" data-sw="Bora Kwa:">Best For:</h4>
+                        <ul>
+                            <li data-en="Newborn wildlife" data-sw="Watoto wachanga wa wanyama">Newborn wildlife</li>
+                            <li data-en="Predator activity" data-sw="Shughuli za wawindaji">Predator activity</li>
+                            <li data-en="Photography" data-sw="Upigaji picha">Photography</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apr - Jun -->
+                <div class="season-card scroll-reveal">
+                    <div>
+                        <div class="season-badge" data-en="Apr - Jun" data-sw="Apr - Juni">Apr - Jun</div>
+                        <h3 data-en="The Journey Begins" data-sw="Safari Inaanza">The Journey Begins</h3>
+                        <p class="season-desc" data-en="The herds begin moving northward through the central Serengeti." data-sw="Makundi huanza kusafiri kuelekea kaskazini kupitia katikati ya Serengeti.">
+                            The herds begin moving northward through the central Serengeti.
+                        </p>
+                    </div>
+                    <div class="season-best-for">
+                        <h4 data-en="Best For:" data-sw="Bora Kwa:">Best For:</h4>
+                        <ul>
+                            <li data-en="Massive herds" data-sw="Makundi makubwa">Massive herds</li>
+                            <li data-en="Fewer crowds" data-sw="Msongamano mdogo">Fewer crowds</li>
+                            <li data-en="Scenic landscapes" data-sw="Mandhari nzuri">Scenic landscapes</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Jul - Oct -->
+                <div class="season-card scroll-reveal">
+                    <div>
+                        <div class="season-badge" data-en="Jul - Oct" data-sw="Jul - Okt">Jul - Oct</div>
+                        <h3 data-en="River Crossings" data-sw="Msimu wa Kuvuka Mto">River Crossings</h3>
+                        <p class="season-desc" data-en="One of the most famous stages of the migration as animals cross dangerous rivers." data-sw="Moja ya hatua maarufu zaidi za uhamiaji wanyama wanapovuka mito yenye hatari.">
+                            One of the most famous stages of the migration as animals cross dangerous rivers.
+                        </p>
+                    </div>
+                    <div class="season-best-for">
+                        <h4 data-en="Best For:" data-sw="Bora Kwa:">Best For:</h4>
+                        <ul>
+                            <li data-en="Mara River crossings" data-sw="Uvukaji wa Mto Mara">Mara River crossings</li>
+                            <li data-en="Dramatic wildlife action" data-sw="Vitendo vya wanyama vya kusisimua">Dramatic wildlife action</li>
+                            <li data-en="Bucket-list experiences" data-sw="Uzoefu wa safari ya maisha">Bucket-list experiences</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Nov - Dec -->
+                <div class="season-card scroll-reveal">
+                    <div>
+                        <div class="season-badge" data-en="Nov - Dec" data-sw="Nov - Des">Nov - Dec</div>
+                        <h3 data-en="Return Journey" data-sw="Safari ya Kurudi">Return Journey</h3>
+                        <p class="season-desc" data-en="The herds move back toward the southern Serengeti following seasonal rains." data-sw="Makundi yanarudi kuelekea Serengeti ya kusini kufuatia mvua za msimu.">
+                            The herds move back toward the southern Serengeti following seasonal rains.
+                        </p>
+                    </div>
+                    <div class="season-best-for">
+                        <h4 data-en="Best For:" data-sw="Bora Kwa:">Best For:</h4>
+                        <ul>
+                            <li data-en="Wildlife viewing" data-sw="Kuangalia wanyamapori">Wildlife viewing</li>
+                            <li data-en="Green landscapes" data-sw="Mandhari nzuri ya kijani">Green landscapes</li>
+                            <li data-en="Excellent game drives" data-sw="Safari bora za kuwinda">Excellent game drives</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Makes Migration Safaris Special? -->
+    <section class="section" style="background-color: var(--section-bg);">
+        <div class="container">
+            <span class="sub-heading" style="text-align: center; display: block;" data-en="SPECIAL FEATURES" data-sw="VIPENGELE MAALUM">SPECIAL FEATURES</span>
+            <h2 style="text-align: center; margin-bottom: 50px;" data-en="What Makes Migration Safaris Special?" data-sw="Nini Kinafanya Safari za Uhamiaji Kuwa Maalum?">What Makes Migration Safaris Special?</h2>
+            
+            <div class="why-choose-grid">
+                <!-- Card 1 -->
+                <div class="why-choose-card scroll-reveal">
+                    <div class="why-icon">🚙</div>
+                    <h3 data-en="Witness Millions" data-sw="Shuhudia Mamilioni">Witness Millions</h3>
+                    <p data-en="Witness millions of animals moving across the Serengeti." data-sw="Kushuhudia mamilioni ya wanyama wakisafiri kwenye Serengeti.">Witness millions of animals moving across the Serengeti.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="why-choose-card scroll-reveal">
+                    <div class="why-icon">🦁</div>
+                    <h3 data-en="Observe Predators" data-sw="Angalia Wawindaji">Observe Predators</h3>
+                    <p data-en="Observe predators such as lions, cheetahs, leopards, and hyenas in action." data-sw="Kuwaona wawindaji kama simba, duma, chui na fisi wakiwa kazini.">Observe predators such as lions, cheetahs, leopards, and hyenas in action.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="why-choose-card scroll-reveal">
+                    <div class="why-icon"><i class="fas fa-camera-retro"></i></div>
+                    <h3 data-en="Wildlife Photography" data-sw="Picha za Wanyamapori">Wildlife Photography</h3>
+                    <p data-en="Capture world-class wildlife photography opportunities." data-sw="Kupata fursa za daraja la kwanza za kupiga picha wanyamapori.">Capture world-class wildlife photography opportunities.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="why-choose-card scroll-reveal">
+                    <div class="why-icon"><i class="fas fa-sun"></i></div>
+                    <h3 data-en="Spectacular Sunsets" data-sw="Machweo ya Jua">Spectacular Sunsets</h3>
+                    <p data-en="Experience breathtaking African landscapes and sunsets." data-sw="Kufurahia mandhari na machweo ya kuvutia ya jua la Afrika.">Experience breathtaking African landscapes and sunsets.</p>
+                </div>
+                <!-- Card 5 -->
+                <div class="why-choose-card scroll-reveal">
+                    <div class="why-icon"><i class="fas fa-car-side"></i></div>
+                    <h3 data-en="Thrilling Game Drives" data-sw="Safari za Kusisimua">Thrilling Game Drives</h3>
+                    <p data-en="Enjoy thrilling game drives with experienced safari guides." data-sw="Kufurahia safari za kusisimua za kuwinda wanyama ukiwa na waongozaji wazoefu.">Enjoy thrilling game drives with experienced safari guides.</p>
+                </div>
+                <!-- Card 6 -->
+                <div class="why-choose-card scroll-reveal">
+                    <div class="why-icon"><i class="fas fa-globe"></i></div>
+                    <h3 data-en="Iconic Destinations" data-sw="Maeneo Maarufu">Iconic Destinations</h3>
+                    <p data-en="Explore one of the most iconic wildlife destinations on the planet." data-sw="Kuchunguza moja ya maeneo maarufu ya wanyamapori duniani.">Explore one of the most iconic wildlife destinations on the planet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Migration Experiences Packages -->
+    <section class="section">
+        <div class="container">
+            <span class="sub-heading" style="text-align: center; display: block;" data-en="OUR PACKAGES" data-sw="KIFURUSHI CHETU">OUR PACKAGES</span>
+            <h2 style="text-align: center; margin-bottom: 50px;" data-en="Our Migration Safari Experiences" data-sw="Uzoefu Wetu wa Safari ya Uhamiaji">Our Migration Safari Experiences</h2>
+            
+            <div class="experiences-layout">
+                <!-- Package 1 -->
+                <div class="experience-card-premium scroll-reveal">
+                    <div>
+                        <h3 data-en="Classic Migration Safari" data-sw="Safari ya Kawaida ya Uhamiaji">Classic Migration Safari</h3>
+                        <p data-en="Perfect for travelers seeking an authentic migration experience with excellent wildlife viewing." data-sw="Inafaa kwa wasafiri wanaotafuta uzoefu halisi wa uhamiaji na kuona wanyamapori kwa kiwango bora.">
+                            Perfect for travelers seeking an authentic migration experience with excellent wildlife viewing.
+                        </p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="enquire.html" class="btn btn-secondary" data-en="ENQUIRE" data-sw="ULIZA">ENQUIRE</a>
+                        <a href="book.html" class="btn btn-primary" data-en="BOOK NOW" data-sw="WEKA NAFASI">BOOK NOW</a>
+                    </div>
+                </div>
+                
+                <!-- Package 2 -->
+                <div class="experience-card-premium featured scroll-reveal">
+                    <span class="experience-featured-badge" data-en="POPULAR" data-sw="MAARUFU">POPULAR</span>
+                    <div>
+                        <h3 data-en="Luxury Migration Safari" data-sw="Safari ya Kifahari ya Uhamiaji">Luxury Migration Safari</h3>
+                        <p data-en="Stay in premium lodges and luxury tented camps located close to migration routes." data-sw="Lala kwenye hoteli za kifahari na kambi za hema za kiwango cha juu karibu na njia za uhamiaji.">
+                            Stay in premium lodges and luxury tented camps located close to migration routes.
+                        </p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="enquire.html" class="btn btn-secondary" data-en="ENQUIRE" data-sw="ULIZA">ENQUIRE</a>
+                        <a href="book.html" class="btn btn-primary" data-en="BOOK NOW" data-sw="WEKA NAFASI">BOOK NOW</a>
+                    </div>
+                </div>
+                
+                <!-- Package 3 -->
+                <div class="experience-card-premium scroll-reveal">
+                    <div>
+                        <h3 data-en="Private Migration Safari" data-sw="Safari Binafsi ya Uhamiaji">Private Migration Safari</h3>
+                        <p data-en="Enjoy personalized game drives and a fully customized itinerary." data-sw="Furahia safari za binafsi za kuwinda wanyama na ratiba iliyogeuzwa kukufaa kabisa.">
+                            Enjoy personalized game drives and a fully customized itinerary.
+                        </p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="enquire.html" class="btn btn-secondary" data-en="ENQUIRE" data-sw="ULIZA">ENQUIRE</a>
+                        <a href="book.html" class="btn btn-primary" data-en="BOOK NOW" data-sw="WEKA NAFASI">BOOK NOW</a>
+                    </div>
+                </div>
+                
+                <!-- Package 4 -->
+                <div class="experience-card-premium scroll-reveal">
+                    <div>
+                        <h3 data-en="Photography Migration Safari" data-sw="Safari ya Picha ya Uhamiaji">Photography Migration Safari</h3>
+                        <p data-en="Designed specifically for wildlife photographers seeking extraordinary images." data-sw="Imeundwa maalum kwa wapiga picha wa wanyamapori wanaotafuta picha za kipekee kabisa.">
+                            Designed specifically for wildlife photographers seeking extraordinary images.
+                        </p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="enquire.html" class="btn btn-secondary" data-en="ENQUIRE" data-sw="ULIZA">ENQUIRE</a>
+                        <a href="book.html" class="btn btn-primary" data-en="BOOK NOW" data-sw="WEKA NAFASI">BOOK NOW</a>
+                    </div>
+                </div>
+                
+                <!-- Package 5 -->
+                <div class="experience-card-premium scroll-reveal">
+                    <div>
+                        <h3 data-en="Family Migration Safari" data-sw="Safari ya Familia ya Uhamiaji">Family Migration Safari</h3>
+                        <p data-en="Family-friendly adventures suitable for travelers of all ages." data-sw="Safari za kirafiki kwa familia zinazofaa wasafiri wa umri wote.">
+                            Family-friendly adventures suitable for travelers of all ages.
+                        </p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="enquire.html" class="btn btn-secondary" data-en="ENQUIRE" data-sw="ULIZA">ENQUIRE</a>
+                        <a href="book.html" class="btn btn-primary" data-en="BOOK NOW" data-sw="WEKA NAFASI">BOOK NOW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Included & Comparison Column -->
+    <section class="section" style="background-color: var(--section-bg);">
+        <div class="container">
+            <div class="comparison-grid">
+                <!-- What Is Included -->
+                <div class="comparison-box scroll-reveal-left">
+                    <h3 data-en="What Is Included?" data-sw="Nini Kimejumuishwa?">What Is Included?</h3>
+                    <ul class="comparison-list included">
+                        <li><i class="fas fa-check-circle"></i> <span data-en="Professional Safari Guide" data-sw="Mwongozo wa Kitaalamu wa Safari">Professional Safari Guide</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-en="4x4 Safari Vehicle with Pop-Up Roof" data-sw="Gari la Safari la 4x4 lenye Paa la Kufunguka">4x4 Safari Vehicle with Pop-Up Roof</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-en="Park Entrance Fees" data-sw="Ada za Kuingia Mbugani">Park Entrance Fees</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-en="Accommodation" data-sw="Malazi">Accommodation</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-en="Meals During Safari" data-sw="Chakula Wakati wa Safari">Meals During Safari</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-en="Bottled Drinking Water" data-sw="Maji ya Kunywa ya Chupa">Bottled Drinking Water</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-en="Airport Transfers" data-sw="Usafiri wa Uwanja wa Ndege">Airport Transfers</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-en="Personalized Travel Assistance" data-sw="Usaidizi wa Kusafiri wa Kibinafsi">Personalized Travel Assistance</span></li>
+                    </ul>
+                </div>
+                
+                <!-- Why Travel With Century Adventures -->
+                <div class="comparison-box scroll-reveal-right">
+                    <h3 data-en="Why Travel With Century Adventures?" data-sw="Kwa nini Usafiri na Century Adventures?">Why Travel With Century Adventures?</h3>
+                    <ul class="comparison-list why-century">
+                        <li><i class="fas fa-circle-check"></i> <span data-en="Experienced Safari Experts" data-sw="Wataalamu wa Safari Wenye Uzoefu">Experienced Safari Experts</span></li>
+                        <li><i class="fas fa-circle-check"></i> <span data-en="Comfortable 4x4 Safari Vehicles" data-sw="Magari ya Safari ya 4x4 Yenye Starehe">Comfortable 4x4 Safari Vehicles</span></li>
+                        <li><i class="fas fa-circle-check"></i> <span data-en="Strategic Migration Tracking" data-sw="Ufuatiliaji wa Kimkakati wa Uhamiaji">Strategic Migration Tracking</span></li>
+                        <li><i class="fas fa-circle-check"></i> <span data-en="Carefully Selected Lodges & Camps" data-sw="Lodges na Kambi Zilizochaguliwa kwa Makini">Carefully Selected Lodges & Camps</span></li>
+                        <li><i class="fas fa-circle-check"></i> <span data-en="Excellent Wildlife Viewing Opportunities" data-sw="Fursa Bora za Kuona Wanyamapori">Excellent Wildlife Viewing Opportunities</span></li>
+                        <li><i class="fas fa-circle-check"></i> <span data-en="Personalized Service & Support" data-sw="Huduma na Usaidizi wa Kibinafsi">Personalized Service & Support</span></li>
+                        <li><i class="fas fa-circle-check"></i> <span data-en="Sustainable & Responsible Tourism" data-sw="Utalii Endelevu na wa Kiwajibikaji">Sustainable & Responsible Tourism</span></li>
+                        <li><i class="fas fa-circle-check"></i> <span data-en="Exceptional Guest Experiences" data-sw="Uzoefu wa Kipekee wa Wageni">Exceptional Guest Experiences</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="container">
+            <span class="sub-heading" style="text-align: center; display: block;" data-en="COMMON QUESTIONS" data-sw="MASWALI YA KAWAIDA">COMMON QUESTIONS</span>
+            <h2 style="text-align: center; margin-bottom: 50px;" data-en="Frequently Asked Questions" data-sw="Maswali Yanayoulizwa Sana">Frequently Asked Questions</h2>
+            
+            <div class="faq-accordion-container">
+                <details class="faq-details scroll-reveal">
+                    <summary data-en="Is the Migration Guaranteed?" data-sw="Je, Uhamiaji Unahakikishwa?">Is the Migration Guaranteed?</summary>
+                    <div class="faq-answer">
+                        <p data-en="The migration is a natural event and wildlife movements can vary, but our experienced team carefully plans itineraries based on current migration patterns to maximize viewing opportunities." data-sw="Uhamiaji ni tukio la asili na mwendo wa wanyamapori unaweza kutofautiana, lakini timu yetu yenye uzoefu inapanga ratiba kwa uangalifu kulingana na mifumo ya sasa ya uhamiaji ili kuongeza fursa za kuona wanyama.">
+                            The migration is a natural event and wildlife movements can vary, but our experienced team carefully plans itineraries based on current migration patterns to maximize viewing opportunities.
+                        </p>
+                    </div>
+                </details>
+                
+                <details class="faq-details scroll-reveal">
+                    <summary data-en="How Many Days Are Recommended?" data-sw="Je, Siku Ngapi Zinaratibiwa?">How Many Days Are Recommended?</summary>
+                    <div class="faq-answer">
+                        <p data-en="A 5-10 day safari is ideal for experiencing different migration locations and wildlife encounters." data-sw="Safari ya siku 5-10 ndiyo inayofaa zaidi kwa kupata uzoefu wa maeneo tofauti ya uhamiaji na kukutana na wanyama pori wengi.">
+                            A 5-10 day safari is ideal for experiencing different migration locations and wildlife encounters.
+                        </p>
+                    </div>
+                </details>
+                
+                <details class="faq-details scroll-reveal">
+                    <summary data-en="Is a Migration Safari Suitable for Families?" data-sw="Je, Safari ya Uhamiaji Inafaa kwa Familia?">Is a Migration Safari Suitable for Families?</summary>
+                    <div class="faq-answer">
+                        <p data-en="Yes. We offer family-friendly itineraries designed to provide an exciting and comfortable experience for all ages." data-sw="Ndiyo. Tunatoa ratiba za kirafiki kwa familia zilizoundwa kutoa uzoefu wa kusisimua na starehe kwa rika zote.">
+                            Yes. We offer family-friendly itineraries designed to provide an exciting and comfortable experience for all ages.
+                        </p>
+                    </div>
+                </details>
+                
+                <details class="faq-details scroll-reveal">
+                    <summary data-en="What Should I Bring?" data-sw="Je, Ninapaswa Kubeba Nini?">What Should I Bring?</summary>
+                    <div class="faq-answer">
+                        <p data-en="Comfortable clothing, a camera, binoculars, sunscreen, a hat, and a sense of adventure." data-sw="Mavazi ya starehe, kamera, darubini (binoculars), mafuta ya jua, kofia, na moyo wa kusisimua safari.">
+                            Comfortable clothing, a camera, binoculars, sunscreen, a hat, and a sense of adventure.
+                        </p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="container scroll-reveal" style="margin-bottom: 80px;">
+        <div class="cta-parallax-banner" style="background-image: url('assets/zebla moving.jpg');">
+            <div class="container">
+                <h2 data-en="Ready to Witness the Greatest Wildlife Show on Earth?" data-sw="Uko Tayari Kushuhudia Onyesho Kubwa Zaidi la Wanyamapori Duniani?">Ready to Witness the Greatest Wildlife Show on Earth?</h2>
+                <p data-en="From dramatic river crossings to endless herds stretching across the Serengeti plains, the Great Migration is an experience unlike any other. Let Century Adventures take you closer to one of nature's most extraordinary spectacles." data-sw="Kuanzia uvukaji wa mto wenye kusisimua hadi makundi makubwa yasiyo na mwisho yanayoenea kwenye nyanda za Serengeti, Uhamiaji Mkuu ni uzoefu usio na mfanowe. Acha Century Adventures ikupeleke karibu na moja ya maajabu ya asili ya kipekee.">
+                    From dramatic river crossings to endless herds stretching across the Serengeti plains, the Great Migration is an experience unlike any other. Let Century Adventures take you closer to one of nature's most extraordinary spectacles.
+                </p>
+                <div class="cta-btn-grid">
+                    <a href="https://wa.me/255747115390" class="btn cta-btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i> <span data-en="Contact Us Today" data-sw="Wasiliana Nasi Leo">Contact Us Today</span>
+                    </a>
+                    <a href="enquire.html" class="btn btn-primary">
+                        <i class="fas fa-file-invoice-dollar"></i> <span data-en="Request a Free Quote" data-sw="Omba Nukuu ya Bure">Request a Free Quote</span>
+                    </a>
+                    <a href="book.html" class="btn btn-secondary">
+                        <i class="fas fa-compass"></i> <span data-en="Plan Your Migration Safari" data-sw="Panga Safari Yako">Plan Your Migration Safari</span>
+                    </a>
+                    <a href="book.html" class="btn btn-primary">
+                        <i class="fas fa-globe"></i> <span data-en="Start Your Adventure Now" data-sw="Anza Safari Yako Sasa">Start Your Adventure Now</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Contact Info -->
+    <div class="footer-top">
+        <div class="container">
+            <h2><i class="fas fa-phone-alt"></i> +255 747 115 390</h2>
+            <a href="enquire.html" class="btn enquire-btn" data-en="CONTACT US TODAY!" data-sw="WASILIANA NASI LEO!">CONTACT US TODAY!</a>
+        </div>
+    </div>
+
+    <!-- Final Call to Action -->
+    <section class="section cta-section" style="background: var(--primary-gradient); padding: 50px 0; text-align: center; color: white; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <div class="container" style="position: relative; z-index: 2;">
+            <span class="sub-heading" style="color:var(--accent-gold); font-size: 0.8rem; letter-spacing: 2px;" data-en="YOUR JOURNEY TO AFRICA STARTS HERE" data-sw="SAFARI YAKO YA AFRIKA INAANZA HAPA">YOUR JOURNEY TO AFRICA STARTS HERE</span>
+            <h2 style="font-size: clamp(1.5rem, 3vw, 2.2rem); color: white; margin: 10px 0 16px;" data-en="Are you ready to explore Tanzania?" data-sw="Uko Tayari Kuichunguza Tanzania?">Are you ready to explore Tanzania?</h2>
+            
+            <p class="cta-description" style="max-width: 650px; margin: 0 auto 25px; font-size:0.9rem; line-height: 1.65; opacity: 0.9;">
+                <span class="cta-hide-mobile" data-en="Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. " data-sw="Fikiria kushuhudia uwindaji wa simba wakati wa machweo, kutazama tembo wakizurura kwa uhuru kwenye savanna zisizo na mwisho, kujionea Uhamiaji Mkuu, au kupumzika kwenye mchanga mweupe wa Zanzibar. ">Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. </span>
+                <span data-en="Let Century Adventures make those dreams come true." data-sw="Ruhusu Century Adventures kufanya ndoto hizo ziwe kweli.">Let Century Adventures make those dreams come true.</span>
+            </p>
+
+            <div class="cta-action-grid" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <a href="enquire.html" class="btn btn-primary cta-circle-btn" style="background: var(--accent-gold); color: #002b18; font-weight:800; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; text-decoration: none;" data-en="Plan Your Trip" data-sw="Panga Safari Yako">Plan Your Trip</a>
+                <a href="enquire.html" class="btn btn-outline cta-circle-btn secondary" style="border: 1px solid rgba(255,255,255,0.6); color: white; font-weight:700; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; background: transparent; text-decoration: none;" data-en="Request a Free Quote" data-sw="Omba Nukuu ya Bure">Request a Free Quote</a>
+            </div>
+            
+            <div style="margin-top: 18px;">
+                <a href="contact.html" style="color: var(--accent-gold); font-weight: 700; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.5px;" data-en="Contact Our Experts &rarr;" data-sw="Wasiliana na Wataalamu Wetu &rarr;">Contact Our Experts &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col info-col">
+                <h3 data-en="CONTACT US" data-sw="WASILIANA NASI">CONTACT US</h3>
+                <p><strong>Century Adventures</strong></p>
+                <p data-en="Asasi Tower, 4th Floor" data-sw="Asasi Tower, Ghorofa ya 4">Asasi Tower, 4th Floor</p>
+                <p data-en="Ohio Street" data-sw="Mtaa wa Ohio">Ohio Street</p>
+                <p><i class="fas fa-map-marker-alt"></i> Dar es Salaam, Tanzania</p>
+                <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/255747115390" target="_blank" style="color: inherit;">+255 747 115 390</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@centuryadventures.com" style="color: inherit;">info@centuryadventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:bookings@centuryadventures.com" style="color: inherit;">bookings@centuryadventures.com</a></p>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="POPULAR PLACES" data-sw="MAENEO MAARUFU">POPULAR PLACES</h3>
+                <ul>
+                    <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                    <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                    <li><a href="selous.html" data-en="Nyerere Park" data-sw="Hifadhi ya Nyerere">Nyerere Park</a></li>
+                    <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                    <li><a href="mikumi.html" data-en="Mikumi Park" data-sw="Hifadhi ya Mikumi">Mikumi Park</a></li>
+                    <li><a href="ngorongoro.html" data-en="Ngorongoro" data-sw="Ngorongoro">Ngorongoro</a></li>
+                    <li><a href="manyara.html" data-en="Manyara National Park" data-sw="Hifadhi ya Manyara">Manyara National Park</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL EXPERIENCE" data-sw="UZOEFU WA KUSAFIRI">TRAVEL EXPERIENCE</h3>
+                <ul>
+                    <li><a href="family-safaris.html" data-en="Family Trips" data-sw="Safari za Familia">Family Trips</a></li>
+                    <li><a href="honeymoon-safaris.html" data-en="Honeymoon Trips" data-sw="Safari za Fungate">Honeymoon Trips</a></li>
+                    <li><a href="migration-safaris.html" data-en="Migration Trips" data-sw="Safari za Uhamiaji">Migration Trips</a></li>
+                    <li><a href="volunteer.html" data-en="Volunteer Programs" data-sw="Mipango ya Kujitolea">Volunteer Programs</a></li>
+                    <li><a href="zanzibar-beach.html" data-en="Zanzibar Beach Holiday" data-sw="Likizo ya Pwani ya Zanzibar">Zanzibar Beach Holiday</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL RESOURCES" data-sw="MAARIFA YA SAFARI">TRAVEL RESOURCES</h3>
+                <ul>
+                    <li><a href="blog.html" data-en="Travel Blog" data-sw="Blogu yetu">Travel Blog</a></li>
+                    <li><a href="faq.html" data-en="FAQs" data-sw="Maswali ya Kawaida">FAQs</a></li>
+                    <li><a href="gallery.html" data-en="Photo Gallery" data-sw="Picha za Safari">Photo Gallery</a></li>
+                    <li><a href="testimonials.html" data-en="Testimonials" data-sw="Shuhuda">Testimonials</a></li>
+                    <li><a href="best-time-to-visit-tanzania.html" data-en="Best Time to Visit" data-sw="Wakati Bora wa Kuja">Best Time to Visit</a></li>
+                    <li><a href="health-safety-tanzania.html" data-en="Health &amp; Safety" data-sw="Afya na Usalama">Health &amp; Safety</a></li>
+                    <li><a href="obtaining-visa-tanzania.html" data-en="Visa Information" data-sw="Visa ya Safari">Visa Information</a></li>
+                    <li><a href="solo-female-travel-tanzania.html" data-en="Solo Female Travel" data-sw="Safari ya Wanawake">Solo Female Travel</a></li>
+                    <li><a href="what-to-wear-safari.html" data-en="Safari Packing Guide" data-sw="Nguo za Safari">Safari Packing Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <div class="tripadvisor-card">
+                    <img src="https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-66827-5.svg" alt="TripAdvisor">
+                    <h4 data-en="TripAdvisor Century Adventures" data-sw="TripAdvisor Century Adventures">TripAdvisor Century Adventures</h4>
+                    <p data-en="Ranked #1 on TripAdvisor" data-sw="Imeorodheshwa #1 TripAdvisor">Ranked #1 on TripAdvisor</p>
+                    <a href="https://www.tripadvisor.com/" target="_blank" class="btn btn-small" data-en="TripAdvisor Give Feedback Century Adventures" data-sw="TripAdvisor Toa Maoni Century Adventures">TripAdvisor Give Feedback Century Adventures</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61577731823809"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@CenturyAdventures" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/century_adventures?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/255747115390"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:info@centuryadventures.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; Copyright 2012 - 2026 | Century Adventures</p>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
+
+

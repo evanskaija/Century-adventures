@@ -1,0 +1,1098 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safari Vehicles | Century Adventures Tanzania</title>
+    <meta name="description"
+        content="Explore Tanzania in comfort, safety, and style. Our customized 4x4 Toyota Land Cruisers are engineered for the ultimate African safari experience.">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        (function () {
+            const theme = localStorage.getItem('century-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <style>
+        /* ══ Hero ══ */
+        .fleet-hero {
+            position: relative;
+            height: 92vh;
+            min-height: 560px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        .fleet-hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('assets/safari-jeep.png');
+            background-size: cover;
+            background-position: center 38%;
+            transform: scale(1.05);
+            animation: heroZoom 18s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroZoom {
+            from {
+                transform: scale(1.05);
+            }
+
+            to {
+                transform: scale(1.12);
+            }
+        }
+
+        .fleet-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0.18) 0%,
+                    rgba(0, 25, 12, 0.65) 50%,
+                    rgba(0, 25, 12, 0.92) 100%);
+        }
+
+        .fleet-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 880px;
+            padding: 0 24px;
+        }
+
+        .fleet-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(197, 160, 68, 0.2);
+            border: 1px solid rgba(197, 160, 68, 0.5);
+            color: var(--accent-gold);
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-bottom: 28px;
+            backdrop-filter: blur(10px);
+            animation: fadeDown 0.8s ease forwards;
+        }
+
+        .fleet-hero-content h1 {
+            font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+            line-height: 1.15;
+            margin-bottom: 24px;
+            color: #fff;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+            animation: fadeUp 0.9s ease 0.15s both;
+        }
+
+        .fleet-hero-content h1 em {
+            font-style: italic;
+            color: var(--accent-gold);
+        }
+
+        .fleet-hero-tagline {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            opacity: 0.92;
+            max-width: 680px;
+            margin: 0 auto 38px;
+            line-height: 1.8;
+            animation: fadeUp 0.9s ease 0.3s both;
+        }
+
+        .fleet-hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeUp 0.9s ease 0.45s both;
+        }
+
+        .btn-hero-primary {
+            background: var(--accent-gold);
+            color: #002b18 !important;
+            font-weight: 800;
+            padding: 15px 36px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            text-decoration: none !important;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 30px rgba(197, 160, 68, 0.4);
+        }
+
+        .btn-hero-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(197, 160, 68, 0.55);
+        }
+
+        .btn-hero-outline {
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            color: #fff !important;
+            font-weight: 700;
+            padding: 13px 32px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none !important;
+            transition: all 0.4s ease;
+        }
+
+        .btn-hero-outline:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: #fff;
+        }
+
+        .fleet-hero-scroll {
+            position: absolute;
+            bottom: 36px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .fleet-hero-scroll i {
+            font-size: 1.1rem;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(8px);
+            }
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ══ Stat Bar ══ */
+        .stat-bar {
+            background: var(--primary-green);
+            padding: 28px 0;
+        }
+
+        .stat-bar-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+        }
+
+        .stat-bar-item {
+            text-align: center;
+            padding: 10px 20px;
+            border-right: 1px solid rgba(255, 255, 255, 0.12);
+            color: #fff;
+        }
+
+        .stat-bar-item:last-child {
+            border-right: none;
+        }
+
+        .stat-bar-item .num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            display: block;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .stat-bar-item .lbl {
+            font-size: 0.75rem;
+            opacity: 0.75;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 640px) {
+            .stat-bar-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stat-bar-item:nth-child(2) {
+                border-right: none;
+            }
+        }
+
+        /* ══ Editorial Intro ══ */
+        .editorial-intro {
+            background: var(--bg-color);
+            padding: 100px 0 80px;
+        }
+
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .editorial-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .editorial-label {
+            display: inline-block;
+            color: var(--accent-gold);
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .editorial-heading {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            line-height: 1.15;
+            color: var(--primary-green);
+            margin-bottom: 30px;
+        }
+
+        [data-theme="dark"] .editorial-heading {
+            color: #fff;
+        }
+
+        .editorial-heading em {
+            font-style: italic;
+            color: var(--accent-gold);
+        }
+
+        .editorial-body p {
+            color: var(--text-muted);
+            font-size: 1.02rem;
+            line-height: 1.85;
+            margin-bottom: 22px;
+        }
+
+        .editorial-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .editorial-image-wrapper {
+            position: relative;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+            height: 380px;
+        }
+
+        .editorial-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ══ Vehicle Features ══ */
+        .vehicle-features {
+            background: var(--section-bg);
+            padding: 100px 0;
+        }
+
+        .vehicle-features .section-top {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .vehicle-features h2 {
+            font-size: clamp(1.9rem, 3.5vw, 3rem);
+            color: var(--primary-green);
+            margin-bottom: 16px;
+        }
+
+        [data-theme="dark"] .vehicle-features h2 {
+            color: #fff;
+        }
+
+        .vehicle-features .section-sub {
+            color: var(--text-muted);
+            max-width: 580px;
+            margin: 0 auto;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+        }
+
+        @media (max-width: 1100px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 36px 28px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-gold);
+        }
+
+        .feature-card-icon {
+            width: 54px;
+            height: 54px;
+            background: rgba(197, 160, 68, 0.1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--accent-gold);
+            margin-bottom: 22px;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-card-icon {
+            background: var(--accent-gold);
+            color: #fff;
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            line-height: 1.35;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.7;
+            margin: 0;
+            flex: 1;
+        }
+
+        /* ══ Professional Guides ══ */
+        .professional-guides {
+            background: var(--bg-color);
+            padding: 100px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.15fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .guide-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .guide-grid .guide-img {
+                order: 2;
+            }
+
+            .guide-grid .guide-text {
+                order: 1;
+            }
+        }
+
+        .guide-img {
+            position: relative;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+            height: 400px;
+        }
+
+        .guide-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .guide-text h2 {
+            font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+            color: var(--primary-green);
+            margin-bottom: 24px;
+        }
+
+        [data-theme="dark"] .guide-text h2 {
+            color: #fff;
+        }
+
+        .guide-text p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.85;
+            margin-bottom: 0;
+        }
+
+        /* ══ Safety Section ══ */
+        .fleet-safety {
+            background: var(--section-bg);
+            padding: 100px 0;
+        }
+
+        .fleet-safety .section-top {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .fleet-safety h2 {
+            font-size: clamp(1.9rem, 3.5vw, 3rem);
+            color: var(--primary-green);
+            margin-bottom: 16px;
+        }
+
+        [data-theme="dark"] .fleet-safety h2 {
+            color: #fff;
+        }
+
+        .fleet-safety .section-sub {
+            color: var(--text-muted);
+            max-width: 580px;
+            margin: 0 auto;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .safety-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 1100px) {
+            .safety-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .safety-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .safety-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .safety-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 32px 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .safety-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-gold);
+        }
+
+        .safety-card-icon {
+            width: 52px;
+            height: 52px;
+            background: rgba(0, 66, 37, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: var(--accent-gold);
+            margin: 0 auto 18px;
+        }
+
+        .safety-card h3 {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* ══ Closing CTA ══ */
+        .fleet-closing {
+            background: var(--primary-gradient);
+            padding: 110px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fleet-closing::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(197, 160, 68, 0.12) 0%, transparent 70%);
+            top: -200px;
+            right: -150px;
+            border-radius: 50%;
+        }
+
+        .fleet-closing h2 {
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            color: #fff;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .fleet-closing .closing-tagline {
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 640px;
+            margin: 0 auto 38px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .fleet-closing .closing-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .btn-closing-gold {
+            background: var(--accent-gold);
+            color: #002b18 !important;
+            font-weight: 800;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none !important;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 30px rgba(197, 160, 68, 0.3);
+        }
+
+        .btn-closing-gold:hover {
+            background: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-closing-outline {
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: #fff !important;
+            font-weight: 700;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none !important;
+            transition: all 0.4s ease;
+        }
+
+        .btn-closing-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+        }
+    </style>
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+    <div class="scroll-progress"></div>
+
+    <!-- ══ Header ══ -->
+    <header class="header" id="mainHeader">
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html"><img src="assets/logo.png" alt="Century Adventures Logo"></a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html" data-en="Home" data-sw="Nyumbani">Home</a></li>
+                    <li><a href="about.html" data-en="About Us" data-sw="Kuhusu Sisi">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-en="Destinations" data-sw="Maeneo">Destinations <i
+                                class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="katavi.html">Katavi National Park</a></li>
+                            <li><a href="selous.html">Selous Game Reserve</a></li>
+                            <li><a href="ruaha.html">Ruaha National Park</a></li>
+                            <li><a href="mikumi.html">Mikumi National Park</a></li>
+                            <li><a href="serengeti.html">Serengeti National Park</a></li>
+                            <li><a href="gombe.html">Gombe Stream National Park</a></li>
+                            <li><a href="ngorongoro.html">Ngorongoro Conservation Area</a></li>
+                            <li><a href="manyara.html">Lake Manyara National Park</a></li>
+                            <li><a href="tarangire.html">Tarangire National Park</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="safaris.html" data-en="TOURS & SAFARIS" data-sw="SAFARI NA ZIARA">TOURS & SAFARIS</a></li>
+                    <li><a href="experiences.html" data-en="Experiences" data-sw="Uzoefu">Experiences</a></li>
+                    <li><a href="volunteer.html" data-en="Volunteer" data-sw="Kujitolea">Volunteer</a></li>
+                    <li><a href="vehicles.html" class="active" data-en="Safari Vehicles"
+                            data-sw="Magari ya Safari">Safari Vehicles</a></li>
+                    <li><a href="contact.html" data-en="Contact Us" data-sw="Wasiliana Nasi">Contact Us</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-toggle" id="mobile-toggle" onclick="toggleMobileMenu()"
+                aria-label="Open navigation menu">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </button>
+            <div class="header-actions">
+                <div class="header-toggles">
+                    <button class="toggle-btn lang-toggle" onclick="toggleLang()">SW</button>
+                    <button class="toggle-btn theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+                </div>
+                <a href="enquire.html" class="btn btn-primary enquire-btn" data-en="ENQUIRE" data-sw="ULIZA">ENQUIRE</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ══ Hero ══ -->
+    <section class="fleet-hero" id="home">
+        <div class="fleet-hero-bg"></div>
+        <div class="fleet-hero-overlay"></div>
+        <div class="fleet-hero-content">
+            <div class="fleet-hero-badge">
+                <i class="fas fa-truck-monster"></i>
+                <span data-en="Century Fleet" data-sw="Magari ya Century">Century Fleet</span>
+            </div>
+            <h1 data-en="Safari Vehicles: Comfort &; Safety" data-sw="Magari ya Safari: Faraja na Usalama">
+                Safari Vehicles: Comfort &amp; Safety
+            </h1>
+            <p class="fleet-hero-tagline"
+                data-en="Explore Tanzania in comfort, safety &amp; style with our custom-built 4x4 Toyota Land Cruisers."
+                data-sw="Chunguza Tanzania kwa faraja, usalama na mtindo na Toyota Land Cruiser zetu maalum za 4x4 zilizoundwa kwa safari.">
+                Explore Tanzania in comfort, safety &amp; style with our custom-built 4x4 Toyota Land Cruisers.
+            </p>
+            <div class="fleet-hero-actions">
+                <a href="#features" class="btn-hero-primary" data-en="EXPLORE VEHICLE DESIGN"
+                    data-sw="CHUNGUZA MUUNDO WA GARI">EXPLORE VEHICLE DESIGN</a>
+                <a href="enquire.html" class="btn-hero-outline" data-en="PLAN A SAFARI" data-sw="PANGA SAFARI">PLAN A
+                    SAFARI</a>
+            </div>
+        </div>
+        <div class="fleet-hero-scroll">
+            <span>SCROLL</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- ══ Stat Bar ══ -->
+    <div class="stat-bar">
+        <div class="container">
+            <div class="stat-bar-grid">
+                <div class="stat-bar-item">
+                    <span class="num">4x4</span>
+                    <span class="lbl" data-en="All-Terrain Capability" data-sw="Uwezo wa Kupita Kila Eneo">All-Terrain
+                        Capability</span>
+                </div>
+                <div class="stat-bar-item">
+                    <span class="num">100%</span>
+                    <span class="lbl" data-en="Safety Inspection" data-sw="Ukaguzi wa Usalama">Safety Inspection</span>
+                </div>
+                <div class="stat-bar-item">
+                    <span class="num">Unlimited</span>
+                    <span class="lbl" data-en="Device Charging Power" data-sw="Nishati ya Kuchaji Vifaa">Device Charging
+                        Power</span>
+                </div>
+                <div class="stat-bar-item">
+                    <span class="num">24/7</span>
+                    <span class="lbl" data-en="Emergency Assistance" data-sw="Msaada wa Dharura">Emergency
+                        Assistance</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ Editorial Intro ══ -->
+    <section class="editorial-intro">
+        <div class="container">
+            <div class="editorial-grid">
+                <div>
+                    <span class="editorial-label" data-en="EXPLORE IN STYLE" data-sw="SAFIRI KWA MTINDO">EXPLORE IN
+                        STYLE</span>
+                    <h2 class="editorial-heading" data-en="Explore Tanzania in Comfort, Safety &amp; Style"
+                        data-sw="Chunguza Tanzania kwa Faraja, Usalama na Mtindo">
+                        Explore Tanzania in Comfort, Safety &amp; Style
+                    </h2>
+                    <div class="editorial-body">
+                        <p data-en="A great safari is not only about the destination—it's also about the journey. Our safari vehicles are carefully selected and professionally maintained to provide a comfortable, safe, and unforgettable wildlife experience across Tanzania's most iconic destinations."
+                            data-sw="Safari nzuri si tu kuhusu unakoenda—bali pia ni kuhusu safari yenyewe. Magari yetu ya safari yamechaguliwa kwa uangalifu na kufanyiwa matengenezo ya kitaalamu ili kutoa uzoefu mzuri, salama, na usiosahaulika wa wanyamapori katika maeneo maarufu zaidi ya Tanzania.">
+                            A great safari is not only about the destination—it's also about the journey. Our safari
+                            vehicles are carefully selected and professionally maintained to provide a comfortable,
+                            safe, and unforgettable wildlife experience across Tanzania's most iconic destinations.
+                        </p>
+                        <p data-en="Built specifically for African safaris, our vehicles are designed to navigate diverse terrains while offering exceptional game-viewing opportunities. Whether you're crossing the endless plains of the Serengeti, exploring the Ngorongoro Crater, or discovering the hidden gems of Tarangire and Lake Manyara, you'll travel with confidence and comfort every step of the way."
+                            data-sw="Yameundwa mahususi kwa ajili ya safari za Afrika, magari yetu yameundwa kupita maeneo tofauti huku yakitoa fursa za kipekee za kutazama wanyama. Iwe unavuka mapana ya Serengeti, unachunguza Bonde la Ngorongoro, au unagundua maajabu yaliyofichika ya Tarangire na Ziwa Manyara, utasafiri kwa kujiamini na faraja kila hatua.">
+                            Built specifically for African safaris, our vehicles are designed to navigate diverse
+                            terrains while offering exceptional game-viewing opportunities. Whether you're crossing the
+                            endless plains of the Serengeti, exploring the Ngorongoro Crater, or discovering the hidden
+                            gems of Tarangire and Lake Manyara, you'll travel with confidence and comfort every step of
+                            the way.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div class="editorial-image-wrapper">
+                        <img src="assets/05TMMT-IM1105-mara-mara-tented-lodge-1475.jpg" alt="Safari Land Cruiser Fleet">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ Vehicle Features ══ -->
+    <section class="vehicle-features" id="features">
+        <div class="container">
+            <div class="section-top">
+                <span class="sub-heading" data-en="VEHICLE DESIGN" data-sw="MUUNDO WA GARI">VEHICLE DESIGN</span>
+                <h2 data-en="Designed for the Ultimate Safari Experience" data-sw="Yameundwa kwa Uzoefu Bora wa Safari">
+                    Designed for the Ultimate Safari Experience</h2>
+            </div>
+
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-card-icon"><i class="fas fa-truck-pickup"></i></div>
+                    <h3 data-en="🚙 4×4 Toyota Land Cruisers" data-sw="🚙 Toyota Land Cruiser 4×4">🚙 4×4 Toyota Land
+                        Cruisers</h3>
+                    <p data-en="Purpose-built safari vehicles capable of handling all road and weather conditions."
+                        data-sw="Magari maalum ya safari yenye uwezo wa kuhimili barabara na hali zote za hewa.">
+                        Purpose-built safari vehicles capable of handling all road and weather conditions.
+                    </p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-card-icon"><i class="fas fa-binoculars"></i></div>
+                    <h3 data-en="🔭 Pop-Up Viewing Roof" data-sw="🔭 Paa Inayofunguka">🔭 Pop-Up Viewing Roof</h3>
+                    <p data-en="Enjoy panoramic views and incredible wildlife photography opportunities from every angle."
+                        data-sw="Furahia mandhari ya kuvutia na fursa nzuri za kupiga picha kutoka kila upande.">
+                        Enjoy panoramic views and incredible wildlife photography opportunities from every angle.
+                    </p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-card-icon"><i class="fas fa-chair"></i></div>
+                    <h3 data-en="💺 Comfortable Seating" data-sw="💺 Viti vya Starehe">💺 Comfortable Seating</h3>
+                    <p data-en="Spacious seating arrangements designed for long-distance travel and maximum comfort."
+                        data-sw="Viti vyenye nafasi kubwa vilivyoundwa kwa safari za mbali na faraja ya juu.">
+                        Spacious seating arrangements designed for long-distance travel and maximum comfort.
+                    </p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-card-icon"><i class="fas fa-camera"></i></div>
+                    <h3 data-en="📸 Photography-Friendly Design" data-sw="📸 Muundo wa Kupiga Picha">📸
+                        Photography-Friendly Design</h3>
+                    <p data-en="Large windows and elevated viewing positions ensure every guest has a great view."
+                        data-sw="Dirisha kubwa na nafasi za juu za kutazama zinahakikisha kila mgeni anaona vizuri.">
+                        Large windows and elevated viewing positions ensure every guest has a great view.
+                    </p>
+                </div>
+                <!-- Feature 5 -->
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-card-icon"><i class="fas fa-charging-station"></i></div>
+                    <h3 data-en="🔌 Charging Facilities" data-sw="🔌 Vifaa vya Kuchaji">🔌 Charging Facilities</h3>
+                    <p data-en="Keep your cameras, phones, and devices powered throughout your adventure."
+                        data-sw="Weka kamera, simu, na vifaa vyako na nguvu wakati wote wa safari yako.">
+                        Keep your cameras, phones, and devices powered throughout your adventure.
+                    </p>
+                </div>
+                <!-- Feature 6 -->
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-card-icon"><i class="fas fa-tint"></i></div>
+                    <h3 data-en="💧 Complimentary Drinking Water" data-sw="💧 Maji ya Kunywa ya Bure">💧 Complimentary
+                        Drinking Water</h3>
+                    <p data-en="Stay refreshed during game drives and excursions."
+                        data-sw="Baki na nguvu na kuburudika wakati wa safari za wanyamapori na matembezi.">
+                        Stay refreshed during game drives and excursions.
+                    </p>
+                </div>
+                <!-- Feature 7 -->
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-card-icon"><i class="fas fa-suitcase"></i></div>
+                    <h3 data-en="🧳 Ample Storage Space" data-sw="🧳 Nafasi Kubwa ya Mizigo">🧳 Ample Storage Space</h3>
+                    <p data-en="Convenient luggage compartments for a hassle-free travel experience."
+                        data-sw="Sehemu rahisi za mizigo kwa uzoefu wa kusafiri bila wasiwasi.">
+                        Convenient luggage compartments for a hassle-free travel experience.
+                    </p>
+                </div>
+                <!-- Feature 8 -->
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-card-icon"><i class="fas fa-satellite-dish"></i></div>
+                    <h3 data-en="📡 Communication &amp; Navigation" data-sw="📡 Mawasiliano na Urambazaji">📡
+                        Communication &amp; Navigation</h3>
+                    <p data-en="Modern equipment ensures safety and efficient travel throughout your safari."
+                        data-sw="Vifaa vya kisasa vinahakikisha usalama na usafiri mzuri wakati wote wa safari.">
+                        Modern equipment ensures safety and efficient travel throughout your safari.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ Professional Safari Guides ══ -->
+    <section class="professional-guides">
+        <div class="container">
+            <div class="guide-grid">
+                <div class="guide-img scroll-reveal-left">
+                    <img src="assets/07TMMT-IM1107-mara-mara-tented-lodge-1475.jpg"
+                        alt="Tanzania Professional Safari Guide">
+                </div>
+                <div class="guide-text scroll-reveal-right">
+                    <span class="sub-heading" data-en="EXPERT DRIVERS" data-sw="MADEREVA WATAALAMU">EXPERT
+                        DRIVERS</span>
+                    <h2 data-en="Professional Safari Guides" data-sw="Waongozaji Wataalamu wa Safari">Professional
+                        Safari Guides</h2>
+                    <p data-en="Our experienced driver-guides are passionate about Tanzania's wildlife, landscapes, and culture. Their local expertise and extensive knowledge help transform every game drive into a unique and educational experience."
+                        data-sw="Dereva-waongozaji wetu wenye uzoefu wana shauku juu ya wanyamapori, mandhari, na utamaduni wa Tanzania. Ujuzi wao wa ndani na maarifa mapana husaidia kubadilisha kila safari ya porini kuwa uzoefu wa kipekee na wa kuelimisha.">
+                        Our experienced driver-guides are passionate about Tanzania's wildlife, landscapes, and culture.
+                        Their local expertise and extensive knowledge help transform every game drive into a unique and
+                        educational experience.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ Safety Is Our Priority ══ -->
+    <section class="fleet-safety">
+        <div class="container">
+            <div class="section-top">
+                <span class="sub-heading" data-en="ZERO COMPROMISE" data-sw="BILA KULEGEZA KAMWE">ZERO COMPROMISE</span>
+                <h2 data-en="Safety Is Our Priority" data-sw="Usalama ndio Kipaumbele Chetu">Safety Is Our Priority</h2>
+                <p class="section-sub"
+                    data-en="We maintain the highest standards of vehicle safety and reliability through rigorous checks and processes."
+                    data-sw="Tunadumisha viwango vya juu vya usalama na uaminifu wa magari kupitia ukaguzi mkali na michakato ya mara kwa mara.">
+                    We maintain the highest standards of vehicle safety and reliability through rigorous checks and
+                    processes.
+                </p>
+            </div>
+
+            <div class="safety-grid">
+                <div class="safety-card scroll-reveal">
+                    <div class="safety-card-icon"><i class="fas fa-check-double"></i></div>
+                    <h3 data-en="Regular mechanical inspections" data-sw="Ukaguzi wa mitambo mara kwa mara">Regular
+                        mechanical inspections</h3>
+                </div>
+                <div class="safety-card scroll-reveal">
+                    <div class="safety-card-icon"><i class="fas fa-tools"></i></div>
+                    <h3 data-en="Professional maintenance schedules" data-sw="Ratiba za matengenezo ya kitaalamu">
+                        Professional maintenance schedules</h3>
+                </div>
+                <div class="safety-card scroll-reveal">
+                    <div class="safety-card-icon"><i class="fas fa-id-card"></i></div>
+                    <h3 data-en="Fully licensed &amp; experienced drivers" data-sw="Madereva wenye leseni na uzoefu">
+                        Fully licensed &amp; experienced drivers</h3>
+                </div>
+                <div class="safety-card scroll-reveal">
+                    <div class="safety-card-icon"><i class="fas fa-phone-square-alt"></i></div>
+                    <h3 data-en="Emergency communication equipment" data-sw="Vifaa vya mawasiliano ya dharura">Emergency
+                        communication equipment</h3>
+                </div>
+                <div class="safety-card scroll-reveal">
+                    <div class="safety-card-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3 data-en="Comprehensive safety procedures" data-sw="Taratibu kamili za usalama">Comprehensive
+                        safety procedures</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ══ Footer ══ -->
+    <!-- Footer Contact Info -->
+    <div class="footer-top">
+        <div class="container">
+            <h2><i class="fas fa-phone-alt"></i> +255 747 115 390</h2>
+            <a href="enquire.html" class="btn enquire-btn" data-en="CONTACT US TODAY!" data-sw="WASILIANA NASI LEO!">CONTACT US TODAY!</a>
+        </div>
+    </div>
+
+    <!-- Final Call to Action -->
+    <section class="section cta-section" style="background: var(--primary-gradient); padding: 50px 0; text-align: center; color: white; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <div class="container" style="position: relative; z-index: 2;">
+            <span class="sub-heading" style="color:var(--accent-gold); font-size: 0.8rem; letter-spacing: 2px;" data-en="YOUR JOURNEY TO AFRICA STARTS HERE" data-sw="SAFARI YAKO YA AFRIKA INAANZA HAPA">YOUR JOURNEY TO AFRICA STARTS HERE</span>
+            <h2 style="font-size: clamp(1.5rem, 3vw, 2.2rem); color: white; margin: 10px 0 16px;" data-en="Are you ready to explore Tanzania?" data-sw="Uko Tayari Kuichunguza Tanzania?">Are you ready to explore Tanzania?</h2>
+            
+            <p class="cta-description" style="max-width: 650px; margin: 0 auto 25px; font-size:0.9rem; line-height: 1.65; opacity: 0.9;">
+                <span class="cta-hide-mobile" data-en="Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. " data-sw="Fikiria kushuhudia uwindaji wa simba wakati wa machweo, kutazama tembo wakizurura kwa uhuru kwenye savanna zisizo na mwisho, kujionea Uhamiaji Mkuu, au kupumzika kwenye mchanga mweupe wa Zanzibar. ">Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. </span>
+                <span data-en="Let Century Adventures make those dreams come true." data-sw="Ruhusu Century Adventures kufanya ndoto hizo ziwe kweli.">Let Century Adventures make those dreams come true.</span>
+            </p>
+
+            <div class="cta-action-grid" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <a href="enquire.html" class="btn btn-primary cta-circle-btn" style="background: var(--accent-gold); color: #002b18; font-weight:800; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; text-decoration: none;" data-en="Plan Your Trip" data-sw="Panga Safari Yako">Plan Your Trip</a>
+                <a href="enquire.html" class="btn btn-outline cta-circle-btn secondary" style="border: 1px solid rgba(255,255,255,0.6); color: white; font-weight:700; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; background: transparent; text-decoration: none;" data-en="Request a Free Quote" data-sw="Omba Nukuu ya Bure">Request a Free Quote</a>
+            </div>
+            
+            <div style="margin-top: 18px;">
+                <a href="contact.html" style="color: var(--accent-gold); font-weight: 700; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.5px;" data-en="Contact Our Experts &rarr;" data-sw="Wasiliana na Wataalamu Wetu &rarr;">Contact Our Experts &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col info-col">
+                <h3 data-en="CONTACT US" data-sw="WASILIANA NASI">CONTACT US</h3>
+                <p><strong>Century Adventures</strong></p>
+                <p data-en="Asasi Tower, 4th Floor" data-sw="Asasi Tower, Ghorofa ya 4">Asasi Tower, 4th Floor</p>
+                <p data-en="Ohio Street" data-sw="Mtaa wa Ohio">Ohio Street</p>
+                <p><i class="fas fa-map-marker-alt"></i> Dar es Salaam, Tanzania</p>
+                <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/255747115390" target="_blank" style="color: inherit;">+255 747 115 390</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@centuryadventures.com" style="color: inherit;">info@centuryadventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:bookings@centuryadventures.com" style="color: inherit;">bookings@centuryadventures.com</a></p>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="POPULAR PLACES" data-sw="MAENEO MAARUFU">POPULAR PLACES</h3>
+                <ul>
+                    <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                    <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                    <li><a href="selous.html" data-en="Nyerere Park" data-sw="Hifadhi ya Nyerere">Nyerere Park</a></li>
+                    <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                    <li><a href="mikumi.html" data-en="Mikumi Park" data-sw="Hifadhi ya Mikumi">Mikumi Park</a></li>
+                    <li><a href="ngorongoro.html" data-en="Ngorongoro" data-sw="Ngorongoro">Ngorongoro</a></li>
+                    <li><a href="manyara.html" data-en="Manyara National Park" data-sw="Hifadhi ya Manyara">Manyara National Park</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL EXPERIENCE" data-sw="UZOEFU WA KUSAFIRI">TRAVEL EXPERIENCE</h3>
+                <ul>
+                    <li><a href="family-safaris.html" data-en="Family Trips" data-sw="Safari za Familia">Family Trips</a></li>
+                    <li><a href="honeymoon-safaris.html" data-en="Honeymoon Trips" data-sw="Safari za Fungate">Honeymoon Trips</a></li>
+                    <li><a href="migration-safaris.html" data-en="Migration Trips" data-sw="Safari za Uhamiaji">Migration Trips</a></li>
+                    <li><a href="volunteer.html" data-en="Volunteer Programs" data-sw="Mipango ya Kujitolea">Volunteer Programs</a></li>
+                    <li><a href="zanzibar-beach.html" data-en="Zanzibar Beach Holiday" data-sw="Likizo ya Pwani ya Zanzibar">Zanzibar Beach Holiday</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL RESOURCES" data-sw="MAARIFA YA SAFARI">TRAVEL RESOURCES</h3>
+                <ul>
+                    <li><a href="blog.html" data-en="Travel Blog" data-sw="Blogu yetu">Travel Blog</a></li>
+                    <li><a href="faq.html" data-en="FAQs" data-sw="Maswali ya Kawaida">FAQs</a></li>
+                    <li><a href="gallery.html" data-en="Photo Gallery" data-sw="Picha za Safari">Photo Gallery</a></li>
+                    <li><a href="testimonials.html" data-en="Testimonials" data-sw="Shuhuda">Testimonials</a></li>
+                    <li><a href="best-time-to-visit-tanzania.html" data-en="Best Time to Visit" data-sw="Wakati Bora wa Kuja">Best Time to Visit</a></li>
+                    <li><a href="health-safety-tanzania.html" data-en="Health &amp; Safety" data-sw="Afya na Usalama">Health &amp; Safety</a></li>
+                    <li><a href="obtaining-visa-tanzania.html" data-en="Visa Information" data-sw="Visa ya Safari">Visa Information</a></li>
+                    <li><a href="solo-female-travel-tanzania.html" data-en="Solo Female Travel" data-sw="Safari ya Wanawake">Solo Female Travel</a></li>
+                    <li><a href="what-to-wear-safari.html" data-en="Safari Packing Guide" data-sw="Nguo za Safari">Safari Packing Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <div class="tripadvisor-card">
+                    <img src="https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-66827-5.svg" alt="TripAdvisor">
+                    <h4 data-en="TripAdvisor Century Adventures" data-sw="TripAdvisor Century Adventures">TripAdvisor Century Adventures</h4>
+                    <p data-en="Ranked #1 on TripAdvisor" data-sw="Imeorodheshwa #1 TripAdvisor">Ranked #1 on TripAdvisor</p>
+                    <a href="https://www.tripadvisor.com/" target="_blank" class="btn btn-small" data-en="TripAdvisor Give Feedback Century Adventures" data-sw="TripAdvisor Toa Maoni Century Adventures">TripAdvisor Give Feedback Century Adventures</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61577731823809"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@CenturyAdventures" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/century_adventures?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/255747115390"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:info@centuryadventures.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; Copyright 2012 - 2026 | Century Adventures</p>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

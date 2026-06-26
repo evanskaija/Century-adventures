@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serengeti National Park | Century Adventures</title>
+    <meta name="description" content="Explore Serengeti National Park. The Great Migration, endless plains, and extraordinary wildlife sightings in Africa's finest safari destination.">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        (function() {
+            const theme = localStorage.getItem('century-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Serengeti National Park | Century Adventures">
+    <meta property="og:description" content="Explore Serengeti National Park. The Great Migration, endless plains, and extraordinary wildlife sightings in Africa's finest safari destination.">
+    <meta property="og:image" content="assets/logo.png">
+    <meta property="og:site_name" content="Century Adventures">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="assets/logo.png">
+    <meta name="twitter:title" content="Serengeti National Park | Century Adventures">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="scroll-progress"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html"><img src="assets/logo.png" alt="Century Adventures Logo"></a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html" data-en="Home" data-sw="Nyumbani">Home</a></li>
+                    <li><a href="about.html" data-en="About Us" data-sw="Kuhusu Sisi">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="active" data-en="Destinations" data-sw="Maeneo">Destinations <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="katavi.html" data-en="Katavi National Park" data-sw="Hifadhi ya Katavi">Katavi National Park</a></li>
+                            <li><a href="selous.html" data-en="Selous Game Reserve" data-sw="Hifadhi ya Selous">Selous Game Reserve</a></li>
+                            <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                            <li><a href="mikumi.html" data-en="Mikumi National Park" data-sw="Hifadhi ya Mikumi">Mikumi National Park</a></li>
+                            <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                            <li><a href="gombe.html" data-en="Gombe Stream National Park" data-sw="Hifadhi ya Gombe">Gombe Stream National Park</a></li>
+                            <li><a href="ngorongoro.html" data-en="Ngorongoro Conservation Area" data-sw="Ngorongoro">Ngorongoro Conservation Area</a></li>
+                            <li><a href="manyara.html" data-en="Lake Manyara National Park" data-sw="Hifadhi ya Manyara">Lake Manyara National Park</a></li>
+                            <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="safaris.html" data-en="TOURS & SAFARIS" data-sw="SAFARI NA ZIARA">TOURS & SAFARIS</a></li>
+                    <li><a href="experiences.html" data-en="Experiences" data-sw="Uzoefu">Experiences</a></li>
+                    <li><a href="volunteer.html" data-en="Volunteer" data-sw="Kujitolea">Volunteer</a></li>
+                    <li><a href="vehicles.html" data-en="Safari Vehicles" data-sw="Magari ya Safari">Safari Vehicles</a></li>
+                    <li><a href="contact.html" data-en="Contact Us" data-sw="Wasiliana Nasi">Contact Us</a></li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Hamburger Menu -->
+            <button class="mobile-toggle" id="mobile-toggle" onclick="toggleMobileMenu()" aria-label="Open navigation menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <div class="header-actions">
+                <div class="header-toggles">
+                    <button class="toggle-btn lang-toggle" onclick="toggleLang()">SW</button>
+                    <button class="toggle-btn theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+                </div>
+                <a href="enquire.html" class="btn btn-primary enquire-btn" data-en="ENQUIRE" data-sw="ULIZA">ENQUIRE</a>
+            </div>
+        </div>
+    </header>
+
+    
+    <!-- Page Hero -->
+    <section class="hero page-hero" style="background-image: url('assets/KTA13Serengeti Nationa.webp'); height: 60vh;">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 data-en="Serengeti National Park" data-sw="Hifadhi ya Taifa ya Serengeti">Serengeti National Park</h1>
+            <p class="hero-tagline" data-en="Endless, open plains home to astonishing quantities of wildlife." data-sw="Nyanda zisizo na mwisho na wazi, makazi ya wanyamapori wengi wa kushangaza.">Endless, open plains home to astonishing quantities of wildlife.</p>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="section about-intro">
+        <div class="container">
+            <div class="experts-grid">
+                <div class="experts-text">
+                    <span class="sub-heading" data-en="OVERVIEW" data-sw="MUHTASARI">OVERVIEW</span>
+                    <h2 data-en="The Finest Safari Experience" data-sw="Uzoefu Bora wa Safari">The Finest Safari Experience</h2>
+                    
+                        <p data-en="At 14,763 square kilometres in size, A Serengeti Safari is arguably the finest safari experience directly in a national park in Africa and offers a wealth of wildlife viewing opportunities. Pretty much every large animal in East Africa can be regularly seen in the national park or wider ecosystem." data-sw="Kwa ukubwa wa kilomita za mraba 14,763, Safari ya Serengeti bila shaka ni uzoefu bora wa safari moja kwa moja katika hifadhi ya taifa barani Afrika na inatoa fursa nyingi za kuangalia wanyamapori. Takriban kila mnyama mkubwa katika Afrika Mashariki anaweza kuonekana mara kwa mara katika hifadhi ya taifa au mfumo mpana wa ikolojia.">At 14,763 square kilometres in size, A Serengeti Safari is arguably the finest safari experience directly in a national park in Africa and offers a wealth of wildlife viewing opportunities. Pretty much every large animal in East Africa can be regularly seen in the national park or wider ecosystem.</p>
+                    
+                        <p data-en="When you include all the contiguous protected areas, of which Ngorongoro is one of the most noteworthy, the total size of the entire Serengeti-Mara ecosystem is a staggering 30,000 square kilometres packed choc-full of truly extraordinary wildlife sightings." data-sw="Unapojumuisha maeneo yote yaliyohifadhiwa yanayopakana, ambayo Ngorongoro ni mojawapo ya mashuhuri zaidi, ukubwa wa jumla wa mfumo mzima wa ikolojia wa Serengeti-Mara ni kilomita za mraba 30,000 zilizojaa maonyesho ya wanyamapori ya kushangaza kweli.">When you include all the contiguous protected areas, of which Ngorongoro is one of the most noteworthy, the total size of the entire Serengeti-Mara ecosystem is a staggering 30,000 square kilometres packed choc-full of truly extraordinary wildlife sightings.</p>
+                    
+                        <p data-en="Renowned for its predators - especially lions, leopards and cheetahs - and with plenty of elephants favouring the western woodlands of Grumeti, a Serengeti Safari experience dazzles even the most hardened safari critics." data-sw="Inajulikana sana kwa wanyama wake wawindaji - hasa simba, chui na duma - na kukiwa na tembo wengi wanaopendelea misitu ya magharibi ya Grumeti, uzoefu wa Safari ya Serengeti huwashangaza hata wakosoaji wagumu wa safari.">Renowned for its predators - especially lions, leopards and cheetahs - and with plenty of elephants favouring the western woodlands of Grumeti, a Serengeti Safari experience dazzles even the most hardened safari critics.</p>
+                    
+                </div>
+                <div class="experts-image" style="display: flex; flex-direction: column; gap: 20px;">
+                    <img src="assets/KTA13Serengeti Nationa.webp" alt="Landscape" style="border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wildlife -->
+    <section class="section" style="background-color: var(--section-bg);">
+        <div class="container">
+            <div class="experts-grid" style="align-items: center;">
+                <div class="experts-image" style="order: -1;">
+                    <img src="assets/KTA13Serengeti Nationa.webp" alt="Wildlife" style="border-radius: 10px;">
+                </div>
+                <div class="experts-text">
+                    <span class="sub-heading" data-en="WILDLIFE" data-sw="WANYAMAPORI">WILDLIFE</span>
+                    <h2 data-en="The Great Migration" data-sw="Uhamiaji Mkuu">The Great Migration</h2>
+                    
+                        <p data-en="The vast and beautiful Serengeti is one of Africa's most awe-inspiring safari areas. The sheer volume of animals here is extraordinary: estimates suggest around one million wildebeest, hundreds of thousands of zebra and Thomson's gazelle, and tens of thousands of impala, Grant's gazelle, topi, hartebeest, eland and other antelopes live here - all hunted by the predators for which these plains are famous." data-sw="Serengeti kubwa na nzuri ni mojawapo ya maeneo ya safari yanayostaajabisha sana barani Afrika. Kiasi kikubwa cha wanyama hapa ni cha kushangaza: makadirio yanapendekeza karibu nyumbu milioni moja, mamia ya maelfu ya punda milia na swala wa Thomson, na makumi ya maelfu ya swala, swala wa Grant, nyati, kongoni, pofu na swala wengine wanaishi hapa - wote wakiwindwa na wawindaji ambao nyanda hizi ni maarufu kwao.">The vast and beautiful Serengeti is one of Africa's most awe-inspiring safari areas. The sheer volume of animals here is extraordinary: estimates suggest around one million wildebeest, hundreds of thousands of zebra and Thomson's gazelle, and tens of thousands of impala, Grant's gazelle, topi, hartebeest, eland and other antelopes live here - all hunted by the predators for which these plains are famous.</p>
+                    
+                        <p data-en="Some of these animals resides permanently in home areas, which are excellent for safaris all year round. But most of the wildebeest and good numbers of other species are permanently on the move in the Great Migration - a remarkable spectacle that is one of the greatest wildlife shows on earth." data-sw="Baadhi ya wanyama hawa wanaishi kwa kudumu katika maeneo ya nyumbani, ambayo ni bora kwa safari mwaka mzima. Lakini wengi wa nyumbu na idadi nzuri ya spishi zingine wanatembea kila wakati katika 'Uhamiaji Mkuu' - tamasha la ajabu ambalo ni mojawapo ya maonyesho makubwa ya wanyamapori duniani.">Some of these animals resides permanently in home areas, which are excellent for safaris all year round. But most of the wildebeest and good numbers of other species are permanently on the move in the Great Migration - a remarkable spectacle that is one of the greatest wildlife shows on earth.</p>
+                    
+                        <p data-en="If you plan carefully, it's still possible to witness this in wild and remote areas without too many fellow enthusiasts crowding the scene." data-sw="Ikiwa unapanga kwa uangalifu, bado inawezekana kushuhudia hii katika maeneo ya mwituni na ya mbali bila wapenda shauku wenzako wengi kusonga mbele.">If you plan carefully, it's still possible to witness this in wild and remote areas without too many fellow enthusiasts crowding the scene.</p>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Tips -->
+    <section class="section travel-tips-section">
+        <div class="container">
+            <h2 data-en="Planning Your Visit" data-sw="Kupanga Ziara Yako" style="text-align: center; margin-bottom: 40px;">Planning Your Visit</h2>
+            <div class="tips-grid">
+                
+                <div class="tip-card animate-in">
+                    <div class="tip-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <h3 data-en="Best time to visit" data-sw="Wakati mzuri wa kutembelea">Best time to visit</h3>
+                    <p data-en="The best times to visit are from Jan to Feb or June through Sept. Plan around The Great Migration: winter is best for Southern Serengeti, while Western/Northern Serengeti are best for summer/autumn." data-sw="Nyakati bora za kutembelea ni kuanzia Jan hadi Feb au Juni hadi Sept. Panga kulingana na Uhamiaji Mkuu: msimu wa baridi ni bora kwa Serengeti ya Kusini, wakati Serengeti ya Magharibi/Kaskazini ni bora kwa majira ya joto/vuli.">The best times to visit are from Jan to Feb or June through Sept. Plan around The Great Migration: winter is best for Southern Serengeti, while Western/Northern Serengeti are best for summer/autumn.</p>
+                </div>
+                
+                <div class="tip-card animate-in">
+                    <div class="tip-icon"><i class="fas fa-sun"></i></div>
+                    <h3 data-en="Weather & Climate" data-sw="Hali ya Hewa">Weather & Climate</h3>
+                    <p data-en="Temperatures remain relatively constant with daytime highs in the 80s. April and May see the most rainfall, and many lodges and camps close for this slower season." data-sw="Viwango vya joto hubaki thabiti kiasi na viwango vya juu vya mchana katika 80s. Aprili na Mei huona mvua nyingi, na kambi nyingi hufungwa kwa msimu huu wa polepole.">Temperatures remain relatively constant with daytime highs in the 80s. April and May see the most rainfall, and many lodges and camps close for this slower season.</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+<!-- Footer Contact Info -->
+    <div class="footer-top">
+        <div class="container">
+            <h2><i class="fas fa-phone-alt"></i> +255 747 115 390</h2>
+            <a href="enquire.html" class="btn enquire-btn" data-en="CONTACT US TODAY!" data-sw="WASILIANA NASI LEO!">CONTACT US TODAY!</a>
+        </div>
+    </div>
+
+    <!-- Final Call to Action -->
+    <section class="section cta-section" style="background: var(--primary-gradient); padding: 50px 0; text-align: center; color: white; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <div class="container" style="position: relative; z-index: 2;">
+            <span class="sub-heading" style="color:var(--accent-gold); font-size: 0.8rem; letter-spacing: 2px;" data-en="YOUR JOURNEY TO AFRICA STARTS HERE" data-sw="SAFARI YAKO YA AFRIKA INAANZA HAPA">YOUR JOURNEY TO AFRICA STARTS HERE</span>
+            <h2 style="font-size: clamp(1.5rem, 3vw, 2.2rem); color: white; margin: 10px 0 16px;" data-en="Are you ready to explore Tanzania?" data-sw="Uko Tayari Kuichunguza Tanzania?">Are you ready to explore Tanzania?</h2>
+            
+            <p class="cta-description" style="max-width: 650px; margin: 0 auto 25px; font-size:0.9rem; line-height: 1.65; opacity: 0.9;">
+                <span class="cta-hide-mobile" data-en="Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. " data-sw="Fikiria kushuhudia uwindaji wa simba wakati wa machweo, kutazama tembo wakizurura kwa uhuru kwenye savanna zisizo na mwisho, kujionea Uhamiaji Mkuu, au kupumzika kwenye mchanga mweupe wa Zanzibar. ">Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. </span>
+                <span data-en="Let Century Adventures make those dreams come true." data-sw="Ruhusu Century Adventures kufanya ndoto hizo ziwe kweli.">Let Century Adventures make those dreams come true.</span>
+            </p>
+
+            <div class="cta-action-grid" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <a href="enquire.html" class="btn btn-primary cta-circle-btn" style="background: var(--accent-gold); color: #002b18; font-weight:800; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; text-decoration: none;" data-en="Plan Your Trip" data-sw="Panga Safari Yako">Plan Your Trip</a>
+                <a href="enquire.html" class="btn btn-outline cta-circle-btn secondary" style="border: 1px solid rgba(255,255,255,0.6); color: white; font-weight:700; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; background: transparent; text-decoration: none;" data-en="Request a Free Quote" data-sw="Omba Nukuu ya Bure">Request a Free Quote</a>
+            </div>
+            
+            <div style="margin-top: 18px;">
+                <a href="contact.html" style="color: var(--accent-gold); font-weight: 700; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.5px;" data-en="Contact Our Experts &rarr;" data-sw="Wasiliana na Wataalamu Wetu &rarr;">Contact Our Experts &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col info-col">
+                <h3 data-en="CONTACT US" data-sw="WASILIANA NASI">CONTACT US</h3>
+                <p><strong>Century Adventures</strong></p>
+                <p data-en="Asasi Tower, 4th Floor" data-sw="Asasi Tower, Ghorofa ya 4">Asasi Tower, 4th Floor</p>
+                <p data-en="Ohio Street" data-sw="Mtaa wa Ohio">Ohio Street</p>
+                <p><i class="fas fa-map-marker-alt"></i> Dar es Salaam, Tanzania</p>
+                <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/255747115390" target="_blank" style="color: inherit;">+255 747 115 390</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@centuryadventures.com" style="color: inherit;">info@centuryadventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:bookings@centuryadventures.com" style="color: inherit;">bookings@centuryadventures.com</a></p>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="POPULAR PLACES" data-sw="MAENEO MAARUFU">POPULAR PLACES</h3>
+                <ul>
+                    <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                    <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                    <li><a href="selous.html" data-en="Nyerere Park" data-sw="Hifadhi ya Nyerere">Nyerere Park</a></li>
+                    <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                    <li><a href="mikumi.html" data-en="Mikumi Park" data-sw="Hifadhi ya Mikumi">Mikumi Park</a></li>
+                    <li><a href="ngorongoro.html" data-en="Ngorongoro" data-sw="Ngorongoro">Ngorongoro</a></li>
+                    <li><a href="manyara.html" data-en="Manyara National Park" data-sw="Hifadhi ya Manyara">Manyara National Park</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL EXPERIENCE" data-sw="UZOEFU WA KUSAFIRI">TRAVEL EXPERIENCE</h3>
+                <ul>
+                    <li><a href="family-safaris.html" data-en="Family Trips" data-sw="Safari za Familia">Family Trips</a></li>
+                    <li><a href="honeymoon-safaris.html" data-en="Honeymoon Trips" data-sw="Safari za Fungate">Honeymoon Trips</a></li>
+                    <li><a href="migration-safaris.html" data-en="Migration Trips" data-sw="Safari za Uhamiaji">Migration Trips</a></li>
+                    <li><a href="volunteer.html" data-en="Volunteer Programs" data-sw="Mipango ya Kujitolea">Volunteer Programs</a></li>
+                    <li><a href="zanzibar-beach.html" data-en="Zanzibar Beach Holiday" data-sw="Likizo ya Pwani ya Zanzibar">Zanzibar Beach Holiday</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL RESOURCES" data-sw="MAARIFA YA SAFARI">TRAVEL RESOURCES</h3>
+                <ul>
+                    <li><a href="blog.html" data-en="Travel Blog" data-sw="Blogu yetu">Travel Blog</a></li>
+                    <li><a href="faq.html" data-en="FAQs" data-sw="Maswali ya Kawaida">FAQs</a></li>
+                    <li><a href="gallery.html" data-en="Photo Gallery" data-sw="Picha za Safari">Photo Gallery</a></li>
+                    <li><a href="testimonials.html" data-en="Testimonials" data-sw="Shuhuda">Testimonials</a></li>
+                    <li><a href="best-time-to-visit-tanzania.html" data-en="Best Time to Visit" data-sw="Wakati Bora wa Kuja">Best Time to Visit</a></li>
+                    <li><a href="health-safety-tanzania.html" data-en="Health &amp; Safety" data-sw="Afya na Usalama">Health &amp; Safety</a></li>
+                    <li><a href="obtaining-visa-tanzania.html" data-en="Visa Information" data-sw="Visa ya Safari">Visa Information</a></li>
+                    <li><a href="solo-female-travel-tanzania.html" data-en="Solo Female Travel" data-sw="Safari ya Wanawake">Solo Female Travel</a></li>
+                    <li><a href="what-to-wear-safari.html" data-en="Safari Packing Guide" data-sw="Nguo za Safari">Safari Packing Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <div class="tripadvisor-card">
+                    <img src="https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-66827-5.svg" alt="TripAdvisor">
+                    <h4 data-en="TripAdvisor Century Adventures" data-sw="TripAdvisor Century Adventures">TripAdvisor Century Adventures</h4>
+                    <p data-en="Ranked #1 on TripAdvisor" data-sw="Imeorodheshwa #1 TripAdvisor">Ranked #1 on TripAdvisor</p>
+                    <a href="https://www.tripadvisor.com/" target="_blank" class="btn btn-small" data-en="TripAdvisor Give Feedback Century Adventures" data-sw="TripAdvisor Toa Maoni Century Adventures">TripAdvisor Give Feedback Century Adventures</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61577731823809"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@CenturyAdventures" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/century_adventures?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/255747115390"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:info@centuryadventures.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; Copyright 2012 - 2026 | Century Adventures</p>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard | Century Adventures</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <style>
+        .dash-view-section {
+            animation: fadeIn 0.4s ease;
+        }
+        .wishlist-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .wishlist-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+            box-shadow: var(--shadow-soft);
+        }
+        .booking-item-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-soft);
+        }
+        .booking-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+        .booking-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            font-size: 0.9rem;
+        }
+        .detail-block strong {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .detail-block span {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+    </style>
+</head>
+<body class="dashboard-body">
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="dash-logo">
+                <a href="index.html"><img src="assets/logo.png" alt="Logo"></a>
+            </div>
+            <nav class="dash-nav">
+                <ul>
+                    <li class="active" id="nav-overview"><a href="#" onclick="switchTab('overview')"><i class="fas fa-th-large"></i> Overview</a></li>
+                    <li id="nav-bookings"><a href="#" onclick="switchTab('bookings')"><i class="fas fa-calendar-alt"></i> My Bookings</a></li>
+                    <li id="nav-wishlist"><a href="#" onclick="switchTab('wishlist')"><i class="fas fa-heart"></i> Wishlist</a></li>
+                    <li><a href="#" onclick="openSupportChat()"><i class="fas fa-envelope"></i> Messages <span class="badge" id="sidebarMsgBadge" style="display: none;">0</span></a></li>
+                    <li id="nav-settings"><a href="#" onclick="switchTab('settings')"><i class="fas fa-user-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+            <div class="dash-footer">
+                <a href="index.html" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Home Screen</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Header Shared -->
+            <header class="dash-header">
+                <div class="welcome-text">
+                    <h1>Welcome back, <span id="user-greeting-name" style="color: var(--primary-green);">Sarah!</span></h1>
+                    <p>Ready for your next adventure?</p>
+                </div>
+                <div class="user-profile">
+                    <img src="assets/user1.jpg" alt="Profile" class="profile-img">
+                    <div class="profile-info">
+                        <strong id="user-profile-name">Sarah Johnson</strong>
+                        <span id="user-profile-tier">Premium Member</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- VIEW: OVERVIEW -->
+            <div id="view-overview" class="dash-view-section">
+                <section class="dash-stats">
+                    <div class="dash-stat-card">
+                        <div class="stat-icon" style="color: #4caf50;"><i class="fas fa-suitcase"></i></div>
+                        <div class="stat-meta"><h3 id="statUpcomingCount">1</h3><p>Planned Trips</p></div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="stat-icon" style="color: #2196f3;"><i class="fas fa-history"></i></div>
+                        <div class="stat-meta"><h3>3</h3><p>Past Safaris</p></div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="stat-icon" style="color: #ff9800;"><i class="fas fa-coins"></i></div>
+                        <div class="stat-meta"><h3>1200</h3><p>Explorer Points</p></div>
+                    </div>
+                </section>
+
+                <section class="dash-content-grid">
+                    <!-- Upcoming Trip -->
+                    <div class="dash-card main-card">
+                        <div class="card-header">
+                            <h3>Upcoming Feature Trip</h3>
+                            <a href="#" onclick="switchTab('bookings'); return false;" class="view-all">View All</a>
+                        </div>
+                        <div class="trip-featured-card" id="featured-trip-display">
+                            <img src="assets/03TMMT-IM1103-mara-mara-tented-lodge-1475.jpg" alt="Trip">
+                            <div class="featured-info">
+                                <span class="status-badge">CONFIRMED</span>
+                                <h2>7-Day Serengeti Migration Safari</h2>
+                                <p><i class="fas fa-calendar-day"></i> September 15, 2026 - September 22, 2026</p>
+                                <div class="trip-progress">
+                                    <span>3 months to go!</span>
+                                    <div class="progress-bar"><div class="progress" style="width: 70%;"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Messages -->
+                    <div class="dash-card side-card">
+                        <div class="card-header">
+                            <h3>Recent Support Messages</h3>
+                        </div>
+                        <div class="activity-list" id="recent-messages-display">
+                            <div class="activity-item">
+                                <div class="act-icon"><i class="fas fa-comment"></i></div>
+                                <div class="act-text">
+                                    <strong>Century Support</strong>
+                                    <p>Your visa documents are ready...</p>
+                                    <span>2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="act-icon"><i class="fas fa-bell"></i></div>
+                                <div class="act-text">
+                                    <strong>System Update</strong>
+                                    <p>New Zanzibar guide available!</p>
+                                    <span>Yesterday</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- VIEW: MY BOOKINGS -->
+            <div id="view-bookings" class="dash-view-section" style="display: none;">
+                <div class="dash-card">
+                    <div class="card-header" style="align-items: center; margin-bottom: 25px;">
+                        <h3 style="margin: 0;"><i class="fas fa-calendar-alt" style="color: var(--accent-gold); margin-right: 10px;"></i> My Bookings & Enquiries</h3>
+                        <a href="planner.html" class="btn btn-primary btn-sm" style="font-size: 0.8rem; padding: 8px 16px;"><i class="fas fa-plus"></i> New Custom Plan</a>
+                    </div>
+                    <div id="bookings-list-container">
+                        <!-- Bookings list mapped dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW: WISHLIST -->
+            <div id="view-wishlist" class="dash-view-section" style="display: none;">
+                <div class="dash-card">
+                    <div class="card-header" style="align-items: center; margin-bottom: 25px;">
+                        <h3 style="margin: 0;"><i class="fas fa-heart" style="color: #e57373; margin-right: 10px;"></i> My Saved Safaris</h3>
+                        <a href="safaris.html" class="btn btn-outline btn-sm" style="font-size: 0.8rem; padding: 8px 16px;">Browse All</a>
+                    </div>
+                    <div id="wishlist-grid-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                        <!-- Wishlist elements mapped dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW: SETTINGS -->
+            <div id="view-settings" class="dash-view-section" style="display: none;">
+                <div class="dash-card" style="max-width: 600px;">
+                    <div class="card-header" style="margin-bottom: 25px;">
+                        <h3 style="margin: 0;"><i class="fas fa-user-cog" style="color: var(--primary-green); margin-right: 10px;"></i> Profile Settings</h3>
+                    </div>
+                    <form id="settingsForm" onsubmit="saveSettings(event)" style="display: flex; flex-direction: column; gap: 20px;">
+                        <div style="display: flex; flex-direction: column; gap: 6px;">
+                            <label style="font-weight: 600; font-size: 0.9rem;">Full Name</label>
+                            <input type="text" id="settingsName" required style="padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-main);">
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 6px;">
+                            <label style="font-weight: 600; font-size: 0.9rem;">Email Address</label>
+                            <input type="email" id="settingsEmail" required style="padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-main);">
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 6px;">
+                            <label style="font-weight: 600; font-size: 0.9rem;">Membership Tier</label>
+                            <select id="settingsTier" style="padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-main);">
+                                <option value="Premium Member">Premium Member</option>
+                                <option value="Explorer (Standard)">Explorer (Standard)</option>
+                                <option value="VIP Elite">VIP Elite</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="align-self: flex-start; padding: 12px 30px; font-weight: 700;">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Communication center loading -->
+    <script src="index.js"></script>
+    <script>
+        // Check local storage profile or fallback to defaults
+        let userProfile = {
+            name: "Sarah Johnson",
+            email: "sarah.j@example.com",
+            tier: "Premium Member"
+        };
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedProfile = localStorage.getItem('century-user-profile');
+            if (savedProfile) {
+                try {
+                    userProfile = JSON.parse(savedProfile);
+                } catch(e) {}
+            }
+            updateProfileUI();
+            
+            // Load stats & lists
+            loadBookings();
+            loadWishlist();
+            
+            // Initial poll for messages
+            pollUnreadBadge();
+            setInterval(pollUnreadBadge, 3000);
+        });
+
+        function updateProfileUI() {
+            document.getElementById('user-greeting-name').textContent = userProfile.name.split(' ')[0] + '!';
+            document.getElementById('user-profile-name').textContent = userProfile.name;
+            document.getElementById('user-profile-tier').textContent = userProfile.tier;
+            
+            document.getElementById('settingsName').value = userProfile.name;
+            document.getElementById('settingsEmail').value = userProfile.email;
+            document.getElementById('settingsTier').value = userProfile.tier;
+        }
+
+        function saveSettings(e) {
+            e.preventDefault();
+            userProfile.name = document.getElementById('settingsName').value.trim();
+            userProfile.email = document.getElementById('settingsEmail').value.trim();
+            userProfile.tier = document.getElementById('settingsTier').value;
+
+            localStorage.setItem('century-user-profile', JSON.stringify(userProfile));
+            updateProfileUI();
+            alert('Settings saved successfully!');
+            switchTab('overview');
+        }
+
+        // Tab selection logic
+        function switchTab(tabId) {
+            // Hide all sections
+            document.querySelectorAll('.dash-view-section').forEach(sec => {
+                sec.style.display = 'none';
+            });
+            // Show active section
+            document.getElementById('view-' + tabId).style.display = 'block';
+
+            // Update sidebar nav highlights
+            document.querySelectorAll('.dash-nav ul li').forEach(li => {
+                li.classList.remove('active');
+            });
+            const activeLi = document.getElementById('nav-' + tabId);
+            if (activeLi) activeLi.classList.add('active');
+
+            if (tabId === 'wishlist') {
+                loadWishlist();
+            } else if (tabId === 'bookings') {
+                loadBookings();
+            }
+        }
+
+        // Load planned bookings
+        function loadBookings() {
+            const listContainer = document.getElementById('bookings-list-container');
+            let bookings = [];
+            try {
+                bookings = JSON.parse(localStorage.getItem('century-bookings')) || [];
+            } catch(e) {
+                bookings = [];
+            }
+
+            // Sync total upcoming count indicator
+            document.getElementById('statUpcomingCount').textContent = bookings.length > 0 ? bookings.length : 1;
+
+            if (bookings.length === 0) {
+                // Show default mock booking + empty state helper
+                listContainer.innerHTML = `
+                    <div class="booking-item-card" style="border-left: 5px solid #2e7d32;">
+                        <div class="booking-header">
+                            <div>
+                                <h4 style="margin: 0; font-size: 1.1rem; font-family: 'Playfair Display', serif;">7-Day Serengeti Great Migration Safari</h4>
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">ID: #BK-9021 • Date: June 10, 2026</span>
+                            </div>
+                            <span class="status-badge" style="background:#e8f5e9; color:#2e7d32; padding: 4px 12px; border-radius: 50px; font-weight: 800; font-size: 0.75rem;">CONFIRMED</span>
+                        </div>
+                        <div class="booking-details-grid">
+                            <div class="detail-block"><strong>Duration</strong><span>7 Days</span></div>
+                            <div class="detail-block"><strong>Guests</strong><span>2 Guests</span></div>
+                            <div class="detail-block"><strong>Accommodation</strong><span>Luxury Serengeti Camp</span></div>
+                            <div class="detail-block"><strong>Cost Estimate</strong><span>$2,450.00</span></div>
+                        </div>
+                    </div>
+                    <div style="text-align: center; padding: 30px 10px; color: var(--text-muted); border: 2px dashed var(--border-color); border-radius: 12px; margin-top: 20px;">
+                        <p style="margin: 0 0 10px 0; font-weight: 500;">No custom safari plans saved yet.</p>
+                        <a href="planner.html" class="btn btn-outline btn-sm" style="font-size: 0.8rem; padding: 6px 12px;">Create Custom Plan</a>
+                    </div>
+                `;
+                
+                // Show default featured trip in overview card
+                document.getElementById('featured-trip-display').innerHTML = `
+                    <img src="assets/03TMMT-IM1103-mara-mara-tented-lodge-1475.jpg" alt="Trip">
+                    <div class="featured-info">
+                        <span class="status-badge">CONFIRMED</span>
+                        <h2>7-Day Serengeti Migration Safari</h2>
+                        <p><i class="fas fa-calendar-day"></i> September 15, 2026 - September 22, 2026</p>
+                        <div class="trip-progress">
+                            <span>3 months to go!</span>
+                            <div class="progress-bar"><div class="progress" style="width: 70%;"></div></div>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            // Map and show all user bookings from planner
+            let bookingsHtml = '';
+            bookings.forEach((b, idx) => {
+                const badgeBg = b.status === 'CONFIRMED' || b.status === 'PAID' ? '#e8f5e9' : '#fff3e0';
+                const badgeColor = b.status === 'CONFIRMED' || b.status === 'PAID' ? '#2e7d32' : '#ef6c00';
+                const statusText = b.status || 'PENDING';
+                const amountText = b.estimatePrice || '$2,450.00';
+                
+                let destsText = 'Custom Safari';
+                if (b.destinations && b.destinations.length > 0) {
+                    destsText = b.destinations.map(d => d.charAt(0).toUpperCase() + d.slice(1)).join(', ');
+                }
+
+                bookingsHtml += `
+                    <div class="booking-item-card" style="border-left: 5px solid ${b.status === 'PAID' ? '#2e7d32' : '#ef6c00'};">
+                        <div class="booking-header">
+                            <div>
+                                <h4 style="margin: 0; font-size: 1.1rem; font-family: 'Playfair Display', serif;">${b.duration}-Day Custom planned Safari</h4>
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">ID: #${b.id} • Date: ${b.date || 'Recent'}</span>
+                            </div>
+                            <span class="status-badge" style="background:${badgeBg}; color:${badgeColor}; padding: 4px 12px; border-radius: 50px; font-weight: 800; font-size: 0.75rem;">${statusText}</span>
+                        </div>
+                        <div class="booking-details-grid">
+                            <div class="detail-block"><strong>Destinations</strong><span>${destsText}</span></div>
+                            <div class="detail-block"><strong>Guests</strong><span>${b.guests} Guests</span></div>
+                            <div class="detail-block"><strong>Lodging Style</strong><span>${b.lodging ? b.lodging.charAt(0).toUpperCase() + b.lodging.slice(1) : 'Standard'}</span></div>
+                            <div class="detail-block"><strong>Cost Estimate</strong><span style="color: var(--accent-gold); font-weight: 700;">${amountText}</span></div>
+                        </div>
+                    </div>
+                `;
+            });
+            listContainer.innerHTML = bookingsHtml;
+
+            // Set featured trip to the latest custom booking
+            const latest = bookings[bookings.length - 1];
+            let latestDests = 'Custom Safari';
+            if (latest.destinations && latest.destinations.length > 0) {
+                latestDests = latest.destinations.map(d => d.charAt(0).toUpperCase() + d.slice(1)).join(', ');
+            }
+            
+            document.getElementById('featured-trip-display').innerHTML = `
+                <img src="assets/05TMMT-IM1105-mara-mara-tented-lodge-1475.jpg" alt="Trip" style="width: 200px; height: 150px; border-radius: 15px; object-fit: cover;">
+                <div class="featured-info">
+                    <span class="status-badge" style="background:#fff3e0; color:#ef6c00; font-weight: 800;">${latest.status || 'PENDING'}</span>
+                    <h2>${latest.duration}-Day Trip to ${latestDests.split(',')[0]}</h2>
+                    <p><i class="fas fa-calendar-day"></i> Planned: ${latest.date || 'Soon'}</p>
+                    <div class="trip-progress">
+                        <span>Estimate: <strong style="color: var(--accent-gold);">${latest.estimatePrice}</strong></span>
+                        <div class="progress-bar"><div class="progress" style="width: 25%;"></div></div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Load saved wishlist
+        function loadWishlist() {
+            const container = document.getElementById('wishlist-grid-container');
+            const wishlist = JSON.parse(localStorage.getItem('century-wishlist')) || [];
+            
+            if (wishlist.length === 0) {
+                container.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 50px 20px; color: var(--text-muted); border: 2px dashed var(--border-color); border-radius: 16px;">
+                        <i class="far fa-heart" style="font-size: 48px; margin-bottom: 15px; color: var(--accent-gold);"></i>
+                        <p style="margin: 0; font-size: 1.1rem; font-weight: 500;">Your wishlist is empty</p>
+                        <p style="font-size: 0.9rem; margin: 10px 0 20px;">Heart a safari card while browsing, and it will appear here!</p>
+                        <a href="safaris.html" class="btn btn-primary btn-sm" style="display: inline-block; padding: 8px 20px;">Browse Safaris</a>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = wishlist.map((item) => `
+                <div class="wishlist-card" style="display: flex; flex-direction: column; background: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color);">
+                    <img src="${item.img}" alt="${item.title}" style="width: 100%; height: 160px; object-fit: cover;">
+                    <div style="padding: 20px; display: flex; flex-direction: column; flex-grow: 1;">
+                        <h4 style="margin: 0 0 8px 0; font-size: 1.05rem; font-family: 'Playfair Display', serif;"><a href="${item.link}" style="color: var(--text-main); font-weight: 700; text-decoration: none;">${item.title}</a></h4>
+                        <p style="color: var(--accent-gold); font-weight: 700; margin: 0 0 15px 0; font-size: 0.95rem;">${item.price}</p>
+                        <div style="display: flex; gap: 10px; margin-top: auto;">
+                            <a href="${item.link}" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; font-size: 0.8rem; padding: 8px;">View Details</a>
+                            <button onclick="handleDashboardRemoveWishlist('${item.title.replace(/'/g, "\\'")}')" class="btn btn-outline btn-sm" style="color: #e57373; border-color: #e57373; padding: 8px 12px;" title="Remove"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Intercept remove wishlist item in dashboard
+        function handleDashboardRemoveWishlist(title) {
+            if (confirm(`Remove "${title}" from your saved wishlist?`)) {
+                if (typeof window.removeWishlistItem === 'function') {
+                    window.removeWishlistItem(title);
+                } else {
+                    let wishlist = JSON.parse(localStorage.getItem('century-wishlist')) || [];
+                    wishlist = wishlist.filter(item => item.title !== title);
+                    localStorage.setItem('century-wishlist', JSON.stringify(wishlist));
+                }
+                loadWishlist();
+            }
+        }
+
+        // Messages integration
+        function openSupportChat() {
+            if (window.openSafariSupport) {
+                window.openSafariSupport();
+            } else {
+                const btn = document.getElementById('commFloatBtn');
+                if (btn) btn.click();
+            }
+        }
+
+        // Poll for unread messages badge
+        function pollUnreadBadge() {
+            try {
+                // Find visitor ID
+                const visitorId = localStorage.getItem('century-visitor-id');
+                if (!visitorId) return;
+
+                const conversations = JSON.parse(localStorage.getItem('century-conversations')) || [];
+                const userConvs = conversations.filter(c => c.visitorId === visitorId);
+                const totalUnread = userConvs.reduce((sum, c) => sum + (c.unread || 0), 0);
+                
+                const badge = document.getElementById('sidebarMsgBadge');
+                if (badge) {
+                    if (totalUnread > 0) {
+                        badge.textContent = totalUnread;
+                        badge.style.display = 'inline-block';
+                    } else {
+                        badge.style.display = 'none';
+                    }
+                }
+
+                // Update recent support message box dynamically on Overview
+                const messagesList = document.getElementById('recent-messages-display');
+                if (messagesList && userConvs.length > 0) {
+                    // Sort conversations by updated date
+                    userConvs.sort((a,b) => b.updatedAt - a.updatedAt);
+                    const latestConv = userConvs[0];
+                    const lastMsg = latestConv.messages[latestConv.messages.length - 1];
+                    
+                    if (lastMsg) {
+                        const timeDiff = Math.round((Date.now() - lastMsg.timestamp) / 60000); // minutes
+                        let timeString = 'Just now';
+                        if (timeDiff >= 60) {
+                            const hr = Math.round(timeDiff / 60);
+                            timeString = hr + ' hour' + (hr > 1 ? 's' : '') + ' ago';
+                        } else if (timeDiff > 0) {
+                            timeString = timeDiff + ' minute' + (timeDiff > 1 ? 's' : '') + ' ago';
+                        }
+
+                        messagesList.innerHTML = `
+                            <div class="activity-item" style="cursor: pointer;" onclick="openSupportChat()">
+                                <div class="act-icon" style="color: var(--accent-gold);"><i class="fas fa-comment"></i></div>
+                                <div class="act-text">
+                                    <strong>Expert Support (${latestConv.categoryId.toUpperCase()})</strong>
+                                    <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">${lastMsg.text}</p>
+                                    <span>${timeString}</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="act-icon"><i class="fas fa-bell"></i></div>
+                                <div class="act-text">
+                                    <strong>Century Travel</strong>
+                                    <p>Your dashboard is connected and secure.</p>
+                                    <span>Active</span>
+                                </div>
+                            </div>
+                        `;
+                    }
+                }
+            } catch(e) {
+                console.error("Error polling badges: ", e);
+            }
+        }
+    </script>
+</body>
+</html>

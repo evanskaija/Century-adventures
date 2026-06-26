@@ -1,0 +1,1037 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Safari Adventure | Century Adventures</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ── Book Page Custom CSS ── */
+        .booking-container {
+            max-width: 1200px;
+            margin: 40px auto 100px;
+            padding: 0 20px;
+        }
+
+        .booking-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        @media (min-width: 992px) {
+            .booking-grid {
+                grid-template-columns: 1.8fr 1.2fr;
+            }
+        }
+
+        .booking-main {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .booking-step-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+        }
+
+        .booking-step-card:hover {
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-gold);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .step-number {
+            background: var(--primary-green);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        [data-theme="dark"] .step-number {
+            background: var(--accent-gold);
+            color: #1a1a1a;
+        }
+
+        .step-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .form-grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .booking-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .booking-form-group label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        .booking-form-group input,
+        .booking-form-group select,
+        .booking-form-group textarea {
+            padding: 14px 20px;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            color: var(--text-main);
+            border-radius: 12px;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .booking-form-group input:focus,
+        .booking-form-group select:focus,
+        .booking-form-group textarea:focus {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(197, 160, 68, 0.15);
+        }
+
+        /* Checkbox and Radio Pills Styling */
+        .booking-pill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .booking-pill {
+            position: relative;
+            cursor: pointer;
+            display: block;
+        }
+
+        .booking-pill input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .booking-pill span {
+            display: block;
+            padding: 14px 18px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-color);
+            border-radius: 14px;
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: var(--transition);
+            color: var(--text-main);
+            user-select: none;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .booking-pill:hover span {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+            transform: translateY(-2px);
+        }
+
+        .booking-pill input:checked + span {
+            background: var(--primary-green);
+            border-color: var(--primary-green);
+            color: white;
+            box-shadow: var(--shadow-hover);
+        }
+
+        [data-theme="dark"] .booking-pill input:checked + span {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+            color: #1a1a1a;
+        }
+
+        /* Sidebar Styles */
+        .booking-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        @media (min-width: 992px) {
+            .booking-sidebar {
+                position: sticky;
+                top: 120px;
+                max-height: calc(100vh - 150px);
+                overflow-y: auto;
+                padding-right: 5px;
+            }
+        }
+
+        .sidebar-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .sidebar-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .process-step {
+            display: flex;
+            gap: 15px;
+        }
+
+        .process-icon {
+            background: rgba(0, 66, 37, 0.08);
+            color: var(--primary-green);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        [data-theme="dark"] .process-icon {
+            background: rgba(242, 201, 76, 0.15);
+            color: var(--accent-gold);
+        }
+
+        .process-text h4 {
+            margin: 0 0 5px 0;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .process-text p {
+            margin: 0;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .guarantee-box {
+            background: linear-gradient(135deg, rgba(0, 66, 37, 0.03) 0%, rgba(197, 160, 68, 0.05) 100%);
+            border: 1px dashed var(--accent-gold);
+            border-radius: 15px;
+            padding: 22px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .guarantee-box i {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .guarantee-box h4 {
+            margin: 0 0 5px 0;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .guarantee-box p {
+            margin: 0;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Trust checklist */
+        .trust-checklist {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .trust-checklist li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
+        .trust-checklist li i {
+            color: #25d366;
+            font-size: 1.1rem;
+        }
+
+        /* Quick contact buttons */
+        .quick-contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .quick-contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .quick-contact-btn.whatsapp {
+            background: #25d366;
+            color: white;
+        }
+
+        .quick-contact-btn.whatsapp:hover {
+            background: #20ba5a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
+        }
+
+        .quick-contact-btn.call {
+            border: 2px solid var(--border-color);
+            color: var(--text-main);
+            background: transparent;
+        }
+
+        .quick-contact-btn.call:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+            transform: translateY(-2px);
+        }
+
+        /* Popular packages section */
+        .packages-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border-color);
+            background: var(--section-bg);
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .package-card-mini {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 180px;
+        }
+
+        .package-card-mini:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-gold);
+        }
+
+        .package-card-mini h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        .package-card-mini p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin: 0 0 20px 0;
+            line-height: 1.5;
+        }
+
+        .package-card-mini .pkg-link {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            align-self: flex-start;
+        }
+
+        /* Submit section */
+        .submit-container {
+            margin-top: 15px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            background: var(--primary-green);
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            text-transform: uppercase;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+            background: #00361e;
+        }
+
+        [data-theme="dark"] .btn-submit {
+            background: var(--accent-gold);
+            color: #1a1a1a;
+        }
+
+        [data-theme="dark"] .btn-submit:hover {
+            background: #e0b848;
+        }
+
+        /* ── Responsiveness Overrides ── */
+        .booking-pill-grid-half {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 10px;
+            max-width: 300px;
+        }
+
+        @media (max-width: 768px) {
+            .booking-step-card {
+                padding: 20px;
+            }
+            .booking-container {
+                margin: 20px auto 60px;
+                padding: 0 15px;
+            }
+            .booking-pill span {
+                padding: 12px 14px;
+                font-size: 0.88rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .booking-pill-grid-half {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="scroll-progress"></div>
+    
+    <!-- Header (Dynamically loaded and set active via index.js) -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo"><a href="index.html"><img src="assets/logo.png" alt="Century Adventures Logo"></a></div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="safaris.html" data-en="TOURS & SAFARIS" data-sw="SAFARI NA ZIARA">TOURS & SAFARIS</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="toggle-btn lang-toggle" onclick="toggleLang()">SW</button>
+                <button class="toggle-btn theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="trip-hero" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('assets/KTA13Serengeti Nationa.webp') center/cover;">
+        <div class="container text-center" style="max-width: 850px; margin: 0 auto;">
+            <span class="sub-heading" style="color: var(--accent-gold);" data-en="🦁 BOOK YOUR SAFARI ADVENTURE" data-sw="🦁 WEKA NAFASI YA SAFARI YAKO">🦁 BOOK YOUR SAFARI ADVENTURE</span>
+            <h1 data-en="Experience Tanzania Like Never Before" data-sw="Uzoefu wa Tanzania Usio na Kifani">Experience Tanzania Like Never Before</h1>
+            <p class="hero-tagline" style="margin-bottom: 15px;" data-en="You are one step away from an unforgettable journey across Tanzania’s most iconic destinations — Serengeti, Ngorongoro, Zanzibar, Kilimanjaro, and beyond." data-sw="Uko hatua moja tu mbali na safari isiyosahaulika katika maeneo maarufu zaidi nchini Tanzania — Serengeti, Ngorongoro, Zanzibar, Kilimanjaro, na kwingineko.">You are one step away from an unforgettable journey across Tanzania’s most iconic destinations — Serengeti, Ngorongoro, Zanzibar, Kilimanjaro, and beyond.</p>
+            <p style="font-size: 0.95rem; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto;" data-en="Let our experts design a personalized safari experience tailored just for you — from budget adventures to luxury escapes." data-sw="Wacha wataalamu wetu wabuni uzoefu wa safari ya kibinafsi kwa ajili yako — kuanzia safari za bajeti ya kawaida hadi zile za kifahari.">Let our experts design a personalized safari experience tailored just for you — from budget adventures to luxury escapes.</p>
+        </div>
+    </section>
+
+    <!-- Booking Main Section -->
+    <div class="booking-container">
+        <form id="mainBookingForm" class="booking-form">
+            <div class="booking-grid">
+                
+                <!-- Left Column: The Form Steps -->
+                <div class="booking-main">
+                    
+                    <div style="margin-bottom: 10px;">
+                        <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 0 0 5px 0;" data-en="⚡ Quick Booking (Fast Request)" data-sw="⚡ Uhifadhi wa Haraka (Ombi Haraka)">⚡ Quick Booking (Fast Request)</h2>
+                        <p style="color: var(--text-muted); margin: 0;" data-en="Tell Us Your Dream Trip in Less Than 2 Minutes" data-sw="Tuambie Kuhusu Safari ya Ndoto Yako kwa Chini ya Dakika 2">Tell Us Your Dream Trip in Less Than 2 Minutes</p>
+                    </div>
+
+                    <!-- Step 1: Your Details -->
+                    <div class="booking-step-card scroll-reveal">
+                        <div class="step-header">
+                            <div class="step-number">1</div>
+                            <h3 class="step-title" data-en="Your Details" data-sw="Taarifa Zako binafsi">Your Details</h3>
+                        </div>
+                        <div class="form-grid-2">
+                            <div class="booking-form-group">
+                                <label data-en="Full Name" data-sw="Jina Kamili">Full Name</label>
+                                <input type="text" required placeholder="e.g. John Doe">
+                            </div>
+                            <div class="booking-form-group">
+                                <label data-en="Email Address" data-sw="Barua Pepe">Email Address</label>
+                                <input type="email" required placeholder="e.g. john@example.com">
+                            </div>
+                        </div>
+                        <div class="form-grid-2" style="margin-top: 20px;">
+                            <div class="booking-form-group">
+                                <label data-en="WhatsApp Number (Very Important)" data-sw="Namba ya WhatsApp (Muhimu Sana)">WhatsApp Number (Very Important)</label>
+                                <input type="tel" required placeholder="e.g. +1 234 567 890">
+                            </div>
+                            <div class="booking-form-group">
+                                <label data-en="Country" data-sw="Nchi Unayotoka">Country</label>
+                                <input type="text" required placeholder="e.g. United States">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Your Travel Plan -->
+                    <div class="booking-step-card scroll-reveal">
+                        <div class="step-header">
+                            <div class="step-number">2</div>
+                            <h3 class="step-title" data-en="Your Travel Plan" data-sw="Mpango wa Safari Yako">Your Travel Plan</h3>
+                        </div>
+                        
+                        <!-- Destinations -->
+                        <div class="booking-form-group" style="margin-bottom: 25px;">
+                            <label data-en="Destination(s)" data-sw="Maeneo Unayotaka Kutembelea">Destination(s)</label>
+                            <div class="booking-pill-grid">
+                                <label class="booking-pill">
+                                    <input type="checkbox" name="destinations" value="Serengeti">
+                                    <span>🦁 Serengeti</span>
+                                </label>
+                                <label class="booking-pill">
+                                    <input type="checkbox" name="destinations" value="Ngorongoro">
+                                    <span>🏔 Ngorongoro</span>
+                                </label>
+                                <label class="booking-pill">
+                                    <input type="checkbox" name="destinations" value="Zanzibar">
+                                    <span>🏝 Zanzibar</span>
+                                </label>
+                                <label class="booking-pill">
+                                    <input type="checkbox" name="destinations" value="Kilimanjaro">
+                                    <span>🧗 Kilimanjaro</span>
+                                </label>
+                                <label class="booking-pill">
+                                    <input type="checkbox" name="destinations" value="Custom">
+                                    <span data-en="✨ Custom" data-sw="✨ Maalum">✨ Custom</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Travel Type -->
+                        <div class="booking-form-group" style="margin-bottom: 25px;">
+                            <label data-en="Travel Type" data-sw="Aina ya Safari">Travel Type</label>
+                            <div class="booking-pill-grid">
+                                <label class="booking-pill">
+                                    <input type="checkbox" name="travel_type" value="Wildlife Safari">
+                                    <span data-en="✔ Wildlife Safari" data-sw="✔ Safari ya Wanyamapori">✔ Wildlife Safari</span>
+                                </label>
+                                <label class="booking-pill">
+                                    <input type="checkbox" name="travel_type" value="Honeymoon">
+                                    <span data-en="✔ Honeymoon" data-sw="✔ Fungate">✔ Honeymoon</span>
+                                </label>
+                                <label class="booking-pill">
+                                    <input type="checkbox" name="travel_type" value="Family Trip">
+                                    <span data-en="✔ Family Trip" data-sw="✔ Safari ya Familia">✔ Family Trip</span>
+                                </label>
+                                <label class="booking-pill">
+                                    <input type="checkbox" name="travel_type" value="Luxury Safari">
+                                    <span data-en="✔ Luxury Safari" data-sw="✔ Safari ya Kifahari">✔ Luxury Safari</span>
+                                </label>
+                                <label class="booking-pill">
+                                    <input type="checkbox" name="travel_type" value="Volunteer Experience">
+                                    <span data-en="✔ Volunteer" data-sw="✔ Kujitolea">✔ Volunteer</span>
+                                </label>
+                                <label class="booking-pill">
+                                    <input type="checkbox" name="travel_type" value="Adventure Trek">
+                                    <span data-en="✔ Adventure Trek" data-sw="✔ Kupanda Milima">✔ Adventure Trek</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Travelers Count -->
+                        <div class="form-grid-2">
+                            <div class="booking-form-group">
+                                <label data-en="Number of Adults" data-sw="Idadi ya Watu Wazima">Number of Adults</label>
+                                <input type="number" min="1" value="2" required>
+                            </div>
+                            <div class="booking-form-group">
+                                <label data-en="Number of Children" data-sw="Idadi ya Watoto">Number of Children</label>
+                                <input type="number" min="0" value="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Travel Dates -->
+                    <div class="booking-step-card scroll-reveal">
+                        <div class="step-header">
+                            <div class="step-number">3</div>
+                            <h3 class="step-title" data-en="Travel Dates" data-sw="Tarehe za Safari">Travel Dates</h3>
+                        </div>
+                        <div class="form-grid-2">
+                            <div class="booking-form-group">
+                                <label data-en="Arrival Date" data-sw="Tarehe ya Kuwasili">Arrival Date</label>
+                                <input type="date" required>
+                            </div>
+                            <div class="booking-form-group">
+                                <label data-en="Departure Date" data-sw="Tarehe ya Kuondoka">Departure Date</label>
+                                <input type="date" required>
+                            </div>
+                        </div>
+                        <div class="booking-form-group" style="margin-top: 20px;">
+                            <label data-en="Flexible Dates?" data-sw="Je, Tarehe Zinaweza Kubadilika?">Flexible Dates?</label>
+                            <div class="booking-pill-grid-half">
+                                <label class="booking-pill">
+                                    <input type="radio" name="flexible_dates" value="Yes" checked>
+                                    <span data-en="Yes" data-sw="Ndiyo">Yes</span>
+                                </label>
+                                <label class="booking-pill">
+                                    <input type="radio" name="flexible_dates" value="No">
+                                    <span data-en="No" data-sw="Hapana">No</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Travel Style -->
+                    <div class="booking-step-card scroll-reveal">
+                        <div class="step-header">
+                            <div class="step-number">4</div>
+                            <h3 class="step-title" data-en="Travel Style (Comfort)" data-sw="Aina ya Malazi & Starehe">Travel Style (Comfort)</h3>
+                        </div>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: -10px; margin-bottom: 20px;" data-en="Choose your comfort level:" data-sw="Chagua kiwango chako cha starehe na malazi:">Choose your comfort level:</p>
+                        <div class="booking-pill-grid">
+                            <label class="booking-pill">
+                                <input type="radio" name="travel_style" value="Budget" checked>
+                                <span data-en="💰 Budget Safari" data-sw="💰 Safari ya Kiuchumi">💰 Budget Safari</span>
+                            </label>
+                            <label class="booking-pill">
+                                <input type="radio" name="travel_style" value="Mid-Range">
+                                <span data-en="🏨 Mid-Range Lodges" data-sw="🏨 Hoteli za Kiwango cha Kati">🏨 Mid-Range Lodges</span>
+                            </label>
+                            <label class="booking-pill">
+                                <input type="radio" name="travel_style" value="Luxury">
+                                <span data-en="🌟 Luxury Lodges" data-sw="🌟 Hoteli za Kifahari">🌟 Luxury Lodges</span>
+                            </label>
+                            <label class="booking-pill">
+                                <input type="radio" name="travel_style" value="Ultra-Luxury">
+                                <span data-en="💎 Ultra-Luxury" data-sw="💎 Kifahari Zaidi">💎 Ultra-Luxury</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Safari Preferences -->
+                    <div class="booking-step-card scroll-reveal">
+                        <div class="step-header">
+                            <div class="step-number">5</div>
+                            <h3 class="step-title" data-en="Safari Preferences" data-sw="Mapendekezo ya Safari">Safari Preferences</h3>
+                        </div>
+                        <div class="booking-pill-grid">
+                            <label class="booking-pill">
+                                <input type="checkbox" name="preferences" value="Private">
+                                <span data-en="Private Safari" data-sw="Safari Binafsi">Private Safari</span>
+                            </label>
+                            <label class="booking-pill">
+                                <input type="checkbox" name="preferences" value="Group">
+                                <span data-en="Group Safari" data-sw="Safari ya Kikundi">Group Safari</span>
+                            </label>
+                            <label class="booking-pill">
+                                <input type="checkbox" name="preferences" value="Migration">
+                                <span data-en="Migration Safari" data-sw="Safari ya Uhamiaji">Migration Safari</span>
+                            </label>
+                            <label class="booking-pill">
+                                <input type="checkbox" name="preferences" value="Photography">
+                                <span data-en="Photography Safari" data-sw="Safari ya Picha">Photography Safari</span>
+                            </label>
+                            <label class="booking-pill">
+                                <input type="checkbox" name="preferences" value="Custom">
+                                <span data-en="Custom Itinerary" data-sw="Ratiba Maalum">Custom Itinerary</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 6: Special Requests -->
+                    <div class="booking-step-card scroll-reveal">
+                        <div class="step-header">
+                            <div class="step-number">6</div>
+                            <h3 class="step-title" data-en="Special Requests" data-sw="Maombi Maalum">Special Requests</h3>
+                        </div>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: -10px; margin-bottom: 20px;" data-en="Tell us anything special:" data-sw="Tuambie kuhusu mahitaji yoyote maalum yafuatayo:">Tell us anything special:</p>
+                        <div class="booking-pill-grid" style="margin-bottom: 25px;">
+                            <label class="booking-pill">
+                                <input type="checkbox" name="special" value="Honeymoon">
+                                <span data-en="Honeymoon setup 💕" data-sw="Maandalizi Fungate 💕">Honeymoon setup 💕</span>
+                            </label>
+                            <label class="booking-pill">
+                                <input type="checkbox" name="special" value="Anniversary">
+                                <span data-en="Anniversary 🎉" data-sw="Maadhimisho 🎉">Anniversary 🎉</span>
+                            </label>
+                            <label class="booking-pill">
+                                <input type="checkbox" name="special" value="Diet">
+                                <span data-en="Special Diet 🍽" data-sw="Mlo Maalum 🍽">Special Diet 🍽</span>
+                            </label>
+                            <label class="booking-pill">
+                                <input type="checkbox" name="special" value="Photo Focus">
+                                <span data-en="Photo Focus 📸" data-sw="Kuhusu Picha 📸">Photo Focus 📸</span>
+                            </label>
+                        </div>
+                        <div class="booking-form-group">
+                            <label data-en="Anything else you would like us to know?" data-sw="Chochote kingine ungependa tujue?">Anything else you would like us to know?</label>
+                            <textarea rows="4" placeholder="e.g. Dietary restrictions, specific lodges you prefer, physical fitness level, etc."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="submit-container scroll-reveal">
+                        <button type="submit" class="btn-submit" data-en="👉 Get My Custom Safari Plan" data-sw="👉 Pata Mpango Wangu wa Safari">👉 Get My Custom Safari Plan</button>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Sticky Trust-Builder Sidebar -->
+                <div class="booking-sidebar">
+                    
+                    <!-- What Happens Next Section -->
+                    <div class="sidebar-card scroll-reveal">
+                        <h3 data-en="🚀 What Happens Next" data-sw="🚀 Nini Kinachofuata">🚀 What Happens Next</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: -10px; margin-bottom: 20px;" data-en="Fast & Simple 3-Step Process" data-sw="Mchakato Rahisi wa Hatua 3">Fast & Simple 3-Step Process</p>
+                        <div class="process-steps">
+                            <div class="process-step">
+                                <div class="process-icon">1</div>
+                                <div class="process-text">
+                                    <h4 data-en="We Receive Your Request" data-sw="Tunapokea Ombi Lako">We Receive Your Request</h4>
+                                    <p data-en="Our safari experts review your details immediately." data-sw="Wataalamu wetu wanapitia taarifa zako mara moja.">Our safari experts review your details immediately.</p>
+                                </div>
+                            </div>
+                            <div class="process-step">
+                                <div class="process-icon">2</div>
+                                <div class="process-text">
+                                    <h4 data-en="We Design Your Itinerary" data-sw="Tunaunda Ratiba Yako">We Design Your Itinerary</h4>
+                                    <p data-en="We build a custom day-by-day safari plan based on your interests." data-sw="Tunaunda mpango maalum wa kila siku kulingana na matakwa yako.">We build a custom day-by-day safari plan based on your interests.</p>
+                                </div>
+                            </div>
+                            <div class="process-step">
+                                <div class="process-icon">3</div>
+                                <div class="process-text">
+                                    <h4 data-en="We Send You Full Package" data-sw="Tunakutumia Kifurushi Kamili">We Send You Full Package</h4>
+                                    <p data-en="You receive a full itinerary, pricing options (Budget/Mid/Luxury), hotel choices, and expert advice." data-sw="Utapokea ratiba kamili, gharama mbalimbali, chaguzi za hoteli, na ushauri wa kusafiri.">You receive a full itinerary, pricing options (Budget/Mid/Luxury), hotel choices, and expert advice.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Need Help With Your Booking? -->
+                    <div class="sidebar-card scroll-reveal" style="border: 1px solid var(--accent-gold); background: linear-gradient(135deg, rgba(0, 66, 37, 0.02) 0%, rgba(197, 160, 68, 0.05) 100%);">
+                        <h3 data-en="📞 Need Help With Your Booking?" data-sw="📞 Unahitaji Msaada Kuhifadhi?">📞 Need Help With Your Booking?</h3>
+                        <p style="font-size: 0.88rem; line-height: 1.6; margin-bottom: 20px; color: var(--text-muted);"
+                           data-en="If you have questions about payment, itineraries, or reservation policies, contact our bookings desk:"
+                           data-sw="Ikiwa una maswali kuhusu malipo, ratiba ya safari, au sera za uhifadhi, wasiliana na dawati letu la uhifadhi:">
+                            If you have questions about payment, itineraries, or reservation policies, contact our bookings desk:
+                        </p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 12px;">
+                            <a href="mailto:bookings@centuryadventures.com" style="display: flex; align-items: center; gap: 10px; color: var(--text-main); font-weight: 700; text-decoration: none; font-size: 0.95rem;" class="booking-help-link">
+                                <i class="fas fa-envelope" style="color: var(--accent-gold);"></i> bookings@centuryadventures.com
+                            </a>
+                            <div style="font-size: 0.88rem; color: var(--text-muted); margin: 4px 0 0;" data-en="Or speak directly with a specialist via WhatsApp:" data-sw="Au zungumza moja kwa moja na mtaalamu kupitia WhatsApp:">
+                                Or speak directly with a specialist via WhatsApp:
+                            </div>
+                            <a href="https://wa.me/255747115390" target="_blank" class="quick-contact-btn whatsapp" style="margin-top: 5px;">
+                                <i class="fab fa-whatsapp"></i> <span>+255 747 115 390</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Fast Response Guarantee -->
+                    <div class="guarantee-box scroll-reveal">
+                        <i class="fas fa-bolt"></i>
+                        <div>
+                            <h4 data-en="⏱ Fast Response Guarantee" data-sw="⏱ Dhamana ya Jibu la Haraka">⏱ Fast Response Guarantee</h4>
+                            <p data-en="We reply within 1–12 hours (usually much faster on WhatsApp) with direct contact to a real safari expert." data-sw="Tunajibu ndani ya saa 1–12 (kawaida haraka zaidi kwenye WhatsApp) na utawasiliana na mtaalamu wa kweli.">We reply within 1–12 hours (usually much faster on WhatsApp) with direct contact to a real safari expert.</p>
+                        </div>
+                    </div>
+
+                    <!-- Why Book With Us -->
+                    <div class="sidebar-card scroll-reveal">
+                        <h3 data-en="💎 Why Book With Us?" data-sw="💎 Kwa Nini Uweke Nafasi Nasi?">💎 Why Book With Us?</h3>
+                        <ul class="trust-checklist">
+                            <li><i class="fas fa-check-circle"></i> <span data-en="100% Custom Safari Planning" data-sw="Mipango ya Safari Binafsi 100%">100% Custom Safari Planning</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-en="Local Experts Based in Tanzania" data-sw="Wataalamu wa Ndani Walioko Tanzania">Local Experts Based in Tanzania</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-en="Best Price Guarantee" data-sw="Dhamana ya Bei Bora">Best Price Guarantee</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-en="Safe & Trusted Operators" data-sw="Waendeshaji Salama & Wanaoaminika">Safe & Trusted Operators</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-en="Professional Safari Guides" data-sw="Waongozaji wa Safari wa Kitaalamu">Professional Safari Guides</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-en="Comfortable 4x4 Safari Vehicles" data-sw="Magari ya Safari 4x4 Yenye Starehe">Comfortable 4x4 Safari Vehicles</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-en="Transparent Pricing (No Hidden Fees)" data-sw="Bei Wazi (Hakuna Gharama Zilizofichwa)">Transparent Pricing (No Hidden Fees)</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-en="24/7 Support During Your Trip" data-sw="Msaada wa Saa 24/7 Wakati wa Safari Yako">24/7 Support During Your Trip</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Instant Booking Options -->
+                    <div class="sidebar-card scroll-reveal">
+                        <h3 data-en="📲 Instant Booking Options" data-sw="📲 Chaguzi za Haraka">📲 Instant Booking Options</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: -10px; margin-bottom: 20px;" data-en="Prefer Fast Communication?" data-sw="Je, Unapendelea Mawasiliano ya Haraka?">Prefer Fast Communication?</p>
+                        <div class="quick-contacts">
+                            <a href="https://wa.me/255747115390" target="_blank" class="quick-contact-btn whatsapp">
+                                <i class="fab fa-whatsapp"></i> <span data-en="Chat With Safari Expert" data-sw="Ongea na Mtaalamu">Chat With Safari Expert</span>
+                            </a>
+                            <a href="tel:+255747115390" class="quick-contact-btn call">
+                                <i class="fas fa-phone-alt"></i> <span>+255 747 115 390</span>
+                            </a>
+                            <div style="text-align: center; margin-top: 10px; font-size: 0.88rem; color: var(--text-muted);">
+                                <span data-en="Or email us at:" data-sw="Au tuandikie kupitia:">Or email us at:</span> <a href="mailto:info@centuryadventures.com" style="color: var(--accent-gold); font-weight: 600;">info@centuryadventures.com</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+    <!-- Popular Safari Packages Section -->
+    <section class="packages-section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <span class="sub-heading" style="color: var(--accent-gold);" data-en="QUICK IDEAS" data-sw="MAWAZO YA HARAKA">QUICK IDEAS</span>
+                <h2 style="font-family: 'Playfair Display', serif;" data-en="Popular Safari Packages" data-sw="Vifurushi Maarufu vya Safari">Popular Safari Packages</h2>
+            </div>
+            <div class="packages-grid">
+                <!-- Package 1 -->
+                <div class="package-card-mini scroll-reveal">
+                    <div>
+                        <h4 data-en="Serengeti Migration Safari" data-sw="Safari ya Uhamiaji Serengeti">Serengeti Migration Safari</h4>
+                        <p data-en="Witness the Great Migration and spot big cats across Serengeti's open plains." data-sw="Shuhudia uhamiaji wa nyumbu na uone wanyama wakubwa wa paka katika nyanda za Serengeti.">Witness the Great Migration and spot big cats across Serengeti's open plains.</p>
+                    </div>
+                    <a href="migration-safaris.html" class="pkg-link"><span data-en="View Details" data-sw="Angalia Maelezo">View Details</span> <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <!-- Package 2 -->
+                <div class="package-card-mini scroll-reveal">
+                    <div>
+                        <h4 data-en="Kilimanjaro Climb" data-sw="Kupanda Mlima Kilimanjaro">Kilimanjaro Climb</h4>
+                        <p data-en="Conquer Africa's highest peak via Machame, Lemosho, or Marangu routes." data-sw="Shinda kilele kirefu zaidi barani Afrika kupitia njia ya Machame, Lemosho, au Marangu.">Conquer Africa's highest peak via Machame, Lemosho, or Marangu routes.</p>
+                    </div>
+                    <a href="safaris.html" class="pkg-link"><span data-en="View Details" data-sw="Angalia Maelezo">View Details</span> <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <!-- Package 3 -->
+                <div class="package-card-mini scroll-reveal">
+                    <div>
+                        <h4 data-en="Zanzibar Beach Holiday" data-sw="Likizo ya Pwani ya Zanzibar">Zanzibar Beach Holiday</h4>
+                        <p data-en="Relax on white sands, dive in turquoise waters, and discover historic Stone Town." data-sw="Pumzika kwenye mchanga mweupe na ugundue Mji Mkongwe wa Stone Town Zanzibar.">Relax on white sands, dive in turquoise waters, and discover historic Stone Town.</p>
+                    </div>
+                    <a href="zanzibar-beach.html" class="pkg-link"><span data-en="View Details" data-sw="Angalia Maelezo">View Details</span> <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <!-- Package 4 -->
+                <div class="package-card-mini scroll-reveal">
+                    <div>
+                        <h4 data-en="Family Safari" data-sw="Safari ya Kifamilia">Family Safari</h4>
+                        <p data-en="Short drive times, child-friendly lodges, and educational ranger programs." data-sw="Muda mfupi wa kusafiri barabarani, hoteli zinazofaa watoto na programu za mafunzo.">Short drive times, child-friendly lodges, and educational ranger programs.</p>
+                    </div>
+                    <a href="family-safaris.html" class="pkg-link"><span data-en="View Details" data-sw="Angalia Maelezo">View Details</span> <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <!-- Package 5 -->
+                <div class="package-card-mini scroll-reveal">
+                    <div>
+                        <h4 data-en="Honeymoon Safari" data-sw="Safari ya Fungate">Honeymoon Safari</h4>
+                        <p data-en="Romantic candlelit dinners, private game drives, and luxury bush villas." data-sw="Chakula cha jioni cha kimapenzi, magari binafsi na majengo ya kifahari ya porini.">Romantic candlelit dinners, private game drives, and luxury bush villas.</p>
+                    </div>
+                    <a href="honeymoon-safaris.html" class="pkg-link"><span data-en="View Details" data-sw="Angalia Maelezo">View Details</span> <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <!-- Package 6 -->
+                <div class="package-card-mini scroll-reveal">
+                    <div>
+                        <h4 data-en="Luxury Fly-in Safari" data-sw="Safari ya Kifahari ya Ndege">Luxury Fly-in Safari</h4>
+                        <p data-en="Save travel time and fly directly into premium airstrips of the Serengeti." data-sw="Okoa muda wa kusafiri barabarani na uruke moja kwa moja hadi kwenye viwanja vya Serengeti.">Save travel time and fly directly into premium airstrips of the Serengeti.</p>
+                    </div>
+                    <a href="safaris.html" class="pkg-link"><span data-en="View Details" data-sw="Angalia Maelezo">View Details</span> <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <!-- Package 7 -->
+                <div class="package-card-mini scroll-reveal">
+                    <div>
+                        <h4 data-en="Volunteer + Safari Combo" data-sw="Mchanganyiko wa Kujitolea + Safari">Volunteer + Safari Combo</h4>
+                        <p data-en="Combine meaningful community support with a legendary northern safari." data-sw="Changanya msaada wa maana wa jamii na safari ya hadithi ya kaskazini.">Combine meaningful community support with a legendary northern safari.</p>
+                    </div>
+                    <a href="volunteer.html" class="pkg-link"><span data-en="View Details" data-sw="Angalia Maelezo">View Details</span> <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Closing Message Section -->
+    <section class="section" style="background: linear-gradient(135deg, var(--primary-green), #002b18); position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('assets/03TMMT-IM1103-mara-mara-tented-lodge-1475.jpg') center/cover no-repeat; opacity: 0.12;"></div>
+        <div class="container text-center" style="position: relative; z-index: 2; max-width: 800px; margin: 0 auto;">
+            <span class="sub-heading" style="color: var(--accent-gold);" data-en="❤️ YOUR ADVENTURE STARTS HERE" data-sw="❤️ SAFARI YAKO INAANZA HAPA">❤️ YOUR ADVENTURE STARTS HERE</span>
+            <h2 style="color: white; font-family: 'Playfair Display', serif; margin-bottom: 25px;" data-en="Let us handle everything — all you need to do is arrive and enjoy." data-sw="Wacha tushughulikie kila kitu — unachotakiwa kufanya ni kufika na kufurahi.">Let us handle everything — all you need to do is arrive and enjoy.</h2>
+            <p style="color: rgba(255, 255, 255, 0.85); font-size: 1.1rem; line-height: 1.8; margin-bottom: 35px;" data-en="The wild plains of the Serengeti, the breathtaking Ngorongoro Crater, the white sands of Zanzibar, and the peak of Kilimanjaro are waiting for you. Book your Tanzania safari today and turn your dream into reality." data-sw="Nyanda za Serengeti, Ngorongoro, mchanga mweupe wa Zanzibar, na kilele cha Kilimanjaro vinakusubiri. Weka nafasi ya safari yako leo na ufanye ndoto yako kuwa kweli.">The wild plains of the Serengeti, the breathtaking Ngorongoro Crater, the white sands of Zanzibar, and the peak of Kilimanjaro are waiting for you. Book your Tanzania safari today and turn your dream into reality.</p>
+            <a href="#mainBookingForm" class="btn" style="background: var(--accent-gold); color: #1a1a1a; padding: 16px 40px; border-radius: 50px; font-weight: 700; font-size: 1rem; text-decoration: none; display: inline-block; transition: var(--transition);" data-en="Start My Booking Form" data-sw="Anza Fomu ya Uhifadhi">Start My Booking Form</a>
+        </div>
+    </section>
+
+    <!-- Footer Contact Info -->
+    <div class="footer-top">
+        <div class="container">
+            <h2><i class="fas fa-phone-alt"></i> +255 747 115 390</h2>
+            <a href="enquire.html" class="btn enquire-btn" data-en="CONTACT US TODAY!" data-sw="WASILIANA NASI LEO!">CONTACT US TODAY!</a>
+        </div>
+    </div>
+
+    <!-- Final Call to Action -->
+    <section class="section cta-section" style="background: var(--primary-gradient); padding: 50px 0; text-align: center; color: white; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <div class="container" style="position: relative; z-index: 2;">
+            <span class="sub-heading" style="color:var(--accent-gold); font-size: 0.8rem; letter-spacing: 2px;" data-en="YOUR JOURNEY TO AFRICA STARTS HERE" data-sw="SAFARI YAKO YA AFRIKA INAANZA HAPA">YOUR JOURNEY TO AFRICA STARTS HERE</span>
+            <h2 style="font-size: clamp(1.5rem, 3vw, 2.2rem); color: white; margin: 10px 0 16px;" data-en="Are you ready to explore Tanzania?" data-sw="Uko Tayari Kuichunguza Tanzania?">Are you ready to explore Tanzania?</h2>
+            
+            <p class="cta-description" style="max-width: 650px; margin: 0 auto 25px; font-size:0.9rem; line-height: 1.65; opacity: 0.9;">
+                <span class="cta-hide-mobile" data-en="Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. " data-sw="Fikiria kushuhudia uwindaji wa simba wakati wa machweo, kutazama tembo wakizurura kwa uhuru kwenye savanna zisizo na mwisho, kujionea Uhamiaji Mkuu, au kupumzika kwenye mchanga mweupe wa Zanzibar. ">Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. </span>
+                <span data-en="Let Century Adventures make those dreams come true." data-sw="Ruhusu Century Adventures kufanya ndoto hizo ziwe kweli.">Let Century Adventures make those dreams come true.</span>
+            </p>
+
+            <div class="cta-action-grid" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <a href="enquire.html" class="btn btn-primary cta-circle-btn" style="background: var(--accent-gold); color: #002b18; font-weight:800; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; text-decoration: none;" data-en="Plan Your Trip" data-sw="Panga Safari Yako">Plan Your Trip</a>
+                <a href="enquire.html" class="btn btn-outline cta-circle-btn secondary" style="border: 1px solid rgba(255,255,255,0.6); color: white; font-weight:700; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; background: transparent; text-decoration: none;" data-en="Request a Free Quote" data-sw="Omba Nukuu ya Bure">Request a Free Quote</a>
+            </div>
+            
+            <div style="margin-top: 18px;">
+                <a href="contact.html" style="color: var(--accent-gold); font-weight: 700; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.5px;" data-en="Contact Our Experts &rarr;" data-sw="Wasiliana na Wataalamu Wetu &rarr;">Contact Our Experts &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col info-col">
+                <h3 data-en="CONTACT US" data-sw="WASILIANA NASI">CONTACT US</h3>
+                <p><strong>Century Adventures</strong></p>
+                <p data-en="Asasi Tower, 4th Floor" data-sw="Asasi Tower, Ghorofa ya 4">Asasi Tower, 4th Floor</p>
+                <p data-en="Ohio Street" data-sw="Mtaa wa Ohio">Ohio Street</p>
+                <p><i class="fas fa-map-marker-alt"></i> Dar es Salaam, Tanzania</p>
+                <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/255747115390" target="_blank" style="color: inherit;">+255 747 115 390</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@centuryadventures.com" style="color: inherit;">info@centuryadventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:bookings@centuryadventures.com" style="color: inherit;">bookings@centuryadventures.com</a></p>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="POPULAR PLACES" data-sw="MAENEO MAARUFU">POPULAR PLACES</h3>
+                <ul>
+                    <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                    <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                    <li><a href="selous.html" data-en="Nyerere Park" data-sw="Hifadhi ya Nyerere">Nyerere Park</a></li>
+                    <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                    <li><a href="mikumi.html" data-en="Mikumi Park" data-sw="Hifadhi ya Mikumi">Mikumi Park</a></li>
+                    <li><a href="ngorongoro.html" data-en="Ngorongoro" data-sw="Ngorongoro">Ngorongoro</a></li>
+                    <li><a href="manyara.html" data-en="Manyara National Park" data-sw="Hifadhi ya Manyara">Manyara National Park</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL EXPERIENCE" data-sw="UZOEFU WA KUSAFIRI">TRAVEL EXPERIENCE</h3>
+                <ul>
+                    <li><a href="family-safaris.html" data-en="Family Trips" data-sw="Safari za Familia">Family Trips</a></li>
+                    <li><a href="honeymoon-safaris.html" data-en="Honeymoon Trips" data-sw="Safari za Fungate">Honeymoon Trips</a></li>
+                    <li><a href="migration-safaris.html" data-en="Migration Trips" data-sw="Safari za Uhamiaji">Migration Trips</a></li>
+                    <li><a href="volunteer.html" data-en="Volunteer Programs" data-sw="Mipango ya Kujitolea">Volunteer Programs</a></li>
+                    <li><a href="zanzibar-beach.html" data-en="Zanzibar Beach Holiday" data-sw="Likizo ya Pwani ya Zanzibar">Zanzibar Beach Holiday</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL RESOURCES" data-sw="MAARIFA YA SAFARI">TRAVEL RESOURCES</h3>
+                <ul>
+                    <li><a href="blog.html" data-en="Travel Blog" data-sw="Blogu yetu">Travel Blog</a></li>
+                    <li><a href="faq.html" data-en="FAQs" data-sw="Maswali ya Kawaida">FAQs</a></li>
+                    <li><a href="gallery.html" data-en="Photo Gallery" data-sw="Picha za Safari">Photo Gallery</a></li>
+                    <li><a href="testimonials.html" data-en="Testimonials" data-sw="Shuhuda">Testimonials</a></li>
+                    <li><a href="best-time-to-visit-tanzania.html" data-en="Best Time to Visit" data-sw="Wakati Bora wa Kuja">Best Time to Visit</a></li>
+                    <li><a href="health-safety-tanzania.html" data-en="Health &amp; Safety" data-sw="Afya na Usalama">Health &amp; Safety</a></li>
+                    <li><a href="obtaining-visa-tanzania.html" data-en="Visa Information" data-sw="Visa ya Safari">Visa Information</a></li>
+                    <li><a href="solo-female-travel-tanzania.html" data-en="Solo Female Travel" data-sw="Safari ya Wanawake">Solo Female Travel</a></li>
+                    <li><a href="what-to-wear-safari.html" data-en="Safari Packing Guide" data-sw="Nguo za Safari">Safari Packing Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <div class="tripadvisor-card">
+                    <img src="https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-66827-5.svg" alt="TripAdvisor">
+                    <h4 data-en="TripAdvisor Century Adventures" data-sw="TripAdvisor Century Adventures">TripAdvisor Century Adventures</h4>
+                    <p data-en="Ranked #1 on TripAdvisor" data-sw="Imeorodheshwa #1 TripAdvisor">Ranked #1 on TripAdvisor</p>
+                    <a href="https://www.tripadvisor.com/" target="_blank" class="btn btn-small" data-en="TripAdvisor Give Feedback Century Adventures" data-sw="TripAdvisor Toa Maoni Century Adventures">TripAdvisor Give Feedback Century Adventures</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61577731823809"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@CenturyAdventures" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/century_adventures?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/255747115390"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:info@centuryadventures.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; Copyright 2012 - 2026 | Century Adventures</p>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>

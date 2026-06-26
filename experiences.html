@@ -1,0 +1,1369 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiences | Century Adventures Tanzania</title>
+    <meta name="description"
+        content="Discover Tanzania beyond the ordinary with Century Adventures. Wildlife encounters, mountain adventures, beach escapes, cultural discoveries and more.">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        (function () {
+            const theme = localStorage.getItem('century-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <style>
+        /* ══ Hero ══ */
+        .exp-hero {
+            position: relative;
+            height: 92vh;
+            min-height: 560px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        .exp-hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('assets/03TMMT-IM1103-mara-mara-tented-lodge-1475.jpg');
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.05);
+            animation: heroZoom 18s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroZoom {
+            from {
+                transform: scale(1.05);
+            }
+
+            to {
+                transform: scale(1.12);
+            }
+        }
+
+        .exp-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0.15) 0%,
+                    rgba(0, 20, 10, 0.55) 50%,
+                    rgba(0, 20, 10, 0.85) 100%);
+        }
+
+        .exp-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 860px;
+            padding: 0 24px;
+        }
+
+        .exp-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(197, 160, 68, 0.18);
+            border: 1px solid rgba(197, 160, 68, 0.5);
+            color: var(--accent-gold);
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-bottom: 28px;
+            backdrop-filter: blur(10px);
+            animation: fadeDown 0.8s ease forwards;
+        }
+
+        .exp-hero-content h1 {
+            font-size: clamp(2.6rem, 6vw, 4.8rem);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: #fff;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+            animation: fadeUp 0.9s ease 0.15s both;
+        }
+
+        .exp-hero-content h1 em {
+            font-style: italic;
+            color: var(--accent-gold);
+        }
+
+        .exp-hero-tagline {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            opacity: 0.88;
+            max-width: 620px;
+            margin: 0 auto 36px;
+            line-height: 1.8;
+            animation: fadeUp 0.9s ease 0.3s both;
+        }
+
+        .exp-hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeUp 0.9s ease 0.45s both;
+        }
+
+        .btn-hero-primary {
+            background: var(--accent-gold);
+            color: #002b18 !important;
+            font-weight: 800;
+            padding: 15px 36px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            text-decoration: none !important;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 30px rgba(197, 160, 68, 0.4);
+        }
+
+        .btn-hero-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(197, 160, 68, 0.55);
+        }
+
+        .btn-hero-outline {
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            color: #fff !important;
+            font-weight: 700;
+            padding: 13px 32px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none !important;
+            transition: all 0.4s ease;
+        }
+
+        .btn-hero-outline:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: #fff;
+        }
+
+        .exp-hero-scroll {
+            position: absolute;
+            bottom: 36px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .exp-hero-scroll i {
+            font-size: 1.1rem;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(8px);
+            }
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ══ Stat Bar ══ */
+        .stat-bar {
+            background: var(--primary-green);
+            padding: 28px 0;
+        }
+
+        .stat-bar-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+        }
+
+        .stat-bar-item {
+            text-align: center;
+            padding: 10px 20px;
+            border-right: 1px solid rgba(255, 255, 255, 0.12);
+            color: #fff;
+        }
+
+        .stat-bar-item:last-child {
+            border-right: none;
+        }
+
+        .stat-bar-item .num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            display: block;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .stat-bar-item .lbl {
+            font-size: 0.75rem;
+            opacity: 0.75;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 640px) {
+            .stat-bar-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stat-bar-item:nth-child(2) {
+                border-right: none;
+            }
+        }
+
+        /* ══ Editorial Intro ══ */
+        .editorial-intro {
+            background: var(--bg-color);
+            padding: 100px 0 80px;
+        }
+
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        @media (max-width: 900px) {
+            .editorial-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .editorial-label {
+            display: inline-block;
+            color: var(--accent-gold);
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .editorial-heading {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            line-height: 1.15;
+            color: var(--primary-green);
+            margin-bottom: 30px;
+        }
+
+        [data-theme="dark"] .editorial-heading {
+            color: #fff;
+        }
+
+        .editorial-heading em {
+            font-style: italic;
+            color: var(--accent-gold);
+        }
+
+        .editorial-body p {
+            color: var(--text-muted);
+            font-size: 1.02rem;
+            line-height: 1.85;
+            margin-bottom: 22px;
+        }
+
+        .editorial-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .editorial-pull-quote {
+            background: linear-gradient(135deg, var(--primary-green) 0%, #002b18 100%);
+            border-radius: 24px;
+            padding: 48px 44px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .editorial-pull-quote::before {
+            content: '\201C';
+            position: absolute;
+            top: -20px;
+            left: 24px;
+            font-size: 10rem;
+            font-family: 'Playfair Display', serif;
+            color: rgba(197, 160, 68, 0.18);
+            line-height: 1;
+        }
+
+        .editorial-pull-quote p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.35rem;
+            line-height: 1.7;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 24px;
+        }
+
+        .editorial-pull-quote cite {
+            font-size: 0.8rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-style: normal;
+        }
+
+        /* ══ Experience Cards ══ */
+        .what-awaits {
+            background: var(--section-bg);
+            padding: 100px 0;
+        }
+
+        .what-awaits .section-top {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .what-awaits h2 {
+            font-size: clamp(1.9rem, 3.5vw, 3rem);
+            color: var(--primary-green);
+            margin-bottom: 16px;
+        }
+
+        [data-theme="dark"] .what-awaits h2 {
+            color: #fff;
+        }
+
+        .what-awaits .section-sub {
+            color: var(--text-muted);
+            max-width: 520px;
+            margin: 0 auto;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .exp-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        @media (max-width: 1024px) {
+            .exp-cards-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .exp-cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .exp-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .exp-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-gold);
+        }
+
+        .exp-card-img {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .exp-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .exp-card:hover .exp-card-img img {
+            transform: scale(1.07);
+        }
+
+        .exp-card-emoji {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .exp-card-body {
+            padding: 30px 28px 32px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .exp-card-body h3 {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            line-height: 1.35;
+        }
+
+        .exp-card-body p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.75;
+            flex: 1;
+            margin-bottom: 22px;
+        }
+
+        .exp-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-green);
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-decoration: none !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .exp-card-link {
+            color: var(--accent-gold);
+        }
+
+        .exp-card-link:hover {
+            gap: 12px;
+            opacity: 0.8;
+        }
+
+        .exp-card-link i {
+            font-size: 0.75rem;
+        }
+
+        /* ══ Immersive Feature Blocks ══ */
+        .feature-blocks {
+            background: var(--bg-color);
+            padding: 100px 0;
+        }
+
+        .feature-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+
+        .feature-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .feature-block.reverse .feature-img {
+            order: 2;
+        }
+
+        .feature-block.reverse .feature-text {
+            order: 1;
+        }
+
+        @media (max-width: 860px) {
+            .feature-block {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .feature-block.reverse .feature-img,
+            .feature-block.reverse .feature-text {
+                order: unset;
+            }
+        }
+
+        .feature-img {
+            position: relative;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .feature-img img {
+            width: 100%;
+            display: block;
+            height: 420px;
+            object-fit: cover;
+        }
+
+        .feature-img-badge {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            padding: 12px 22px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 0.78rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--primary-green);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        [data-theme="dark"] .feature-img-badge {
+            background: rgba(0, 38, 22, 0.92);
+            color: var(--accent-gold);
+        }
+
+        .feature-text .sub-heading {
+            display: block;
+            margin-bottom: 14px;
+        }
+
+        .feature-text h2 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        [data-theme="dark"] .feature-text h2 {
+            color: #fff;
+        }
+
+        .feature-text p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.85;
+            margin-bottom: 28px;
+        }
+
+        .feature-checklist {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .feature-checklist li {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .feature-checklist li i {
+            color: var(--accent-gold);
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        /* ══ Why Stand Out ══ */
+        .why-standout {
+            background: var(--section-bg);
+            padding: 100px 0;
+        }
+
+        .why-standout .section-top {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .why-standout h2 {
+            font-size: clamp(1.9rem, 3.5vw, 3rem);
+            color: var(--primary-green);
+            margin-bottom: 16px;
+        }
+
+        [data-theme="dark"] .why-standout h2 {
+            color: #fff;
+        }
+
+        .standout-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        @media (max-width: 900px) {
+            .standout-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 580px) {
+            .standout-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .standout-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 36px 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .standout-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .standout-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .standout-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .standout-card .sc-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(197, 160, 68, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            color: var(--accent-gold);
+            transition: var(--transition);
+        }
+
+        .standout-card:hover .sc-icon {
+            background: var(--accent-gold);
+            color: #fff;
+        }
+
+        .standout-card h4 {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        .standout-card p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* ══ Closing CTA ══ */
+        .exp-closing {
+            background: var(--primary-gradient);
+            padding: 110px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exp-closing::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(197, 160, 68, 0.12) 0%, transparent 70%);
+            top: -200px;
+            right: -150px;
+            border-radius: 50%;
+        }
+
+        .exp-closing h2 {
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            color: #fff;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .exp-closing .closing-tagline {
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 620px;
+            margin: 0 auto 16px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .closing-emoji-row {
+            font-size: 1.8rem;
+            letter-spacing: 8px;
+            margin-bottom: 38px;
+            position: relative;
+        }
+
+        .exp-closing .closing-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .btn-closing-gold {
+            background: var(--accent-gold);
+            color: #002b18 !important;
+            font-weight: 800;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none !important;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 30px rgba(197, 160, 68, 0.3);
+        }
+
+        .btn-closing-gold:hover {
+            background: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-closing-outline {
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: #fff !important;
+            font-weight: 700;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none !important;
+            transition: all 0.4s ease;
+        }
+
+        .btn-closing-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .feature-img img {
+                height: 280px;
+            }
+        }
+    </style>
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+    <div class="scroll-progress"></div>
+
+    <!-- ══ Header ══ -->
+    <header class="header" id="mainHeader">
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html"><img src="assets/logo.png" alt="Century Adventures Logo"></a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html" data-en="Home" data-sw="Nyumbani">Home</a></li>
+                    <li><a href="about.html" data-en="About Us" data-sw="Kuhusu Sisi">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-en="Destinations" data-sw="Maeneo">Destinations <i
+                                class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="katavi.html">Katavi National Park</a></li>
+                            <li><a href="selous.html">Selous Game Reserve</a></li>
+                            <li><a href="ruaha.html">Ruaha National Park</a></li>
+                            <li><a href="mikumi.html">Mikumi National Park</a></li>
+                            <li><a href="serengeti.html">Serengeti National Park</a></li>
+                            <li><a href="gombe.html">Gombe Stream National Park</a></li>
+                            <li><a href="ngorongoro.html">Ngorongoro Conservation Area</a></li>
+                            <li><a href="manyara.html">Lake Manyara National Park</a></li>
+                            <li><a href="tarangire.html">Tarangire National Park</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="safaris.html" data-en="TOURS & SAFARIS" data-sw="SAFARI NA ZIARA">TOURS & SAFARIS</a></li>
+                    <li><a href="experiences.html" class="active" data-en="Experiences" data-sw="Uzoefu">Experiences</a>
+                    </li>
+                    <li><a href="volunteer.html" data-en="Volunteer" data-sw="Kujitolea">Volunteer</a></li>
+                    <li><a href="vehicles.html" data-en="Safari Vehicles" data-sw="Magari ya Safari">Safari Vehicles</a>
+                    </li>
+                    <li><a href="contact.html" data-en="Contact Us" data-sw="Wasiliana Nasi">Contact Us</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-toggle" id="mobile-toggle" onclick="toggleMobileMenu()"
+                aria-label="Open navigation menu">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </button>
+            <div class="header-actions">
+                <div class="header-toggles">
+                    <button class="toggle-btn lang-toggle" onclick="toggleLang()">SW</button>
+                    <button class="toggle-btn theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+                </div>
+                <a href="enquire.html" class="btn btn-primary enquire-btn" data-en="ENQUIRE" data-sw="ULIZA">ENQUIRE</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ══ Hero ══ -->
+    <section class="exp-hero" id="home">
+        <div class="exp-hero-bg"></div>
+        <div class="exp-hero-overlay"></div>
+        <div class="exp-hero-content">
+            <div class="exp-hero-badge">
+                <i class="fas fa-compass"></i>
+                <span data-en="TANZANIA EXPERIENCES" data-sw="UZOEFU WA TANZANIA">TANZANIA EXPERIENCES</span>
+            </div>
+            <h1 data-en="Discover Tanzania Beyond the Ordinary" data-sw="Gundua Tanzania Zaidi ya Kawaida">
+                Discover Tanzania <em>Beyond the Ordinary</em>
+            </h1>
+            <p class="exp-hero-tagline"
+                data-en="Every journey tells a story, and we're here to help you create one worth remembering."
+                data-sw="Kila safari inasimulisha hadithi, na tuko hapa kukusaidia kuunda moja inayostahili kukumbukwa.">
+                Every journey tells a story, and we're here to help you create one worth remembering.
+            </p>
+            <div class="exp-hero-actions">
+                <a href="#what-awaits" class="btn-hero-primary" data-en="EXPLORE EXPERIENCES"
+                    data-sw="CHUNGUZA UZOEFU">EXPLORE EXPERIENCES</a>
+                <a href="enquire.html" class="btn-hero-outline" data-en="PLAN MY TRIP" data-sw="PANGA SAFARI YANGU">PLAN
+                    MY TRIP</a>
+            </div>
+        </div>
+        <div class="exp-hero-scroll">
+            <span>SCROLL</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- ══ Stat Bar ══ -->
+    <div class="stat-bar">
+        <div class="container">
+            <div class="stat-bar-grid">
+                <div class="stat-bar-item">
+                    <span class="num">15+</span>
+                    <span class="lbl" data-en="Years of Experience" data-sw="Miaka ya Uzoefu">Years of Experience</span>
+                </div>
+                <div class="stat-bar-item">
+                    <span class="num">5,000+</span>
+                    <span class="lbl" data-en="Happy Travelers" data-sw="Wasafiri Wenye Furaha">Happy Travelers</span>
+                </div>
+                <div class="stat-bar-item">
+                    <span class="num">50+</span>
+                    <span class="lbl" data-en="Unique Experiences" data-sw="Uzoefu wa Kipekee">Unique Experiences</span>
+                </div>
+                <div class="stat-bar-item">
+                    <span class="num">4.9★</span>
+                    <span class="lbl" data-en="TripAdvisor Rating" data-sw="Ukadiriaji wa TripAdvisor">TripAdvisor
+                        Rating</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ Editorial Intro ══ -->
+    <section class="editorial-intro">
+        <div class="container">
+            <div class="editorial-grid">
+                <div>
+                    <span class="editorial-label" data-en="OUR STORY" data-sw="HADITHI YETU">OUR STORY</span>
+                    <h2 class="editorial-heading" data-en="More Than a Tour — <em>A Transformation</em>"
+                        data-sw="Zaidi ya Ziara — <em>Mabadiliko</em>">
+                        More Than a Tour — <em>A Transformation</em>
+                    </h2>
+                    <div class="editorial-body">
+                        <p data-en="From the endless plains of the Serengeti to the turquoise waters of Zanzibar, our experiences are designed to immerse you in the beauty, culture, and adventure that make Tanzania a world-class destination."
+                            data-sw="Kutoka mapana ya Serengeti hadi maji ya bluu ya Zanzibar, uzoefu wetu umeundwa kukuingiza katika uzuri, utamaduni, na ujasiri unaofanya Tanzania kuwa lengo la ulimwengu.">
+                            From the endless plains of the Serengeti to the turquoise waters of Zanzibar, our
+                            experiences are designed to immerse you in the beauty, culture, and adventure that make
+                            Tanzania a world-class destination.
+                        </p>
+                        <p data-en="Imagine witnessing a pride of lions on an early morning game drive, standing at the rim of the magnificent Ngorongoro Crater, sharing stories with the Maasai people, or watching the sun set over the African savannah. These are more than tours — they are unforgettable moments that stay with you long after your journey ends."
+                            data-sw="Fikiria kuona kundi la simba katika mchezo wa mapema asubuhi, kusimama kwenye ukingo wa Kreta ya Ngorongoro, kushiriki hadithi na watu wa Maasai, au kutazama jua likitua juu ya savanna ya Afrika.">
+                            Imagine witnessing a pride of lions on an early morning game drive, standing at the rim of
+                            the magnificent Ngorongoro Crater, sharing stories with the Maasai people, or watching the
+                            sun set over the African savannah. These are more than tours — they are unforgettable
+                            moments that stay with you long after your journey ends.
+                        </p>
+                        <p data-en="Whether you're an adventure seeker, wildlife enthusiast, nature lover, photographer, honeymooner, or family traveler, we offer experiences tailored to match your dreams and travel style."
+                            data-sw="Iwe wewe ni mtafutaji wa msisimko, mpenda wanyamapori, mpenda asili, mpiga picha, mtu wa fungate, au msafiri wa familia, tunatoa uzoefu uliobinafsishwa kulingana na ndoto zako na mtindo wako wa kusafiri.">
+                            Whether you're an adventure seeker, wildlife enthusiast, nature lover, photographer,
+                            honeymooner, or family traveler, we offer experiences tailored to match your dreams and
+                            travel style.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div class="editorial-pull-quote scroll-reveal">
+                        <p data-en="&ldquo;These are more than tours — they are unforgettable moments that stay with you long after your journey ends.&rdquo;"
+                            data-sw="&ldquo;Hizi ni zaidi ya ziara — ni matukio yasiyosahaulika yanayokaa nawe muda mrefu baada ya safari yako kumalizika.&rdquo;">
+                            "These are more than tours — they are unforgettable moments that stay with you long after
+                            your journey ends."
+                        </p>
+                        <cite data-en="— Century Adventures Team" data-sw="— Timu ya Century Adventures">— Century
+                            Adventures Team</cite>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ What Awaits You ══ -->
+    <section class="what-awaits" id="what-awaits">
+        <div class="container">
+            <div class="section-top">
+                <span class="sub-heading" data-en="WHAT AWAITS YOU" data-sw="KINACHOKUNGOJA">WHAT AWAITS YOU</span>
+                <h2 data-en="Six World-Class Experiences" data-sw="Uzoefu Sita wa Kiwango cha Ulimwengu">Six World-Class
+                    Experiences</h2>
+                <p class="section-sub"
+                    data-en="Handcrafted adventures across Tanzania's most spectacular destinations — for every traveler, every dream."
+                    data-sw="Safari zilizoundwa kwa makini katika maeneo mazuri zaidi ya Tanzania — kwa kila msafiri, kila ndoto.">
+                    Handcrafted adventures across Tanzania's most spectacular destinations — for every traveler, every
+                    dream.
+                </p>
+            </div>
+
+            <div class="exp-cards-grid">
+
+                <!-- Wildlife -->
+                <div class="exp-card scroll-reveal">
+                    <div class="exp-card-img">
+                        <img src="assets/03TMMT-IM1103-mara-mara-tented-lodge-1475.jpg" alt="Wildlife Encounters">
+                        <div class="exp-card-emoji">🦁</div>
+                    </div>
+                    <div class="exp-card-body">
+                        <h3 data-en="Wildlife Encounters" data-sw="Makutano ya Wanyamapori">Wildlife Encounters</h3>
+                        <p data-en="Get up close to Africa's iconic wildlife in Tanzania's most famous national parks, including Serengeti, Ngorongoro, Tarangire, and Lake Manyara."
+                            data-sw="Karibia na wanyamapori maarufu wa Afrika katika mbuga za taifa za Tanzania, ikiwa ni pamoja na Serengeti, Ngorongoro, Tarangire, na Ziwa Manyara.">
+                            Get up close to Africa's iconic wildlife in Tanzania's most famous national parks, including
+                            Serengeti, Ngorongoro, Tarangire, and Lake Manyara.
+                        </p>
+                        <a href="safaris.html" class="exp-card-link">Explore Safaris <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Mountain -->
+                <div class="exp-card scroll-reveal">
+                    <div class="exp-card-img">
+                        <img src="assets/kilimanjalo.png" alt="Mountain Adventures">
+                        <div class="exp-card-emoji">🏔️</div>
+                    </div>
+                    <div class="exp-card-body">
+                        <h3 data-en="Mountain Adventures" data-sw="Matukio ya Milima">Mountain Adventures</h3>
+                        <p data-en="Challenge yourself with breathtaking treks through scenic landscapes, from the legendary Mount Kilimanjaro to the beautiful slopes of Mount Meru."
+                            data-sw="Jijaribu na kupanda milima ya kupumua kupitia mandhari ya kupendeza, kutoka Mlima Kilimanjaro hadi miteremko ya Mlima Meru.">
+                            Challenge yourself with breathtaking treks through scenic landscapes, from the legendary
+                            Mount Kilimanjaro to the beautiful slopes of Mount Meru.
+                        </p>
+                        <a href="enquire.html" class="exp-card-link">Plan Your Trek <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Beach -->
+                <div class="exp-card scroll-reveal">
+                    <div class="exp-card-img">
+                        <img src="assets/Zanzibar.jpg" alt="Beach Escapes">
+                        <div class="exp-card-emoji">🌴</div>
+                    </div>
+                    <div class="exp-card-body">
+                        <h3 data-en="Beach Escapes" data-sw="Burudisho za Pwani">Beach Escapes</h3>
+                        <p data-en="Relax on the white sandy beaches of Zanzibar, enjoy crystal-clear waters, and experience unforgettable island adventures."
+                            data-sw="Pumzika kwenye ufuo mweupe wa Zanzibar, furahia maji safi ya bluu, na upate uzoefu wa matukio ya visiwani usiosahaulika.">
+                            Relax on the white sandy beaches of Zanzibar, enjoy crystal-clear waters, and experience
+                            unforgettable island adventures.
+                        </p>
+                        <a href="zanzibar-beach.html" class="exp-card-link">Discover Zanzibar <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Cultural -->
+                <div class="exp-card scroll-reveal">
+                    <div class="exp-card-img">
+                        <img src="assets/Masai.jpg" alt="Cultural Discoveries">
+                        <div class="exp-card-emoji">🌍</div>
+                    </div>
+                    <div class="exp-card-body">
+                        <h3 data-en="Cultural Discoveries" data-sw="Uvumbuzi wa Kitamaduni">Cultural Discoveries</h3>
+                        <p data-en="Connect with local communities, explore rich traditions, and experience the warmth and hospitality of Tanzanian culture."
+                            data-sw="Ungana na jamii za mitaa, chunguza mila tajiri, na upate ukarimu wa utamaduni wa Tanzania.">
+                            Connect with local communities, explore rich traditions, and experience the warmth and
+                            hospitality of Tanzanian culture.
+                        </p>
+                        <a href="enquire.html" class="exp-card-link">Explore Culture <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Photography -->
+                <div class="exp-card scroll-reveal">
+                    <div class="exp-card-img">
+                        <img src="assets/4N1A0305-1-1.jpg" alt="Photography Journeys">
+                        <div class="exp-card-emoji">📸</div>
+                    </div>
+                    <div class="exp-card-body">
+                        <h3 data-en="Photography Journeys" data-sw="Safari za Upigaji Picha">Photography Journeys</h3>
+                        <p data-en="Capture extraordinary landscapes, wildlife, and cultural moments with opportunities for stunning photography at every turn."
+                            data-sw="Piga picha mandhari ya ajabu, wanyamapori, na matukio ya kitamaduni na fursa za upigaji picha wa kupendeza kila mahali.">
+                            Capture extraordinary landscapes, wildlife, and cultural moments with opportunities for
+                            stunning photography at every turn.
+                        </p>
+                        <a href="book.html" class="exp-card-link">Book a Journey <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Honeymoon -->
+                <div class="exp-card scroll-reveal">
+                    <div class="exp-card-img">
+                        <img src="assets/zanzibar.png" alt="Honeymoon & Romantic Getaways">
+                        <div class="exp-card-emoji">❤️</div>
+                    </div>
+                    <div class="exp-card-body">
+                        <h3 data-en="Honeymoon &amp; Romantic Getaways" data-sw="Fungate na Safari za Kimapenzi">
+                            Honeymoon &amp; Romantic Getaways</h3>
+                        <p data-en="Celebrate love with exclusive experiences, luxury accommodations, and unforgettable sunsets in some of Tanzania's most beautiful locations."
+                            data-sw="Sherehe upendo na uzoefu wa kipekee, malazi ya anasa, na machweo ya jua yasiyosahaulika katika sehemu nzuri zaidi za Tanzania.">
+                            Celebrate love with exclusive experiences, luxury accommodations, and unforgettable sunsets
+                            in some of Tanzania's most beautiful locations.
+                        </p>
+                        <a href="honeymoon-safaris.html" class="exp-card-link">Explore Romance <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ Feature Blocks ══ -->
+    <section class="feature-blocks">
+        <div class="container">
+
+            <!-- Block 1: Wildlife -->
+            <div class="feature-block scroll-reveal">
+                <div class="feature-img">
+                    <img src="assets/07TMMT-IM1107-mara-mara-tented-lodge-1475.jpg" alt="Maasai Cultural Walk">
+                    <div class="feature-img-badge">CULTURAL IMMERSION</div>
+                </div>
+                <div class="feature-text">
+                    <span class="sub-heading" data-en="CONNECT" data-sw="UNGANIKA">CONNECT</span>
+                    <h2 data-en="Maasai Cultural Walks" data-sw="Matembezi ya Kitamaduni ya Maasai">Maasai Cultural
+                        Walks</h2>
+                    <p data-en="Walk alongside the red-robed Maasai warriors. Learn the art of tracking, the medicinal secrets of the bush, and witness traditional ceremonies that have remained unchanged for centuries."
+                        data-sw="Tembea pamoja na wapiganaji wa Maasai wenye mavazi mekundu. Jifunza sanaa ya kufuatilia, siri za matibabu za porini, na ushuhudie sherehe za jadi.">
+                        Walk alongside the red-robed Maasai warriors. Learn the art of tracking, the medicinal secrets
+                        of the bush, and witness traditional ceremonies that have remained unchanged for centuries.
+                    </p>
+                    <ul class="feature-checklist">
+                        <li><i class="fas fa-check-circle"></i> <span data-en="Authentic Village Visits"
+                                data-sw="Ziara za Kweli za Kijijini">Authentic Village Visits</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-en="Traditional Bushcraft &amp; Tracking"
+                                data-sw="Ufundi wa Jadi na Kufuatilia">Traditional Bushcraft &amp; Tracking</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-en="Cultural Storytelling &amp; Dance"
+                                data-sw="Hadithi za Kitamaduni na Ngoma">Cultural Storytelling &amp; Dance</span></li>
+                    </ul>
+                    <a href="book.html" class="btn btn-primary" data-en="Book This Experience"
+                        data-sw="Weka Akiba ya Uzoefu Huu">Book This Experience</a>
+                </div>
+            </div>
+
+            <!-- Block 2: Air Safari -->
+            <div class="feature-block reverse scroll-reveal">
+                <div class="feature-text">
+                    <span class="sub-heading" data-en="ADVENTURE" data-sw="UJASIRI">ADVENTURE</span>
+                    <h2 data-en="Serengeti Air Safaris" data-sw="Safari za Anga za Serengeti">Serengeti Air Safaris</h2>
+                    <p data-en="Soar silently over the Great Migration at dawn in a hot air balloon. Witness the vast golden plains wake up from a bird's-eye perspective before descending for a champagne breakfast in the heart of the Serengeti."
+                        data-sw="Pepea kimya kimya juu ya Uhamiaji Mkuu wakati wa mapambazuko katika puto la moto. Shuhudia mapana makubwa ya dhahabu yakiamka kutoka mtazamo wa ndege.">
+                        Soar silently over the Great Migration at dawn in a hot air balloon. Witness the vast golden
+                        plains wake up from a bird's-eye perspective before descending for a champagne breakfast in the
+                        heart of the Serengeti.
+                    </p>
+                    <ul class="feature-checklist">
+                        <li><i class="fas fa-check-circle"></i> <span data-en="Sunrise Hot Air Balloon Flights"
+                                data-sw="Ndege za Puto za Mapambazuko">Sunrise Hot Air Balloon Flights</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-en="Bush Champagne Breakfast"
+                                data-sw="Kiamsha Kinywa cha Povu Porini">Bush Champagne Breakfast</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-en="Certificate of Flight"
+                                data-sw="Cheti cha Ndege">Certificate of Flight</span></li>
+                    </ul>
+                    <a href="book.html" class="btn btn-primary" data-en="Book This Experience"
+                        data-sw="Weka Akiba ya Uzoefu Huu">Book This Experience</a>
+                </div>
+                <div class="feature-img">
+                    <img src="assets/KTA13Serengeti Nationa.webp" alt="Air Safari">
+                    <div class="feature-img-badge">SERENGETI SUNRISE</div>
+                </div>
+            </div>
+
+            <!-- Block 3: Beach -->
+            <div class="feature-block scroll-reveal">
+                <div class="feature-img">
+                    <img src="assets/Zanzibar.jpg" alt="Zanzibar Beach">
+                    <div class="feature-img-badge">ZANZIBAR ISLAND</div>
+                </div>
+                <div class="feature-text">
+                    <span class="sub-heading" data-en="RELAX" data-sw="PUMZIKA">RELAX</span>
+                    <h2 data-en="Zanzibar Beach Retreats" data-sw="Mapumziko ya Pwani ya Zanzibar">Zanzibar Beach
+                        Retreats</h2>
+                    <p data-en="After the thrill of the safari, unwind on the pristine white-sand beaches of Zanzibar. Snorkel in coral reefs, explore the UNESCO-listed Stone Town, and witness spectacular Indian Ocean sunsets."
+                        data-sw="Baada ya msisimko wa safari, pumzika kwenye ufuo mweupe wa Zanzibar. Piga mbizi katika miamba ya matumbawe, chunguza Mji wa Mawe ulioorodheshwa na UNESCO, na ushuhudie machweo ya jua ya kupendeza ya Bahari Hindi.">
+                        After the thrill of the safari, unwind on the pristine white-sand beaches of Zanzibar. Snorkel
+                        in coral reefs, explore the UNESCO-listed Stone Town, and witness spectacular Indian Ocean
+                        sunsets.
+                    </p>
+                    <ul class="feature-checklist">
+                        <li><i class="fas fa-check-circle"></i> <span data-en="Snorkeling &amp; Diving Tours"
+                                data-sw="Ziara za Kuogelea na Kupiga Mbizi">Snorkeling &amp; Diving Tours</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-en="Stone Town Heritage Walks"
+                                data-sw="Matembezi ya Urithi wa Stone Town">Stone Town Heritage Walks</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-en="Island Hopping &amp; Spice Tours"
+                                data-sw="Kuruka Visiwa na Ziara za Viungo">Island Hopping &amp; Spice Tours</span></li>
+                    </ul>
+                    <a href="zanzibar-beach.html" class="btn btn-primary" data-en="Discover Zanzibar"
+                        data-sw="Gundua Zanzibar">Discover Zanzibar</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══ Why Our Experiences Stand Out ══ -->
+    <section class="why-standout">
+        <div class="container">
+            <div class="section-top">
+                <span class="sub-heading" data-en="WHY CHOOSE US" data-sw="KWA NINI TUCHAGUE">WHY CHOOSE US</span>
+                <h2 data-en="Why Our Experiences Stand Out" data-sw="Kwa Nini Uzoefu Wetu Unajitofautisha">Why Our
+                    Experiences Stand Out</h2>
+            </div>
+
+            <div class="standout-grid">
+                <div class="standout-card scroll-reveal">
+                    <div class="sc-icon"><i class="fas fa-route"></i></div>
+                    <h4 data-en="Personalized Itineraries" data-sw="Ratiba za Kibinafsi">Personalized Itineraries</h4>
+                    <p data-en="Every trip is tailored to your interests, pace, and travel style — no cookie-cutter tours."
+                        data-sw="Kila safari imefanywa kulingana na maslahi yako, kasi yako, na mtindo wako wa kusafiri.">
+                        Every trip is tailored to your interests, pace, and travel style — no cookie-cutter tours.</p>
+                </div>
+                <div class="standout-card scroll-reveal">
+                    <div class="sc-icon"><i class="fas fa-user-tie"></i></div>
+                    <h4 data-en="Expert Local Guides" data-sw="Waongozaji wa Mitaa Wataalamu">Expert Local Guides</h4>
+                    <p data-en="Knowledgeable and friendly guides who bring Tanzania's stories and wildlife to life."
+                        data-sw="Waongozaji wenye ujuzi na wa kirafiki ambao wanahuisha hadithi na wanyamapori wa Tanzania.">
+                        Knowledgeable and friendly guides who bring Tanzania's stories and wildlife to life.</p>
+                </div>
+                <div class="standout-card scroll-reveal">
+                    <div class="sc-icon"><i class="fas fa-car-side"></i></div>
+                    <h4 data-en="Reliable Transportation" data-sw="Usafiri wa Kuaminika">Reliable Transportation</h4>
+                    <p data-en="Comfortable, well-maintained 4x4 safari vehicles for a smooth, safe journey every time."
+                        data-sw="Magari ya safari ya 4x4 ya starehe na yaliyohifadhiwa vizuri kwa safari laini na salama kila wakati.">
+                        Comfortable, well-maintained 4x4 safari vehicles for a smooth, safe journey every time.</p>
+                </div>
+                <div class="standout-card scroll-reveal">
+                    <div class="sc-icon"><i class="fas fa-handshake"></i></div>
+                    <h4 data-en="Authentic Interactions" data-sw="Mwingiliano wa Kweli">Authentic Interactions</h4>
+                    <p data-en="Real cultural connections — not staged performances — with local communities across Tanzania."
+                        data-sw="Uhusiano wa kweli wa kitamaduni — si maonyesho ya bandia — na jamii za mitaa Tanzania.">
+                        Real cultural connections — not staged performances — with local communities across Tanzania.
+                    </p>
+                </div>
+                <div class="standout-card scroll-reveal">
+                    <div class="sc-icon"><i class="fas fa-headset"></i></div>
+                    <h4 data-en="Exceptional Customer Service" data-sw="Huduma Bora kwa Wateja">Exceptional Customer
+                        Service</h4>
+                    <p data-en="We're with you from the first inquiry to your safe return home — always just a call away."
+                        data-sw="Tuko nawe kuanzia uchunguzi wa kwanza hadi urejee salama nyumbani — daima karibu nawe.">
+                        We're with you from the first inquiry to your safe return home — always just a call away.</p>
+                </div>
+                <div class="standout-card scroll-reveal">
+                    <div class="sc-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h4 data-en="Safe &amp; Hassle-Free" data-sw="Salama na Bila Msongo">Safe &amp; Hassle-Free</h4>
+                    <p data-en="Your safety is our top priority. Every detail is handled so you can focus on the memories."
+                        data-sw="Usalama wako ni kipaumbele chetu cha kwanza. Kila undani unashughulikiwa ili uweze kuzingatia kumbukumbu.">
+                        Your safety is our top priority. Every detail is handled so you can focus on the memories.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ══ Footer ══ -->
+    <!-- Footer Contact Info -->
+    <div class="footer-top">
+        <div class="container">
+            <h2><i class="fas fa-phone-alt"></i> +255 747 115 390</h2>
+            <a href="enquire.html" class="btn enquire-btn" data-en="CONTACT US TODAY!" data-sw="WASILIANA NASI LEO!">CONTACT US TODAY!</a>
+        </div>
+    </div>
+
+    <!-- Final Call to Action -->
+    <section class="section cta-section" style="background: var(--primary-gradient); padding: 50px 0; text-align: center; color: white; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <div class="container" style="position: relative; z-index: 2;">
+            <span class="sub-heading" style="color:var(--accent-gold); font-size: 0.8rem; letter-spacing: 2px;" data-en="YOUR JOURNEY TO AFRICA STARTS HERE" data-sw="SAFARI YAKO YA AFRIKA INAANZA HAPA">YOUR JOURNEY TO AFRICA STARTS HERE</span>
+            <h2 style="font-size: clamp(1.5rem, 3vw, 2.2rem); color: white; margin: 10px 0 16px;" data-en="Are you ready to explore Tanzania?" data-sw="Uko Tayari Kuichunguza Tanzania?">Are you ready to explore Tanzania?</h2>
+            
+            <p class="cta-description" style="max-width: 650px; margin: 0 auto 25px; font-size:0.9rem; line-height: 1.65; opacity: 0.9;">
+                <span class="cta-hide-mobile" data-en="Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. " data-sw="Fikiria kushuhudia uwindaji wa simba wakati wa machweo, kutazama tembo wakizurura kwa uhuru kwenye savanna zisizo na mwisho, kujionea Uhamiaji Mkuu, au kupumzika kwenye mchanga mweupe wa Zanzibar. ">Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. </span>
+                <span data-en="Let Century Adventures make those dreams come true." data-sw="Ruhusu Century Adventures kufanya ndoto hizo ziwe kweli.">Let Century Adventures make those dreams come true.</span>
+            </p>
+
+            <div class="cta-action-grid" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <a href="enquire.html" class="btn btn-primary cta-circle-btn" style="background: var(--accent-gold); color: #002b18; font-weight:800; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; text-decoration: none;" data-en="Plan Your Trip" data-sw="Panga Safari Yako">Plan Your Trip</a>
+                <a href="enquire.html" class="btn btn-outline cta-circle-btn secondary" style="border: 1px solid rgba(255,255,255,0.6); color: white; font-weight:700; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; background: transparent; text-decoration: none;" data-en="Request a Free Quote" data-sw="Omba Nukuu ya Bure">Request a Free Quote</a>
+            </div>
+            
+            <div style="margin-top: 18px;">
+                <a href="contact.html" style="color: var(--accent-gold); font-weight: 700; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.5px;" data-en="Contact Our Experts &rarr;" data-sw="Wasiliana na Wataalamu Wetu &rarr;">Contact Our Experts &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col info-col">
+                <h3 data-en="CONTACT US" data-sw="WASILIANA NASI">CONTACT US</h3>
+                <p><strong>Century Adventures</strong></p>
+                <p data-en="Asasi Tower, 4th Floor" data-sw="Asasi Tower, Ghorofa ya 4">Asasi Tower, 4th Floor</p>
+                <p data-en="Ohio Street" data-sw="Mtaa wa Ohio">Ohio Street</p>
+                <p><i class="fas fa-map-marker-alt"></i> Dar es Salaam, Tanzania</p>
+                <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/255747115390" target="_blank" style="color: inherit;">+255 747 115 390</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@centuryadventures.com" style="color: inherit;">info@centuryadventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:bookings@centuryadventures.com" style="color: inherit;">bookings@centuryadventures.com</a></p>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="POPULAR PLACES" data-sw="MAENEO MAARUFU">POPULAR PLACES</h3>
+                <ul>
+                    <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                    <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                    <li><a href="selous.html" data-en="Nyerere Park" data-sw="Hifadhi ya Nyerere">Nyerere Park</a></li>
+                    <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                    <li><a href="mikumi.html" data-en="Mikumi Park" data-sw="Hifadhi ya Mikumi">Mikumi Park</a></li>
+                    <li><a href="ngorongoro.html" data-en="Ngorongoro" data-sw="Ngorongoro">Ngorongoro</a></li>
+                    <li><a href="manyara.html" data-en="Manyara National Park" data-sw="Hifadhi ya Manyara">Manyara National Park</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL EXPERIENCE" data-sw="UZOEFU WA KUSAFIRI">TRAVEL EXPERIENCE</h3>
+                <ul>
+                    <li><a href="family-safaris.html" data-en="Family Trips" data-sw="Safari za Familia">Family Trips</a></li>
+                    <li><a href="honeymoon-safaris.html" data-en="Honeymoon Trips" data-sw="Safari za Fungate">Honeymoon Trips</a></li>
+                    <li><a href="migration-safaris.html" data-en="Migration Trips" data-sw="Safari za Uhamiaji">Migration Trips</a></li>
+                    <li><a href="volunteer.html" data-en="Volunteer Programs" data-sw="Mipango ya Kujitolea">Volunteer Programs</a></li>
+                    <li><a href="zanzibar-beach.html" data-en="Zanzibar Beach Holiday" data-sw="Likizo ya Pwani ya Zanzibar">Zanzibar Beach Holiday</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL RESOURCES" data-sw="MAARIFA YA SAFARI">TRAVEL RESOURCES</h3>
+                <ul>
+                    <li><a href="blog.html" data-en="Travel Blog" data-sw="Blogu yetu">Travel Blog</a></li>
+                    <li><a href="faq.html" data-en="FAQs" data-sw="Maswali ya Kawaida">FAQs</a></li>
+                    <li><a href="gallery.html" data-en="Photo Gallery" data-sw="Picha za Safari">Photo Gallery</a></li>
+                    <li><a href="testimonials.html" data-en="Testimonials" data-sw="Shuhuda">Testimonials</a></li>
+                    <li><a href="best-time-to-visit-tanzania.html" data-en="Best Time to Visit" data-sw="Wakati Bora wa Kuja">Best Time to Visit</a></li>
+                    <li><a href="health-safety-tanzania.html" data-en="Health &amp; Safety" data-sw="Afya na Usalama">Health &amp; Safety</a></li>
+                    <li><a href="obtaining-visa-tanzania.html" data-en="Visa Information" data-sw="Visa ya Safari">Visa Information</a></li>
+                    <li><a href="solo-female-travel-tanzania.html" data-en="Solo Female Travel" data-sw="Safari ya Wanawake">Solo Female Travel</a></li>
+                    <li><a href="what-to-wear-safari.html" data-en="Safari Packing Guide" data-sw="Nguo za Safari">Safari Packing Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <div class="tripadvisor-card">
+                    <img src="https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-66827-5.svg" alt="TripAdvisor">
+                    <h4 data-en="TripAdvisor Century Adventures" data-sw="TripAdvisor Century Adventures">TripAdvisor Century Adventures</h4>
+                    <p data-en="Ranked #1 on TripAdvisor" data-sw="Imeorodheshwa #1 TripAdvisor">Ranked #1 on TripAdvisor</p>
+                    <a href="https://www.tripadvisor.com/" target="_blank" class="btn btn-small" data-en="TripAdvisor Give Feedback Century Adventures" data-sw="TripAdvisor Toa Maoni Century Adventures">TripAdvisor Give Feedback Century Adventures</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61577731823809"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@CenturyAdventures" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/century_adventures?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/255747115390"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:info@centuryadventures.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; Copyright 2012 - 2026 | Century Adventures</p>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

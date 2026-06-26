@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Payment | Century Adventures</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body style="background: #f8f9fa;">
+    <div class="scroll-progress"></div>
+    
+    <div class="container" style="max-width: 1000px; padding: 100px 20px;">
+        
+        <!-- Payment Success Card (Hidden by default) -->
+        <div class="payment-success-card" id="successCard" style="display: none; background: var(--card-bg); border-radius: var(--border-radius); padding: 50px; text-align: center; border: 1px solid var(--primary-green); max-width: 600px; margin: 0 auto; box-shadow: var(--shadow-hover);">
+            <div style="width: 80px; height: 80px; background: rgba(0, 66, 37, 0.1); color: var(--primary-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; margin: 0 auto 25px;">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 style="font-family:'Playfair Display', serif; color:var(--primary-green); margin-bottom:15px;" data-en="Payment Successful!" data-sw="Malipo Yamefanikiwa!">Payment Successful!</h2>
+            <p style="color:var(--text-muted); margin-bottom:30px;" data-en="Thank you Sarah. Your booking is confirmed! We have sent a confirmation email with details." data-sw="Asante Sarah. Weka nafasi yako imethibitishwa! Tumekutumia barua pepe ya uthibitisho yenye maelezo.">Thank you Sarah. Your booking is confirmed! We have sent a confirmation email with details.</p>
+            
+            <div style="background:var(--section-bg); padding:25px; border-radius:15px; border:1px solid var(--border-color); text-align:left; margin-bottom:30px; font-size:0.92rem;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                    <span data-en="Booking Ref:" data-sw="Kumbukumbu ya Weka Nafasi:">Booking Ref:</span>
+                    <strong id="receiptRef" style="color:var(--text-main);">CADV-894723</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                    <span data-en="Trip:" data-sw="Safari:">Trip:</span>
+                    <strong data-en="7-Day Serengeti Migration" data-sw="Safari ya Siku 7 Uhamiaji wa Serengeti">7-Day Serengeti Migration</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                    <span data-en="Amount Paid:" data-sw="Kiasi Kilicholipwa:">Amount Paid:</span>
+                    <strong id="receiptAmount" style="color:var(--accent-gold); font-weight:800;">$2,450.00</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                    <span data-en="Status:" data-sw="Hali:">Status:</span>
+                    <span style="background:rgba(37, 211, 102, 0.15); color:#25D366; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:700;" data-en="CONFIRMED" data-sw="IMETHIBITISHWA">CONFIRMED</span>
+                </div>
+            </div>
+            
+            <div style="display:flex; gap:15px; justify-content:center;">
+                <button class="btn btn-outline" onclick="window.print()"><i class="fas fa-download"></i> <span data-en="Print Receipt" data-sw="Chapa Stakabadhi">Print Receipt</span></button>
+                <a href="index.html" class="btn btn-primary" data-en="Return Home" data-sw="Rudi Nyumbani">Return Home</a>
+            </div>
+        </div>
+
+        <!-- Main Payment Panel -->
+        <div class="payment-wrapper">
+            <!-- Order Summary -->
+            <div class="order-summary-card">
+                <h3 style="margin-bottom: 25px;" data-en="Order Summary" data-sw="Muhtasari wa Agizo">Order Summary</h3>
+                <div class="summary-item">
+                    <span data-en="Trip: 7-Day Serengeti Migration" data-sw="Safari: Siku 7 Uhamiaji wa Serengeti">Trip: 7-Day Serengeti Migration</span>
+                    <strong>$2,450.00</strong>
+                </div>
+                <div class="summary-item">
+                    <span data-en="Traveler: Sarah Johnson" data-sw="Msafiri: Sarah Johnson">Traveler: Sarah Johnson</span>
+                    <strong>x1</strong>
+                </div>
+                
+                <!-- Deposit Selection -->
+                <div style="margin: 20px 0; border-top: 1px dashed var(--border-color); padding-top: 15px;">
+                    <label style="display:block; font-weight:700; font-size:0.85rem; margin-bottom:10px;" data-en="Select Payment Option" data-sw="Chagua Chaguo la Malipo">Select Payment Option</label>
+                    <div style="display:flex; gap:10px;">
+                        <label style="flex:1; border:1px solid var(--border-color); padding:10px; border-radius:8px; cursor:pointer; display:flex; align-items:center; gap:8px; font-size:0.8rem; background:var(--bg-color);">
+                            <input type="radio" name="paymentOption" value="full" checked onclick="togglePaymentAmount(2450)">
+                            <div>
+                                <strong data-en="Full Payment" data-sw="Malipo Kamili">Full Payment</strong>
+                                <span style="display:block; color:var(--text-muted); font-size:0.75rem;">$2,450.00</span>
+                            </div>
+                        </label>
+                        <label style="flex:1; border:1px solid var(--border-color); padding:10px; border-radius:8px; cursor:pointer; display:flex; align-items:center; gap:8px; font-size:0.8rem; background:var(--bg-color);">
+                            <input type="radio" name="paymentOption" value="deposit" onclick="togglePaymentAmount(735)">
+                            <div>
+                                <strong data-en="30% Deposit" data-sw="Amana ya 30%">30% Deposit</strong>
+                                <span style="display:block; color:var(--text-muted); font-size:0.75rem;">$735.00</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="summary-item total">
+                    <span data-en="Total Amount" data-sw="Jumla ya Kiasi">Total Amount</span>
+                    <strong id="totalAmountDisplay">$2,450.00</strong>
+                </div>
+                <div class="secure-badge">
+                    <i class="fas fa-shield-alt"></i> <span data-en="256-bit SSL Secure Payment" data-sw="Malipo Salama ya 256-bit SSL">256-bit SSL Secure Payment</span>
+                </div>
+            </div>
+
+            <!-- Payment Methods -->
+            <div class="payment-methods-card">
+                <h3 data-en="Choose Payment Method" data-sw="Chagua Njia ya Malipo">Choose Payment Method</h3>
+                <div class="payment-tabs">
+                    <div class="pay-tab active" data-target="cards">
+                        <i class="fas fa-credit-card"></i>
+                        <span data-en="Card" data-sw="Kadi">Card</span>
+                    </div>
+                    <div class="pay-tab" data-target="mobile">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span data-en="Mobile Money" data-sw="Pesa ya Kwenye Simu">Mobile Money</span>
+                    </div>
+                    <div class="pay-tab" data-target="paypal">
+                        <i class="fab fa-paypal"></i>
+                        <span data-en="PayPal" data-sw="PayPal">PayPal</span>
+                    </div>
+                </div>
+
+                <!-- Card Form -->
+                <div class="payment-tab-content active" id="cards">
+                    <form class="pay-form" id="cardForm">
+                        <div class="form-group">
+                            <label data-en="Cardholder Name" data-sw="Jina la Mwenye Kadi">Cardholder Name</label>
+                            <input type="text" required placeholder="John Doe" id="cardNameInput">
+                        </div>
+                        <div class="form-group">
+                            <label data-en="Card Number" data-sw="Namba ya Kadi">Card Number</label>
+                            <input type="text" required placeholder="xxxx xxxx xxxx xxxx" id="cardNumberInput">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label data-en="Expiry Date" data-sw="Tarehe ya Mwisho">Expiry Date</label><input type="text" required placeholder="MM/YY" id="cardExpiryInput"></div>
+                            <div class="form-group"><label data-en="CVV" data-sw="CVV">CVV</label><input type="password" required placeholder="***" id="cardCvvInput"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary pay-now-btn" id="payBtnText" data-en="PAY $2,450.00" data-sw="LIPIA $2,450.00">PAY $2,450.00</button>
+                    </form>
+                    <div class="card-icons">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-amex"></i>
+                    </div>
+                </div>
+
+                <!-- Mobile Money (M-Pesa etc) -->
+                <div class="payment-tab-content" id="mobile" style="display: none;">
+                    <p style="margin-bottom:15px; color:var(--text-muted); font-size:0.9rem;" data-en="Enter your phone number to receive a payment prompt." data-sw="Weka namba yako ya simu ili kupokea ujumbe wa malipo ya simu.">Enter your phone number to receive a payment prompt.</p>
+                    <div class="form-group">
+                        <label data-en="Mobile Number" data-sw="Namba ya Simu">Mobile Number</label>
+                        <input type="tel" id="mobileNumberInput" placeholder="+255 xxx xxx xxx">
+                    </div>
+                    <div class="mobile-providers" style="margin-bottom:20px;">
+                        <div class="provider-box"><img src="https://upload.wikimedia.org/wikipedia/commons/0/03/M-Pesa_Logo.svg" alt="M-Pesa"></div>
+                        <div class="provider-box"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Airtel_logo.svg" alt="Airtel"></div>
+                    </div>
+                    <button type="button" class="btn btn-primary pay-now-btn" id="mobilePayBtnText" onclick="submitMobileMoney()" data-en="REQUEST PROMPT ($2,450.00)" data-sw="OMBA PROMPT ($2,450.00)">REQUEST PROMPT ($2,450.00)</button>
+                </div>
+
+                <!-- PayPal -->
+                <div class="payment-tab-content" id="paypal" style="display: none; text-align: center; padding: 40px 20px;">
+                    <p style="margin-bottom:25px; color:var(--text-muted); font-size:0.9rem;" data-en="You will be redirected to PayPal to complete your purchase securely." data-sw="Utapelekwa kwenye tovuti ya PayPal ili kukamilisha malipo yako kwa usalama.">You will be redirected to PayPal to complete your purchase securely.</p>
+                    <form id="paypalForm">
+                        <button type="submit" class="btn" style="background:#ffc439; color:#111; font-weight:800; border-radius:50px; display:inline-flex; align-items:center; gap:8px; padding:12px 36px; border:none; cursor:pointer;">
+                            <i class="fab fa-paypal" style="font-size:1.15rem; color:#003087;"></i> <span data-en="PayPal Checkout" data-sw="Malipo ya PayPal">PayPal Checkout</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px;" id="backNav">
+            <a href="index.html" style="color: var(--text-muted); font-weight:600;" data-en="&larr; Back to Home" data-sw="&larr; Rudi Nyumbani">&larr; Back to Home</a>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+    <script>
+        // Tab switching logic
+        const tabs = document.querySelectorAll('.pay-tab');
+        const contents = document.querySelectorAll('.payment-tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.style.display = 'none');
+                
+                tab.classList.add('active');
+                document.getElementById(tab.getAttribute('data-target')).style.display = 'block';
+            });
+        });
+
+        // Price Toggling Logic
+        let activeAmount = 2450;
+        
+        function togglePaymentAmount(amount) {
+            activeAmount = amount;
+            document.getElementById('totalAmountDisplay').textContent = '$' + amount.toLocaleString() + '.00';
+            
+            const lang = localStorage.getItem('century-lang') || 'en';
+            const payText = lang === 'sw' ? 'LIPIA $' : 'PAY $';
+            const requestText = lang === 'sw' ? 'OMBA PROMPT ($' : 'REQUEST PROMPT ($';
+            
+            const payBtn = document.getElementById('payBtnText');
+            payBtn.setAttribute('data-en', 'PAY $' + amount.toLocaleString() + '.00');
+            payBtn.setAttribute('data-sw', 'LIPIA $' + amount.toLocaleString() + '.00');
+            payBtn.textContent = payText + amount.toLocaleString() + '.00';
+            
+            const mobileBtn = document.getElementById('mobilePayBtnText');
+            mobileBtn.setAttribute('data-en', 'REQUEST PROMPT ($' + amount.toLocaleString() + '.00)');
+            mobileBtn.setAttribute('data-sw', 'OMBA PROMPT ($' + amount.toLocaleString() + '.00)');
+            mobileBtn.textContent = requestText + amount.toLocaleString() + '.00' + ')';
+        }
+
+        // Show successful receipt page
+        function showReceipt() {
+            const refNum = 'CADV-' + Math.floor(100000 + Math.random() * 900000);
+            document.getElementById('receiptRef').textContent = refNum;
+            document.getElementById('receiptAmount').textContent = '$' + activeAmount.toLocaleString() + '.00';
+            
+            document.querySelector('.payment-wrapper').style.display = 'none';
+            document.getElementById('backNav').style.display = 'none';
+            document.getElementById('successCard').style.display = 'block';
+        }
+
+        // Event listeners for forms
+        document.getElementById('cardForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            showReceipt();
+        });
+
+        document.getElementById('paypalForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            showReceipt();
+        });
+
+        function submitMobileMoney() {
+            const phone = document.getElementById('mobileNumberInput').value;
+            const lang = localStorage.getItem('century-lang') || 'en';
+            if (!phone) {
+                if (lang === 'sw') {
+                    alert('Tafadhali weka namba yako ya simu ya mkononi.');
+                } else {
+                    alert('Please enter your mobile phone number.');
+                }
+                return;
+            }
+            showReceipt();
+        }
+
+        // Set placeholders based on lang on load
+        window.addEventListener('DOMContentLoaded', () => {
+            // Apply language to placeholders manually or index.js handles
+            if (typeof togglePaymentAmount === 'function') {
+                togglePaymentAmount(activeAmount);
+            }
+        });
+    </script>
+</body>
+</html>

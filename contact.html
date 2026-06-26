@@ -1,0 +1,1203 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Century Adventures Tanzania</title>
+    <meta name="description"
+        content="Plan your Tanzania safari with Century Adventures. Get in touch with our experts for personalized safari planning, trekking, and beach holidays.">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        (function () {
+            const theme = localStorage.getItem('century-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <style>
+        /* ══ Hero ══ */
+        .contact-hero {
+            position: relative;
+            height: 80vh;
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        .contact-hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('assets/about-hero.png');
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.05);
+            animation: heroZoom 18s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroZoom {
+            from {
+                transform: scale(1.05);
+            }
+
+            to {
+                transform: scale(1.12);
+            }
+        }
+
+        .contact-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0.18) 0%,
+                    rgba(0, 25, 12, 0.65) 50%,
+                    rgba(0, 25, 12, 0.92) 100%);
+        }
+
+        .contact-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 880px;
+            padding: 0 24px;
+        }
+
+        .contact-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(197, 160, 68, 0.2);
+            border: 1px solid rgba(197, 160, 68, 0.5);
+            color: var(--accent-gold);
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-bottom: 28px;
+            backdrop-filter: blur(10px);
+            animation: fadeDown 0.8s ease forwards;
+        }
+
+        .contact-hero-content h1 {
+            font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+            line-height: 1.15;
+            margin-bottom: 24px;
+            color: #fff;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+            animation: fadeUp 0.9s ease 0.15s both;
+        }
+
+        .contact-hero-content h1 em {
+            font-style: italic;
+            color: var(--accent-gold);
+        }
+
+        .contact-hero-tagline {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            opacity: 0.92;
+            max-width: 680px;
+            margin: 0 auto 38px;
+            line-height: 1.8;
+            animation: fadeUp 0.9s ease 0.3s both;
+        }
+
+        .contact-hero-scroll {
+            position: absolute;
+            bottom: 36px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .contact-hero-scroll i {
+            font-size: 1.1rem;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(8px);
+            }
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ══ Stat Bar ══ */
+        .stat-bar {
+            background: var(--primary-green);
+            padding: 28px 0;
+        }
+
+        .stat-bar-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+        }
+
+        .stat-bar-item {
+            text-align: center;
+            padding: 10px 20px;
+            border-right: 1px solid rgba(255, 255, 255, 0.12);
+            color: #fff;
+        }
+
+        .stat-bar-item:last-child {
+            border-right: none;
+        }
+
+        .stat-bar-item .num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            display: block;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .stat-bar-item .lbl {
+            font-size: 0.75rem;
+            opacity: 0.75;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 640px) {
+            .stat-bar-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stat-bar-item:nth-child(2) {
+                border-right: none;
+            }
+        }
+
+        /* ══ Main Contact Layout ══ */
+        .contact-section {
+            background: var(--bg-color);
+            padding: 100px 0;
+        }
+
+        .contact-layout-grid {
+            display: grid;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        @media (max-width: 992px) {
+            .contact-layout-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+        }
+
+        /* Sidebar info style */
+        .contact-info-panel h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            color: var(--primary-green);
+            margin-bottom: 24px;
+            line-height: 1.25;
+        }
+
+        [data-theme="dark"] .contact-info-panel h2 {
+            color: #fff;
+        }
+
+        .contact-info-panel .intro-text {
+            color: var(--text-muted);
+            font-size: 1.02rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .contact-details-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-bottom: 50px;
+        }
+
+        .contact-detail-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background: var(--section-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            transition: var(--transition);
+        }
+
+        .contact-detail-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-gold);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .cd-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(197, 160, 68, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: var(--accent-gold);
+            flex-shrink: 0;
+        }
+
+        .cd-content h4 {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin: 0 0 6px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cd-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .cd-content a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .cd-content a:hover {
+            color: var(--accent-gold);
+        }
+
+        .help-list-panel {
+            background: var(--section-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 36px;
+        }
+
+        .help-list-panel h3 {
+            font-size: 1.15rem;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+        }
+
+        [data-theme="dark"] .help-list-panel h3 {
+            color: var(--accent-gold);
+        }
+
+        .help-items-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 20px;
+        }
+
+        @media (max-width: 480px) {
+            .help-items-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .help-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .help-item i {
+            color: var(--accent-gold);
+            font-size: 0.8rem;
+        }
+
+        /* Modern Form Container */
+        .form-container-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            padding: 50px 44px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .form-container-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            margin-bottom: 30px;
+        }
+
+        [data-theme="dark"] .form-container-card h3 {
+            color: #fff;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 580px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group-full {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 580px) {
+            .form-group-full {
+                grid-column: span 1;
+            }
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-field label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-color);
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 4px rgba(197, 160, 68, 0.1);
+        }
+
+        /* ══ Why Contact Us ══ */
+        .why-contact {
+            background: var(--section-bg);
+            padding: 100px 0;
+        }
+
+        .why-contact .section-top {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .why-contact h2 {
+            font-size: clamp(1.9rem, 3.5vw, 3rem);
+            color: var(--primary-green);
+            margin-bottom: 16px;
+        }
+
+        [data-theme="dark"] .why-contact h2 {
+            color: #fff;
+        }
+
+        .why-contact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+        }
+
+        @media (max-width: 1100px) {
+            .why-contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 580px) {
+            .why-contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .why-contact-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 36px 28px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .why-contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-gold);
+        }
+
+        .wc-icon {
+            width: 54px;
+            height: 54px;
+            background: rgba(197, 160, 68, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            margin: 0 auto 18px;
+        }
+
+        .why-contact-card h3 {
+            font-size: 1rem;
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* ══ Commitment Block ══ */
+        .commitment-block {
+            background: var(--bg-color);
+            padding: 100px 0;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .commitment-panel {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .commitment-panel h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            color: var(--primary-green);
+            margin-bottom: 24px;
+        }
+
+        [data-theme="dark"] .commitment-panel h2 {
+            color: #fff;
+        }
+
+        .commitment-panel p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.85;
+            margin: 0;
+        }
+
+        /* ══ Closing CTA ══ */
+        .contact-closing {
+            background: var(--primary-gradient);
+            padding: 110px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-closing::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(197, 160, 68, 0.12) 0%, transparent 70%);
+            top: -200px;
+            right: -150px;
+            border-radius: 50%;
+        }
+
+        .contact-closing h2 {
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            color: #fff;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .contact-closing .closing-tagline {
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 640px;
+            margin: 0 auto 16px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .contact-closing .closing-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .btn-closing-gold {
+            background: var(--accent-gold);
+            color: #002b18 !important;
+            font-weight: 800;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none !important;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 30px rgba(197, 160, 68, 0.3);
+        }
+
+        .btn-closing-gold:hover {
+            background: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-closing-outline {
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: #fff !important;
+            font-weight: 700;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none !important;
+            transition: all 0.4s ease;
+        }
+
+        .btn-closing-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+        }
+
+        /* ══ Contact Our Team Section ══ */
+        .contact-team-section {
+            background: var(--bg-color);
+            padding: 80px 0;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .team-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .team-card-icon {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .team-card h3 {
+            font-size: 1.25rem;
+            color: var(--primary-green);
+            margin: 0 0 12px 0;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        [data-theme="dark"] .team-card h3 {
+            color: var(--accent-gold);
+        }
+        
+        .team-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0 0 20px 0;
+            flex-grow: 1;
+        }
+        
+        .team-email {
+            font-size: 1rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+        }
+        
+        .team-email:hover {
+            color: var(--primary-green);
+            border-color: var(--primary-green);
+        }
+        
+        [data-theme="dark"] .team-email:hover {
+            color: #ffffff;
+            border-color: #ffffff;
+        }
+    </style>
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+    <div class="scroll-progress"></div>
+
+    <!-- ══ Header ══ -->
+    <header class="header" id="mainHeader">
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html"><img src="assets/logo.png" alt="Century Adventures Logo"></a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html" data-en="Home" data-sw="Nyumbani">Home</a></li>
+                    <li><a href="about.html" data-en="About Us" data-sw="Kuhusu Sisi">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-en="Destinations" data-sw="Maeneo">Destinations <i
+                                class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="katavi.html">Katavi National Park</a></li>
+                            <li><a href="selous.html">Selous Game Reserve</a></li>
+                            <li><a href="ruaha.html">Ruaha National Park</a></li>
+                            <li><a href="mikumi.html">Mikumi National Park</a></li>
+                            <li><a href="serengeti.html">Serengeti National Park</a></li>
+                            <li><a href="gombe.html">Gombe Stream National Park</a></li>
+                            <li><a href="ngorongoro.html">Ngorongoro Conservation Area</a></li>
+                            <li><a href="manyara.html">Lake Manyara National Park</a></li>
+                            <li><a href="tarangire.html">Tarangire National Park</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="safaris.html" data-en="TOURS & SAFARIS" data-sw="SAFARI NA ZIARA">TOURS & SAFARIS</a></li>
+                    <li><a href="experiences.html" data-en="Experiences" data-sw="Uzoefu">Experiences</a></li>
+                    <li><a href="volunteer.html" data-en="Volunteer" data-sw="Kujitolea">Volunteer</a></li>
+                    <li><a href="vehicles.html" data-en="Safari Vehicles" data-sw="Magari ya Safari">Safari Vehicles</a>
+                    </li>
+                    <li><a href="contact.html" class="active" data-en="Contact Us" data-sw="Wasiliana Nasi">Contact
+                            Us</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-toggle" id="mobile-toggle" onclick="toggleMobileMenu()"
+                aria-label="Open navigation menu">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </button>
+            <div class="header-actions">
+                <div class="header-toggles">
+                    <button class="toggle-btn lang-toggle" onclick="toggleLang()">SW</button>
+                    <button class="toggle-btn theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+                </div>
+                <a href="enquire.html" class="btn btn-primary enquire-btn" data-en="ENQUIRE" data-sw="ULIZA">ENQUIRE</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ══ Hero ══ -->
+    <section class="contact-hero" id="home">
+        <div class="contact-hero-bg"></div>
+        <div class="contact-hero-overlay"></div>
+        <div class="contact-hero-content">
+            <div class="contact-hero-badge">
+                <i class="fas fa-paper-plane"></i>
+                <span data-en="Contact Us" data-sw="Wasiliana Nasi">Contact Us</span>
+            </div>
+            <h1 data-en="Let's Plan Your Next Adventure" data-sw="Tupange Safari Yako Inayofuata">
+                Let's Plan Your Next Adventure
+            </h1>
+            <p class="contact-hero-tagline"
+                data-en="Your dream journey starts with a simple conversation. Our dedicated team is ready to help bring your vision to life."
+                data-sw="Safari ya ndoto yako inaanza na mazungumzo rahisi. Timu yetu iko tayari kukusaidia kutimiza ndoto yako.">
+                Your dream journey starts with a simple conversation. Our dedicated team is ready to help bring your
+                vision to life.
+            </p>
+        </div>
+        <div class="contact-hero-scroll">
+            <span>SCROLL</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- ══ Stat Bar ══ -->
+    <div class="stat-bar">
+        <div class="container">
+            <div class="stat-bar-grid">
+                <div class="stat-bar-item">
+                    <span class="num">24/7</span>
+                    <span class="lbl" data-en="Customer Support" data-sw="Usaidizi wa Wateja">Customer Support</span>
+                </div>
+                <div class="stat-bar-item">
+                    <span class="num">Free</span>
+                    <span class="lbl" data-en="Quotations &amp; Consultations"
+                        data-sw="Nukuu na Ushauri wa Bure">Quotations &amp; Consultations</span>
+                </div>
+                <div class="stat-bar-item">
+                    <span class="num">Fast</span>
+                    <span class="lbl" data-en="Professional Response" data-sw="Jibu la Kitaalamu la Haraka">Professional
+                        Response</span>
+                </div>
+                <div class="stat-bar-item">
+                    <span class="num">Tailored</span>
+                    <span class="lbl" data-en="Safari Planning" data-sw="Upangaji Maalum wa Safari">Safari
+                        Planning</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ Main Contact Layout ══ -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-layout-grid">
+
+                <!-- Left Column: Details -->
+                <div class="contact-info-panel scroll-reveal-left">
+                    <span class="editorial-label" data-en="GET IN TOUCH" data-sw="WASILIANA NASI">GET IN TOUCH</span>
+                    <h2 data-en="Start Planning Your Adventure" data-sw="Anza Kupanga Safari Yako">Start Planning Your
+                        Adventure</h2>
+                    <p class="intro-text"
+                        data-en="We believe every traveler is unique, which is why we take the time to understand your interests, preferences, and budget to create a personalized experience that exceeds expectations."
+                        data-sw="Tunaamini kila msafiri ni wa kipekee, ndiyo maana tunachukua muda kuelewa maslahi, mapendeleo na bajeti yako ili kuunda safari iliyobinafsishwa inayozidi matarajio.">
+                        We believe every traveler is unique, which is why we take the time to understand your interests,
+                        preferences, and budget to create a personalized experience that exceeds expectations.
+                    </p>
+
+                    <div class="contact-details-list">
+                        <!-- Address -->
+                        <div class="contact-detail-card">
+                            <div class="cd-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="cd-content">
+                                <h4 data-en="📍 Office Address" data-sw="📍 Anwani ya Ofisi">📍 Office Address</h4>
+                                <p data-en="Asasi Tower, 4th Floor, Ohio Street, Dar es Salaam, Tanzania"
+                                    data-sw="Asasi Tower, Ghorofa ya 4, Ohio Street, Dar es Salaam, Tanzania">
+                                    Asasi Tower, 4th Floor, Ohio Street, Dar es Salaam, Tanzania
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Phone -->
+                        <div class="contact-detail-card">
+                            <div class="cd-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div class="cd-content">
+                                <h4 data-en="📞 Phone" data-sw="📞 Simu">📞 Phone</h4>
+                                <p><a href="tel:+255747115390">+255 747 115 390</a></p>
+                            </div>
+                        </div>
+                        <!-- WhatsApp -->
+                        <div class="contact-detail-card">
+                            <div class="cd-icon"><i class="fab fa-whatsapp"></i></div>
+                            <div class="cd-content">
+                                <h4 data-en="💬 WhatsApp" data-sw="💬 WhatsApp">💬 WhatsApp</h4>
+                                <p><a href="https://wa.me/255747115390" target="_blank">+255 747 115 390</a></p>
+                            </div>
+                        </div>
+                        <!-- Email -->
+                        <div class="contact-detail-card">
+                            <div class="cd-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="cd-content">
+                                <h4 data-en="📧 Email" data-sw="📧 Barua Pepe">📧 Email</h4>
+                                <p><a href="mailto:info@centuryadventures.com">info@centuryadventures.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Help list -->
+                    <div class="help-list-panel">
+                        <h3 data-en="What We Can Help You With" data-sw="Tunayoweza Kukusaidia Nayo">What We Can Help
+                            You With</h3>
+                        <div class="help-items-grid">
+                            <div class="help-item"><i class="fas fa-check-circle"></i> <span
+                                    data-en="Safari bookings &amp; itineraries"
+                                    data-sw="Uhifadhi wa safari &amp; ratiba">Safari bookings &amp; itineraries</span>
+                            </div>
+                            <div class="help-item"><i class="fas fa-check-circle"></i> <span
+                                    data-en="Group &amp; private tours" data-sw="Ziara za vikundi &amp; binafsi">Group
+                                    &amp; private tours</span></div>
+                            <div class="help-item"><i class="fas fa-check-circle"></i> <span data-en="Airport transfers"
+                                    data-sw="Usafiri wa uwanja wa ndege">Airport transfers</span></div>
+                            <div class="help-item"><i class="fas fa-check-circle"></i> <span
+                                    data-en="Accommodation arrangements" data-sw="Mipango ya malazi">Accommodation
+                                    arrangements</span></div>
+                            <div class="help-item"><i class="fas fa-check-circle"></i> <span data-en="Zanzibar holidays"
+                                    data-sw="Likizo za Zanzibar">Zanzibar holidays</span></div>
+                            <div class="help-item"><i class="fas fa-check-circle"></i> <span
+                                    data-en="Kilimanjaro climbing packages"
+                                    data-sw="Vifurushi vya kupanda Kili">Kilimanjaro climbing packages</span></div>
+                            <div class="help-item"><i class="fas fa-check-circle"></i> <span
+                                    data-en="Volunteer placements" data-sw="Nafasi za kujitolea">Volunteer
+                                    placements</span></div>
+                            <div class="help-item"><i class="fas fa-check-circle"></i> <span data-en="Family vacations"
+                                    data-sw="Likizo za kifamilia">Family vacations</span></div>
+                            <div class="help-item"><i class="fas fa-check-circle"></i> <span
+                                    data-en="Honeymoon packages" data-sw="Vifurushi vya fungate">Honeymoon
+                                    packages</span></div>
+                            <div class="help-item"><i class="fas fa-check-circle"></i> <span
+                                    data-en="Corporate &amp; education tours"
+                                    data-sw="Ziara za kampuni &amp; shule">Corporate &amp; education tours</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Interactive Form -->
+                <div class="form-container-card scroll-reveal-right">
+                    <h3 data-en="Send Us a Message" data-sw="Tuma Ujumbe Kwetu">Send Us a Message</h3>
+                    <form action="#" method="POST">
+                        <div class="form-grid">
+                            <div class="form-field">
+                                <label for="name" data-en="Full Name" data-sw="Jina Kamili">Full Name</label>
+                                <input type="text" id="name" required placeholder="John Doe">
+                            </div>
+                            <div class="form-field">
+                                <label for="email" data-en="Email Address" data-sw="Barua Pepe">Email Address</label>
+                                <input type="email" id="email" required placeholder="john@example.com">
+                            </div>
+                            <div class="form-field">
+                                <label for="phone" data-en="Phone / WhatsApp" data-sw="Simu / WhatsApp">Phone /
+                                    WhatsApp</label>
+                                <input type="tel" id="phone" placeholder="+1 (123) 456-7890">
+                            </div>
+                            <div class="form-field">
+                                <label for="safari_type" data-en="Safari Type" data-sw="Aina ya Safari">Safari
+                                    Type</label>
+                                <select id="safari_type">
+                                    <option value="wildlife" data-en="Wildlife Safari" data-sw="Safari ya Wanyamapori">
+                                        Wildlife Safari</option>
+                                    <option value="beach" data-en="Beach Holiday" data-sw="Likizo ya Ufukweni">Beach
+                                        Holiday</option>
+                                    <option value="trekking" data-en="Mountain Trekking" data-sw="Kupanda Milima">
+                                        Mountain Trekking</option>
+                                    <option value="volunteer" data-en="Volunteer Program"
+                                        data-sw="Programu ya Kujitolea">Volunteer Program</option>
+                                    <option value="custom" data-en="Custom Adventure" data-sw="Safari Maalum">Custom
+                                        Adventure</option>
+                                </select>
+                            </div>
+                            <div class="form-field">
+                                <label for="travel_date" data-en="Preferred Travel Date"
+                                    data-sw="Tarehe ya Kusafiri">Preferred Travel Date</label>
+                                <input type="date" id="travel_date">
+                            </div>
+                            <div class="form-field">
+                                <label for="travelers" data-en="Number of Guests" data-sw="Idadi ya Wageni">Number of
+                                    Guests</label>
+                                <select id="travelers">
+                                    <option value="1">1 Guest</option>
+                                    <option value="2" selected>2 Guests</option>
+                                    <option value="3-5">3 - 5 Guests</option>
+                                    <option value="6-10">6 - 10 Guests</option>
+                                    <option value="10+">10+ Guests</option>
+                                </select>
+                            </div>
+                            <div class="form-field form-group-full">
+                                <label for="message" data-en="Tell us about your dream trip"
+                                    data-sw="Tuambie kuhusu safari yako ya ndoto">Tell us about your dream trip</label>
+                                <textarea id="message" rows="6"
+                                    placeholder="Share details like your interests, preferences, and estimated budget..."></textarea>
+                            </div>
+                            <div class="form-group-full" style="margin-top: 10px;">
+                                <button type="submit" class="btn btn-primary"
+                                    style="width: 100%; padding: 18px 0; font-size: 0.9rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;"
+                                    data-en="SEND ENQUIRY" data-sw="TUMA MAOMBI">SEND ENQUIRY</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ Contact Our Team ══ -->
+    <section class="contact-team-section">
+        <div class="container">
+            <div class="section-top" style="text-align: center; margin-bottom: 50px;">
+                <span class="sub-heading" data-en="OUR DEPARTMENTS" data-sw="IDARA ZETU" style="color:var(--accent-gold); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 800;">OUR DEPARTMENTS</span>
+                <h2 data-en="Contact Our Team" data-sw="Wasiliana na Timu Yetu" style="font-size: clamp(1.9rem, 3.5vw, 2.6rem); color: var(--primary-green); margin-top: 10px;">Contact Our Team</h2>
+            </div>
+            
+            <div class="team-grid">
+                <!-- General Info -->
+                <div class="team-card scroll-reveal">
+                    <div class="team-card-icon">📧</div>
+                    <h3 data-en="General Information" data-sw="Habari za Jumla">General Information</h3>
+                    <p data-en="For general questions about Tanzania, destinations, visas, travel advice, and company information." data-sw="Kwa maswali ya jumla kuhusu Tanzania, maeneo, viza, ushauri wa kusafiri, na taarifa za kampuni.">
+                        For general questions about Tanzania, destinations, visas, travel advice, and company information.
+                    </p>
+                    <a href="mailto:info@centuryadventures.com" class="team-email">info@centuryadventures.com</a>
+                </div>
+                
+                <!-- Bookings Department -->
+                <div class="team-card scroll-reveal">
+                    <div class="team-card-icon">🦁</div>
+                    <h3 data-en="Bookings Department" data-sw="Idara ya Uhifadhi">Bookings Department</h3>
+                    <p data-en="For safari reservations, itinerary planning, honeymoon safaris, family safaris, and custom tours." data-sw="Kwa kuweka nafasi za safari, kupanga ratiba, safari za fungate, safari za familia, na ziara maalum.">
+                        For safari reservations, itinerary planning, honeymoon safaris, family safaris, and custom tours.
+                    </p>
+                    <a href="mailto:bookings@centuryadventures.com" class="team-email">bookings@centuryadventures.com</a>
+                </div>
+                
+                <!-- Sales & Quotations -->
+                <div class="team-card scroll-reveal">
+                    <div class="team-card-icon">💰</div>
+                    <h3 data-en="Sales &amp; Quotations" data-sw="Mauzo na Makadirio">Sales &amp; Quotations</h3>
+                    <p data-en="For pricing requests, package comparisons, and special offers." data-sw="Kwa maombi ya bei, kulinganisha vifurushi, na matoleo maalum.">
+                        For pricing requests, package comparisons, and special offers.
+                    </p>
+                    <a href="mailto:sales@centuryadventures.com" class="team-email">sales@centuryadventures.com</a>
+                </div>
+                
+                <!-- Customer Support -->
+                <div class="team-card scroll-reveal">
+                    <div class="team-card-icon">🛠</div>
+                    <h3 data-en="Customer Support" data-sw="Usaidizi wa Wateja">Customer Support</h3>
+                    <p data-en="For assistance before, during, or after your trip." data-sw="Kwa usaidizi kabla, wakati, au baada ya safari yako.">
+                        For assistance before, during, or after your trip.
+                    </p>
+                    <a href="mailto:support@centuryadventures.com" class="team-email">support@centuryadventures.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ Why Contact Us ══ -->
+    <section class="why-contact">
+        <div class="container">
+            <div class="section-top">
+                <span class="sub-heading" data-en="WHY CHOOSE US" data-sw="KWA NINI UTUCHAGUE">WHY CHOOSE US</span>
+                <h2 data-en="Why Contact Us?" data-sw="Kwa Nini Uwasiliane Nasi?">Why Contact Us?</h2>
+            </div>
+
+            <div class="why-contact-grid">
+                <div class="why-contact-card scroll-reveal">
+                    <div class="wc-icon"><i class="fas fa-globe-africa" style="color: var(--accent-gold);"></i></div>
+                    <h3 data-en="🌍 Expert Travel Advice" data-sw="🌍 Ushauri wa Kitaalamu wa Safari">🌍 Expert Travel
+                        Advice</h3>
+                </div>
+                <div class="why-contact-card scroll-reveal">
+                    <div class="wc-icon"><i class="fas fa-paw" style="color: var(--accent-gold);"></i></div>
+                    <h3 data-en="🦁 Personalized Safari Planning" data-sw="🦁 Upangaji Safari Maalum">🦁 Personalized
+                        Safari Planning</h3>
+                </div>
+                <div class="why-contact-card scroll-reveal">
+                    <div class="wc-icon"><i class="fas fa-umbrella-beach" style="color: var(--accent-gold);"></i></div>
+                    <h3 data-en="🏝 Customized Holiday Packages" data-sw="🏝 Vifurushi vya Likizo Maalum">🏝 Customized
+                        Holiday Packages</h3>
+                </div>
+                <div class="why-contact-card scroll-reveal">
+                    <div class="wc-icon"><i class="fas fa-hands-helping" style="color: var(--accent-gold);"></i></div>
+                    <h3 data-en="🤝 Volunteer Program Information" data-sw="🤝 Taarifa za Programu za Kujitolea">🤝
+                        Volunteer Program Info</h3>
+                </div>
+                <div class="why-contact-card scroll-reveal">
+                    <div class="wc-icon"><i class="fas fa-hiking" style="color: var(--accent-gold);"></i></div>
+                    <h3 data-en="🏔 Trekking &amp; Adventure Details" data-sw="🏔 Mipango ya Kupanda Milima">🏔 Trekking
+                        &amp; Adventure Details</h3>
+                </div>
+                <div class="why-contact-card scroll-reveal">
+                    <div class="wc-icon"><i class="fas fa-file-invoice-dollar" style="color: var(--accent-gold);"></i>
+                    </div>
+                    <h3 data-en="💰 Free Quotations &amp; Consult" data-sw="💰 Nukuu &amp; Ushauri wa Bure">💰 Free
+                        Quotations &amp; Consult</h3>
+                </div>
+                <div class="why-contact-card scroll-reveal">
+                    <div class="wc-icon"><i class="fas fa-calendar-alt" style="color: var(--accent-gold);"></i></div>
+                    <h3 data-en="📅 Flexible Booking Options" data-sw="📅 Chaguzi za Booking Flexible">📅 Flexible
+                        Booking Options</h3>
+                </div>
+                <div class="why-contact-card scroll-reveal">
+                    <div class="wc-icon"><i class="fas fa-headset" style="color: var(--accent-gold);"></i></div>
+                    <h3 data-en="🎯 Fast and Professional Support" data-sw="🎯 Msaada wa Kitaalamu na Haraka">🎯 Fast
+                        &amp; Professional Support</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ Commitment Block ══ -->
+    <section class="commitment-block">
+        <div class="container">
+            <div class="commitment-panel scroll-reveal">
+                <span class="editorial-label" data-en="OUR PROMISE" data-sw="AHADI YETU">OUR PROMISE</span>
+                <h2 data-en="Our Commitment to You" data-sw="Ahadi Yetu Kwako">Our Commitment to You</h2>
+                <p data-en="From your first inquiry to the end of your journey, we are committed to providing exceptional service, reliable communication, and unforgettable travel experiences. Our goal is to ensure every detail is handled professionally, allowing you to focus on enjoying your adventure."
+                    data-sw="Kuanzia uchunguzi wako wa kwanza hadi mwisho wa safari yako, tumejitolea kutoa huduma ya kipekee, mawasiliano ya kuaminika, na uzoefu wa safari usiosahaulika. Lengo letu ni kuhakikisha kila undani unashughulikiwa kitaaluma, kukuruhusu wewe kufurahia safari yako.">
+                    From your first inquiry to the end of your journey, we are committed to providing exceptional
+                    service, reliable communication, and unforgettable travel experiences. Our goal is to ensure every
+                    detail is handled professionally, allowing you to focus on enjoying your adventure.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ══ Footer ══ -->
+    <!-- Footer Contact Info -->
+    <div class="footer-top">
+        <div class="container">
+            <h2><i class="fas fa-phone-alt"></i> +255 747 115 390</h2>
+            <a href="enquire.html" class="btn enquire-btn" data-en="CONTACT US TODAY!" data-sw="WASILIANA NASI LEO!">CONTACT US TODAY!</a>
+        </div>
+    </div>
+
+    <!-- Final Call to Action -->
+    <section class="section cta-section" style="background: var(--primary-gradient); padding: 50px 0; text-align: center; color: white; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <div class="container" style="position: relative; z-index: 2;">
+            <span class="sub-heading" style="color:var(--accent-gold); font-size: 0.8rem; letter-spacing: 2px;" data-en="YOUR JOURNEY TO AFRICA STARTS HERE" data-sw="SAFARI YAKO YA AFRIKA INAANZA HAPA">YOUR JOURNEY TO AFRICA STARTS HERE</span>
+            <h2 style="font-size: clamp(1.5rem, 3vw, 2.2rem); color: white; margin: 10px 0 16px;" data-en="Are you ready to explore Tanzania?" data-sw="Uko Tayari Kuichunguza Tanzania?">Are you ready to explore Tanzania?</h2>
+            
+            <p class="cta-description" style="max-width: 650px; margin: 0 auto 25px; font-size:0.9rem; line-height: 1.65; opacity: 0.9;">
+                <span class="cta-hide-mobile" data-en="Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. " data-sw="Fikiria kushuhudia uwindaji wa simba wakati wa machweo, kutazama tembo wakizurura kwa uhuru kwenye savanna zisizo na mwisho, kujionea Uhamiaji Mkuu, au kupumzika kwenye mchanga mweupe wa Zanzibar. ">Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. </span>
+                <span data-en="Let Century Adventures make those dreams come true." data-sw="Ruhusu Century Adventures kufanya ndoto hizo ziwe kweli.">Let Century Adventures make those dreams come true.</span>
+            </p>
+
+            <div class="cta-action-grid" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <a href="enquire.html" class="btn btn-primary cta-circle-btn" style="background: var(--accent-gold); color: #002b18; font-weight:800; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; text-decoration: none;" data-en="Plan Your Trip" data-sw="Panga Safari Yako">Plan Your Trip</a>
+                <a href="enquire.html" class="btn btn-outline cta-circle-btn secondary" style="border: 1px solid rgba(255,255,255,0.6); color: white; font-weight:700; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; background: transparent; text-decoration: none;" data-en="Request a Free Quote" data-sw="Omba Nukuu ya Bure">Request a Free Quote</a>
+            </div>
+            
+            <div style="margin-top: 18px;">
+                <a href="contact.html" style="color: var(--accent-gold); font-weight: 700; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.5px;" data-en="Contact Our Experts &rarr;" data-sw="Wasiliana na Wataalamu Wetu &rarr;">Contact Our Experts &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col info-col">
+                <h3 data-en="CONTACT US" data-sw="WASILIANA NASI">CONTACT US</h3>
+                <p><strong>Century Adventures</strong></p>
+                <p data-en="Asasi Tower, 4th Floor" data-sw="Asasi Tower, Ghorofa ya 4">Asasi Tower, 4th Floor</p>
+                <p data-en="Ohio Street" data-sw="Mtaa wa Ohio">Ohio Street</p>
+                <p><i class="fas fa-map-marker-alt"></i> Dar es Salaam, Tanzania</p>
+                <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/255747115390" target="_blank" style="color: inherit;">+255 747 115 390</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@centuryadventures.com" style="color: inherit;">info@centuryadventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:bookings@centuryadventures.com" style="color: inherit;">bookings@centuryadventures.com</a></p>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="POPULAR PLACES" data-sw="MAENEO MAARUFU">POPULAR PLACES</h3>
+                <ul>
+                    <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                    <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                    <li><a href="selous.html" data-en="Nyerere Park" data-sw="Hifadhi ya Nyerere">Nyerere Park</a></li>
+                    <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                    <li><a href="mikumi.html" data-en="Mikumi Park" data-sw="Hifadhi ya Mikumi">Mikumi Park</a></li>
+                    <li><a href="ngorongoro.html" data-en="Ngorongoro" data-sw="Ngorongoro">Ngorongoro</a></li>
+                    <li><a href="manyara.html" data-en="Manyara National Park" data-sw="Hifadhi ya Manyara">Manyara National Park</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL EXPERIENCE" data-sw="UZOEFU WA KUSAFIRI">TRAVEL EXPERIENCE</h3>
+                <ul>
+                    <li><a href="family-safaris.html" data-en="Family Trips" data-sw="Safari za Familia">Family Trips</a></li>
+                    <li><a href="honeymoon-safaris.html" data-en="Honeymoon Trips" data-sw="Safari za Fungate">Honeymoon Trips</a></li>
+                    <li><a href="migration-safaris.html" data-en="Migration Trips" data-sw="Safari za Uhamiaji">Migration Trips</a></li>
+                    <li><a href="volunteer.html" data-en="Volunteer Programs" data-sw="Mipango ya Kujitolea">Volunteer Programs</a></li>
+                    <li><a href="zanzibar-beach.html" data-en="Zanzibar Beach Holiday" data-sw="Likizo ya Pwani ya Zanzibar">Zanzibar Beach Holiday</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL RESOURCES" data-sw="MAARIFA YA SAFARI">TRAVEL RESOURCES</h3>
+                <ul>
+                    <li><a href="blog.html" data-en="Travel Blog" data-sw="Blogu yetu">Travel Blog</a></li>
+                    <li><a href="faq.html" data-en="FAQs" data-sw="Maswali ya Kawaida">FAQs</a></li>
+                    <li><a href="gallery.html" data-en="Photo Gallery" data-sw="Picha za Safari">Photo Gallery</a></li>
+                    <li><a href="testimonials.html" data-en="Testimonials" data-sw="Shuhuda">Testimonials</a></li>
+                    <li><a href="best-time-to-visit-tanzania.html" data-en="Best Time to Visit" data-sw="Wakati Bora wa Kuja">Best Time to Visit</a></li>
+                    <li><a href="health-safety-tanzania.html" data-en="Health &amp; Safety" data-sw="Afya na Usalama">Health &amp; Safety</a></li>
+                    <li><a href="obtaining-visa-tanzania.html" data-en="Visa Information" data-sw="Visa ya Safari">Visa Information</a></li>
+                    <li><a href="solo-female-travel-tanzania.html" data-en="Solo Female Travel" data-sw="Safari ya Wanawake">Solo Female Travel</a></li>
+                    <li><a href="what-to-wear-safari.html" data-en="Safari Packing Guide" data-sw="Nguo za Safari">Safari Packing Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <div class="tripadvisor-card">
+                    <img src="https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-66827-5.svg" alt="TripAdvisor">
+                    <h4 data-en="TripAdvisor Century Adventures" data-sw="TripAdvisor Century Adventures">TripAdvisor Century Adventures</h4>
+                    <p data-en="Ranked #1 on TripAdvisor" data-sw="Imeorodheshwa #1 TripAdvisor">Ranked #1 on TripAdvisor</p>
+                    <a href="https://www.tripadvisor.com/" target="_blank" class="btn btn-small" data-en="TripAdvisor Give Feedback Century Adventures" data-sw="TripAdvisor Toa Maoni Century Adventures">TripAdvisor Give Feedback Century Adventures</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61577731823809"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@CenturyAdventures" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/century_adventures?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/255747115390"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:info@centuryadventures.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; Copyright 2012 - 2026 | Century Adventures</p>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

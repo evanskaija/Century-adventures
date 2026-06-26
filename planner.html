@@ -1,0 +1,776 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Safari & Cost Calculator | Century Adventures</title>
+    <meta name="description" content="Calculate the cost of your Tanzania safari and design a custom itinerary with Century Adventures. Get instant estimates.">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        (function() {
+            const theme = localStorage.getItem('century-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <style>
+        .planner-container {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            margin-top: 50px;
+            margin-bottom: 80px;
+        }
+        
+        .planner-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-color);
+        }
+        
+        .planner-step {
+            display: none;
+        }
+        
+        .planner-step.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .step-indicator::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--border-color);
+            z-index: 1;
+        }
+        
+        .step-dot {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            z-index: 2;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+        
+        .step-dot.active {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+            box-shadow: 0 0 15px rgba(197, 160, 68, 0.2);
+        }
+        
+        .step-dot.completed {
+            background: var(--primary-green);
+            border-color: var(--primary-green);
+            color: white;
+        }
+        
+        .grid-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 20px;
+        }
+        
+        .option-card {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--bg-color);
+        }
+        
+        .option-card:hover {
+            border-color: var(--accent-gold);
+            background: rgba(197, 160, 68, 0.03);
+        }
+        
+        .option-card.selected {
+            border-color: var(--primary-green);
+            background: rgba(0, 66, 37, 0.03);
+            box-shadow: 0 4px 15px rgba(0, 66, 37, 0.05);
+        }
+        
+        [data-theme="dark"] .option-card.selected {
+            border-color: var(--accent-gold);
+            background: rgba(242, 201, 76, 0.05);
+        }
+        
+        .option-card input[type="checkbox"], 
+        .option-card input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary-green);
+            cursor: pointer;
+        }
+        
+        .calculator-sidebar {
+            position: sticky;
+            top: 110px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 35px;
+            box-shadow: var(--shadow-hover);
+            border: 1px solid var(--accent-gold);
+            height: fit-content;
+        }
+        
+        .price-display {
+            text-align: center;
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(197, 160, 68, 0.08);
+            border-radius: 12px;
+            border: 1px dashed var(--accent-gold);
+        }
+        
+        .price-display h4 {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .price-display .amount {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        [data-theme="dark"] .price-display .amount {
+            color: var(--accent-gold);
+        }
+        
+        .summary-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .summary-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.92rem;
+        }
+        
+        .summary-list li span:last-child {
+            font-weight: 700;
+            color: var(--text-main);
+        }
+        
+        .btn-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 35px;
+        }
+        
+        @media (max-width: 992px) {
+            .planner-container {
+                grid-template-columns: 1fr;
+            }
+            .calculator-sidebar {
+                position: static;
+            }
+        }
+    </style>
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="scroll-progress"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html"><img src="assets/logo.png" alt="Century Adventures Logo"></a>
+            </div>
+            <nav class="nav">
+                <!-- Will be dynamically replaced by index.js -->
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="hero page-hero" style="background-image: url('assets/05TMMT-IM1105-mara-mara-tented-lodge-1475.jpg'); height: 45vh;">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 data-en="Design Your Dream Safari" data-sw="Tengeneza Safari Yako">Design Your Dream Safari</h1>
+            <p class="hero-tagline" data-en="Tailor your destinations, activities, lodging level, and check estimated costs in real-time." 
+               data-sw="Binafsisha maeneo yako, shughuli, kiwango cha malazi, na uangalie makadirio ya gharama.">
+               Tailor your destinations, activities, lodging level, and check estimated costs in real-time.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <div class="container">
+        <div class="planner-container">
+            
+            <!-- Left Panel: Interactive Step Form -->
+            <div class="planner-card">
+                <div class="step-indicator">
+                    <div class="step-dot active" id="dot-1">1</div>
+                    <div class="step-dot" id="dot-2">2</div>
+                    <div class="step-dot" id="dot-3">3</div>
+                    <div class="step-dot" id="dot-4">4</div>
+                </div>
+
+                <form id="customSafariForm">
+                    
+                    <!-- Step 1: Duration & Group Size -->
+                    <div class="planner-step active" id="step-1">
+                        <h2 data-en="Travel Details" data-sw="Maelezo ya Safari">Travel Details</h2>
+                        <p style="color:var(--text-muted); margin-bottom:25px;" data-en="Tell us when you plan to travel and the size of your group." data-sw="Tuambie unapo mpango wa kusafiri na idadi ya watu.">Tell us when you plan to travel and the size of your group.</p>
+                        
+                        <div class="form-group" style="margin-bottom:20px;">
+                            <label data-en="Safari Duration (Days)" data-sw="Muda wa Safari (Siku)">Safari Duration (Days)</label>
+                            <input type="number" id="safariDuration" min="1" max="30" value="7" style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-color); color:var(--text-main);">
+                        </div>
+                        <div class="form-group" style="margin-bottom:20px;">
+                            <label data-en="Number of Guests" data-sw="Idadi ya Wageni">Number of Guests</label>
+                            <input type="number" id="safariGuests" min="1" max="20" value="2" style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-color); color:var(--text-main);">
+                        </div>
+                        <div class="form-group">
+                            <label data-en="Preferred Travel Period" data-sw="Kipindi Unachopendelea Kusafiri">Preferred Travel Period</label>
+                            <select id="travelPeriod" style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-color); color:var(--text-main);">
+                                <option value="peak-dry" data-en="June - October (Dry Season)" data-sw="Juni - Oktoba (Kiangazi)">June - October (Dry Season)</option>
+                                <option value="short-dry" data-en="January - February (Warm)" data-sw="Januari - Februari">January - February (Warm)</option>
+                                <option value="wet-green" data-en="March - May (Green Season)" data-sw="Machi - Mei">March - May (Green Season)</option>
+                                <option value="short-rain" data-en="November - December (Light Rain)" data-sw="Novemba - Desemba">November - December (Light Rain)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Choose Destinations -->
+                    <div class="planner-step" id="step-2">
+                        <h2 data-en="Select Destinations" data-sw="Chagua Maeneo">Select Destinations</h2>
+                        <p style="color:var(--text-muted);" data-en="Choose which national parks or beaches you want to visit." data-sw="Chagua mbuga za wanyama au fukwe unazotaka kutembelea.">Choose which national parks or beaches you want to visit.</p>
+                        
+                        <div class="grid-options">
+                            <label class="option-card" onclick="updateCalculator()">
+                                <input type="checkbox" name="destinations" value="serengeti" data-price="85">
+                                <div>
+                                    <strong data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</strong>
+                                    <span style="display:block; font-size:0.8rem; color:var(--text-muted);" data-en="Endless plains & Wildebeest Migration" data-sw="Nyika zisizo na mwisho">Endless plains & Wildebeest Migration</span>
+                                </div>
+                            </label>
+                            <label class="option-card" onclick="updateCalculator()">
+                                <input type="checkbox" name="destinations" value="ngorongoro" data-price="85">
+                                <div>
+                                    <strong data-en="Ngorongoro Crater" data-sw="Kreta ya Ngorongoro">Ngorongoro Crater</strong>
+                                    <span style="display:block; font-size:0.8rem; color:var(--text-muted);" data-en="World heritage volcanic caldera" data-sw="Bonde kubwa la volkano">World heritage volcanic caldera</span>
+                                </div>
+                            </label>
+                            <label class="option-card" onclick="updateCalculator()">
+                                <input type="checkbox" name="destinations" value="tarangire" data-price="55">
+                                <div>
+                                    <strong data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</strong>
+                                    <span style="display:block; font-size:0.8rem; color:var(--text-muted);" data-en="Land of giants: Baobabs & Elephants" data-sw="Nchi ya tembo na mibuyu">Land of giants: Baobabs & Elephants</span>
+                                </div>
+                            </label>
+                            <label class="option-card" onclick="updateCalculator()">
+                                <input type="checkbox" name="destinations" value="manyara" data-price="55">
+                                <div>
+                                    <strong data-en="Lake Manyara National Park" data-sw="Hifadhi ya Ziwa Manyara">Lake Manyara National Park</strong>
+                                    <span style="display:block; font-size:0.8rem; color:var(--text-muted);" data-en="Tree-climbing lions & flamingos" data-sw="Simba wanaopanda miti">Tree-climbing lions & flamingos</span>
+                                </div>
+                            </label>
+                            <label class="option-card" onclick="updateCalculator()">
+                                <input type="checkbox" name="destinations" value="mikumi" data-price="55">
+                                <div>
+                                    <strong data-en="Mikumi National Park" data-sw="Hifadhi ya Mikumi">Mikumi National Park</strong>
+                                    <span style="display:block; font-size:0.8rem; color:var(--text-muted);" data-en="Most accessible southern park" data-sw="Mbuga iliyo rahisi kufika kusini">Most accessible southern park</span>
+                                </div>
+                            </label>
+                            <label class="option-card" onclick="updateCalculator()">
+                                <input type="checkbox" name="destinations" value="ruaha" data-price="55">
+                                <div>
+                                    <strong data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</strong>
+                                    <span style="display:block; font-size:0.8rem; color:var(--text-muted);" data-en="Pristine and wild southern circuit" data-sw="Nyika tulivu ya kusini">Pristine and wild southern circuit</span>
+                                </div>
+                            </label>
+                            <label class="option-card" onclick="updateCalculator()">
+                                <input type="checkbox" name="destinations" value="selous" data-price="80">
+                                <div>
+                                    <strong data-en="Selous Game Reserve" data-sw="Hifadhi ya Selous">Selous Game Reserve</strong>
+                                    <span style="display:block; font-size:0.8rem; color:var(--text-muted);" data-en="River boat safaris & wild dogs" data-sw="Safari za mashua mtoni">River boat safaris & wild dogs</span>
+                                </div>
+                            </label>
+                            <label class="option-card" onclick="updateCalculator()">
+                                <input type="checkbox" name="destinations" value="zanzibar" data-price="0">
+                                <div>
+                                    <strong data-en="Zanzibar Island" data-sw="Kisiwa cha Zanzibar">Zanzibar Island</strong>
+                                    <span style="display:block; font-size:0.8rem; color:var(--text-muted);" data-en="Pristine white beaches & culture" data-sw="Fukwe za mchanga mweupe">Pristine white beaches & culture</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Accommodation Style & Activities -->
+                    <div class="planner-step" id="step-3">
+                        <h2 data-en="Accommodations & Activities" data-sw="Malazi na Shughuli">Accommodations & Activities</h2>
+                        
+                        <div style="margin-bottom:30px;">
+                            <h3 style="font-size:1.15rem; margin-bottom:12px; color:var(--primary-green);" data-en="Accommodation Level" data-sw="Kiwango cha Malazi">Accommodation Level</h3>
+                            <div class="grid-options">
+                                <label class="option-card" onclick="updateCalculator()">
+                                    <input type="radio" name="accommodation" value="budget" data-price="180" checked>
+                                    <div>
+                                        <strong data-en="Budget Camping" data-sw="Kupiga Kambi">Budget Camping</strong>
+                                        <span style="display:block; font-size:0.8rem; color:var(--text-muted);" data-en="Adventure dome tents" data-sw="Hema za kawaida porini">Adventure dome tents ($180/day)</span>
+                                    </div>
+                                </label>
+                                <label class="option-card" onclick="updateCalculator()">
+                                    <input type="radio" name="accommodation" value="midrange" data-price="350">
+                                    <div>
+                                        <strong data-en="Mid-Range Lodges" data-sw="Hoteli ya Kati">Mid-Range Lodges</strong>
+                                        <span style="display:block; font-size:0.8rem; color:var(--text-muted);" data-en="Comfortable lodges/tents" data-sw="Kambi nzuri zenye starehe">Comfortable lodges/tents ($350/day)</span>
+                                    </div>
+                                </label>
+                                <label class="option-card" onclick="updateCalculator()">
+                                    <input type="radio" name="accommodation" value="luxury" data-price="750">
+                                    <div>
+                                        <strong data-en="Luxury Safaris" data-sw="Safari ya Kifahari">Luxury Safaris</strong>
+                                        <span style="display:block; font-size:0.8rem; color:var(--text-muted);" data-en="Premium wilderness lodges" data-sw="Kambi za kifahari porini">Premium wilderness lodges ($750/day)</span>
+                                    </div>
+                                </label>
+                                <label class="option-card" onclick="updateCalculator()">
+                                    <input type="radio" name="accommodation" value="ultraluxury" data-price="1500">
+                                    <div>
+                                        <strong data-en="Ultra Luxury Villas" data-sw="Villas za Kifahari">Ultra Luxury Villas</strong>
+                                        <span style="display:block; font-size:0.8rem; color:var(--text-muted);" data-en="World-class exclusive reserves" data-sw="Huduma bora kabisa ya anasa">World-class exclusive reserves ($1500/day)</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 style="font-size:1.15rem; margin-bottom:12px; color:var(--primary-green);" data-en="Special Activities (Optional)" data-sw="Shughuli Maalum">Special Activities (Optional)</h3>
+                            <div class="grid-options">
+                                <label class="option-card" onclick="updateCalculator()">
+                                    <input type="checkbox" name="activities" value="balloon" data-price="550">
+                                    <div>
+                                        <strong data-en="Hot Air Balloon Safari" data-sw="Safari ya Puto">Hot Air Balloon Safari</strong>
+                                        <span style="display:block; font-size:0.8rem; color:var(--text-muted);" data-en="Fly over the Serengeti plains" data-sw="Kupaa angani Serengeti">+$550 per person</span>
+                                    </div>
+                                </label>
+                                <label class="option-card" onclick="updateCalculator()">
+                                    <input type="checkbox" name="activities" value="walking" data-price="50">
+                                    <div>
+                                        <strong data-en="Guided Walking Safari" data-sw="Safari ya Kutembea">Guided Walking Safari</strong>
+                                        <span style="display:block; font-size:0.8rem; color:var(--text-muted);" data-en="Bush walk with armed ranger" data-sw="Kutembea porini na askari">+$50 per person</span>
+                                    </div>
+                                </label>
+                                <label class="option-card" onclick="updateCalculator()">
+                                    <input type="checkbox" name="activities" value="chimp" data-price="100">
+                                    <div>
+                                        <strong data-en="Chimpanzee Tracking" data-sw="Kufuatilia Sokwe">Chimpanzee Tracking</strong>
+                                        <span style="display:block; font-size:0.8rem; color:var(--text-muted);" data-en="Trek chimpanzees in Gombe" data-sw="Kutafuta sokwe Gombe">+$100 per person</span>
+                                    </div>
+                                </label>
+                                <label class="option-card" onclick="updateCalculator()">
+                                    <input type="checkbox" name="activities" value="zanzibar_tour" data-price="80">
+                                    <div>
+                                        <strong data-en="Stone Town & Spice Tour" data-sw="Ziara ya Mji Mkongwe">Stone Town & Spice Tour</strong>
+                                        <span style="display:block; font-size:0.8rem; color:var(--text-muted);" data-en="Zanzibar cultural excursion" data-sw="Gundua viungo na Stone Town">+$80 per person</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Passenger Info & Submit -->
+                    <div class="planner-step" id="step-4">
+                        <h2 data-en="Submit Enquiry" data-sw="Tuma Ombi Lako">Submit Enquiry</h2>
+                        <p style="color:var(--text-muted); margin-bottom:25px;" data-en="Provide your contact information to submit your custom itinerary." data-sw="Weka maelezo ya mawasiliano ili kutuma ratiba yako ya safari.">Provide your contact information to submit your custom itinerary.</p>
+                        
+                        <div class="form-group" style="margin-bottom:15px;">
+                            <label data-en="Full Name" data-sw="Jina Kamili">Full Name</label>
+                            <input type="text" id="contactName" required style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-color); color:var(--text-main);">
+                        </div>
+                        <div class="form-group" style="margin-bottom:15px;">
+                            <label data-en="Email Address" data-sw="Barua Pepe">Email Address</label>
+                            <input type="email" id="contactEmail" required style="width:100%; padding:12px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-color); color:var(--text-main);">
+                        </div>
+                        <div class="form-group" style="margin-bottom:15px;">
+                            <label data-en="Special Requests / Messages" data-sw="Ombi Maalum">Special Requests / Messages</label>
+                            <textarea id="contactNotes" style="width:100%; height:100px; padding:12px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-color); color:var(--text-main); resize:vertical;"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Button Navigation Row -->
+                    <div class="btn-navigation">
+                        <button type="button" class="btn btn-outline" id="prevBtn" onclick="changeStep(-1)" style="display:none;" data-en="&larr; Back" data-sw="&larr; Nyuma">&larr; Back</button>
+                        <button type="button" class="btn btn-primary" id="nextBtn" onclick="changeStep(1)" style="margin-left:auto;" data-en="Next Step &rarr;" data-sw="Endelea &rarr;">Next Step &rarr;</button>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- Right Panel: Sticky Cost Calculator Sidebar -->
+            <div class="calculator-sidebar">
+                <h3 style="font-family:'Playfair Display', serif; margin-bottom:15px; color:var(--primary-green);" data-en="Cost Estimate" data-sw="Makadirio ya Gharama">Cost Estimate</h3>
+                <p style="font-size:0.82rem; color:var(--text-muted);" data-en="Calculated based on standard agency rates, local park fees, and activities." data-sw="Imekadiriwa kulingana na viwango vya mbuga na shughuli zilizochaguliwa.">Calculated based on standard agency rates, local park fees, and activities.</p>
+                
+                <div class="price-display">
+                    <h4 data-en="Estimated Cost (USD)" data-sw="Makadirio (USD)">Estimated Cost (USD)</h4>
+                    <div class="amount" id="calcPrice">$0.00</div>
+                    <span style="font-size:0.72rem; color:var(--text-muted);" data-en="*Excludes international flights & personal insurance" data-sw="*Haichangii ndege za kimataifa na bima">*Excludes flights & insurance</span>
+                </div>
+
+                <ul class="summary-list">
+                    <li>
+                        <span data-en="Duration" data-sw="Muda">Duration</span>
+                        <span id="sumDuration">7 Days</span>
+                    </li>
+                    <li>
+                        <span data-en="Guests" data-sw="Wageni">Guests</span>
+                        <span id="sumGuests">2 Guests</span>
+                    </li>
+                    <li>
+                        <span data-en="Lodging Level" data-sw="Kiwango cha Malazi">Lodging Level</span>
+                        <span id="sumLodging">Budget Camping</span>
+                    </li>
+                    <li>
+                        <span data-en="Destinations selected" data-sw="Mbuga zilizochaguliwa">Destinations selected</span>
+                        <span id="sumDestinations">0</span>
+                    </li>
+                    <li>
+                        <span data-en="Activities added" data-sw="Shughuli zilizoongezwa">Activities added</span>
+                        <span id="sumActivities">0</span>
+                    </li>
+                </ul>
+
+                <a href="https://wa.me/255747115390" target="_blank" class="btn" style="background:#25D366; color:white; width:100%; display:flex; align-items:center; justify-content:center; gap:8px; border-radius:50px; text-transform:uppercase; font-size:0.85rem;" data-en="WhatsApp Expert" data-sw="Mtaalamu wa WhatsApp">
+                    <i class="fab fa-whatsapp" style="font-size:1.1rem;"></i> WhatsApp Expert
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer Contact Info -->
+    <div class="footer-top">
+        <div class="container">
+            <h2><i class="fas fa-phone-alt"></i> +255 747 115 390</h2>
+            <a href="enquire.html" class="btn enquire-btn" data-en="CONTACT US TODAY!" data-sw="WASILIANA NASI LEO!">CONTACT US TODAY!</a>
+        </div>
+    </div>
+
+    <!-- Final Call to Action -->
+    <section class="section cta-section" style="background: var(--primary-gradient); padding: 50px 0; text-align: center; color: white; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <div class="container" style="position: relative; z-index: 2;">
+            <span class="sub-heading" style="color:var(--accent-gold); font-size: 0.8rem; letter-spacing: 2px;" data-en="YOUR JOURNEY TO AFRICA STARTS HERE" data-sw="SAFARI YAKO YA AFRIKA INAANZA HAPA">YOUR JOURNEY TO AFRICA STARTS HERE</span>
+            <h2 style="font-size: clamp(1.5rem, 3vw, 2.2rem); color: white; margin: 10px 0 16px;" data-en="Are you ready to explore Tanzania?" data-sw="Uko Tayari Kuichunguza Tanzania?">Are you ready to explore Tanzania?</h2>
+            
+            <p class="cta-description" style="max-width: 650px; margin: 0 auto 25px; font-size:0.9rem; line-height: 1.65; opacity: 0.9;">
+                <span class="cta-hide-mobile" data-en="Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. " data-sw="Fikiria kushuhudia uwindaji wa simba wakati wa machweo, kutazama tembo wakizurura kwa uhuru kwenye savanna zisizo na mwisho, kujionea Uhamiaji Mkuu, au kupumzika kwenye mchanga mweupe wa Zanzibar. ">Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. </span>
+                <span data-en="Let Century Adventures make those dreams come true." data-sw="Ruhusu Century Adventures kufanya ndoto hizo ziwe kweli.">Let Century Adventures make those dreams come true.</span>
+            </p>
+
+            <div class="cta-action-grid" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <a href="enquire.html" class="btn btn-primary cta-circle-btn" style="background: var(--accent-gold); color: #002b18; font-weight:800; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; text-decoration: none;" data-en="Plan Your Trip" data-sw="Panga Safari Yako">Plan Your Trip</a>
+                <a href="enquire.html" class="btn btn-outline cta-circle-btn secondary" style="border: 1px solid rgba(255,255,255,0.6); color: white; font-weight:700; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; background: transparent; text-decoration: none;" data-en="Request a Free Quote" data-sw="Omba Nukuu ya Bure">Request a Free Quote</a>
+            </div>
+            
+            <div style="margin-top: 18px;">
+                <a href="contact.html" style="color: var(--accent-gold); font-weight: 700; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.5px;" data-en="Contact Our Experts &rarr;" data-sw="Wasiliana na Wataalamu Wetu &rarr;">Contact Our Experts &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col info-col">
+                <h3 data-en="CONTACT US" data-sw="WASILIANA NASI">CONTACT US</h3>
+                <p><strong>Century Adventures</strong></p>
+                <p data-en="Asasi Tower, 4th Floor" data-sw="Asasi Tower, Ghorofa ya 4">Asasi Tower, 4th Floor</p>
+                <p data-en="Ohio Street" data-sw="Mtaa wa Ohio">Ohio Street</p>
+                <p><i class="fas fa-map-marker-alt"></i> Dar es Salaam, Tanzania</p>
+                <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/255747115390" target="_blank" style="color: inherit;">+255 747 115 390</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@centuryadventures.com" style="color: inherit;">info@centuryadventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:bookings@centuryadventures.com" style="color: inherit;">bookings@centuryadventures.com</a></p>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="POPULAR PLACES" data-sw="MAENEO MAARUFU">POPULAR PLACES</h3>
+                <ul>
+                    <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                    <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                    <li><a href="selous.html" data-en="Nyerere Park" data-sw="Hifadhi ya Nyerere">Nyerere Park</a></li>
+                    <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                    <li><a href="mikumi.html" data-en="Mikumi Park" data-sw="Hifadhi ya Mikumi">Mikumi Park</a></li>
+                    <li><a href="ngorongoro.html" data-en="Ngorongoro" data-sw="Ngorongoro">Ngorongoro</a></li>
+                    <li><a href="manyara.html" data-en="Manyara National Park" data-sw="Hifadhi ya Manyara">Manyara National Park</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL EXPERIENCE" data-sw="UZOEFU WA KUSAFIRI">TRAVEL EXPERIENCE</h3>
+                <ul>
+                    <li><a href="family-safaris.html" data-en="Family Trips" data-sw="Safari za Familia">Family Trips</a></li>
+                    <li><a href="honeymoon-safaris.html" data-en="Honeymoon Trips" data-sw="Safari za Fungate">Honeymoon Trips</a></li>
+                    <li><a href="migration-safaris.html" data-en="Migration Trips" data-sw="Safari za Uhamiaji">Migration Trips</a></li>
+                    <li><a href="volunteer.html" data-en="Volunteer Programs" data-sw="Mipango ya Kujitolea">Volunteer Programs</a></li>
+                    <li><a href="zanzibar-beach.html" data-en="Zanzibar Beach Holiday" data-sw="Likizo ya Pwani ya Zanzibar">Zanzibar Beach Holiday</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL RESOURCES" data-sw="MAARIFA YA SAFARI">TRAVEL RESOURCES</h3>
+                <ul>
+                    <li><a href="blog.html" data-en="Travel Blog" data-sw="Blogu yetu">Travel Blog</a></li>
+                    <li><a href="faq.html" data-en="FAQs" data-sw="Maswali ya Kawaida">FAQs</a></li>
+                    <li><a href="gallery.html" data-en="Photo Gallery" data-sw="Picha za Safari">Photo Gallery</a></li>
+                    <li><a href="testimonials.html" data-en="Testimonials" data-sw="Shuhuda">Testimonials</a></li>
+                    <li><a href="best-time-to-visit-tanzania.html" data-en="Best Time to Visit" data-sw="Wakati Bora wa Kuja">Best Time to Visit</a></li>
+                    <li><a href="health-safety-tanzania.html" data-en="Health &amp; Safety" data-sw="Afya na Usalama">Health &amp; Safety</a></li>
+                    <li><a href="obtaining-visa-tanzania.html" data-en="Visa Information" data-sw="Visa ya Safari">Visa Information</a></li>
+                    <li><a href="solo-female-travel-tanzania.html" data-en="Solo Female Travel" data-sw="Safari ya Wanawake">Solo Female Travel</a></li>
+                    <li><a href="what-to-wear-safari.html" data-en="Safari Packing Guide" data-sw="Nguo za Safari">Safari Packing Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <div class="tripadvisor-card">
+                    <img src="https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-66827-5.svg" alt="TripAdvisor">
+                    <h4 data-en="TripAdvisor Century Adventures" data-sw="TripAdvisor Century Adventures">TripAdvisor Century Adventures</h4>
+                    <p data-en="Ranked #1 on TripAdvisor" data-sw="Imeorodheshwa #1 TripAdvisor">Ranked #1 on TripAdvisor</p>
+                    <a href="https://www.tripadvisor.com/" target="_blank" class="btn btn-small" data-en="TripAdvisor Give Feedback Century Adventures" data-sw="TripAdvisor Toa Maoni Century Adventures">TripAdvisor Give Feedback Century Adventures</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61577731823809"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@CenturyAdventures" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/century_adventures?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/255747115390"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:info@centuryadventures.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; Copyright 2012 - 2026 | Century Adventures</p>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+    <script>
+        // Multi-Step Form Logic
+        let currentStep = 1;
+        const totalSteps = 4;
+
+        function showStep(step) {
+            document.querySelectorAll('.planner-step').forEach((el, idx) => {
+                el.classList.toggle('active', idx === step - 1);
+            });
+            document.querySelectorAll('.step-dot').forEach((el, idx) => {
+                el.classList.toggle('active', idx === step - 1);
+                el.classList.toggle('completed', idx < step - 1);
+            });
+            
+            document.getElementById('prevBtn').style.display = step === 1 ? 'none' : 'block';
+            
+            const nextBtn = document.getElementById('nextBtn');
+            if (step === totalSteps) {
+                nextBtn.setAttribute('data-en', 'Submit Enquiry');
+                nextBtn.setAttribute('data-sw', 'Tuma Ombi');
+                nextBtn.textContent = 'Submit Enquiry';
+                // Trigger translation translation toggle if needed
+                const savedLang = localStorage.getItem('century-lang') || 'en';
+                nextBtn.textContent = nextBtn.getAttribute(`data-${savedLang}`) || 'Submit Enquiry';
+            } else {
+                nextBtn.setAttribute('data-en', 'Next Step \u2192');
+                nextBtn.setAttribute('data-sw', 'Endelea \u2192');
+                nextBtn.textContent = 'Next Step \u2192';
+                const savedLang = localStorage.getItem('century-lang') || 'en';
+                nextBtn.textContent = nextBtn.getAttribute(`data-${savedLang}`) || 'Next Step \u2192';
+            }
+        }
+
+        function changeStep(n) {
+            if (n === 1 && currentStep === totalSteps) {
+                // Submit Form
+                const name = document.getElementById('contactName').value;
+                const email = document.getElementById('contactEmail').value;
+                const lang = localStorage.getItem('century-lang') || 'en';
+                if (!name || !email) {
+                    if (lang === 'sw') {
+                        alert('Tafadhali weka jina na barua pepe yako.');
+                    } else {
+                        alert('Please provide your name and email address.');
+                    }
+                    return;
+                }
+
+                // Save custom plan to localStorage
+                const booking = {
+                    id: 'BK-' + Date.now(),
+                    name: name,
+                    email: email,
+                    duration: parseInt(document.getElementById('safariDuration').value) || 1,
+                    guests: parseInt(document.getElementById('safariGuests').value) || 1,
+                    lodging: document.querySelector('input[name="accommodation"]:checked')?.value || 'budget',
+                    destinations: Array.from(document.querySelectorAll('input[name="destinations"]:checked')).map(el => el.value),
+                    activities: Array.from(document.querySelectorAll('input[name="activities"]:checked')).map(el => el.value),
+                    notes: document.getElementById('contactNotes').value,
+                    estimatePrice: document.getElementById('calcPrice').textContent,
+                    date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+                    status: 'PENDING'
+                };
+
+                let bookings = [];
+                try {
+                    bookings = JSON.parse(localStorage.getItem('century-bookings')) || [];
+                } catch(e) {
+                    bookings = [];
+                }
+                bookings.push(booking);
+                localStorage.setItem('century-bookings', JSON.stringify(bookings));
+
+                // Also create a conversation for Admin Messages
+                let conversations = [];
+                try {
+                    conversations = JSON.parse(localStorage.getItem('century-conversations')) || [];
+                } catch(err) {
+                    conversations = [];
+                }
+                const destString = booking.destinations.join(', ');
+                const activitiesString = booking.activities.join(', ');
+                const conv = {
+                    id: 'conv-' + Date.now(),
+                    visitorId: `${booking.name} (${booking.email})`,
+                    categoryId: 'safari',
+                    messages: [{
+                        id: 'msg-' + Date.now(),
+                        sender: 'visitor',
+                        text: `🦁 Custom Safari Plan Submitted:\n• Name: ${booking.name}\n• Email: ${booking.email}\n• Duration: ${booking.duration} Days\n• Guests: ${booking.guests}\n• Lodging: ${booking.lodging}\n• Destinations: ${destString || 'None selected'}\n• Activities: ${activitiesString || 'None selected'}\n• Notes: ${booking.notes || 'N/A'}\n• Estimate Price: ${booking.estimatePrice}`,
+                        timestamp: Date.now()
+                    }],
+                    createdAt: Date.now(),
+                    updatedAt: Date.now(),
+                    status: 'open',
+                    unreadByStaff: true
+                };
+                conversations.push(conv);
+                localStorage.setItem('century-conversations', JSON.stringify(conversations));
+
+                // Also save/update user profile session so they see their name in the dashboard
+                localStorage.setItem('century-user-profile', JSON.stringify({
+                    name: name,
+                    email: email,
+                    tier: 'Explorer'
+                }));
+
+                if (lang === 'sw') {
+                    alert(`Asante ${name}! Ombi lako la safari maalum na makadirio ya bajeti yamewasilishwa kwa mafanikio. Mtaalamu wa safari atawasiliana nawe hivi karibuni ili kukamilisha maelezo.`);
+                } else {
+                    alert(`Thank you ${name}! Your custom safari itinerary and budget estimate has been submitted successfully. A safari expert will contact you shortly to refine details.`);
+                }
+                window.location.href = 'dashboard.html'; // Redirect straight to dashboard to see their planned safari!
+                return;
+            }
+            
+            currentStep += n;
+            if (currentStep < 1) currentStep = 1;
+            if (currentStep > totalSteps) currentStep = totalSteps;
+            showStep(currentStep);
+        }
+
+        // Live Cost Calculator Logic
+        function updateCalculator() {
+            // Read inputs
+            const duration = parseInt(document.getElementById('safariDuration').value) || 1;
+            const guests = parseInt(document.getElementById('safariGuests').value) || 1;
+            
+            const lodgingRadio = document.querySelector('input[name="accommodation"]:checked');
+            const lodgingPricePerDay = lodgingRadio ? parseInt(lodgingRadio.getAttribute('data-price')) : 150;
+            const lodgingLabel = lodgingRadio ? lodgingRadio.closest('.option-card').querySelector('strong').textContent : 'Budget Camping';
+
+            // Calculate destinations park fees
+            let parkFees = 0;
+            let destCount = 0;
+            document.querySelectorAll('input[name="destinations"]:checked').forEach(el => {
+                parkFees += parseInt(el.getAttribute('data-price')) || 0;
+                destCount++;
+            });
+
+            // Calculate special activities fees
+            let activityFees = 0;
+            let actCount = 0;
+            document.querySelectorAll('input[name="activities"]:checked').forEach(el => {
+                activityFees += parseInt(el.getAttribute('data-price')) || 0;
+                actCount++;
+            });
+
+            // Math model
+            // Cost = (Lodging * Duration * Guests) + (ParkFees * Duration * Guests) + (ActivityFees * Guests)
+            // Plus some vehicle base cost (e.g. $250/day split among guests, say base rate is $250/day)
+            const vehicleCostPerDay = 250;
+            const totalVehicleCost = vehicleCostPerDay * duration;
+            
+            const totalLodgingCost = lodgingPricePerDay * duration * guests;
+            const totalParkFees = parkFees * duration * guests;
+            const totalActivityFees = activityFees * guests;
+            
+            const totalEstimate = totalLodgingCost + totalParkFees + totalActivityFees + totalVehicleCost;
+
+            // Formats currency nicely
+            document.getElementById('calcPrice').textContent = '$' + totalEstimate.toLocaleString();
+
+            // Update sidebar summary fields
+            document.getElementById('sumDuration').textContent = `${duration} Days`;
+            document.getElementById('sumGuests').textContent = `${guests} Guests`;
+            document.getElementById('sumLodging').textContent = lodgingLabel;
+            document.getElementById('sumDestinations').textContent = destCount;
+            document.getElementById('sumActivities').textContent = actCount;
+            
+            // Add highlights to options card styles
+            document.querySelectorAll('.option-card').forEach(card => {
+                const checkbox = card.querySelector('input');
+                if (checkbox) {
+                    card.classList.toggle('selected', checkbox.checked);
+                }
+            });
+        }
+
+        // Setup event listeners on form inputs
+        document.getElementById('safariDuration').addEventListener('input', updateCalculator);
+        document.getElementById('safariGuests').addEventListener('input', updateCalculator);
+
+        // Initial setup
+        window.addEventListener('DOMContentLoaded', () => {
+            updateCalculator();
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,552 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquire Now | Century Adventures</title>
+    <meta name="description" content="Begin planning your dream Tanzania safari with Century Adventures. Fill out our booking form today.">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Enquire Now | Century Adventures">
+    <meta property="og:description" content="Begin planning your dream Tanzania safari with Century Adventures. Fill out our booking form today.">
+    <meta property="og:image" content="assets/logo.png">
+    <meta property="og:site_name" content="Century Adventures">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="assets/logo.png">
+    <meta name="twitter:title" content="Enquire Now | Century Adventures">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="scroll-progress"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html"><img src="assets/logo.png" alt="Century Adventures Logo"></a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html" data-en="Home" data-sw="Nyumbani">Home</a></li>
+                    <li><a href="about.html" data-en="About Us" data-sw="Kuhusu Sisi">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-en="Destinations" data-sw="Maeneo">Destinations <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="katavi.html" data-en="Katavi National Park" data-sw="Hifadhi ya Katavi">Katavi National Park</a></li>
+                            <li><a href="selous.html" data-en="Selous Game Reserve" data-sw="Hifadhi ya Selous">Selous Game Reserve</a></li>
+                            <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                            <li><a href="mikumi.html" data-en="Mikumi National Park" data-sw="Hifadhi ya Mikumi">Mikumi National Park</a></li>
+                            <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                            <li><a href="gombe.html" data-en="Gombe Stream National Park" data-sw="Hifadhi ya Gombe">Gombe Stream National Park</a></li>
+                            <li><a href="ngorongoro.html" data-en="Ngorongoro Conservation Area" data-sw="Ngorongoro">Ngorongoro Conservation Area</a></li>
+                            <li><a href="manyara.html" data-en="Lake Manyara National Park" data-sw="Hifadhi ya Manyara">Lake Manyara National Park</a></li>
+                            <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="safaris.html" data-en="TOURS & SAFARIS" data-sw="SAFARI NA ZIARA">TOURS & SAFARIS</a></li>
+                    <li><a href="experiences.html" data-en="Experiences" data-sw="Uzoefu">Experiences</a></li>
+                    <li><a href="volunteer.html" data-en="Volunteer" data-sw="Kujitolea">Volunteer</a></li>
+                    <li><a href="vehicles.html" data-en="Safari Vehicles" data-sw="Magari ya Safari">Safari Vehicles</a></li>
+                    <li><a href="contact.html" data-en="Contact Us" data-sw="Wasiliana Nasi">Contact Us</a></li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Hamburger Menu -->
+            <button class="mobile-toggle" id="mobile-toggle" onclick="toggleMobileMenu()" aria-label="Open navigation menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <div class="header-actions">
+                <div class="header-toggles">
+                    <button class="toggle-btn lang-toggle" onclick="toggleLang()">SW</button>
+                    <button class="toggle-btn theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i> DARK</button>
+                </div>
+                <a href="enquire.html" class="btn btn-primary enquire-btn" data-en="ENQUIRE" data-sw="ULIZA">ENQUIRE</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="trip-hero" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('assets/KTA13Serengeti Nationa.webp'); height: 60vh;">
+        <div class="container hero-content">
+            <span class="sub-heading" data-en="START YOUR JOURNEY" data-sw="ANZA SAFARI YAKO" style="color: var(--accent-gold);">START YOUR JOURNEY</span>
+            <h1 data-en="Let's Start Planning Your Dream Adventure" data-sw="Tuanze Kupanga Safari Yako ya Ndoto">Let's Start Planning Your Dream Adventure</h1>
+            <p class="hero-tagline" data-en="Every unforgettable journey begins with a conversation." data-sw="Kila safari isiyosahaulika huanza na mazungumzo.">Every unforgettable journey begins with a conversation.</p>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="section" style="background: var(--bg-color);">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 1.15rem; line-height: 1.9; color: var(--text-muted);" data-en="Whether you're dreaming of witnessing the Great Migration, exploring the Serengeti, climbing Mount Kilimanjaro, relaxing on the beaches of Zanzibar, or joining a meaningful volunteer program, our travel specialists are ready to help create the perfect itinerary tailored just for you." data-sw="Iwe unaota kushuhudia Uhamiaji Mkuu, kuchunguza Serengeti, kupanda Mlima Kilimanjaro, kupumzika kwenye fukwe za Zanzibar, au kujiunga na programu ya kujitolea yenye maana, wataalamu wetu wa safari wako tayari kusaidia kuunda ratiba kamili iliyoundwa kwa ajili yako.">Whether you're dreaming of witnessing the Great Migration, exploring the Serengeti, climbing Mount Kilimanjaro, relaxing on the beaches of Zanzibar, or joining a meaningful volunteer program, our travel specialists are ready to help create the perfect itinerary tailored just for you.</p>
+                <p style="font-size: 1.1rem; line-height: 1.9; color: var(--text-muted); margin-top: 15px;" data-en="Tell us about your travel plans, and we'll design an experience that matches your interests, preferences, and budget." data-sw="Tuambie kuhusu mipango yako ya kusafiri, na tutabuni uzoefu unaofanana na maslahi yako, mapendeleo, na bajeti.">Tell us about your travel plans, and we'll design an experience that matches your interests, preferences, and budget.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Enquire With Us Section -->
+    <section class="section" style="background: var(--section-bg);">
+        <div class="container">
+            <div style="text-align: center; max-width: 850px; margin: 0 auto 60px auto;">
+                <span class="sub-heading" data-en="WHY ENQUIRE WITH US" data-sw="KWA NINI UULIZE KWETU">WHY ENQUIRE WITH US</span>
+                <h2 data-en="Reasons to Choose Century Adventures" data-sw="Sababu za Kuchagua Century Adventures">Reasons to Choose Century Adventures</h2>
+            </div>
+            <div class="enquire-features-grid">
+                <!-- Feature 1 -->
+                <div class="scroll-reveal" style="background: var(--card-bg); padding: 35px 20px; border-radius: 24px; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); text-align: center; transition: var(--transition);">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary-green), #006838); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="fas fa-pencil-ruler" style="font-size: 1.3rem; color: var(--accent-gold);"></i>
+                    </div>
+                    <h4 style="font-size: 1rem; color: var(--text-main); margin-bottom: 10px;" data-en="Personalized Travel Planning" data-sw="Mipango ya Safari ya Kibinafsi">Personalized Travel Planning</h4>
+                    <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;" data-en="Every itinerary is carefully designed around your unique travel goals and expectations." data-sw="Kila ratiba imeundwa kwa uangalifu kulingana na malengo yako ya kipekee ya kusafiri na matarajio.">Every itinerary is carefully designed around your unique travel goals and expectations.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="scroll-reveal" style="background: var(--card-bg); padding: 35px 20px; border-radius: 24px; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); text-align: center; transition: var(--transition);">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary-green), #006838); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="fas fa-map-marked-alt" style="font-size: 1.3rem; color: var(--accent-gold);"></i>
+                    </div>
+                    <h4 style="font-size: 1rem; color: var(--text-main); margin-bottom: 10px;" data-en="Expert Local Advice" data-sw="Ushauri wa Wataalamu wa Ndani">Expert Local Advice</h4>
+                    <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;" data-en="Receive recommendations from experienced Tanzania travel specialists who know the destinations inside and out." data-sw="Pokea mapendekezo kutoka kwa wataalamu wa kusafiri Tanzania wenye uzoefu wanaojua maeneo kwa undani.">Receive recommendations from experienced Tanzania travel specialists who know the destinations inside and out.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="scroll-reveal" style="background: var(--card-bg); padding: 35px 20px; border-radius: 24px; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); text-align: center; transition: var(--transition);">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary-green), #006838); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="fas fa-bolt" style="font-size: 1.3rem; color: var(--accent-gold);"></i>
+                    </div>
+                    <h4 style="font-size: 1rem; color: var(--text-main); margin-bottom: 10px;" data-en="Fast & Professional Responses" data-sw="Majibu ya Haraka na Kitaalamu">Fast & Professional Responses</h4>
+                    <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;" data-en="We understand that planning a trip is exciting. Our team is committed to responding promptly and professionally to every inquiry." data-sw="Tunaelewa kuwa kupanga safari ni jambo la kusisimua. Timu yetu imejitolea kujibu kwa haraka na kitaalamu kwa kila swali.">We understand that planning a trip is exciting. Our team is committed to responding promptly and professionally to every inquiry.</p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="scroll-reveal" style="background: var(--card-bg); padding: 35px 20px; border-radius: 24px; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); text-align: center; transition: var(--transition);">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary-green), #006838); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="fas fa-sliders-h" style="font-size: 1.3rem; color: var(--accent-gold);"></i>
+                    </div>
+                    <h4 style="font-size: 1rem; color: var(--text-main); margin-bottom: 10px;" data-en="Flexible Travel Options" data-sw="Chaguo za Safari Zinazobadilika">Flexible Travel Options</h4>
+                    <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;" data-en="From budget-friendly adventures to luxury safaris, we offer solutions for every type of traveler." data-sw="Kutoka matukio ya bajeti hadi safari za kifahari, tunatoa ufumbuzi kwa kila aina ya msafiri.">From budget-friendly adventures to luxury safaris, we offer solutions for every type of traveler.</p>
+                </div>
+                <!-- Feature 5 -->
+                <div class="scroll-reveal" style="background: var(--card-bg); padding: 35px 20px; border-radius: 24px; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); text-align: center; transition: var(--transition);">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary-green), #006838); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="fas fa-handshake" style="font-size: 1.3rem; color: var(--accent-gold);"></i>
+                    </div>
+                    <h4 style="font-size: 1rem; color: var(--text-main); margin-bottom: 10px;" data-en="No Obligation Consultation" data-sw="Ushauri Bila Masharti">No Obligation Consultation</h4>
+                    <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;" data-en="Share your ideas and receive expert guidance without any pressure to book." data-sw="Shiriki mawazo yako na upokee mwongozo wa kitaalamu bila shinikizo lolote la kuhifadhi.">Share your ideas and receive expert guidance without any pressure to book.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enquiry Form Section -->
+    <section class="section enquire-section" style="background: var(--bg-color);">
+        <div class="container">
+            <div class="enquire-form-grid">
+                <!-- Left: Info Panel -->
+                <div class="scroll-reveal">
+                    <span class="sub-heading" data-en="TELL US YOUR DREAM" data-sw="TUAMBIE NDOTO YAKO">TELL US YOUR DREAM</span>
+                    <h2 style="margin-bottom: 20px;" data-en="Tell Us About Your Dream Trip" data-sw="Tuambie Kuhusu Safari Yako ya Ndoto">Tell Us About Your Dream Trip</h2>
+                    <p style="font-size: 1.05rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 30px;" data-en="To help us create the perfect experience, please include as much detail as possible. The more you tell us, the better we can tailor your itinerary." data-sw="Ili kutusaidia kuunda uzoefu kamili, tafadhali jumuisha maelezo mengi iwezekanavyo. Kadri unavyotuambia zaidi, ndivyo tunavyoweza kubuni ratiba yako vizuri zaidi.">To help us create the perfect experience, please include as much detail as possible. The more you tell us, the better we can tailor your itinerary.</p>
+                    
+                    <!-- Checklist -->
+                    <div style="background: var(--section-bg); padding: 30px; border-radius: 20px; border: 1px solid var(--border-color);">
+                        <h4 style="font-size: 1rem; color: var(--text-main); margin-bottom: 20px;" data-en="Consider Including:" data-sw="Fikiria Kujumuisha:">Consider Including:</h4>
+                        <div style="display: flex; flex-direction: column; gap: 14px;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <span style="font-size: 1.2rem;">📍</span>
+                                <span style="font-size: 0.95rem; color: var(--text-muted);" data-en="Preferred destinations" data-sw="Maeneo unayopendelea">Preferred destinations</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <span style="font-size: 1.2rem;">📅</span>
+                                <span style="font-size: 0.95rem; color: var(--text-muted);" data-en="Expected travel dates" data-sw="Tarehe zinazotarajiwa za kusafiri">Expected travel dates</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <span style="font-size: 1.2rem;">👥</span>
+                                <span style="font-size: 0.95rem; color: var(--text-muted);" data-en="Number of travelers" data-sw="Idadi ya wasafiri">Number of travelers</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <span style="font-size: 1.2rem;">🦁</span>
+                                <span style="font-size: 0.95rem; color: var(--text-muted);" data-en="Type of experience you're interested in" data-sw="Aina ya uzoefu unaovutiwa nao">Type of experience you're interested in</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <span style="font-size: 1.2rem;">🏨</span>
+                                <span style="font-size: 0.95rem; color: var(--text-muted);" data-en="Accommodation preferences" data-sw="Mapendeleo ya malazi">Accommodation preferences</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <span style="font-size: 1.2rem;">💰</span>
+                                <span style="font-size: 0.95rem; color: var(--text-muted);" data-en="Approximate budget" data-sw="Bajeti ya takriban">Approximate budget</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <span style="font-size: 1.2rem;">✈️</span>
+                                <span style="font-size: 0.95rem; color: var(--text-muted);" data-en="Special requests or requirements" data-sw="Maombi maalum au mahitaji">Special requests or requirements</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Enhanced Form -->
+                <div class="scroll-reveal enquire-form-card">
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <div style="width: 55px; height: 55px; background: linear-gradient(135deg, var(--primary-green), #006838); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+                            <i class="fas fa-paper-plane" style="font-size: 1.3rem; color: var(--accent-gold);"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; color: var(--text-main);" data-en="Send Your Enquiry" data-sw="Tuma Swali Lako">Send Your Enquiry</h3>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 5px;" data-en="We'll respond within 24 hours" data-sw="Tutajibu ndani ya masaa 24">We'll respond within 24 hours</p>
+                    </div>
+                    <form id="mainBookingForm">
+                        <div class="form-group">
+                            <label data-en="Full Name *" data-sw="Jina Kamili *">Full Name *</label>
+                            <input type="text" name="name" required placeholder="Enter your full name">
+                        </div>
+                        <div class="form-row enquire-form-row">
+                            <div class="form-group">
+                                <label data-en="Email Address *" data-sw="Anwani ya Barua Pepe *">Email Address *</label>
+                                <input type="email" name="email" required placeholder="email@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label data-en="Phone / WhatsApp" data-sw="Simu / WhatsApp">Phone / WhatsApp</label>
+                                <input type="tel" name="phone" placeholder="+255 XXX XXX XXX">
+                            </div>
+                        </div>
+                        <div class="form-row enquire-form-row">
+                            <div class="form-group">
+                                <label data-en="Number of Travelers *" data-sw="Idadi ya Wasafiri *">Number of Travelers *</label>
+                                <input type="number" name="guests" required min="1" value="1">
+                            </div>
+                            <div class="form-group">
+                                <label data-en="Travel Date *" data-sw="Tarehe ya Kusafiri *">Travel Date *</label>
+                                <input type="date" name="travel_date" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label data-en="Preferred Destination" data-sw="Eneo Unalopendelea">Preferred Destination</label>
+                            <select name="destination" style="width: 100%; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-main); font-size: 0.95rem; font-family: 'Inter', sans-serif;">
+                                <option value="" data-en="Select a destination" data-sw="Chagua eneo">Select a destination</option>
+                                <option value="serengeti">Serengeti National Park</option>
+                                <option value="ngorongoro">Ngorongoro Crater</option>
+                                <option value="kilimanjaro">Mount Kilimanjaro</option>
+                                <option value="zanzibar">Zanzibar</option>
+                                <option value="tarangire">Tarangire National Park</option>
+                                <option value="manyara">Lake Manyara</option>
+                                <option value="selous">Nyerere National Park</option>
+                                <option value="ruaha">Ruaha National Park</option>
+                                <option value="multiple">Multiple Destinations</option>
+                                <option value="other">Other / Not Sure</option>
+                            </select>
+                        </div>
+                        <div class="form-row enquire-form-row">
+                            <div class="form-group">
+                                <label data-en="Experience Type" data-sw="Aina ya Uzoefu">Experience Type</label>
+                                <select name="experience_type" style="width: 100%; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-main); font-size: 0.95rem; font-family: 'Inter', sans-serif;">
+                                    <option value="" data-en="Select experience" data-sw="Chagua uzoefu">Select experience</option>
+                                    <option value="wildlife_safari">Wildlife Safari</option>
+                                    <option value="beach_holiday">Beach Holiday</option>
+                                    <option value="mountain_trek">Mountain Trekking</option>
+                                    <option value="cultural_tour">Cultural Tour</option>
+                                    <option value="honeymoon">Honeymoon</option>
+                                    <option value="family">Family Adventure</option>
+                                    <option value="volunteer">Volunteer Program</option>
+                                    <option value="luxury">Private & Luxury Safari</option>
+                                    <option value="combined">Combined Experience</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label data-en="Budget Range" data-sw="Kiwango cha Bajeti">Budget Range</label>
+                                <select name="budget" style="width: 100%; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-main); font-size: 0.95rem; font-family: 'Inter', sans-serif;">
+                                    <option value="" data-en="Select budget" data-sw="Chagua bajeti">Select budget</option>
+                                    <option value="budget">Budget ($500 - $1,500)</option>
+                                    <option value="mid">Mid-Range ($1,500 - $3,500)</option>
+                                    <option value="premium">Premium ($3,500 - $6,000)</option>
+                                    <option value="luxury">Luxury ($6,000+)</option>
+                                    <option value="flexible">Flexible / Not Sure</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label data-en="Your Message *" data-sw="Ujumbe Wako *">Your Message *</label>
+                            <textarea name="message" required style="height: 130px;" placeholder="Tell us about your dream trip — preferred activities, accommodation style, special celebrations, dietary requirements, etc."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block" style="padding: 16px; width: 100%; font-size: 1.05rem; border-radius: 14px; background: var(--accent-gradient); color: #1a1a1a; font-weight: 700; border: none; cursor: pointer; transition: var(--transition);" data-en="🌍 Send My Enquiry" data-sw="🌍 Tuma Swali Langu">🌍 Send My Enquiry</button>
+                        <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 12px;" data-en="🔒 Your information is secure and will never be shared with third parties." data-sw="🔒 Taarifa zako ni salama na hazitashirikiwa na wahusika wengine.">🔒 Your information is secure and will never be shared with third parties.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Enquiries Section -->
+    <section class="section" style="background: var(--section-bg);">
+        <div class="container">
+            <div style="text-align: center; max-width: 850px; margin: 0 auto 60px auto;">
+                <span class="sub-heading" data-en="POPULAR ENQUIRIES" data-sw="MASWALI MAARUFU">POPULAR ENQUIRIES</span>
+                <h2 data-en="What Travelers Ask About Most" data-sw="Wasafiri Wanauliza Zaidi Kuhusu Nini">What Travelers Ask About Most</h2>
+            </div>
+            <div class="enquire-popular-grid">
+                <!-- Card 1 -->
+                <div class="scroll-reveal" style="background: var(--card-bg); border-radius: 24px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); transition: var(--transition);">
+                    <div style="height: 5px; background: linear-gradient(90deg, var(--primary-green), var(--accent-gold));"></div>
+                    <div style="padding: 30px 25px; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 15px;">🦁</div>
+                        <h4 style="font-size: 1.05rem; color: var(--text-main); margin-bottom: 10px;" data-en="Wildlife Safaris" data-sw="Safari za Wanyamapori">Wildlife Safaris</h4>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;" data-en="Explore Tanzania's iconic national parks and experience incredible wildlife encounters." data-sw="Chunguza hifadhi maarufu za Tanzania na upitie kukutana na wanyamapori wa ajabu.">Explore Tanzania's iconic national parks and experience incredible wildlife encounters.</p>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="scroll-reveal" style="background: var(--card-bg); border-radius: 24px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); transition: var(--transition);">
+                    <div style="height: 5px; background: linear-gradient(90deg, #0ea5e9, #06b6d4);"></div>
+                    <div style="padding: 30px 25px; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 15px;">🏖️</div>
+                        <h4 style="font-size: 1.05rem; color: var(--text-main); margin-bottom: 10px;" data-en="Zanzibar Beach Holidays" data-sw="Likizo za Pwani ya Zanzibar">Zanzibar Beach Holidays</h4>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;" data-en="Relax on pristine beaches and discover the beauty of the Indian Ocean." data-sw="Pumzika kwenye fukwe safi na gundua uzuri wa Bahari ya Hindi.">Relax on pristine beaches and discover the beauty of the Indian Ocean.</p>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="scroll-reveal" style="background: var(--card-bg); border-radius: 24px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); transition: var(--transition);">
+                    <div style="height: 5px; background: linear-gradient(90deg, #8b5cf6, #a78bfa);"></div>
+                    <div style="padding: 30px 25px; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 15px;">🏔️</div>
+                        <h4 style="font-size: 1.05rem; color: var(--text-main); margin-bottom: 10px;" data-en="Kilimanjaro Treks" data-sw="Kupanda Kilimanjaro">Kilimanjaro Treks</h4>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;" data-en="Challenge yourself on Africa's highest mountain." data-sw="Jipime kwenye mlima mrefu zaidi barani Afrika.">Challenge yourself on Africa's highest mountain.</p>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="scroll-reveal" style="background: var(--card-bg); border-radius: 24px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); transition: var(--transition);">
+                    <div style="height: 5px; background: linear-gradient(90deg, #f59e0b, #f97316);"></div>
+                    <div style="padding: 30px 25px; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 15px;">👨‍👩‍👧‍👦</div>
+                        <h4 style="font-size: 1.05rem; color: var(--text-main); margin-bottom: 10px;" data-en="Family Adventures" data-sw="Safari za Familia">Family Adventures</h4>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;" data-en="Create unforgettable memories with expertly planned family safaris." data-sw="Unda kumbukumbu zisizosahaulika na safari za familia zilizopangwa kwa ustadi.">Create unforgettable memories with expertly planned family safaris.</p>
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="scroll-reveal" style="background: var(--card-bg); border-radius: 24px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); transition: var(--transition);">
+                    <div style="height: 5px; background: linear-gradient(90deg, #ec4899, #f472b6);"></div>
+                    <div style="padding: 30px 25px; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 15px;">💕</div>
+                        <h4 style="font-size: 1.05rem; color: var(--text-main); margin-bottom: 10px;" data-en="Honeymoon Experiences" data-sw="Uzoefu wa Fungate">Honeymoon Experiences</h4>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;" data-en="Celebrate special moments with romantic escapes and luxury accommodations." data-sw="Sherehekea wakati maalum kwa mapumziko ya kimapenzi na malazi ya kifahari.">Celebrate special moments with romantic escapes and luxury accommodations.</p>
+                    </div>
+                </div>
+                <!-- Card 6 -->
+                <div class="scroll-reveal" style="background: var(--card-bg); border-radius: 24px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); transition: var(--transition);">
+                    <div style="height: 5px; background: linear-gradient(90deg, #10b981, #34d399);"></div>
+                    <div style="padding: 30px 25px; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 15px;">🤝</div>
+                        <h4 style="font-size: 1.05rem; color: var(--text-main); margin-bottom: 10px;" data-en="Volunteer Programs" data-sw="Programu za Kujitolea">Volunteer Programs</h4>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;" data-en="Combine travel with purpose through meaningful community and conservation projects." data-sw="Changanya kusafiri na kusudi kupitia miradi ya jamii na uhifadhi yenye maana.">Combine travel with purpose through meaningful community and conservation projects.</p>
+                    </div>
+                </div>
+                <!-- Card 7 -->
+                <div class="scroll-reveal" style="background: var(--card-bg); border-radius: 24px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); transition: var(--transition);">
+                    <div style="height: 5px; background: linear-gradient(90deg, var(--accent-gold), #d4af37);"></div>
+                    <div style="padding: 30px 25px; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 15px;">✨</div>
+                        <h4 style="font-size: 1.05rem; color: var(--text-main); margin-bottom: 10px;" data-en="Private & Luxury Safaris" data-sw="Safari za Kibinafsi na Kifahari">Private & Luxury Safaris</h4>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;" data-en="Enjoy exclusive experiences designed around your preferences." data-sw="Furahia uzoefu wa kipekee ulioundwa kulingana na mapendeleo yako.">Enjoy exclusive experiences designed around your preferences.</p>
+                    </div>
+                </div>
+                <!-- Card 8: CTA Card -->
+                <a href="#mainBookingForm" class="scroll-reveal" style="background: linear-gradient(135deg, var(--primary-green), #002b18); border-radius: 24px; overflow: hidden; box-shadow: var(--shadow-soft); transition: var(--transition); text-decoration: none; display: flex; align-items: center; justify-content: center; min-height: 100%;">
+                    <div style="padding: 30px 25px; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 15px;">📩</div>
+                        <h4 style="font-size: 1.05rem; color: #fff; margin-bottom: 10px;" data-en="Have Something Else in Mind?" data-sw="Una Kitu Kingine Akilini?">Have Something Else in Mind?</h4>
+                        <p style="font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.6;" data-en="Send us your unique request and we'll make it happen." data-sw="Tutumie ombi lako la kipekee na tutahakikisha linafanikiwa.">Send us your unique request and we'll make it happen.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Promise Section -->
+    <section class="section" style="background: var(--bg-color);">
+        <div class="container">
+            <div class="enquire-promise-grid">
+                <!-- Promise Card -->
+                <div class="scroll-reveal" style="background: linear-gradient(135deg, var(--primary-green), #002b18); padding: 50px 45px; border-radius: 30px; color: #fff; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -30px; right: -30px; width: 140px; height: 140px; background: rgba(255,255,255,0.05); border-radius: 50%;"></div>
+                    <div style="position: absolute; bottom: -50px; left: -50px; width: 200px; height: 200px; background: rgba(255,255,255,0.03); border-radius: 50%;"></div>
+                    <div style="position: relative; z-index: 2;">
+                        <div style="width: 60px; height: 60px; background: rgba(197, 160, 68, 0.2); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px;">
+                            <i class="fas fa-heart" style="font-size: 1.6rem; color: var(--accent-gold);"></i>
+                        </div>
+                        <span style="font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-gold); font-weight: 600;" data-en="OUR PROMISE" data-sw="AHADI YETU">OUR PROMISE</span>
+                        <h3 style="font-size: 1.6rem; margin: 12px 0 20px; font-family: 'Playfair Display', serif; color: #fff;" data-en="More Than Just an Inquiry" data-sw="Zaidi ya Swali Tu">More Than Just an Inquiry</h3>
+                        <p style="font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.85);" data-en="When you contact Century Adventures, you're not just sending an inquiry ” you're taking the first step toward an extraordinary experience. Our team will listen carefully, understand your travel goals, and create a personalized proposal designed to exceed your expectations." data-sw="Unapowasiliana na Century Adventures, hutumi swali tu ” unachukua hatua ya kwanza kuelekea uzoefu wa ajabu. Timu yetu itasikiliza kwa makini, kuelewa malengo yako ya kusafiri, na kuunda pendekezo la kibinafsi lililoundwa kuzidi matarajio yako.">When you contact Century Adventures, you're not just sending an inquiry ” you're taking the first step toward an extraordinary experience. Our team will listen carefully, understand your travel goals, and create a personalized proposal designed to exceed your expectations.</p>
+                    </div>
+                </div>
+                <!-- Adventure Awaits Card -->
+                <div class="scroll-reveal" style="background: linear-gradient(135deg, #1a0a00, #3d1f00); padding: 50px 45px; border-radius: 30px; color: #fff; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -30px; right: -30px; width: 140px; height: 140px; background: rgba(255,255,255,0.05); border-radius: 50%;"></div>
+                    <div style="position: absolute; bottom: -50px; left: -50px; width: 200px; height: 200px; background: rgba(255,255,255,0.03); border-radius: 50%;"></div>
+                    <div style="position: relative; z-index: 2;">
+                        <div style="width: 60px; height: 60px; background: rgba(197, 160, 68, 0.2); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px;">
+                            <i class="fas fa-compass" style="font-size: 1.6rem; color: var(--accent-gold);"></i>
+                        </div>
+                        <span style="font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-gold); font-weight: 600;" data-en="ADVENTURE AWAITS" data-sw="SAFARI INAKUNGOJA">ADVENTURE AWAITS</span>
+                        <h3 style="font-size: 1.6rem; margin: 12px 0 20px; font-family: 'Playfair Display', serif; color: #fff;" data-en="Your African Story Begins Here" data-sw="Hadithi Yako ya Kiafrika Inaanza Hapa">Your African Story Begins Here</h3>
+                        <p style="font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.85);" data-en="The wildlife, landscapes, culture, and unforgettable experiences of Tanzania are waiting to be discovered. Send us your inquiry today and let us begin crafting your perfect African adventure. 🌍🦁✨" data-sw="Wanyamapori, mandhari, utamaduni, na uzoefu usiosahaulika wa Tanzania unangojea kugundulika. Tutumie swali lako leo na tuanze kubuni safari yako kamili ya Kiafrika. 🌍🦁✨">The wildlife, landscapes, culture, and unforgettable experiences of Tanzania are waiting to be discovered. Send us your inquiry today and let us begin crafting your perfect African adventure. 🌍🦁✨</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info Bar -->
+    <section class="section" style="background: var(--section-bg); padding: 50px 0;">
+        <div class="container">
+            <div class="enquire-contact-bar">
+                <a href="tel:+255747115390" style="display: flex; align-items: center; gap: 12px; text-decoration: none; transition: var(--transition);">
+                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary-green), #006838); border-radius: 14px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-phone-alt" style="color: var(--accent-gold); font-size: 1.1rem;"></i>
+                    </div>
+                    <div>
+                        <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; display: block;" data-en="Phone" data-sw="Simu">Phone</span>
+                        <span style="font-size: 1rem; color: var(--text-main); font-weight: 600;">+255 747 115 390</span>
+                    </div>
+                </a>
+                <a href="https://wa.me/255747115390" target="_blank" style="display: flex; align-items: center; gap: 12px; text-decoration: none; transition: var(--transition);">
+                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #25d366, #128c7e); border-radius: 14px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fab fa-whatsapp" style="color: #fff; font-size: 1.2rem;"></i>
+                    </div>
+                    <div>
+                        <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; display: block;">WhatsApp</span>
+                        <span style="font-size: 1rem; color: var(--text-main); font-weight: 600;">+255 747 115 390</span>
+                    </div>
+                </a>
+                <a href="mailto:info@centuryadventures.com" style="display: flex; align-items: center; gap: 12px; text-decoration: none; transition: var(--transition);">
+                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary-green), #006838); border-radius: 14px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-envelope" style="color: var(--accent-gold); font-size: 1.1rem;"></i>
+                    </div>
+                    <div>
+                        <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; display: block;" data-en="Email" data-sw="Barua Pepe">Email</span>
+                        <span style="font-size: 1rem; color: var(--text-main); font-weight: 600;">info@centuryadventures.com</span>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/century_adventures" target="_blank" style="display: flex; align-items: center; gap: 12px; text-decoration: none; transition: var(--transition);">
+                    <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); border-radius: 14px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fab fa-instagram" style="color: #fff; font-size: 1.2rem;"></i>
+                    </div>
+                    <div>
+                        <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; display: block;" data-en="Follow Us" data-sw="Tufuate">Follow Us</span>
+                        <span style="font-size: 1rem; color: var(--text-main); font-weight: 600;">@century_adventures</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Contact Info -->
+    <div class="footer-top">
+        <div class="container">
+            <h2><i class="fas fa-phone-alt"></i> +255 747 115 390</h2>
+            <a href="enquire.html" class="btn enquire-btn" data-en="CONTACT US TODAY!" data-sw="WASILIANA NASI LEO!">CONTACT US TODAY!</a>
+        </div>
+    </div>
+
+    <!-- Final Call to Action -->
+    <section class="section cta-section" style="background: var(--primary-gradient); padding: 50px 0; text-align: center; color: white; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <div class="container" style="position: relative; z-index: 2;">
+            <span class="sub-heading" style="color:var(--accent-gold); font-size: 0.8rem; letter-spacing: 2px;" data-en="YOUR JOURNEY TO AFRICA STARTS HERE" data-sw="SAFARI YAKO YA AFRIKA INAANZA HAPA">YOUR JOURNEY TO AFRICA STARTS HERE</span>
+            <h2 style="font-size: clamp(1.5rem, 3vw, 2.2rem); color: white; margin: 10px 0 16px;" data-en="Are you ready to explore Tanzania?" data-sw="Uko Tayari Kuichunguza Tanzania?">Are you ready to explore Tanzania?</h2>
+            
+            <p class="cta-description" style="max-width: 650px; margin: 0 auto 25px; font-size:0.9rem; line-height: 1.65; opacity: 0.9;">
+                <span class="cta-hide-mobile" data-en="Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. " data-sw="Fikiria kushuhudia uwindaji wa simba wakati wa machweo, kutazama tembo wakizurura kwa uhuru kwenye savanna zisizo na mwisho, kujionea Uhamiaji Mkuu, au kupumzika kwenye mchanga mweupe wa Zanzibar. ">Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. </span>
+                <span data-en="Let Century Adventures make those dreams come true." data-sw="Ruhusu Century Adventures kufanya ndoto hizo ziwe kweli.">Let Century Adventures make those dreams come true.</span>
+            </p>
+
+            <div class="cta-action-grid" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <a href="enquire.html" class="btn btn-primary cta-circle-btn" style="background: var(--accent-gold); color: #002b18; font-weight:800; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; text-decoration: none;" data-en="Plan Your Trip" data-sw="Panga Safari Yako">Plan Your Trip</a>
+                <a href="enquire.html" class="btn btn-outline cta-circle-btn secondary" style="border: 1px solid rgba(255,255,255,0.6); color: white; font-weight:700; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; background: transparent; text-decoration: none;" data-en="Request a Free Quote" data-sw="Omba Nukuu ya Bure">Request a Free Quote</a>
+            </div>
+            
+            <div style="margin-top: 18px;">
+                <a href="contact.html" style="color: var(--accent-gold); font-weight: 700; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.5px;" data-en="Contact Our Experts &rarr;" data-sw="Wasiliana na Wataalamu Wetu &rarr;">Contact Our Experts &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col info-col">
+                <h3 data-en="CONTACT US" data-sw="WASILIANA NASI">CONTACT US</h3>
+                <p><strong>Century Adventures</strong></p>
+                <p data-en="Asasi Tower, 4th Floor" data-sw="Asasi Tower, Ghorofa ya 4">Asasi Tower, 4th Floor</p>
+                <p data-en="Ohio Street" data-sw="Mtaa wa Ohio">Ohio Street</p>
+                <p><i class="fas fa-map-marker-alt"></i> Dar es Salaam, Tanzania</p>
+                <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/255747115390" target="_blank" style="color: inherit;">+255 747 115 390</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@centuryadventures.com" style="color: inherit;">info@centuryadventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:bookings@centuryadventures.com" style="color: inherit;">bookings@centuryadventures.com</a></p>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="POPULAR PLACES" data-sw="MAENEO MAARUFU">POPULAR PLACES</h3>
+                <ul>
+                    <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                    <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                    <li><a href="selous.html" data-en="Nyerere Park" data-sw="Hifadhi ya Nyerere">Nyerere Park</a></li>
+                    <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                    <li><a href="mikumi.html" data-en="Mikumi Park" data-sw="Hifadhi ya Mikumi">Mikumi Park</a></li>
+                    <li><a href="ngorongoro.html" data-en="Ngorongoro" data-sw="Ngorongoro">Ngorongoro</a></li>
+                    <li><a href="manyara.html" data-en="Manyara National Park" data-sw="Hifadhi ya Manyara">Manyara National Park</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL EXPERIENCE" data-sw="UZOEFU WA KUSAFIRI">TRAVEL EXPERIENCE</h3>
+                <ul>
+                    <li><a href="family-safaris.html" data-en="Family Trips" data-sw="Safari za Familia">Family Trips</a></li>
+                    <li><a href="honeymoon-safaris.html" data-en="Honeymoon Trips" data-sw="Safari za Fungate">Honeymoon Trips</a></li>
+                    <li><a href="migration-safaris.html" data-en="Migration Trips" data-sw="Safari za Uhamiaji">Migration Trips</a></li>
+                    <li><a href="volunteer.html" data-en="Volunteer Programs" data-sw="Mipango ya Kujitolea">Volunteer Programs</a></li>
+                    <li><a href="zanzibar-beach.html" data-en="Zanzibar Beach Holiday" data-sw="Likizo ya Pwani ya Zanzibar">Zanzibar Beach Holiday</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL RESOURCES" data-sw="MAARIFA YA SAFARI">TRAVEL RESOURCES</h3>
+                <ul>
+                    <li><a href="blog.html" data-en="Travel Blog" data-sw="Blogu yetu">Travel Blog</a></li>
+                    <li><a href="faq.html" data-en="FAQs" data-sw="Maswali ya Kawaida">FAQs</a></li>
+                    <li><a href="gallery.html" data-en="Photo Gallery" data-sw="Picha za Safari">Photo Gallery</a></li>
+                    <li><a href="testimonials.html" data-en="Testimonials" data-sw="Shuhuda">Testimonials</a></li>
+                    <li><a href="best-time-to-visit-tanzania.html" data-en="Best Time to Visit" data-sw="Wakati Bora wa Kuja">Best Time to Visit</a></li>
+                    <li><a href="health-safety-tanzania.html" data-en="Health &amp; Safety" data-sw="Afya na Usalama">Health &amp; Safety</a></li>
+                    <li><a href="obtaining-visa-tanzania.html" data-en="Visa Information" data-sw="Visa ya Safari">Visa Information</a></li>
+                    <li><a href="solo-female-travel-tanzania.html" data-en="Solo Female Travel" data-sw="Safari ya Wanawake">Solo Female Travel</a></li>
+                    <li><a href="what-to-wear-safari.html" data-en="Safari Packing Guide" data-sw="Nguo za Safari">Safari Packing Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <div class="tripadvisor-card">
+                    <img src="https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-66827-5.svg" alt="TripAdvisor">
+                    <h4 data-en="TripAdvisor Century Adventures" data-sw="TripAdvisor Century Adventures">TripAdvisor Century Adventures</h4>
+                    <p data-en="Ranked #1 on TripAdvisor" data-sw="Imeorodheshwa #1 TripAdvisor">Ranked #1 on TripAdvisor</p>
+                    <a href="https://www.tripadvisor.com/" target="_blank" class="btn btn-small" data-en="TripAdvisor Give Feedback Century Adventures" data-sw="TripAdvisor Toa Maoni Century Adventures">TripAdvisor Give Feedback Century Adventures</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61577731823809"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@CenturyAdventures" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/century_adventures?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/255747115390"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:info@centuryadventures.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; Copyright 2012 - 2026 | Century Adventures</p>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
+
+
+
+

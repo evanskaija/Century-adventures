@@ -1,0 +1,1024 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Century Adventures | Tanzania Safari Experts</title>
+    <meta name="description" content="Experience the magic of Tanzania with Century Adventures. Top safaris, destinations, and travel experiences.">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- ══ Homepage Mobile Optimization Styles ══ -->
+    <style>
+    /* ─── HERO SECTION ─── */
+    @media (max-width: 768px) {
+        .hero {
+            height: 90vh;
+            min-height: 580px;
+            background-attachment: scroll !important; /* fix iOS fixed bg bug */
+            background-position: center 30% !important;
+            padding-top: 70px;
+        }
+        .hero-logo-large { margin-bottom: 18px; }
+        .hero-logo-large img { height: 90px !important; }
+        .hero h1 {
+            font-size: 2.1rem !important;
+            line-height: 1.2 !important;
+            margin-bottom: 12px !important;
+        }
+        .hero-tagline {
+            font-size: 0.85rem !important;
+            letter-spacing: 0 !important;
+            margin-bottom: 18px !important;
+            line-height: 1.6;
+        }
+        /* Long hero paragraph */
+        .hero-content > p[style] {
+            font-size: 0.88rem !important;
+            line-height: 1.65 !important;
+            margin-bottom: 20px !important;
+            padding: 0 5px;
+        }
+        /* CTA button row */
+        .hero-content > div[style*="display:flex"] {
+            gap: 10px !important;
+            margin-bottom: 16px !important;
+        }
+        .hero-content .btn {
+            padding: 12px 24px !important;
+            font-size: 0.82rem !important;
+        }
+        /* Stars & destinations row */
+        .hero-content > p[style*="0.88rem"] { font-size: 0.8rem !important; }
+        .hero-content > p[style*="0.95rem"] { font-size: 0.82rem !important; letter-spacing: 0 !important; }
+    }
+
+    @media (max-width: 480px) {
+        .hero { height: 92vh; min-height: 520px; }
+        .hero-logo-large img { height: 70px !important; }
+        .hero h1 { font-size: 1.75rem !important; }
+        .hero-tagline { font-size: 0.78rem !important; }
+        .hero-content > p[style] { font-size: 0.82rem !important; display: none; } /* hide long body text on tiny screens */
+        .hero-content > div[style*="display:flex"] { flex-direction: column; align-items: center; }
+        .hero-content .btn { width: 220px; text-align: center; }
+    }
+
+    /* ─── WELCOME / CENTURY ADVENTURES SECTION ─── */
+    @media (max-width: 768px) {
+        .welcome-section { padding: 50px 0 !important; }
+        .welcome-section > .container > div[style*="grid"] {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 28px !important;
+        }
+        .welcome-section h2 {
+            font-size: 1.75rem !important;
+            margin-bottom: 14px !important;
+        }
+        /* Paragraphs in welcome section */
+        .welcome-section p[style] {
+            font-size: 0.92rem !important;
+            line-height: 1.7 !important;
+            margin-bottom: 12px !important;
+        }
+        /* Why-us box */
+        .welcome-section > .container > div > div[style*="border-radius:24px"] {
+            padding: 24px 20px !important;
+        }
+        .welcome-section h3 { font-size: 1.1rem !important; margin-bottom: 14px !important; }
+        .welcome-section li { font-size: 0.88rem !important; gap: 10px !important; }
+    }
+
+    @media (max-width: 480px) {
+        .welcome-section { padding: 40px 0 !important; }
+        .welcome-section h2 { font-size: 1.5rem !important; }
+    }
+
+    /* ─── TOP EXPERIENCES (MARQUEE) SECTION ─── */
+    @media (max-width: 768px) {
+        .experiences-section { padding: 50px 0 !important; }
+        .experiences-section .section-desc {
+            font-size: 0.9rem !important;
+            margin-bottom: 28px !important;
+        }
+        /* Experience card sizing */
+        .marquee-wrapper .experience-card {
+            width: 280px !important;
+            min-width: 280px !important;
+            flex-direction: column !important;
+        }
+        .marquee-wrapper .experience-card img {
+            width: 100% !important;
+            height: 170px !important;
+            object-fit: cover;
+        }
+        .experience-content {
+            padding: 16px !important;
+        }
+        .experience-content .card-category {
+            font-size: 0.65rem !important;
+            letter-spacing: 1px;
+        }
+        .experience-content h3 {
+            font-size: 1rem !important;
+            margin-bottom: 6px !important;
+        }
+        .experience-content p {
+            font-size: 0.8rem !important;
+            line-height: 1.5 !important;
+        }
+        /* Marquee track gap on mobile */
+        .experiences-section .marquee-track { gap: 14px !important; }
+    }
+
+    @media (max-width: 480px) {
+        .marquee-wrapper .experience-card {
+            width: calc(100vw - 80px) !important;
+            min-width: calc(100vw - 80px) !important;
+        }
+        .marquee-wrapper .experience-card img { height: 150px !important; }
+    }
+
+    /* ─── TOP SAFARIS (MINI MARQUEE) SECTION ─── */
+    @media (max-width: 768px) {
+        .safaris-section { padding: 50px 0 !important; }
+        .safaris-section > .container > p[style] {
+            font-size: 0.9rem !important;
+            margin-bottom: 28px !important;
+        }
+        /* Add navigation arrows to the mini marquee */
+        .mini-marquee { padding: 0 !important; }
+
+        /* Safari mini card */
+        .mini-card {
+            width: 260px !important;
+            min-width: 260px !important;
+        }
+        .mini-card img { height: 155px !important; }
+        .mini-card .safari-content { padding: 16px !important; }
+        .mini-card .safari-content h3 { font-size: 0.95rem !important; margin-bottom: 6px !important; }
+        .mini-card p[style*="0.85rem"] { font-size: 0.8rem !important; margin-bottom: 8px !important; }
+        .mini-card .price { font-size: 0.95rem !important; margin-bottom: 12px !important; }
+        .mini-card .btn-card { padding: 10px !important; font-size: 0.8rem !important; }
+        /* Marquee track gap */
+        .safaris-section .marquee-track { gap: 14px !important; }
+    }
+
+    @media (max-width: 480px) {
+        .mini-card {
+            width: calc(100vw - 90px) !important;
+            min-width: calc(100vw - 90px) !important;
+        }
+        .mini-card img { height: 140px !important; }
+    }
+
+    /* ─── TOP DESTINATIONS SECTION ─── */
+    @media (max-width: 768px) {
+        .destinations-section { padding: 50px 0 !important; }
+        .destinations-section .section-desc {
+            font-size: 0.9rem !important;
+            margin-bottom: 28px !important;
+        }
+        /* 2-column grid on tablet */
+        .destinations-grid-home {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 14px !important;
+        }
+        .destination-card { height: 240px !important; border-radius: 16px !important; }
+        .card-overlay { padding: 20px 16px !important; }
+        .card-overlay h3 { font-size: 1.1rem !important; margin-bottom: 3px !important; }
+        .card-overlay > p:first-of-type { font-size: 0.78rem !important; }
+        .card-overlay > p:last-of-type { font-size: 0.72rem !important; margin-top: 3px !important; }
+    }
+
+    @media (max-width: 480px) {
+        /* Single column on very small screens */
+        .destinations-grid-home {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+        }
+        .destination-card { height: 200px !important; }
+        .card-overlay h3 { font-size: 1rem !important; }
+    }
+
+    /* ─── ESSENTIAL TRAVEL TIPS SECTION ─── */
+    @media (max-width: 768px) {
+        .travel-advice-section { padding: 50px 0 !important; }
+        .travel-advice-section .travel-tips-section > p { font-size: 0.9rem !important; margin-bottom: 28px !important; }
+
+        /* Tip cards on mobile: compact horizontal layout */
+        .tip-item-pro {
+            width: 260px !important;
+            padding: 18px 16px !important;
+            gap: 14px !important;
+            border-radius: 14px !important;
+            flex-direction: row !important;
+            text-align: left !important;
+            align-items: flex-start !important;
+        }
+        .tip-icon-pro {
+            width: 44px !important;
+            height: 44px !important;
+            font-size: 1.2rem !important;
+            border-radius: 10px !important;
+            flex-shrink: 0;
+        }
+        .tip-info-pro h3 { font-size: 1rem !important; margin-bottom: 6px !important; }
+        .tip-info-pro p { font-size: 0.8rem !important; margin-bottom: 10px !important; line-height: 1.5 !important; }
+        .tip-link { font-size: 0.8rem !important; }
+        /* Marquee tip track gap */
+        .travel-advice-section .marquee-track { gap: 14px !important; }
+    }
+
+    @media (max-width: 480px) {
+        .tip-item-pro { width: calc(100vw - 90px) !important; }
+    }
+
+    /* ─── INSTAGRAM / GALLERY SECTION ─── */
+    @media (max-width: 768px) {
+        .instagram-section { padding: 50px 0 !important; }
+        /* Header row: stack vertically */
+        .instagram-section > .container > div[style*="justify-content"] {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 14px !important;
+            margin-bottom: 24px !important;
+        }
+        .instagram-section h2 { font-size: 1.6rem !important; }
+        .instagram-section p { font-size: 0.85rem !important; }
+        .instagram-section .btn { font-size: 0.82rem !important; padding: 8px 16px !important; }
+        /* Grid: 3 columns on tablet */
+        .instagram-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 8px !important;
+        }
+        .insta-item { border-radius: 10px !important; }
+    }
+
+    @media (max-width: 480px) {
+        /* Grid: 2 columns on phones */
+        .instagram-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 6px !important; }
+    }
+
+    /* ─── TRUSTED BY SECTION ─── */
+    @media (max-width: 768px) {
+        .trusted-by-section { padding: 20px 0 !important; }
+        .brand-track {
+            flex-wrap: wrap !important;
+            justify-content: center !important;
+            gap: 20px !important;
+        }
+        .brand-logo img { height: 28px !important; }
+    }
+
+    /* ─── CONTACT BAR (FOOTER TOP) ─── */
+    @media (max-width: 768px) {
+        .footer-top { padding: 28px 20px !important; }
+        .footer-top h2 { font-size: 1.35rem !important; }
+        .footer-top .btn { padding: 11px 26px !important; font-size: 0.82rem !important; }
+    }
+
+    /* ─── CTA SECTION ─── */
+    @media (max-width: 768px) {
+        .cta-section { padding: 40px 15px !important; }
+        .cta-section .sub-heading { font-size: 0.7rem !important; }
+        .cta-section h2 { font-size: 1.45rem !important; margin: 8px 0 12px !important; }
+        .cta-section > .container > p { font-size: 0.85rem !important; margin-bottom: 18px !important; }
+        /* Buttons row */
+        .cta-section > .container > div[style*="display: flex"] {
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 10px !important;
+        }
+        .cta-section .btn { width: 230px !important; text-align: center !important; padding: 12px 20px !important; font-size: 0.82rem !important; }
+        /* Contact experts link */
+        .cta-section a[style*="accent-gold"] { font-size: 0.82rem !important; }
+    }
+
+    /* ─── FOOTER ─── */
+    @media (max-width: 768px) {
+        .footer { padding: 40px 0 20px !important; }
+        .footer-grid {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 30px !important;
+        }
+        .footer-col h3 { font-size: 0.85rem !important; }
+        .footer-col p, .footer-col a { font-size: 0.82rem !important; }
+        .footer-col ul { gap: 8px !important; }
+        .tripadvisor-card { padding: 16px !important; }
+    }
+
+    @media (max-width: 480px) {
+        .footer-grid { grid-template-columns: 1fr !important; }
+        .footer-bottom { flex-direction: column !important; gap: 14px !important; text-align: center !important; }
+    }
+
+    /* ─── SECTION HEADINGS HOMEPAGE ─── */
+    @media (max-width: 768px) {
+        .section > .container > h2,
+        .section .sub-heading + h2 {
+            font-size: 1.7rem !important;
+            line-height: 1.25 !important;
+            margin-bottom: 12px !important;
+        }
+        .section .sub-heading { font-size: 0.68rem !important; letter-spacing: 2px !important; margin-bottom: 8px !important; }
+        .section { padding: 50px 0 !important; }
+    }
+
+    @media (max-width: 480px) {
+        .section > .container > h2,
+        .section .sub-heading + h2 { font-size: 1.45rem !important; }
+    }
+
+    /* ─── GENERAL OVERFLOW GUARD ─── */
+    @media (max-width: 768px) {
+        body { overflow-x: hidden; }
+        .container { padding: 0 16px !important; }
+        img { max-width: 100%; height: auto; }
+        /* Ensure no section bleeds past screen */
+        section, .section { max-width: 100vw; overflow-x: hidden; }
+    }
+    </style>
+    <script>
+        (function() {
+            const theme = localStorage.getItem('century-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Century Adventures | Tanzania Safari Experts">
+    <meta property="og:description" content="Experience the magic of Tanzania with Century Adventures. Top safaris, destinations, and travel experiences.">
+    <meta property="og:image" content="assets/logo.png">
+    <meta property="og:site_name" content="Century Adventures">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="assets/logo.png">
+    <meta name="twitter:title" content="Century Adventures | Tanzania Safari Experts">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="scroll-progress"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html"><img src="assets/logo.png" alt="Century Adventures Logo"></a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html" class="active" data-en="Home" data-sw="Nyumbani">Home</a></li>
+                    <li><a href="about.html" data-en="About Us" data-sw="Kuhusu Sisi">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-en="Destinations" data-sw="Maeneo">Destinations <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="katavi.html" data-en="Katavi National Park" data-sw="Hifadhi ya Katavi">Katavi National Park</a></li>
+                            <li><a href="selous.html" data-en="Selous Game Reserve" data-sw="Hifadhi ya Selous">Selous Game Reserve</a></li>
+                            <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                            <li><a href="mikumi.html" data-en="Mikumi National Park" data-sw="Hifadhi ya Mikumi">Mikumi National Park</a></li>
+                            <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                            <li><a href="gombe.html" data-en="Gombe Stream National Park" data-sw="Hifadhi ya Gombe">Gombe Stream National Park</a></li>
+                            <li><a href="ngorongoro.html" data-en="Ngorongoro Conservation Area" data-sw="Ngorongoro">Ngorongoro Conservation Area</a></li>
+                            <li><a href="manyara.html" data-en="Lake Manyara National Park" data-sw="Hifadhi ya Manyara">Lake Manyara National Park</a></li>
+                            <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="safaris.html" data-en="TOURS & SAFARIS" data-sw="SAFARI NA ZIARA">TOURS & SAFARIS</a></li>
+                    <li><a href="experiences.html" data-en="Experiences" data-sw="Uzoefu">Experiences</a></li>
+                    <li><a href="volunteer.html" data-en="Volunteer" data-sw="Kujitolea">Volunteer</a></li>
+                    <li><a href="vehicles.html" data-en="Safari Vehicles" data-sw="Magari ya Safari">Safari Vehicles</a></li>
+                    <li><a href="contact.html" data-en="Contact Us" data-sw="Wasiliana Nasi">Contact Us</a></li>
+                </ul>
+            </nav>
+
+            <button class="mobile-toggle" id="mobile-toggle" onclick="toggleMobileMenu()" aria-label="Open navigation menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <div class="header-actions">
+                <div class="header-toggles">
+                    <button class="toggle-btn lang-toggle" onclick="toggleLang()">SW</button>
+                    <button class="toggle-btn theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+                </div>
+                <a href="enquire.html" class="btn btn-primary enquire-btn" data-en="ENQUIRE" data-sw="ULIZA">ENQUIRE</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home" style="background-image: linear-gradient(rgba(0,0,0,0.18), rgba(0,25,12,0.68)), url('assets/kilimanjalo.png'); background-size: cover; background-position: center 30%;">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="hero-logo-large animate-in">
+                <img src="assets/logo.png" alt="Century Adventures">
+            </div>
+            <h1 data-en="Discover Tanzania's Untamed Beauty" data-sw="Gundua Uzuri wa Tanzania Usioguswa">Discover Tanzania's Untamed Beauty</h1>
+            <p class="hero-tagline" data-en="Luxury Safaris &bull; Wildlife Encounters &bull; Cultural Experiences &bull; Zanzibar Escapes" 
+               data-sw="Safari za Kifahari &bull; Kukutana na Wanyamapori &bull; Uzoefu wa Kitamaduni &bull; Safari za Zanzibar">
+                Luxury Safaris &bull; Wildlife Encounters &bull; Cultural Experiences &bull; Zanzibar Escapes
+            </p>
+            
+            <p class="hero-desc" 
+               data-en="Experience Tanzania through expertly crafted journeys that bring you closer to nature, wildlife, and authentic African culture. From witnessing the Great Migration in the Serengeti to relaxing on the pristine beaches of Zanzibar, every adventure is designed to create memories that last a lifetime."
+               data-sw="Jionee Tanzania kupitia safari zilizoundwa kitaalamu zinazokuweka karibu zaidi na asili, wanyamapori, na utamaduni halisi wa Afrika. Kuanzia kushuhudia Uhamiaji Mkuu katika Serengeti hadi kupumzika kwenye fukwe za asili za Zanzibar, kila adventure imeundwa kuunda kumbukumbu za maisha yote.">
+                Experience Tanzania through expertly crafted journeys that bring you closer to nature, wildlife, and authentic African culture. From witnessing the Great Migration in the Serengeti to relaxing on the pristine beaches of Zanzibar, every adventure is designed to create memories that last a lifetime.
+            </p>
+
+            <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:16px;">
+                <a href="safaris.html" class="btn btn-primary" style="border-radius:50px; padding: 12px 30px; font-weight:700;" data-en="Explore Safaris" data-sw="Chunguza Safari">Explore Safaris</a>
+                <a href="enquire.html" class="btn btn-outline" style="border-radius:50px; padding: 12px 30px; font-weight:700; border-color:#fff; color:#fff;" data-en="Tailor My Trip" data-sw="Panga Safari Yangu">Tailor My Trip</a>
+            </div>
+
+            <p style="font-size:0.8rem; font-weight:600; opacity:0.9; margin-bottom:8px;" data-en="⭐⭐⭐⭐⭐ Trusted by travelers from around the world" data-sw="⭐⭐⭐⭐⭐ Inaaminika na wasafiri kutoka kote duniani">
+                ⭐⭐⭐⭐⭐ Trusted by travelers from around the world
+            </p>
+            <p style="font-size:0.85rem; font-weight:700; color:var(--accent-gold); letter-spacing:1px;" data-en="📍 Serengeti &bull; Ngorongoro &bull; Zanzibar &bull; Kilimanjaro" data-sw="📍 Serengeti &bull; Ngorongoro &bull; Zanzibar &bull; Kilimanjaro">
+                📍 Serengeti &bull; Ngorongoro &bull; Zanzibar &bull; Kilimanjaro
+            </p>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="section welcome-section" style="background-color: var(--bg-color); padding: 100px 0;">
+        <div class="container">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:60px; align-items:center;">
+                <div class="scroll-reveal-left">
+                    <span class="sub-heading" data-en="WELCOME" data-sw="KARIBU">WELCOME</span>
+                    <h2 style="font-size:clamp(1.9rem, 3.5vw, 2.8rem); color:var(--primary-green); margin-bottom:24px;" 
+                        data-en="Welcome to Century Adventures" data-sw="Karibu Century Adventures">Welcome to Century Adventures</h2>
+                    <p style="color:var(--text-muted); font-size:1.02rem; line-height:1.8; margin-bottom:20px;" 
+                       data-en="At Century Adventures, we believe every journey should be extraordinary. Our passion is creating unforgettable safari experiences that connect travelers with Tanzania's breathtaking wildlife, rich cultural heritage, and stunning landscapes."
+                       data-sw="Century Adventures tunaamini kila safari inapaswa kuwa ya kipekee. Shauku yetu ni kuunda uzoefu wa safari usiosahaulika unaowaunganisha wasafiri na wanyamapori wa kupendeza wa Tanzania, urithi tajiri wa kitamaduni, na mandhari nzuri.">
+                        At Century Adventures, we believe every journey should be extraordinary. Our passion is creating unforgettable safari experiences that connect travelers with Tanzania's breathtaking wildlife, rich cultural heritage, and stunning landscapes.
+                    </p>
+                    <p style="color:var(--text-muted); font-size:1.02rem; line-height:1.8;" 
+                       data-en="Whether you're seeking an intimate honeymoon safari, an exciting family adventure, a life-changing volunteer experience, or a luxury escape, our experienced team will help design the perfect itinerary for you."
+                       data-sw="Iwe unatafuta safari ya fungate ya faragha, matukio ya kifamilia ya kusisimua, uzoefu wa kujitolea wenye mabadiliko ya maisha, au likizo ya anasa, timu yetu yenye uzoefu itakusaidia kubuni ratiba nzuri kwako.">
+                        Whether you're seeking an intimate honeymoon safari, an exciting family adventure, a life-changing volunteer experience, or a luxury escape, our experienced team will help design the perfect itinerary for you.
+                    </p>
+                </div>
+                <div class="scroll-reveal-right" style="background:var(--section-bg); border-radius:24px; padding:44px 40px; border:1px solid var(--border-color); box-shadow:var(--shadow-soft);">
+                    <h3 style="font-size:1.3rem; color:var(--primary-green); margin-bottom:24px;" 
+                        data-en="Why Travel With Century Adventures?" data-sw="Kwa Nini Usafiri na Century Adventures?">Why Travel With Century Adventures?</h3>
+                    <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:16px;">
+                        <li style="display:flex; align-items:center; gap:14px; color:var(--text-muted); font-size:0.95rem;">
+                            <i class="fas fa-check-circle" style="color:var(--accent-gold); font-size:0.95rem;"></i>
+                            <span data-en="Expert Local Guides" data-sw="Waongozaji Wataalamu wa Mitaa">Expert Local Guides</span>
+                        </li>
+                        <li style="display:flex; align-items:center; gap:14px; color:var(--text-muted); font-size:0.95rem;">
+                            <i class="fas fa-check-circle" style="color:var(--accent-gold); font-size:0.95rem;"></i>
+                            <span data-en="Personalized Safari Experiences" data-sw="Uzoefu wa Safari Uliobinafsishwa">Personalized Safari Experiences</span>
+                        </li>
+                        <li style="display:flex; align-items:center; gap:14px; color:var(--text-muted); font-size:0.95rem;">
+                            <i class="fas fa-check-circle" style="color:var(--accent-gold); font-size:0.95rem;"></i>
+                            <span data-en="Comfortable 4&times;4 Safari Vehicles" data-sw="Magari ya Safari ya 4&times;4 ya Starehe">Comfortable 4&times;4 Safari Vehicles</span>
+                        </li>
+                        <li style="display:flex; align-items:center; gap:14px; color:var(--text-muted); font-size:0.95rem;">
+                            <i class="fas fa-check-circle" style="color:var(--accent-gold); font-size:0.95rem;"></i>
+                            <span data-en="Carefully Selected Accommodations" data-sw="Malazi Yaliyochaguliwa kwa Makini">Carefully Selected Accommodations</span>
+                        </li>
+                        <li style="display:flex; align-items:center; gap:14px; color:var(--text-muted); font-size:0.95rem;">
+                            <i class="fas fa-check-circle" style="color:var(--accent-gold); font-size:0.95rem;"></i>
+                            <span data-en="Sustainable &amp; Responsible Tourism" data-sw="Utalii Endelevu na Wenye Uwajibikaji">Sustainable &amp; Responsible Tourism</span>
+                        </li>
+                        <li style="display:flex; align-items:center; gap:14px; color:var(--text-muted); font-size:0.95rem;">
+                            <i class="fas fa-check-circle" style="color:var(--accent-gold); font-size:0.95rem;"></i>
+                            <span data-en="24/7 Travel Support" data-sw="Usaidizi wa Safari 24/7">24/7 Travel Support</span>
+                        </li>
+                        <li style="display:flex; align-items:center; gap:14px; color:var(--text-muted); font-size:0.95rem;">
+                            <i class="fas fa-check-circle" style="color:var(--accent-gold); font-size:0.95rem;"></i>
+                            <span data-en="Competitive Rates" data-sw="Bei za Ushindani">Competitive Rates</span>
+                        </li>
+                        <li style="display:flex; align-items:center; gap:14px; color:var(--text-muted); font-size:0.95rem;">
+                            <i class="fas fa-check-circle" style="color:var(--accent-gold); font-size:0.95rem;"></i>
+                            <span data-en="Exceptional Guest Satisfaction" data-sw="Kuridhika Kipekee kwa Wageni">Exceptional Guest Satisfaction</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Experiences Section -->
+    <section class="section experiences-section" style="background-color: var(--section-bg); padding: 100px 0;">
+        <div class="container">
+            <span class="sub-heading" data-en="TOP EXPERIENCES" data-sw="UZOEFU BORA">TOP EXPERIENCES</span>
+            <h2 data-en="Tanzania's Top Travel Experiences" data-sw="Uzoefu Bora wa Safari Tanzania">Tanzania's Top Travel Experiences</h2>
+            <p class="section-desc" style="max-width:720px; margin-bottom:50px;"
+               data-en="Whether you are dreaming of a first-hand meeting with the Big Five, getting up close and personal with chimpanzees, witnessing one of the world's greatest wildlife spectacles, or simply relaxing on a pristine tropical beach, our travel experts know exactly how to make it happen."
+               data-sw="Iwe unaota mkutano wa ana kwa ana na Watano Wakubwa, kukaribia na sokwe, kushuhudia tamasha la ajabu la wanyamapori duniani, au kupumzika tu kwenye ufuo wa kitropiki, wataalamu wetu wanajua jinsi ya kufanya hivyo kutokea.">
+                Whether you are dreaming of a first-hand meeting with the Big Five, getting up close and personal with chimpanzees, witnessing one of the world's greatest wildlife spectacles, or simply relaxing on a pristine tropical beach, our travel experts know exactly how to make it happen.
+            </p>
+            
+            <div class="marquee-container">
+                <button class="marquee-arrow marquee-arrow-left" aria-label="Scroll left"><i class="fas fa-chevron-left"></i></button>
+                <button class="marquee-arrow marquee-arrow-right" aria-label="Scroll right"><i class="fas fa-chevron-right"></i></button>
+                <div class="marquee-wrapper">
+                    <div class="marquee-track marquee-left">
+                        <!-- Exp 1 -->
+                        <a href="honeymoon-safaris.html" class="experience-card animate-in" style="color: inherit; text-decoration: none;">
+                            <img src="assets/Zanzibar.jpg" alt="Honeymoon Safaris">
+                            <div class="experience-content">
+                                <span class="card-category" data-en="ROMANCE IN THE WILD" data-sw="MAHABA PORINI">ROMANCE IN THE WILD</span>
+                                <h3 data-en="Honeymoon Safaris" data-sw="Safari za Fungate">Honeymoon Safaris</h3>
+                                <p data-en="Celebrate your love with breathtaking safari adventures, luxury lodges, candlelit dinners under African skies, and unforgettable moments." 
+                                   data-sw="Sherehekea upendo wako na uzoefu wa safari za kusisimua, nyumba za anasa, chakula chini ya anga la Afrika na matukio ya kipekee.">
+                                    Celebrate your love with breathtaking safari adventures, luxury lodges, candlelit dinners under African skies, and unforgettable moments.
+                                </p>
+                            </div>
+                        </a>
+                        <!-- Exp 2 -->
+                        <a href="volunteer.html" class="experience-card animate-in" style="color: inherit; text-decoration: none;">
+                            <img src="assets/05TMMT-IM1105-mara-mara-tented-lodge-1475.jpg" alt="Volunteer in Tanzania">
+                            <div class="experience-content">
+                                <span class="card-category" data-en="TRAVEL WITH PURPOSE" data-sw="SAFARI YENYE KUSUDI">TRAVEL WITH PURPOSE</span>
+                                <h3 data-en="Volunteer in Tanzania" data-sw="Kujitolea nchini Tanzania">Volunteer in Tanzania</h3>
+                                <p data-en="Make a positive impact while experiencing authentic Tanzanian culture. Participate in meaningful community and conservation projects." 
+                                   data-sw="Tengeneza athari chanya wakati ukijifunza utamaduni halisi wa Tanzania. Shiriki katika miradi yenye maana ya kijamii na uhifadhi.">
+                                    Make a positive impact while experiencing authentic Tanzanian culture. Participate in meaningful community and conservation projects.
+                                </p>
+                            </div>
+                        </a>
+                        <!-- Exp 3 -->
+                        <a href="migration-safaris.html" class="experience-card animate-in" style="color: inherit; text-decoration: none;">
+                            <img src="assets/03TMMT-IM1103-mara-mara-tented-lodge-1475.jpg" alt="Migration Safaris">
+                            <div class="experience-content">
+                                <span class="card-category" data-en="WITNESS NATURE'S GREATEST SHOW" data-sw="SHUHUDIA MAAJABU YA ASILI">WITNESS NATURE'S GREATEST SHOW</span>
+                                <h3 data-en="Migration Safaris" data-sw="Safari za Uhamiaji">Migration Safaris</h3>
+                                <p data-en="Follow the Great Wildebeest Migration across the Serengeti and experience one of the most remarkable wildlife events on Earth." 
+                                   data-sw="Fuata Uhamiaji Mkuu wa Nyumbu katika Serengeti na ujionee moja ya matukio makubwa zaidi ya wanyamapori duniani.">
+                                    Follow the Great Wildebeest Migration across the Serengeti and experience one of the most remarkable wildlife events on Earth.
+                                </p>
+                            </div>
+                        </a>
+                        <!-- Exp 4 -->
+                        <a href="family-safaris.html" class="experience-card animate-in" style="color: inherit; text-decoration: none;">
+                            <img src="assets/century1.jpg" alt="Family Safaris">
+                            <div class="experience-content">
+                                <span class="card-category" data-en="ADVENTURES FOR EVERY GENERATION" data-sw="SAFARI KWA KILA KIZAZI">ADVENTURES FOR EVERY GENERATION</span>
+                                <h3 data-en="Family Safaris" data-sw="Safari za Familia">Family Safaris</h3>
+                                <p data-en="Create unforgettable memories with tailor-made family safaris designed to entertain, educate, and inspire travelers of all ages." 
+                                   data-sw="Unda kumbukumbu zisizofutika na safari maalum za kifamilia zilizoundwa kuburudisha, kuelimisha na kuhamasisha rika zote.">
+                                    Create unforgettable memories with tailor-made family safaris designed to entertain, educate, and inspire travelers of all ages.
+                                </p>
+                            </div>
+                        </a>
+
+                        <!-- Repeat for Marquee Loop -->
+                        <a href="honeymoon-safaris.html" class="experience-card animate-in" style="color: inherit; text-decoration: none;">
+                            <img src="assets/Zanzibar.jpg" alt="Honeymoon Safaris">
+                            <div class="experience-content">
+                                <span class="card-category" data-en="ROMANCE IN THE WILD" data-sw="MAHABA PORINI">ROMANCE IN THE WILD</span>
+                                <h3 data-en="Honeymoon Safaris" data-sw="Safari za Fungate">Honeymoon Safaris</h3>
+                                <p data-en="Celebrate your love with breathtaking safari adventures, luxury lodges, candlelit dinners under African skies, and unforgettable moments." 
+                                   data-sw="Sherehekea upendo wako na uzoefu wa safari za kusisimua, nyumba za anasa, chakula chini ya anga la Afrika na matukio ya kipekee.">
+                                    Celebrate your love with breathtaking safari adventures, luxury lodges, candlelit dinners under African skies, and unforgettable moments.
+                                </p>
+                            </div>
+                        </a>
+                        <a href="volunteer.html" class="experience-card animate-in" style="color: inherit; text-decoration: none;">
+                            <img src="assets/05TMMT-IM1105-mara-mara-tented-lodge-1475.jpg" alt="Volunteer in Tanzania">
+                            <div class="experience-content">
+                                <span class="card-category" data-en="TRAVEL WITH PURPOSE" data-sw="SAFARI YENYE KUSUDI">TRAVEL WITH PURPOSE</span>
+                                <h3 data-en="Volunteer in Tanzania" data-sw="Kujitolea nchini Tanzania">Volunteer in Tanzania</h3>
+                                <p data-en="Make a positive impact while experiencing authentic Tanzanian culture. Participate in meaningful community and conservation projects." 
+                                   data-sw="Tengeneza athari chanya wakati ukijifunza utamaduni halisi wa Tanzania. Shiriki katika miradi yenye maana ya kijamii na uhifadhi.">
+                                    Make a positive impact while experiencing authentic Tanzanian culture. Participate in meaningful community and conservation projects.
+                                </p>
+                            </div>
+                        </a>
+                        <a href="migration-safaris.html" class="experience-card animate-in" style="color: inherit; text-decoration: none;">
+                            <img src="assets/03TMMT-IM1103-mara-mara-tented-lodge-1475.jpg" alt="Migration Safaris">
+                            <div class="experience-content">
+                                <span class="card-category" data-en="WITNESS NATURE'S GREATEST SHOW" data-sw="SHUHUDIA MAAJABU YA ASILI">WITNESS NATURE'S GREATEST SHOW</span>
+                                <h3 data-en="Migration Safaris" data-sw="Safari za Uhamiaji">Migration Safaris</h3>
+                                <p data-en="Follow the Great Wildebeest Migration across the Serengeti and experience one of the most remarkable wildlife events on Earth." 
+                                   data-sw="Fuata Uhamiaji Mkuu wa Nyumbu katika Serengeti na ujionee moja ya matukio makubwa zaidi ya wanyamapori duniani.">
+                                    Follow the Great Wildebeest Migration across the Serengeti and experience one of the most remarkable wildlife events on Earth.
+                                </p>
+                            </div>
+                        </a>
+                        <a href="family-safaris.html" class="experience-card animate-in" style="color: inherit; text-decoration: none;">
+                            <img src="assets/century1.jpg" alt="Family Safaris">
+                            <div class="experience-content">
+                                <span class="card-category" data-en="ADVENTURES FOR EVERY GENERATION" data-sw="SAFARI KWA KILA KIZAZI">ADVENTURES FOR EVERY GENERATION</span>
+                                <h3 data-en="Family Safaris" data-sw="Safari za Familia">Family Safaris</h3>
+                                <p data-en="Create unforgettable memories with tailor-made family safaris designed to entertain, educate, and inspire travelers of all ages." 
+                                   data-sw="Unda kumbukumbu zisizofutika na safari maalum za kifamilia zilizoundwa kuburudisha, kuelimisha na kuhamasisha rika zote.">
+                                    Create unforgettable memories with tailor-made family safaris designed to entertain, educate, and inspire travelers of all ages.
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Safaris Section -->
+    <section class="section safaris-section" style="background-color: var(--section-bg); padding: 100px 0;">
+        <div class="container">
+            <span class="sub-heading" data-en="TOP SAFARIS" data-sw="SAFARI BORA">TOP SAFARIS</span>
+            <h2 data-en="Tanzania's Top Safaris" data-sw="Safari Bora za Tanzania">Tanzania's Top Safaris</h2>
+            <p style="color:var(--text-muted); font-size:1.02rem; line-height:1.75; max-width:640px; margin-bottom:48px;"
+               data-en="Discover our most popular safari itineraries, carefully crafted to showcase Tanzania's extraordinary wildlife, stunning landscapes, and unique cultural experiences."
+               data-sw="Gundua ratiba zetu maarufu zaidi za safari zilizoundwa kwa uangalifu ili kuonyesha wanyamapori wa kipekee wa Tanzania, mandhari nzuri, na utamaduni wa kipekee.">
+                Discover our most popular safari itineraries, carefully crafted to showcase Tanzania's extraordinary wildlife, stunning landscapes, and unique cultural experiences.
+            </p>
+            
+            <!-- Animated Mini Marquee -->
+            <div class="marquee-container mini-marquee" style="margin-bottom: 0;">
+                <button class="marquee-arrow marquee-arrow-left" aria-label="Scroll left"><i class="fas fa-chevron-left"></i></button>
+                <button class="marquee-arrow marquee-arrow-right" aria-label="Scroll right"><i class="fas fa-chevron-right"></i></button>
+                <div class="marquee-wrapper">
+                    <div class="marquee-track marquee-left">
+                        <!-- Card 1 -->
+                        <div class="safari-card mini-card animate-in">
+                            <img src="assets/05TMMT-IM1105-mara-mara-tented-lodge-1475.jpg" alt="12 Days South &amp; North">
+                            <div class="safari-content">
+                                <h3 data-en="12 Days South &amp; North Tanzania Safari" data-sw="Siku 12 Safari ya Kusini na Kaskazini">12 Days South &amp; North Tanzania Safari</h3>
+                                <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:10px;" data-en="Experience the very best of Tanzania's southern and northern circuits." data-sw="Jionee mzunguko bora kabisa wa kusini na kaskazini mwa Tanzania.">Experience the very best of Tanzania's southern and northern circuits.</p>
+                                <p class="price" data-en="From $5,221" data-sw="Kuanzia $5,221">From $5,221</p>
+                                <a href="12-days-best-of-south-and-north.html" class="btn btn-primary btn-card" data-en="View Trip &rarr;" data-sw="Angalia Safari &rarr;">View Trip &rarr;</a>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="safari-card mini-card animate-in">
+                            <img src="assets/03TMMT-IM1103-mara-mara-tented-lodge-1475.jpg" alt="6 Day Northern Highlights">
+                            <div class="safari-content">
+                                <h3 data-en="6 Day Northern Tanzania Safari Highlights" data-sw="Siku 6 Vivutio vya Safari ya Kaskazini">6 Day Northern Tanzania Safari Highlights</h3>
+                                <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:10px;" data-en="Explore Tanzania's iconic parks in one unforgettable adventure." data-sw="Gundua hifadhi maarufu za Tanzania katika safari moja isiyosahaulika.">Explore Tanzania's iconic parks in one unforgettable adventure.</p>
+                                <p class="price" data-en="From $2,031" data-sw="Kuanzia $2,031">From $2,031</p>
+                                <a href="6-day-northern-tanzania-highlights.html" class="btn btn-primary btn-card" data-en="View Trip &rarr;" data-sw="Angalia Safari &rarr;">View Trip &rarr;</a>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="safari-card mini-card animate-in">
+                            <img src="assets/Zanzibar.jpg" alt="10 Days Luxury &amp; Zanzibar">
+                            <div class="safari-content">
+                                <h3 data-en="10 Days Luxury Safari &amp; Zanzibar Retreat" data-sw="Siku 10 Safari ya Anasa na Zanzibar">10 Days Luxury Safari &amp; Zanzibar Retreat</h3>
+                                <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:10px;" data-en="Combine world-class wildlife encounters with tropical island relaxation." data-sw="Unganisha kutazama wanyamapori na kupumzika kwenye visiwa vya kitropiki.">Combine world-class wildlife encounters with tropical island relaxation.</p>
+                                <p class="price" data-en="From $8,522" data-sw="Kuanzia $8,522">From $8,522</p>
+                                <a href="10-days-luxury-safari-zanzibar.html" class="btn btn-primary btn-card" data-en="View Trip &rarr;" data-sw="Angalia Safari &rarr;">View Trip &rarr;</a>
+                            </div>
+                        </div>
+                        <!-- Card 4 -->
+                        <div class="safari-card mini-card animate-in">
+                            <img src="assets/03TMMT-IM1103-mara-mara-tented-lodge-1475.jpg" alt="10 Days Great Migration">
+                            <div class="safari-content">
+                                <h3 data-en="10 Days Great Migration Safari" data-sw="Siku 10 Safari ya Uhamiaji Mkuu">10 Days Great Migration Safari</h3>
+                                <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:10px;" data-en="Follow the movement of millions of wildebeest across the Serengeti." data-sw="Fuata msafara wa mamilioni ya nyumbu katika ikolojia ya Serengeti.">Follow the movement of millions of wildebeest across the Serengeti ecosystem.</p>
+                                <p class="price" data-en="From $3,772" data-sw="Kuanzia $3,772">From $3,772</p>
+                                <a href="10-days-tanzania-great-migration.html" class="btn btn-primary btn-card" data-en="View Trip &rarr;" data-sw="Angalia Safari &rarr;">View Trip &rarr;</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Duplicate Set for Seamless Loop -->
+                        <div class="safari-card mini-card animate-in">
+                            <img src="assets/05TMMT-IM1105-mara-mara-tented-lodge-1475.jpg" alt="12 Days South &amp; North">
+                            <div class="safari-content">
+                                <h3 data-en="12 Days South &amp; North Tanzania Safari" data-sw="Siku 12 Safari ya Kusini na Kaskazini">12 Days South &amp; North Tanzania Safari</h3>
+                                <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:10px;" data-en="Experience the very best of Tanzania's southern and northern circuits." data-sw="Jionee mzunguko bora kabisa wa kusini na kaskazini mwa Tanzania.">Experience the very best of Tanzania's southern and northern circuits.</p>
+                                <p class="price" data-en="From $5,221" data-sw="Kuanzia $5,221">From $5,221</p>
+                                <a href="12-days-best-of-south-and-north.html" class="btn btn-primary btn-card" data-en="View Trip &rarr;" data-sw="Angalia Safari &rarr;">View Trip &rarr;</a>
+                            </div>
+                        </div>
+                        <div class="safari-card mini-card animate-in">
+                            <img src="assets/03TMMT-IM1103-mara-mara-tented-lodge-1475.jpg" alt="6 Day Highlights">
+                            <div class="safari-content">
+                                <h3 data-en="6 Day Northern Tanzania Safari Highlights" data-sw="Siku 6 Vivutio vya Safari ya Kaskazini">6 Day Northern Tanzania Safari Highlights</h3>
+                                <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:10px;" data-en="Explore Tanzania's iconic parks in one unforgettable adventure." data-sw="Gundua hifadhi maarufu za Tanzania katika safari moja isiyosahaulika.">Explore Tanzania's iconic parks in one unforgettable adventure.</p>
+                                <p class="price" data-en="From $2,031" data-sw="Kuanzia $2,031">From $2,031</p>
+                                <a href="6-day-northern-tanzania-highlights.html" class="btn btn-primary btn-card" data-en="View Trip &rarr;" data-sw="Angalia Safari &rarr;">View Trip &rarr;</a>
+                            </div>
+                        </div>
+                        <div class="safari-card mini-card animate-in">
+                            <img src="assets/Zanzibar.jpg" alt="10 Days Luxury &amp; Zanzibar">
+                            <div class="safari-content">
+                                <h3 data-en="10 Days Luxury Safari &amp; Zanzibar Retreat" data-sw="Siku 10 Safari ya Anasa na Zanzibar">10 Days Luxury Safari &amp; Zanzibar Retreat</h3>
+                                <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:10px;" data-en="Combine world-class wildlife encounters with tropical island relaxation." data-sw="Unganisha kutazama wanyamapori na kupumzika kwenye visiwa vya kitropiki.">Combine world-class wildlife encounters with tropical island relaxation.</p>
+                                <p class="price" data-en="From $8,522" data-sw="Kuanzia $8,522">From $8,522</p>
+                                <a href="10-days-luxury-safari-zanzibar.html" class="btn btn-primary btn-card" data-en="View Trip &rarr;" data-sw="Angalia Safari &rarr;">View Trip &rarr;</a>
+                            </div>
+                        </div>
+                        <div class="safari-card mini-card animate-in">
+                            <img src="assets/03TMMT-IM1103-mara-mara-tented-lodge-1475.jpg" alt="10 Days Great Migration">
+                            <div class="safari-content">
+                                <h3 data-en="10 Days Great Migration Safari" data-sw="Siku 10 Safari ya Uhamiaji Mkuu">10 Days Great Migration Safari</h3>
+                                <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:10px;" data-en="Follow the movement of millions of wildebeest across the Serengeti ecosystem." data-sw="Fuata msafara wa mamilioni ya nyumbu katika ikolojia ya Serengeti.">Follow the movement of millions of wildebeest across the Serengeti ecosystem.</p>
+                                <p class="price" data-en="From $3,772" data-sw="Kuanzia $3,772">From $3,772</p>
+                                <a href="10-days-tanzania-great-migration.html" class="btn btn-primary btn-card" data-en="View Trip &rarr;" data-sw="Angalia Safari &rarr;">View Trip &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Destinations Section -->
+    <section class="section destinations-section" style="background-color: var(--bg-color); padding: 100px 0;">
+        <div class="container">
+            <span class="sub-heading" data-en="TOP DESTINATIONS" data-sw="MAENEO MAARUFU">TOP DESTINATIONS</span>
+            <h2 data-en="Explore Our Top Tanzania Destinations" data-sw="Gundua Maeneo Yetu Bora ya Tanzania">Explore Our Top Tanzania Destinations</h2>
+            <p class="section-desc" style="max-width:720px; margin-bottom:50px;"
+               data-en="Tanzania is home to some of Africa's most spectacular landscapes and wildlife destinations. Each region offers unique experiences, breathtaking scenery, and unforgettable adventures."
+               data-sw="Tanzania ni nyumbani kwa baadhi ya mandhari ya kusisimua ya Afrika na maeneo ya wanyamapori. Kila mkoa hutoa uzoefu wa kipekee, mandhari nzuri, na matukio yasiyosahaulika.">
+                Tanzania is home to some of Africa's most spectacular landscapes and wildlife destinations. Each region offers unique experiences, breathtaking scenery, and unforgettable adventures.
+            </p>
+
+            <div class="destinations-slider-container">
+                <button class="dest-arrow dest-arrow-left" aria-label="Previous destination"><i class="fas fa-chevron-left"></i></button>
+                <button class="dest-arrow dest-arrow-right" aria-label="Next destination"><i class="fas fa-chevron-right"></i></button>
+                <div class="destinations-slider-wrapper">
+                    <div class="destinations-slider-track">
+                        <!-- 1. Serengeti -->
+                        <a href="serengeti.html" class="destination-card">
+                            <img src="assets/03TMMT-IM1103-mara-mara-tented-lodge-1475.jpg" alt="Serengeti">
+                            <div class="card-overlay">
+                                <h3 data-en="Serengeti" data-sw="Serengeti">Serengeti</h3>
+                                <p data-en="The Endless Plains" data-sw="Mapori Yasiyo na Mwisho">The Endless Plains</p>
+                                <p style="font-size:0.8rem; opacity:0.85; margin-top:5px;" data-en="Famous for the Great Migration and wildlife." data-sw="Maarufu kwa Uhamiaji Mkuu na wanyama.">Famous for the Great Migration and wildlife.</p>
+                            </div>
+                        </a>
+                        <!-- 2. Ngorongoro -->
+                        <a href="ngorongoro.html" class="destination-card">
+                            <img src="assets/ngorongoro.png" alt="Ngorongoro">
+                            <div class="card-overlay">
+                                <h3 data-en="Ngorongoro" data-sw="Ngorongoro">Ngorongoro</h3>
+                                <p data-en="The World's Largest Intact Volcanic Crater" data-sw="Kreta Kubwa Zaidi ya Volkano">The World's Largest Intact Volcanic Crater</p>
+                                <p style="font-size:0.8rem; opacity:0.85; margin-top:5px;" data-en="UNESCO Heritage with dense animal populations." data-sw="Urithi wa UNESCO wenye wanyama wengi.">UNESCO Heritage with dense animal populations.</p>
+                            </div>
+                        </a>
+                        <!-- 3. Zanzibar -->
+                        <a href="zanzibar-beach.html" class="destination-card">
+                            <img src="assets/Zanzibar.jpg" alt="Zanzibar">
+                            <div class="card-overlay">
+                                <h3 data-en="Zanzibar" data-sw="Zanzibar">Zanzibar</h3>
+                                <p data-en="The Spice Island Paradise" data-sw="Kisiwa cha Viungo na Paradiso">The Spice Island Paradise</p>
+                                <p style="font-size:0.8rem; opacity:0.85; margin-top:5px;" data-en="White sandy beaches and historic Stone Town." data-sw="Fukwe nyeupe za mchanga na Stone Town ya kihistoria.">White sandy beaches and historic Stone Town.</p>
+                            </div>
+                        </a>
+                        <!-- 4. Tarangire -->
+                        <a href="tarangire.html" class="destination-card">
+                            <img src="assets/05TMMT-IM1105-mara-mara-tented-lodge-1475.jpg" alt="Tarangire">
+                            <div class="card-overlay">
+                                <h3 data-en="Tarangire" data-sw="Tarangire">Tarangire</h3>
+                                <p data-en="Land of Giants" data-sw="Nchi ya Majitu">Land of Giants</p>
+                                <p style="font-size:0.8rem; opacity:0.85; margin-top:5px;" data-en="Known for massive elephant herds and baobabs." data-sw="Inajulikana kwa makundi ya tembo na mibuyu.">Known for massive elephant herds and baobabs.</p>
+                            </div>
+                        </a>
+                        <!-- 5. Manyara -->
+                        <a href="manyara.html" class="destination-card">
+                            <img src="assets/elwphant.jpg" alt="Lake Manyara">
+                            <div class="card-overlay">
+                                <h3 data-en="Lake Manyara" data-sw="Ziwa Manyara">Lake Manyara</h3>
+                                <p data-en="A Hidden Gem" data-sw="Kito Kilichofichika">A Hidden Gem</p>
+                                <p style="font-size:0.8rem; opacity:0.85; margin-top:5px;" data-en="Beautiful scenery and tree-climbing lions." data-sw="Mandhari nzuri na simba wanaopanda miti.">Beautiful scenery and tree-climbing lions.</p>
+                            </div>
+                        </a>
+                        <!-- 6. Kilimanjaro -->
+                        <a href="enquire.html" class="destination-card">
+                            <img src="assets/07TMMT-IM1107-mara-mara-tented-lodge-1475.jpg" alt="Mount Kilimanjaro">
+                            <div class="card-overlay">
+                                <h3 data-en="Mount Kilimanjaro" data-sw="Mlima Kilimanjaro">Mount Kilimanjaro</h3>
+                                <p data-en="The Roof of Africa" data-sw="Paa la Afrika">The Roof of Africa</p>
+                                <p style="font-size:0.8rem; opacity:0.85; margin-top:5px;" data-en="Africa's highest peak and iconic trek destination." data-sw="Mlima mrefu zaidi Afrika na njia maarufu ya kupanda.">Africa's highest peak and iconic trek destination.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tanzania Travel Advice Section -->
+    <section class="section travel-advice-section" style="background-color: var(--section-bg); padding: 100px 0;">
+        <div class="container">
+            <div class="travel-tips-section" style="padding-top: 0; border: none;">
+                <span class="sub-heading" data-en="TANZANIA TRAVEL ADVICE" data-sw="USHAURI WA KITAALAMU">TANZANIA TRAVEL ADVICE</span>
+                <h2 data-en="Essential Tanzania Travel Tips" data-sw="Maujanja Muhimu ya Safari">Essential Tanzania Travel Tips</h2>
+                <p style="color:var(--text-muted); font-size:1rem; line-height:1.75; max-width:600px; margin-bottom:44px;"
+                   data-en="Planning your adventure should be exciting and stress-free. Our travel advice section helps you prepare for an unforgettable journey."
+                   data-sw="Kupanga safari yako kunapaswa kuwa kwa kusisimua na bila msongo wa mawazo. Sehemu yetu ya ushauri wa kusafiri inakusaidia kujiandaa kwa safari isiyosahaulika.">
+                    Planning your adventure should be exciting and stress-free. Our travel advice section helps you prepare for an unforgettable journey.
+                </p>
+                
+                <div class="marquee-container">
+                    <button class="marquee-arrow marquee-arrow-left" aria-label="Scroll left"><i class="fas fa-chevron-left"></i></button>
+                    <button class="marquee-arrow marquee-arrow-right" aria-label="Scroll right"><i class="fas fa-chevron-right"></i></button>
+                    <div class="marquee-wrapper">
+                        <div class="marquee-track marquee-right">
+                            <!-- Tip 1 -->
+                            <div class="tip-item-pro">
+                                <div class="tip-icon-pro"><i class="fas fa-passport"></i></div>
+                                <div class="tip-info-pro">
+                                    <h3 data-en="Visas &amp; Entry" data-sw="Visa na Kuingia">Visas &amp; Entry</h3>
+                                    <p data-en="Understand visa requirements, e-visa applications, and entry procedures before traveling." data-sw="Elewa mahitaji ya visa, maombi ya visa ya mtandaoni na taratibu.">Understand visa requirements, e-visa applications, and entry procedures before traveling.</p>
+                                    <a href="obtaining-visa-tanzania.html" class="tip-link" data-en="Guide &rarr;" data-sw="Mwongozo &rarr;">Guide &rarr;</a>
+                                </div>
+                            </div>
+                            <!-- Tip 2 -->
+                            <div class="tip-item-pro">
+                                <div class="tip-icon-pro"><i class="fas fa-briefcase-medical"></i></div>
+                                <div class="tip-info-pro">
+                                    <h3 data-en="Health &amp; Safety" data-sw="Afya na Usalama">Health &amp; Safety</h3>
+                                    <p data-en="Important health recommendations, vaccinations, travel insurance, and safety information." data-sw="Mapendekezo muhimu ya afya, chanjo, bima na usalama.">Important health recommendations, vaccinations, travel insurance, and safety information.</p>
+                                    <a href="health-safety-tanzania.html" class="tip-link" data-en="Learn More" data-sw="Soma Zaidi">Learn More &rarr;</a>
+                                </div>
+                            </div>
+                            <!-- Tip 3 -->
+                            <div class="tip-item-pro">
+                                <div class="tip-icon-pro"><i class="fas fa-tshirt"></i></div>
+                                <div class="tip-info-pro">
+                                    <h3 data-en="What to Pack" data-sw="Nini cha Kufungasha">What to Pack</h3>
+                                    <p data-en="Expert packing recommendations for safaris, beach holidays, and mountain adventures." data-sw="Ushauri wa kitaalamu wa nini cha kubeba kwa safari, fukwe na milima.">Expert packing recommendations for safaris, beach holidays, and mountain adventures.</p>
+                                    <a href="what-to-wear-safari.html" class="tip-link" data-en="Learn More" data-sw="Soma Zaidi">Learn More &rarr;</a>
+                                </div>
+                            </div>
+                            <!-- Tip 4 -->
+                            <div class="tip-item-pro">
+                                <div class="tip-icon-pro"><i class="fas fa-sun"></i></div>
+                                <div class="tip-info-pro">
+                                    <h3 data-en="Best Time to Visit" data-sw="Wakati Bora wa Kuja">Best Time to Visit</h3>
+                                    <p data-en="Find the perfect season for wildlife viewing, the Great Migration, or beach escapes." data-sw="Tafuta msimu mzuri wa kutazama wanyama, Uhamiaji Mkuu, au fukwe.">Find the perfect season for wildlife viewing, the Great Migration, climbing Kilimanjaro, or beach escapes.</p>
+                                    <a href="best-time-to-visit-tanzania.html" class="tip-link" data-en="Learn More" data-sw="Soma Zaidi">Learn More &rarr;</a>
+                                </div>
+                            </div>
+
+                            <!-- Duplicate Set for Loop -->
+                            <div class="tip-item-pro">
+                                <div class="tip-icon-pro"><i class="fas fa-passport"></i></div>
+                                <div class="tip-info-pro">
+                                    <h3 data-en="Visas &amp; Entry" data-sw="Kibali na Kuingia">Visas &amp; Entry</h3>
+                                    <p data-en="Understand visa requirements, e-visa applications, and entry procedures before traveling." data-sw="Elewa mahitaji ya visa, maombi ya mtandaoni, na taratibu za kuingia kabla ya kusafiri.">Understand visa requirements, e-visa applications, and entry procedures before traveling.</p>
+                                    <a href="obtaining-visa-tanzania.html" class="tip-link" data-en="Guide &rarr;" data-sw="Mwongozo &rarr;">Guide &rarr;</a>
+                                </div>
+                            </div>
+                            <div class="tip-item-pro">
+                                <div class="tip-icon-pro"><i class="fas fa-briefcase-medical"></i></div>
+                                <div class="tip-info-pro">
+                                    <h3 data-en="Health &amp; Safety" data-sw="Afya na Usalama">Health &amp; Safety</h3>
+                                    <p data-en="Important health recommendations, vaccinations, travel insurance, and safety information." data-sw="Mapendekezo muhimu ya afya, chanjo, bima ya safari, na maelezo ya usalama.">Important health recommendations, vaccinations, travel insurance, and safety information.</p>
+                                    <a href="health-safety-tanzania.html" class="tip-link" data-en="Learn More &rarr;" data-sw="Soma Zaidi &rarr;">Learn More &rarr;</a>
+                                </div>
+                            </div>
+                            <div class="tip-item-pro">
+                                <div class="tip-icon-pro"><i class="fas fa-tshirt"></i></div>
+                                <div class="tip-info-pro">
+                                    <h3 data-en="What to Pack" data-sw="Nini cha Kufungasha">What to Pack</h3>
+                                    <p data-en="Expert packing recommendations for safaris, beach holidays, and mountain adventures." data-sw="Ushauri wa kitaalamu wa nini cha kubeba kwa safari, fukwe na milima.">Expert packing recommendations for safaris, beach holidays, and mountain adventures.</p>
+                                    <a href="what-to-wear-safari.html" class="tip-link" data-en="Learn More &rarr;" data-sw="Soma Zaidi &rarr;">Learn More &rarr;</a>
+                                </div>
+                            </div>
+                            <div class="tip-item-pro">
+                                <div class="tip-icon-pro"><i class="fas fa-sun"></i></div>
+                                <div class="tip-info-pro">
+                                    <h3 data-en="Best Time to Visit" data-sw="Wakati Bora wa Kuja">Best Time to Visit</h3>
+                                    <p data-en="Find the perfect season for wildlife viewing, the Great Migration, or beach escapes." data-sw="Tafuta msimu mzuri wa kutazama wanyama, Uhamiaji Mkuu, au fukwe.">Find the perfect season for wildlife viewing, the Great Migration, or beach escapes.</p>
+                                    <a href="best-time-to-visit-tanzania.html" class="tip-link" data-en="Learn More &rarr;" data-sw="Soma Zaidi &rarr;">Learn More &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed Section -->
+    <section class="section instagram-section" style="padding: 100px 0; background: var(--bg-color);">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px;">
+                <div>
+                    <span class="sub-heading" data-en="FOLLOW OUR ADVENTURES" data-sw="FUATA SAFARI ZETU">FOLLOW OUR ADVENTURES</span>
+                    <h2 data-en="Follow Our Adventures" data-sw="Fuata Safari Zetu">Follow Our Adventures</h2>
+                    <p style="font-style:italic; color:var(--text-muted); font-size:0.95rem; margin-top:5px;" 
+                       data-en="&ldquo;Every photograph tells a story. Every journey creates a memory.&rdquo;" 
+                       data-sw="&ldquo;Kila picha inasimulisha hadithi. Kila safari inaunda kumbukumbu.&rdquo;">
+                        "Every photograph tells a story. Every journey creates a memory."
+                    </p>
+                </div>
+                <a href="https://instagram.com/century_adventures" class="btn btn-outline" target="_blank" data-en="📸 @century_adventures" data-sw="📸 @century_adventures"><i class="fab fa-instagram"></i> @century_adventures</a>
+            </div>
+            <div class="instagram-grid">
+                <div class="insta-item"><img src="assets/03TMMT-IM1103-mara-mara-tented-lodge-1475.jpg" alt="Insta 1"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
+                <div class="insta-item"><img src="assets/elwphant.jpg" alt="Insta 2"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
+                <div class="insta-item"><img src="assets/Zanzibar.jpg" alt="Insta 3"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
+                <div class="insta-item"><img src="assets/Leopard.webp" alt="Insta 4"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
+                <div class="insta-item"><img src="assets/05TMMT-IM1105-mara-mara-tented-lodge-1475.jpg" alt="Insta 5"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
+                <div class="insta-item"><img src="assets/03TMMT-IM1103-mara-mara-tented-lodge-1475.jpg" alt="Insta 6"><div class="insta-overlay"><i class="fab fa-instagram"></i></div></div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer Contact Info -->
+    <div class="footer-top">
+        <div class="container">
+            <h2><i class="fas fa-phone-alt"></i> +255 747 115 390</h2>
+            <a href="enquire.html" class="btn enquire-btn" data-en="CONTACT US TODAY!" data-sw="WASILIANA NASI LEO!">CONTACT US TODAY!</a>
+        </div>
+    </div>
+
+    <!-- Final Call to Action -->
+    <section class="section cta-section" style="background: var(--primary-gradient); padding: 50px 0; text-align: center; color: white; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <div class="container" style="position: relative; z-index: 2;">
+            <span class="sub-heading" style="color:var(--accent-gold); font-size: 0.8rem; letter-spacing: 2px;" data-en="YOUR JOURNEY TO AFRICA STARTS HERE" data-sw="SAFARI YAKO YA AFRIKA INAANZA HAPA">YOUR JOURNEY TO AFRICA STARTS HERE</span>
+            <h2 style="font-size: clamp(1.5rem, 3vw, 2.2rem); color: white; margin: 10px 0 16px;" data-en="Are you ready to explore Tanzania?" data-sw="Uko Tayari Kuichunguza Tanzania?">Are you ready to explore Tanzania?</h2>
+            
+            <p class="cta-description" style="max-width: 650px; margin: 0 auto 25px; font-size:0.9rem; line-height: 1.65; opacity: 0.9;">
+                <span class="cta-hide-mobile" data-en="Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. " data-sw="Fikiria kushuhudia uwindaji wa simba wakati wa machweo, kutazama tembo wakizurura kwa uhuru kwenye savanna zisizo na mwisho, kujionea Uhamiaji Mkuu, au kupumzika kwenye mchanga mweupe wa Zanzibar. ">Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. </span>
+                <span data-en="Let Century Adventures make those dreams come true." data-sw="Ruhusu Century Adventures kufanya ndoto hizo ziwe kweli.">Let Century Adventures make those dreams come true.</span>
+            </p>
+
+            <div class="cta-action-grid" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <a href="enquire.html" class="btn btn-primary cta-circle-btn" style="background: var(--accent-gold); color: #002b18; font-weight:800; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; text-decoration: none;" data-en="Plan Your Trip" data-sw="Panga Safari Yako">Plan Your Trip</a>
+                <a href="enquire.html" class="btn btn-outline cta-circle-btn secondary" style="border: 1px solid rgba(255,255,255,0.6); color: white; font-weight:700; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; background: transparent; text-decoration: none;" data-en="Request a Free Quote" data-sw="Omba Nukuu ya Bure">Request a Free Quote</a>
+            </div>
+            
+            <div style="margin-top: 18px;">
+                <a href="contact.html" style="color: var(--accent-gold); font-weight: 700; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.5px;" data-en="Contact Our Experts &rarr;" data-sw="Wasiliana na Wataalamu Wetu &rarr;">Contact Our Experts &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col info-col">
+                <h3 data-en="CONTACT US" data-sw="WASILIANA NASI">CONTACT US</h3>
+                <p><strong>Century Adventures</strong></p>
+                <p data-en="Asasi Tower, 4th Floor" data-sw="Asasi Tower, Ghorofa ya 4">Asasi Tower, 4th Floor</p>
+                <p data-en="Ohio Street" data-sw="Mtaa wa Ohio">Ohio Street</p>
+                <p><i class="fas fa-map-marker-alt"></i> Dar es Salaam, Tanzania</p>
+                <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/255747115390" target="_blank" style="color: inherit;">+255 747 115 390</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@centuryadventures.com" style="color: inherit;">info@centuryadventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:bookings@centuryadventures.com" style="color: inherit;">bookings@centuryadventures.com</a></p>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="POPULAR PLACES" data-sw="MAENEO MAARUFU">POPULAR PLACES</h3>
+                <ul>
+                    <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                    <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                    <li><a href="selous.html" data-en="Nyerere Park" data-sw="Hifadhi ya Nyerere">Nyerere Park</a></li>
+                    <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                    <li><a href="mikumi.html" data-en="Mikumi Park" data-sw="Hifadhi ya Mikumi">Mikumi Park</a></li>
+                    <li><a href="ngorongoro.html" data-en="Ngorongoro" data-sw="Ngorongoro">Ngorongoro</a></li>
+                    <li><a href="manyara.html" data-en="Manyara National Park" data-sw="Hifadhi ya Manyara">Manyara National Park</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL EXPERIENCE" data-sw="UZOEFU WA KUSAFIRI">TRAVEL EXPERIENCE</h3>
+                <ul>
+                    <li><a href="family-safaris.html" data-en="Family Trips" data-sw="Safari za Familia">Family Trips</a></li>
+                    <li><a href="honeymoon-safaris.html" data-en="Honeymoon Trips" data-sw="Safari za Fungate">Honeymoon Trips</a></li>
+                    <li><a href="migration-safaris.html" data-en="Migration Trips" data-sw="Safari za Uhamiaji">Migration Trips</a></li>
+                    <li><a href="volunteer.html" data-en="Volunteer Programs" data-sw="Mipango ya Kujitolea">Volunteer Programs</a></li>
+                    <li><a href="zanzibar-beach.html" data-en="Zanzibar Beach Holiday" data-sw="Likizo ya Pwani ya Zanzibar">Zanzibar Beach Holiday</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL RESOURCES" data-sw="MAARIFA YA SAFARI">TRAVEL RESOURCES</h3>
+                <ul>
+                    <li><a href="blog.html" data-en="Travel Blog" data-sw="Blogu yetu">Travel Blog</a></li>
+                    <li><a href="faq.html" data-en="FAQs" data-sw="Maswali ya Kawaida">FAQs</a></li>
+                    <li><a href="gallery.html" data-en="Photo Gallery" data-sw="Picha za Safari">Photo Gallery</a></li>
+                    <li><a href="testimonials.html" data-en="Testimonials" data-sw="Shuhuda">Testimonials</a></li>
+                    <li><a href="best-time-to-visit-tanzania.html" data-en="Best Time to Visit" data-sw="Wakati Bora wa Kuja">Best Time to Visit</a></li>
+                    <li><a href="health-safety-tanzania.html" data-en="Health &amp; Safety" data-sw="Afya na Usalama">Health &amp; Safety</a></li>
+                    <li><a href="obtaining-visa-tanzania.html" data-en="Visa Information" data-sw="Visa ya Safari">Visa Information</a></li>
+                    <li><a href="solo-female-travel-tanzania.html" data-en="Solo Female Travel" data-sw="Safari ya Wanawake">Solo Female Travel</a></li>
+                    <li><a href="what-to-wear-safari.html" data-en="Safari Packing Guide" data-sw="Nguo za Safari">Safari Packing Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <div class="tripadvisor-card">
+                    <img src="https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-66827-5.svg" alt="TripAdvisor">
+                    <h4 data-en="TripAdvisor Century Adventures" data-sw="TripAdvisor Century Adventures">TripAdvisor Century Adventures</h4>
+                    <p data-en="Ranked #1 on TripAdvisor" data-sw="Imeorodheshwa #1 TripAdvisor">Ranked #1 on TripAdvisor</p>
+                    <a href="https://www.tripadvisor.com/" target="_blank" class="btn btn-small" data-en="TripAdvisor Give Feedback Century Adventures" data-sw="TripAdvisor Toa Maoni Century Adventures">TripAdvisor Give Feedback Century Adventures</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61577731823809"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@CenturyAdventures" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/century_adventures?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/255747115390"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:info@centuryadventures.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; Copyright 2012 - 2026 | Century Adventures</p>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>

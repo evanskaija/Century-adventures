@@ -1,0 +1,501 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanzania Honeymoon Safaris | Century Adventures</title>
+    <meta name="description" content="Tanzania is a diverse and breathtaking country located in East Africa, making it the perfect destination for a honeymoon safari.">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        (function() {
+            const theme = localStorage.getItem('century-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Tanzania Honeymoon Safaris | Century Adventures">
+    <meta property="og:description" content="Tanzania is a diverse and breathtaking country located in East Africa, making it the perfect destination for a honeymoon safari.">
+    <meta property="og:image" content="assets/logo.png">
+    <meta property="og:site_name" content="Century Adventures">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="assets/logo.png">
+    <meta name="twitter:title" content="Tanzania Honeymoon Safaris | Century Adventures">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="scroll-progress"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html"><img src="assets/logo.png" alt="Century Adventures Logo"></a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html" data-en="Home" data-sw="Nyumbani">Home</a></li>
+                    <li><a href="about.html" data-en="About Us" data-sw="Kuhusu Sisi">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-en="Destinations" data-sw="Maeneo">Destinations <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="katavi.html" data-en="Katavi National Park" data-sw="Hifadhi ya Katavi">Katavi National Park</a></li>
+                            <li><a href="selous.html" data-en="Selous Game Reserve" data-sw="Hifadhi ya Selous">Selous Game Reserve</a></li>
+                            <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                            <li><a href="mikumi.html" data-en="Mikumi National Park" data-sw="Hifadhi ya Mikumi">Mikumi National Park</a></li>
+                            <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                            <li><a href="gombe.html" data-en="Gombe Stream National Park" data-sw="Hifadhi ya Gombe">Gombe Stream National Park</a></li>
+                            <li><a href="ngorongoro.html" data-en="Ngorongoro Conservation Area" data-sw="Ngorongoro">Ngorongoro Conservation Area</a></li>
+                            <li><a href="manyara.html" data-en="Lake Manyara National Park" data-sw="Hifadhi ya Manyara">Lake Manyara National Park</a></li>
+                            <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="safaris.html" data-en="TOURS & SAFARIS" data-sw="SAFARI NA ZIARA">TOURS & SAFARIS</a></li>
+                    <li><a href="experiences.html" class="active" data-en="Experiences" data-sw="Uzoefu">Experiences</a></li>
+                    <li><a href="volunteer.html" data-en="Volunteer" data-sw="Kujitolea">Volunteer</a></li>
+                    <li><a href="vehicles.html" data-en="Safari Vehicles" data-sw="Magari ya Safari">Safari Vehicles</a></li>
+                    <li><a href="contact.html" data-en="Contact Us" data-sw="Wasiliana Nasi">Contact Us</a></li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Hamburger Menu -->
+            <button class="mobile-toggle" id="mobile-toggle" onclick="toggleMobileMenu()" aria-label="Open navigation menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <div class="header-actions">
+                <div class="header-toggles">
+                    <button class="toggle-btn lang-toggle" onclick="toggleLang()">SW</button>
+                    <button class="toggle-btn theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i> DARK</button>
+                </div>
+                <a href="enquire.html" class="btn btn-primary enquire-btn" data-en="ENQUIRE" data-sw="ULIZA">ENQUIRE</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="hero page-hero" style="background-image: url('assets/KTA13Serengeti Nationa.webp'); height: 60vh;">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 data-en="Tanzania Honeymoon Safaris" data-sw="Safari za Fungate Tanzania">Tanzania Honeymoon Safaris</h1>
+            <p class="hero-tagline" data-en="Where Romance Meets Adventure" data-sw="Pale Mahaba Yanapokutana na Adha">Where Romance Meets Adventure</p>
+        </div>
+    </section>
+
+    <!-- Overview (About Honeymoon Safaris) -->
+    <section class="section">
+        <div class="container">
+            <div class="migration-grid-2">
+                <div class="scroll-reveal-left">
+                    <span class="sub-heading" data-en="ROMANTIC GETAWAYS" data-sw="MIKIMBILIO YA KIMAPENZI">ROMANTIC GETAWAYS</span>
+                    <h2 data-en="Where Your Love Story Meets the Wilds of Africa" data-sw="Pale Historia ya Upendo Wenu Inapokutana na Pori la Afrika">Where Your Love Story Meets the Wilds of Africa</h2>
+                    <p data-en="Your honeymoon is more than a vacation—it's the beginning of a beautiful journey together. At Century Adventures, we create unforgettable honeymoon experiences that combine romance, luxury, adventure, and breathtaking natural beauty in some of Tanzania's most spectacular destinations." data-sw="Fungate yenu ni zaidi ya likizo tu—ni mwanzo wa safari yenu nzuri ya pamoja. Kwenye Century Adventures, tunatengeneza uzoefu wa fungate usiosahaulika unaounganisha mahaba, anasa, adha, na uzuri wa asili wa kuvutia katika baadhi ya maeneo ya kupendeza zaidi nchini Tanzania.">
+                        Your honeymoon is more than a vacation—it's the beginning of a beautiful journey together. At Century Adventures, we create unforgettable honeymoon experiences that combine romance, luxury, adventure, and breathtaking natural beauty in some of Tanzania's most spectacular destinations.
+                    </p>
+                    <p data-en="Imagine waking up to the sounds of the African wilderness, watching the sun rise over the Serengeti, enjoying a private candlelit dinner under the stars, and ending your journey on the pristine white-sand beaches of Zanzibar. A Tanzania honeymoon offers the perfect balance of excitement, intimacy, and relaxation." data-sw="Fikiria mkiamka kwa sauti za pori la Afrika, mkitazama jua likichomoza juu ya Serengeti, mkifurahia chakula cha jioni cha mishumaa cha faragha chini ya nyota, na kumaliza safari yenu kwenye fukwe za mchanga mweupe za Zanzibar. Fungate ya Tanzania inatoa usawa kamili wa msisimko, ukaribu, na utulivu.">
+                        Imagine waking up to the sounds of the African wilderness, watching the sun rise over the Serengeti, enjoying a private candlelit dinner under the stars, and ending your journey on the pristine white-sand beaches of Zanzibar. A Tanzania honeymoon offers the perfect balance of excitement, intimacy, and relaxation.
+                    </p>
+                    <p data-en="Whether you dream of thrilling wildlife encounters, luxury safari lodges, secluded beach escapes, or a combination of both, we will design a honeymoon that is as unique as your love story." data-sw="Iwe mnaota ndoto ya kukutana na wanyamapori wa kusisimua, nyumba za kulala wageni za kifahari, mafungo ya fukwe za faragha, au mchanganyiko wa yote mawili, tutabuni fungate ambayo ni ya kipekee kama hadithi yenu ya upendo.">
+                        Whether you dream of thrilling wildlife encounters, luxury safari lodges, secluded beach escapes, or a combination of both, we will design a honeymoon that is as unique as your love story.
+                    </p>
+                </div>
+                <div class="scroll-reveal-right">
+                    <div class="featured-quote-block">
+                        <span class="sub-heading" data-en="THE PERFECT ESCAPE" data-sw="MAFUNGO KAMILI">THE PERFECT ESCAPE</span>
+                        <h3 data-en="A Journey Crafted for Your Love Story" data-sw="Safari Iliyoundwa kwa ajili ya Hadithi ya Upendo Wenu">A Journey Crafted for Your Love Story</h3>
+                        <p data-en="&ldquo;We believe that no two love stories are the same, and neither should be their honeymoons. We handle every detail, from private transfers to special room amenities, so you can focus entirely on celebrating each other.&rdquo;" data-sw="&ldquo;Tunaamini kuwa hakuna hadithi mbili za upendo zinazofanana, na wala fungate zao hazipaswi kufanana. Tunashughulikia kila undani, kuanzia usafiri wa faragha hadi huduma maalum za chumbani, ili muweze kuzingatia kikamilifu kusherehekeana.&rdquo;">
+                            &ldquo;We believe that no two love stories are the same, and neither should be their honeymoons. We handle every detail, from private transfers to special room amenities, so you can focus entirely on celebrating each other.&rdquo;
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Tanzania -->
+    <section class="section" style="background-color: var(--section-bg);">
+        <div class="container">
+            <span class="sub-heading" style="text-align: center; display: block;" data-en="WHY TANZANIA?" data-sw="KWA NINI TANZANIA?">WHY TANZANIA?</span>
+            <h2 style="text-align: center; margin-bottom: 20px;" data-en="The Ultimate Romantic Destination" data-sw="Eneo Bora Kabisa la Kimapenzi">The Ultimate Romantic Destination</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px auto; color: var(--text-muted);" data-en="Tanzania is one of Africa's most romantic destinations, offering extraordinary experiences that few places in the world can match." data-sw="Tanzania ni moja ya maeneo ya kimapenzi zaidi barani Afrika, inayopeana uzoefu usio wa kawaida ambao maeneo machache sana duniani yanaweza kulingana nao.">
+                Tanzania is one of Africa's most romantic destinations, offering extraordinary experiences that few places in the world can match.
+            </p>
+
+            <div class="why-choose-grid">
+                <div class="why-choose-card scroll-reveal">
+                    <i class="fas fa-heart why-icon" style="color: #e24444;"></i>
+                    <h3 data-en="Spectacular Wildlife Safaris" data-sw="Safari za Wanyamapori za Kuvutia">Spectacular Wildlife Safaris</h3>
+                    <p data-en="Witness the legendary Big Five and the Great Wildebeest Migration together in their natural habitat." data-sw="Shuhudieni wanyama maarufu watano wakubwa na Uhamiaji Mkuu wa Nyumbu pamoja kwenye makazi yao ya asili.">Witness the legendary Big Five and the Great Wildebeest Migration together in their natural habitat.</p>
+                </div>
+                <div class="why-choose-card scroll-reveal">
+                    <i class="fas fa-heart why-icon" style="color: #e24444;"></i>
+                    <h3 data-en="Luxury Lodges & Exclusive Camps" data-sw="Lodges za Kifahari na Kambi za Kipekee">Luxury Lodges & Exclusive Camps</h3>
+                    <p data-en="Stay in secluded suites and tented villas with private decks, plunge pools, and breathtaking views." data-sw="Laleni kwenye vyumba vilivyotengwa na majengo ya hema yenye staha za faragha, mabwawa, na mandhari nzuri.">Stay in secluded suites and tented villas with private decks, plunge pools, and breathtaking views.</p>
+                </div>
+                <div class="why-choose-card scroll-reveal">
+                    <i class="fas fa-heart why-icon" style="color: #e24444;"></i>
+                    <h3 data-en="Romantic Bush Dinners" data-sw="Chakula cha Jioni cha Kimapenzi Porini">Romantic Bush Dinners</h3>
+                    <p data-en="Dine under a canopy of stars with a private chef, surrounded by the sights and sounds of the wild." data-sw="Leni chakula chini ya dari la nyota na mpishi binafsi, mkiwa mmezungukwa na mandhari na sauti za pori.">Dine under a canopy of stars with a private chef, surrounded by the sights and sounds of the wild.</p>
+                </div>
+                <div class="why-choose-card scroll-reveal">
+                    <i class="fas fa-heart why-icon" style="color: #e24444;"></i>
+                    <h3 data-en="Private Game Drives" data-sw="Safari za Faragha za Magari">Private Game Drives</h3>
+                    <p data-en="Explore national parks at your own pace with a dedicated guide and private custom 4x4 vehicle." data-sw="Gundua hifadhi za taifa kwa kasi yenu wenyewe na kiongozi maalum na gari la faragha la 4x4 lililobinafsishwa.">Explore national parks at your own pace with a dedicated guide and private custom 4x4 vehicle.</p>
+                </div>
+                <div class="why-choose-card scroll-reveal">
+                    <i class="fas fa-heart why-icon" style="color: #e24444;"></i>
+                    <h3 data-en="Breathtaking Sunsets" data-sw="Machweo ya Jua ya Kuvutia">Breathtaking Sunsets</h3>
+                    <p data-en="Share a glass of champagne as the sun sets over the endless savannah, creating lifelong memories." data-sw="Shirikianeni glasi ya champagne wakati jua linapozama juu ya savanna, na kutengeneza kumbukumbu za maisha.">Share a glass of champagne as the sun sets over the endless savannah, creating lifelong memories.</p>
+                </div>
+                <div class="why-choose-card scroll-reveal">
+                    <i class="fas fa-heart why-icon" style="color: #e24444;"></i>
+                    <h3 data-en="Zanzibar Beach Escapes" data-sw="Likizo za Pwani za Zanzibar">Zanzibar Beach Escapes</h3>
+                    <p data-en="Unwind on the pristine beaches of the spice island, featuring turquoise waters and private ocean-view villas." data-sw="Pumzikeni kwenye fukwe safi za kisiwa cha karafuu, zenye maji ya turquoise na majengo yenye mtazamo wa bahari.">Unwind on the pristine beaches of the spice island, featuring turquoise waters and private ocean-view villas.</p>
+                </div>
+                <div class="why-choose-card scroll-reveal">
+                    <i class="fas fa-heart why-icon" style="color: #e24444;"></i>
+                    <h3 data-en="World-Class Hospitality" data-sw="Ukarimu wa Kiwango cha Juu Duniani">World-Class Hospitality</h3>
+                    <p data-en="Experience warm, personalized African service with attention to every details of your special stay." data-sw="Pateni uzoefu wa huduma ya Kiafrika yenye joto na ya kibinafsi kwa kuzingatia kila undani wa kukaa kwenu maalum.">Experience warm, personalized African service with attention to every details of your special stay.</p>
+                </div>
+                <div class="why-choose-card scroll-reveal">
+                    <i class="fas fa-heart why-icon" style="color: #e24444;"></i>
+                    <h3 data-en="Once-in-a-Lifetime Experiences" data-sw="Uzoefu wa Mara Moja Maishani">Once-in-a-Lifetime Experiences</h3>
+                    <p data-en="Create unique moments with private hot air balloon flights, massage therapies, and cultural blessings." data-sw="Tengenezeni nyakati za kipekee kwa safari za puto la hewa, tiba za masaji, na baraka za kitamaduni.">Create unique moments with private hot air balloon flights, massage therapies, and cultural blessings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Romantic Experiences -->
+    <section class="section">
+        <div class="container">
+            <span class="sub-heading" style="text-align: center; display: block;" data-en="ROMANTIC EXPERIENCES" data-sw="UZOEFU WA KIMAPENZI">ROMANTIC EXPERIENCES</span>
+            <h2 style="text-align: center; margin-bottom: 50px;" data-en="Romantic Experiences You'll Never Forget" data-sw="Uzoefu wa Kimapenzi Ambao Hamtausahau">Romantic Experiences You'll Never Forget</h2>
+
+            <div class="experiences-layout">
+                <div class="experience-card-premium scroll-reveal">
+                    <span class="experience-featured-badge" data-en="Adventure" data-sw="Adha">Adventure</span>
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">🦁</div>
+                    <h3 data-en="Luxury Safari Adventures" data-sw="Safari za Kifahari za Adha">Luxury Safari Adventures</h3>
+                    <p data-en="Explore the legendary Serengeti, Ngorongoro Crater, Tarangire, and other iconic destinations while enjoying luxurious accommodations and personalized service. Imagine watching elephants roam across golden plains while sharing unforgettable moments with the one you love." data-sw="Gundua Serengeti ya kipekee, Bonde la Ngorongoro, Tarangire, na maeneo mengine maarufu huku mkifurahia malazi ya kifahari na huduma maalum. Fikiria mkitazama tembo wakitembea kwenye nyanda za dhahabu huku mkishiriki nyakati zisizofutika na yule mnayempenda.">
+                        Explore the legendary Serengeti, Ngorongoro Crater, Tarangire, and other iconic destinations while enjoying luxurious accommodations and personalized service. Imagine watching elephants roam across golden plains while sharing unforgettable moments with the one you love.
+                    </p>
+                    <div class="card-actions">
+                        <a href="enquire.html" class="btn btn-small btn-primary" data-en="Explore Safari Options" data-sw="Gundua Chaguzi za Safari">Explore Safari Options</a>
+                    </div>
+                </div>
+
+                <div class="experience-card-premium scroll-reveal">
+                    <span class="experience-featured-badge" data-en="Intimacy" data-sw="Ukaribu">Intimacy</span>
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">🌅</div>
+                    <h3 data-en="Sundowners in the African Wilderness" data-sw="Machweo ya Jua Katika Pori la Afrika">Sundowners in the African Wilderness</h3>
+                    <p data-en="Toast to your future together as the sun sets over the endless savannah, painting the sky with shades of gold, orange, and crimson. Few experiences are as romantic as enjoying a private sundowner surrounded by Tanzania's breathtaking landscapes." data-sw="Gongeeni glasi kwa ajili ya mustakabali wenu wa pamoja jua linapozama kwenye savanna isiyo na mwisho, likipaka anga rangi ya dhahabu, machungwa, na nyekundu. Uzoefu mchache sana ni wa kimapenzi kama kufurahia kinywaji cha machweo cha faragha mkiwa mmezungukwa na mandhari nzuri ya Tanzania.">
+                        Toast to your future together as the sun sets over the endless savannah, painting the sky with shades of gold, orange, and crimson. Few experiences are as romantic as enjoying a private sundowner surrounded by Tanzania's breathtaking landscapes.
+                    </p>
+                    <div class="card-actions">
+                        <a href="enquire.html" class="btn btn-small btn-primary" data-en="Request Details" data-sw="Omba Maelezo">Request Details</a>
+                    </div>
+                </div>
+
+                <div class="experience-card-premium scroll-reveal">
+                    <span class="experience-featured-badge" data-en="Fine Dining" data-sw="Chakula Kizuri">Fine Dining</span>
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">🍷</div>
+                    <h3 data-en="Private Bush Dinners" data-sw="Chakula cha Jioni cha Faragha Porini">Private Bush Dinners</h3>
+                    <p data-en="Dine beneath a blanket of stars in the heart of the African wilderness. Enjoy a gourmet meal prepared by your private chef, illuminated by the soft glow of lanterns and a warm campfire, creating a magical setting for just the two of you." data-sw="Leni chakula cha jioni chini ya blanketi la nyota katikati ya pori la Afrika. Furahia chakula kitamu kilichoandaliwa na mpishi wenu binafsi, kikiangaziwa na mwanga mwanana wa taa za mafuta na moto wa kambi, na kutengeneza mazingira ya kichawi kwa ajili yenu wawili tu.">
+                        Dine beneath a blanket of stars in the heart of the African wilderness. Enjoy a gourmet meal prepared by your private chef, illuminated by the soft glow of lanterns and a warm campfire, creating a magical setting for just the two of you.
+                    </p>
+                    <div class="card-actions">
+                        <a href="enquire.html" class="btn btn-small btn-primary" data-en="Plan Your Dinner" data-sw="Panga Chakula Chako">Plan Your Dinner</a>
+                    </div>
+                </div>
+
+                <div class="experience-card-premium scroll-reveal">
+                    <span class="experience-featured-badge" data-en="Relaxation" data-sw="Utulivu">Relaxation</span>
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">🏝️</div>
+                    <h3 data-en="Zanzibar Beach Escapes" data-sw="Likizo za Fukwe za Zanzibar">Zanzibar Beach Escapes</h3>
+                    <p data-en="Conclude your safari with a relaxing stay on the spice island of Zanzibar. Stroll hand-in-hand along pristine white-sand beaches, swim in turquoise waters, and enjoy romantic beachfront dinners with the sound of the ocean waves." data-sw="Malizia safari yenu kwa kukaa kwa utulivu kwenye kisiwa cha karafuu cha Zanzibar. Tembeeni mkono kwa mkono kando ya fukwe za mchanga mweupe, ogeleeni kwenye maji ya turquoise, na mfurahie chakula cha jioni cha kimapenzi kando ya pwani kikiwa na sauti za mawimbi ya bahari.">
+                        Conclude your safari with a relaxing stay on the spice island of Zanzibar. Stroll hand-in-hand along pristine white-sand beaches, swim in turquoise waters, and enjoy romantic beachfront dinners with the sound of the ocean waves.
+                    </p>
+                    <div class="card-actions">
+                        <a href="enquire.html" class="btn btn-small btn-primary" data-en="View Beach Retreats" data-sw="Angalia Likizo za Ufuo">View Beach Retreats</a>
+                    </div>
+                </div>
+
+                <div class="experience-card-premium scroll-reveal" style="grid-column: 1 / -1; max-width: 800px; margin: 0 auto;">
+                    <span class="experience-featured-badge" data-en="Exclusive Add-on" data-sw="Nyongeza Maalum">Exclusive Add-on</span>
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">✨</div>
+                    <h3 data-en="Exclusive Romantic Touches" data-sw="Mguso wa Kipekee wa Kimapenzi">Exclusive Romantic Touches</h3>
+                    <p data-en="Make your honeymoon even more special with private hot air balloon flights at sunrise, relaxing couple's spa treatments in the middle of nature, or receiving a traditional cultural blessing from Maasai elders." data-sw="Fanyeni fungate yenu iwe ya kipekee zaidi kwa safari za faragha za puto la hewa ya moto wakati wa jua kuchomoza, matibabu ya spa ya wanandoa yenye kutuliza katikati ya asili, au kupokea baraka za kitamaduni za kiasili kutoka kwa wazee wa Kimaasai.">
+                        Make your honeymoon even more special with private hot air balloon flights at sunrise, relaxing couple's spa treatments in the middle of nature, or receiving a traditional cultural blessing from Maasai elders.
+                    </p>
+                    <div class="card-actions">
+                        <a href="enquire.html" class="btn btn-small btn-primary" data-en="Customize Your Honeymoon" data-sw="Binafsisha Fungate Yako">Customize Your Honeymoon</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Designed Around You -->
+    <section class="section" style="background-color: var(--section-bg);">
+        <div class="container">
+            <span class="sub-heading" style="text-align: center; display: block;" data-en="TAILOR-MADE ROMANCE" data-sw="MAHABA MAALUMU KWA AJILI YENU">TAILOR-MADE ROMANCE</span>
+            <h2 style="text-align: center; margin-bottom: 20px;" data-en="Designed Around You" data-sw="Iliyoundwa Kulingana Nanyi">Designed Around You</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px auto; color: var(--text-muted);" data-en="Every honeymoon we create is completely custom-tailored to your desires. We understand that this is your special trip, and we design it to fit your pacing, preferences, and style. From the moment you contact us, we work with you to craft an itinerary that brings your dream African honeymoon to life." data-sw="Kila fungate tunayoitengeneza inabuniwa kikamilifu kulingana na matakwa yenu. Tunaelewa kuwa hii ni safari yenu maalum, na tunaiunda ili iendane na kasi yenu, mapendeleo yenu, na mtindo wenu. Kuanzia wakati mnawasiliana nasi, tunafanya kazi nanyi kuandaa ratiba inayofanya fungate ya ndoto zenu za Afrika kuwa kweli.">
+                Every honeymoon we create is completely custom-tailored to your desires. We understand that this is your special trip, and we design it to fit your pacing, preferences, and style. From the moment you contact us, we work with you to craft an itinerary that brings your dream African honeymoon to life.
+            </p>
+
+            <span class="sub-heading" style="text-align: center; display: block;" data-en="HONEYMOON STYLES" data-sw="MITINDO YA FUNGATE">HONEYMOON STYLES</span>
+            <h3 style="text-align: center; margin-bottom: 40px; font-family: 'Playfair Display', serif; font-size: 2rem;" data-en="Popular Honeymoon Styles" data-sw="Mitindo Maarufu ya Fungate">Popular Honeymoon Styles</h3>
+
+            <div class="honeymoon-styles-grid">
+                <div class="experience-card-premium featured scroll-reveal">
+                    <span class="experience-featured-badge" data-en="MOST POPULAR" data-sw="MAARUFU ZAIDI">MOST POPULAR</span>
+                    <div style="font-size: 2rem; margin-bottom: 15px;">💎</div>
+                    <h4 style="font-size: 1.25rem; font-weight:700; color: var(--primary-green); margin-bottom: 15px;" data-en="Luxury Safari & Zanzibar Retreat" data-sw="Safari ya Kifahari na Likizo ya Zanzibar">Luxury Safari & Zanzibar Retreat</h4>
+                    <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;" data-en="Combine the thrill of a classic wildlife safari in the northern circuit with a relaxing beach retreat on the exotic shores of Zanzibar." data-sw="Changanya msisimko wa safari ya asili ya wanyamapori katika mzunguko wa kaskazini na likizo ya ufuo yenye kutuliza kwenye fukwe za kigeni za Zanzibar.">Combine the thrill of a classic wildlife safari in the northern circuit with a relaxing beach retreat on the exotic shores of Zanzibar.</p>
+                    <div class="card-actions" style="margin-top: auto;">
+                        <a href="enquire.html" class="btn btn-small btn-primary" data-en="Enquire Now" data-sw="Uliza Sasa">Enquire Now</a>
+                    </div>
+                </div>
+
+                <div class="experience-card-premium scroll-reveal">
+                    <div style="font-size: 2rem; margin-bottom: 15px;">🦁</div>
+                    <h4 style="font-size: 1.25rem; font-weight:700; color: var(--primary-green); margin-bottom: 15px;" data-en="Classic Wildlife & Romance" data-sw="Wanyamapori wa Kawaida na Mahaba">Classic Wildlife & Romance</h4>
+                    <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;" data-en="Immerse yourselves in the wild with private game drives through the Serengeti and Ngorongoro Crater, staying in secluded luxury tented camps." data-sw="Jizamisheni porini kwa safari za faragha za magari kupitia Serengeti na Bonde la Ngorongoro, mkilala kwenye kambi za hema za kifahari na za faragha.">Immerse yourselves in the wild with private game drives through the Serengeti and Ngorongoro Crater, staying in secluded luxury tented camps.</p>
+                    <div class="card-actions" style="margin-top: auto;">
+                        <a href="enquire.html" class="btn btn-small btn-primary" data-en="Enquire Now" data-sw="Uliza Sasa">Enquire Now</a>
+                    </div>
+                </div>
+
+                <div class="experience-card-premium scroll-reveal">
+                    <div style="font-size: 2rem; margin-bottom: 15px;">🏖️</div>
+                    <h4 style="font-size: 1.25rem; font-weight:700; color: var(--primary-green); margin-bottom: 15px;" data-en="Beach Honeymoon Escape" data-sw="Kutorokea Pwani kwa Fungate">Beach Honeymoon Escape</h4>
+                    <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;" data-en="Focus on ultimate relaxation with a dedicated beach getaway in Zanzibar, featuring private villas, sunset cruises, and ocean adventures." data-sw="Zingatieni utulivu wa hali ya juu na likizo ya ufukoni iliyotengwa huko Zanzibar, iliyo na majengo ya kifahari ya faragha, safari za mashua wakati wa machweo, na matukio ya baharini.">Focus on ultimate relaxation with a dedicated beach getaway in Zanzibar, featuring private villas, sunset cruises, and ocean adventures.</p>
+                    <div class="card-actions" style="margin-top: auto;">
+                        <a href="enquire.html" class="btn btn-small btn-primary" data-en="Enquire Now" data-sw="Uliza Sasa">Enquire Now</a>
+                    </div>
+                </div>
+
+                <div class="experience-card-premium scroll-reveal">
+                    <div style="font-size: 2rem; margin-bottom: 15px;">🌍</div>
+                    <h4 style="font-size: 1.25rem; font-weight:700; color: var(--primary-green); margin-bottom: 15px;" data-en="Safari & Cultural Experience" data-sw="Safari na Uzoefu wa Kitamaduni">Safari & Cultural Experience</h4>
+                    <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;" data-en="Connect with local communities and ecosystems, blending classic wildlife viewing with meaningful cultural exchanges and community visits." data-sw="Unganeni na jamii za karibu na mifumo ya ikolojia, mkichanganya utazamaji wa wanyamapori na kubadilishana utamaduni wenye maana na ziara za kijamii.">Connect with local communities and ecosystems, blending classic wildlife viewing with meaningful cultural exchanges and community visits.</p>
+                    <div class="card-actions" style="margin-top: auto;">
+                        <a href="enquire.html" class="btn btn-small btn-primary" data-en="Enquire Now" data-sw="Uliza Sasa">Enquire Now</a>
+                    </div>
+                </div>
+
+                <div class="experience-card-premium scroll-reveal">
+                    <div style="font-size: 2rem; margin-bottom: 15px;">✨</div>
+                    <h4 style="font-size: 1.25rem; font-weight:700; color: var(--primary-green); margin-bottom: 15px;" data-en="Ultra-Luxury Romantic Journey" data-sw="Safari ya Kimapenzi ya Kifahari Zaidi">Ultra-Luxury Romantic Journey</h4>
+                    <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;" data-en="Enjoy the absolute pinnacle of luxury with private flights, world-renowned luxury lodges, personal butlers, and bespoke experiences throughout." data-sw="Furahia kilele kabisa cha anasa kwa safari za ndege za faragha, nyumba za kulala wageni za kifahari zinazojulikana duniani, wahudumu binafsi, na uzoefu wa kipekee kote.">Enjoy the absolute pinnacle of luxury with private flights, world-renowned luxury lodges, personal butlers, and bespoke experiences throughout.</p>
+                    <div class="card-actions" style="margin-top: auto;">
+                        <a href="enquire.html" class="btn btn-small btn-primary" data-en="Enquire Now" data-sw="Uliza Sasa">Enquire Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Luxury Accommodations -->
+    <section class="section">
+        <div class="container">
+            <div class="migration-grid-2">
+                <div class="scroll-reveal-left">
+                    <span class="sub-heading" data-en="WHERE YOU STAY" data-sw="MAHALI MNAPOLALA">WHERE YOU STAY</span>
+                    <h2 data-en="Luxury Accommodations" data-sw="Malazi ya Kifahari">Luxury Accommodations</h2>
+                    <p data-en="We carefully select exceptional lodges, tented camps, and beachfront resorts known for their comfort, privacy, stunning locations, and outstanding service." data-sw="Tunachagua kwa uangalifu nyumba za kulala wageni za kipekee, kambi za hema, na hoteli za ufukweni zinazojulikana kwa faraja, faragha, maeneo ya kuvutia, na huduma bora.">
+                        We carefully select exceptional lodges, tented camps, and beachfront resorts known for their comfort, privacy, stunning locations, and outstanding service.
+                    </p>
+                    <p data-en="Expect the following during your stay:" data-sw="Tarajia yafuatayo wakati wa kukaa kwenu:">
+                        Expect the following during your stay:
+                    </p>
+                    <ul class="comparison-list included">
+                        <li data-en="Private Suites with Plunge Pools" data-sw="Vyumba vya Faragha vyenye Bwawa la Kuogelea"><i class="fas fa-check-circle"></i> Private Suites with Plunge Pools</li>
+                        <li data-en="Romantic Settings & Campfires" data-sw="Mazingira ya Kimapenzi na Moto wa Kambi"><i class="fas fa-check-circle"></i> Romantic Settings & Campfires</li>
+                        <li data-en="Breathtaking Scenic Views" data-sw="Mandhari ya Kuvutia ya Asili"><i class="fas fa-check-circle"></i> Breathtaking Scenic Views</li>
+                        <li data-en="Fine Dining & Private Chefs" data-sw="Chakula Kizuri na Wapishi Binafsi"><i class="fas fa-check-circle"></i> Fine Dining & Private Chefs</li>
+                        <li data-en="Exceptional Warm Hospitality" data-sw="Ukarimu wa Joto Usio wa Kawaida"><i class="fas fa-check-circle"></i> Exceptional Warm Hospitality</li>
+                        <li data-en="Exclusive Honeymoon Amenities" data-sw="Huduma Maalum za Fungate"><i class="fas fa-check-circle"></i> Exclusive Honeymoon Amenities</li>
+                    </ul>
+                </div>
+                <div class="scroll-reveal-right">
+                    <div class="ever-changing-card">
+                        <h3 data-en="Secluded Wilderness Retreats" data-sw="Mafungo ya Porini ya Faragha">Secluded Wilderness Retreats</h3>
+                        <p data-en="Imagine staying in a private canvas villa under the stars, where the sounds of the African night lull you to sleep. From outdoor copper bathtubs overlooking the savannah to private plunge pools suspended in the treetops, our selected lodges offer unmatched privacy and romance." data-sw="Fikiria mkikaa kwenye jengo la hema la faragha chini ya nyota, ambapo sauti za usiku wa Afrika zinawabembeleza kulala. Kuanzia bafu za shaba za nje zinazotazama savanna hadi mabwawa ya kuogelea ya faragha yaliyosimamishwa kwenye vilele vya miti, lodges zetu zilizochaguliwa zinatoa faragha na mahaba yasiyo na kifani.">
+                            Imagine staying in a private canvas villa under the stars, where the sounds of the African night lull you to sleep. From outdoor copper bathtubs overlooking the savannah to private plunge pools suspended in the treetops, our selected lodges offer unmatched privacy and romance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Celebrate Love -->
+    <section class="section" style="background-color: var(--section-bg);">
+        <div class="container" style="max-width: 800px; text-align: center;">
+            <h2 data-en="Celebrate Love in the Heart of Africa" data-sw="Sherehekea Upendo Katikati ya Afrika">Celebrate Love in the Heart of Africa</h2>
+            <p style="font-size: 1.15rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 25px;" data-en="From thrilling wildlife encounters and unforgettable sunsets to luxurious accommodations and pristine beaches, Tanzania offers everything needed for a truly magical honeymoon." data-sw="Kuanzia kukutana na wanyamapori wa kusisimua na machweo ya jua yasiyosahaulika hadi malazi ya kifahari na fukwe safi, Tanzania inatoa kila kitu kinachohitajika kwa fungate ya kichawi kweli.">
+                From thrilling wildlife encounters and unforgettable sunsets to luxurious accommodations and pristine beaches, Tanzania offers everything needed for a truly magical honeymoon.
+            </p>
+            <p style="font-size: 1.15rem; line-height: 1.8; color: var(--text-muted);" data-en="Every moment is an opportunity to create memories you'll cherish forever. Whether you're watching a pride of lions on a morning game drive, enjoying a candlelit dinner beneath the stars, or relaxing on the shores of Zanzibar, your honeymoon will be filled with extraordinary experiences and unforgettable romance." data-sw="Kila wakati ni fursa ya kutengeneza kumbukumbu mtakazozithamini milele. Iwe mnasimamia kundi la simba kwenye safari ya asubuhi, mnafurahia chakula cha jioni cha mishumaa chini ya nyota, au mnasinzia kwenye fukwe za Zanzibar, fungate yenu itajazwa na uzoefu wa kipekee na mahaba yasiyo na kifani.">
+                Every moment is an opportunity to create memories you'll cherish forever. Whether you're watching a pride of lions on a morning game drive, enjoying a candlelit dinner beneath the stars, or relaxing on the shores of Zanzibar, your honeymoon will be filled with extraordinary experiences and unforgettable romance.
+            </p>
+        </div>
+    </section>
+
+    <!-- Begin Your Forever Adventure -->
+    <section class="section">
+        <div class="container" style="max-width: 800px; text-align: center;">
+            <span class="sub-heading" data-en="YOUR FOREVER BEGINS HERE" data-sw="MILELE YENU INAANZIA HAPA">YOUR FOREVER BEGINS HERE</span>
+            <h2 data-en="Begin Your Forever Adventure" data-sw="Anzeni Safari Yenu ya Milele">Begin Your Forever Adventure</h2>
+            <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 40px;" data-en="Love deserves an unforgettable beginning. Let Century Adventures create a honeymoon that is elegant, exciting, romantic, and uniquely yours." data-sw="Upendo unastahili mwanzo usiosahaulika. Acha Century Adventures ikutengenezee fungate ambayo ni ya kifahari, ya kusisimua, ya kimapenzi, na yako pekee.">
+                Love deserves an unforgettable beginning. Let Century Adventures create a honeymoon that is elegant, exciting, romantic, and uniquely yours.
+            </p>
+            <div style="font-size: 3rem; margin-bottom: 30px; letter-spacing: 10px;">🌍 🦁 ❤️ 🏖️ ✨</div>
+            <ul class="comparison-list included" style="display: inline-block; text-align: left; max-width: 600px; margin: 0 auto;">
+                <li style="margin-bottom: 15px;" data-en="Your Love Story Deserves an Extraordinary Destination" data-sw="Hadithi Yenu ya Upendo Inastahili Eneo Lisilo la Kawaida"><i class="fas fa-heart" style="color: #e24444;"></i> Your Love Story Deserves an Extraordinary Destination</li>
+                <li data-en="Discover Tanzania. Celebrate Love. Create Memories for a Lifetime." data-sw="Gundua Tanzania. Sherehekea Upendo. Tengeneza Kumbukumbu za Maisha."><i class="fas fa-heart" style="color: #e24444;"></i> Discover Tanzania. Celebrate Love. Create Memories for a Lifetime.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- CTA Parallax Banner -->
+    <section class="cta-parallax-banner" style="background-image: url('assets/century1.jpg');">
+        <div class="container">
+            <h2 data-en="Plan Your Dream Honeymoon Today" data-sw="Panga Fungate ya Ndoto Yako Leo">Plan Your Dream Honeymoon Today</h2>
+            <p data-en="Request a Personalized Honeymoon Safari Quote" data-sw="Omba Nukuu ya Safari ya Fungate Iliyobinafsishwa">Request a Personalized Honeymoon Safari Quote</p>
+            <div class="cta-btn-grid">
+                <a href="https://wa.me/255747115390" target="_blank" class="btn cta-btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span data-en="Contact Us on WhatsApp" data-sw="Wasiliana Nasi kwenye WhatsApp">Contact Us on WhatsApp</span>
+                </a>
+                <a href="enquire.html" class="btn btn-primary">
+                    <i class="fas fa-envelope"></i>
+                    <span data-en="Request a Free Quote" data-sw="Omba Nukuu ya Bure">Request a Free Quote</span>
+                </a>
+                <a href="book.html" class="btn btn-primary">
+                    <i class="fas fa-calendar-check"></i>
+                    <span data-en="Plan Your Honeymoon" data-sw="Panga Fungate Lako">Plan Your Honeymoon</span>
+                </a>
+                <a href="contact.html" class="btn btn-secondary" style="border: 2px solid white; color: white; background: transparent;">
+                    <i class="fas fa-info-circle"></i>
+                    <span data-en="Start Your Journey" data-sw="Anza Safari Yako">Start Your Journey</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Contact Info -->
+    <div class="footer-top">
+        <div class="container">
+            <h2><i class="fas fa-phone-alt"></i> +255 747 115 390</h2>
+            <a href="enquire.html" class="btn enquire-btn" data-en="CONTACT US TODAY!" data-sw="WASILIANA NASI LEO!">CONTACT US TODAY!</a>
+        </div>
+    </div>
+
+    <!-- Final Call to Action -->
+    <section class="section cta-section" style="background: var(--primary-gradient); padding: 50px 0; text-align: center; color: white; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <div class="container" style="position: relative; z-index: 2;">
+            <span class="sub-heading" style="color:var(--accent-gold); font-size: 0.8rem; letter-spacing: 2px;" data-en="YOUR JOURNEY TO AFRICA STARTS HERE" data-sw="SAFARI YAKO YA AFRIKA INAANZA HAPA">YOUR JOURNEY TO AFRICA STARTS HERE</span>
+            <h2 style="font-size: clamp(1.5rem, 3vw, 2.2rem); color: white; margin: 10px 0 16px;" data-en="Are you ready to explore Tanzania?" data-sw="Uko Tayari Kuichunguza Tanzania?">Are you ready to explore Tanzania?</h2>
+            
+            <p class="cta-description" style="max-width: 650px; margin: 0 auto 25px; font-size:0.9rem; line-height: 1.65; opacity: 0.9;">
+                <span class="cta-hide-mobile" data-en="Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. " data-sw="Fikiria kushuhudia uwindaji wa simba wakati wa machweo, kutazama tembo wakizurura kwa uhuru kwenye savanna zisizo na mwisho, kujionea Uhamiaji Mkuu, au kupumzika kwenye mchanga mweupe wa Zanzibar. ">Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. </span>
+                <span data-en="Let Century Adventures make those dreams come true." data-sw="Ruhusu Century Adventures kufanya ndoto hizo ziwe kweli.">Let Century Adventures make those dreams come true.</span>
+            </p>
+
+            <div class="cta-action-grid" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <a href="enquire.html" class="btn btn-primary cta-circle-btn" style="background: var(--accent-gold); color: #002b18; font-weight:800; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; text-decoration: none;" data-en="Plan Your Trip" data-sw="Panga Safari Yako">Plan Your Trip</a>
+                <a href="enquire.html" class="btn btn-outline cta-circle-btn secondary" style="border: 1px solid rgba(255,255,255,0.6); color: white; font-weight:700; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; background: transparent; text-decoration: none;" data-en="Request a Free Quote" data-sw="Omba Nukuu ya Bure">Request a Free Quote</a>
+            </div>
+            
+            <div style="margin-top: 18px;">
+                <a href="contact.html" style="color: var(--accent-gold); font-weight: 700; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.5px;" data-en="Contact Our Experts &rarr;" data-sw="Wasiliana na Wataalamu Wetu &rarr;">Contact Our Experts &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col info-col">
+                <h3 data-en="CONTACT US" data-sw="WASILIANA NASI">CONTACT US</h3>
+                <p><strong>Century Adventures</strong></p>
+                <p data-en="Asasi Tower, 4th Floor" data-sw="Asasi Tower, Ghorofa ya 4">Asasi Tower, 4th Floor</p>
+                <p data-en="Ohio Street" data-sw="Mtaa wa Ohio">Ohio Street</p>
+                <p><i class="fas fa-map-marker-alt"></i> Dar es Salaam, Tanzania</p>
+                <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/255747115390" target="_blank" style="color: inherit;">+255 747 115 390</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@centuryadventures.com" style="color: inherit;">info@centuryadventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:bookings@centuryadventures.com" style="color: inherit;">bookings@centuryadventures.com</a></p>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="POPULAR PLACES" data-sw="MAENEO MAARUFU">POPULAR PLACES</h3>
+                <ul>
+                    <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                    <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                    <li><a href="selous.html" data-en="Nyerere Park" data-sw="Hifadhi ya Nyerere">Nyerere Park</a></li>
+                    <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                    <li><a href="mikumi.html" data-en="Mikumi Park" data-sw="Hifadhi ya Mikumi">Mikumi Park</a></li>
+                    <li><a href="ngorongoro.html" data-en="Ngorongoro" data-sw="Ngorongoro">Ngorongoro</a></li>
+                    <li><a href="manyara.html" data-en="Manyara National Park" data-sw="Hifadhi ya Manyara">Manyara National Park</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL EXPERIENCE" data-sw="UZOEFU WA KUSAFIRI">TRAVEL EXPERIENCE</h3>
+                <ul>
+                    <li><a href="family-safaris.html" data-en="Family Trips" data-sw="Safari za Familia">Family Trips</a></li>
+                    <li><a href="honeymoon-safaris.html" data-en="Honeymoon Trips" data-sw="Safari za Fungate">Honeymoon Trips</a></li>
+                    <li><a href="migration-safaris.html" data-en="Migration Trips" data-sw="Safari za Uhamiaji">Migration Trips</a></li>
+                    <li><a href="volunteer.html" data-en="Volunteer Programs" data-sw="Mipango ya Kujitolea">Volunteer Programs</a></li>
+                    <li><a href="zanzibar-beach.html" data-en="Zanzibar Beach Holiday" data-sw="Likizo ya Pwani ya Zanzibar">Zanzibar Beach Holiday</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL RESOURCES" data-sw="MAARIFA YA SAFARI">TRAVEL RESOURCES</h3>
+                <ul>
+                    <li><a href="blog.html" data-en="Travel Blog" data-sw="Blogu yetu">Travel Blog</a></li>
+                    <li><a href="faq.html" data-en="FAQs" data-sw="Maswali ya Kawaida">FAQs</a></li>
+                    <li><a href="gallery.html" data-en="Photo Gallery" data-sw="Picha za Safari">Photo Gallery</a></li>
+                    <li><a href="testimonials.html" data-en="Testimonials" data-sw="Shuhuda">Testimonials</a></li>
+                    <li><a href="best-time-to-visit-tanzania.html" data-en="Best Time to Visit" data-sw="Wakati Bora wa Kuja">Best Time to Visit</a></li>
+                    <li><a href="health-safety-tanzania.html" data-en="Health &amp; Safety" data-sw="Afya na Usalama">Health &amp; Safety</a></li>
+                    <li><a href="obtaining-visa-tanzania.html" data-en="Visa Information" data-sw="Visa ya Safari">Visa Information</a></li>
+                    <li><a href="solo-female-travel-tanzania.html" data-en="Solo Female Travel" data-sw="Safari ya Wanawake">Solo Female Travel</a></li>
+                    <li><a href="what-to-wear-safari.html" data-en="Safari Packing Guide" data-sw="Nguo za Safari">Safari Packing Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <div class="tripadvisor-card">
+                    <img src="https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-66827-5.svg" alt="TripAdvisor">
+                    <h4 data-en="TripAdvisor Century Adventures" data-sw="TripAdvisor Century Adventures">TripAdvisor Century Adventures</h4>
+                    <p data-en="Ranked #1 on TripAdvisor" data-sw="Imeorodheshwa #1 TripAdvisor">Ranked #1 on TripAdvisor</p>
+                    <a href="https://www.tripadvisor.com/" target="_blank" class="btn btn-small" data-en="TripAdvisor Give Feedback Century Adventures" data-sw="TripAdvisor Toa Maoni Century Adventures">TripAdvisor Give Feedback Century Adventures</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61577731823809"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@CenturyAdventures" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/century_adventures?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/255747115390"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:info@centuryadventures.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; Copyright 2012 - 2026 | Century Adventures</p>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
+

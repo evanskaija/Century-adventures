@@ -1,0 +1,1364 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Experiences | Century Adventures Tanzania</title>
+    <meta name="description"
+        content="Make a lasting impact while discovering Tanzania. Join our community development, education, healthcare, and wildlife conservation volunteer programs.">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        (function () {
+            const theme = localStorage.getItem('century-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <style>
+        /* ══ Hero ══ */
+        .vol-hero {
+            position: relative;
+            height: 92vh;
+            min-height: 560px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        .vol-hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('assets/07TMMT-IM1107-mara-mara-tented-lodge-1475.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            transform: scale(1.05);
+            animation: heroZoom 18s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroZoom {
+            from {
+                transform: scale(1.05);
+            }
+
+            to {
+                transform: scale(1.12);
+            }
+        }
+
+        .vol-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0.18) 0%,
+                    rgba(0, 25, 12, 0.6) 50%,
+                    rgba(0, 25, 12, 0.88) 100%);
+        }
+
+        .vol-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 880px;
+            padding: 0 24px;
+        }
+
+        .vol-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(197, 160, 68, 0.2);
+            border: 1px solid rgba(197, 160, 68, 0.5);
+            color: var(--accent-gold);
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-bottom: 28px;
+            backdrop-filter: blur(10px);
+            animation: fadeDown 0.8s ease forwards;
+        }
+
+        .vol-hero-content h1 {
+            font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+            line-height: 1.15;
+            margin-bottom: 24px;
+            color: #fff;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+            animation: fadeUp 0.9s ease 0.15s both;
+        }
+
+        .vol-hero-content h1 em {
+            font-style: italic;
+            color: var(--accent-gold);
+        }
+
+        .vol-hero-tagline {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            opacity: 0.92;
+            max-width: 680px;
+            margin: 0 auto 38px;
+            line-height: 1.8;
+            animation: fadeUp 0.9s ease 0.3s both;
+        }
+
+        .vol-hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeUp 0.9s ease 0.45s both;
+        }
+
+        .btn-hero-primary {
+            background: var(--accent-gold);
+            color: #002b18 !important;
+            font-weight: 800;
+            padding: 15px 36px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            text-decoration: none !important;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 30px rgba(197, 160, 68, 0.4);
+        }
+
+        .btn-hero-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(197, 160, 68, 0.55);
+        }
+
+        .btn-hero-outline {
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            color: #fff !important;
+            font-weight: 700;
+            padding: 13px 32px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none !important;
+            transition: all 0.4s ease;
+        }
+
+        .btn-hero-outline:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: #fff;
+        }
+
+        .vol-hero-scroll {
+            position: absolute;
+            bottom: 36px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .vol-hero-scroll i {
+            font-size: 1.1rem;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(8px);
+            }
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ══ Stat Bar ══ */
+        .stat-bar {
+            background: var(--primary-green);
+            padding: 28px 0;
+        }
+
+        .stat-bar-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+        }
+
+        .stat-bar-item {
+            text-align: center;
+            padding: 10px 20px;
+            border-right: 1px solid rgba(255, 255, 255, 0.12);
+            color: #fff;
+        }
+
+        .stat-bar-item:last-child {
+            border-right: none;
+        }
+
+        .stat-bar-item .num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            display: block;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .stat-bar-item .lbl {
+            font-size: 0.75rem;
+            opacity: 0.75;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 640px) {
+            .stat-bar-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stat-bar-item:nth-child(2) {
+                border-right: none;
+            }
+        }
+
+        /* ══ Editorial Intro ══ */
+        .editorial-intro {
+            background: var(--bg-color);
+            padding: 100px 0 80px;
+        }
+
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        @media (max-width: 900px) {
+            .editorial-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .editorial-label {
+            display: inline-block;
+            color: var(--accent-gold);
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .editorial-heading {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            line-height: 1.15;
+            color: var(--primary-green);
+            margin-bottom: 30px;
+        }
+
+        [data-theme="dark"] .editorial-heading {
+            color: #fff;
+        }
+
+        .editorial-heading em {
+            font-style: italic;
+            color: var(--accent-gold);
+        }
+
+        .editorial-body p {
+            color: var(--text-muted);
+            font-size: 1.02rem;
+            line-height: 1.85;
+            margin-bottom: 22px;
+        }
+
+        .editorial-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .editorial-pull-quote {
+            background: linear-gradient(135deg, var(--primary-green) 0%, #002b18 100%);
+            border-radius: 24px;
+            padding: 48px 44px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .editorial-pull-quote::before {
+            content: '\201C';
+            position: absolute;
+            top: -20px;
+            left: 24px;
+            font-size: 10rem;
+            font-family: 'Playfair Display', serif;
+            color: rgba(197, 160, 68, 0.18);
+            line-height: 1;
+        }
+
+        .editorial-pull-quote p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.35rem;
+            line-height: 1.7;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 24px;
+        }
+
+        .editorial-pull-quote cite {
+            font-size: 0.8rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-style: normal;
+        }
+
+        /* ══ Volunteer Opportunities ══ */
+        .vol-opportunities {
+            background: var(--section-bg);
+            padding: 100px 0;
+        }
+
+        .vol-opportunities .section-top {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .vol-opportunities h2 {
+            font-size: clamp(1.9rem, 3.5vw, 3rem);
+            color: var(--primary-green);
+            margin-bottom: 16px;
+        }
+
+        [data-theme="dark"] .vol-opportunities h2 {
+            color: #fff;
+        }
+
+        .vol-opportunities .section-sub {
+            color: var(--text-muted);
+            max-width: 580px;
+            margin: 0 auto;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .opp-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        @media (max-width: 1024px) {
+            .opp-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .opp-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .opp-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px 32px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .opp-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .opp-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .opp-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-gold);
+        }
+
+        .opp-card-icon {
+            width: 58px;
+            height: 58px;
+            background: rgba(197, 160, 68, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 24px;
+            transition: var(--transition);
+        }
+
+        .opp-card:hover .opp-card-icon {
+            background: var(--accent-gold);
+            color: #fff;
+        }
+
+        .opp-card h3 {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            line-height: 1.35;
+        }
+
+        .opp-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.75;
+            margin: 0;
+            flex: 1;
+        }
+
+        /* ══ Program Benefits ══ */
+        .vol-benefits {
+            background: var(--bg-color);
+            padding: 100px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .vol-benefits .section-top {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .vol-benefits h2 {
+            font-size: clamp(1.9rem, 3.5vw, 3rem);
+            color: var(--primary-green);
+            margin-bottom: 16px;
+        }
+
+        [data-theme="dark"] .vol-benefits h2 {
+            color: #fff;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px 60px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            padding: 8px 0;
+        }
+
+        .benefit-icon {
+            width: 28px;
+            height: 28px;
+            background: rgba(0, 66, 37, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            font-size: 0.88rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        [data-theme="dark"] .benefit-icon {
+            background: rgba(242, 201, 76, 0.15);
+        }
+
+        /* ══ Who Can Volunteer ══ */
+        .vol-profiles {
+            background: var(--section-bg);
+            padding: 100px 0;
+        }
+
+        .vol-profiles .section-top {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .vol-profiles h2 {
+            font-size: clamp(1.9rem, 3.5vw, 3rem);
+            color: var(--primary-green);
+            margin-bottom: 16px;
+        }
+
+        [data-theme="dark"] .vol-profiles h2 {
+            color: #fff;
+        }
+
+        .profiles-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 1024px) {
+            .profiles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 580px) {
+            .profiles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .profile-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 36px 28px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-gold);
+        }
+
+        .profile-card-icon {
+            width: 54px;
+            height: 54px;
+            background: rgba(197, 160, 68, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--accent-gold);
+            margin: 0 auto 18px;
+        }
+
+        .profile-card h3 {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            margin: 0;
+        }
+
+        /* ══ What You'll Gain ══ */
+        .vol-gains {
+            background: var(--bg-color);
+            padding: 100px 0;
+        }
+
+        .vol-gains .section-top {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .vol-gains h2 {
+            font-size: clamp(1.9rem, 3.5vw, 3rem);
+            color: var(--primary-green);
+            margin-bottom: 16px;
+        }
+
+        [data-theme="dark"] .vol-gains h2 {
+            color: #fff;
+        }
+
+        .gains-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        @media (max-width: 900px) {
+            .gains-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 580px) {
+            .gains-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .gain-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px 32px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .gain-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-gold);
+        }
+
+        .gain-card-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 66, 37, 0.05);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--accent-gold);
+            flex-shrink: 0;
+        }
+
+        .gain-card h4 {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* ══ Closing CTA ══ */
+        .vol-closing {
+            background: var(--primary-gradient);
+            padding: 110px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vol-closing::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(197, 160, 68, 0.12) 0%, transparent 70%);
+            top: -200px;
+            right: -150px;
+            border-radius: 50%;
+        }
+
+        .vol-closing h2 {
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            color: #fff;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .vol-closing .closing-tagline {
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 620px;
+            margin: 0 auto 16px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .closing-emoji-row {
+            font-size: 1.8rem;
+            letter-spacing: 8px;
+            margin-bottom: 38px;
+            position: relative;
+        }
+
+        .vol-closing .closing-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .btn-closing-gold {
+            background: var(--accent-gold);
+            color: #002b18 !important;
+            font-weight: 800;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none !important;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 30px rgba(197, 160, 68, 0.3);
+        }
+
+        .btn-closing-gold:hover {
+            background: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-closing-outline {
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: #fff !important;
+            font-weight: 700;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none !important;
+            transition: all 0.4s ease;
+        }
+
+        .btn-closing-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+        }
+    </style>
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+    <div class="scroll-progress"></div>
+
+    <!-- ══ Header ══ -->
+    <header class="header" id="mainHeader">
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html"><img src="assets/logo.png" alt="Century Adventures Logo"></a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html" data-en="Home" data-sw="Nyumbani">Home</a></li>
+                    <li><a href="about.html" data-en="About Us" data-sw="Kuhusu Sisi">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-en="Destinations" data-sw="Maeneo">Destinations <i
+                                class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="katavi.html">Katavi National Park</a></li>
+                            <li><a href="selous.html">Selous Game Reserve</a></li>
+                            <li><a href="ruaha.html">Ruaha National Park</a></li>
+                            <li><a href="mikumi.html">Mikumi National Park</a></li>
+                            <li><a href="serengeti.html">Serengeti National Park</a></li>
+                            <li><a href="gombe.html">Gombe Stream National Park</a></li>
+                            <li><a href="ngorongoro.html">Ngorongoro Conservation Area</a></li>
+                            <li><a href="manyara.html">Lake Manyara National Park</a></li>
+                            <li><a href="tarangire.html">Tarangire National Park</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="safaris.html" data-en="TOURS & SAFARIS" data-sw="SAFARI NA ZIARA">TOURS & SAFARIS</a></li>
+                    <li><a href="experiences.html" data-en="Experiences" data-sw="Uzoefu">Experiences</a></li>
+                    <li><a href="volunteer.html" class="active" data-en="Volunteer" data-sw="Kujitolea">Volunteer</a>
+                    </li>
+                    <li><a href="vehicles.html" data-en="Safari Vehicles" data-sw="Magari ya Safari">Safari Vehicles</a>
+                    </li>
+                    <li><a href="contact.html" data-en="Contact Us" data-sw="Wasiliana Nasi">Contact Us</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-toggle" id="mobile-toggle" onclick="toggleMobileMenu()"
+                aria-label="Open navigation menu">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </button>
+            <div class="header-actions">
+                <div class="header-toggles">
+                    <button class="toggle-btn lang-toggle" onclick="toggleLang()">SW</button>
+                    <button class="toggle-btn theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+                </div>
+                <a href="enquire.html" class="btn btn-primary enquire-btn" data-en="ENQUIRE" data-sw="ULIZA">ENQUIRE</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ══ Hero ══ -->
+    <section class="vol-hero" id="home">
+        <div class="vol-hero-bg"></div>
+        <div class="vol-hero-overlay"></div>
+        <div class="vol-hero-content">
+            <div class="vol-hero-badge">
+                <i class="fas fa-hands-helping"></i>
+                <span data-en="Travel With Purpose" data-sw="Safari yenye Kusudi">Travel With Purpose</span>
+            </div>
+            <h1 data-en="Volunteer Experiences in Tanzania" data-sw="Uzoefu wa Kujitolea Tanzania">
+                Volunteer Experiences in Tanzania
+            </h1>
+            <p class="vol-hero-tagline"
+                data-en="Make a lasting impact while discovering the beauty, wildlife, and rich culture of East Africa."
+                data-sw="Tengeneza athari ya kudumu wakati ukigundua uzuri, wanyamapori, na utamaduni tajiri wa Afrika Mashariki.">
+                Make a lasting impact while discovering the beauty, wildlife, and rich culture of East Africa.
+            </p>
+            <div class="vol-hero-actions">
+                <a href="#opportunities" class="btn-hero-primary" data-en="VIEW OPPORTUNITIES"
+                    data-sw="ANGALIA FURSA">VIEW OPPORTUNITIES</a>
+                <a href="contact.html" class="btn-hero-outline" data-en="APPLY TO VOLUNTEER"
+                    data-sw="OMBA KUJITOLEA">APPLY TO VOLUNTEER</a>
+            </div>
+        </div>
+        <div class="vol-hero-scroll">
+            <span>SCROLL</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- ══ Stat Bar ══ -->
+    <div class="stat-bar">
+        <div class="container">
+            <div class="stat-bar-grid">
+                <div class="stat-bar-item">
+                    <span class="num">12</span>
+                    <span class="lbl" data-en="Impact Programs" data-sw="Programu za Athari">Impact Programs</span>
+                </div>
+                <div class="stat-bar-item">
+                    <span class="num">500+</span>
+                    <span class="lbl" data-en="Volunteers Placed" data-sw="Wajitoleaji Waliofika">Volunteers
+                        Placed</span>
+                </div>
+                <div class="stat-bar-item">
+                    <span class="num">50k+</span>
+                    <span class="lbl" data-en="Hours Contributed" data-sw="Muda Uliochangia">Hours Contributed</span>
+                </div>
+                <div class="stat-bar-item">
+                    <span class="num">15+</span>
+                    <span class="lbl" data-en="Partner Communities" data-sw="Jamii Washirika">Partner Communities</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ Editorial Intro ══ -->
+    <section class="editorial-intro">
+        <div class="container">
+            <div class="editorial-grid">
+                <div>
+                    <span class="editorial-label" data-en="VOLUNTEER EXPERIENCES"
+                        data-sw="UZOEFU WA KUJITOLEA">VOLUNTEER EXPERIENCES</span>
+                    <h2 class="editorial-heading" data-en="Make a Lasting Impact While Discovering Tanzania"
+                        data-sw="Tengeneza Athari ya Kudumu Wakati Ukigundua Tanzania">
+                        Make a Lasting Impact While Discovering Tanzania
+                    </h2>
+                    <div class="editorial-body">
+                        <p data-en="Our volunteer programs provide a unique opportunity to contribute to meaningful community and conservation projects while experiencing the culture, wildlife, and natural beauty of Tanzania."
+                            data-sw="Programu zetu za kujitolea zinatoa fursa ya kipekee ya kuchangia miradi yenye maana ya jamii na uhifadhi wakati ukijionea utamaduni, wanyamapori, na uzuri wa asili wa Tanzania.">
+                            Our volunteer programs provide a unique opportunity to contribute to meaningful community
+                            and conservation projects while experiencing the culture, wildlife, and natural beauty of
+                            Tanzania.
+                        </p>
+                        <p data-en="Whether you're a student, professional, retiree, or traveler seeking purpose-driven adventures, our programs are designed to create positive change for both volunteers and local communities."
+                            data-sw="Iwe wewe ni mwanafunzi, mtaalamu, mstaafu, au msafiri unayetafuta safari zenye malengo, programu zetu zimeundwa kuleta mabadiliko chanya kwa wote wawili wajitoleaji na jamii za mitaa.">
+                            Whether you're a student, professional, retiree, or traveler seeking purpose-driven
+                            adventures, our programs are designed to create positive change for both volunteers and
+                            local communities.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div class="editorial-pull-quote scroll-reveal">
+                        <p data-en="&ldquo;The best way to find yourself is to lose yourself in the service of others.&rdquo;"
+                            data-sw="&ldquo;Njia bora ya kujipata ni kujipoteza katika huduma kwa wengine.&rdquo;">
+                            "The best way to find yourself is to lose yourself in the service of others."
+                        </p>
+                        <cite data-en="— Mahatma Gandhi" data-sw="— Mahatma Gandhi">— Mahatma Gandhi</cite>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ Volunteer Opportunities ══ -->
+    <section class="vol-opportunities" id="opportunities">
+        <div class="container">
+            <div class="section-top">
+                <span class="sub-heading" data-en="WHERE YOU CAN SERVE" data-sw="SEHEMU YA KUTUMIKIA">WHERE YOU CAN
+                    SERVE</span>
+                <h2 data-en="Volunteer Opportunities" data-sw="Fursa za Kujitolea">Volunteer Opportunities</h2>
+                <p class="section-sub"
+                    data-en="Explore our specialized volunteer tracks and find the project that aligns with your passions, skills, and goals."
+                    data-sw="Chunguza programu zetu maalum za kujitolea na upate mradi unaoendana na shauku, ujuzi na malengo yako.">
+                    Explore our specialized volunteer tracks and find the project that aligns with your passions,
+                    skills, and goals.
+                </p>
+            </div>
+
+            <div class="opp-grid">
+                <!-- Opp 1 -->
+                <div class="opp-card scroll-reveal">
+                    <div class="opp-card-icon"><i class="fas fa-book-reader" style="color: var(--accent-gold);"></i>
+                    </div>
+                    <h3 data-en="📚 Education &amp; Teaching Support" data-sw="📚 Usaidizi wa Elimu na Ufundishaji">📚
+                        Education &amp; Teaching Support</h3>
+                    <p data-en="Assist teachers, support classroom activities, organize educational workshops, and help students develop valuable skills."
+                        data-sw="Saidia walimu, saidia shughuli za darasani, andaa warsha za elimu, na wasaidie wanafunzi kukuza ujuzi wenye thamani.">
+                        Assist teachers, support classroom activities, organize educational workshops, and help students
+                        develop valuable skills.
+                    </p>
+                </div>
+                <!-- Opp 2 -->
+                <div class="opp-card scroll-reveal">
+                    <div class="opp-card-icon"><i class="fas fa-baby" style="color: var(--accent-gold);"></i></div>
+                    <h3 data-en="👶 Child Development Programs" data-sw="👶 Programu za Maendeleo ya Mtoto">👶 Child
+                        Development Programs</h3>
+                    <p data-en="Support childcare centers, after-school activities, mentorship programs, and educational initiatives for children."
+                        data-sw="Saidia vituo vya malezi ya watoto, shughuli za baada ya shule, programu za ushauri, na mipango ya elimu kwa watoto.">
+                        Support childcare centers, after-school activities, mentorship programs, and educational
+                        initiatives for children.
+                    </p>
+                </div>
+                <!-- Opp 3 -->
+                <div class="opp-card scroll-reveal">
+                    <div class="opp-card-icon"><i class="fas fa-clinic-medical" style="color: var(--accent-gold);"></i>
+                    </div>
+                    <h3 data-en="🏥 Healthcare &amp; Community Outreach"
+                        data-sw="🏥 Huduma ya Afya na Ufikiaji wa Jamii">🏥 Healthcare &amp; Community Outreach</h3>
+                    <p data-en="Participate in health awareness campaigns, community wellness programs, and public health initiatives alongside local professionals."
+                        data-sw="Shiriki katika kampeni za uelewa wa afya, programu za ustawi wa jamii, na mipango ya afya ya umma pamoja na wataalamu wa ndani.">
+                        Participate in health awareness campaigns, community wellness programs, and public health
+                        initiatives alongside local professionals.
+                    </p>
+                </div>
+                <!-- Opp 4 -->
+                <div class="opp-card scroll-reveal">
+                    <div class="opp-card-icon"><i class="fas fa-seedling" style="color: var(--accent-gold);"></i></div>
+                    <h3 data-en="🌱 Environmental Conservation" data-sw="🌱 Uhifadhi wa Mazingira">🌱 Environmental
+                        Conservation</h3>
+                    <p data-en="Join tree-planting projects, ecosystem restoration efforts, waste management campaigns, and sustainability initiatives."
+                        data-sw="Jiunge na miradi ya kupanda miti, juhudi za kurejesha mfumo wa ikolojia, kampeni za udhibiti wa taka, na mipango ya uendelevu.">
+                        Join tree-planting projects, ecosystem restoration efforts, waste management campaigns, and
+                        sustainability initiatives.
+                    </p>
+                </div>
+                <!-- Opp 5 -->
+                <div class="opp-card scroll-reveal">
+                    <div class="opp-card-icon"><i class="fas fa-paw" style="color: var(--accent-gold);"></i></div>
+                    <h3 data-en="🦁 Wildlife &amp; Conservation Support"
+                        data-sw="🦁 Usaidizi wa Wanyamapori na Uhifadhi">🦁 Wildlife &amp; Conservation Support</h3>
+                    <p data-en="Contribute to wildlife conservation awareness programs and support projects focused on protecting Tanzania's natural resources."
+                        data-sw="Changia katika programu za uelewa wa uhifadhi wa wanyamapori na usaidie miradi inayolenga kulinda maliasili za Tanzania.">
+                        Contribute to wildlife conservation awareness programs and support projects focused on
+                        protecting Tanzania's natural resources.
+                    </p>
+                </div>
+                <!-- Opp 6 -->
+                <div class="opp-card scroll-reveal">
+                    <div class="opp-card-icon"><i class="fas fa-tint" style="color: var(--accent-gold);"></i></div>
+                    <h3 data-en="💧 Water &amp; Sanitation Projects" data-sw="💧 Miradi ya Maji na Usafi">💧 Water &amp;
+                        Sanitation Projects</h3>
+                    <p data-en="Assist with community programs that promote access to clean water, hygiene education, and sanitation improvements."
+                        data-sw="Saidia kwa programu za jamii zinazohimiza upatikanaji wa maji safi, elimu ya usafi wa mazingira, na maboresho ya usafi.">
+                        Assist with community programs that promote access to clean water, hygiene education, and
+                        sanitation improvements.
+                    </p>
+                </div>
+                <!-- Opp 7 -->
+                <div class="opp-card scroll-reveal">
+                    <div class="opp-card-icon"><i class="fas fa-home" style="color: var(--accent-gold);"></i></div>
+                    <h3 data-en="🏡 Community Development" data-sw="🏡 Maendeleo ya Jamii">🏡 Community Development</h3>
+                    <p data-en="Work alongside local communities on projects that enhance livelihoods, infrastructure, and sustainable development."
+                        data-sw="Fanya kazi pamoja na jamii za mitaa kwenye miradi inayoboresha maisha, miundombinu, na maendeleo endelevu.">
+                        Work alongside local communities on projects that enhance livelihoods, infrastructure, and
+                        sustainable development.
+                    </p>
+                </div>
+                <!-- Opp 8 -->
+                <div class="opp-card scroll-reveal">
+                    <div class="opp-card-icon"><i class="fas fa-female" style="color: var(--accent-gold);"></i></div>
+                    <h3 data-en="👩💼 Women Empowerment Initiatives" data-sw="👩💼 Mipango ya Kukuza Uwezo wa Wanawake">
+                        👩💼 Women Empowerment Initiatives</h3>
+                    <p data-en="Support programs that promote entrepreneurship, education, leadership, and economic opportunities for women."
+                        data-sw="Saidia programu zinazohimiza ujasiriamali, elimu, uongozi, na fursa za kiuchumi kwa wanawake.">
+                        Support programs that promote entrepreneurship, education, leadership, and economic
+                        opportunities for women.
+                    </p>
+                </div>
+                <!-- Opp 9 -->
+                <div class="opp-card scroll-reveal">
+                    <div class="opp-card-icon"><i class="fas fa-running" style="color: var(--accent-gold);"></i></div>
+                    <h3 data-en="⚽ Youth Leadership &amp; Sports" data-sw="⚽ Uongozi wa Vijana na Michezo">⚽ Youth
+                        Leadership &amp; Sports</h3>
+                    <p data-en="Help organize sports activities, leadership workshops, life-skills training, and youth development programs."
+                        data-sw="Saidia kuandaa shughuli za michezo, warsha za uongozi, mafunzo ya stadi za maisha, na programu za maendeleo ya vijana.">
+                        Help organize sports activities, leadership workshops, life-skills training, and youth
+                        development programs.
+                    </p>
+                </div>
+                <!-- Opp 10 -->
+                <div class="opp-card scroll-reveal">
+                    <div class="opp-card-icon"><i class="fas fa-paint-brush" style="color: var(--accent-gold);"></i>
+                    </div>
+                    <h3 data-en="🎨 Arts, Culture &amp; Creative Projects"
+                        data-sw="🎨 Sanaa, Utamaduni na Miradi ya Ubunifu">🎨 Arts, Culture &amp; Creative Projects</h3>
+                    <p data-en="Share creative skills through art, music, dance, photography, and cultural exchange activities."
+                        data-sw="Shiriki ujuzi wa ubunifu kupitia sanaa, muziki, ngoma, upigaji picha, na shughuli za kubadilishana utamaduni.">
+                        Share creative skills through art, music, dance, photography, and cultural exchange activities.
+                    </p>
+                </div>
+                <!-- Opp 11 -->
+                <div class="opp-card scroll-reveal">
+                    <div class="opp-card-icon"><i class="fas fa-laptop" style="color: var(--accent-gold);"></i></div>
+                    <h3 data-en="💻 Digital Skills &amp; Tech Training"
+                        data-sw="💻 Ujuzi wa Kidijitali na Mafunzo ya Teknolojia">💻 Digital Skills &amp; Tech Training
+                    </h3>
+                    <p data-en="Assist with computer literacy, digital education, entrepreneurship training, and technology-based learning programs."
+                        data-sw="Saidia katika kujifunza kompyuta, elimu ya kidijitali, mafunzo ya ujasiriamali, na programu za kujifunza kulingana na teknolojia.">
+                        Assist with computer literacy, digital education, entrepreneurship training, and
+                        technology-based learning programs.
+                    </p>
+                </div>
+                <!-- Opp 12 -->
+                <div class="opp-card scroll-reveal">
+                    <div class="opp-card-icon"><i class="fas fa-chart-line" style="color: var(--accent-gold);"></i>
+                    </div>
+                    <h3 data-en="📈 Business &amp; Entrepreneurship" data-sw="📈 Usaidizi wa Biashara na Ujasiriamali">
+                        📈 Business &amp; Entrepreneurship</h3>
+                    <p data-en="Mentor aspiring entrepreneurs and contribute to projects that strengthen local businesses and economic growth."
+                        data-sw="Mshauri wajasiriamali wanaochipukia na uchangie miradi inayochochea biashara za ndani na ukuaji wa kiuchumi.">
+                        Mentor aspiring entrepreneurs and contribute to projects that strengthen local businesses and
+                        economic growth.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ Program Benefits ══ -->
+    <section class="vol-benefits">
+        <div class="container">
+            <div class="section-top">
+                <span class="sub-heading" data-en="WHY JOIN US" data-sw="KWA NINI UJIUNGE NASI">WHY JOIN US</span>
+                <h2 data-en="Program Benefits" data-sw="Faida za Programu">Program Benefits</h2>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-icon"><i class="fas fa-check"></i></div>
+                    <span data-en="Professional Placement Coordination"
+                        data-sw="Uratibu wa Nafasi wa Kitaalamu">Professional Placement Coordination</span>
+                </div>
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-icon"><i class="fas fa-check"></i></div>
+                    <span data-en="Local Orientation and Support" data-sw="Mwelekeo wa Ndani na Msaada">Local
+                        Orientation and Support</span>
+                </div>
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-icon"><i class="fas fa-check"></i></div>
+                    <span data-en="Safe and Welcoming Environment" data-sw="Mazingira Salama na yenye Kukaribisha">Safe
+                        and Welcoming Environment</span>
+                </div>
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-icon"><i class="fas fa-check"></i></div>
+                    <span data-en="Flexible Short-Term and Long-Term Programs"
+                        data-sw="Programu Flexible za Muda Mfupi na Mrefu">Flexible Short-Term and Long-Term
+                        Programs</span>
+                </div>
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-icon"><i class="fas fa-check"></i></div>
+                    <span data-en="Cultural Immersion Opportunities" data-sw="Fursa za Kujifunza Utamaduni">Cultural
+                        Immersion Opportunities</span>
+                </div>
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-icon"><i class="fas fa-check"></i></div>
+                    <span data-en="Certificate of Participation" data-sw="Cheti cha Ushiriki">Certificate of
+                        Participation</span>
+                </div>
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-icon"><i class="fas fa-check"></i></div>
+                    <span data-en="Opportunities for Students and Professionals"
+                        data-sw="Fursa kwa Wanafunzi na Wataalamu">Opportunities for Students and Professionals</span>
+                </div>
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-icon"><i class="fas fa-check"></i></div>
+                    <span data-en="Group and Corporate Volunteer Programs"
+                        data-sw="Programu za Kujitolea za Vikundi na Mashirika">Group and Corporate Volunteer
+                        Programs</span>
+                </div>
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-icon"><i class="fas fa-check"></i></div>
+                    <span data-en="Community-Based and Sustainable Projects"
+                        data-sw="Miradi ya Jamii na Endelevu">Community-Based and Sustainable Projects</span>
+                </div>
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-icon"><i class="fas fa-check"></i></div>
+                    <span data-en="Optional Safari and Excursion Packages"
+                        data-sw="Vifurushi vya Hiari vya Safari na Matembezi">Optional Safari and Excursion
+                        Packages</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ Who Can Volunteer ══ -->
+    <section class="vol-profiles">
+        <div class="container">
+            <div class="section-top">
+                <span class="sub-heading" data-en="ELIGIBILITY" data-sw="WANAOWEZA SHIRIKI">ELIGIBILITY</span>
+                <h2 data-en="Who Can Volunteer?" data-sw="Nani Anaweza Kujitolea?">Who Can Volunteer?</h2>
+            </div>
+
+            <div class="profiles-grid">
+                <div class="profile-card scroll-reveal">
+                    <div class="profile-card-icon"><i class="fas fa-user-graduate"></i></div>
+                    <h3 data-en="Students and Graduates" data-sw="Wanafunzi na Wahitimu">Students and Graduates</h3>
+                </div>
+                <div class="profile-card scroll-reveal">
+                    <div class="profile-card-icon"><i class="fas fa-briefcase"></i></div>
+                    <h3 data-en="Professionals and Skilled Volunteers" data-sw="Wataalamu na Wajitoleaji wenye Ujuzi">
+                        Professionals &amp; Skilled</h3>
+                </div>
+                <div class="profile-card scroll-reveal">
+                    <div class="profile-card-icon"><i class="fas fa-route"></i></div>
+                    <h3 data-en="Gap Year Travelers" data-sw="Wasafiri wa Gap Year">Gap Year Travelers</h3>
+                </div>
+                <div class="profile-card scroll-reveal">
+                    <div class="profile-card-icon"><i class="fas fa-users"></i></div>
+                    <h3 data-en="Families and Groups" data-sw="Familia na Vikundi">Families and Groups</h3>
+                </div>
+                <div class="profile-card scroll-reveal">
+                    <div class="profile-card-icon"><i class="fas fa-building"></i></div>
+                    <h3 data-en="Corporate Teams" data-sw="Vikundi vya Makampuni">Corporate Teams</h3>
+                </div>
+                <div class="profile-card scroll-reveal">
+                    <div class="profile-card-icon"><i class="fas fa-heart"></i></div>
+                    <h3 data-en="Retirees" data-sw="Wastaafu">Retirees</h3>
+                </div>
+                <div class="profile-card scroll-reveal">
+                    <div class="profile-card-icon"><i class="fas fa-globe"></i></div>
+                    <h3 data-en="International Visitors" data-sw="Wasafiri wa Kimataifa">International Visitors</h3>
+                </div>
+                <div class="profile-card scroll-reveal">
+                    <div class="profile-card-icon"><i class="fas fa-hands"></i></div>
+                    <h3 data-en="Faith-Based &amp; Community Groups" data-sw="Mashirika ya Kidini na Kijamii">
+                        Faith-Based &amp; Communities</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ What You'll Gain ══ -->
+    <section class="vol-gains">
+        <div class="container">
+            <div class="section-top">
+                <span class="sub-heading" data-en="PERSONAL GROWTH" data-sw="KUKUA KIBINAFSI">PERSONAL GROWTH</span>
+                <h2 data-en="What You'll Gain" data-sw="Utakachopata">What You'll Gain</h2>
+            </div>
+
+            <div class="gains-grid">
+                <div class="gain-card scroll-reveal">
+                    <div class="gain-card-icon"><i class="fas fa-globe-africa"></i></div>
+                    <div>
+                        <h4 data-en="🌍 Meaningful Cultural Exchange" data-sw="🌍 Ubadilishanaji wa Utamaduni">🌍
+                            Meaningful Cultural Exchange</h4>
+                    </div>
+                </div>
+                <div class="gain-card scroll-reveal">
+                    <div class="gain-card-icon"><i class="fas fa-handshake"></i></div>
+                    <div>
+                        <h4 data-en="🤝 Lifelong Friendships &amp; Connections" data-sw="🤝 Urafiki wa Maisha Yote">🤝
+                            Lifelong Friendships &amp; Connections</h4>
+                    </div>
+                </div>
+                <div class="gain-card scroll-reveal">
+                    <div class="gain-card-icon"><i class="fas fa-book-open"></i></div>
+                    <div>
+                        <h4 data-en="📖 Personal &amp; Professional Growth"
+                            data-sw="📖 Kukua Kibinafsi &amp; Kitaaluma">📖 Personal &amp; Professional Growth</h4>
+                    </div>
+                </div>
+                <div class="gain-card scroll-reveal">
+                    <div class="gain-card-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div>
+                        <h4 data-en="💡 New Skills and Experiences" data-sw="💡 Ujuzi Mpya na Uzoefu">💡 New Skills and
+                            Experiences</h4>
+                    </div>
+                </div>
+                <div class="gain-card scroll-reveal">
+                    <div class="gain-card-icon"><i class="fas fa-heart"></i></div>
+                    <div>
+                        <h4 data-en="❤️ Satisfaction of Making Positive Impact"
+                            data-sw="❤️ Kuridhika kwa Kufanya Athari Chanya">❤️ Satisfaction of Making Impact</h4>
+                    </div>
+                </div>
+                <div class="gain-card scroll-reveal">
+                    <div class="gain-card-icon"><i class="fas fa-camera-retro"></i></div>
+                    <div>
+                        <h4 data-en="📸 Unforgettable Memories of Tanzania" data-sw="📸 Kumbukumbu za Tanzania">📸
+                            Unforgettable Memories of Tanzania</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ══ Footer ══ -->
+    <!-- Footer Contact Info -->
+    <div class="footer-top">
+        <div class="container">
+            <h2><i class="fas fa-phone-alt"></i> +255 747 115 390</h2>
+            <a href="enquire.html" class="btn enquire-btn" data-en="CONTACT US TODAY!" data-sw="WASILIANA NASI LEO!">CONTACT US TODAY!</a>
+        </div>
+    </div>
+
+    <!-- Final Call to Action -->
+    <section class="section cta-section" style="background: var(--primary-gradient); padding: 50px 0; text-align: center; color: white; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <div class="container" style="position: relative; z-index: 2;">
+            <span class="sub-heading" style="color:var(--accent-gold); font-size: 0.8rem; letter-spacing: 2px;" data-en="YOUR JOURNEY TO AFRICA STARTS HERE" data-sw="SAFARI YAKO YA AFRIKA INAANZA HAPA">YOUR JOURNEY TO AFRICA STARTS HERE</span>
+            <h2 style="font-size: clamp(1.5rem, 3vw, 2.2rem); color: white; margin: 10px 0 16px;" data-en="Are you ready to explore Tanzania?" data-sw="Uko Tayari Kuichunguza Tanzania?">Are you ready to explore Tanzania?</h2>
+            
+            <p class="cta-description" style="max-width: 650px; margin: 0 auto 25px; font-size:0.9rem; line-height: 1.65; opacity: 0.9;">
+                <span class="cta-hide-mobile" data-en="Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. " data-sw="Fikiria kushuhudia uwindaji wa simba wakati wa machweo, kutazama tembo wakizurura kwa uhuru kwenye savanna zisizo na mwisho, kujionea Uhamiaji Mkuu, au kupumzika kwenye mchanga mweupe wa Zanzibar. ">Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. </span>
+                <span data-en="Let Century Adventures make those dreams come true." data-sw="Ruhusu Century Adventures kufanya ndoto hizo ziwe kweli.">Let Century Adventures make those dreams come true.</span>
+            </p>
+
+            <div class="cta-action-grid" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <a href="enquire.html" class="btn btn-primary cta-circle-btn" style="background: var(--accent-gold); color: #002b18; font-weight:800; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; text-decoration: none;" data-en="Plan Your Trip" data-sw="Panga Safari Yako">Plan Your Trip</a>
+                <a href="enquire.html" class="btn btn-outline cta-circle-btn secondary" style="border: 1px solid rgba(255,255,255,0.6); color: white; font-weight:700; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; background: transparent; text-decoration: none;" data-en="Request a Free Quote" data-sw="Omba Nukuu ya Bure">Request a Free Quote</a>
+            </div>
+            
+            <div style="margin-top: 18px;">
+                <a href="contact.html" style="color: var(--accent-gold); font-weight: 700; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.5px;" data-en="Contact Our Experts &rarr;" data-sw="Wasiliana na Wataalamu Wetu &rarr;">Contact Our Experts &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col info-col">
+                <h3 data-en="CONTACT US" data-sw="WASILIANA NASI">CONTACT US</h3>
+                <p><strong>Century Adventures</strong></p>
+                <p data-en="Asasi Tower, 4th Floor" data-sw="Asasi Tower, Ghorofa ya 4">Asasi Tower, 4th Floor</p>
+                <p data-en="Ohio Street" data-sw="Mtaa wa Ohio">Ohio Street</p>
+                <p><i class="fas fa-map-marker-alt"></i> Dar es Salaam, Tanzania</p>
+                <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/255747115390" target="_blank" style="color: inherit;">+255 747 115 390</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@centuryadventures.com" style="color: inherit;">info@centuryadventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:bookings@centuryadventures.com" style="color: inherit;">bookings@centuryadventures.com</a></p>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="POPULAR PLACES" data-sw="MAENEO MAARUFU">POPULAR PLACES</h3>
+                <ul>
+                    <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                    <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                    <li><a href="selous.html" data-en="Nyerere Park" data-sw="Hifadhi ya Nyerere">Nyerere Park</a></li>
+                    <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                    <li><a href="mikumi.html" data-en="Mikumi Park" data-sw="Hifadhi ya Mikumi">Mikumi Park</a></li>
+                    <li><a href="ngorongoro.html" data-en="Ngorongoro" data-sw="Ngorongoro">Ngorongoro</a></li>
+                    <li><a href="manyara.html" data-en="Manyara National Park" data-sw="Hifadhi ya Manyara">Manyara National Park</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL EXPERIENCE" data-sw="UZOEFU WA KUSAFIRI">TRAVEL EXPERIENCE</h3>
+                <ul>
+                    <li><a href="family-safaris.html" data-en="Family Trips" data-sw="Safari za Familia">Family Trips</a></li>
+                    <li><a href="honeymoon-safaris.html" data-en="Honeymoon Trips" data-sw="Safari za Fungate">Honeymoon Trips</a></li>
+                    <li><a href="migration-safaris.html" data-en="Migration Trips" data-sw="Safari za Uhamiaji">Migration Trips</a></li>
+                    <li><a href="volunteer.html" data-en="Volunteer Programs" data-sw="Mipango ya Kujitolea">Volunteer Programs</a></li>
+                    <li><a href="zanzibar-beach.html" data-en="Zanzibar Beach Holiday" data-sw="Likizo ya Pwani ya Zanzibar">Zanzibar Beach Holiday</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL RESOURCES" data-sw="MAARIFA YA SAFARI">TRAVEL RESOURCES</h3>
+                <ul>
+                    <li><a href="blog.html" data-en="Travel Blog" data-sw="Blogu yetu">Travel Blog</a></li>
+                    <li><a href="faq.html" data-en="FAQs" data-sw="Maswali ya Kawaida">FAQs</a></li>
+                    <li><a href="gallery.html" data-en="Photo Gallery" data-sw="Picha za Safari">Photo Gallery</a></li>
+                    <li><a href="testimonials.html" data-en="Testimonials" data-sw="Shuhuda">Testimonials</a></li>
+                    <li><a href="best-time-to-visit-tanzania.html" data-en="Best Time to Visit" data-sw="Wakati Bora wa Kuja">Best Time to Visit</a></li>
+                    <li><a href="health-safety-tanzania.html" data-en="Health &amp; Safety" data-sw="Afya na Usalama">Health &amp; Safety</a></li>
+                    <li><a href="obtaining-visa-tanzania.html" data-en="Visa Information" data-sw="Visa ya Safari">Visa Information</a></li>
+                    <li><a href="solo-female-travel-tanzania.html" data-en="Solo Female Travel" data-sw="Safari ya Wanawake">Solo Female Travel</a></li>
+                    <li><a href="what-to-wear-safari.html" data-en="Safari Packing Guide" data-sw="Nguo za Safari">Safari Packing Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <div class="tripadvisor-card">
+                    <img src="https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-66827-5.svg" alt="TripAdvisor">
+                    <h4 data-en="TripAdvisor Century Adventures" data-sw="TripAdvisor Century Adventures">TripAdvisor Century Adventures</h4>
+                    <p data-en="Ranked #1 on TripAdvisor" data-sw="Imeorodheshwa #1 TripAdvisor">Ranked #1 on TripAdvisor</p>
+                    <a href="https://www.tripadvisor.com/" target="_blank" class="btn btn-small" data-en="TripAdvisor Give Feedback Century Adventures" data-sw="TripAdvisor Toa Maoni Century Adventures">TripAdvisor Give Feedback Century Adventures</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61577731823809"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@CenturyAdventures" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/century_adventures?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/255747115390"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:info@centuryadventures.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; Copyright 2012 - 2026 | Century Adventures</p>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

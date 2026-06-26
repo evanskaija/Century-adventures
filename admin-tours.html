@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Tours | Century Admin</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <script src="admin-common.js" defer></script>
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 24px;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 24px;
+            color: #64748b;
+            cursor: pointer;
+            background: none; border: none;
+        }
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        @media (max-width: 500px) {
+            .modal-content {
+                padding: 20px !important;
+            }
+            .form-row {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+        .btn-primary {
+            background: #5c5cfc;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 10px 20px;
+            font-weight: 600;
+            font-size: 13.5px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(92, 92, 252, 0.2);
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary:hover {
+            background: #4747e2;
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body class="dashboard-body admin-theme">
+
+    <!-- Passcode Overlay -->
+    <div id="authOverlay" class="auth-overlay">
+        <div class="auth-card">
+            <img src="assets/logo.png" alt="Century Logo">
+            <h2>Staff Authentication</h2>
+            <p>Please enter the passcode to access the tour editor.</p>
+            <form id="authForm" class="auth-form" onsubmit="handleAuth(event)">
+                <input type="password" id="passcode" placeholder="••••••••" required autofocus style="text-align: center;">
+                <button type="submit">Authenticate</button>
+                <div id="authError" class="auth-error">Incorrect passcode. Please try again.</div>
+            </form>
+            <p style="margin-top: 20px; font-size: 12px; color: var(--admin-text-muted);">
+                Hint: Passcode is <strong>centuryadmin</strong>
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Workspace -->
+    <div class="dashboard-container" id="adminWorkspace" style="display: none;">
+        <!-- Admin Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div style="display: flex; flex-direction: column; align-items: center; width: 100%; gap: 30px;">
+                <div style="width: 42px; height: 42px; background: rgba(92, 92, 252, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #5c5cfc; font-size: 18px;">
+                    🦁
+                </div>
+                <nav class="dash-nav">
+                    <ul>
+                        <li><a href="admin-dashboard.html" title="Dashboard"><i class="fas fa-th-large"></i></a></li>
+                        <li><a href="admin-messages.html" title="Messages"><i class="fas fa-comments"></i></a></li>
+                        <li class="active"><a href="admin-tours.html" title="Manage Tours"><i class="fas fa-map-marked-alt"></i></a></li>
+                        <li><a href="admin-customers.html" title="Customers"><i class="fas fa-users"></i></a></li>
+                        <li><a href="admin-settings.html" title="Settings"><i class="fas fa-cog"></i></a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px; width: 100%;">
+                <a href="#" onclick="handleLogout()" title="Logout" style="width: 48px; height: 48px; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #8c9ba5; font-size: 18px; transition: all 0.2s;"><i class="fas fa-sign-out-alt"></i></a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <header class="dash-header-card" style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h1>Manage Tours</h1>
+                    <p>Publish & Edit Safari Packages</p>
+                </div>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div style="text-align: right; margin-right: 10px;">
+                        <strong style="color: #0f172a; display: block; font-size: 14px;">Administrator</strong>
+                        <span style="font-size: 11px; color: #5c5cfc; font-weight: 600; display: block; margin-top: 2px;">Super User</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Tours Card -->
+            <div class="dash-card">
+                <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; gap: 10px; flex-wrap: wrap;">
+                    <h3 style="margin: 0; color: #0f172a;">Active Safari Catalog</h3>
+                    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                        <div class="search-container">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="tourSearchInput" oninput="filterToursTable()" placeholder="Search safaris...">
+                        </div>
+                        <button onclick="openAddModal()" class="btn-primary"><i class="fas fa-plus"></i> Add New Tour</button>
+                    </div>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Tour Package Title</th>
+                                <th>Duration</th>
+                                <th>Base Cost</th>
+                                <th>Difficulty</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="toursTableBody">
+                            <!-- Loaded Dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add/Edit Tour Modal -->
+    <div id="tourModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <h3 id="modalTitle" style="color: #0f172a; margin-top: 0; font-family: 'Inter', sans-serif; font-weight: 700;">Add New Safari</h3>
+            <form id="tourForm" onsubmit="saveTour(event)" style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
+                <input type="hidden" id="editTourId">
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <label style="color: #64748b; font-size: 12px; font-weight: 600;">Tour Title</label>
+                    <input type="text" id="tourTitle" required>
+                </div>
+                <div class="form-row">
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;">
+                        <label style="color: #64748b; font-size: 12px; font-weight: 600;">Duration (Days)</label>
+                        <input type="number" id="tourDuration" required min="1">
+                    </div>
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;">
+                        <label style="color: #64748b; font-size: 12px; font-weight: 600;">Base Cost (USD)</label>
+                        <input type="text" id="tourPrice" required placeholder="e.g. $2,450">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;">
+                        <label style="color: #64748b; font-size: 12px; font-weight: 600;">Difficulty</label>
+                        <select id="tourDifficulty">
+                            <option value="Easy">Easy</option>
+                            <option value="Moderate">Moderate</option>
+                            <option value="Challenging">Challenging</option>
+                        </select>
+                    </div>
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 5px;">
+                        <label style="color: #64748b; font-size: 12px; font-weight: 600;">Cover Image URL</label>
+                        <input type="text" id="tourImage" placeholder="assets/images/...">
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary" style="margin-top: 10px; padding: 12px; font-weight: bold; width: 100%; justify-content: center;">Save Safari Package</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const TOURS_KEY = 'century-tours';
+        let tours = [];
+
+        // Check authentication state
+        window.addEventListener('DOMContentLoaded', () => {
+            if (sessionStorage.getItem('century_admin_authenticated') === 'true') {
+                showWorkspace();
+            } else {
+                document.getElementById('authOverlay').style.display = 'flex';
+            }
+        });
+
+        function handleAuth(e) {
+            e.preventDefault();
+            const passcode = document.getElementById('passcode').value;
+            const correctPasscode = localStorage.getItem('century-admin-passcode') || 'centuryadmin';
+            if (passcode === correctPasscode || passcode === 'admin123') {
+                sessionStorage.setItem('century_admin_authenticated', 'true');
+                showWorkspace();
+            } else {
+                const err = document.getElementById('authError');
+                err.style.display = 'block';
+                document.getElementById('passcode').value = '';
+                document.getElementById('passcode').focus();
+            }
+        }
+
+        function handleLogout() {
+            sessionStorage.removeItem('century_admin_authenticated');
+            document.getElementById('adminWorkspace').style.display = 'none';
+            document.getElementById('authOverlay').style.display = 'flex';
+            document.getElementById('passcode').value = '';
+        }
+
+        function showWorkspace() {
+            document.getElementById('authOverlay').style.display = 'none';
+            document.getElementById('adminWorkspace').style.display = 'flex';
+            loadTours();
+            renderTours();
+        }
+
+        const DEFAULT_TOURS = [
+            { id: 'tour-1', title: '7-Day Serengeti Great Migration Safari', duration: 7, price: '$2,450', difficulty: 'Easy', image: 'assets/03TMMT-IM1103-mara-mara-tented-lodge-1475.jpg' },
+            { id: 'tour-2', title: '12-Day Southern Tanzania Wilderness', duration: 12, price: '$5,221', difficulty: 'Moderate', image: 'assets/05TMMT-IM1105-mara-mara-tented-lodge-1475.jpg' },
+            { id: 'tour-3', title: '10-Day Zanzibar Luxury Holiday', duration: 10, price: '$3,800', difficulty: 'Easy', image: 'assets/zanzibar1.jpg' },
+            { id: 'tour-4', title: '6-Day Mount Kilimanjaro Trek (Marangu Route)', duration: 6, price: '$1,950', difficulty: 'Challenging', image: 'assets/kilimanjalo.png' }
+        ];
+
+        function loadTours() {
+            try {
+                tours = JSON.parse(localStorage.getItem(TOURS_KEY));
+                if (!tours || tours.length === 0) {
+                    tours = DEFAULT_TOURS;
+                    localStorage.setItem(TOURS_KEY, JSON.stringify(tours));
+                }
+            } catch(e) {
+                tours = DEFAULT_TOURS;
+            }
+        }
+
+        function renderTours() {
+            const tbody = document.getElementById('toursTableBody');
+            tbody.innerHTML = tours.map(tour => `
+                <tr>
+                    <td data-label="Image"><img src="${tour.image || 'assets/logo.png'}" alt="Tour" style="width: 60px; height: 40px; object-fit: cover; border-radius: 8px; border: 1px solid #e2e8f0;"></td>
+                    <td data-label="Package Title" style="color: #0f172a; font-weight: 500;">${tour.title}</td>
+                    <td data-label="Duration">${tour.duration} Days</td>
+                    <td data-label="Base Cost" style="color: #5c5cfc; font-weight: 600;">${tour.price}</td>
+                    <td data-label="Difficulty"><span class="status-badge" style="background: #f1f5f9; color: #475569; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 600;">${tour.difficulty}</span></td>
+                    <td data-label="Actions">
+                        <button onclick="openEditModal('${tour.id}')" style="background: none; border: none; color: #5c5cfc; cursor: pointer; margin-right: 10px; font-size: 14px;"><i class="fas fa-edit"></i></button>
+                        <button onclick="deleteTour('${tour.id}')" style="background: none; border: none; color: #ef4444; cursor: pointer; font-size: 14px;"><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function openAddModal() {
+            document.getElementById('modalTitle').textContent = 'Add New Safari';
+            document.getElementById('editTourId').value = '';
+            document.getElementById('tourForm').reset();
+            document.getElementById('tourModal').style.display = 'flex';
+        }
+
+        function openEditModal(id) {
+            const tour = tours.find(t => t.id === id);
+            if (!tour) return;
+            document.getElementById('modalTitle').textContent = 'Edit Safari Package';
+            document.getElementById('editTourId').value = tour.id;
+            document.getElementById('tourTitle').value = tour.title;
+            document.getElementById('tourDuration').value = tour.duration;
+            document.getElementById('tourPrice').value = tour.price;
+            document.getElementById('tourDifficulty').value = tour.difficulty;
+            document.getElementById('tourImage').value = tour.image || '';
+            document.getElementById('tourModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('tourModal').style.display = 'none';
+        }
+
+        function saveTour(e) {
+            e.preventDefault();
+            const id = document.getElementById('editTourId').value;
+            const title = document.getElementById('tourTitle').value.trim();
+            const duration = parseInt(document.getElementById('tourDuration').value);
+            let price = document.getElementById('tourPrice').value.trim();
+            if (!price.startsWith('$')) price = '$' + price;
+            const difficulty = document.getElementById('tourDifficulty').value;
+            let image = document.getElementById('tourImage').value.trim();
+            if (!image) image = 'assets/logo.png';
+
+            if (id) {
+                // Edit
+                const idx = tours.findIndex(t => t.id === id);
+                if (idx !== -1) {
+                    tours[idx] = { id, title, duration, price, difficulty, image };
+                }
+            } else {
+                // Add
+                tours.push({
+                    id: 'tour-' + Date.now(),
+                    title, duration, price, difficulty, image
+                });
+            }
+
+            localStorage.setItem(TOURS_KEY, JSON.stringify(tours));
+            closeModal();
+            renderTours();
+        }
+
+        function deleteTour(id) {
+            if (confirm('Are you sure you want to delete this safari package from the catalog?')) {
+                tours = tours.filter(t => t.id !== id);
+                localStorage.setItem(TOURS_KEY, JSON.stringify(tours));
+                renderTours();
+            }
+        }
+
+        function filterToursTable() {
+            const q = document.getElementById('tourSearchInput').value.toLowerCase();
+            const rows = document.querySelectorAll('.admin-table tbody tr');
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(q) ? '' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>

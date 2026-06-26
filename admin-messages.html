@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Messages | Century Adventures</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <style>
+        /* Premium Light Chat Dashboard Styles */
+        :root {
+            --admin-bg: #eaeef6;
+            --admin-card-bg: #ffffff;
+            --admin-border: rgba(0,0,0,0.06);
+            --admin-text: #1e293b;
+            --admin-text-muted: #64748b;
+        }
+
+        body.admin-theme {
+            background-color: var(--admin-bg);
+            color: var(--admin-text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+            gap: 30px;
+        }
+
+        /* Sidebar override is handled in index.css */
+
+        /* Main Messaging Layout */
+        .messaging-main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 40px);
+            overflow: hidden;
+            background: #ffffff;
+            border-radius: 28px;
+            border: 1px solid rgba(0,0,0,0.06);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+        }
+
+        .messaging-header {
+            padding: 20px 30px;
+            border-bottom: 1px solid var(--admin-border);
+            background: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .messaging-header h1 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            margin: 0;
+            color: #0f172a;
+        }
+
+        .messaging-header h1 span {
+            color: #5c5cfc;
+        }
+
+        .messaging-content {
+            display: flex;
+            flex-grow: 1;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        /* Left Pane: Inbox List */
+        .inbox-list-pane {
+            width: 360px;
+            border-right: 1px solid var(--admin-border);
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+            flex-shrink: 0;
+        }
+
+        .inbox-search-filter {
+            padding: 20px;
+            border-bottom: 1px solid var(--admin-border);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--admin-text-muted);
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 10px 10px 38px;
+            background: #f1f5f9 !important;
+            border: 1px solid #e2e8f0 !important;
+            border-radius: 12px !important;
+            color: #0f172a !important;
+            box-sizing: border-box;
+            outline: none;
+            font-size: 13.5px;
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .filter-row select {
+            flex: 1;
+            padding: 8px 12px !important;
+            background: #f8fafc !important;
+            border: 1px solid #e2e8f0 !important;
+            color: #475569 !important;
+            border-radius: 10px !important;
+            outline: none;
+            font-size: 12.5px;
+        }
+
+        .inbox-scroll {
+            flex-grow: 1;
+            overflow-y: auto;
+            background: #ffffff;
+        }
+
+        .inbox-empty {
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--admin-text-muted);
+            font-size: 13.5px;
+        }
+
+        .conv-card {
+            padding: 18px 20px;
+            border-bottom: 1px solid #f1f5f9;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            background: #ffffff;
+        }
+
+        .conv-card:hover {
+            background: #f8fafc;
+        }
+
+        .conv-card.active {
+            background: rgba(92, 92, 252, 0.05);
+            border-left: 4px solid #5c5cfc;
+        }
+
+        .conv-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .conv-visitor-id {
+            font-weight: 600;
+            font-size: 13px;
+            color: #0f172a;
+            max-width: 170px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .conv-time {
+            font-size: 11px;
+            color: var(--admin-text-muted);
+        }
+
+        .conv-preview {
+            font-size: 13px;
+            color: var(--admin-text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin: 4px 0;
+        }
+
+        .conv-tags {
+            display: flex;
+            gap: 6px;
+            margin-top: 8px;
+            align-items: center;
+        }
+
+        .tag-badge {
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .tag-category {
+            background: rgba(92, 92, 252, 0.08);
+            color: #5c5cfc;
+        }
+
+        .tag-status {
+            text-transform: uppercase;
+        }
+
+        .status-open {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .status-replied {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .status-closed {
+            background: #f1f5f9;
+            color: #64748b;
+        }
+
+        .conv-unread-dot {
+            position: absolute;
+            right: 20px;
+            bottom: 22px;
+            width: 8px;
+            height: 8px;
+            background-color: #5c5cfc;
+            border-radius: 50%;
+            box-shadow: 0 0 6px rgba(92, 92, 252, 0.4);
+        }
+
+        /* Right Pane: Chat Window */
+        .chat-pane {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            background: #f8fafc;
+        }
+
+        .chat-empty-state {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--admin-text-muted);
+            gap: 15px;
+        }
+
+        .chat-empty-state i {
+            font-size: 48px;
+            color: #cbd5e1;
+        }
+
+        .chat-header {
+            padding: 16px 25px;
+            border-bottom: 1px solid var(--admin-border);
+            background: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .chat-visitor-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .chat-title-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chat-title-row h2 {
+            font-size: 16px;
+            font-weight: 700;
+            margin: 0;
+            color: #0f172a;
+        }
+
+        .chat-meta-row {
+            font-size: 11.5px;
+            color: var(--admin-text-muted);
+        }
+
+        .chat-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .status-select-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #475569;
+        }
+
+        .status-select-wrapper select {
+            padding: 6px 12px !important;
+            background: #ffffff !important;
+            border: 1px solid #cbd5e1 !important;
+            color: #1e293b !important;
+            border-radius: 8px !important;
+            outline: none;
+        }
+
+        .btn-delete-conv {
+            background: none;
+            border: none;
+            color: #ef4444;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 5px;
+            transition: transform 0.2s ease;
+        }
+
+        .btn-delete-conv:hover {
+            transform: scale(1.15);
+        }
+
+        .chat-messages-area {
+            flex-grow: 1;
+            padding: 25px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background-color: #f8fafc;
+        }
+
+        /* Message Bubbles */
+        .admin-msg-row {
+            display: flex;
+            width: 100%;
+        }
+
+        .admin-msg-row.incoming {
+            justify-content: flex-start;
+        }
+
+        .admin-msg-row.outgoing {
+            justify-content: flex-end;
+        }
+
+        .admin-msg-bubble {
+            max-width: 65%;
+            padding: 12px 18px;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1.5;
+            position: relative;
+            word-break: break-word;
+            white-space: pre-wrap;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.01);
+        }
+
+        .incoming .admin-msg-bubble {
+            background: #ffffff;
+            color: #1e293b;
+            border-bottom-left-radius: 4px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .outgoing .admin-msg-bubble {
+            background: #5c5cfc;
+            color: #ffffff;
+            border-bottom-right-radius: 4px;
+            box-shadow: 0 4px 15px rgba(92, 92, 252, 0.15);
+        }
+
+        .admin-msg-time {
+            display: block;
+            font-size: 10px;
+            margin-top: 6px;
+            text-align: right;
+            color: var(--admin-text-muted);
+        }
+
+        .outgoing .admin-msg-time {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Input Bar */
+        .chat-input-bar {
+            padding: 15px 25px;
+            background: #ffffff;
+            border-top: 1px solid var(--admin-border);
+            display: flex;
+            gap: 15px;
+            align-items: flex-end;
+            flex-shrink: 0;
+        }
+
+        .chat-input-bar textarea {
+            flex-grow: 1;
+            background: #f1f5f9 !important;
+            border: 1px solid #e2e8f0 !important;
+            border-radius: 12px !important;
+            color: #0f172a !important;
+            padding: 12px !important;
+            font-family: inherit;
+            font-size: 13.5px;
+            resize: none;
+            height: 44px;
+            max-height: 120px;
+            outline: none;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+        }
+
+        .chat-input-bar textarea:focus {
+            border-color: #5c5cfc !important;
+            background: #ffffff !important;
+        }
+
+        .btn-send-reply {
+            background: #5c5cfc;
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 16px;
+            box-shadow: 0 4px 10px rgba(92, 92, 252, 0.2);
+        }
+
+        .btn-send-reply:hover {
+            background: #4747e2;
+            transform: translateY(-2px);
+        }
+
+        /* Passcode Auth Overlay */
+        .auth-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(241, 245, 249, 0.95);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .auth-card {
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 28px;
+            width: 400px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+        }
+
+        .auth-card img {
+            width: 60px;
+            margin-bottom: 20px;
+        }
+
+        .auth-card h2 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 10px 0;
+        }
+
+        .auth-card p {
+            color: var(--admin-text-muted);
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .auth-form input {
+            width: 100%;
+            padding: 12px;
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            color: #0f172a;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 18px;
+            letter-spacing: 4px;
+            outline: none;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        .auth-form button {
+            width: 100%;
+            padding: 12px;
+            background: #5c5cfc;
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(92, 92, 252, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .auth-form button:hover {
+            background: #4747e2;
+        }
+
+        .auth-error {
+            color: #ef4444;
+            font-size: 13px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Responsive Overrides */
+        @media (max-width: 900px) {
+            .inbox-list-pane {
+                width: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-container {
+                padding: 0 !important;
+                gap: 0 !important;
+            }
+            .messaging-main {
+                height: 100vh !important;
+                border-radius: 0 !important;
+                border: none !important;
+            }
+            .messaging-header {
+                padding: 12px 18px !important;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            }
+            .messaging-header h1 {
+                font-size: 19px !important;
+            }
+            .inbox-list-pane {
+                width: 100% !important;
+                height: 100%;
+            }
+            .inbox-search-filter {
+                padding: 12px 18px !important;
+                gap: 8px !important;
+            }
+            .inbox-scroll {
+                background: #f8fafc;
+            }
+            .conv-card {
+                padding: 14px 18px !important;
+                border-bottom: 1px solid #f1f5f9;
+            }
+            .chat-pane {
+                display: none;
+            }
+            .chat-pane.mobile-active {
+                display: flex !important;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                z-index: 9999;
+                background: #f8fafc;
+            }
+            .chat-header {
+                padding: 10px 15px !important;
+                border-bottom: 1px solid #e2e8f0;
+            }
+            .chat-title-row h2 {
+                font-size: 14px !important;
+                max-width: 130px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            .chat-meta-row {
+                font-size: 10px !important;
+            }
+            .chat-actions {
+                gap: 8px !important;
+            }
+            .status-select-wrapper span {
+                display: none;
+            }
+            .status-select-wrapper select {
+                padding: 4px 8px !important;
+                font-size: 11px !important;
+            }
+            .chat-messages-area {
+                padding: 15px !important;
+                gap: 12px !important;
+            }
+            .admin-msg-bubble {
+                max-width: 80% !important;
+                padding: 10px 14px !important;
+                font-size: 13px !important;
+            }
+            .chat-input-bar {
+                padding: 10px 15px !important;
+                gap: 10px !important;
+            }
+            .chat-input-bar textarea {
+                height: 38px !important;
+                padding: 8px 12px !important;
+                font-size: 14.5px !important;
+                border-radius: 18px !important;
+            }
+            .btn-send-reply {
+                width: 38px !important;
+                height: 38px !important;
+                border-radius: 50% !important;
+            }
+            .mobile-back-btn {
+                background: none;
+                border: none;
+                color: #5c5cfc !important;
+                font-size: 18px;
+                padding: 4px 8px 4px 0;
+                cursor: pointer;
+            }
+        }
+    </style>
+    <script src="admin-common.js" defer></script>
+</head>
+<body class="admin-theme">
+
+    <!-- Passcode Overlay -->
+    <div id="authOverlay" class="auth-overlay">
+        <div class="auth-card">
+            <img src="assets/logo.png" alt="Century Logo">
+            <h2>Staff Authentication</h2>
+            <p>Please enter the passcode to access private communication logs.</p>
+            <form id="authForm" class="auth-form" onsubmit="handleAuth(event)">
+                <input type="password" id="passcode" placeholder="••••••••" required autofocus>
+                <button type="submit">Authenticate</button>
+                <div id="authError" class="auth-error">Incorrect passcode. Please try again.</div>
+            </form>
+            <p style="margin-top: 20px; font-size: 12px; color: var(--admin-text-muted);">
+                Hint: Passcode is <strong>centuryadmin</strong>
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Workspace -->
+    <div class="dashboard-container" id="adminWorkspace" style="display: none;">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div style="display: flex; flex-direction: column; align-items: center; width: 100%; gap: 30px;">
+                <div style="width: 42px; height: 42px; background: rgba(92, 92, 252, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #5c5cfc; font-size: 18px;">
+                    🦁
+                </div>
+                <nav class="dash-nav">
+                    <ul>
+                        <li><a href="admin-dashboard.html" title="Dashboard"><i class="fas fa-th-large"></i></a></li>
+                        <li class="active"><a href="admin-messages.html" title="Messages"><i class="fas fa-comments"></i></a></li>
+                        <li><a href="admin-tours.html" title="Manage Tours"><i class="fas fa-map-marked-alt"></i></a></li>
+                        <li><a href="admin-customers.html" title="Customers"><i class="fas fa-users"></i></a></li>
+                        <li><a href="admin-settings.html" title="Settings"><i class="fas fa-cog"></i></a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px; width: 100%;">
+                <a href="#" onclick="handleLogout()" title="Logout" style="width: 48px; height: 48px; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #8c9ba5; font-size: 18px; transition: all 0.2s;"><i class="fas fa-sign-out-alt"></i></a>
+            </div>
+        </aside>
+
+        <!-- Main Workspace Pane -->
+        <div class="messaging-main">
+            <header class="messaging-header">
+                <div>
+                    <h1>Safari <span>Support Center</span></h1>
+                    <p style="margin: 5px 0 0 0; font-size: 12px; color: var(--admin-text-muted);">
+                        Admin Communication Panel
+                    </p>
+                </div>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div style="text-align: right; margin-right: 10px;">
+                        <strong style="color: #0f172a; display: block; font-size: 14px;">Staff Officer</strong>
+                        <span style="font-size: 11px; color: #5c5cfc; font-weight: 600; display: block; margin-top: 2px;">Online Support</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="messaging-content">
+                <!-- Left: Conversation List -->
+                <div class="inbox-list-pane">
+                    <div class="inbox-search-filter">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="searchVal" placeholder="Search by Visitor ID..." oninput="filterConversations()">
+                        </div>
+                        <div class="filter-row">
+                            <select id="filterCat" onchange="filterConversations()">
+                                <option value="all">All Categories</option>
+                                <option value="safari">🦁 Safari Booking</option>
+                                <option value="pricing">💰 Pricing & Quotes</option>
+                                <option value="travel">🌍 Travel Info</option>
+                                <option value="accommodation">🏨 Accommodation</option>
+                                <option value="problem">⚠️ Issue Report</option>
+                            </select>
+                            <select id="filterStatus" onchange="filterConversations()">
+                                <option value="all">All Statuses</option>
+                                <option value="open">Open</option>
+                                <option value="replied">Replied</option>
+                                <option value="closed">Closed</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Department Tab Bar (separating 4 places) -->
+                    <div class="inbox-dept-tabs" id="deptTabsContainer">
+                        <!-- Loaded dynamically -->
+                    </div>
+
+                    <div class="inbox-scroll" id="conversationList">
+                        <!-- List loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Right: Chat Window -->
+                <div class="chat-pane" id="chatPane">
+                    <div class="chat-empty-state" id="chatEmptyState">
+                        <i class="fas fa-comments"></i>
+                        <p>Select a conversation from the inbox to start communicating.</p>
+                    </div>
+
+                    <div id="chatContent" style="display: none; flex-direction: column; flex-grow: 1; height: 100%;">
+                        <div class="chat-header">
+                            <div class="chat-visitor-info">
+                                <div class="chat-title-row">
+                                    <button class="mobile-back-btn" onclick="closeMobileChat()" style="display: none; background: none; border: none; color: #0f172a; font-size: 18px; margin-right: 10px; cursor: pointer;">
+                                        <i class="fas fa-arrow-left"></i>
+                                    </button>
+                                    <h2 id="activeVisitorId">visitor-xxxxxx</h2>
+                                    <span id="activeCatTag" class="tag-badge tag-category">Safari</span>
+                                </div>
+                                <div class="chat-meta-row" id="activeMetaRow">
+                                    Created: 14 June, 2026
+                                </div>
+                            </div>
+                            <div class="chat-actions">
+                                <div class="status-select-wrapper">
+                                    <span>Status:</span>
+                                    <select id="activeStatusSelect" onchange="updateActiveStatus(this.value)">
+                                        <option value="open">Open</option>
+                                        <option value="replied">Replied</option>
+                                        <option value="closed">Closed</option>
+                                    </select>
+                                </div>
+                                <button class="btn-delete-conv" onclick="deleteActiveConversation()" title="Delete Conversation">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Messages window -->
+                        <div class="chat-messages-area" id="chatMessagesArea">
+                            <!-- Loaded dynamically -->
+                        </div>
+
+                        <!-- Input Bar -->
+                        <div class="chat-input-bar">
+                            <textarea id="replyTextarea" placeholder="Type a reply... (Press Enter to send, Shift+Enter for new line)" onkeydown="handleInputKeydown(event)"></textarea>
+                            <button class="btn-send-reply" onclick="sendReply()">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const CONV_KEY = 'century-conversations';
+        let conversations = [];
+        let activeConvId = null;
+        let updateInterval = null;
+        let activeDeptFilter = 'all';
+
+        // Check authentication state
+        window.addEventListener('DOMContentLoaded', () => {
+            if (sessionStorage.getItem('century_admin_authenticated') === 'true') {
+                showWorkspace();
+            } else {
+                document.getElementById('authOverlay').style.display = 'flex';
+            }
+
+            // Check for department query parameter (view-routing shortcut)
+            const params = new URLSearchParams(window.location.search);
+            const deptParam = params.get('dept');
+            if (deptParam && ['info', 'booking', 'support', 'sales'].includes(deptParam)) {
+                activeDeptFilter = deptParam;
+            }
+        });
+
+        function handleAuth(e) {
+            e.preventDefault();
+            const passcode = document.getElementById('passcode').value;
+            const correctPasscode = localStorage.getItem('century-admin-passcode') || 'centuryadmin';
+            if (passcode === correctPasscode || passcode === 'admin123') {
+                sessionStorage.setItem('century_admin_authenticated', 'true');
+                showWorkspace();
+            } else {
+                const err = document.getElementById('authError');
+                err.style.display = 'block';
+                document.getElementById('passcode').value = '';
+                document.getElementById('passcode').focus();
+            }
+        }
+
+        function handleLogout() {
+            sessionStorage.removeItem('century_admin_authenticated');
+            document.getElementById('adminWorkspace').style.display = 'none';
+            document.getElementById('authOverlay').style.display = 'flex';
+            if (updateInterval) clearInterval(updateInterval);
+        }
+
+        function showWorkspace() {
+            document.getElementById('authOverlay').style.display = 'none';
+            document.getElementById('adminWorkspace').style.display = 'flex';
+            loadConversations();
+            renderDepartmentTabs();
+            renderConversations();
+            
+            // Set up polling for new messages from visitors every 3 seconds
+            updateInterval = setInterval(() => {
+                const scrollArea = document.getElementById('chatMessagesArea');
+                const wasScrolledToBottom = scrollArea.scrollHeight - scrollArea.clientHeight <= scrollArea.scrollTop + 50;
+                
+                loadConversations();
+                renderDepartmentTabs();
+                renderConversations(false); // don't redraw everything unless needed
+                
+                if (activeConvId) {
+                    const activeConv = conversations.find(c => c.id === activeConvId);
+                    if (activeConv) {
+                        renderChatMessages(activeConv);
+                        if (wasScrolledToBottom) {
+                            scrollArea.scrollTop = scrollArea.scrollHeight;
+                        }
+                    }
+                }
+            }, 3000);
+        }
+
+        function getConversationDepartment(c) {
+            if (c.department) return c.department;
+            // Backwards compatibility fallback mapping
+            if (c.categoryId === 'safari') return 'booking';
+            if (c.categoryId === 'pricing') return 'sales';
+            if (c.categoryId === 'problem' || c.categoryId === 'support') return 'support';
+            return 'info';
+        }
+
+        function setDeptFilter(dept) {
+            activeDeptFilter = dept;
+            renderDepartmentTabs();
+            filterConversations();
+        }
+
+        function renderDepartmentTabs() {
+            const container = document.getElementById('deptTabsContainer');
+            if (!container) return;
+
+            const counts = { all: 0, info: 0, booking: 0, support: 0, sales: 0 };
+            conversations.forEach(c => {
+                counts.all++;
+                const dept = getConversationDepartment(c);
+                if (counts[dept] !== undefined) {
+                    counts[dept]++;
+                }
+            });
+
+            container.innerHTML = `
+                <button class="dept-tab ${activeDeptFilter === 'all' ? 'active' : ''}" data-dept="all" onclick="setDeptFilter('all')">
+                    All <span class="dept-tab-count">${counts.all}</span>
+                </button>
+                <button class="dept-tab ${activeDeptFilter === 'info' ? 'active' : ''}" data-dept="info" onclick="setDeptFilter('info')">
+                    📧 Info <span class="dept-tab-count">${counts.info}</span>
+                </button>
+                <button class="dept-tab ${activeDeptFilter === 'booking' ? 'active' : ''}" data-dept="booking" onclick="setDeptFilter('booking')">
+                    🦁 Booking <span class="dept-tab-count">${counts.booking}</span>
+                </button>
+                <button class="dept-tab ${activeDeptFilter === 'support' ? 'active' : ''}" data-dept="support" onclick="setDeptFilter('support')">
+                    🛠 Support <span class="dept-tab-count">${counts.support}</span>
+                </button>
+                <button class="dept-tab ${activeDeptFilter === 'sales' ? 'active' : ''}" data-dept="sales" onclick="setDeptFilter('sales')">
+                    💰 Sales <span class="dept-tab-count">${counts.sales}</span>
+                </button>
+            `;
+        }
+
+        function loadConversations() {
+            try {
+                conversations = JSON.parse(localStorage.getItem(CONV_KEY)) || [];
+                conversations.sort((a, b) => (b.updatedAt || b.createdAt) - (a.updatedAt || a.createdAt));
+            } catch(e) {
+                conversations = [];
+            }
+        }
+
+        const CATEGORIES = {
+            'safari': { emoji: '🦁', label: 'Safari Booking' },
+            'pricing': { emoji: '💰', label: 'Pricing & Quotations' },
+            'travel': { emoji: '🌍', label: 'Travel Info' },
+            'accommodation': { emoji: '🏨', label: 'Accommodation' },
+            'problem': { emoji: '⚠️', label: 'Issue Report' }
+        };
+
+        function filterConversations() {
+            renderConversations();
+        }
+
+        function renderConversations(fullRedraw = true) {
+            const listContainer = document.getElementById('conversationList');
+            if (!listContainer) return;
+            
+            const searchVal = document.getElementById('searchVal').value.toLowerCase().trim();
+            const filterCat = document.getElementById('filterCat').value;
+            const filterStatus = document.getElementById('filterStatus').value;
+
+            const filtered = conversations.filter(c => {
+                const matchesSearch = c.visitorId.toLowerCase().includes(searchVal) || 
+                    c.messages.some(m => m.text.toLowerCase().includes(searchVal));
+                
+                const matchesCat = filterCat === 'all' || c.categoryId === filterCat;
+                const matchesStatus = filterStatus === 'all' || c.status === filterStatus;
+                const matchesDept = activeDeptFilter === 'all' || getConversationDepartment(c) === activeDeptFilter;
+
+                return matchesSearch && matchesCat && matchesStatus && matchesDept;
+            });
+
+            if (filtered.length === 0) {
+                listContainer.innerHTML = '<div class="inbox-empty">No conversations found</div>';
+                return;
+            }
+
+            if (!fullRedraw) {
+                const existingCards = listContainer.querySelectorAll('.conv-card');
+                if (existingCards.length !== filtered.length) {
+                    fullRedraw = true;
+                }
+            }
+
+            if (fullRedraw) {
+                listContainer.innerHTML = '';
+            }
+
+            filtered.forEach((conv, index) => {
+                const lastMsg = conv.messages[conv.messages.length - 1];
+                const lastText = lastMsg ? lastMsg.text : 'No messages';
+                const timeStr = lastMsg ? formatTime(lastMsg.timestamp) : '';
+                const categoryObj = CATEGORIES[conv.categoryId] || { emoji: '💬', label: 'General' };
+                const hasUnread = conv.unreadByStaff === true;
+
+                if (fullRedraw) {
+                    const card = document.createElement('div');
+                    card.className = `conv-card ${activeConvId === conv.id ? 'active' : ''}`;
+                    card.id = `card-${conv.id}`;
+                    card.innerHTML = `
+                        <div class="conv-card-header">
+                            <span class="conv-visitor-id">${conv.visitorId}</span>
+                            <span class="conv-time">${timeStr}</span>
+                        </div>
+                        <div class="conv-preview">${lastText}</div>
+                        <div class="conv-tags">
+                            <span class="tag-badge tag-category">${categoryObj.emoji} ${categoryObj.label}</span>
+                            <span class="tag-badge tag-status status-${conv.status || 'open'}">${conv.status || 'open'}</span>
+                        </div>
+                        ${hasUnread ? '<div class="conv-unread-dot"></div>' : ''}
+                    `;
+                    card.addEventListener('click', () => selectConversation(conv.id));
+                    listContainer.appendChild(card);
+                } else {
+                    const card = document.getElementById(`card-${conv.id}`);
+                    if (card) {
+                        card.className = `conv-card ${activeConvId === conv.id ? 'active' : ''}`;
+                        card.querySelector('.conv-time').textContent = timeStr;
+                        card.querySelector('.conv-preview').textContent = lastText;
+                        
+                        const statusBadge = card.querySelector('.tag-status');
+                        statusBadge.className = `tag-badge tag-status status-${conv.status || 'open'}`;
+                        statusBadge.textContent = conv.status || 'open';
+
+                        const dot = card.querySelector('.conv-unread-dot');
+                        if (hasUnread && !dot) {
+                            const newDot = document.createElement('div');
+                            newDot.className = 'conv-unread-dot';
+                            card.appendChild(newDot);
+                        } else if (!hasUnread && dot) {
+                            dot.remove();
+                        }
+                    }
+                }
+            });
+        }
+
+        function selectConversation(id) {
+            activeConvId = id;
+            
+            conversations.forEach(c => {
+                if (c.id === id) {
+                    c.unreadByStaff = false;
+                }
+            });
+            saveConversations();
+
+            document.querySelectorAll('.conv-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            const activeCard = document.getElementById(`card-${id}`);
+            if (activeCard) {
+                activeCard.classList.add('active');
+                const dot = activeCard.querySelector('.conv-unread-dot');
+                if (dot) dot.remove();
+            }
+
+            const activeConv = conversations.find(c => c.id === id);
+            if (activeConv) {
+                document.getElementById('chatEmptyState').style.display = 'none';
+                document.getElementById('chatContent').style.display = 'flex';
+
+                document.getElementById('activeVisitorId').textContent = activeConv.visitorId;
+                const catObj = CATEGORIES[activeConv.categoryId] || { emoji: '💬', label: 'General' };
+                document.getElementById('activeCatTag').textContent = `${catObj.emoji} ${catObj.label}`;
+                document.getElementById('activeMetaRow').textContent = `Created: ${new Date(activeConv.createdAt).toLocaleString()} | ID: ${activeConv.id}`;
+                document.getElementById('activeStatusSelect').value = activeConv.status || 'open';
+
+                renderChatMessages(activeConv);
+                
+                const area = document.getElementById('chatMessagesArea');
+                setTimeout(() => {
+                    area.scrollTop = area.scrollHeight;
+                }, 50);
+
+                if (window.innerWidth <= 768) {
+                    document.getElementById('chatPane').classList.add('mobile-active');
+                    document.querySelector('.mobile-back-btn').style.display = 'inline-block';
+                }
+            }
+        }
+
+        function closeMobileChat() {
+            document.getElementById('chatPane').classList.remove('mobile-active');
+            activeConvId = null;
+            renderConversations();
+        }
+
+        function renderChatMessages(conv) {
+            const area = document.getElementById('chatMessagesArea');
+            let messagesHTML = '';
+
+            conv.messages.forEach(msg => {
+                const isVisitor = msg.sender === 'visitor';
+                messagesHTML += `
+                    <div class="admin-msg-row ${isVisitor ? 'incoming' : 'outgoing'}">
+                        <div class="admin-msg-bubble">
+                            ${msg.text}
+                            <span class="admin-msg-time">${new Date(msg.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            if (area.innerHTML !== messagesHTML) {
+                area.innerHTML = messagesHTML;
+            }
+        }
+
+        function handleInputKeydown(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendReply();
+            }
+        }
+
+        function sendReply() {
+            const textarea = document.getElementById('replyTextarea');
+            const text = textarea.value.trim();
+            if (!text || !activeConvId) return;
+
+            const convIndex = conversations.findIndex(c => c.id === activeConvId);
+            if (convIndex !== -1) {
+                const now = Date.now();
+                conversations[convIndex].messages.push({
+                    id: 'msg-' + now,
+                    sender: 'staff',
+                    text: text,
+                    timestamp: now
+                });
+                conversations[convIndex].updatedAt = now;
+                conversations[convIndex].status = 'replied';
+                conversations[convIndex].unread = 1;
+
+                saveConversations();
+                textarea.value = '';
+
+                renderChatMessages(conversations[convIndex]);
+                document.getElementById('activeStatusSelect').value = 'replied';
+                renderConversations();
+
+                const area = document.getElementById('chatMessagesArea');
+                area.scrollTop = area.scrollHeight;
+            }
+        }
+
+        function updateActiveStatus(status) {
+            if (!activeConvId) return;
+            const convIndex = conversations.findIndex(c => c.id === activeConvId);
+            if (convIndex !== -1) {
+                conversations[convIndex].status = status;
+                conversations[convIndex].updatedAt = Date.now();
+                saveConversations();
+                renderConversations();
+            }
+        }
+
+        function deleteActiveConversation() {
+            if (!activeConvId) return;
+            if (confirm('Are you sure you want to permanently delete this conversation and all its messages?')) {
+                conversations = conversations.filter(c => c.id !== activeConvId);
+                saveConversations();
+                activeConvId = null;
+
+                document.getElementById('chatContent').style.display = 'none';
+                document.getElementById('chatEmptyState').style.display = 'flex';
+                closeMobileChat();
+                renderConversations();
+            }
+        }
+
+        function saveConversations() {
+            localStorage.setItem(CONV_KEY, JSON.stringify(conversations));
+        }
+
+        function formatTime(timestamp) {
+            const now = new Date();
+            const date = new Date(timestamp);
+            if (now.toDateString() === date.toDateString()) {
+                return date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            }
+            return date.toLocaleDateString([], {month: 'short', day: 'numeric'});
+        }
+    </script>
+</body>
+</html>

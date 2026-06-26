@@ -1,0 +1,1103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Century Adventures Tanzania</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        (function() {
+            const theme = localStorage.getItem('century-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    <style>
+    /* --- ABOUT PAGE CUSTOM STYLES --- */
+    .about-card-modern {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 24px;
+        padding: 40px;
+        box-shadow: var(--shadow-soft);
+        transition: var(--transition);
+    }
+    .about-card-modern:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-hover);
+        border-color: var(--accent-gold);
+    }
+    
+    /* Mission & Vision styling */
+    .mission-vision-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin-top: 20px;
+    }
+    .mission-card {
+        background: linear-gradient(135deg, var(--primary-green), #002b18);
+        padding: 50px 45px;
+        border-radius: 30px;
+        color: #ffffff;
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-soft);
+        transition: var(--transition);
+    }
+    .vision-card {
+        background: linear-gradient(135deg, #1a0a00, #3d1f00);
+        padding: 50px 45px;
+        border-radius: 30px;
+        color: #ffffff;
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-soft);
+        transition: var(--transition);
+    }
+    .mission-card:hover, .vision-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    .card-circle-decor-1 {
+        position: absolute;
+        top: -30px;
+        right: -30px;
+        width: 140px;
+        height: 140px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 50%;
+    }
+    .card-circle-decor-2 {
+        position: absolute;
+        bottom: -50px;
+        left: -50px;
+        width: 200px;
+        height: 200px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 50%;
+    }
+    .card-icon-wrap {
+        width: 60px;
+        height: 60px;
+        background: rgba(197, 160, 68, 0.2);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 25px;
+    }
+
+    /* Why Choose Us Cards */
+    .why-choose-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        margin-top: 40px;
+    }
+    .choose-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        padding: 30px 24px;
+        border-radius: 20px;
+        box-shadow: var(--shadow-soft);
+        text-align: center;
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .choose-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--accent-gold);
+        box-shadow: var(--shadow-hover);
+    }
+    .choose-icon-box {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, var(--primary-green), #006838);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        transition: var(--transition);
+    }
+    .choose-card:hover .choose-icon-box {
+        transform: rotateY(180deg);
+        background: linear-gradient(135deg, var(--accent-gold), #a38030);
+    }
+    .choose-icon-box i {
+        font-size: 1.4rem;
+        color: var(--accent-gold);
+    }
+    .choose-card:hover .choose-icon-box i {
+        color: #ffffff;
+    }
+    .choose-card h3 {
+        font-size: 1.05rem;
+        margin-bottom: 10px;
+        color: var(--text-main);
+        font-weight: 600;
+    }
+    .choose-card p {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* Values Grid */
+    .values-grid-custom {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 40px;
+    }
+    .value-card-custom {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        padding: 35px 25px;
+        border-radius: 24px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-soft);
+        transition: var(--transition);
+    }
+    .value-card-custom:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-gold);
+        box-shadow: var(--shadow-hover);
+    }
+    .value-card-custom::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--accent-gradient);
+        opacity: 0;
+        transition: var(--transition);
+    }
+    .value-card-custom:hover::before {
+        opacity: 1;
+    }
+    .value-emoji {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        display: block;
+    }
+    .value-card-custom h4 {
+        font-size: 1.1rem;
+        color: var(--text-main);
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+    .value-card-custom p {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* Mobile Overrides */
+    @media (max-width: 1024px) {
+        .why-choose-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .values-grid-custom {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    
+    .about-text-more {
+        display: block;
+    }
+    #btn-about-read-more {
+        display: none;
+    }
+    .choose-read-more, .guide-read-more {
+        display: none;
+    }
+
+    /* ===== Team Card Styles (All Viewports) ===== */
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+    }
+    .team-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: var(--shadow-soft);
+        transition: var(--transition);
+    }
+    .team-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-hover);
+        border-color: var(--accent-gold);
+    }
+    .team-card-img-wrap {
+        position: relative;
+        width: 100%;
+        height: 220px;
+        overflow: hidden;
+    }
+    .team-card-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+        transition: transform 0.5s ease;
+    }
+    .team-card:hover .team-card-img-wrap img {
+        transform: scale(1.06);
+    }
+    .team-card-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,43,24,0.85) 0%, transparent 60%);
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding-bottom: 14px;
+        opacity: 0;
+        transition: opacity 0.35s ease;
+    }
+    .team-card:hover .team-card-overlay {
+        opacity: 1;
+    }
+    .team-social-links {
+        display: flex;
+        gap: 12px;
+    }
+    .team-social-links a {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(6px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 0.9rem;
+        transition: var(--transition);
+        text-decoration: none;
+    }
+    .team-social-links a:hover {
+        background: var(--accent-gold);
+        color: #002b18;
+        transform: translateY(-3px);
+    }
+    .team-card-body {
+        padding: 20px 22px 24px;
+        text-align: center;
+    }
+    .team-card-body h4 {
+        font-size: 1.1rem;
+        font-family: 'Playfair Display', serif;
+        color: var(--text-main);
+        margin: 0 0 4px 0;
+    }
+    .team-role {
+        display: block;
+        font-size: 0.72rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--accent-gold);
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+    .team-card-body p {
+        font-size: 0.82rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    @media (max-width: 1024px) {
+        .team-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        /* Spacing / padding overrides */
+        .section {
+            padding: 40px 0 !important;
+        }
+        section[style*="padding: 80px 0"],
+        section[style*="padding: 60px 0"] {
+            padding: 40px 0 !important;
+        }
+        
+        /* Hero Section */
+        .trip-hero {
+            height: 35vh !important;
+            min-height: 260px !important;
+            background-attachment: scroll !important;
+            padding: 80px 0 20px 0 !important;
+        }
+        .trip-hero h1 {
+            font-size: 1.8rem !important;
+            margin-bottom: 10px !important;
+            line-height: 1.2 !important;
+        }
+        .trip-hero .hero-tagline {
+            font-size: 0.9rem !important;
+            margin-bottom: 0 !important;
+            line-height: 1.5 !important;
+        }
+        .trip-hero .sub-heading {
+            margin-bottom: 8px !important;
+        }
+        
+        /* Statistics Section */
+        .why-us-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 12px !important;
+        }
+        .why-us-item {
+            padding: 20px 12px !important;
+            border-radius: 16px !important;
+            box-shadow: var(--shadow-soft) !important;
+        }
+        .why-us-item .icon-wrap {
+            font-size: 1.6rem !important;
+            margin-bottom: 6px !important;
+        }
+        .why-us-item strong {
+            font-size: 1.8rem !important;
+        }
+        .why-us-item p {
+            font-size: 0.75rem !important;
+        }
+
+        /* Who We Are */
+        .about-grid {
+            gap: 30px !important;
+        }
+        .about-card-modern {
+            padding: 24px 20px !important;
+        }
+        .about-text-more {
+            display: none;
+            margin-top: 15px;
+        }
+        .about-text-more.expanded {
+            display: block;
+        }
+        #btn-about-read-more {
+            display: inline-block;
+        }
+        
+        /* Mission & Vision */
+        .mission-vision-container {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+            margin-top: 15px !important;
+        }
+        .mission-card, .vision-card {
+            padding: 24px 20px !important;
+            border-radius: 20px !important;
+        }
+        .mission-card h3, .vision-card h3 {
+            font-size: 1.3rem !important;
+            margin: 8px 0 10px !important;
+        }
+        .mission-card p, .vision-card p {
+            font-size: 0.88rem !important;
+            line-height: 1.6 !important;
+        }
+        .card-icon-wrap {
+            width: 48px !important;
+            height: 48px !important;
+            margin-bottom: 15px !important;
+            border-radius: 12px !important;
+        }
+        .card-icon-wrap i {
+            font-size: 1.2rem !important;
+        }
+        
+        /* Why Choose Us */
+        .why-choose-grid {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+            margin-top: 20px !important;
+        }
+        .choose-card {
+            padding: 20px !important;
+            border-radius: 16px !important;
+            align-items: flex-start !important;
+            text-align: left !important;
+            flex-direction: row !important;
+            gap: 15px !important;
+        }
+        .choose-icon-box {
+            width: 44px !important;
+            height: 44px !important;
+            margin-bottom: 0 !important;
+            border-radius: 10px !important;
+            flex-shrink: 0 !important;
+        }
+        .choose-icon-box i {
+            font-size: 1rem !important;
+        }
+        .choose-content {
+            flex-grow: 1;
+            align-items: flex-start !important;
+        }
+        .choose-card h3 {
+            font-size: 0.95rem !important;
+            margin-bottom: 4px !important;
+            margin-top: 0 !important;
+        }
+        .choose-text {
+            font-size: 0.8rem !important;
+            line-height: 1.5 !important;
+            margin: 0 !important;
+        }
+        .choose-text.expanded {
+            display: block !important;
+            overflow: visible !important;
+        }
+        .choose-read-more {
+            display: inline-block;
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+        
+        /* Our Values */
+        .values-grid-custom {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 12px !important;
+            margin-top: 20px !important;
+        }
+        .value-card-custom {
+            padding: 15px 10px !important;
+            border-radius: 16px !important;
+            min-height: 140px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+        .value-emoji {
+            font-size: 1.8rem !important;
+            margin-bottom: 6px !important;
+        }
+        .value-card-custom h4 {
+            font-size: 0.9rem !important;
+            margin-bottom: 4px !important;
+        }
+        .value-card-custom p {
+            font-size: 0.72rem !important;
+            line-height: 1.4 !important;
+        }
+        
+        /* Team Cards Mobile */
+        .team-grid {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+        }
+        .team-card-img-wrap {
+            height: 180px !important;
+        }
+        .team-card-body {
+            padding: 16px 18px 20px !important;
+        }
+        .team-card-body h4 {
+            font-size: 1rem !important;
+        }
+        .team-card-body p {
+            font-size: 0.78rem !important;
+        }
+
+        /* Call To Action */
+        .cta-section {
+            padding: 40px 15px !important;
+        }
+        .cta-hide-mobile {
+            display: none !important;
+        }
+        .cta-section h2 {
+            font-size: 1.6rem !important;
+            margin: 10px 0 15px !important;
+        }
+        .cta-description {
+            margin: 0 auto 20px !important;
+            font-size: 0.9rem !important;
+        }
+        .cta-section .container > div {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 10px !important;
+            max-width: 320px !important;
+            margin: 0 auto !important;
+        }
+        .cta-section .btn {
+            width: 100% !important;
+            padding: 10px 20px !important;
+            font-size: 0.8rem !important;
+            justify-content: center !important;
+            box-sizing: border-box !important;
+        }
+        
+        /* Footer collapsible columns */
+        .footer-col.collapsible h3 {
+            position: relative;
+            cursor: pointer;
+            display: block !important;
+            width: 100%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            padding-bottom: 12px !important;
+            margin-bottom: 0 !important;
+        }
+        .footer-col.collapsible h3::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 10px;
+            top: 2px;
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+        .footer-col.collapsible.active h3::after {
+            transform: rotate(180deg);
+        }
+        .footer-col.collapsible ul {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            padding-left: 0;
+            margin-top: 0;
+        }
+        .footer-col.collapsible.active ul {
+            max-height: 500px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+        .footer-grid {
+            gap: 15px !important;
+        }
+        .footer-col {
+            margin-bottom: 10px;
+        }
+        .info-col p {
+            margin-bottom: 8px !important;
+            font-size: 0.85rem !important;
+        }
+        .tripadvisor-card {
+            padding: 20px !important;
+            margin-top: 15px !important;
+        }
+    }
+    </style>
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="scroll-progress"></div>
+
+    <header class="header">
+        <!-- Will be dynamically injected by index.js -->
+    </header>
+
+    <section class="trip-hero" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('assets/03TMMT-IM1103-mara-mara-tented-lodge-1475.jpg'); height: 60vh;">
+        <div class="container hero-content">
+            <span class="sub-heading" data-en="OUR LEGACY" data-sw="URITHI WETU" style="color: var(--accent-gold);">OUR LEGACY</span>
+            <h1 data-en="Your Trusted Safari Experts in Tanzania" data-sw="Wataalamu Wako wa Safari Waaminifu Tanzania">Your Trusted Safari Experts in Tanzania</h1>
+            <p class="hero-tagline" data-en="Discover the passion, expertise, and dedication behind your ultimate Tanzanian safari adventure." data-sw="Gundua shauku, utaalamu, na kujitolea nyuma ya safari yako bora ya Tanzania.">Discover the passion, expertise, and dedication behind your ultimate Tanzanian safari adventure.</p>
+        </div>
+    </section>
+
+    <!-- Company Stats Summary -->
+    <section class="section stats-section" style="background: var(--section-bg); padding: 60px 0; border-bottom: 1px solid var(--border-color);">
+        <div class="container">
+            <div class="why-us-grid">
+                <div class="why-us-item scroll-reveal text-center">
+                    <div class="icon-wrap" style="color: var(--accent-gold); font-size: 2.2rem; margin-bottom: 10px;"><i class="fas fa-history"></i></div>
+                    <strong style="font-size: 1.6rem; color: var(--primary-green); font-family: 'Playfair Display', serif; display: block;" data-en="14+" data-sw="14+">14+</strong>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);" data-en="Years Experience" data-sw="Miaka ya Uzoefu">Years Experience</p>
+                </div>
+                <div class="why-us-item scroll-reveal text-center">
+                    <div class="icon-wrap" style="color: var(--accent-gold); font-size: 2.2rem; margin-bottom: 10px;"><i class="fas fa-users"></i></div>
+                    <strong style="font-size: 1.6rem; color: var(--primary-green); font-family: 'Playfair Display', serif; display: block;" data-en="10k+" data-sw="10k+">10k+</strong>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);" data-en="Happy Clients" data-sw="Wateja Wenye Furaha">Happy Clients</p>
+                </div>
+                <div class="why-us-item scroll-reveal text-center">
+                    <div class="icon-wrap" style="color: var(--accent-gold); font-size: 2.2rem; margin-bottom: 10px;"><i class="fas fa-route"></i></div>
+                    <strong style="font-size: 1.6rem; color: var(--primary-green); font-family: 'Playfair Display', serif; display: block;" data-en="50+" data-sw="50+">50+</strong>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);" data-en="Itineraries" data-sw="Ratiba za Safari">Itineraries</p>
+                </div>
+                <div class="why-us-item scroll-reveal text-center">
+                    <div class="icon-wrap" style="color: var(--accent-gold); font-size: 2.2rem; margin-bottom: 10px;"><i class="fas fa-award"></i></div>
+                    <strong style="font-size: 1.6rem; color: var(--primary-green); font-family: 'Playfair Display', serif; display: block;" data-en="100%" data-sw="100%">100%</strong>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);" data-en="Local Guides" data-sw="Waongoza wa Ndani">Local Guides</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Are Section -->
+    <section class="section" style="background: var(--bg-color); padding: 80px 0;">
+        <div class="container">
+            <div style="text-align: center; max-width: 850px; margin: 0 auto 50px auto;">
+                <span class="sub-heading" data-en="WHO WE ARE" data-sw="SISI NI NANI">WHO WE ARE</span>
+                <h2 data-en="Creating Unique Tanzania Tours" data-sw="Kuunda Safari za Kipekee za Tanzania">Creating Unique Tanzania Tours</h2>
+            </div>
+            
+            <div class="about-grid" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: start;">
+                <div class="about-card-modern">
+                    <div class="about-text scroll-reveal" style="font-size: 1.05rem; line-height: 1.85; color: var(--text-muted);">
+                        <p style="margin-bottom: 20px;" data-en="At Century Adventures, we believe that travel is more than visiting new places—it's about creating meaningful experiences, discovering new perspectives, and building memories that last a lifetime. Founded with a passion for showcasing the beauty of Tanzania, we specialize in designing exceptional safari experiences, cultural journeys, mountain adventures, beach holidays, and volunteer programs that connect travelers with the very best our country has to offer." data-sw="Katika Century Adventures, tunaamini kuwa kusafiri ni zaidi ya kutembelea sehemu mpya—ni kuhusu kuunda uzoefu wenye maana, kugundua mitazamo mipya, na kujenga kumbukumbu zinazodumu milele. Ikianzishwa kwa shauku ya kuonyesha uzuri wa Tanzania, tunabobea katika kubuni safari za kipekee, safari za kitamaduni, matukio ya milimani, likizo za pwani, na programu za kujitolea zinazounganisha wasafiri na bora zaidi nchini mwetu.">At Century Adventures, we believe that travel is more than visiting new places—it's about creating meaningful experiences, discovering new perspectives, and building memories that last a lifetime. Founded with a passion for showcasing the beauty of Tanzania, we specialize in designing exceptional safari experiences, cultural journeys, mountain adventures, beach holidays, and volunteer programs that connect travelers with the very best our country has to offer.</p>
+                        <div class="about-text-more">
+                            <p style="margin-bottom: 20px;" data-en="Century Adventures is a proudly Tanzanian travel company dedicated to providing authentic, safe, and unforgettable travel experiences. We don't just show you Tanzania—we help you experience it. Our deep connection to the land, wildlife, and communities enables us to offer journeys that go beyond traditional tourism." data-sw="Century Adventures ni kampuni ya kusafiri ya Kitanzania inayojitolea kutoa uzoefu halisi, salama, na usiosahaulika wa kusafiri. Hatukuonyeshi Tanzania tu—tunakusaidia kuipitia. Uhusiano wetu wa kina na ardhi, wanyamapori, na jamii unatuwezesha kutoa safari zinazovuka utalii wa kawaida.">Century Adventures is a proudly Tanzanian travel company dedicated to providing authentic, safe, and unforgettable travel experiences. We don't just show you Tanzania—we help you experience it. Our deep connection to the land, wildlife, and communities enables us to offer journeys that go beyond traditional tourism.</p>
+                            <p style="margin-bottom: 0;" data-en="Our team consists of passionate travel specialists, professional safari guides, and local experts who bring unmatched knowledge and enthusiasm to every journey. From the endless plains of the Serengeti and the breathtaking Ngorongoro Crater to the pristine beaches of Zanzibar and the majestic slopes of Mount Kilimanjaro, we create carefully tailored journeys that inspire, excite, and transform." data-sw="Timu yetu inajumuisha wataalamu wa kusafiri wenye shauku, waongoza safari wa kitaalamu, na wataalamu wa ndani ambao wanaleta ujuzi na shauku isiyo na kifani kwa kila safari. Kutoka nyanda zisizo na mwisho za Serengeti na Ngorongoro Crater ya kupendeza hadi fukwe safi za Zanzibar na miteremko ya kifahari ya Mlima Kilimanjaro, tunaunda safari zilizoundwa kwa uangalifu zinazovutia, kusisimua, na kubadilisha.">Our team consists of passionate travel specialists, professional safari guides, and local experts who bring unmatched knowledge and enthusiasm to every journey. From the endless plains of the Serengeti and the breathtaking Ngorongoro Crater to the pristine beaches of Zanzibar and the majestic slopes of Mount Kilimanjaro, we create carefully tailored journeys that inspire, excite, and transform.</p>
+                        </div>
+                        <button id="btn-about-read-more" class="btn btn-outline" style="margin-top: 20px; padding: 10px 25px; font-size: 0.8rem;" data-en="Read More" data-sw="Soma Zaidi">Read More</button>
+                    </div>
+                </div>
+                
+                <div class="scroll-reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div style="background: var(--card-bg); padding: 30px 25px; border-radius: 20px; border: 1px solid var(--border-color); text-align: center; box-shadow: var(--shadow-soft); transition: var(--transition);">
+                        <i class="fas fa-map-marked-alt" style="font-size: 2rem; color: var(--accent-gold); margin-bottom: 12px; display: block;"></i>
+                        <strong style="font-size: 1.6rem; color: var(--primary-green); font-family: 'Playfair Display', serif; display: block;" data-en="20+" data-sw="20+">20+</strong>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);" data-en="Destinations" data-sw="Maeneo">Destinations</span>
+                    </div>
+                    <div style="background: var(--card-bg); padding: 30px 25px; border-radius: 20px; border: 1px solid var(--border-color); text-align: center; box-shadow: var(--shadow-soft); transition: var(--transition);">
+                        <i class="fas fa-handshake" style="font-size: 2rem; color: var(--accent-gold); margin-bottom: 12px; display: block;"></i>
+                        <strong style="font-size: 1.6rem; color: var(--primary-green); font-family: 'Playfair Display', serif; display: block;" data-en="100%" data-sw="100%">100%</strong>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);" data-en="Locally Owned" data-sw="Inamilikiwa na Wenyeji">Locally Owned</span>
+                    </div>
+                    <div style="background: var(--card-bg); padding: 30px 25px; border-radius: 20px; border: 1px solid var(--border-color); text-align: center; box-shadow: var(--shadow-soft); transition: var(--transition);">
+                        <i class="fas fa-users" style="font-size: 2rem; color: var(--accent-gold); margin-bottom: 12px; display: block;"></i>
+                        <strong style="font-size: 1.6rem; color: var(--primary-green); font-family: 'Playfair Display', serif; display: block;" data-en="50+" data-sw="50+">50+</strong>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);" data-en="Team Members" data-sw="Wafanyakazi">Team Members</span>
+                    </div>
+                    <div style="background: var(--card-bg); padding: 30px 25px; border-radius: 20px; border: 1px solid var(--border-color); text-align: center; box-shadow: var(--shadow-soft); transition: var(--transition);">
+                        <i class="fas fa-star" style="font-size: 2rem; color: var(--accent-gold); margin-bottom: 12px; display: block;"></i>
+                        <strong style="font-size: 1.6rem; color: var(--primary-green); font-family: 'Playfair Display', serif; display: block;" data-en="4.9/5" data-sw="4.9/5">4.9/5</strong>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);" data-en="Guest Rating" data-sw="Kiwango cha Wageni">Guest Rating</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="section" style="background: var(--section-bg); padding: 80px 0;">
+        <div class="container">
+            <div class="mission-vision-container">
+                <!-- Mission Card -->
+                <div class="mission-card scroll-reveal">
+                    <div class="card-circle-decor-1"></div>
+                    <div class="card-circle-decor-2"></div>
+                    <div style="position: relative; z-index: 2;">
+                        <div class="card-icon-wrap">
+                            <i class="fas fa-bullseye" style="font-size: 1.6rem; color: var(--accent-gold);"></i>
+                        </div>
+                        <span style="font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-gold); font-weight: 600;" data-en="OUR MISSION" data-sw="DHAMIRA YETU">OUR MISSION</span>
+                        <h3 style="font-size: 1.6rem; margin: 12px 0 20px; font-family: 'Playfair Display', serif; color: #fff;" data-en="Purpose-Driven Travel" data-sw="Safari Yenye Kusudi">Purpose-Driven Travel</h3>
+                        <p style="font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.85);" data-en="Provide unforgettable, safe, and personalized safari experiences in Tanzania." data-sw="Kutoa uzoefu wa safari usiosahaulika, salama na wa kipekee nchini Tanzania.">Provide unforgettable, safe, and personalized safari experiences in Tanzania.</p>
+                    </div>
+                </div>
+                <!-- Vision Card -->
+                <div class="vision-card scroll-reveal">
+                    <div class="card-circle-decor-1"></div>
+                    <div class="card-circle-decor-2"></div>
+                    <div style="position: relative; z-index: 2;">
+                        <div class="card-icon-wrap">
+                            <i class="fas fa-eye" style="font-size: 1.6rem; color: var(--accent-gold);"></i>
+                        </div>
+                        <span style="font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-gold); font-weight: 600;" data-en="OUR VISION" data-sw="MAONO YETU">OUR VISION</span>
+                        <h3 style="font-size: 1.6rem; margin: 12px 0 20px; font-family: 'Playfair Display', serif; color: #fff;" data-en="A Global Standard of Excellence" data-sw="Kiwango cha Ubora Duniani">A Global Standard of Excellence</h3>
+                        <p style="font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.85);" data-en="To become a leading safari company in Africa known for excellence, trust, and sustainability." data-sw="Kuwa kampuni inayoongoza ya safari barani Afrika inayojulikana kwa ubora, uaminifu na utalii endelevu.">To become a leading safari company in Africa known for excellence, trust, and sustainability.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section" style="background: var(--bg-color); padding: 80px 0;">
+        <div class="container">
+            <div style="text-align: center; max-width: 850px; margin: 0 auto 50px auto;">
+                <span class="sub-heading" data-en="WHY CHOOSE US" data-sw="KWA NINI UTUCHAGUE">WHY CHOOSE US</span>
+                <h2 data-en="We Make Your Safari Extraordinary" data-sw="Tunafanya Safari Yako Kuwa ya Kipekee">We Make Your Safari Extraordinary</h2>
+                <p style="font-size: 1.1rem; color: var(--text-muted); margin-top: 15px;" data-en="We go above and beyond to make your Tanzanian adventure extraordinary." data-sw="Tunafanya kila juhudi kufanya safari yako ya Tanzania kuwa ya kipekee.">We go above and beyond to make your Tanzanian adventure extraordinary.</p>
+            </div>
+            
+            <div class="why-choose-grid">
+                <!-- Card 1: Expert Local Safari Guides -->
+                <div class="choose-card scroll-reveal">
+                    <div class="choose-icon-box">
+                        <i class="fas fa-compass"></i>
+                    </div>
+                    <div class="choose-content">
+                        <h3 data-en="Expert Local Safari Guides" data-sw="Waongozaji Wataalamu wa Ndani">Expert Local Safari Guides</h3>
+                        <p class="choose-text" data-en="Our certified guides are native specialists with years of deep bush tracking and safety experience." data-sw="Waongozaji wetu wameidhinishwa na ni wataalamu wa ndani wenye uzoefu wa miaka mingi wa porini.">Our certified guides are native specialists with years of deep bush tracking and safety experience.</p>
+                    </div>
+                </div>
+                <!-- Card 2: Custom Travel Experiences -->
+                <div class="choose-card scroll-reveal">
+                    <div class="choose-icon-box">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <div class="choose-content">
+                        <h3 data-en="Custom Travel Experiences" data-sw="Safari Zilizoundwa Kibinafsi">Custom Travel Experiences</h3>
+                        <p class="choose-text" data-en="We tailor-make every itinerary to match your exact budget, schedule, and wildlife interests." data-sw="Tunatengeneza kila ratiba kulingana na bajeti yako, ratiba na maslahi yako ya wanyamapori.">We tailor-make every itinerary to match your exact budget, schedule, and wildlife interests.</p>
+                    </div>
+                </div>
+                <!-- Card 3: Comfortable 4x4 Safari Vehicles -->
+                <div class="choose-card scroll-reveal">
+                    <div class="choose-icon-box">
+                        <i class="fas fa-truck-monster"></i>
+                    </div>
+                    <div class="choose-content">
+                        <h3 data-en="Comfortable 4x4 Safari Vehicles" data-sw="Magari ya Safari ya 4x4 yenye Starehe">Comfortable 4x4 Safari Vehicles</h3>
+                        <p class="choose-text" data-en="Travel in customized 4x4 safari Land Cruisers with pop-up roofs, charging outlets, and refrigerators." data-sw="Safiri katika magari yetu ya Land Cruiser ya 4x4 yenye paa zinazofunguka, sehemu za kuchaji, na jokofu.">Travel in customized 4x4 safari Land Cruisers with pop-up roofs, charging outlets, and refrigerators.</p>
+                    </div>
+                </div>
+                <!-- Card 4: Affordable & Luxury Options -->
+                <div class="choose-card scroll-reveal">
+                    <div class="choose-icon-box">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <div class="choose-content">
+                        <h3 data-en="Affordable & Luxury Options" data-sw="Chaguzi za Bajeti na za Kifahari">Affordable & Luxury Options</h3>
+                        <p class="choose-text" data-en="From budget camping safaris to ultra-luxury lodges, we offer choices for every type of traveler." data-sw="Kutoka safari za bajeti za kupiga kambi hadi hoteli za kifahari, tunatoa chaguzi za kila aina ya msafiri.">From budget camping safaris to ultra-luxury lodges, we offer choices for every type of traveler.</p>
+                    </div>
+                </div>
+                <!-- Card 5: 24/7 Customer Support -->
+                <div class="choose-card scroll-reveal">
+                    <div class="choose-icon-box">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="choose-content">
+                        <h3 data-en="24/7 Customer Support" data-sw="Msaada kwa Wateja 24/7">24/7 Customer Support</h3>
+                        <p class="choose-text" data-en="Our dedicated support team is available around the clock to assist you before, during, and after your trip." data-sw="Timu yetu ya usaidizi inapatikana masaa 24 kila siku isiwe na kikomo ili kukusaidia kabla, wakati, na baada ya safari yako.">Our dedicated support team is available around the clock to assist you before, during, and after your trip.</p>
+                    </div>
+                </div>
+                <!-- Card 6: Sustainable Tourism Practices -->
+                <div class="choose-card scroll-reveal">
+                    <div class="choose-icon-box">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="choose-content">
+                        <h3 data-en="Sustainable Tourism Practices" data-sw="Mbinu za Utalii Endelevu">Sustainable Tourism Practices</h3>
+                        <p class="choose-text" data-en="We practice eco-friendly tourism, minimize waste, support wildlife conservation, and uplift local community projects." data-sw="Tunafanya utalii rafiki kwa mazingira, tunasaidia uhifadhi wa wanyamapori, na kuinua jamii zetu za ndani.">We practice eco-friendly tourism, minimize waste, support wildlife conservation, and uplift local community projects.</p>
+                    </div>
+                </div>
+                <!-- Card 7: High Safety Standards -->
+                <div class="choose-card scroll-reveal">
+                    <div class="choose-icon-box">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="choose-content">
+                        <h3 data-en="High Safety Standards" data-sw="Viwango vya Juu vya Usalama">High Safety Standards</h3>
+                        <p class="choose-text" data-en="Your safety is paramount. We adhere to strict health regulations, guide certifications, and vehicle maintenance protocols." data-sw="Usalama wako ni kipaumbele. Tunazingatia sheria kali za afya, vyeti vya waongozaji, na matengenezo ya magari.">Your safety is paramount. We adhere to strict health regulations, guide certifications, and vehicle maintenance protocols.</p>
+                    </div>
+                </div>
+                <!-- Card 8: Authentic Tanzania Experiences -->
+                <div class="choose-card scroll-reveal">
+                    <div class="choose-icon-box">
+                        <i class="fas fa-binoculars"></i>
+                    </div>
+                    <div class="choose-content">
+                        <h3 data-en="Authentic Tanzania Experiences" data-sw="Uzoefu Halisi wa Tanzania">Authentic Tanzania Experiences</h3>
+                        <p class="choose-text" data-en="Immerse yourself in rich cultures, local traditions, and natural wonders with real Tanzanian experts." data-sw="Jizamishe katika tamaduni tajiri, mila za kienyeji, na maajabu ya asili ukiwa na wataalamu halisi wa Tanzania.">Immerse yourself in rich cultures, local traditions, and natural wonders with real Tanzanian experts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values Section -->
+    <section class="section" style="background: var(--section-bg); padding: 80px 0;">
+        <div class="container">
+            <div style="text-align: center; max-width: 850px; margin: 0 auto 50px auto;">
+                <span class="sub-heading" data-en="OUR VALUES" data-sw="MAADILI YETU">OUR VALUES</span>
+                <h2 data-en="Core Values That Guide Us" data-sw="Thamani Kuu Zinazotuongoza">Core Values That Guide Us</h2>
+                <p style="font-size: 1.1rem; color: var(--text-muted); margin-top: 15px;" data-en="Core principles that guide our everyday decisions." data-sw="Kanuni kuu zinazoongoza maamuzi yetu ya kila siku.">Core principles that guide our everyday decisions.</p>
+            </div>
+            
+            <div class="values-grid-custom">
+                <!-- Value 1: Integrity -->
+                <div class="value-card-custom scroll-reveal">
+                    <span class="value-emoji">🤝</span>
+                    <h4 data-en="Integrity" data-sw="Uadilifu">Integrity</h4>
+                    <p data-en="Honesty and transparency in every transaction, quote, and interaction." data-sw="Uaminifu na uwazi katika kila muamala, nukuu na mawasiliano.">Honesty and transparency in every transaction, quote, and interaction.</p>
+                </div>
+                <!-- Value 2: Customer Satisfaction -->
+                <div class="value-card-custom scroll-reveal">
+                    <span class="value-emoji">😊</span>
+                    <h4 data-en="Customer Satisfaction" data-sw="Kuridhika kwa Wateja">Customer Satisfaction</h4>
+                    <p data-en="We go above and beyond to make sure our guests have a memorable and happy journey." data-sw="Tunafanya kila juhudi kuhakikisha wageni wetu wana safari yenye furaha na kumbukumbu nzuri.">We go above and beyond to make sure our guests have a memorable and happy journey.</p>
+                </div>
+                <!-- Value 3: Professionalism -->
+                <div class="value-card-custom scroll-reveal">
+                    <span class="value-emoji">👔</span>
+                    <h4 data-en="Professionalism" data-sw="Utaalamu">Professionalism</h4>
+                    <p data-en="Highly trained staff and reliable services conforming to international hospitality standards." data-sw="Wafanyakazi waliofunzwa vyema na huduma za kuaminika zinazofuata viwango vya kimataifa.">Highly trained staff and reliable services conforming to international hospitality standards.</p>
+                </div>
+                <!-- Value 4: Sustainability -->
+                <div class="value-card-custom scroll-reveal">
+                    <span class="value-emoji">🌱</span>
+                    <h4 data-en="Sustainability" data-sw="Uendelevu">Sustainability</h4>
+                    <p data-en="Minimizing environmental footprint and giving back to local wildlife conservation." data-sw="Kupunguza uharibifu wa mazingira na kuchangia katika uhifadhi wa wanyamapori wa ndani.">Minimizing environmental footprint and giving back to local wildlife conservation.</p>
+                </div>
+                <!-- Value 5: Cultural Respect -->
+                <div class="value-card-custom scroll-reveal">
+                    <span class="value-emoji">🌍</span>
+                    <h4 data-en="Cultural Respect" data-sw="Kuheshimu Utamaduni">Cultural Respect</h4>
+                    <p data-en="Valuing and preserving the heritage, traditions, and dignity of Tanzanian tribes and communities." data-sw="Kuthamini na kuhifadhi urithi, mila na utu wa makabila na jamii za Tanzania.">Valuing and preserving the heritage, traditions, and dignity of Tanzanian tribes and communities.</p>
+                </div>
+                <!-- Value 6: Excellence -->
+                <div class="value-card-custom scroll-reveal">
+                    <span class="value-emoji">⭐</span>
+                    <h4 data-en="Excellence" data-sw="Ubora">Excellence</h4>
+                    <p data-en="Striving for perfection in our itineraries, vehicles, accommodation choices, and guiding." data-sw="Kujitahidi kupata ukamilifu katika ratiba zetu, magari, malazi na uongozi.">Striving for perfection in our itineraries, vehicles, accommodation choices, and guiding.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expert Guides Team Section -->
+    <section class="section" style="background: var(--bg-color); padding: 60px 0;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <span class="sub-heading" data-en="SAFARI EXPERTS" data-sw="WATAALAMU WA SAFARI">SAFARI EXPERTS</span>
+                <h2 data-en="Meet Our Expert Guides" data-sw="Kutana na Waongozaji Wetu">Meet Our Expert Guides</h2>
+                <p class="section-desc" style="margin-left: auto; margin-right: auto; max-width: 600px;" data-en="Our passionate team brings decades of combined bush experience and local expertise to every adventure." data-sw="Timu yetu yenye shauku inaleta uzoefu wa miongo ya porini na utaalamu wa ndani kwa kila safari.">Our passionate team brings decades of combined bush experience and local expertise to every adventure.</p>
+            </div>
+            
+            <!-- Expert Guides: Infinite Marquee -->
+            <div class="marquee-container expert-guides-carousel" style="margin-top: 0;">
+                <button class="marquee-arrow marquee-arrow-left" aria-label="Scroll left"><i class="fas fa-chevron-left"></i></button>
+                <button class="marquee-arrow marquee-arrow-right" aria-label="Scroll right"><i class="fas fa-chevron-right"></i></button>
+                <div class="marquee-wrapper">
+                    <div class="marquee-track marquee-left">
+                <!-- Guide 1: Emmanuel -->
+                <div class="team-card">
+                    <div class="team-card-img-wrap">
+                        <img src="assets/emmanuel-massawe.png" alt="Emmanuel Massawe">
+                        <div class="team-card-overlay">
+                            <div class="team-social-links">
+                                <a href="https://wa.me/255747115390" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                                <a href="mailto:info@centuryadventures.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card-body">
+                        <h4 data-en="Emmanuel Massawe" data-sw="Emmanuel Massawe">Emmanuel Massawe</h4>
+                        <span class="team-role" data-en="Lead Naturalist Guide" data-sw="Kiongozi wa Waongozaji">Lead Naturalist Guide</span>
+                        <p data-en="Over 15 years tracking big cats across the Serengeti plains. He knows every hidden trail and watering hole." data-sw="Zaidi ya miaka 15 akifuatilia wanyama wakubwa wa paka katika nyanda za Serengeti.">Over 15 years tracking big cats across the Serengeti plains. He knows every hidden trail and watering hole.</p>
+                    </div>
+                </div>
+                <!-- Guide 2: Sarah -->
+                <div class="team-card">
+                    <div class="team-card-img-wrap">
+                        <img src="assets/sarah-johnson.png" alt="Sarah Johnson">
+                        <div class="team-card-overlay">
+                            <div class="team-social-links">
+                                <a href="https://wa.me/255747115390" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                                <a href="mailto:info@centuryadventures.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card-body">
+                        <h4 data-en="Sarah Johnson" data-sw="Sarah Johnson">Sarah Johnson</h4>
+                        <span class="team-role" data-en="Travel Consultant" data-sw="Mshauri wa Safari">Travel Consultant</span>
+                        <p data-en="Expert itinerary designer who tailors each booking to match your exact luxury or budget expectations." data-sw="Mbunifu wa ratiba ambaye anabadilisha kila booking kulingana na matarajio yako.">Expert itinerary designer who tailors each booking to match your exact luxury or budget expectations.</p>
+                    </div>
+                </div>
+                <!-- Guide 3: David -->
+                <div class="team-card">
+                    <div class="team-card-img-wrap">
+                        <img src="assets/david-mchome.png" alt="David Mchome">
+                        <div class="team-card-overlay">
+                            <div class="team-social-links">
+                                <a href="https://wa.me/255747115390" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                                <a href="mailto:info@centuryadventures.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card-body">
+                        <h4 data-en="David Mchome" data-sw="David Mchome">David Mchome</h4>
+                        <span class="team-role" data-en="Ornithology Specialist" data-sw="Mtaalamu wa Ndege">Ornithology Specialist</span>
+                        <p data-en="Bird watching expert specializing in locating rare and endemic Tanzanian bird species across all ecosystems." data-sw="Mtaalamu wa kuangalia ndege anayebobea katika kutafuta spishi adimu za ndege wa Tanzania.">Bird watching expert specializing in locating rare and endemic Tanzanian bird species across all ecosystems.</p>
+                    </div>
+                </div>
+                <!-- Duplicate set for seamless continuous carousel -->
+                <div class="team-card" aria-hidden="true">
+                    <div class="team-card-img-wrap">
+                        <img src="assets/emmanuel-massawe.png" alt="">
+                        <div class="team-card-overlay">
+                            <div class="team-social-links">
+                                <a href="https://wa.me/255747115390" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                                <a href="mailto:info@centuryadventures.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card-body">
+                        <h4 data-en="Emmanuel Massawe" data-sw="Emmanuel Massawe">Emmanuel Massawe</h4>
+                        <span class="team-role" data-en="Lead Naturalist Guide" data-sw="Kiongozi wa Waongozaji">Lead Naturalist Guide</span>
+                        <p data-en="Over 15 years tracking big cats across the Serengeti plains. He knows every hidden trail and watering hole." data-sw="Zaidi ya miaka 15 akifuatilia wanyama wakubwa wa paka katika nyanda za Serengeti.">Over 15 years tracking big cats across the Serengeti plains. He knows every hidden trail and watering hole.</p>
+                    </div>
+                </div>
+                <div class="team-card" aria-hidden="true">
+                    <div class="team-card-img-wrap">
+                        <img src="assets/sarah-johnson.png" alt="">
+                        <div class="team-card-overlay">
+                            <div class="team-social-links">
+                                <a href="https://wa.me/255747115390" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                                <a href="mailto:info@centuryadventures.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card-body">
+                        <h4 data-en="Sarah Johnson" data-sw="Sarah Johnson">Sarah Johnson</h4>
+                        <span class="team-role" data-en="Travel Consultant" data-sw="Mshauri wa Safari">Travel Consultant</span>
+                        <p data-en="Expert itinerary designer who tailors each booking to match your exact luxury or budget expectations." data-sw="Mbunifu wa ratiba ambaye anabadilisha kila booking kulingana na matarajio yako.">Expert itinerary designer who tailors each booking to match your exact luxury or budget expectations.</p>
+                    </div>
+                </div>
+                <div class="team-card" aria-hidden="true">
+                    <div class="team-card-img-wrap">
+                        <img src="assets/david-mchome.png" alt="">
+                        <div class="team-card-overlay">
+                            <div class="team-social-links">
+                                <a href="https://wa.me/255747115390" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                                <a href="mailto:info@centuryadventures.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card-body">
+                        <h4 data-en="David Mchome" data-sw="David Mchome">David Mchome</h4>
+                        <span class="team-role" data-en="Ornithology Specialist" data-sw="Mtaalamu wa Ndege">Ornithology Specialist</span>
+                        <p data-en="Bird watching expert specializing in locating rare and endemic Tanzanian bird species across all ecosystems." data-sw="Mtaalamu wa kuangalia ndege anayebobea katika kutafuta spishi adimu za ndege wa Tanzania.">Bird watching expert specializing in locating rare and endemic Tanzanian bird species across all ecosystems.</p>
+                    </div>
+                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Contact Info -->
+    <div class="footer-top">
+        <div class="container">
+            <h2><i class="fas fa-phone-alt"></i> +255 747 115 390</h2>
+            <a href="enquire.html" class="btn enquire-btn" data-en="CONTACT US TODAY!" data-sw="WASILIANA NASI LEO!">CONTACT US TODAY!</a>
+        </div>
+    </div>
+
+    <!-- Final Call to Action -->
+    <section class="section cta-section" style="background: var(--primary-gradient); padding: 50px 0; text-align: center; color: white; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <div class="container" style="position: relative; z-index: 2;">
+            <span class="sub-heading" style="color:var(--accent-gold); font-size: 0.8rem; letter-spacing: 2px;" data-en="YOUR JOURNEY TO AFRICA STARTS HERE" data-sw="SAFARI YAKO YA AFRIKA INAANZA HAPA">YOUR JOURNEY TO AFRICA STARTS HERE</span>
+            <h2 style="font-size: clamp(1.5rem, 3vw, 2.2rem); color: white; margin: 10px 0 16px;" data-en="Are you ready to explore Tanzania?" data-sw="Uko Tayari Kuichunguza Tanzania?">Are you ready to explore Tanzania?</h2>
+            
+            <p class="cta-description" style="max-width: 650px; margin: 0 auto 25px; font-size:0.9rem; line-height: 1.65; opacity: 0.9;">
+                <span class="cta-hide-mobile" data-en="Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. " data-sw="Fikiria kushuhudia uwindaji wa simba wakati wa machweo, kutazama tembo wakizurura kwa uhuru kwenye savanna zisizo na mwisho, kujionea Uhamiaji Mkuu, au kupumzika kwenye mchanga mweupe wa Zanzibar. ">Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. </span>
+                <span data-en="Let Century Adventures make those dreams come true." data-sw="Ruhusu Century Adventures kufanya ndoto hizo ziwe kweli.">Let Century Adventures make those dreams come true.</span>
+            </p>
+
+            <div class="cta-action-grid" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <a href="enquire.html" class="btn btn-primary cta-circle-btn" style="background: var(--accent-gold); color: #002b18; font-weight:800; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; text-decoration: none;" data-en="Plan Your Trip" data-sw="Panga Safari Yako">Plan Your Trip</a>
+                <a href="enquire.html" class="btn btn-outline cta-circle-btn secondary" style="border: 1px solid rgba(255,255,255,0.6); color: white; font-weight:700; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; background: transparent; text-decoration: none;" data-en="Request a Free Quote" data-sw="Omba Nukuu ya Bure">Request a Free Quote</a>
+            </div>
+            
+            <div style="margin-top: 18px;">
+                <a href="contact.html" style="color: var(--accent-gold); font-weight: 700; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.5px;" data-en="Contact Our Experts &rarr;" data-sw="Wasiliana na Wataalamu Wetu &rarr;">Contact Our Experts &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col info-col">
+                <h3 data-en="CONTACT US" data-sw="WASILIANA NASI">CONTACT US</h3>
+                <p><strong>Century Adventures</strong></p>
+                <p data-en="Asasi Tower, 4th Floor" data-sw="Asasi Tower, Ghorofa ya 4">Asasi Tower, 4th Floor</p>
+                <p data-en="Ohio Street" data-sw="Mtaa wa Ohio">Ohio Street</p>
+                <p><i class="fas fa-map-marker-alt"></i> Dar es Salaam, Tanzania</p>
+                <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/255747115390" target="_blank" style="color: inherit;">+255 747 115 390</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@centuryadventures.com" style="color: inherit;">info@centuryadventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:bookings@centuryadventures.com" style="color: inherit;">bookings@centuryadventures.com</a></p>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="POPULAR PLACES" data-sw="MAENEO MAARUFU">POPULAR PLACES</h3>
+                <ul>
+                    <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                    <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                    <li><a href="selous.html" data-en="Nyerere Park" data-sw="Hifadhi ya Nyerere">Nyerere Park</a></li>
+                    <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                    <li><a href="mikumi.html" data-en="Mikumi Park" data-sw="Hifadhi ya Mikumi">Mikumi Park</a></li>
+                    <li><a href="ngorongoro.html" data-en="Ngorongoro" data-sw="Ngorongoro">Ngorongoro</a></li>
+                    <li><a href="manyara.html" data-en="Manyara National Park" data-sw="Hifadhi ya Manyara">Manyara National Park</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL EXPERIENCE" data-sw="UZOEFU WA KUSAFIRI">TRAVEL EXPERIENCE</h3>
+                <ul>
+                    <li><a href="family-safaris.html" data-en="Family Trips" data-sw="Safari za Familia">Family Trips</a></li>
+                    <li><a href="honeymoon-safaris.html" data-en="Honeymoon Trips" data-sw="Safari za Fungate">Honeymoon Trips</a></li>
+                    <li><a href="migration-safaris.html" data-en="Migration Trips" data-sw="Safari za Uhamiaji">Migration Trips</a></li>
+                    <li><a href="volunteer.html" data-en="Volunteer Programs" data-sw="Mipango ya Kujitolea">Volunteer Programs</a></li>
+                    <li><a href="zanzibar-beach.html" data-en="Zanzibar Beach Holiday" data-sw="Likizo ya Pwani ya Zanzibar">Zanzibar Beach Holiday</a></li>
+                </ul>
+            </div>
+            <div class="footer-col link-col collapsible">
+                <h3 data-en="TRAVEL RESOURCES" data-sw="MAARIFA YA SAFARI">TRAVEL RESOURCES</h3>
+                <ul>
+                    <li><a href="blog.html" data-en="Travel Blog" data-sw="Blogu yetu">Travel Blog</a></li>
+                    <li><a href="faq.html" data-en="FAQs" data-sw="Maswali ya Kawaida">FAQs</a></li>
+                    <li><a href="gallery.html" data-en="Photo Gallery" data-sw="Picha za Safari">Photo Gallery</a></li>
+                    <li><a href="testimonials.html" data-en="Testimonials" data-sw="Shuhuda">Testimonials</a></li>
+                    <li><a href="best-time-to-visit-tanzania.html" data-en="Best Time to Visit" data-sw="Wakati Bora wa Kuja">Best Time to Visit</a></li>
+                    <li><a href="health-safety-tanzania.html" data-en="Health &amp; Safety" data-sw="Afya na Usalama">Health &amp; Safety</a></li>
+                    <li><a href="obtaining-visa-tanzania.html" data-en="Visa Information" data-sw="Visa ya Safari">Visa Information</a></li>
+                    <li><a href="solo-female-travel-tanzania.html" data-en="Solo Female Travel" data-sw="Safari ya Wanawake">Solo Female Travel</a></li>
+                    <li><a href="what-to-wear-safari.html" data-en="Safari Packing Guide" data-sw="Nguo za Safari">Safari Packing Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <div class="tripadvisor-card">
+                    <img src="https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-66827-5.svg" alt="TripAdvisor">
+                    <h4 data-en="TripAdvisor Century Adventures" data-sw="TripAdvisor Century Adventures">TripAdvisor Century Adventures</h4>
+                    <p data-en="Ranked #1 on TripAdvisor" data-sw="Imeorodheshwa #1 TripAdvisor">Ranked #1 on TripAdvisor</p>
+                    <a href="https://www.tripadvisor.com/" target="_blank" class="btn btn-small" data-en="TripAdvisor Give Feedback Century Adventures" data-sw="TripAdvisor Toa Maoni Century Adventures">TripAdvisor Give Feedback Century Adventures</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61577731823809"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.youtube.com/@CenturyAdventures" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/century_adventures?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/255747115390"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:info@centuryadventures.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; Copyright 2012 - 2026 | Century Adventures</p>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>

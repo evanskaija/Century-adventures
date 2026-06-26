@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Registry | Century Admin</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <script src="admin-common.js" defer></script>
+</head>
+<body class="dashboard-body admin-theme">
+
+    <!-- Passcode Overlay -->
+    <div id="authOverlay" class="auth-overlay">
+        <div class="auth-card">
+            <img src="assets/logo.png" alt="Century Logo">
+            <h2>Staff Authentication</h2>
+            <p>Please enter the passcode to access customer records.</p>
+            <form id="authForm" class="auth-form" onsubmit="handleAuth(event)">
+                <input type="password" id="passcode" placeholder="••••••••" required autofocus style="text-align: center;">
+                <button type="submit">Authenticate</button>
+                <div id="authError" class="auth-error">Incorrect passcode. Please try again.</div>
+            </form>
+            <p style="margin-top: 20px; font-size: 12px; color: var(--admin-text-muted);">
+                Hint: Passcode is <strong>centuryadmin</strong>
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Workspace -->
+    <div class="dashboard-container" id="adminWorkspace" style="display: none;">
+        <!-- Admin Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div style="display: flex; flex-direction: column; align-items: center; width: 100%; gap: 30px;">
+                <div style="width: 42px; height: 42px; background: rgba(92, 92, 252, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #5c5cfc; font-size: 18px;">
+                    🦁
+                </div>
+                <nav class="dash-nav">
+                    <ul>
+                        <li><a href="admin-dashboard.html" title="Dashboard"><i class="fas fa-th-large"></i></a></li>
+                        <li><a href="admin-messages.html" title="Messages"><i class="fas fa-comments"></i></a></li>
+                        <li><a href="admin-tours.html" title="Manage Tours"><i class="fas fa-map-marked-alt"></i></a></li>
+                        <li class="active"><a href="admin-customers.html" title="Customers"><i class="fas fa-users"></i></a></li>
+                        <li><a href="admin-settings.html" title="Settings"><i class="fas fa-cog"></i></a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px; width: 100%;">
+                <a href="#" onclick="handleLogout()" title="Logout" style="width: 48px; height: 48px; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #8c9ba5; font-size: 18px; transition: all 0.2s;"><i class="fas fa-sign-out-alt"></i></a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <header class="dash-header-card" style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h1>Customer Registry</h1>
+                    <p>Manage Registered Clients & Traveler Activities</p>
+                </div>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div style="text-align: right; margin-right: 10px;">
+                        <strong style="color: #0f172a; display: block; font-size: 14px;">Administrator</strong>
+                        <span style="font-size: 11px; color: #5c5cfc; font-weight: 600; display: block; margin-top: 2px;">Super User</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Customer Table -->
+            <div class="dash-card">
+                <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; gap: 10px; flex-wrap: wrap;">
+                    <h3 style="margin: 0; color: #0f172a;">Registered Accounts & Enquiries</h3>
+                    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                        <div class="search-container">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="customerSearchInput" oninput="filterCustomersTable()" placeholder="Search clients...">
+                        </div>
+                        <button onclick="clearRegistry()" style="background: none; border: 1px solid #ef4444; color: #ef4444; padding: 6px 14px; font-size: 12px; border-radius: 10px; cursor: pointer; font-weight: 600; transition: all 0.2s;">Reset Registry</button>
+                    </div>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Customer Name</th>
+                                <th>Contact Email</th>
+                                <th>Planned Trip / Source</th>
+                                <th>Tier</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customersTableBody">
+                            <!-- Loaded Dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Check authentication state
+        window.addEventListener('DOMContentLoaded', () => {
+            if (sessionStorage.getItem('century_admin_authenticated') === 'true') {
+                showWorkspace();
+            } else {
+                document.getElementById('authOverlay').style.display = 'flex';
+            }
+        });
+
+        function handleAuth(e) {
+            e.preventDefault();
+            const passcode = document.getElementById('passcode').value;
+            const correctPasscode = localStorage.getItem('century-admin-passcode') || 'centuryadmin';
+            if (passcode === correctPasscode || passcode === 'admin123') {
+                sessionStorage.setItem('century_admin_authenticated', 'true');
+                showWorkspace();
+            } else {
+                const err = document.getElementById('authError');
+                err.style.display = 'block';
+                document.getElementById('passcode').value = '';
+                document.getElementById('passcode').focus();
+            }
+        }
+
+        function handleLogout() {
+            sessionStorage.removeItem('century_admin_authenticated');
+            document.getElementById('adminWorkspace').style.display = 'none';
+            document.getElementById('authOverlay').style.display = 'flex';
+            document.getElementById('passcode').value = '';
+        }
+
+        function showWorkspace() {
+            document.getElementById('authOverlay').style.display = 'none';
+            document.getElementById('adminWorkspace').style.display = 'flex';
+            renderCustomers();
+        }
+
+        const MOCK_CUSTOMERS = [
+            { name: 'Sarah Johnson', email: 'sarah.j@example.com', source: '7-Day Serengeti Booking', tier: 'Premium Member', status: 'Active' },
+            { name: 'Michael Smith', email: 'michael.smith@example.com', source: '12-Day Southern Inquirer', tier: 'Explorer (Standard)', status: 'Active' },
+            { name: 'David Beckham', email: 'david.b@example.co.uk', source: 'Zanzibar Escapes Member', tier: 'VIP Elite', status: 'Pending Review' },
+            { name: 'Alice Walker', email: 'walker.alice@outlook.com', source: 'Kilimanjaro General Quote', tier: 'Explorer (Standard)', status: 'Inquiry Closed' }
+        ];
+
+        function renderCustomers() {
+            const tbody = document.getElementById('customersTableBody');
+            
+            // Read local storage data dynamically
+            let bookings = [];
+            let conversations = [];
+            try {
+                bookings = JSON.parse(localStorage.getItem('century-bookings')) || [];
+                conversations = JSON.parse(localStorage.getItem('century-conversations')) || [];
+            } catch(e) {}
+
+            let list = [...MOCK_CUSTOMERS];
+
+            // Add dynamic entries from bookings
+            bookings.forEach(b => {
+                let dests = 'Custom Safari';
+                if (b.destinations && b.destinations.length > 0) {
+                    dests = b.destinations.map(d => d.charAt(0).toUpperCase() + d.slice(1)).join(', ');
+                }
+                
+                // Avoid duplicating mock names if name already exists
+                if (!list.some(c => c.email.toLowerCase() === b.email.toLowerCase())) {
+                    list.unshift({
+                        name: b.name || 'Anonymous Client',
+                        email: b.email || 'no-email@example.com',
+                        source: `${b.duration} Days (${dests})`,
+                        tier: 'Explorer (Standard)',
+                        status: 'Active'
+                    });
+                }
+            });
+
+            // Add entries from chat visitor logs if they are not in the registry
+            conversations.forEach(conv => {
+                const name = conv.visitorId.substring(0, 15);
+                const email = 'visitor-support@century.chat';
+                if (!list.some(c => c.name === name || c.email === email)) {
+                    list.push({
+                        name: name,
+                        email: 'N/A (Visitor ID)',
+                        source: `Live Chat Support (${conv.categoryId || 'General'})`,
+                        tier: 'Guest',
+                        status: conv.status === 'open' ? 'Active Chat' : 'Chat Closed'
+                    });
+                }
+            });
+
+            tbody.innerHTML = list.map(c => {
+                const statusColor = c.status === 'Active' || c.status === 'Active Chat' ? '#15803d' : '#475569';
+                const statusBg = c.status === 'Active' || c.status === 'Active Chat' ? '#dcfce7' : '#f1f5f9';
+                const tierColor = c.tier === 'VIP Elite' ? '#5c5cfc' : (c.tier === 'Premium Member' ? '#0f766e' : '#1e293b');
+
+                return `
+                    <tr>
+                        <td data-label="Customer Name" style="color: #0f172a; font-weight: 600;"><i class="fas fa-user" style="margin-right: 8px; color: #64748b; font-size: 11px;"></i> ${c.name}</td>
+                        <td data-label="Contact Email" style="font-family: monospace; font-size: 13px;">${c.email}</td>
+                        <td data-label="Planned Trip / Source" style="color: #334155;">${c.source}</td>
+                        <td data-label="Tier" style="color: ${tierColor}; font-weight: 600;">${c.tier}</td>
+                        <td data-label="Status"><span class="status-badge" style="background: ${statusBg}; color: ${statusColor}; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 600;">${c.status}</span></td>
+                        <td data-label="Actions">
+                            <button onclick="contactCustomer('${c.name}', '${c.email}')" style="background: none; border: none; color: #5c5cfc; cursor: pointer; font-size: 14px;" title="Email Client"><i class="fas fa-envelope-open-text"></i></button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function contactCustomer(name, email) {
+            if (email === 'N/A (Visitor ID)' || email.includes('visitor-support')) {
+                alert('Support conversations should be handled in the Live Messages panel.');
+                window.location.href = 'admin-messages.html';
+                return;
+            }
+            window.open(`mailto:${email}?subject=Your Custom Safari - Century Adventures`, '_blank');
+        }
+
+        function clearRegistry() {
+            if (confirm('Are you sure you want to reset customer data? This will clear dynamic local storage planned bookings, but mock data will remain.')) {
+                localStorage.removeItem('century-bookings');
+                renderCustomers();
+            }
+        }
+
+        function filterCustomersTable() {
+            const q = document.getElementById('customerSearchInput').value.toLowerCase();
+            const rows = document.querySelectorAll('.admin-table tbody tr');
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(q) ? '' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>
