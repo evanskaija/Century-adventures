@@ -14,88 +14,108 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!header) return;
 
         header.innerHTML = `
-            <div class="container header-content">
-                <div class="logo">
-                    <a href="index.html" class="logo-wrap">
-                        <img src="assets/logo.png" alt="Century Adventures Logo">
-                        <span class="brand-name">CENTURY ADVENTURES<span>Safari &amp; Tours</span></span>
-                    </a>
+            <div class="header-top-bar">
+                <div class="header-top-content">
+                    <div class="top-info">
+                        <span class="top-info-item"><i class="fas fa-phone-alt"></i> +255 754 123 456</span>
+                        <span class="top-info-item"><i class="fas fa-envelope"></i> info@century-adventures.com</span>
+                    </div>
+                    <div class="top-socials">
+                        <a href="https://www.facebook.com/profile.php?id=61577731823809" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/century_adventures?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@CenturyAdventures" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
-                <nav class="nav">
-                    <button class="nav-close-btn" id="nav-close-btn" aria-label="Close navigation menu"><i class="fas fa-times"></i> <span data-en="Close" data-sw="Funga">Close</span></button>
-                    <ul>
-                        <li class="mobile-only-action mobile-menu-title"><i class="fas fa-bars"></i> MENU</li>
-                        <li class="mobile-only-action mobile-menu-controls">
+            </div>
+            <div class="header-main-nav">
+                <div class="container header-content">
+                    <div class="logo">
+                        <a href="index.html" class="logo-wrap">
+                            <img src="assets/logo.png" alt="Century Adventures Logo">
+                            <span class="brand-name">CENTURY ADVENTURES<span data-en="Discover. Explore. Experience." data-sw="Gundua. Chunguza. Shuhudia.">Discover. Explore. Experience.</span></span>
+                        </a>
+                    </div>
+                    <nav class="nav">
+                        <button class="nav-close-btn" id="nav-close-btn" aria-label="Close navigation menu"><i class="fas fa-times"></i> <span data-en="Close" data-sw="Funga">Close</span></button>
+                        <ul>
+                            <li class="mobile-only-action mobile-menu-title"><i class="fas fa-bars"></i> MENU</li>
+                            <li class="mobile-only-action mobile-menu-controls">
+                                <button class="toggle-btn lang-toggle" onclick="toggleLang(event)">SWAHILI</button>
+                                <button class="toggle-btn theme-toggle" onclick="toggleTheme(event)"><i class="fas fa-moon"></i> DARK</button>
+                            </li>
+                            <li><a href="index.html" id="nav-home" data-en="Home" data-sw="Nyumbani">Home</a></li>
+                            <li class="dropdown">
+                                <a href="safaris.html" id="nav-safaris" data-en="Safaris" data-sw="Safari">Safaris <i class="fas fa-chevron-down"></i></a>
+                                <span class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></span>
+                                <ul class="dropdown-menu">
+                                    <li><a href="safaris.html" data-en="All Tours &amp; Safaris" data-sw="Safari na Ziara Zote">All Tours &amp; Safaris</a></li>
+                                    <li><a href="3-day-serengeti-safari.html" data-en="3-Day Serengeti Safari" data-sw="Safari ya Siku 3 Serengeti">3-Day Serengeti Safari</a></li>
+                                    <li><a href="6-day-northern-tanzania-highlights.html" data-en="6-Day Northern Highlights" data-sw="Siku 6 Vivutio vya Kaskazini">6-Day Northern Highlights</a></li>
+                                    <li><a href="10-days-luxury-safari-zanzibar.html" data-en="10-Day Luxury &amp; Zanzibar" data-sw="Siku 10 Anasa na Zanzibar">10-Day Luxury &amp; Zanzibar</a></li>
+                                    <li><a href="12-days-best-of-south-and-north.html" data-en="12-Day South &amp; North" data-sw="Siku 12 Kusini na Kaskazini">12-Day South &amp; North</a></li>
+                                    <li><a href="13-days-tanzania-safari-beach.html" data-en="13-Day Safari &amp; Beach" data-sw="Siku 13 Safari na Pwani">13-Day Safari &amp; Beach</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="destinations.html" id="nav-destinations" data-en="Destinations" data-sw="Maeneo">Destinations <i class="fas fa-chevron-down"></i></a>
+                                <span class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></span>
+                                <ul class="dropdown-menu">
+                                    <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                                    <li><a href="ngorongoro.html" data-en="Ngorongoro Conservation Area" data-sw="Ngorongoro">Ngorongoro Conservation Area</a></li>
+                                    <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                                    <li><a href="manyara.html" data-en="Lake Manyara National Park" data-sw="Hifadhi ya Manyara">Lake Manyara National Park</a></li>
+                                    <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                                    <li><a href="selous.html" data-en="Selous Game Reserve" data-sw="Hifadhi ya Selous">Selous Game Reserve</a></li>
+                                    <li><a href="mikumi.html" data-en="Mikumi National Park" data-sw="Hifadhi ya Mikumi">Mikumi National Park</a></li>
+                                    <li><a href="katavi.html" data-en="Katavi National Park" data-sw="Hifadhi ya Katavi">Katavi National Park</a></li>
+                                    <li><a href="gombe.html" data-en="Gombe Stream National Park" data-sw="Hifadhi ya Gombe">Gombe Stream National Park</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="experiences.html" id="nav-experiences" data-en="Experiences" data-sw="Uzoefu">Experiences <i class="fas fa-chevron-down"></i></a>
+                                <span class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></span>
+                                <ul class="dropdown-menu">
+                                    <li><a href="family-safaris.html" data-en="Family Safaris" data-sw="Safari za Familia">Family Safaris</a></li>
+                                    <li><a href="migration-safaris.html" data-en="Migration Safaris" data-sw="Safari za Uhamiaji">Migration Safaris</a></li>
+                                    <li><a href="honeymoon-safaris.html" data-en="Honeymoon Safaris" data-sw="Safari za Fungate">Honeymoon Safaris</a></li>
+                                    <li><a href="volunteer.html" data-en="Volunteer Programs" data-sw="Mipango ya Kujitolea">Volunteer Programs</a></li>
+                                    <li><a href="vehicles.html" data-en="Safari Vehicles" data-sw="Magari ya Safari">Safari Vehicles</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="about.html" id="nav-about" data-en="About Us" data-sw="Kuhusu Sisi">About Us</a></li>
+                            <li class="dropdown">
+                                <a href="#" id="nav-resources" data-en="Travel Guide" data-sw="Mwongozo wa Safari">Travel Guide <i class="fas fa-chevron-down"></i></a>
+                                <span class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></span>
+                                <ul class="dropdown-menu">
+                                    <li><a href="blog.html" data-en="Travel Blog" data-sw="Blogu yetu">Travel Blog</a></li>
+                                    <li><a href="faq.html" data-en="FAQs" data-sw="Maswali ya Kawaida">FAQs</a></li>
+                                    <li><a href="gallery.html" data-en="Photo Gallery" data-sw="Picha za Safari">Photo Gallery</a></li>
+                                    <li><a href="testimonials.html" data-en="Testimonials" data-sw="Shuhuda">Testimonials</a></li>
+                                    <li><a href="best-time-to-visit-tanzania.html" data-en="Best Time to Visit" data-sw="Wakati Bora wa Kuja">Best Time to Visit</a></li>
+                                    <li><a href="health-safety-tanzania.html" data-en="Health &amp; Safety" data-sw="Afya na Usalama">Health &amp; Safety</a></li>
+                                    <li><a href="obtaining-visa-tanzania.html" data-en="Visa Information" data-sw="Visa ya Safari">Visa Information</a></li>
+                                    <li><a href="what-to-wear-safari.html" data-en="Safari Packing Guide" data-sw="Nguo za Safari">Safari Packing Guide</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="contact.html" id="nav-contact" data-en="Contact Us" data-sw="Wasiliana Nasi">Contact Us</a></li>
+                            <li class="mobile-only-action book-now-item"><a href="book.html" class="btn btn-primary enquire-btn" data-en="BOOK NOW" data-sw="WEKA NAFASI">BOOK NOW</a></li>
+                        </ul>
+                    </nav>
+
+                    <!-- Mobile Hamburger Menu Button (Three Lines) -->
+                    <button class="mobile-toggle" id="mobile-toggle" aria-label="Open navigation menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
+
+                    <div class="header-actions">
+                        <div class="header-toggles">
                             <button class="toggle-btn lang-toggle" onclick="toggleLang(event)">SWAHILI</button>
                             <button class="toggle-btn theme-toggle" onclick="toggleTheme(event)"><i class="fas fa-moon"></i> DARK</button>
-                        </li>
-                        <li><a href="index.html" id="nav-home" data-en="Home" data-sw="Nyumbani">Home</a></li>
-                        <li><a href="about.html" id="nav-about" data-en="About Us" data-sw="Kuhusu Sisi">About Us</a></li>
-                        <li class="dropdown">
-                            <a href="destinations.html" id="nav-destinations" data-en="Destinations" data-sw="Maeneo">Destinations <i class="fas fa-chevron-down"></i></a>
-                            <span class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></span>
-                            <ul class="dropdown-menu">
-                                <li><a href="katavi.html" data-en="Katavi National Park" data-sw="Hifadhi ya Katavi">Katavi National Park</a></li>
-                                <li><a href="selous.html" data-en="Selous Game Reserve" data-sw="Hifadhi ya Selous">Selous Game Reserve</a></li>
-                                <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
-                                <li><a href="mikumi.html" data-en="Mikumi National Park" data-sw="Hifadhi ya Mikumi">Mikumi National Park</a></li>
-                                <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
-                                <li><a href="gombe.html" data-en="Gombe Stream National Park" data-sw="Hifadhi ya Gombe">Gombe Stream National Park</a></li>
-                                <li><a href="ngorongoro.html" data-en="Ngorongoro Conservation Area" data-sw="Ngorongoro">Ngorongoro Conservation Area</a></li>
-                                <li><a href="manyara.html" data-en="Lake Manyara National Park" data-sw="Hifadhi ya Manyara">Lake Manyara National Park</a></li>
-                                <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="experiences.html" id="nav-experiences" data-en="Experiences" data-sw="Uzoefu">Experiences <i class="fas fa-chevron-down"></i></a>
-                            <span class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></span>
-                            <ul class="dropdown-menu">
-                                <li><a href="experiences.html" data-en="Special Experiences" data-sw="Uzoefu Maalum">Special Experiences</a></li>
-                                <li><a href="activities.html" data-en="Safari Activities" data-sw="Shughuli za Safari">Safari Activities</a></li>
-                                <li><a href="accommodations.html" data-en="Lodging & Camps" data-sw="Malazi na Kambi">Lodging & Camps</a></li>
-                                <li><a href="planner.html" data-en="Custom Trip Planner" data-sw="Kupanga Safari">Custom Trip Planner</a></li>
-                                <li><a href="family-safaris.html" data-en="Family Safaris" data-sw="Safari za Familia">Family Safaris</a></li>
-                                <li><a href="migration-safaris.html" data-en="Migration Safaris" data-sw="Safari za Uhamiaji">Migration Safaris</a></li>
-                                <li><a href="zanzibar-beach.html" data-en="Zanzibar Beach Holiday" data-sw="Likizo ya Pwani ya Zanzibar">Zanzibar Beach Holiday</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" id="nav-resources" data-en="Travel Advice" data-sw="Ushauri wa Safari">Travel Advice <i class="fas fa-chevron-down"></i></a>
-                            <span class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></span>
-                            <ul class="dropdown-menu">
-                                <li><a href="blog.html" data-en="Travel Blog" data-sw="Blogu yetu">Travel Blog</a></li>
-                                <li><a href="faq.html" data-en="FAQs" data-sw="Maswali ya Kawaida">FAQs</a></li>
-                                <li><a href="gallery.html" data-en="Photo Gallery" data-sw="Picha za Safari">Photo Gallery</a></li>
-                                <li><a href="testimonials.html" data-en="Testimonials" data-sw="Shuhuda">Testimonials</a></li>
-                                <li><a href="best-time-to-visit-tanzania.html" data-en="Best Time to Visit" data-sw="Wakati Bora wa Kuja">Best Time to Visit</a></li>
-                                <li><a href="health-safety-tanzania.html" data-en="Health &amp; Safety" data-sw="Afya na Usalama">Health &amp; Safety</a></li>
-                                <li><a href="obtaining-visa-tanzania.html" data-en="Visa Information" data-sw="Visa ya Safari">Visa Information</a></li>
-                                <li><a href="solo-female-travel-tanzania.html" data-en="Solo Female Travel" data-sw="Safari ya Wanawake">Solo Female Travel</a></li>
-                                <li><a href="what-to-wear-safari.html" data-en="Safari Packing Guide" data-sw="Nguo za Safari">Safari Packing Guide</a></li>
-                                <li><a href="dar-es-salaam-highlights.html" data-en="Dar es Salaam Highlights" data-sw="Kuhusu Dar es Salaam">Dar es Salaam Highlights</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="safaris.html" id="nav-safaris" data-en="TOURS & SAFARIS" data-sw="SAFARI NA ZIARA">TOURS & SAFARIS</a></li>
-                        <li><a href="volunteer.html" id="nav-volunteer" data-en="Volunteer" data-sw="Kujitolea">Volunteer</a></li>
-                        <li><a href="vehicles.html" id="nav-vehicles" data-en="Safari Vehicles" data-sw="Magari ya Safari">Safari Vehicles</a></li>
-                        <li><a href="contact.html" id="nav-contact" data-en="Contact Us" data-sw="Wasiliana Nasi">Contact Us</a></li>
-                        <li class="mobile-only-action book-now-item"><a href="book.html" class="btn btn-primary enquire-btn" data-en="BOOK NOW" data-sw="WEKA NAFASI">BOOK NOW</a></li>
-                    </ul>
-                </nav>
-
-                <!-- Mobile Hamburger Menu Button (Three Lines) -->
-                <button class="mobile-toggle" id="mobile-toggle" aria-label="Open navigation menu">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
-
-                <div class="header-actions">
-                    <div class="header-toggles">
-                        <button class="toggle-btn lang-toggle" onclick="toggleLang(event)">SWAHILI</button>
-                        <button class="toggle-btn theme-toggle" onclick="toggleTheme(event)"><i class="fas fa-moon"></i> DARK</button>
+                        </div>
+                        <a href="book.html" class="btn btn-primary enquire-btn" data-en="BOOK NOW" data-sw="WEKA NAFASI">BOOK NOW</a>
                     </div>
-                    <a href="book.html" class="btn btn-primary enquire-btn" data-en="BOOK NOW" data-sw="WEKA NAFASI">BOOK NOW</a>
                 </div>
             </div>
         `;
