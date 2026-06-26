@@ -11766,7 +11766,7 @@ body.transparent-header-active .header.scrolled {
 /* homepage hero starts from the top of the viewport (top: 0) to sit behind transparent header */
 body.transparent-header-active .home-hero {
     margin-top: 0 !important;
-    padding-top: 150px !important; /* Space for utility top bar and main nav bar */
+    padding-top: 110px !important; /* Space for header main nav bar */
     height: 100vh !important;
 }
 
