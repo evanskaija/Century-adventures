@@ -11652,3 +11652,121 @@ body.admin-theme:not(.dark-mode) [style*="color:#0f766e"] { color: #0f766e !impo
     }
 }
 
+/* ==========================================
+   DESKTOP SINGLE-LINE HEADER REFINEMENTS
+   ========================================== */
+@media (min-width: 993px) {
+    /* Force main header content into a single row */
+    .header-content {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: clamp(15px, 2vw, 35px) !important;
+        grid-template-areas: none !important;
+        grid-template-columns: none !important;
+        height: 75px !important;
+        row-gap: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .logo {
+        grid-area: auto !important;
+        flex: 0 0 auto !important;
+    }
+
+    .header-actions {
+        grid-area: auto !important;
+        flex: 0 0 auto !important;
+        display: flex !important;
+        align-items: center !important;
+        background: transparent !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        gap: 15px !important;
+    }
+
+    /* Hide language/theme toggles on desktop for clean premium look */
+    .header-toggles {
+        display: none !important;
+    }
+
+    /* Center navigation links */
+    .header .nav {
+        grid-area: auto !important;
+        flex: 1 1 auto !important;
+        display: flex !important;
+        justify-content: center !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border-top: none !important;
+    }
+
+    /* Remove capsule styling from nav links on desktop */
+    .header .nav > ul {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        gap: clamp(12px, 1.8vw, 28px) !important;
+    }
+
+    /* Premium white text navigation links */
+    .header .nav ul li a {
+        color: #ffffff !important;
+        font-size: clamp(0.85rem, 0.95vw, 1.05rem) !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.5px !important;
+        text-transform: uppercase !important;
+        padding: 8px 12px !important;
+        transition: color 0.3s ease !important;
+        background: transparent !important;
+        border: none !important;
+    }
+
+    /* Gold active & hover links */
+    .header .nav ul li a:hover,
+    .header .nav ul li a.active {
+        color: var(--accent-gold) !important;
+    }
+}
+
+/* ==========================================
+   HOMEPAGE TRANSPARENT HERO OVERLAY
+   ========================================== */
+/* Set default header background for subpages */
+.header {
+    background: #0B1A13 !important; /* Premium solid dark forest green */
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+}
+
+/* Make header fully transparent at the top on index.html (Homepage) */
+body.transparent-header-active .header:not(.scrolled) {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+body.transparent-header-active .header.scrolled {
+    background: rgba(11, 26, 19, 0.94) !important; /* Smooth scroll transition */
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.25) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* homepage hero starts from the top of the viewport (top: 0) to sit behind transparent header */
+body.transparent-header-active .home-hero {
+    margin-top: 0 !important;
+    padding-top: 150px !important; /* Space for utility top bar and main nav bar */
+    height: 100vh !important;
+}
+

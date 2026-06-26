@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="top-socials">
                         <a href="https://www.facebook.com/profile.php?id=61577731823809" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/century_adventures?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.tripadvisor.com/" target="_blank"><i class="fab fa-tripadvisor"></i></a>
+                        <a href="https://www.tripadvisor.com/" target="_blank"><i class="fa-brands fa-tripadvisor"></i></a>
                     </div>
                 </div>
             </div>
