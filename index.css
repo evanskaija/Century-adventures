@@ -11814,7 +11814,7 @@ body.transparent-header-active .home-hero {
 }
 
 /* ==========================================
-   MOBILE HEADER TOGGLE SQUEEZED TO THE RIGHT
+   MOBILE HEADER TOGGLE SQUEEZED TO THE RIGHT & STYLE IMPROVEMENTS
    ========================================== */
 @media (max-width: 992px) {
     .header-content {
@@ -11823,6 +11823,9 @@ body.transparent-header-active .home-hero {
         justify-content: space-between !important;
         align-items: center !important;
         width: 100% !important;
+        padding-left: 18px !important;
+        padding-right: 18px !important;
+        box-sizing: border-box !important;
     }
 
     .header-actions {
@@ -11831,7 +11834,47 @@ body.transparent-header-active .home-hero {
 
     .mobile-toggle {
         display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 5px !important;
+        width: 46px !important;
+        height: 46px !important;
+        padding: 0 !important;
+        background: var(--accent-gold) !important; /* Gold background for easy visibility */
+        border: none !important;
+        border-radius: 50% !important; /* Circular background */
+        cursor: pointer !important;
+        z-index: 10010 !important; /* Sits above slide-in nav menu */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
         margin-left: auto !important; /* Force to the absolute right side */
+        transition: background 0.3s ease, transform 0.2s ease !important;
+    }
+
+    [data-theme="dark"] .mobile-toggle {
+        background: var(--accent-gold) !important;
+    }
+
+    .mobile-toggle .bar {
+        width: 22px !important; /* Wider bars for readability */
+        height: 2px !important;
+        background: #000000 !important; /* Black bars on gold background for high contrast */
+        border-radius: 2px !important;
+        display: block !important;
+        transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+                    opacity 0.2s ease !important;
+    }
+
+    /* Transform burger to X */
+    .mobile-toggle.open .bar:nth-child(1) {
+        transform: translateY(7px) rotate(45deg) !important;
+    }
+    .mobile-toggle.open .bar:nth-child(2) {
+        opacity: 0 !important;
+        transform: scaleX(0) !important;
+    }
+    .mobile-toggle.open .bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg) !important;
     }
 }
 
