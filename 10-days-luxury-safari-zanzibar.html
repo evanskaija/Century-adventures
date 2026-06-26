@@ -1,10 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="assets/logo.png" type="image/png">
     <link rel="apple-touch-icon" href="assets/logo.png">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>10 Days Luxury Safari and Zanzibar Beach Retreat | Century Adventures</title>
     <meta name="description" content="Embark on an incredible journey through Tanzania's iconic national parks, where you will witness the famous Big Five, followed by a relaxing Zanzibar beach getaway.">
@@ -28,8 +27,432 @@
     <meta name="twitter:image" content="assets/logo.png">
     <meta name="twitter:title" content="10 Days Luxury Safari and Zanzibar Beach Retreat | Century Adventures">
     <link rel="manifest" href="manifest.json">
+
+    <style>
+        /* ── Page-level overrides ── */
+        .lux-page { font-family: 'Inter', sans-serif; }
+
+        /* HERO */
+        .lux-hero {
+            position: relative;
+            min-height: 440px;
+            background: url('assets/lion5.jpeg') center/cover no-repeat;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+        .lux-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.72) 55%, rgba(0,0,0,0.15) 100%);
+        }
+        .lux-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 48px 40px 40px;
+            max-width: 620px;
+        }
+        .lux-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: #c9a84c;
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 4px;
+            margin-bottom: 18px;
+        }
+        .lux-hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.1;
+            margin: 0 0 16px;
+        }
+        .lux-hero-title span { color: #c9a84c; }
+        .lux-hero-desc {
+            color: rgba(255,255,255,0.88);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* FEATURE STRIP */
+        .lux-features-strip {
+            background: #fff;
+            border-bottom: 1px solid #e8e2d6;
+            padding: 0;
+        }
+        [data-theme="dark"] .lux-features-strip { background: #1a1a1a; border-bottom-color: #333; }
+        .lux-features-inner {
+            display: flex;
+            align-items: stretch;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .lux-feat-item {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 18px 30px;
+            border-right: 1px solid #e8e2d6;
+            flex: 1;
+        }
+        [data-theme="dark"] .lux-feat-item { border-right-color: #333; }
+        .lux-feat-item:last-child { border-right: none; }
+        .lux-feat-icon {
+            width: 36px;
+            height: 36px;
+            background: #f5f0e6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c9a84c;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+        [data-theme="dark"] .lux-feat-icon { background: #2a2a2a; }
+        .lux-feat-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #2c2c2c;
+            line-height: 1.2;
+        }
+        [data-theme="dark"] .lux-feat-label { color: #ddd; }
+        .lux-feat-sub {
+            font-size: 0.68rem;
+            color: #888;
+            text-transform: capitalize;
+            letter-spacing: 0;
+            font-weight: 400;
+        }
+
+        /* OVERVIEW */
+        .lux-overview {
+            padding: 60px 20px;
+            background: var(--bg-light, #fafaf8);
+        }
+        [data-theme="dark"] .lux-overview { background: #111; }
+        .lux-overview-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+        .lux-overview-text h2 {
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #c9a84c;
+            margin-bottom: 16px;
+        }
+        .lux-overview-text p {
+            font-size: 0.95rem;
+            line-height: 1.75;
+            color: var(--text-muted, #555);
+            margin-bottom: 16px;
+        }
+        .lux-overview-right { display: flex; flex-direction: column; gap: 18px; }
+        .lux-overview-img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+        }
+        .lux-mini-features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            background: #1a3a2a;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .lux-mini-feat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 18px 10px;
+            border-right: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+        .lux-mini-feat:last-child { border-right: none; }
+        .lux-mini-feat i { color: #c9a84c; font-size: 1.3rem; }
+        .lux-mini-feat span {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: #fff;
+            line-height: 1.3;
+        }
+
+        /* GALLERY */
+        .lux-gallery { padding: 50px 20px; background: #fff; }
+        [data-theme="dark"] .lux-gallery { background: #151515; }
+        .lux-section-title {
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #2c2c2c;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+        }
+        [data-theme="dark"] .lux-section-title { color: #eee; }
+        .lux-section-title::before,
+        .lux-section-title::after {
+            content: '';
+            flex: 1;
+            max-width: 120px;
+            height: 1px;
+            background: #c9a84c;
+        }
+        .lux-gallery-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        .lux-gallery-grid img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .lux-gallery-grid img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+        }
+
+        /* MAIN CONTENT: ITINERARY + RATES */
+        .lux-main { padding: 60px 20px; background: var(--bg-light, #fafaf8); }
+        [data-theme="dark"] .lux-main { background: #111; }
+        .lux-main-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* ITINERARY */
+        .lux-itinerary h2 {
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #c9a84c;
+            margin-bottom: 24px;
+        }
+        .lux-day {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .lux-day-icon {
+            width: 38px;
+            height: 38px;
+            background: #f5f0e6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c9a84c;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        [data-theme="dark"] .lux-day-icon { background: #2a2a2a; }
+        .lux-day-content {}
+        .lux-day-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #c9a84c;
+            margin-bottom: 2px;
+        }
+        .lux-day-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #2c2c2c;
+            margin-bottom: 4px;
+        }
+        [data-theme="dark"] .lux-day-title { color: #eee; }
+        .lux-day-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted, #666);
+            line-height: 1.6;
+        }
+
+        /* RATES / SIDEBAR */
+        .lux-sidebar { position: sticky; top: 100px; }
+        .lux-rate-card {
+            background: #1a3a2a;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 20px;
+        }
+        .lux-rate-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 6px;
+        }
+        .lux-rate-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem;
+            font-weight: 900;
+            color: #c9a84c;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .lux-rate-note {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.55);
+            margin-bottom: 22px;
+        }
+        .lux-enquire-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background: #c9a84c;
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 8px;
+            transition: background 0.25s, transform 0.2s;
+        }
+        .lux-enquire-btn:hover { background: #b8943e; transform: translateY(-1px); }
+
+        .lux-inc-exc {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #e8e2d6;
+        }
+        [data-theme="dark"] .lux-inc-exc { background: #1a1a1a; border-color: #333; }
+        .lux-inc-exc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .lux-ie-title {
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        .lux-ie-title.inc { color: #1a7a4a; }
+        .lux-ie-title.exc { color: #c0392b; }
+        .lux-ie-list { list-style: none; padding: 0; margin: 0; }
+        .lux-ie-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 0.82rem;
+            color: var(--text-muted, #555);
+            margin-bottom: 9px;
+            line-height: 1.4;
+        }
+        .lux-ie-list li i { flex-shrink: 0; margin-top: 1px; font-size: 0.78rem; }
+        .inc-icon { color: #1a7a4a; }
+        .exc-icon { color: #c0392b; }
+
+        /* TRUST BAR */
+        .lux-trust-bar {
+            background: #f5f0e6;
+            padding: 28px 20px;
+            border-top: 2px solid #c9a84c;
+        }
+        [data-theme="dark"] .lux-trust-bar { background: #1a1a1a; border-top-color: #c9a84c; }
+        .lux-trust-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .lux-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .lux-trust-icon {
+            width: 46px;
+            height: 46px;
+            background: #c9a84c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .lux-trust-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #2c2c2c;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+        [data-theme="dark"] .lux-trust-label { color: #ddd; }
+        .lux-trust-sub {
+            font-size: 0.72rem;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .lux-overview-inner { grid-template-columns: 1fr; }
+            .lux-main-inner { grid-template-columns: 1fr; }
+            .lux-sidebar { position: static; }
+            .lux-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .lux-trust-inner { grid-template-columns: repeat(2, 1fr); }
+            .lux-features-inner { flex-wrap: wrap; }
+            .lux-feat-item { border-right: none; border-bottom: 1px solid #e8e2d6; }
+        }
+        @media (max-width: 550px) {
+            .lux-mini-features { grid-template-columns: repeat(2, 1fr); }
+            .lux-gallery-grid { grid-template-columns: 1fr 1fr; }
+            .lux-inc-exc-grid { grid-template-columns: 1fr; }
+            .lux-trust-inner { grid-template-columns: 1fr; }
+            .lux-hero-content { padding: 30px 20px 28px; }
+        }
+    </style>
 </head>
-<body>
+<body class="lux-page">
     <div class="scroll-progress"></div>
 
     <!-- Header -->
@@ -45,32 +468,29 @@
                     <li class="dropdown">
                         <a href="#" data-en="Destinations" data-sw="Maeneo">Destinations <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="katavi.html" data-en="Katavi National Park" data-sw="Hifadhi ya Katavi">Katavi National Park</a></li>
-                            <li><a href="selous.html" data-en="Selous Game Reserve" data-sw="Hifadhi ya Selous">Selous Game Reserve</a></li>
-                            <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
-                            <li><a href="mikumi.html" data-en="Mikumi National Park" data-sw="Hifadhi ya Mikumi">Mikumi National Park</a></li>
-                            <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
-                            <li><a href="gombe.html" data-en="Gombe Stream National Park" data-sw="Hifadhi ya Gombe">Gombe Stream National Park</a></li>
-                            <li><a href="ngorongoro.html" data-en="Ngorongoro Conservation Area" data-sw="Ngorongoro">Ngorongoro Conservation Area</a></li>
-                            <li><a href="manyara.html" data-en="Lake Manyara National Park" data-sw="Hifadhi ya Manyara">Lake Manyara National Park</a></li>
-                            <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                            <li><a href="katavi.html">Katavi National Park</a></li>
+                            <li><a href="selous.html">Selous Game Reserve</a></li>
+                            <li><a href="ruaha.html">Ruaha National Park</a></li>
+                            <li><a href="mikumi.html">Mikumi National Park</a></li>
+                            <li><a href="serengeti.html">Serengeti National Park</a></li>
+                            <li><a href="gombe.html">Gombe Stream National Park</a></li>
+                            <li><a href="ngorongoro.html">Ngorongoro Conservation Area</a></li>
+                            <li><a href="manyara.html">Lake Manyara National Park</a></li>
+                            <li><a href="tarangire.html">Tarangire National Park</a></li>
                         </ul>
                     </li>
-                    <li><a href="safaris.html" class="active" data-en="TOURS & SAFARIS" data-sw="SAFARI NA ZIARA">TOURS & SAFARIS</a></li>
+                    <li><a href="safaris.html" class="active" data-en="TOURS &amp; SAFARIS" data-sw="SAFARI NA ZIARA">TOURS &amp; SAFARIS</a></li>
                     <li><a href="experiences.html" data-en="Experiences" data-sw="Uzoefu">Experiences</a></li>
                     <li><a href="volunteer.html" data-en="Volunteer" data-sw="Kujitolea">Volunteer</a></li>
                     <li><a href="vehicles.html" data-en="Safari Vehicles" data-sw="Magari ya Safari">Safari Vehicles</a></li>
                     <li><a href="contact.html" data-en="Contact Us" data-sw="Wasiliana Nasi">Contact Us</a></li>
                 </ul>
             </nav>
-
-            <!-- Mobile Hamburger Menu -->
             <button class="mobile-toggle" id="mobile-toggle" onclick="toggleMobileMenu()" aria-label="Open navigation menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </button>
-
             <div class="header-actions">
                 <div class="header-toggles">
                     <button class="toggle-btn lang-toggle" onclick="toggleLang()">SW</button>
@@ -81,83 +501,261 @@
         </div>
     </header>
 
-    <!-- Page Hero -->
-    <section class="hero page-hero" style="background-image: url('assets/KTA13Serengeti Nationa.webp'); height: 60vh;">
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <h1 data-en="10 Days Luxury Safari" data-sw="Siku 10 Safari ya Anasa">10 Days Luxury Safari</h1>
-            <p style="color: #fff; font-size: 1.2rem; margin-top: 10px;">and Zanzibar Beach Retreat</p>
+    <!-- ══════════════════════════════════════ HERO ══════════════════════════════════════ -->
+    <section class="lux-hero">
+        <div class="lux-hero-content">
+            <div class="lux-badge"><i class="fas fa-paw"></i> 10 Days / 9 Nights</div>
+            <h1 class="lux-hero-title">
+                10 Days Luxury Safari<br>
+                <span>&amp; Zanzibar<br>Beach Retreat</span>
+            </h1>
+            <p class="lux-hero-desc">Experience the best of Tanzania's wildlife and the paradise beaches of Zanzibar in one unforgettable journey.</p>
         </div>
     </section>
 
-    <!-- Content Section -->
-    <section class="section">
-        <div class="container" style="max-width: 900px; line-height: 1.8; font-size: 1.15rem; color: var(--text-muted);">
-            <p>Embark on an incredible journey through Tanzania's iconic national parks, where you will have the opportunity to witness the famous Big Five - lion, leopard, elephant, rhino, and buffalo. Our expert guides will navigate you through Serengeti National Park, Ngorongoro Crater, Tarangire National Park, and Lake Manyara National Park, ensuring you have the best chance of spotting these magnificent creatures up close.</p>
-
-            <p>Imagine witnessing a pride of lions lazing in the sun, a herd of elephants taking a cooling bath, or a leopard stealthily making its way through the grass. These are the kinds of experiences that await you during your safari adventure.</p>
-            
-            <p>After your exhilarating wildlife encounters, it's time to relax and unwind on the pristine beaches of Zanzibar. Known for its turquoise waters, palm-fringed shores, and vibrant coral reefs, Zanzibar offers the perfect setting for a blissful beach getaway. Spend your days lounging on white sandy beaches, swimming in crystal-clear waters, and indulging in delicious seafood delicacies.</p>
-
-                        <h2 style="font-size: 2rem; margin-top: 40px; margin-bottom: 20px; color: var(--primary-green);">Gallery</h2>
-            <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 40px;">
-                <img src="assets/02TMMT-IM0402-mara-mara-tented-lodge-1475.jpg" alt="Gallery Image 1" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
-                <img src="assets/03TMMT-IM1103-mara-mara-tented-lodge-1475.jpg" alt="Gallery Image 2" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
-                <img src="assets/03TMMT-IM1503-mara-mara-tented-lodge-1475.jpg" alt="Gallery Image 3" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
-                <img src="assets/04TMMT-IM1104-mara-mara-tented-lodge-1475.jpg" alt="Gallery Image 4" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer;">
-            </div>
-
-            <h2 style="font-size: 2rem; margin-top: 40px; margin-bottom: 20px; color: var(--primary-green);">Itinerary</h2>
-            <div class="itinerary">
-                <p><strong>Day 1: Arrival in Arusha</strong><br>Upon your arrival in Arusha, you will check into the luxurious Gran Melia Arusha. Enjoy a welcome dinner and take some time to relax and unwind at the hotel after your journey.</p>
-                <p><strong>Day 2 : Tarangire National park</strong><br>After a delicious breakfast, embark on a road transfer to Tarangire National Park. Experience a thrilling game drive and spend the night at the enchanting Maramboi Tented Lodge.</p>
-                <p><strong>Day 3: Ngorongoro crater</strong></p>
-                <p><strong>Day 4: Central Serengeti National park</strong></p>
-                <p><strong>Day 5-6: Central Serengeti National park</strong></p>
-                <p><strong>Day 8: Fly from Central serengeti to Zanzibar</strong></p>
-                <p><strong>Day 9-10: Beach time</strong></p>
-                <p><strong>Day 11: Departure</strong></p>
-            </div>
-            
-            <hr style="border: none; border-top: 1px solid var(--border-color); margin: 40px 0;">
-
-            <h3 style="font-size: 1.5rem; margin-bottom: 10px; color: var(--primary-green);">Rates Per Person</h3>
-            <p style="font-size: 1.25rem; font-weight: bold; color: var(--text-dark);">From $8,522</p>
-            
-            <div style="display: flex; flex-wrap: wrap; gap: 40px; margin-top: 30px;">
-                <div style="flex: 1; min-width: 300px;">
-                    <h4 style="color: var(--primary-green);">Included</h4>
-                    <ul style="list-style-type: disc; padding-left: 20px;">
-                        <li>Park fees</li>
-                        <li>All activities</li>
-                        <li>All accommodation</li>
-                        <li>A professional driver/guide</li>
-                        <li>All transportation</li>
-                        <li>All flights during the tour</li>
-                        <li>All Taxes/VAT</li>
-                        <li>Roundtrip airport transfer</li>
-                        <li>Meals</li>
-                        <li>Water on Safari</li>
-                    </ul>
-                </div>
-                <div style="flex: 1; min-width: 300px;">
-                    <h4 style="color: #d32f2f;">Excluded</h4>
-                    <ul style="list-style-type: disc; padding-left: 20px;">
-                        <li>International flights</li>
-                        <li>Additional accommodation before and at the end of the tour</li>
-                        <li>Tips</li>
-                        <li>Personal items</li>
-                        <li>Government imposed increase of taxes and/or park fees</li>
-                        <li>Drinks</li>
-                    </ul>
+    <!-- ══════════════════════════════════════ FEATURE STRIP ══════════════════════════════════════ -->
+    <div class="lux-features-strip">
+        <div class="lux-features-inner">
+            <div class="lux-feat-item">
+                <div class="lux-feat-icon"><i class="fas fa-paw"></i></div>
+                <div>
+                    <div class="lux-feat-label">Big Five</div>
+                    <div class="lux-feat-sub">Experience</div>
                 </div>
             </div>
+            <div class="lux-feat-item">
+                <div class="lux-feat-icon"><i class="fas fa-camera"></i></div>
+                <div>
+                    <div class="lux-feat-label">Iconic</div>
+                    <div class="lux-feat-sub">Destinations</div>
+                </div>
+            </div>
+            <div class="lux-feat-item">
+                <div class="lux-feat-icon"><i class="fas fa-umbrella-beach"></i></div>
+                <div>
+                    <div class="lux-feat-label">Zanzibar</div>
+                    <div class="lux-feat-sub">Beach Retreat</div>
+                </div>
+            </div>
+            <div class="lux-feat-item">
+                <div class="lux-feat-icon"><i class="fas fa-gem"></i></div>
+                <div>
+                    <div class="lux-feat-label">Luxury</div>
+                    <div class="lux-feat-sub">Accommodation</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            <div style="text-align: center; margin-top: 50px;">
-                <a href="enquire.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 15px 40px;" data-en="BOOK YOUR SAFARI" data-sw="WEKA NAFASI YA SAFARI">BOOK YOUR SAFARI</a>
+    <!-- ══════════════════════════════════════ OVERVIEW ══════════════════════════════════════ -->
+    <section class="lux-overview">
+        <div class="lux-overview-inner">
+            <!-- Left: Text -->
+            <div class="lux-overview-text">
+                <h2>Overview</h2>
+                <p>Embark on an incredible journey through Tanzania's iconic national parks, where you will have the opportunity to witness the famous Big Five – lion, leopard, elephant, rhino, and buffalo.</p>
+                <p>Our expert guides will navigate you through Serengeti National Park, Ngorongoro Crater, Tarangire National Park, and Lake Manyara National Park, ensuring you have the best chance of spotting these magnificent creatures up close.</p>
+                <p>After your exhilarating wildlife encounters, it's time to relax and unwind on the pristine beaches of Zanzibar. Known for its turquoise waters, palm-fringed shores, and vibrant coral reefs, Zanzibar offers the perfect setting for a blissful beach getaway. Spend your days lounging on white sandy beaches, swimming in crystal-clear waters, and indulging in delicious seafood delicacies.</p>
+            </div>
+
+            <!-- Right: Image + Mini Features -->
+            <div class="lux-overview-right">
+                <img class="lux-overview-img" src="assets/zanzibar1.jpg" alt="Zanzibar beach with sailboat and palm trees">
+                <div class="lux-mini-features">
+                    <div class="lux-mini-feat">
+                        <i class="fas fa-bed"></i>
+                        <span>Luxury<br>Stays</span>
+                    </div>
+                    <div class="lux-mini-feat">
+                        <i class="fas fa-utensils"></i>
+                        <span>Gourmet<br>Dining</span>
+                    </div>
+                    <div class="lux-mini-feat">
+                        <i class="fas fa-binoculars"></i>
+                        <span>Expert<br>Guides</span>
+                    </div>
+                    <div class="lux-mini-feat">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Safe &amp;<br>Comfortable</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+
+    <!-- ══════════════════════════════════════ GALLERY ══════════════════════════════════════ -->
+    <section class="lux-gallery">
+        <div class="lux-section-title">Gallery</div>
+        <div class="lux-gallery-grid">
+            <img src="assets/elwphant.jpg" alt="Elephant on safari" loading="lazy">
+            <img src="assets/Leopard.webp" alt="Leopard in a tree" loading="lazy">
+            <img src="assets/03TMMT-IM1103-mara-mara-tented-lodge-1475.jpg" alt="Luxury tented lodge" loading="lazy">
+            <img src="assets/Zanzibar 2.webp" alt="Zanzibar turquoise beach" loading="lazy">
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════ ITINERARY + RATES ══════════════════════════════════════ -->
+    <section class="lux-main">
+        <div class="lux-main-inner">
+
+            <!-- Left: Itinerary -->
+            <div class="lux-itinerary">
+                <h2>Itinerary</h2>
+
+                <div class="lux-day">
+                    <div class="lux-day-icon"><i class="fas fa-plane-arrival"></i></div>
+                    <div class="lux-day-content">
+                        <div class="lux-day-label">Day 1</div>
+                        <div class="lux-day-title">Arrival in Arusha</div>
+                        <div class="lux-day-desc">Arrive in Arusha and check in to the luxurious Gran Melia Arusha. Enjoy a welcome dinner and relax after your journey.</div>
+                    </div>
+                </div>
+
+                <div class="lux-day">
+                    <div class="lux-day-icon"><i class="fas fa-car"></i></div>
+                    <div class="lux-day-content">
+                        <div class="lux-day-label">Day 2</div>
+                        <div class="lux-day-title">Tarangire National Park</div>
+                        <div class="lux-day-desc">After breakfast, road transfer to Tarangire National Park. Enjoy an exciting game drive and overnight at Maramboi Tented Lodge.</div>
+                    </div>
+                </div>
+
+                <div class="lux-day">
+                    <div class="lux-day-icon"><i class="fas fa-mountain"></i></div>
+                    <div class="lux-day-content">
+                        <div class="lux-day-label">Day 3</div>
+                        <div class="lux-day-title">Ngorongoro Crater</div>
+                        <div class="lux-day-desc">Descend into the Ngorongoro Crater for a spectacular game drive. Overnight at Ngorongoro Serena Safari Lodge.</div>
+                    </div>
+                </div>
+
+                <div class="lux-day">
+                    <div class="lux-day-icon"><i class="fas fa-paw"></i></div>
+                    <div class="lux-day-content">
+                        <div class="lux-day-label">Day 4</div>
+                        <div class="lux-day-title">Central Serengeti National Park</div>
+                        <div class="lux-day-desc">Drive to Serengeti National Park. Enjoy game drives en route and overnight at a luxury lodge in Central Serengeti.</div>
+                    </div>
+                </div>
+
+                <div class="lux-day">
+                    <div class="lux-day-icon"><i class="fas fa-binoculars"></i></div>
+                    <div class="lux-day-content">
+                        <div class="lux-day-label">Days 5 – 6</div>
+                        <div class="lux-day-title">Central Serengeti National Park</div>
+                        <div class="lux-day-desc">Spend two full days exploring the Central Serengeti. Witness abundant wildlife and breathtaking landscapes.</div>
+                    </div>
+                </div>
+
+                <div class="lux-day">
+                    <div class="lux-day-icon"><i class="fas fa-plane"></i></div>
+                    <div class="lux-day-content">
+                        <div class="lux-day-label">Day 8</div>
+                        <div class="lux-day-title">Fly from Central Serengeti to Zanzibar</div>
+                        <div class="lux-day-desc">Morning game drive and transfer to the airstrip for your flight to Zanzibar. Transfer to your beach resort.</div>
+                    </div>
+                </div>
+
+                <div class="lux-day">
+                    <div class="lux-day-icon"><i class="fas fa-umbrella-beach"></i></div>
+                    <div class="lux-day-content">
+                        <div class="lux-day-label">Days 9 – 10</div>
+                        <div class="lux-day-title">Beach Time</div>
+                        <div class="lux-day-desc">Relax and enjoy the white sandy beaches and turquoise waters of Zanzibar. Optional activities available.</div>
+                    </div>
+                </div>
+
+                <div class="lux-day">
+                    <div class="lux-day-icon"><i class="fas fa-plane-departure"></i></div>
+                    <div class="lux-day-content">
+                        <div class="lux-day-label">Day 11</div>
+                        <div class="lux-day-title">Departure</div>
+                        <div class="lux-day-desc">Transfer to the airport for your departure flight.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Rates Sidebar -->
+            <div class="lux-sidebar">
+                <!-- Price Card -->
+                <div class="lux-rate-card">
+                    <div class="lux-rate-label">Rates Per Person From</div>
+                    <div class="lux-rate-price">$8,522</div>
+                    <div class="lux-rate-note">Best time: June – October</div>
+                    <a href="enquire.html" class="lux-enquire-btn" id="enquire-luxury-zanzibar">
+                        ENQUIRE NOW <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Included / Excluded -->
+                <div class="lux-inc-exc">
+                    <div class="lux-inc-exc-grid">
+                        <div>
+                            <div class="lux-ie-title inc">Included</div>
+                            <ul class="lux-ie-list">
+                                <li><i class="fas fa-check-circle inc-icon"></i> Park fees</li>
+                                <li><i class="fas fa-check-circle inc-icon"></i> All activities</li>
+                                <li><i class="fas fa-check-circle inc-icon"></i> All accommodation</li>
+                                <li><i class="fas fa-check-circle inc-icon"></i> A professional driver/guide</li>
+                                <li><i class="fas fa-check-circle inc-icon"></i> All transportation</li>
+                                <li><i class="fas fa-check-circle inc-icon"></i> All flights during the tour</li>
+                                <li><i class="fas fa-check-circle inc-icon"></i> All Taxes/VAT</li>
+                                <li><i class="fas fa-check-circle inc-icon"></i> Roundtrip airport transfer</li>
+                                <li><i class="fas fa-check-circle inc-icon"></i> Meals</li>
+                                <li><i class="fas fa-check-circle inc-icon"></i> Water on Safari</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="lux-ie-title exc">Excluded</div>
+                            <ul class="lux-ie-list">
+                                <li><i class="fas fa-times-circle exc-icon"></i> International flights</li>
+                                <li><i class="fas fa-times-circle exc-icon"></i> Additional accommodation before and at the end of the tour</li>
+                                <li><i class="fas fa-times-circle exc-icon"></i> Tips</li>
+                                <li><i class="fas fa-times-circle exc-icon"></i> Personal items</li>
+                                <li><i class="fas fa-times-circle exc-icon"></i> Government imposed increase of taxes and/or park fees</li>
+                                <li><i class="fas fa-times-circle exc-icon"></i> Drinks</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════ TRUST BAR ══════════════════════════════════════ -->
+    <div class="lux-trust-bar">
+        <div class="lux-trust-inner">
+            <div class="lux-trust-item">
+                <div class="lux-trust-icon"><i class="fas fa-trophy"></i></div>
+                <div>
+                    <div class="lux-trust-label">Expert Guides</div>
+                    <div class="lux-trust-sub">Professional, experienced and passionate guides</div>
+                </div>
+            </div>
+            <div class="lux-trust-item">
+                <div class="lux-trust-icon"><i class="fas fa-car-side"></i></div>
+                <div>
+                    <div class="lux-trust-label">Custom Comfort</div>
+                    <div class="lux-trust-sub">4x4 safari vehicles with pop-up roof</div>
+                </div>
+            </div>
+            <div class="lux-trust-item">
+                <div class="lux-trust-icon"><i class="fas fa-camera"></i></div>
+                <div>
+                    <div class="lux-trust-label">Unforgettable</div>
+                    <div class="lux-trust-sub">Moments that last a lifetime</div>
+                </div>
+            </div>
+            <div class="lux-trust-item">
+                <div class="lux-trust-icon"><i class="fas fa-shield-alt"></i></div>
+                <div>
+                    <div class="lux-trust-label">Your Safety</div>
+                    <div class="lux-trust-sub">Our top priority always</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer Contact Info -->
     <div class="footer-top">
@@ -168,23 +766,16 @@
     </div>
 
     <!-- Final Call to Action -->
-    <section class="section cta-section" style="background: var(--primary-gradient); padding: 50px 0; text-align: center; color: white; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08);">
+    <section class="section cta-section" style="background: var(--primary-gradient); padding: 50px 0; text-align: center; color: white; position: relative; overflow: hidden;">
         <div class="container" style="position: relative; z-index: 2;">
             <span class="sub-heading" style="color:var(--accent-gold); font-size: 0.8rem; letter-spacing: 2px;" data-en="YOUR JOURNEY TO AFRICA STARTS HERE" data-sw="SAFARI YAKO YA AFRIKA INAANZA HAPA">YOUR JOURNEY TO AFRICA STARTS HERE</span>
             <h2 style="font-size: clamp(1.5rem, 3vw, 2.2rem); color: white; margin: 10px 0 16px;" data-en="Are you ready to explore Tanzania?" data-sw="Uko Tayari Kuichunguza Tanzania?">Are you ready to explore Tanzania?</h2>
-            
-            <p class="cta-description" style="max-width: 650px; margin: 0 auto 25px; font-size:0.9rem; line-height: 1.65; opacity: 0.9;">
-                <span class="cta-hide-mobile" data-en="Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. " data-sw="Fikiria kushuhudia uwindaji wa simba wakati wa machweo, kutazama tembo wakizurura kwa uhuru kwenye savanna zisizo na mwisho, kujionea Uhamiaji Mkuu, au kupumzika kwenye mchanga mweupe wa Zanzibar. ">Imagine witnessing a lion hunt at dawn, watching elephants roam freely across the endless savannah, experiencing the Great Migration, or relaxing on the white sands of Zanzibar. </span>
-                <span data-en="Let Century Adventures make those dreams come true." data-sw="Ruhusu Century Adventures kufanya ndoto hizo ziwe kweli.">Let Century Adventures make those dreams come true.</span>
+            <p style="max-width: 650px; margin: 0 auto 25px; font-size:0.9rem; line-height: 1.65; opacity: 0.9;">
+                Let Century Adventures make those dreams come true.
             </p>
-
-            <div class="cta-action-grid" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-                <a href="enquire.html" class="btn btn-primary cta-circle-btn" style="background: var(--accent-gold); color: #002b18; font-weight:800; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; text-decoration: none;" data-en="Plan Your Trip" data-sw="Panga Safari Yako">Plan Your Trip</a>
-                <a href="enquire.html" class="btn btn-outline cta-circle-btn secondary" style="border: 1px solid rgba(255,255,255,0.6); color: white; font-weight:700; border-radius:50px; padding: 12px 30px; font-size: 0.85rem; background: transparent; text-decoration: none;" data-en="Request a Free Quote" data-sw="Omba Nukuu ya Bure">Request a Free Quote</a>
-            </div>
-            
-            <div style="margin-top: 18px;">
-                <a href="contact.html" style="color: var(--accent-gold); font-weight: 700; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.5px;" data-en="Contact Our Experts &rarr;" data-sw="Wasiliana na Wataalamu Wetu &rarr;">Contact Our Experts &rarr;</a>
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                <a href="enquire.html" class="btn btn-primary" style="background: var(--accent-gold); color: #002b18; font-weight:800; border-radius:50px; padding: 12px 30px;" data-en="Plan Your Trip" data-sw="Panga Safari Yako">Plan Your Trip</a>
+                <a href="enquire.html" class="btn btn-outline" style="border: 1px solid rgba(255,255,255,0.6); color: white; font-weight:700; border-radius:50px; padding: 12px 30px; background: transparent;" data-en="Request a Free Quote" data-sw="Omba Nukuu ya Bure">Request a Free Quote</a>
             </div>
         </div>
     </section>
@@ -204,45 +795,45 @@
             <div class="footer-col link-col collapsible">
                 <h3 data-en="POPULAR PLACES" data-sw="MAENEO MAARUFU">POPULAR PLACES</h3>
                 <ul>
-                    <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
-                    <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
-                    <li><a href="selous.html" data-en="Nyerere Park" data-sw="Hifadhi ya Nyerere">Nyerere Park</a></li>
-                    <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
-                    <li><a href="mikumi.html" data-en="Mikumi Park" data-sw="Hifadhi ya Mikumi">Mikumi Park</a></li>
-                    <li><a href="ngorongoro.html" data-en="Ngorongoro" data-sw="Ngorongoro">Ngorongoro</a></li>
-                    <li><a href="manyara.html" data-en="Manyara National Park" data-sw="Hifadhi ya Manyara">Manyara National Park</a></li>
+                    <li><a href="serengeti.html">Serengeti National Park</a></li>
+                    <li><a href="tarangire.html">Tarangire National Park</a></li>
+                    <li><a href="selous.html">Nyerere Park</a></li>
+                    <li><a href="ruaha.html">Ruaha National Park</a></li>
+                    <li><a href="mikumi.html">Mikumi Park</a></li>
+                    <li><a href="ngorongoro.html">Ngorongoro</a></li>
+                    <li><a href="manyara.html">Manyara National Park</a></li>
                 </ul>
             </div>
             <div class="footer-col link-col collapsible">
                 <h3 data-en="TRAVEL EXPERIENCE" data-sw="UZOEFU WA KUSAFIRI">TRAVEL EXPERIENCE</h3>
                 <ul>
-                    <li><a href="family-safaris.html" data-en="Family Trips" data-sw="Safari za Familia">Family Trips</a></li>
-                    <li><a href="honeymoon-safaris.html" data-en="Honeymoon Trips" data-sw="Safari za Fungate">Honeymoon Trips</a></li>
-                    <li><a href="migration-safaris.html" data-en="Migration Trips" data-sw="Safari za Uhamiaji">Migration Trips</a></li>
-                    <li><a href="volunteer.html" data-en="Volunteer Programs" data-sw="Mipango ya Kujitolea">Volunteer Programs</a></li>
-                    <li><a href="zanzibar-beach.html" data-en="Zanzibar Beach Holiday" data-sw="Likizo ya Pwani ya Zanzibar">Zanzibar Beach Holiday</a></li>
+                    <li><a href="family-safaris.html">Family Trips</a></li>
+                    <li><a href="honeymoon-safaris.html">Honeymoon Trips</a></li>
+                    <li><a href="migration-safaris.html">Migration Trips</a></li>
+                    <li><a href="volunteer.html">Volunteer Programs</a></li>
+                    <li><a href="zanzibar-beach.html">Zanzibar Beach Holiday</a></li>
                 </ul>
             </div>
             <div class="footer-col link-col collapsible">
                 <h3 data-en="TRAVEL RESOURCES" data-sw="MAARIFA YA SAFARI">TRAVEL RESOURCES</h3>
                 <ul>
-                    <li><a href="blog.html" data-en="Travel Blog" data-sw="Blogu yetu">Travel Blog</a></li>
-                    <li><a href="faq.html" data-en="FAQs" data-sw="Maswali ya Kawaida">FAQs</a></li>
-                    <li><a href="gallery.html" data-en="Photo Gallery" data-sw="Picha za Safari">Photo Gallery</a></li>
-                    <li><a href="testimonials.html" data-en="Testimonials" data-sw="Shuhuda">Testimonials</a></li>
-                    <li><a href="best-time-to-visit-tanzania.html" data-en="Best Time to Visit" data-sw="Wakati Bora wa Kuja">Best Time to Visit</a></li>
-                    <li><a href="health-safety-tanzania.html" data-en="Health &amp; Safety" data-sw="Afya na Usalama">Health &amp; Safety</a></li>
-                    <li><a href="obtaining-visa-tanzania.html" data-en="Visa Information" data-sw="Visa ya Safari">Visa Information</a></li>
-                    <li><a href="solo-female-travel-tanzania.html" data-en="Solo Female Travel" data-sw="Safari ya Wanawake">Solo Female Travel</a></li>
-                    <li><a href="what-to-wear-safari.html" data-en="Safari Packing Guide" data-sw="Nguo za Safari">Safari Packing Guide</a></li>
+                    <li><a href="blog.html">Travel Blog</a></li>
+                    <li><a href="faq.html">FAQs</a></li>
+                    <li><a href="gallery.html">Photo Gallery</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a href="best-time-to-visit-tanzania.html">Best Time to Visit</a></li>
+                    <li><a href="health-safety-tanzania.html">Health &amp; Safety</a></li>
+                    <li><a href="obtaining-visa-tanzania.html">Visa Information</a></li>
+                    <li><a href="solo-female-travel-tanzania.html">Solo Female Travel</a></li>
+                    <li><a href="what-to-wear-safari.html">Safari Packing Guide</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <div class="tripadvisor-card">
                     <img src="https://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-66827-5.svg" alt="TripAdvisor">
-                    <h4 data-en="TripAdvisor Century Adventures" data-sw="TripAdvisor Century Adventures">TripAdvisor Century Adventures</h4>
-                    <p data-en="Ranked #1 on TripAdvisor" data-sw="Imeorodheshwa #1 TripAdvisor">Ranked #1 on TripAdvisor</p>
-                    <a href="https://www.tripadvisor.com/" target="_blank" class="btn btn-small" data-en="TripAdvisor Give Feedback Century Adventures" data-sw="TripAdvisor Toa Maoni Century Adventures">TripAdvisor Give Feedback Century Adventures</a>
+                    <h4>TripAdvisor Century Adventures</h4>
+                    <p>Ranked #1 on TripAdvisor</p>
+                    <a href="https://www.tripadvisor.com/" target="_blank" class="btn btn-small">TripAdvisor Give Feedback Century Adventures</a>
                 </div>
             </div>
         </div>
@@ -262,7 +853,3 @@
     <script src="index.js"></script>
 </body>
 </html>
-
-
-
-
