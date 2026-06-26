@@ -11771,7 +11771,7 @@ body.transparent-header-active .home-hero {
 }
 
 /* ==========================================
-   FORCE HEADER ATTACHMENT TO THE VERY TOP (ALL SCREEN SIZES)
+   FORCE HEADER ATTACHMENT & REMOVE TOP/SIDE BORDERS (ALL SCREEN SIZES)
    ========================================== */
 .header {
     top: 0 !important;
@@ -11780,6 +11780,9 @@ body.transparent-header-active .home-hero {
     width: 100% !important;
     max-width: 100% !important;
     border-radius: 0 !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
 }
 
 @media (max-width: 992px) {
@@ -11790,6 +11793,9 @@ body.transparent-header-active .home-hero {
         width: 100% !important;
         max-width: 100% !important;
         border-radius: 0 !important;
+        border-top: none !important;
+        border-left: none !important;
+        border-right: none !important;
     }
 }
 
@@ -11801,6 +11807,9 @@ body.transparent-header-active .home-hero {
         width: 100% !important;
         max-width: 100% !important;
         border-radius: 0 !important;
+        border-top: none !important;
+        border-left: none !important;
+        border-right: none !important;
     }
 }
 
