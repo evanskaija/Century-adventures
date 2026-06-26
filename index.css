@@ -11813,3 +11813,25 @@ body.transparent-header-active .home-hero {
     }
 }
 
+/* ==========================================
+   MOBILE HEADER TOGGLE SQUEEZED TO THE RIGHT
+   ========================================== */
+@media (max-width: 992px) {
+    .header-content {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+    .header-actions {
+        display: none !important;
+    }
+
+    .mobile-toggle {
+        display: flex !important;
+        margin-left: auto !important; /* Force to the absolute right side */
+    }
+}
+
