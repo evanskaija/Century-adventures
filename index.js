@@ -2565,6 +2565,28 @@ document.addEventListener('DOMContentLoaded', () => {
             renderMessages(conv);
             lastMsgCount = conv.messages.length;
 
+            // Fetch live history immediately from the server
+            fetch(`chat-history.php?conv_id=${conv.id}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success && Array.isArray(data.messages)) {
+                        conv.messages = data.messages;
+                        renderMessages(conv);
+                        lastMsgCount = data.messages.length;
+                        
+                        // Sync back to local list
+                        const convs = loadConversations();
+                        const idx = convs.findIndex(c => c.id === conv.id);
+                        if (idx !== -1) {
+                            convs[idx].messages = data.messages;
+                            convs[idx].updatedAt = Date.now();
+                            saveConversations(convs);
+                        }
+                    }
+                }).catch(err => {
+                    console.warn('[CenturyAdv] Chat view immediate fetch error:', err);
+                });
+
             // Back button
             chatViewEl.querySelector('#chatBack').addEventListener('click', () => {
                 chatViewEl.classList.remove('active');
