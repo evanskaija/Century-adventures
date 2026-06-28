@@ -5,7 +5,7 @@
     <link rel="icon" href="assets/logo.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Messages | Century Adventures</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
@@ -359,6 +359,7 @@
         .admin-msg-row {
             display: flex;
             width: 100%;
+            margin-bottom: 20px;
         }
 
         .admin-msg-row.incoming {
@@ -370,41 +371,64 @@
         }
 
         .admin-msg-bubble {
-            max-width: 65%;
-            padding: 12px 18px;
-            border-radius: 18px;
-            font-size: 14px;
-            line-height: 1.5;
+            width: 100%;
+            max-width: 100%;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 20px 24px;
+            font-size: 14.5px;
+            line-height: 1.6;
             position: relative;
             word-break: break-word;
-            white-space: pre-wrap;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.01);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+            box-sizing: border-box;
         }
 
         .incoming .admin-msg-bubble {
-            background: #ffffff;
-            color: #1e293b;
-            border-bottom-left-radius: 4px;
-            border: 1px solid #e2e8f0;
+            border-left: 4px solid #10b981; /* Green side accent for customer */
         }
 
         .outgoing .admin-msg-bubble {
-            background: #5c5cfc;
-            color: #ffffff;
-            border-bottom-right-radius: 4px;
-            box-shadow: 0 4px 15px rgba(92, 92, 252, 0.15);
+            border-left: 4px solid #5c5cfc; /* Blue side accent for staff */
+            background: #fdfdfd;
+        }
+
+        .admin-msg-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .incoming .admin-msg-header {
+            color: #047857;
+        }
+
+        .outgoing .admin-msg-header {
+            color: #4338ca;
+        }
+
+        .admin-msg-divider {
+            border: none;
+            border-top: 1px solid #f1f5f9;
+            margin: 10px 0 12px 0;
+        }
+
+        .admin-msg-text {
+            color: #334155;
+            white-space: pre-wrap;
+            font-size: 14.5px;
         }
 
         .admin-msg-time {
             display: block;
-            font-size: 10px;
-            margin-top: 6px;
-            text-align: right;
+            font-size: 11px;
             color: var(--admin-text-muted);
-        }
-
-        .outgoing .admin-msg-time {
-            color: rgba(255, 255, 255, 0.8);
+            margin-top: 10px;
+            text-align: right;
         }
 
         /* Input Bar */
@@ -541,6 +565,259 @@
             font-size: 13px;
             margin-top: 10px;
             display: none;
+        }
+        .inbox-dept-tabs {
+            display: flex;
+            gap: 5px;
+            padding: 10px 20px;
+            border-bottom: 1px solid var(--admin-border);
+            overflow-x: auto;
+            background: #f8fafc;
+            white-space: nowrap;
+            scrollbar-width: none; /* Hide scrollbar for clean look */
+        }
+        .inbox-dept-tabs::-webkit-scrollbar {
+            display: none;
+        }
+        .dept-tab {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11.5px;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .dept-tab:hover {
+            border-color: #cbd5e1;
+            background: #f1f5f9;
+        }
+        .dept-tab.active {
+            background: #5c5cfc;
+            color: #ffffff;
+            border-color: #5c5cfc;
+            box-shadow: 0 4px 10px rgba(92, 92, 252, 0.2);
+        }
+        .dept-tab-count {
+            background: rgba(0, 0, 0, 0.05);
+            padding: 1px 6px;
+            border-radius: 10px;
+            font-size: 10px;
+        }
+        .dept-tab.active .dept-tab-count {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Warning banner styling when email is missing */
+        .email-warning-banner {
+            background: #fffbeb;
+            border-bottom: 1px solid #fef3c7;
+            padding: 10px 25px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            font-size: 12.5px;
+            color: #b45309;
+        }
+
+        /* Responsive Overrides */
+        @media (max-width: 900px) {
+            .inbox-list-pane {
+                width: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-container {
+                padding: 0 !important;
+                gap: 0 !important;
+            }
+            .messaging-main {
+                height: 100vh !important;
+                border-radius: 0 !important;
+                border: none !important;
+            }
+            .messaging-header {
+                padding: 12px 18px !important;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            }
+            .messaging-header h1 {
+                font-size: 19px !important;
+            }
+            .inbox-list-pane {
+                width: 100% !important;
+                height: 100%;
+            }
+            .inbox-search-filter {
+                padding: 12px 18px !important;
+                gap: 8px !important;
+            }
+            .inbox-scroll {
+                background: #f8fafc;
+            }
+            .conv-card {
+                padding: 14px 18px !important;
+                border-bottom: 1px solid #f1f5f9;
+            }
+            .chat-pane {
+                display: none;
+            }
+            .chat-pane.mobile-active {
+                display: flex !important;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                z-index: 9999;
+                background: #f8fafc;
+            }
+            .chat-header {
+                padding: 10px 15px !important;
+                border-bottom: 1px solid #e2e8f0;
+            }
+            .chat-title-row h2 {
+                font-size: 14px !important;
+                max-width: 130px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            .chat-meta-row {
+                font-size: 10px !important;
+            }
+            .chat-actions {
+                gap: 8px !important;
+            }
+            .status-select-wrapper span {
+                display: none;
+            }
+            .status-select-wrapper select {
+                padding: 4px 8px !important;
+                font-size: 11px !important;
+            }
+            .chat-messages-area {
+                padding: 15px !important;
+                gap: 12px !important;
+            }
+            .admin-msg-bubble {
+                max-width: 80% !important;
+                padding: 10px 14px !important;
+                font-size: 13px !important;
+            }
+            .chat-input-bar {
+                padding: 10px 15px !important;
+                gap: 10px !important;
+            }
+            .chat-input-bar textarea {
+                height: 38px !important;
+                padding: 8px 12px !important;
+                font-size: 14.5px !important;
+                border-radius: 18px !important;
+            }
+            .btn-send-reply {
+                width: 38px !important;
+                height: 38px !important;
+                border-radius: 50% !important;
+            }
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            color: #0f172a;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 18px;
+            letter-spacing: 4px;
+            outline: none;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        .auth-form button {
+            width: 100%;
+            padding: 12px;
+            background: #5c5cfc;
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(92, 92, 252, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .auth-form button:hover {
+            background: #4747e2;
+        }
+
+        .auth-error {
+            color: #ef4444;
+            font-size: 13px;
+            margin-top: 10px;
+            display: none;
+        }
+        .inbox-dept-tabs {
+            display: flex;
+            gap: 5px;
+            padding: 10px 20px;
+            border-bottom: 1px solid var(--admin-border);
+            overflow-x: auto;
+            background: #f8fafc;
+            white-space: nowrap;
+            scrollbar-width: none; /* Hide scrollbar for clean look */
+        }
+        .inbox-dept-tabs::-webkit-scrollbar {
+            display: none;
+        }
+        .dept-tab {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11.5px;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .dept-tab:hover {
+            border-color: #cbd5e1;
+            background: #f1f5f9;
+        }
+        .dept-tab.active {
+            background: #5c5cfc;
+            color: #ffffff;
+            border-color: #5c5cfc;
+            box-shadow: 0 4px 10px rgba(92, 92, 252, 0.2);
+        }
+        .dept-tab-count {
+            background: rgba(0, 0, 0, 0.05);
+            padding: 1px 6px;
+            border-radius: 10px;
+            font-size: 10px;
+        }
+        .dept-tab.active .dept-tab-count {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Warning banner styling when email is missing */
+        .email-warning-banner {
+            background: #fffbeb;
+            border-bottom: 1px solid #fef3c7;
+            padding: 10px 25px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            font-size: 12.5px;
+            color: #b45309;
         }
 
         /* Responsive Overrides */
@@ -786,6 +1063,12 @@
                             </div>
                         </div>
 
+                        <!-- Warning Banner for missing email -->
+                        <div class="email-warning-banner" id="emailWarningBanner">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>Warning: No customer email address detected. Replies will be saved in the database but cannot be sent to the customer.</span>
+                        </div>
+
                         <!-- Messages window -->
                         <div class="chat-messages-area" id="chatMessagesArea">
                             <!-- Loaded dynamically -->
@@ -811,15 +1094,12 @@
         let updateInterval = null;
         let activeDeptFilter = 'all';
 
-        // Check authentication state
         window.addEventListener('DOMContentLoaded', () => {
             if (sessionStorage.getItem('century_admin_authenticated') === 'true') {
                 showWorkspace();
             } else {
                 document.getElementById('authOverlay').style.display = 'flex';
             }
-
-            // Check for department query parameter (view-routing shortcut)
             const params = new URLSearchParams(window.location.search);
             const deptParam = params.get('dept');
             if (deptParam && ['info', 'booking', 'support', 'sales'].includes(deptParam)) {
@@ -835,8 +1115,7 @@
                 sessionStorage.setItem('century_admin_authenticated', 'true');
                 showWorkspace();
             } else {
-                const err = document.getElementById('authError');
-                err.style.display = 'block';
+                document.getElementById('authError').style.display = 'block';
                 document.getElementById('passcode').value = '';
                 document.getElementById('passcode').focus();
             }
@@ -855,175 +1134,174 @@
             loadConversations();
             renderDepartmentTabs();
             renderConversations();
-            
-            // Set up polling for new messages from visitors every 3 seconds
             updateInterval = setInterval(() => {
                 const scrollArea = document.getElementById('chatMessagesArea');
-                const wasScrolledToBottom = scrollArea.scrollHeight - scrollArea.clientHeight <= scrollArea.scrollTop + 50;
-                
+                if (!scrollArea) return;
+                const wasAtBottom = scrollArea.scrollHeight - scrollArea.clientHeight <= scrollArea.scrollTop + 50;
                 loadConversations();
                 renderDepartmentTabs();
-                renderConversations(false); // don't redraw everything unless needed
-                
+                renderConversations(false);
                 if (activeConvId) {
-                    const activeConv = conversations.find(c => c.id === activeConvId);
-                    if (activeConv) {
-                        renderChatMessages(activeConv);
-                        if (wasScrolledToBottom) {
-                            scrollArea.scrollTop = scrollArea.scrollHeight;
-                        }
+                    const ac = conversations.find(c => c.id === activeConvId);
+                    if (ac) {
+                        renderChatMessages(ac);
+                        if (wasAtBottom) scrollArea.scrollTop = scrollArea.scrollHeight;
                     }
                 }
-            }, 3000);
+            }, 4000);
+        }
+
+        function extractCustomerInfo(conv) {
+            let name = conv.visitorId || 'Guest';
+            let email = '';
+            for (const msg of (conv.messages || [])) {
+                if (msg.sender !== 'visitor') continue;
+                const t = msg.text || '';
+                const em = t.match(/Email[:\s]+([a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,})/i);
+                if (em) email = em[1].trim();
+                const nm = t.match(/(?:Name|Full Name)[:\s•]+(.+)/i);
+                if (nm) { let n = nm[1].trim().split('\n')[0].trim(); if (n.length > 1 && n.length < 80) name = n; }
+                if (email) break;
+            }
+            if (!email) {
+                const m = (conv.visitorId || '').match(/\(([^)]+@[^)]+)\)/);
+                if (m) email = m[1];
+            }
+            if (!email && (conv.visitorId || '').includes('@')) {
+                const parts = conv.visitorId.split(' ');
+                for (const p of parts) {
+                    const cleanP = p.replace(/[()]/g, '').trim();
+                    if (cleanP.match(/^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/)) {
+                        email = cleanP;
+                        break;
+                    }
+                }
+            }
+            if ((conv.visitorId || '').includes('(')) {
+                const namePart = conv.visitorId.replace(/\s*\(.*\)/, '').trim();
+                if (namePart.length > 1) name = namePart;
+            }
+            return { name, email };
         }
 
         function getConversationDepartment(c) {
-            if (c.department) return c.department;
-            // Backwards compatibility fallback mapping
+            if (c.department) {
+                if (c.department === 'visit' || c.department === 'admin') return 'support';
+                return c.department;
+            }
             if (c.categoryId === 'safari') return 'booking';
             if (c.categoryId === 'pricing') return 'sales';
             if (c.categoryId === 'problem' || c.categoryId === 'support') return 'support';
             return 'info';
         }
 
-        function setDeptFilter(dept) {
-            activeDeptFilter = dept;
-            renderDepartmentTabs();
-            filterConversations();
+        const DEPT_FROM = { 
+            info:    'info@century-adventures.com', 
+            booking: 'bookings@century-adventures.com', 
+            sales:   'bookings@century-adventures.com', 
+            support: 'visit@century-adventures.com' 
+        };
+        const DEPT_FORM_TYPE = { 
+            info:    'contact', 
+            booking: 'booking', 
+            sales:   'quote', 
+            support: 'report' 
+        };
+
+        function setDeptFilter(dept) { 
+            activeDeptFilter = dept; 
+            renderDepartmentTabs(); 
+            filterConversations(); 
         }
 
         function renderDepartmentTabs() {
             const container = document.getElementById('deptTabsContainer');
             if (!container) return;
-
-            const counts = { all: 0, info: 0, booking: 0, support: 0, sales: 0 };
-            conversations.forEach(c => {
-                counts.all++;
-                const dept = getConversationDepartment(c);
-                if (counts[dept] !== undefined) {
-                    counts[dept]++;
-                }
+            const counts = { all:0, info:0, booking:0, support:0, sales:0 };
+            conversations.forEach(c => { 
+                counts.all++; 
+                const d = getConversationDepartment(c); 
+                if (counts[d] !== undefined) counts[d]++; 
             });
-
             container.innerHTML = `
-                <button class="dept-tab ${activeDeptFilter === 'all' ? 'active' : ''}" data-dept="all" onclick="setDeptFilter('all')">
-                    All <span class="dept-tab-count">${counts.all}</span>
-                </button>
-                <button class="dept-tab ${activeDeptFilter === 'info' ? 'active' : ''}" data-dept="info" onclick="setDeptFilter('info')">
-                    📧 Info <span class="dept-tab-count">${counts.info}</span>
-                </button>
-                <button class="dept-tab ${activeDeptFilter === 'booking' ? 'active' : ''}" data-dept="booking" onclick="setDeptFilter('booking')">
-                    🦁 Booking <span class="dept-tab-count">${counts.booking}</span>
-                </button>
-                <button class="dept-tab ${activeDeptFilter === 'support' ? 'active' : ''}" data-dept="support" onclick="setDeptFilter('support')">
-                    🛠 Support <span class="dept-tab-count">${counts.support}</span>
-                </button>
-                <button class="dept-tab ${activeDeptFilter === 'sales' ? 'active' : ''}" data-dept="sales" onclick="setDeptFilter('sales')">
-                    💰 Sales <span class="dept-tab-count">${counts.sales}</span>
-                </button>
-            `;
+                <button class="dept-tab ${activeDeptFilter==='all'?'active':''}" onclick="setDeptFilter('all')">All <span class="dept-tab-count">${counts.all}</span></button>
+                <button class="dept-tab ${activeDeptFilter==='info'?'active':''}" onclick="setDeptFilter('info')">📧 Info <span class="dept-tab-count">${counts.info}</span></button>
+                <button class="dept-tab ${activeDeptFilter==='booking'?'active':''}" onclick="setDeptFilter('booking')">🦁 Booking <span class="dept-tab-count">${counts.booking}</span></button>
+                <button class="dept-tab ${activeDeptFilter==='support'?'active':''}" onclick="setDeptFilter('support')">🛠 Support <span class="dept-tab-count">${counts.support}</span></button>
+                <button class="dept-tab ${activeDeptFilter==='sales'?'active':''}" onclick="setDeptFilter('sales')">💰 Sales <span class="dept-tab-count">${counts.sales}</span></button>`;
         }
 
         function loadConversations() {
-            try {
-                conversations = JSON.parse(localStorage.getItem(CONV_KEY)) || [];
-                conversations.sort((a, b) => (b.updatedAt || b.createdAt) - (a.updatedAt || a.createdAt));
-            } catch(e) {
-                conversations = [];
+            try { 
+                conversations = JSON.parse(localStorage.getItem(CONV_KEY)) || []; 
+                conversations.sort((a,b)=>(b.updatedAt||b.createdAt)-(a.updatedAt||a.createdAt)); 
             }
+            catch(e) { conversations = []; }
         }
 
         const CATEGORIES = {
-            'safari': { emoji: '🦁', label: 'Safari Booking' },
-            'pricing': { emoji: '💰', label: 'Pricing & Quotations' },
-            'travel': { emoji: '🌍', label: 'Travel Info' },
+            'safari':        { emoji: '🦁', label: 'Safari Booking' },
+            'pricing':       { emoji: '💰', label: 'Pricing & Quotes' },
+            'travel':        { emoji: '🌍', label: 'Travel Info' },
             'accommodation': { emoji: '🏨', label: 'Accommodation' },
-            'problem': { emoji: '⚠️', label: 'Issue Report' }
+            'problem':       { emoji: '⚠️', label: 'Issue Report' },
+            'support':       { emoji: '🛠', label: 'Support' },
+            'general':       { emoji: '💬', label: 'General' }
         };
 
-        function filterConversations() {
-            renderConversations();
-        }
+        function filterConversations() { renderConversations(); }
 
         function renderConversations(fullRedraw = true) {
             const listContainer = document.getElementById('conversationList');
             if (!listContainer) return;
-            
             const searchVal = document.getElementById('searchVal').value.toLowerCase().trim();
             const filterCat = document.getElementById('filterCat').value;
             const filterStatus = document.getElementById('filterStatus').value;
-
             const filtered = conversations.filter(c => {
-                const matchesSearch = c.visitorId.toLowerCase().includes(searchVal) || 
-                    c.messages.some(m => m.text.toLowerCase().includes(searchVal));
-                
+                const info = extractCustomerInfo(c);
+                const matchesSearch = c.visitorId.toLowerCase().includes(searchVal) || (info.email && info.email.toLowerCase().includes(searchVal)) || c.messages.some(m => m.text.toLowerCase().includes(searchVal));
                 const matchesCat = filterCat === 'all' || c.categoryId === filterCat;
                 const matchesStatus = filterStatus === 'all' || c.status === filterStatus;
                 const matchesDept = activeDeptFilter === 'all' || getConversationDepartment(c) === activeDeptFilter;
-
                 return matchesSearch && matchesCat && matchesStatus && matchesDept;
             });
-
-            if (filtered.length === 0) {
-                listContainer.innerHTML = '<div class="inbox-empty">No conversations found</div>';
-                return;
-            }
-
-            if (!fullRedraw) {
-                const existingCards = listContainer.querySelectorAll('.conv-card');
-                if (existingCards.length !== filtered.length) {
-                    fullRedraw = true;
-                }
-            }
-
-            if (fullRedraw) {
-                listContainer.innerHTML = '';
-            }
-
-            filtered.forEach((conv, index) => {
+            if (filtered.length === 0) { listContainer.innerHTML = '<div class="inbox-empty">No conversations found</div>'; return; }
+            if (!fullRedraw) { if (listContainer.querySelectorAll('.conv-card').length !== filtered.length) fullRedraw = true; }
+            if (fullRedraw) listContainer.innerHTML = '';
+            filtered.forEach(conv => {
                 const lastMsg = conv.messages[conv.messages.length - 1];
-                const lastText = lastMsg ? lastMsg.text : 'No messages';
+                const lastText = lastMsg ? lastMsg.text.replace(/\n/g,' ').substring(0,70) : 'No messages';
                 const timeStr = lastMsg ? formatTime(lastMsg.timestamp) : '';
-                const categoryObj = CATEGORIES[conv.categoryId] || { emoji: '💬', label: 'General' };
+                const catObj = CATEGORIES[conv.categoryId] || { emoji: '💬', label: 'General' };
                 const hasUnread = conv.unreadByStaff === true;
-
+                const info = extractCustomerInfo(conv);
+                const ticketRef = '#' + conv.id.slice(-8).toUpperCase();
                 if (fullRedraw) {
                     const card = document.createElement('div');
                     card.className = `conv-card ${activeConvId === conv.id ? 'active' : ''}`;
                     card.id = `card-${conv.id}`;
                     card.innerHTML = `
-                        <div class="conv-card-header">
-                            <span class="conv-visitor-id">${conv.visitorId}</span>
-                            <span class="conv-time">${timeStr}</span>
-                        </div>
+                        <div class="conv-card-header"><span class="conv-visitor-id">${info.name}</span><span class="conv-time">${timeStr}</span></div>
+                        ${info.email ? `<div style="font-size:11px;color:#5c5cfc;margin-bottom:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${info.email}</div>` : ''}
                         <div class="conv-preview">${lastText}</div>
                         <div class="conv-tags">
-                            <span class="tag-badge tag-category">${categoryObj.emoji} ${categoryObj.label}</span>
+                            <span class="tag-badge tag-category">${catObj.emoji} ${catObj.label}</span>
                             <span class="tag-badge tag-status status-${conv.status || 'open'}">${conv.status || 'open'}</span>
+                            <span style="font-size:10px;color:#94a3b8;margin-left:auto;">${ticketRef}</span>
                         </div>
-                        ${hasUnread ? '<div class="conv-unread-dot"></div>' : ''}
-                    `;
+                        ${hasUnread ? '<div class="conv-unread-dot"></div>' : ''}`;
                     card.addEventListener('click', () => selectConversation(conv.id));
                     listContainer.appendChild(card);
                 } else {
                     const card = document.getElementById(`card-${conv.id}`);
                     if (card) {
                         card.className = `conv-card ${activeConvId === conv.id ? 'active' : ''}`;
-                        card.querySelector('.conv-time').textContent = timeStr;
-                        card.querySelector('.conv-preview').textContent = lastText;
-                        
-                        const statusBadge = card.querySelector('.tag-status');
-                        statusBadge.className = `tag-badge tag-status status-${conv.status || 'open'}`;
-                        statusBadge.textContent = conv.status || 'open';
-
+                        const tel = card.querySelector('.conv-time'); if(tel) tel.textContent = timeStr;
+                        const pel = card.querySelector('.conv-preview'); if(pel) pel.textContent = lastText;
+                        const sb = card.querySelector('.tag-status'); if(sb) { sb.className = `tag-badge tag-status status-${conv.status || 'open'}`; sb.textContent = conv.status || 'open'; }
                         const dot = card.querySelector('.conv-unread-dot');
-                        if (hasUnread && !dot) {
-                            const newDot = document.createElement('div');
-                            newDot.className = 'conv-unread-dot';
-                            card.appendChild(newDot);
-                        } else if (!hasUnread && dot) {
-                            dot.remove();
-                        }
+                        if(hasUnread && !dot) { const nd = document.createElement('div'); nd.className = 'conv-unread-dot'; card.appendChild(nd); }
+                        else if(!hasUnread && dot) dot.remove();
                     }
                 }
             });
@@ -1031,45 +1309,46 @@
 
         function selectConversation(id) {
             activeConvId = id;
-            
-            conversations.forEach(c => {
-                if (c.id === id) {
-                    c.unreadByStaff = false;
-                }
-            });
+            conversations.forEach(c => { if(c.id === id) c.unreadByStaff = false; });
             saveConversations();
-
-            document.querySelectorAll('.conv-card').forEach(card => {
-                card.classList.remove('active');
-            });
+            document.querySelectorAll('.conv-card').forEach(card => card.classList.remove('active'));
             const activeCard = document.getElementById(`card-${id}`);
-            if (activeCard) {
-                activeCard.classList.add('active');
-                const dot = activeCard.querySelector('.conv-unread-dot');
-                if (dot) dot.remove();
-            }
-
+            if (activeCard) { activeCard.classList.add('active'); const dot = activeCard.querySelector('.conv-unread-dot'); if(dot) dot.remove(); }
             const activeConv = conversations.find(c => c.id === id);
             if (activeConv) {
                 document.getElementById('chatEmptyState').style.display = 'none';
                 document.getElementById('chatContent').style.display = 'flex';
-
-                document.getElementById('activeVisitorId').textContent = activeConv.visitorId;
+                const info = extractCustomerInfo(activeConv);
                 const catObj = CATEGORIES[activeConv.categoryId] || { emoji: '💬', label: 'General' };
+                const dept = getConversationDepartment(activeConv);
+                const fromAddr = DEPT_FROM[dept] || 'info@century-adventures.com';
+                const ticketRef = '#' + activeConv.id.slice(-8).toUpperCase();
+                document.getElementById('activeVisitorId').textContent = info.name;
                 document.getElementById('activeCatTag').textContent = `${catObj.emoji} ${catObj.label}`;
-                document.getElementById('activeMetaRow').textContent = `Created: ${new Date(activeConv.createdAt).toLocaleString()} | ID: ${activeConv.id}`;
                 document.getElementById('activeStatusSelect').value = activeConv.status || 'open';
+                document.getElementById('activeMetaRow').innerHTML =
+                    `Ticket <strong>${ticketRef}</strong>` +
+                    (info.email ? ` &nbsp;|&nbsp; <a href="mailto:${info.email}" style="color:#5c5cfc;text-decoration:none;">${info.email}</a>` : ' &nbsp;|&nbsp; <span style="color:#ef4444;font-size:11px;">⚠ No email found</span>') +
+                    ` &nbsp;|&nbsp; Reply from: <strong>${fromAddr}</strong>` +
+                    ` &nbsp;|&nbsp; ${new Date(activeConv.createdAt).toLocaleString()}`;
+                
+                const ta = document.getElementById('replyTextarea');
+                ta.dataset.customerEmail = info.email || '';
+                ta.dataset.customerName  = info.name || '';
+                ta.dataset.formType      = DEPT_FORM_TYPE[dept] || 'contact';
+                ta.dataset.ticketRef     = ticketRef;
+
+                const emailWarn = document.getElementById('emailWarningBanner');
+                if (emailWarn) {
+                    emailWarn.style.display = info.email ? 'none' : 'flex';
+                }
 
                 renderChatMessages(activeConv);
-                
                 const area = document.getElementById('chatMessagesArea');
-                setTimeout(() => {
-                    area.scrollTop = area.scrollHeight;
-                }, 50);
-
-                if (window.innerWidth <= 768) {
-                    document.getElementById('chatPane').classList.add('mobile-active');
-                    document.querySelector('.mobile-back-btn').style.display = 'inline-block';
+                setTimeout(() => { area.scrollTop = area.scrollHeight; }, 50);
+                if (window.innerWidth <= 768) { 
+                    document.getElementById('chatPane').classList.add('mobile-active'); 
+                    document.querySelector('.mobile-back-btn').style.display = 'inline-block'; 
                 }
             }
         }
@@ -1082,99 +1361,164 @@
 
         function renderChatMessages(conv) {
             const area = document.getElementById('chatMessagesArea');
-            let messagesHTML = '';
-
+            const info = extractCustomerInfo(conv);
+            let html = '';
+            const DEPT_LABELS = {
+                booking: 'Safari Bookings',
+                info:    'General Inquiries',
+                visit:   'Trip Planning',
+                admin:   'Website Issues',
+                support: 'Customer Support',
+                sales:   'Sales & Quotations'
+            };
             conv.messages.forEach(msg => {
                 const isVisitor = msg.sender === 'visitor';
-                messagesHTML += `
+                const label = isVisitor ? info.name : 'Century Adventures';
+                const friendlyDept = DEPT_LABELS[msg.from] || msg.from || '';
+                const departmentLabel = !isVisitor && friendlyDept ? ` (${friendlyDept})` : '';
+                const time = new Date(msg.timestamp).toLocaleString([], { dateStyle: 'short', timeStyle: 'short' });
+                
+                html += `
                     <div class="admin-msg-row ${isVisitor ? 'incoming' : 'outgoing'}">
                         <div class="admin-msg-bubble">
-                            ${msg.text}
-                            <span class="admin-msg-time">${new Date(msg.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                            <div class="admin-msg-header">
+                                <span>${label}${departmentLabel}</span>
+                                <span>${time}</span>
+                            </div>
+                            <hr class="admin-msg-divider">
+                            <div class="admin-msg-text">${msg.text}</div>
                         </div>
                     </div>
                 `;
             });
-
-            if (area.innerHTML !== messagesHTML) {
-                area.innerHTML = messagesHTML;
-            }
+            if (area.innerHTML !== html) area.innerHTML = html;
         }
 
-        function handleInputKeydown(e) {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                sendReply();
-            }
-        }
+        function handleInputKeydown(e) { if(e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendReply(); } }
 
-        function sendReply() {
+        async function sendReply() {
             const textarea = document.getElementById('replyTextarea');
             const text = textarea.value.trim();
             if (!text || !activeConvId) return;
+            const customerEmail = textarea.dataset.customerEmail || '';
+            const customerName  = textarea.dataset.customerName || 'Guest';
+            const formType      = textarea.dataset.formType || 'contact';
+            const ticketRef     = textarea.dataset.ticketRef || '';
+            const btn = document.querySelector('.btn-send-reply');
 
             const convIndex = conversations.findIndex(c => c.id === activeConvId);
+            const dept = convIndex !== -1 ? getConversationDepartment(conversations[convIndex]) : 'info';
+            const now = Date.now();
+            const msgEntry = { id: 'msg-' + now + '-staff', sender: 'staff', text, timestamp: now, from: DEPT_FROM[dept] || 'info@century-adventures.com' };
+            
             if (convIndex !== -1) {
-                const now = Date.now();
-                conversations[convIndex].messages.push({
-                    id: 'msg-' + now,
-                    sender: 'staff',
-                    text: text,
-                    timestamp: now
-                });
+                conversations[convIndex].messages.push(msgEntry);
                 conversations[convIndex].updatedAt = now;
                 conversations[convIndex].status = 'replied';
                 conversations[convIndex].unread = 1;
-
                 saveConversations();
                 textarea.value = '';
-
                 renderChatMessages(conversations[convIndex]);
                 document.getElementById('activeStatusSelect').value = 'replied';
                 renderConversations();
-
                 const area = document.getElementById('chatMessagesArea');
-                area.scrollTop = area.scrollHeight;
+                if (area) area.scrollTop = area.scrollHeight;
+            }
+
+            if (!customerEmail) { 
+                showToast('Cannot send reply. Customer email not found.', 'error'); 
+                return; 
+            }
+            btn.disabled = true; 
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            try {
+                const res = await fetch('send-reply.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        passcode:       'centuryadmin',
+                        conv_id:        activeConvId,
+                        customer_email: customerEmail,
+                        customer_name:  customerName,
+                        reply_text:     text,
+                        form_type:      formType,
+                        ticket_ref:     ticketRef
+                    })
+                });
+                const result = await res.json();
+                if (result.success) {
+                    showToast(`Reply sent successfully to ${customerEmail}`, 'success');
+                } else {
+                    if (result.email_failed) {
+                        showToast('Reply saved in portal but email delivery failed.', 'error');
+                    } else {
+                        showToast('❌ Error: ' + result.message, 'error');
+                    }
+                }
+            } catch(err) { 
+                showToast('Reply saved in portal but email delivery failed.', 'error'); 
+            } finally { 
+                btn.disabled = false; 
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i>'; 
             }
         }
 
         function updateActiveStatus(status) {
             if (!activeConvId) return;
-            const convIndex = conversations.findIndex(c => c.id === activeConvId);
-            if (convIndex !== -1) {
-                conversations[convIndex].status = status;
-                conversations[convIndex].updatedAt = Date.now();
-                saveConversations();
-                renderConversations();
+            const idx = conversations.findIndex(c => c.id === activeConvId);
+            if (idx !== -1) { 
+                conversations[idx].status = status; 
+                conversations[idx].updatedAt = Date.now(); 
+                saveConversations(); 
+                renderConversations(); 
+                fetch('sync-data.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ passcode: 'centuryadmin', action: 'update_conv_status', conv_id: activeConvId, status })
+                }).catch(() => {}); 
             }
         }
 
         function deleteActiveConversation() {
             if (!activeConvId) return;
-            if (confirm('Are you sure you want to permanently delete this conversation and all its messages?')) {
+            if (confirm('Delete this conversation permanently?')) {
                 conversations = conversations.filter(c => c.id !== activeConvId);
-                saveConversations();
+                saveConversations(); 
                 activeConvId = null;
-
                 document.getElementById('chatContent').style.display = 'none';
                 document.getElementById('chatEmptyState').style.display = 'flex';
-                closeMobileChat();
+                closeMobileChat(); 
                 renderConversations();
             }
         }
 
-        function saveConversations() {
-            localStorage.setItem(CONV_KEY, JSON.stringify(conversations));
+        function saveConversations() { localStorage.setItem(CONV_KEY, JSON.stringify(conversations)); }
+
+        function formatTime(ts) {
+            const now = new Date(), date = new Date(ts);
+            if(now.toDateString() === date.toDateString()) return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            return date.toLocaleDateString([], { month: 'short', day: 'numeric' });
         }
 
-        function formatTime(timestamp) {
-            const now = new Date();
-            const date = new Date(timestamp);
-            if (now.toDateString() === date.toDateString()) {
-                return date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-            }
-            return date.toLocaleDateString([], {month: 'short', day: 'numeric'});
+        function showToast(message, type = 'success') {
+            const existing = document.getElementById('adminToast'); 
+            if (existing) existing.remove();
+            const colors = {
+                success: { bg: '#dcfce7', border: '#16a34a', text: '#166534' },
+                error:   { bg: '#fee2e2', border: '#dc2626', text: '#991b1b' },
+                warn:    { bg: '#fef9c3', border: '#ca8a04', text: '#713f12' }
+            };
+            const c = colors[type] || colors.success;
+            const toast = document.createElement('div'); 
+            toast.id = 'adminToast';
+            toast.style.cssText = `position:fixed;bottom:30px;right:30px;z-index:99999;background:${c.bg};border:1px solid ${c.border};color:${c.text};padding:14px 22px;border-radius:14px;font-size:14px;font-weight:600;box-shadow:0 8px 30px rgba(0,0,0,0.1);max-width:340px;animation:slideInRight 0.3s ease;`;
+            toast.textContent = message; 
+            document.body.appendChild(toast);
+            setTimeout(() => { toast.style.opacity = '0'; toast.style.transition = 'opacity 0.4s'; setTimeout(() => toast.remove(), 400); }, 3500);
         }
+        const toastStyle = document.createElement('style');
+        toastStyle.textContent = '@keyframes slideInRight{from{transform:translateX(30px);opacity:0;}to{transform:translateX(0);opacity:1;}}';
+        document.head.appendChild(toastStyle);
     </script>
 </body>
 </html>

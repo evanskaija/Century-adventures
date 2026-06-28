@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel & Safari Activities | Century Adventures</title>
     <meta name="description" content="Discover the best activities in Tanzania: Hot air ballooning, walking safaris, Kilimanjaro climbs, beach water sports, and Maasai cultural visits.">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
@@ -163,14 +163,97 @@
     <div class="scroll-progress"></div>
 
     <!-- Header -->
-    <header class="header">
-        <div class="container header-content">
-            <div class="logo">
-                <a href="index.html"><img src="assets/logo.png" alt="Century Adventures Logo"></a>
+                <header class="header">
+        <div class="header-main-nav">
+            <div class="container header-content">
+                <div class="logo">
+                    <a href="index.html" class="logo-wrap">
+                        <img src="assets/logo.png" alt="Century Adventures Logo">
+                        <span class="brand-name">CENTURY<span class="brand-subname"> ADVENTURES</span><span class="brand-slogan" data-en="Discover. Explore. Experience." data-sw="Gundua. Chunguza. Shuhudia.">Discover. Explore. Experience.</span></span>
+                    </a>
+                </div>
+                <nav class="nav">
+                    <button class="nav-close-btn" id="nav-close-btn" aria-label="Close navigation menu"><i class="fas fa-times"></i> <span data-en="Close" data-sw="Funga">Close</span></button>
+                    <ul>
+                        <li class="mobile-only-action mobile-menu-title"><i class="fas fa-bars"></i> MENU</li>
+                        <li class="mobile-only-action mobile-menu-controls">
+                            <button class="toggle-btn lang-toggle" onclick="toggleLang(event)">SWAHILI</button>
+                            <button class="toggle-btn theme-toggle" onclick="toggleTheme(event)"><i class="fas fa-moon"></i> <span class="toggle-text">DARK</span></button>
+                        </li>
+                        <li><a href="index.html" id="nav-home" data-en="Home" data-sw="Nyumbani">Home</a></li>
+                        <li class="dropdown">
+                            <a href="safaris.html" id="nav-safaris" data-en="Safaris" data-sw="Safari">Safaris <i class="fas fa-chevron-down"></i></a>
+                            <span class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></span>
+                            <ul class="dropdown-menu">
+                                <li><a href="safaris.html" data-en="All Tours &amp; Safaris" data-sw="Safari na Ziara Zote">All Tours &amp; Safaris</a></li>
+                                <li><a href="3-day-serengeti-safari.html" data-en="3-Day Serengeti Safari" data-sw="Safari ya Siku 3 Serengeti">3-Day Serengeti Safari</a></li>
+                                <li><a href="6-day-northern-tanzania-highlights.html" data-en="6-Day Northern Highlights" data-sw="Siku 6 Vivutio vya Kaskazini">6-Day Northern Highlights</a></li>
+                                <li><a href="10-days-luxury-safari-zanzibar.html" data-en="10-Day Luxury &amp; Zanzibar" data-sw="Siku 10 Anasa na Zanzibar">10-Day Luxury &amp; Zanzibar</a></li>
+                                <li><a href="12-days-best-of-south-and-north.html" data-en="12-Day South &amp; North" data-sw="Siku 12 Kusini na Kaskazini">12-Day South &amp; North</a></li>
+                                <li><a href="13-days-tanzania-safari-beach.html" data-en="13-Day Safari &amp; Beach" data-sw="Siku 13 Safari na Pwani">13-Day Safari &amp; Beach</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="destinations.html" id="nav-destinations" data-en="Destinations" data-sw="Maeneo">Destinations <i class="fas fa-chevron-down"></i></a>
+                            <span class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></span>
+                            <ul class="dropdown-menu">
+                                <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                                <li><a href="ngorongoro.html" data-en="Ngorongoro Conservation Area" data-sw="Ngorongoro">Ngorongoro Conservation Area</a></li>
+                                <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                                <li><a href="manyara.html" data-en="Lake Manyara National Park" data-sw="Hifadhi ya Manyara">Lake Manyara National Park</a></li>
+                                <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                                <li><a href="selous.html" data-en="Selous Game Reserve" data-sw="Hifadhi ya Selous">Selous Game Reserve</a></li>
+                                <li><a href="mikumi.html" data-en="Mikumi National Park" data-sw="Hifadhi ya Mikumi">Mikumi National Park</a></li>
+                                <li><a href="katavi.html" data-en="Katavi National Park" data-sw="Hifadhi ya Katavi">Katavi National Park</a></li>
+                                <li><a href="gombe.html" data-en="Gombe Stream National Park" data-sw="Hifadhi ya Gombe">Gombe Stream National Park</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="experiences.html" id="nav-experiences" data-en="Experiences" data-sw="Uzoefu">Experiences <i class="fas fa-chevron-down"></i></a>
+                            <span class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></span>
+                            <ul class="dropdown-menu">
+                                <li><a href="family-safaris.html" data-en="Family Safaris" data-sw="Safari za Familia">Family Safaris</a></li>
+                                <li><a href="migration-safaris.html" data-en="Migration Safaris" data-sw="Safari za Uhamiaji">Migration Safaris</a></li>
+                                <li><a href="honeymoon-safaris.html" data-en="Honeymoon Safaris" data-sw="Safari za Fungate">Honeymoon Safaris</a></li>
+                                <li><a href="volunteer.html" data-en="Volunteer Programs" data-sw="Mipango ya Kujitolea">Volunteer Programs</a></li>
+                                <li><a href="vehicles.html" data-en="Safari Vehicles" data-sw="Magari ya Safari">Safari Vehicles</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about.html" id="nav-about" data-en="About Us" data-sw="Kuhusu Sisi">About Us</a></li>
+                        <li class="dropdown">
+                            <a href="#" id="nav-resources" data-en="Travel Guide" data-sw="Mwongozo wa Safari">Travel Guide <i class="fas fa-chevron-down"></i></a>
+                            <span class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></span>
+                            <ul class="dropdown-menu">
+                                <li><a href="blog.html" data-en="Travel Blog" data-sw="Blogu yetu">Travel Blog</a></li>
+                                <li><a href="faq.html" data-en="FAQs" data-sw="Maswali ya Kawaida">FAQs</a></li>
+                                <li><a href="gallery.html" data-en="Photo Gallery" data-sw="Picha za Safari">Photo Gallery</a></li>
+                                <li><a href="testimonials.html" data-en="Testimonials" data-sw="Shuhuda">Testimonials</a></li>
+                                <li><a href="best-time-to-visit-tanzania.html" data-en="Best Time to Visit" data-sw="Wakati Bora wa Kuja">Best Time to Visit</a></li>
+                                <li><a href="health-safety-tanzania.html" data-en="Health &amp; Safety" data-sw="Afya na Usalama">Health &amp; Safety</a></li>
+                                <li><a href="obtaining-visa-tanzania.html" data-en="Visa Information" data-sw="Visa ya Safari">Visa Information</a></li>
+                                <li><a href="what-to-wear-safari.html" data-en="Safari Packing Guide" data-sw="Nguo za Safari">Safari Packing Guide</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact.html" id="nav-contact" data-en="Contact Us" data-sw="Wasiliana Nasi">Contact Us</a></li>
+                        <li class="mobile-only-action book-now-item"><a href="book.html" class="btn btn-primary enquire-btn" data-en="BOOK NOW" data-sw="WEKA NAFASI">BOOK NOW</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Mobile Hamburger Menu Button (Three Lines) -->
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Open navigation menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+
+                <div class="header-actions">
+                    <div class="header-toggles">
+                        <button class="toggle-btn lang-toggle" onclick="toggleLang(event)">SWAHILI</button>
+                        <button class="toggle-btn theme-toggle" onclick="toggleTheme(event)"><i class="fas fa-moon"></i> <span class="toggle-text">DARK</span></button>
+                    </div>
+                    <a href="book.html" class="btn btn-primary enquire-btn" data-en="BOOK NOW" data-sw="WEKA NAFASI">BOOK NOW</a>
+                </div>
             </div>
-            <nav class="nav">
-                <!-- Injected via index.js -->
-            </nav>
         </div>
     </header>
 
@@ -206,7 +289,7 @@
                     <span class="activity-badge" data-en="Wildlife" data-sw="Wanyama">Wildlife</span>
                 </div>
                 <div class="activity-content">
-                    <h3 data-en="🦁 Classic Game Drives" data-sw="🦁 Game Drives za Kawaida">🦁 Classic Game Drives</h3>
+                    <h3 data-en="?? Classic Game Drives" data-sw="?? Game Drives za Kawaida">?? Classic Game Drives</h3>
                     <p data-en="Track the Big Five from comfortable open-roof 4x4 safari vehicles. Experience morning and afternoon game drives led by professional local trackers."
                        data-sw="Fuatilia wanyama Watano Wakubwa kutoka kwenye magari ya starehe ya 4x4 yenye paa wazi. Shuhudia game drives za asubuhi na jioni zikiongozwa na wenyeji.">
                         Track the Big Five from comfortable open-roof 4x4 safari vehicles. Experience morning and afternoon game drives led by professional local trackers.
@@ -225,7 +308,7 @@
                     <span class="activity-badge" data-en="Luxury" data-sw="Kifahari">Luxury</span>
                 </div>
                 <div class="activity-content">
-                    <h3 data-en="🎈 Hot Air Balloon Safaris" data-sw="🎈 Safari za Puto la Hewa">🎈 Hot Air Balloon Safaris</h3>
+                    <h3 data-en="?? Hot Air Balloon Safaris" data-sw="?? Safari za Puto la Hewa">?? Hot Air Balloon Safaris</h3>
                     <p data-en="Drift silently over the Serengeti plains at sunrise, observing wild herds from above. Finish with a gourmet champagne bush breakfast."
                        data-sw="Kupaa kimyakimya juu ya uwanda wa Serengeti wakati wa machweo, ukitazama makundi ya wanyama. Malizia na kifungua kinywa porini na champagne.">
                         Drift silently over the Serengeti plains at sunrise, observing wild herds from above. Finish with a gourmet champagne bush breakfast.
@@ -244,7 +327,7 @@
                     <span class="activity-badge" data-en="Adventure" data-sw="Kusisimua">Adventure</span>
                 </div>
                 <div class="activity-content">
-                    <h3 data-en="🚶 Guided Nature Walks" data-sw="🚶 Safari za Kutembea kwa Miguu">🚶 Guided Nature Walks</h3>
+                    <h3 data-en="?? Guided Nature Walks" data-sw="?? Safari za Kutembea kwa Miguu">?? Guided Nature Walks</h3>
                     <p data-en="Walk through untamed wilderness accompanied by an armed ranger. Get closer to the smaller details of the bush and track animal prints."
                        data-sw="Tembea katika nyika isiyofugwa ukiwa na mgambo mwenye silaha. Karibia maajabu madogo ya pori na fuata alama za miguu ya wanyama.">
                         Walk through untamed wilderness accompanied by an armed ranger. Get closer to the smaller details of the bush and track animal prints.
@@ -263,7 +346,7 @@
                     <span class="activity-badge" data-en="Predators" data-sw="Wawindaji">Predators</span>
                 </div>
                 <div class="activity-content">
-                    <h3 data-en="🐆 Leopard Tracking Quest" data-sw="🐆 Ufuatiliaji wa Chui">🐆 Leopard Tracking Quest</h3>
+                    <h3 data-en="?? Leopard Tracking Quest" data-sw="?? Ufuatiliaji wa Chui">?? Leopard Tracking Quest</h3>
                     <p data-en="Join our highly specialized guides to locate and observe elusive leopards resting in acacia trees. Learn secrets of wild cat tracking."
                        data-sw="Ungana na waongoza wetu waliobobea kupata na kutazama chui wanaopumzika kwenye miti. Jifunze siri za ufuatiliaji wa paka mwitu.">
                         Join our highly specialized guides to locate and observe elusive leopards resting in acacia trees. Learn secrets of wild cat tracking.
@@ -282,7 +365,7 @@
                     <span class="activity-badge" data-en="Trekking" data-sw="Kupanda Milima">Trekking</span>
                 </div>
                 <div class="activity-content">
-                    <h3 data-en="🏔 Mount Kilimanjaro Climbing" data-sw="🏔 Kupanda Mlima Kilimanjaro">🏔 Mount Kilimanjaro Climbing</h3>
+                    <h3 data-en="?? Mount Kilimanjaro Climbing" data-sw="?? Kupanda Mlima Kilimanjaro">?? Mount Kilimanjaro Climbing</h3>
                     <p data-en="Trek to the roof of Africa, Uhuru Peak, standing at 5,895m. Climb via Machame, Marangu, or Lemosho routes supported by professional guides."
                        data-sw="Kupanda hadi paa la Afrika, Uhuru Peak, urefu wa 5,895m. Panda kupitia njia za Machame, Marangu au Lemosho na waongozaji wataalamu.">
                         Trek to the roof of Africa, Uhuru Peak, standing at 5,895m. Climb via Machame, Marangu, or Lemosho routes supported by professional guides.
@@ -301,7 +384,7 @@
                     <span class="activity-badge" data-en="Hiking" data-sw="Kutembea Milimani">Hiking</span>
                 </div>
                 <div class="activity-content">
-                    <h3 data-en="🥾 Mount Meru Trekking" data-sw="🥾 Kupanda Mlima Meru">🥾 Mount Meru Trekking</h3>
+                    <h3 data-en="?? Mount Meru Trekking" data-sw="?? Kupanda Mlima Meru">?? Mount Meru Trekking</h3>
                     <p data-en="Trek Tanzania's second-highest peak, Mount Meru (4,562m). Enjoy breathtaking views of Kilimanjaro and encounters with wildlife on the lower slopes."
                        data-sw="Panda mlima wa pili kwa urefu Tanzania, Mlima Meru (4,562m). Furahia mandhari nzuri ya Kilimanjaro na wanyamapori kwenye miteremko.">
                         Trek Tanzania's second-highest peak, Mount Meru (4,562m). Enjoy breathtaking views of Kilimanjaro and encounters with wildlife on the lower slopes.
@@ -320,7 +403,7 @@
                     <span class="activity-badge" data-en="Water Sport" data-sw="Michezo ya Majini">Water Sport</span>
                 </div>
                 <div class="activity-content">
-                    <h3 data-en="🛶 Momella Lakes Canoeing" data-sw="🛶 Mitumbwi ya Ziwa Momella">🛶 Momella Lakes Canoeing</h3>
+                    <h3 data-en="?? Momella Lakes Canoeing" data-sw="?? Mitumbwi ya Ziwa Momella">?? Momella Lakes Canoeing</h3>
                     <p data-en="Paddle a stable canoe along the momella lakes. Glide close to flamingos, waterbucks, and watering giraffes, enjoying tranquil forest backdrops."
                        data-sw="Endesha mtumbwi kwenye ziwa Momella. Karibia ndege flamingo, wanyama na twiga wanaokunywa maji, huku ukifurahia mandhari ya msitu.">
                         Paddle a stable canoe along the momella lakes. Glide close to flamingos, waterbucks, and watering giraffes, enjoying tranquil forest backdrops.
@@ -339,7 +422,7 @@
                     <span class="activity-badge" data-en="Beaches" data-sw="Pwani">Beaches</span>
                 </div>
                 <div class="activity-content">
-                    <h3 data-en="🤿 Marine Safaris & Snorkeling" data-sw="🤿 Snorkeling na Safari za Baharini">🤿 Marine Safaris & Snorkeling</h3>
+                    <h3 data-en="?? Marine Safaris & Snorkeling" data-sw="?? Snorkeling na Safari za Baharini">?? Marine Safaris & Snorkeling</h3>
                     <p data-en="Explore the beautiful coral reefs of Mnemba Atoll. Swim alongside sea turtles, dolphins, and hundreds of tropical fish species in crystal waters."
                        data-sw="Chunguza miamba mizuri ya marijani ya Mnemba Atoll. Ogelea na kobe wa baharini, pomboo, na mamia ya samaki katika maji safi.">
                         Explore the beautiful coral reefs of Mnemba Atoll. Swim alongside sea turtles, dolphins, and hundreds of tropical fish species in crystal waters.
@@ -358,7 +441,7 @@
                     <span class="activity-badge" data-en="Sailing" data-sw="Kusafiri kwa Dau">Sailing</span>
                 </div>
                 <div class="activity-content">
-                    <h3 data-en="⛵ Traditional Dhow Sunset Sail" data-sw="⛵ Dau la Kiswahili Wakati wa Machweo">⛵ Traditional Dhow Sunset Sail</h3>
+                    <h3 data-en="? Traditional Dhow Sunset Sail" data-sw="? Dau la Kiswahili Wakati wa Machweo">? Traditional Dhow Sunset Sail</h3>
                     <p data-en="Sail on a traditional wooden dhow as the sun goes down. Sip refreshing Swahili juices, taste seafood snacks, and enjoy traditional island melodies."
                        data-sw="Safiri kwa dau la asili la mbao jua linapozama. Kunywa juisi za matunda, onja vitafunio vya baharini na ufurahie nyimbo za visiwa.">
                         Sail on a traditional wooden dhow as the sun goes down. Sip refreshing Swahili juices, taste seafood snacks, and enjoy traditional island melodies.
@@ -377,7 +460,7 @@
                     <span class="activity-badge" data-en="Spices" data-sw="Viungo">Spices</span>
                 </div>
                 <div class="activity-content">
-                    <h3 data-en="🌶 Spice Farm Guided Walking Tour" data-sw="🌶 Ziara ya Mashamba ya Viungo">🌶 Spice Farm Guided Walking Tour</h3>
+                    <h3 data-en="?? Spice Farm Guided Walking Tour" data-sw="?? Ziara ya Mashamba ya Viungo">?? Spice Farm Guided Walking Tour</h3>
                     <p data-en="Walk through tropical spice farms. Smell, touch, and taste cloves, vanilla, nutmeg, cardamom, and exotic tropical fruits in their natural state."
                        data-sw="Tembea kwenye mashamba ya viungo. Nusa, gusa na uonje karafuu, iliki, mdalasini na matunda ya kitropiki katika hali yake ya asili.">
                         Walk through tropical spice farms. Smell, touch, and taste cloves, vanilla, nutmeg, cardamom, and exotic tropical fruits in their natural state.
@@ -396,7 +479,7 @@
                     <span class="activity-badge" data-en="Culture" data-sw="Utamaduni">Culture</span>
                 </div>
                 <div class="activity-content">
-                    <h3 data-en="👣 Maasai Village Visits" data-sw="👣 Kutembelea Vijiji vya Wamasai">👣 Maasai Village Visits</h3>
+                    <h3 data-en="?? Maasai Village Visits" data-sw="?? Kutembelea Vijiji vya Wamasai">?? Maasai Village Visits</h3>
                     <p data-en="Meet the iconic Maasai people, learn about their pastoral lifestyles, participate in traditional dances, and discover their beadwork craftsmanship."
                        data-sw="Kutana na Wamasai, jifunze kuhusu mtindo wao wa maisha, shiriki katika ngoma za jadi, na ugundue ushanga wao wa kienyeji.">
                         Meet the iconic Maasai people, learn about their pastoral lifestyles, participate in traditional dances, and discover their beadwork craftsmanship.
@@ -415,7 +498,7 @@
                     <span class="activity-badge" data-en="Cooking" data-sw="Kupika">Cooking</span>
                 </div>
                 <div class="activity-content">
-                    <h3 data-en="🍲 Swahili Cooking Masterclass" data-sw="🍲 Darasa la Kupika Chakula cha Swahili">🍲 Swahili Cooking Masterclass</h3>
+                    <h3 data-en="?? Swahili Cooking Masterclass" data-sw="?? Darasa la Kupika Chakula cha Swahili">?? Swahili Cooking Masterclass</h3>
                     <p data-en="Learn how to cook authentic Swahili cuisine with a local home chef. Prepare fresh coconut curry, pilau rice, and traditional spiced tea."
                        data-sw="Jifunze kupika chakula cha asili cha Kiswahili na mpishi wa nyumbani. Andaa mchuzi wa nazi, wali wa pilau, na chai ya viungo.">
                         Learn how to cook authentic Swahili cuisine with a local home chef. Prepare fresh coconut curry, pilau rice, and traditional spiced tea.
@@ -434,7 +517,7 @@
                     <span class="activity-badge" data-en="Music" data-sw="Muziki">Music</span>
                 </div>
                 <div class="activity-content">
-                    <h3 data-en="🥁 Traditional Drumming & Rhythms" data-sw="🥁 Ngoma na Midundo ya Asili">🥁 Traditional Drumming & Rhythms</h3>
+                    <h3 data-en="?? Traditional Drumming & Rhythms" data-sw="?? Ngoma na Midundo ya Asili">?? Traditional Drumming & Rhythms</h3>
                     <p data-en="Immerse yourself in Tanzanian music. Learn traditional drumming patterns and join in the high-energy dances of local tribal communities."
                        data-sw="Jitumbukize kwenye muziki wa Kitanzania. Jifunze kupiga ngoma na kushiriki katika ngoma zenye nguvu za jamii za wenyeji.">
                         Immerse yourself in Tanzanian music. Learn traditional drumming patterns and join in the high-energy dances of local tribal communities.
@@ -488,8 +571,9 @@
                 <p data-en="Ohio Street" data-sw="Mtaa wa Ohio">Ohio Street</p>
                 <p><i class="fas fa-map-marker-alt"></i> Dar es Salaam, Tanzania</p>
                 <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/255747115390" target="_blank" style="color: inherit;">+255 747 115 390</a></p>
-                <p><i class="fas fa-envelope"></i> <a href="mailto:info@centuryadventures.com" style="color: inherit;">info@centuryadventures.com</a></p>
-                <p><i class="fas fa-envelope"></i> <a href="mailto:bookings@centuryadventures.com" style="color: inherit;">bookings@centuryadventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@century-adventures.com?subject=General%20Inquiry" style="color: inherit;">info@century-adventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:bookings@century-adventures.com?subject=Safari%20Booking%20Request" style="color: inherit;">bookings@century-adventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:visit@century-adventures.com?subject=Trip%20Planning%20Inquiry" style="color: inherit;">visit@century-adventures.com</a></p>
             </div>
             <div class="footer-col link-col collapsible">
                 <h3 data-en="POPULAR PLACES" data-sw="MAENEO MAARUFU">POPULAR PLACES</h3>
@@ -543,7 +627,7 @@
                 <a href="https://www.youtube.com/@CenturyAdventures" target="_blank"><i class="fab fa-youtube"></i></a>
                 <a href="https://www.instagram.com/century_adventures?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
                 <a href="https://wa.me/255747115390"><i class="fab fa-whatsapp"></i></a>
-                <a href="mailto:info@centuryadventures.com"><i class="fas fa-envelope"></i></a>
+                <a href="mailto:info@century-adventures.com?subject=General%20Inquiry"><i class="fas fa-envelope"></i></a>
             </div>
             <p>&copy; Copyright 2012 - 2026 | Century Adventures</p>
         </div>

@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="assets/logo.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | Century Adventures Tanzania</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
@@ -613,8 +613,98 @@
 <body>
     <div class="scroll-progress"></div>
 
-    <header class="header">
-        <!-- Will be dynamically injected by index.js -->
+                <header class="header">
+        <div class="header-main-nav">
+            <div class="container header-content">
+                <div class="logo">
+                    <a href="index.html" class="logo-wrap">
+                        <img src="assets/logo.png" alt="Century Adventures Logo">
+                        <span class="brand-name">CENTURY<span class="brand-subname"> ADVENTURES</span><span class="brand-slogan" data-en="Discover. Explore. Experience." data-sw="Gundua. Chunguza. Shuhudia.">Discover. Explore. Experience.</span></span>
+                    </a>
+                </div>
+                <nav class="nav">
+                    <button class="nav-close-btn" id="nav-close-btn" aria-label="Close navigation menu"><i class="fas fa-times"></i> <span data-en="Close" data-sw="Funga">Close</span></button>
+                    <ul>
+                        <li class="mobile-only-action mobile-menu-title"><i class="fas fa-bars"></i> MENU</li>
+                        <li class="mobile-only-action mobile-menu-controls">
+                            <button class="toggle-btn lang-toggle" onclick="toggleLang(event)">SWAHILI</button>
+                            <button class="toggle-btn theme-toggle" onclick="toggleTheme(event)"><i class="fas fa-moon"></i> <span class="toggle-text">DARK</span></button>
+                        </li>
+                        <li><a href="index.html" id="nav-home" data-en="Home" data-sw="Nyumbani">Home</a></li>
+                        <li class="dropdown">
+                            <a href="safaris.html" id="nav-safaris" data-en="Safaris" data-sw="Safari">Safaris <i class="fas fa-chevron-down"></i></a>
+                            <span class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></span>
+                            <ul class="dropdown-menu">
+                                <li><a href="safaris.html" data-en="All Tours &amp; Safaris" data-sw="Safari na Ziara Zote">All Tours &amp; Safaris</a></li>
+                                <li><a href="3-day-serengeti-safari.html" data-en="3-Day Serengeti Safari" data-sw="Safari ya Siku 3 Serengeti">3-Day Serengeti Safari</a></li>
+                                <li><a href="6-day-northern-tanzania-highlights.html" data-en="6-Day Northern Highlights" data-sw="Siku 6 Vivutio vya Kaskazini">6-Day Northern Highlights</a></li>
+                                <li><a href="10-days-luxury-safari-zanzibar.html" data-en="10-Day Luxury &amp; Zanzibar" data-sw="Siku 10 Anasa na Zanzibar">10-Day Luxury &amp; Zanzibar</a></li>
+                                <li><a href="12-days-best-of-south-and-north.html" data-en="12-Day South &amp; North" data-sw="Siku 12 Kusini na Kaskazini">12-Day South &amp; North</a></li>
+                                <li><a href="13-days-tanzania-safari-beach.html" data-en="13-Day Safari &amp; Beach" data-sw="Siku 13 Safari na Pwani">13-Day Safari &amp; Beach</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="destinations.html" id="nav-destinations" data-en="Destinations" data-sw="Maeneo">Destinations <i class="fas fa-chevron-down"></i></a>
+                            <span class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></span>
+                            <ul class="dropdown-menu">
+                                <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                                <li><a href="ngorongoro.html" data-en="Ngorongoro Conservation Area" data-sw="Ngorongoro">Ngorongoro Conservation Area</a></li>
+                                <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                                <li><a href="manyara.html" data-en="Lake Manyara National Park" data-sw="Hifadhi ya Manyara">Lake Manyara National Park</a></li>
+                                <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                                <li><a href="selous.html" data-en="Selous Game Reserve" data-sw="Hifadhi ya Selous">Selous Game Reserve</a></li>
+                                <li><a href="mikumi.html" data-en="Mikumi National Park" data-sw="Hifadhi ya Mikumi">Mikumi National Park</a></li>
+                                <li><a href="katavi.html" data-en="Katavi National Park" data-sw="Hifadhi ya Katavi">Katavi National Park</a></li>
+                                <li><a href="gombe.html" data-en="Gombe Stream National Park" data-sw="Hifadhi ya Gombe">Gombe Stream National Park</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="experiences.html" id="nav-experiences" data-en="Experiences" data-sw="Uzoefu">Experiences <i class="fas fa-chevron-down"></i></a>
+                            <span class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></span>
+                            <ul class="dropdown-menu">
+                                <li><a href="family-safaris.html" data-en="Family Safaris" data-sw="Safari za Familia">Family Safaris</a></li>
+                                <li><a href="migration-safaris.html" data-en="Migration Safaris" data-sw="Safari za Uhamiaji">Migration Safaris</a></li>
+                                <li><a href="honeymoon-safaris.html" data-en="Honeymoon Safaris" data-sw="Safari za Fungate">Honeymoon Safaris</a></li>
+                                <li><a href="volunteer.html" data-en="Volunteer Programs" data-sw="Mipango ya Kujitolea">Volunteer Programs</a></li>
+                                <li><a href="vehicles.html" data-en="Safari Vehicles" data-sw="Magari ya Safari">Safari Vehicles</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about.html" id="nav-about" data-en="About Us" data-sw="Kuhusu Sisi">About Us</a></li>
+                        <li class="dropdown">
+                            <a href="#" id="nav-resources" data-en="Travel Guide" data-sw="Mwongozo wa Safari">Travel Guide <i class="fas fa-chevron-down"></i></a>
+                            <span class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></span>
+                            <ul class="dropdown-menu">
+                                <li><a href="blog.html" data-en="Travel Blog" data-sw="Blogu yetu">Travel Blog</a></li>
+                                <li><a href="faq.html" data-en="FAQs" data-sw="Maswali ya Kawaida">FAQs</a></li>
+                                <li><a href="gallery.html" data-en="Photo Gallery" data-sw="Picha za Safari">Photo Gallery</a></li>
+                                <li><a href="testimonials.html" data-en="Testimonials" data-sw="Shuhuda">Testimonials</a></li>
+                                <li><a href="best-time-to-visit-tanzania.html" data-en="Best Time to Visit" data-sw="Wakati Bora wa Kuja">Best Time to Visit</a></li>
+                                <li><a href="health-safety-tanzania.html" data-en="Health &amp; Safety" data-sw="Afya na Usalama">Health &amp; Safety</a></li>
+                                <li><a href="obtaining-visa-tanzania.html" data-en="Visa Information" data-sw="Visa ya Safari">Visa Information</a></li>
+                                <li><a href="what-to-wear-safari.html" data-en="Safari Packing Guide" data-sw="Nguo za Safari">Safari Packing Guide</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact.html" id="nav-contact" data-en="Contact Us" data-sw="Wasiliana Nasi">Contact Us</a></li>
+                        <li class="mobile-only-action book-now-item"><a href="book.html" class="btn btn-primary enquire-btn" data-en="BOOK NOW" data-sw="WEKA NAFASI">BOOK NOW</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Mobile Hamburger Menu Button (Three Lines) -->
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Open navigation menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+
+                <div class="header-actions">
+                    <div class="header-toggles">
+                        <button class="toggle-btn lang-toggle" onclick="toggleLang(event)">SWAHILI</button>
+                        <button class="toggle-btn theme-toggle" onclick="toggleTheme(event)"><i class="fas fa-moon"></i> <span class="toggle-text">DARK</span></button>
+                    </div>
+                    <a href="book.html" class="btn btn-primary enquire-btn" data-en="BOOK NOW" data-sw="WEKA NAFASI">BOOK NOW</a>
+                </div>
+            </div>
+        </div>
     </header>
 
     <section class="trip-hero" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('assets/03TMMT-IM1103-mara-mara-tented-lodge-1475.jpg'); height: 60vh;">
@@ -664,9 +754,9 @@
             <div class="about-grid" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: start;">
                 <div class="about-card-modern">
                     <div class="about-text scroll-reveal" style="font-size: 1.05rem; line-height: 1.85; color: var(--text-muted);">
-                        <p style="margin-bottom: 20px;" data-en="At Century Adventures, we believe that travel is more than visiting new places—it's about creating meaningful experiences, discovering new perspectives, and building memories that last a lifetime. Founded with a passion for showcasing the beauty of Tanzania, we specialize in designing exceptional safari experiences, cultural journeys, mountain adventures, beach holidays, and volunteer programs that connect travelers with the very best our country has to offer." data-sw="Katika Century Adventures, tunaamini kuwa kusafiri ni zaidi ya kutembelea sehemu mpya—ni kuhusu kuunda uzoefu wenye maana, kugundua mitazamo mipya, na kujenga kumbukumbu zinazodumu milele. Ikianzishwa kwa shauku ya kuonyesha uzuri wa Tanzania, tunabobea katika kubuni safari za kipekee, safari za kitamaduni, matukio ya milimani, likizo za pwani, na programu za kujitolea zinazounganisha wasafiri na bora zaidi nchini mwetu.">At Century Adventures, we believe that travel is more than visiting new places—it's about creating meaningful experiences, discovering new perspectives, and building memories that last a lifetime. Founded with a passion for showcasing the beauty of Tanzania, we specialize in designing exceptional safari experiences, cultural journeys, mountain adventures, beach holidays, and volunteer programs that connect travelers with the very best our country has to offer.</p>
+                        <p style="margin-bottom: 20px;" data-en="At Century Adventures, we believe that travel is more than visiting new places�it's about creating meaningful experiences, discovering new perspectives, and building memories that last a lifetime. Founded with a passion for showcasing the beauty of Tanzania, we specialize in designing exceptional safari experiences, cultural journeys, mountain adventures, beach holidays, and volunteer programs that connect travelers with the very best our country has to offer." data-sw="Katika Century Adventures, tunaamini kuwa kusafiri ni zaidi ya kutembelea sehemu mpya�ni kuhusu kuunda uzoefu wenye maana, kugundua mitazamo mipya, na kujenga kumbukumbu zinazodumu milele. Ikianzishwa kwa shauku ya kuonyesha uzuri wa Tanzania, tunabobea katika kubuni safari za kipekee, safari za kitamaduni, matukio ya milimani, likizo za pwani, na programu za kujitolea zinazounganisha wasafiri na bora zaidi nchini mwetu.">At Century Adventures, we believe that travel is more than visiting new places�it's about creating meaningful experiences, discovering new perspectives, and building memories that last a lifetime. Founded with a passion for showcasing the beauty of Tanzania, we specialize in designing exceptional safari experiences, cultural journeys, mountain adventures, beach holidays, and volunteer programs that connect travelers with the very best our country has to offer.</p>
                         <div class="about-text-more">
-                            <p style="margin-bottom: 20px;" data-en="Century Adventures is a proudly Tanzanian travel company dedicated to providing authentic, safe, and unforgettable travel experiences. We don't just show you Tanzania—we help you experience it. Our deep connection to the land, wildlife, and communities enables us to offer journeys that go beyond traditional tourism." data-sw="Century Adventures ni kampuni ya kusafiri ya Kitanzania inayojitolea kutoa uzoefu halisi, salama, na usiosahaulika wa kusafiri. Hatukuonyeshi Tanzania tu—tunakusaidia kuipitia. Uhusiano wetu wa kina na ardhi, wanyamapori, na jamii unatuwezesha kutoa safari zinazovuka utalii wa kawaida.">Century Adventures is a proudly Tanzanian travel company dedicated to providing authentic, safe, and unforgettable travel experiences. We don't just show you Tanzania—we help you experience it. Our deep connection to the land, wildlife, and communities enables us to offer journeys that go beyond traditional tourism.</p>
+                            <p style="margin-bottom: 20px;" data-en="Century Adventures is a proudly Tanzanian travel company dedicated to providing authentic, safe, and unforgettable travel experiences. We don't just show you Tanzania�we help you experience it. Our deep connection to the land, wildlife, and communities enables us to offer journeys that go beyond traditional tourism." data-sw="Century Adventures ni kampuni ya kusafiri ya Kitanzania inayojitolea kutoa uzoefu halisi, salama, na usiosahaulika wa kusafiri. Hatukuonyeshi Tanzania tu�tunakusaidia kuipitia. Uhusiano wetu wa kina na ardhi, wanyamapori, na jamii unatuwezesha kutoa safari zinazovuka utalii wa kawaida.">Century Adventures is a proudly Tanzanian travel company dedicated to providing authentic, safe, and unforgettable travel experiences. We don't just show you Tanzania�we help you experience it. Our deep connection to the land, wildlife, and communities enables us to offer journeys that go beyond traditional tourism.</p>
                             <p style="margin-bottom: 0;" data-en="Our team consists of passionate travel specialists, professional safari guides, and local experts who bring unmatched knowledge and enthusiasm to every journey. From the endless plains of the Serengeti and the breathtaking Ngorongoro Crater to the pristine beaches of Zanzibar and the majestic slopes of Mount Kilimanjaro, we create carefully tailored journeys that inspire, excite, and transform." data-sw="Timu yetu inajumuisha wataalamu wa kusafiri wenye shauku, waongoza safari wa kitaalamu, na wataalamu wa ndani ambao wanaleta ujuzi na shauku isiyo na kifani kwa kila safari. Kutoka nyanda zisizo na mwisho za Serengeti na Ngorongoro Crater ya kupendeza hadi fukwe safi za Zanzibar na miteremko ya kifahari ya Mlima Kilimanjaro, tunaunda safari zilizoundwa kwa uangalifu zinazovutia, kusisimua, na kubadilisha.">Our team consists of passionate travel specialists, professional safari guides, and local experts who bring unmatched knowledge and enthusiasm to every journey. From the endless plains of the Serengeti and the breathtaking Ngorongoro Crater to the pristine beaches of Zanzibar and the majestic slopes of Mount Kilimanjaro, we create carefully tailored journeys that inspire, excite, and transform.</p>
                         </div>
                         <button id="btn-about-read-more" class="btn btn-outline" style="margin-top: 20px; padding: 10px 25px; font-size: 0.8rem;" data-en="Read More" data-sw="Soma Zaidi">Read More</button>
@@ -839,37 +929,37 @@
             <div class="values-grid-custom">
                 <!-- Value 1: Integrity -->
                 <div class="value-card-custom scroll-reveal">
-                    <span class="value-emoji">🤝</span>
+                    <span class="value-emoji">??</span>
                     <h4 data-en="Integrity" data-sw="Uadilifu">Integrity</h4>
                     <p data-en="Honesty and transparency in every transaction, quote, and interaction." data-sw="Uaminifu na uwazi katika kila muamala, nukuu na mawasiliano.">Honesty and transparency in every transaction, quote, and interaction.</p>
                 </div>
                 <!-- Value 2: Customer Satisfaction -->
                 <div class="value-card-custom scroll-reveal">
-                    <span class="value-emoji">😊</span>
+                    <span class="value-emoji">??</span>
                     <h4 data-en="Customer Satisfaction" data-sw="Kuridhika kwa Wateja">Customer Satisfaction</h4>
                     <p data-en="We go above and beyond to make sure our guests have a memorable and happy journey." data-sw="Tunafanya kila juhudi kuhakikisha wageni wetu wana safari yenye furaha na kumbukumbu nzuri.">We go above and beyond to make sure our guests have a memorable and happy journey.</p>
                 </div>
                 <!-- Value 3: Professionalism -->
                 <div class="value-card-custom scroll-reveal">
-                    <span class="value-emoji">👔</span>
+                    <span class="value-emoji">??</span>
                     <h4 data-en="Professionalism" data-sw="Utaalamu">Professionalism</h4>
                     <p data-en="Highly trained staff and reliable services conforming to international hospitality standards." data-sw="Wafanyakazi waliofunzwa vyema na huduma za kuaminika zinazofuata viwango vya kimataifa.">Highly trained staff and reliable services conforming to international hospitality standards.</p>
                 </div>
                 <!-- Value 4: Sustainability -->
                 <div class="value-card-custom scroll-reveal">
-                    <span class="value-emoji">🌱</span>
+                    <span class="value-emoji">??</span>
                     <h4 data-en="Sustainability" data-sw="Uendelevu">Sustainability</h4>
                     <p data-en="Minimizing environmental footprint and giving back to local wildlife conservation." data-sw="Kupunguza uharibifu wa mazingira na kuchangia katika uhifadhi wa wanyamapori wa ndani.">Minimizing environmental footprint and giving back to local wildlife conservation.</p>
                 </div>
                 <!-- Value 5: Cultural Respect -->
                 <div class="value-card-custom scroll-reveal">
-                    <span class="value-emoji">🌍</span>
+                    <span class="value-emoji">??</span>
                     <h4 data-en="Cultural Respect" data-sw="Kuheshimu Utamaduni">Cultural Respect</h4>
                     <p data-en="Valuing and preserving the heritage, traditions, and dignity of Tanzanian tribes and communities." data-sw="Kuthamini na kuhifadhi urithi, mila na utu wa makabila na jamii za Tanzania.">Valuing and preserving the heritage, traditions, and dignity of Tanzanian tribes and communities.</p>
                 </div>
                 <!-- Value 6: Excellence -->
                 <div class="value-card-custom scroll-reveal">
-                    <span class="value-emoji">⭐</span>
+                    <span class="value-emoji">?</span>
                     <h4 data-en="Excellence" data-sw="Ubora">Excellence</h4>
                     <p data-en="Striving for perfection in our itineraries, vehicles, accommodation choices, and guiding." data-sw="Kujitahidi kupata ukamilifu katika ratiba zetu, magari, malazi na uongozi.">Striving for perfection in our itineraries, vehicles, accommodation choices, and guiding.</p>
                 </div>
@@ -899,7 +989,7 @@
                         <div class="team-card-overlay">
                             <div class="team-social-links">
                                 <a href="https://wa.me/255747115390" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                                <a href="mailto:info@centuryadventures.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                                <a href="mailto:info@century-adventures.com?subject=General%20Inquiry" aria-label="Email"><i class="fas fa-envelope"></i></a>
                             </div>
                         </div>
                     </div>
@@ -916,7 +1006,7 @@
                         <div class="team-card-overlay">
                             <div class="team-social-links">
                                 <a href="https://wa.me/255747115390" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                                <a href="mailto:info@centuryadventures.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                                <a href="mailto:info@century-adventures.com?subject=General%20Inquiry" aria-label="Email"><i class="fas fa-envelope"></i></a>
                             </div>
                         </div>
                     </div>
@@ -933,7 +1023,7 @@
                         <div class="team-card-overlay">
                             <div class="team-social-links">
                                 <a href="https://wa.me/255747115390" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                                <a href="mailto:info@centuryadventures.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                                <a href="mailto:info@century-adventures.com?subject=General%20Inquiry" aria-label="Email"><i class="fas fa-envelope"></i></a>
                             </div>
                         </div>
                     </div>
@@ -950,7 +1040,7 @@
                         <div class="team-card-overlay">
                             <div class="team-social-links">
                                 <a href="https://wa.me/255747115390" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                                <a href="mailto:info@centuryadventures.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                                <a href="mailto:info@century-adventures.com?subject=General%20Inquiry" aria-label="Email"><i class="fas fa-envelope"></i></a>
                             </div>
                         </div>
                     </div>
@@ -966,7 +1056,7 @@
                         <div class="team-card-overlay">
                             <div class="team-social-links">
                                 <a href="https://wa.me/255747115390" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                                <a href="mailto:info@centuryadventures.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                                <a href="mailto:info@century-adventures.com?subject=General%20Inquiry" aria-label="Email"><i class="fas fa-envelope"></i></a>
                             </div>
                         </div>
                     </div>
@@ -982,7 +1072,7 @@
                         <div class="team-card-overlay">
                             <div class="team-social-links">
                                 <a href="https://wa.me/255747115390" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                                <a href="mailto:info@centuryadventures.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                                <a href="mailto:info@century-adventures.com?subject=General%20Inquiry" aria-label="Email"><i class="fas fa-envelope"></i></a>
                             </div>
                         </div>
                     </div>
@@ -993,6 +1083,44 @@
                     </div>
                 </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departmental Contacts Section -->
+    <section class="section departmental-contacts" style="background: var(--section-bg); border-top: 1px solid var(--border-color); padding: 60px 0;">
+        <div class="container">
+            <span class="sub-heading" style="text-align: center; display: block;" data-en="GET IN TOUCH" data-sw="WASILIANA NASI">GET IN TOUCH</span>
+            <h2 style="text-align: center; margin-bottom: 40px; font-family: 'Playfair Display', serif;" data-en="Our Departments" data-sw="Idara Zetu">Our Departments</h2>
+            
+            <div class="departments-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px;">
+                <div class="dept-card" style="background: var(--card-bg); padding: 25px; border-radius: 12px; border: 1px solid var(--border-color); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: var(--shadow-sm);">
+                    <div style="font-size: 2rem; margin-bottom: 15px; color: var(--accent-gold);"><i class="fas fa-info-circle"></i></div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--primary-green); font-family: 'Playfair Display', serif;" data-en="General Inquiries" data-sw="Maswali ya Jumla">General Inquiries</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;" data-en="Questions about schedules, packing, visas, or anything travel-related." data-sw="Maswali kuhusu ratiba, ufungaji, visa, au chochote kinachohusiana na safari.">Questions about schedules, packing, visas, or anything travel-related.</p>
+                    <a href="mailto:info@century-adventures.com?subject=General%20Inquiry" style="font-size: 0.9rem; color: var(--text-main); font-weight: 600; text-decoration: none;">info@century-adventures.com</a>
+                </div>
+                
+                <div class="dept-card" style="background: var(--card-bg); padding: 25px; border-radius: 12px; border: 1px solid var(--border-color); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: var(--shadow-sm);">
+                    <div style="font-size: 2rem; margin-bottom: 15px; color: var(--accent-gold);"><i class="fas fa-map-marked-alt"></i></div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--primary-green); font-family: 'Playfair Display', serif;" data-en="Travel Planning" data-sw="Mipango ya Safari">Travel Planning</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;" data-en="Custom itineraries, experiences, and tailor-made travel designs." data-sw="Ratiba maalum, uzoefu wa kibinafsi, na mipango ya safari ya kipekee.">Custom itineraries, experiences, and tailor-made travel designs.</p>
+                    <a href="mailto:visit@century-adventures.com?subject=Trip%20Planning%20Inquiry" style="font-size: 0.9rem; color: var(--text-main); font-weight: 600; text-decoration: none;">visit@century-adventures.com</a>
+                </div>
+                
+                <div class="dept-card" style="background: var(--card-bg); padding: 25px; border-radius: 12px; border: 1px solid var(--border-color); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: var(--shadow-sm);">
+                    <div style="font-size: 2rem; margin-bottom: 15px; color: var(--accent-gold);"><i class="fas fa-calendar-check"></i></div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--primary-green); font-family: 'Playfair Display', serif;" data-en="Safari Reservations" data-sw="Nafasi za Safari">Safari Reservations</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;" data-en="Bookings, booking modifications, payments, and confirmations." data-sw="Weka nafasi, mabadiliko ya kuweka nafasi, malipo, na uthibitisho.">Bookings, booking modifications, payments, and confirmations.</p>
+                    <a href="mailto:bookings@century-adventures.com?subject=Safari%20Booking%20Request" style="font-size: 0.9rem; color: var(--text-main); font-weight: 600; text-decoration: none;">bookings@century-adventures.com</a>
+                </div>
+                
+                <div class="dept-card" style="background: var(--card-bg); padding: 25px; border-radius: 12px; border: 1px solid var(--border-color); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: var(--shadow-sm);">
+                    <div style="font-size: 2rem; margin-bottom: 15px; color: var(--accent-gold);"><i class="fas fa-user-shield"></i></div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--primary-green); font-family: 'Playfair Display', serif;" data-en="Administration" data-sw="Utawala">Administration</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;" data-en="Support, website issues, administration, and owner contact." data-sw="Msaada, shida za tovuti, utawala, na mawasiliano ya mmiliki.">Support, website issues, administration, and owner contact.</p>
+                    <a href="mailto:admin@century-adventures.com?subject=Administration%20and%20Support" style="font-size: 0.9rem; color: var(--text-main); font-weight: 600; text-decoration: none;">admin@century-adventures.com</a>
                 </div>
             </div>
         </div>
@@ -1037,8 +1165,9 @@
                 <p data-en="Ohio Street" data-sw="Mtaa wa Ohio">Ohio Street</p>
                 <p><i class="fas fa-map-marker-alt"></i> Dar es Salaam, Tanzania</p>
                 <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/255747115390" target="_blank" style="color: inherit;">+255 747 115 390</a></p>
-                <p><i class="fas fa-envelope"></i> <a href="mailto:info@centuryadventures.com" style="color: inherit;">info@centuryadventures.com</a></p>
-                <p><i class="fas fa-envelope"></i> <a href="mailto:bookings@centuryadventures.com" style="color: inherit;">bookings@centuryadventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@century-adventures.com?subject=General%20Inquiry" style="color: inherit;">info@century-adventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:bookings@century-adventures.com?subject=Safari%20Booking%20Request" style="color: inherit;">bookings@century-adventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:visit@century-adventures.com?subject=Trip%20Planning%20Inquiry" style="color: inherit;">visit@century-adventures.com</a></p>
             </div>
             <div class="footer-col link-col collapsible">
                 <h3 data-en="POPULAR PLACES" data-sw="MAENEO MAARUFU">POPULAR PLACES</h3>
@@ -1092,7 +1221,7 @@
                 <a href="https://www.youtube.com/@CenturyAdventures" target="_blank"><i class="fab fa-youtube"></i></a>
                 <a href="https://www.instagram.com/century_adventures?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
                 <a href="https://wa.me/255747115390"><i class="fab fa-whatsapp"></i></a>
-                <a href="mailto:info@centuryadventures.com"><i class="fas fa-envelope"></i></a>
+                <a href="mailto:info@century-adventures.com?subject=General%20Inquiry"><i class="fas fa-envelope"></i></a>
             </div>
             <p>&copy; Copyright 2012 - 2026 | Century Adventures</p>
         </div>

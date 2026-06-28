@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,7 +9,7 @@
     <title>Experiences | Century Adventures Tanzania</title>
     <meta name="description"
         content="Discover Tanzania beyond the ordinary with Century Adventures. Wildlife encounters, mountain adventures, beach escapes, cultural discoveries and more.">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -23,7 +23,7 @@
         })();
     </script>
     <style>
-        /* ══ Hero ══ */
+        /* -- Hero -- */
         .exp-hero {
             position: relative;
             height: 92vh;
@@ -215,7 +215,7 @@
             }
         }
 
-        /* ══ Stat Bar ══ */
+        /* -- Stat Bar -- */
         .stat-bar {
             background: var(--primary-green);
             padding: 28px 0;
@@ -265,7 +265,7 @@
             }
         }
 
-        /* ══ Editorial Intro ══ */
+        /* -- Editorial Intro -- */
         .editorial-intro {
             background: var(--bg-color);
             padding: 100px 0 80px;
@@ -362,7 +362,7 @@
             font-style: normal;
         }
 
-        /* ══ Experience Cards ══ */
+        /* -- Experience Cards -- */
         .what-awaits {
             background: var(--section-bg);
             padding: 100px 0;
@@ -507,7 +507,7 @@
             font-size: 0.75rem;
         }
 
-        /* ══ Immersive Feature Blocks ══ */
+        /* -- Immersive Feature Blocks -- */
         .feature-blocks {
             background: var(--bg-color);
             padding: 100px 0;
@@ -626,7 +626,7 @@
             flex-shrink: 0;
         }
 
-        /* ══ Why Stand Out ══ */
+        /* -- Why Stand Out -- */
         .why-standout {
             background: var(--section-bg);
             padding: 100px 0;
@@ -730,7 +730,7 @@
             margin: 0;
         }
 
-        /* ══ Closing CTA ══ */
+        /* -- Closing CTA -- */
         .exp-closing {
             background: var(--primary-gradient);
             padding: 110px 0;
@@ -831,55 +831,102 @@
 <body>
     <div class="scroll-progress"></div>
 
-    <!-- ══ Header ══ -->
-    <header class="header" id="mainHeader">
-        <div class="container header-content">
-            <div class="logo">
-                <a href="index.html"><img src="assets/logo.png" alt="Century Adventures Logo"></a>
-            </div>
-            <nav class="nav">
-                <ul>
-                    <li><a href="index.html" data-en="Home" data-sw="Nyumbani">Home</a></li>
-                    <li><a href="about.html" data-en="About Us" data-sw="Kuhusu Sisi">About Us</a></li>
-                    <li class="dropdown">
-                        <a href="#" data-en="Destinations" data-sw="Maeneo">Destinations <i
-                                class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="katavi.html">Katavi National Park</a></li>
-                            <li><a href="selous.html">Selous Game Reserve</a></li>
-                            <li><a href="ruaha.html">Ruaha National Park</a></li>
-                            <li><a href="mikumi.html">Mikumi National Park</a></li>
-                            <li><a href="serengeti.html">Serengeti National Park</a></li>
-                            <li><a href="gombe.html">Gombe Stream National Park</a></li>
-                            <li><a href="ngorongoro.html">Ngorongoro Conservation Area</a></li>
-                            <li><a href="manyara.html">Lake Manyara National Park</a></li>
-                            <li><a href="tarangire.html">Tarangire National Park</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="safaris.html" data-en="TOURS & SAFARIS" data-sw="SAFARI NA ZIARA">TOURS & SAFARIS</a></li>
-                    <li><a href="experiences.html" class="active" data-en="Experiences" data-sw="Uzoefu">Experiences</a>
-                    </li>
-                    <li><a href="volunteer.html" data-en="Volunteer" data-sw="Kujitolea">Volunteer</a></li>
-                    <li><a href="vehicles.html" data-en="Safari Vehicles" data-sw="Magari ya Safari">Safari Vehicles</a>
-                    </li>
-                    <li><a href="contact.html" data-en="Contact Us" data-sw="Wasiliana Nasi">Contact Us</a></li>
-                </ul>
-            </nav>
-            <button class="mobile-toggle" id="mobile-toggle" onclick="toggleMobileMenu()"
-                aria-label="Open navigation menu">
-                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-            </button>
-            <div class="header-actions">
-                <div class="header-toggles">
-                    <button class="toggle-btn lang-toggle" onclick="toggleLang()">SW</button>
-                    <button class="toggle-btn theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+    <!-- -- Header -- -->
+        <header class="header">
+        <div class="header-main-nav">
+            <div class="container header-content">
+                <div class="logo">
+                    <a href="index.html" class="logo-wrap">
+                        <img src="assets/logo.png" alt="Century Adventures Logo">
+                        <span class="brand-name">CENTURY<span class="brand-subname"> ADVENTURES</span><span class="brand-slogan" data-en="Discover. Explore. Experience." data-sw="Gundua. Chunguza. Shuhudia.">Discover. Explore. Experience.</span></span>
+                    </a>
                 </div>
-                <a href="enquire.html" class="btn btn-primary enquire-btn" data-en="ENQUIRE" data-sw="ULIZA">ENQUIRE</a>
+                <nav class="nav">
+                    <button class="nav-close-btn" id="nav-close-btn" aria-label="Close navigation menu"><i class="fas fa-times"></i> <span data-en="Close" data-sw="Funga">Close</span></button>
+                    <ul>
+                        <li class="mobile-only-action mobile-menu-title"><i class="fas fa-bars"></i> MENU</li>
+                        <li class="mobile-only-action mobile-menu-controls">
+                            <button class="toggle-btn lang-toggle" onclick="toggleLang(event)">SWAHILI</button>
+                            <button class="toggle-btn theme-toggle" onclick="toggleTheme(event)"><i class="fas fa-moon"></i> <span class="toggle-text">DARK</span></button>
+                        </li>
+                        <li><a href="index.html" id="nav-home" data-en="Home" data-sw="Nyumbani">Home</a></li>
+                        <li class="dropdown">
+                            <a href="safaris.html" id="nav-safaris" data-en="Safaris" data-sw="Safari">Safaris <i class="fas fa-chevron-down"></i></a>
+                            <span class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></span>
+                            <ul class="dropdown-menu">
+                                <li><a href="safaris.html" data-en="All Tours &amp; Safaris" data-sw="Safari na Ziara Zote">All Tours &amp; Safaris</a></li>
+                                <li><a href="3-day-serengeti-safari.html" data-en="3-Day Serengeti Safari" data-sw="Safari ya Siku 3 Serengeti">3-Day Serengeti Safari</a></li>
+                                <li><a href="6-day-northern-tanzania-highlights.html" data-en="6-Day Northern Highlights" data-sw="Siku 6 Vivutio vya Kaskazini">6-Day Northern Highlights</a></li>
+                                <li><a href="10-days-luxury-safari-zanzibar.html" data-en="10-Day Luxury &amp; Zanzibar" data-sw="Siku 10 Anasa na Zanzibar">10-Day Luxury &amp; Zanzibar</a></li>
+                                <li><a href="12-days-best-of-south-and-north.html" data-en="12-Day South &amp; North" data-sw="Siku 12 Kusini na Kaskazini">12-Day South &amp; North</a></li>
+                                <li><a href="13-days-tanzania-safari-beach.html" data-en="13-Day Safari &amp; Beach" data-sw="Siku 13 Safari na Pwani">13-Day Safari &amp; Beach</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="destinations.html" id="nav-destinations" data-en="Destinations" data-sw="Maeneo">Destinations <i class="fas fa-chevron-down"></i></a>
+                            <span class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></span>
+                            <ul class="dropdown-menu">
+                                <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                                <li><a href="ngorongoro.html" data-en="Ngorongoro Conservation Area" data-sw="Ngorongoro">Ngorongoro Conservation Area</a></li>
+                                <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                                <li><a href="manyara.html" data-en="Lake Manyara National Park" data-sw="Hifadhi ya Manyara">Lake Manyara National Park</a></li>
+                                <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                                <li><a href="selous.html" data-en="Selous Game Reserve" data-sw="Hifadhi ya Selous">Selous Game Reserve</a></li>
+                                <li><a href="mikumi.html" data-en="Mikumi National Park" data-sw="Hifadhi ya Mikumi">Mikumi National Park</a></li>
+                                <li><a href="katavi.html" data-en="Katavi National Park" data-sw="Hifadhi ya Katavi">Katavi National Park</a></li>
+                                <li><a href="gombe.html" data-en="Gombe Stream National Park" data-sw="Hifadhi ya Gombe">Gombe Stream National Park</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="experiences.html" id="nav-experiences" data-en="Experiences" data-sw="Uzoefu">Experiences <i class="fas fa-chevron-down"></i></a>
+                            <span class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></span>
+                            <ul class="dropdown-menu">
+                                <li><a href="family-safaris.html" data-en="Family Safaris" data-sw="Safari za Familia">Family Safaris</a></li>
+                                <li><a href="migration-safaris.html" data-en="Migration Safaris" data-sw="Safari za Uhamiaji">Migration Safaris</a></li>
+                                <li><a href="honeymoon-safaris.html" data-en="Honeymoon Safaris" data-sw="Safari za Fungate">Honeymoon Safaris</a></li>
+                                <li><a href="volunteer.html" data-en="Volunteer Programs" data-sw="Mipango ya Kujitolea">Volunteer Programs</a></li>
+                                <li><a href="vehicles.html" data-en="Safari Vehicles" data-sw="Magari ya Safari">Safari Vehicles</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about.html" id="nav-about" data-en="About Us" data-sw="Kuhusu Sisi">About Us</a></li>
+                        <li class="dropdown">
+                            <a href="#" id="nav-resources" data-en="Travel Guide" data-sw="Mwongozo wa Safari">Travel Guide <i class="fas fa-chevron-down"></i></a>
+                            <span class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></span>
+                            <ul class="dropdown-menu">
+                                <li><a href="blog.html" data-en="Travel Blog" data-sw="Blogu yetu">Travel Blog</a></li>
+                                <li><a href="faq.html" data-en="FAQs" data-sw="Maswali ya Kawaida">FAQs</a></li>
+                                <li><a href="gallery.html" data-en="Photo Gallery" data-sw="Picha za Safari">Photo Gallery</a></li>
+                                <li><a href="testimonials.html" data-en="Testimonials" data-sw="Shuhuda">Testimonials</a></li>
+                                <li><a href="best-time-to-visit-tanzania.html" data-en="Best Time to Visit" data-sw="Wakati Bora wa Kuja">Best Time to Visit</a></li>
+                                <li><a href="health-safety-tanzania.html" data-en="Health &amp; Safety" data-sw="Afya na Usalama">Health &amp; Safety</a></li>
+                                <li><a href="obtaining-visa-tanzania.html" data-en="Visa Information" data-sw="Visa ya Safari">Visa Information</a></li>
+                                <li><a href="what-to-wear-safari.html" data-en="Safari Packing Guide" data-sw="Nguo za Safari">Safari Packing Guide</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact.html" id="nav-contact" data-en="Contact Us" data-sw="Wasiliana Nasi">Contact Us</a></li>
+                        <li class="mobile-only-action book-now-item"><a href="book.html" class="btn btn-primary enquire-btn" data-en="BOOK NOW" data-sw="WEKA NAFASI">BOOK NOW</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Mobile Hamburger Menu Button (Three Lines) -->
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Open navigation menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+
+                <div class="header-actions">
+                    <div class="header-toggles">
+                        <button class="toggle-btn lang-toggle" onclick="toggleLang(event)">SWAHILI</button>
+                        <button class="toggle-btn theme-toggle" onclick="toggleTheme(event)"><i class="fas fa-moon"></i> <span class="toggle-text">DARK</span></button>
+                    </div>
+                    <a href="book.html" class="btn btn-primary enquire-btn" data-en="BOOK NOW" data-sw="WEKA NAFASI">BOOK NOW</a>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- ══ Hero ══ -->
+    <!-- -- Hero -- -->
     <section class="exp-hero" id="home">
         <div class="exp-hero-bg"></div>
         <div class="exp-hero-overlay"></div>
@@ -909,7 +956,7 @@
         </div>
     </section>
 
-    <!-- ══ Stat Bar ══ -->
+    <!-- -- Stat Bar -- -->
     <div class="stat-bar">
         <div class="container">
             <div class="stat-bar-grid">
@@ -926,7 +973,7 @@
                     <span class="lbl" data-en="Unique Experiences" data-sw="Uzoefu wa Kipekee">Unique Experiences</span>
                 </div>
                 <div class="stat-bar-item">
-                    <span class="num">4.9★</span>
+                    <span class="num">4.9?</span>
                     <span class="lbl" data-en="TripAdvisor Rating" data-sw="Ukadiriaji wa TripAdvisor">TripAdvisor
                         Rating</span>
                 </div>
@@ -934,15 +981,15 @@
         </div>
     </div>
 
-    <!-- ══ Editorial Intro ══ -->
+    <!-- -- Editorial Intro -- -->
     <section class="editorial-intro">
         <div class="container">
             <div class="editorial-grid">
                 <div>
                     <span class="editorial-label" data-en="OUR STORY" data-sw="HADITHI YETU">OUR STORY</span>
-                    <h2 class="editorial-heading" data-en="More Than a Tour — <em>A Transformation</em>"
-                        data-sw="Zaidi ya Ziara — <em>Mabadiliko</em>">
-                        More Than a Tour — <em>A Transformation</em>
+                    <h2 class="editorial-heading" data-en="More Than a Tour � <em>A Transformation</em>"
+                        data-sw="Zaidi ya Ziara � <em>Mabadiliko</em>">
+                        More Than a Tour � <em>A Transformation</em>
                     </h2>
                     <div class="editorial-body">
                         <p data-en="From the endless plains of the Serengeti to the turquoise waters of Zanzibar, our experiences are designed to immerse you in the beauty, culture, and adventure that make Tanzania a world-class destination."
@@ -951,11 +998,11 @@
                             experiences are designed to immerse you in the beauty, culture, and adventure that make
                             Tanzania a world-class destination.
                         </p>
-                        <p data-en="Imagine witnessing a pride of lions on an early morning game drive, standing at the rim of the magnificent Ngorongoro Crater, sharing stories with the Maasai people, or watching the sun set over the African savannah. These are more than tours — they are unforgettable moments that stay with you long after your journey ends."
+                        <p data-en="Imagine witnessing a pride of lions on an early morning game drive, standing at the rim of the magnificent Ngorongoro Crater, sharing stories with the Maasai people, or watching the sun set over the African savannah. These are more than tours � they are unforgettable moments that stay with you long after your journey ends."
                             data-sw="Fikiria kuona kundi la simba katika mchezo wa mapema asubuhi, kusimama kwenye ukingo wa Kreta ya Ngorongoro, kushiriki hadithi na watu wa Maasai, au kutazama jua likitua juu ya savanna ya Afrika.">
                             Imagine witnessing a pride of lions on an early morning game drive, standing at the rim of
                             the magnificent Ngorongoro Crater, sharing stories with the Maasai people, or watching the
-                            sun set over the African savannah. These are more than tours — they are unforgettable
+                            sun set over the African savannah. These are more than tours � they are unforgettable
                             moments that stay with you long after your journey ends.
                         </p>
                         <p data-en="Whether you're an adventure seeker, wildlife enthusiast, nature lover, photographer, honeymooner, or family traveler, we offer experiences tailored to match your dreams and travel style."
@@ -968,12 +1015,12 @@
                 </div>
                 <div>
                     <div class="editorial-pull-quote scroll-reveal">
-                        <p data-en="&ldquo;These are more than tours — they are unforgettable moments that stay with you long after your journey ends.&rdquo;"
-                            data-sw="&ldquo;Hizi ni zaidi ya ziara — ni matukio yasiyosahaulika yanayokaa nawe muda mrefu baada ya safari yako kumalizika.&rdquo;">
-                            "These are more than tours — they are unforgettable moments that stay with you long after
+                        <p data-en="&ldquo;These are more than tours � they are unforgettable moments that stay with you long after your journey ends.&rdquo;"
+                            data-sw="&ldquo;Hizi ni zaidi ya ziara � ni matukio yasiyosahaulika yanayokaa nawe muda mrefu baada ya safari yako kumalizika.&rdquo;">
+                            "These are more than tours � they are unforgettable moments that stay with you long after
                             your journey ends."
                         </p>
-                        <cite data-en="— Century Adventures Team" data-sw="— Timu ya Century Adventures">— Century
+                        <cite data-en="� Century Adventures Team" data-sw="� Timu ya Century Adventures">� Century
                             Adventures Team</cite>
                     </div>
                 </div>
@@ -981,7 +1028,7 @@
         </div>
     </section>
 
-    <!-- ══ What Awaits You ══ -->
+    <!-- -- What Awaits You -- -->
     <section class="what-awaits" id="what-awaits">
         <div class="container">
             <div class="section-top">
@@ -989,9 +1036,9 @@
                 <h2 data-en="Six World-Class Experiences" data-sw="Uzoefu Sita wa Kiwango cha Ulimwengu">Six World-Class
                     Experiences</h2>
                 <p class="section-sub"
-                    data-en="Handcrafted adventures across Tanzania's most spectacular destinations — for every traveler, every dream."
-                    data-sw="Safari zilizoundwa kwa makini katika maeneo mazuri zaidi ya Tanzania — kwa kila msafiri, kila ndoto.">
-                    Handcrafted adventures across Tanzania's most spectacular destinations — for every traveler, every
+                    data-en="Handcrafted adventures across Tanzania's most spectacular destinations � for every traveler, every dream."
+                    data-sw="Safari zilizoundwa kwa makini katika maeneo mazuri zaidi ya Tanzania � kwa kila msafiri, kila ndoto.">
+                    Handcrafted adventures across Tanzania's most spectacular destinations � for every traveler, every
                     dream.
                 </p>
             </div>
@@ -1002,7 +1049,7 @@
                 <div class="exp-card scroll-reveal">
                     <div class="exp-card-img">
                         <img src="assets/03TMMT-IM1103-mara-mara-tented-lodge-1475.jpg" alt="Wildlife Encounters">
-                        <div class="exp-card-emoji">🦁</div>
+                        <div class="exp-card-emoji">??</div>
                     </div>
                     <div class="exp-card-body">
                         <h3 data-en="Wildlife Encounters" data-sw="Makutano ya Wanyamapori">Wildlife Encounters</h3>
@@ -1020,7 +1067,7 @@
                 <div class="exp-card scroll-reveal">
                     <div class="exp-card-img">
                         <img src="assets/kilimanjalo.png" alt="Mountain Adventures">
-                        <div class="exp-card-emoji">🏔️</div>
+                        <div class="exp-card-emoji">???</div>
                     </div>
                     <div class="exp-card-body">
                         <h3 data-en="Mountain Adventures" data-sw="Matukio ya Milima">Mountain Adventures</h3>
@@ -1038,7 +1085,7 @@
                 <div class="exp-card scroll-reveal">
                     <div class="exp-card-img">
                         <img src="assets/Zanzibar.jpg" alt="Beach Escapes">
-                        <div class="exp-card-emoji">🌴</div>
+                        <div class="exp-card-emoji">??</div>
                     </div>
                     <div class="exp-card-body">
                         <h3 data-en="Beach Escapes" data-sw="Burudisho za Pwani">Beach Escapes</h3>
@@ -1056,7 +1103,7 @@
                 <div class="exp-card scroll-reveal">
                     <div class="exp-card-img">
                         <img src="assets/Masai.jpg" alt="Cultural Discoveries">
-                        <div class="exp-card-emoji">🌍</div>
+                        <div class="exp-card-emoji">??</div>
                     </div>
                     <div class="exp-card-body">
                         <h3 data-en="Cultural Discoveries" data-sw="Uvumbuzi wa Kitamaduni">Cultural Discoveries</h3>
@@ -1074,7 +1121,7 @@
                 <div class="exp-card scroll-reveal">
                     <div class="exp-card-img">
                         <img src="assets/4N1A0305-1-1.jpg" alt="Photography Journeys">
-                        <div class="exp-card-emoji">📸</div>
+                        <div class="exp-card-emoji">??</div>
                     </div>
                     <div class="exp-card-body">
                         <h3 data-en="Photography Journeys" data-sw="Safari za Upigaji Picha">Photography Journeys</h3>
@@ -1091,7 +1138,7 @@
                 <div class="exp-card scroll-reveal">
                     <div class="exp-card-img">
                         <img src="assets/zanzibar.png" alt="Honeymoon & Romantic Getaways">
-                        <div class="exp-card-emoji">❤️</div>
+                        <div class="exp-card-emoji">??</div>
                     </div>
                     <div class="exp-card-body">
                         <h3 data-en="Honeymoon &amp; Romantic Getaways" data-sw="Fungate na Safari za Kimapenzi">
@@ -1110,7 +1157,7 @@
         </div>
     </section>
 
-    <!-- ══ Feature Blocks ══ -->
+    <!-- -- Feature Blocks -- -->
     <section class="feature-blocks">
         <div class="container">
 
@@ -1202,7 +1249,7 @@
         </div>
     </section>
 
-    <!-- ══ Why Our Experiences Stand Out ══ -->
+    <!-- -- Why Our Experiences Stand Out -- -->
     <section class="why-standout">
         <div class="container">
             <div class="section-top">
@@ -1215,9 +1262,9 @@
                 <div class="standout-card scroll-reveal">
                     <div class="sc-icon"><i class="fas fa-route"></i></div>
                     <h4 data-en="Personalized Itineraries" data-sw="Ratiba za Kibinafsi">Personalized Itineraries</h4>
-                    <p data-en="Every trip is tailored to your interests, pace, and travel style — no cookie-cutter tours."
+                    <p data-en="Every trip is tailored to your interests, pace, and travel style � no cookie-cutter tours."
                         data-sw="Kila safari imefanywa kulingana na maslahi yako, kasi yako, na mtindo wako wa kusafiri.">
-                        Every trip is tailored to your interests, pace, and travel style — no cookie-cutter tours.</p>
+                        Every trip is tailored to your interests, pace, and travel style � no cookie-cutter tours.</p>
                 </div>
                 <div class="standout-card scroll-reveal">
                     <div class="sc-icon"><i class="fas fa-user-tie"></i></div>
@@ -1236,18 +1283,18 @@
                 <div class="standout-card scroll-reveal">
                     <div class="sc-icon"><i class="fas fa-handshake"></i></div>
                     <h4 data-en="Authentic Interactions" data-sw="Mwingiliano wa Kweli">Authentic Interactions</h4>
-                    <p data-en="Real cultural connections — not staged performances — with local communities across Tanzania."
-                        data-sw="Uhusiano wa kweli wa kitamaduni — si maonyesho ya bandia — na jamii za mitaa Tanzania.">
-                        Real cultural connections — not staged performances — with local communities across Tanzania.
+                    <p data-en="Real cultural connections � not staged performances � with local communities across Tanzania."
+                        data-sw="Uhusiano wa kweli wa kitamaduni � si maonyesho ya bandia � na jamii za mitaa Tanzania.">
+                        Real cultural connections � not staged performances � with local communities across Tanzania.
                     </p>
                 </div>
                 <div class="standout-card scroll-reveal">
                     <div class="sc-icon"><i class="fas fa-headset"></i></div>
                     <h4 data-en="Exceptional Customer Service" data-sw="Huduma Bora kwa Wateja">Exceptional Customer
                         Service</h4>
-                    <p data-en="We're with you from the first inquiry to your safe return home — always just a call away."
-                        data-sw="Tuko nawe kuanzia uchunguzi wa kwanza hadi urejee salama nyumbani — daima karibu nawe.">
-                        We're with you from the first inquiry to your safe return home — always just a call away.</p>
+                    <p data-en="We're with you from the first inquiry to your safe return home � always just a call away."
+                        data-sw="Tuko nawe kuanzia uchunguzi wa kwanza hadi urejee salama nyumbani � daima karibu nawe.">
+                        We're with you from the first inquiry to your safe return home � always just a call away.</p>
                 </div>
                 <div class="standout-card scroll-reveal">
                     <div class="sc-icon"><i class="fas fa-shield-alt"></i></div>
@@ -1262,7 +1309,7 @@
 
 
 
-    <!-- ══ Footer ══ -->
+    <!-- -- Footer -- -->
     <!-- Footer Contact Info -->
     <div class="footer-top">
         <div class="container">
@@ -1302,8 +1349,9 @@
                 <p data-en="Ohio Street" data-sw="Mtaa wa Ohio">Ohio Street</p>
                 <p><i class="fas fa-map-marker-alt"></i> Dar es Salaam, Tanzania</p>
                 <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/255747115390" target="_blank" style="color: inherit;">+255 747 115 390</a></p>
-                <p><i class="fas fa-envelope"></i> <a href="mailto:info@centuryadventures.com" style="color: inherit;">info@centuryadventures.com</a></p>
-                <p><i class="fas fa-envelope"></i> <a href="mailto:bookings@centuryadventures.com" style="color: inherit;">bookings@centuryadventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@century-adventures.com?subject=General%20Inquiry" style="color: inherit;">info@century-adventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:bookings@century-adventures.com?subject=Safari%20Booking%20Request" style="color: inherit;">bookings@century-adventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:visit@century-adventures.com?subject=Trip%20Planning%20Inquiry" style="color: inherit;">visit@century-adventures.com</a></p>
             </div>
             <div class="footer-col link-col collapsible">
                 <h3 data-en="POPULAR PLACES" data-sw="MAENEO MAARUFU">POPULAR PLACES</h3>
@@ -1357,7 +1405,7 @@
                 <a href="https://www.youtube.com/@CenturyAdventures" target="_blank"><i class="fab fa-youtube"></i></a>
                 <a href="https://www.instagram.com/century_adventures?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
                 <a href="https://wa.me/255747115390"><i class="fab fa-whatsapp"></i></a>
-                <a href="mailto:info@centuryadventures.com"><i class="fas fa-envelope"></i></a>
+                <a href="mailto:info@century-adventures.com?subject=General%20Inquiry"><i class="fas fa-envelope"></i></a>
             </div>
             <p>&copy; Copyright 2012 - 2026 | Century Adventures</p>
         </div>

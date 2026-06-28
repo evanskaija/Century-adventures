@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,7 +9,7 @@
     <title>Volunteer Experiences | Century Adventures Tanzania</title>
     <meta name="description"
         content="Make a lasting impact while discovering Tanzania. Join our community development, education, healthcare, and wildlife conservation volunteer programs.">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -23,7 +23,7 @@
         })();
     </script>
     <style>
-        /* ══ Hero ══ */
+        /* -- Hero -- */
         .vol-hero {
             position: relative;
             height: 92vh;
@@ -215,7 +215,7 @@
             }
         }
 
-        /* ══ Stat Bar ══ */
+        /* -- Stat Bar -- */
         .stat-bar {
             background: var(--primary-green);
             padding: 28px 0;
@@ -265,7 +265,7 @@
             }
         }
 
-        /* ══ Editorial Intro ══ */
+        /* -- Editorial Intro -- */
         .editorial-intro {
             background: var(--bg-color);
             padding: 100px 0 80px;
@@ -363,7 +363,7 @@
             font-style: normal;
         }
 
-        /* ══ Volunteer Opportunities ══ */
+        /* -- Volunteer Opportunities -- */
         .vol-opportunities {
             background: var(--section-bg);
             padding: 100px 0;
@@ -479,7 +479,7 @@
             flex: 1;
         }
 
-        /* ══ Program Benefits ══ */
+        /* -- Program Benefits -- */
         .vol-benefits {
             background: var(--bg-color);
             padding: 100px 0;
@@ -544,7 +544,7 @@
             background: rgba(242, 201, 76, 0.15);
         }
 
-        /* ══ Who Can Volunteer ══ */
+        /* -- Who Can Volunteer -- */
         .vol-profiles {
             background: var(--section-bg);
             padding: 100px 0;
@@ -618,7 +618,7 @@
             margin: 0;
         }
 
-        /* ══ What You'll Gain ══ */
+        /* -- What You'll Gain -- */
         .vol-gains {
             background: var(--bg-color);
             padding: 100px 0;
@@ -695,7 +695,7 @@
             line-height: 1.4;
         }
 
-        /* ══ Closing CTA ══ */
+        /* -- Closing CTA -- */
         .vol-closing {
             background: var(--primary-gradient);
             padding: 110px 0;
@@ -790,55 +790,102 @@
 <body>
     <div class="scroll-progress"></div>
 
-    <!-- ══ Header ══ -->
-    <header class="header" id="mainHeader">
-        <div class="container header-content">
-            <div class="logo">
-                <a href="index.html"><img src="assets/logo.png" alt="Century Adventures Logo"></a>
-            </div>
-            <nav class="nav">
-                <ul>
-                    <li><a href="index.html" data-en="Home" data-sw="Nyumbani">Home</a></li>
-                    <li><a href="about.html" data-en="About Us" data-sw="Kuhusu Sisi">About Us</a></li>
-                    <li class="dropdown">
-                        <a href="#" data-en="Destinations" data-sw="Maeneo">Destinations <i
-                                class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="katavi.html">Katavi National Park</a></li>
-                            <li><a href="selous.html">Selous Game Reserve</a></li>
-                            <li><a href="ruaha.html">Ruaha National Park</a></li>
-                            <li><a href="mikumi.html">Mikumi National Park</a></li>
-                            <li><a href="serengeti.html">Serengeti National Park</a></li>
-                            <li><a href="gombe.html">Gombe Stream National Park</a></li>
-                            <li><a href="ngorongoro.html">Ngorongoro Conservation Area</a></li>
-                            <li><a href="manyara.html">Lake Manyara National Park</a></li>
-                            <li><a href="tarangire.html">Tarangire National Park</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="safaris.html" data-en="TOURS & SAFARIS" data-sw="SAFARI NA ZIARA">TOURS & SAFARIS</a></li>
-                    <li><a href="experiences.html" data-en="Experiences" data-sw="Uzoefu">Experiences</a></li>
-                    <li><a href="volunteer.html" class="active" data-en="Volunteer" data-sw="Kujitolea">Volunteer</a>
-                    </li>
-                    <li><a href="vehicles.html" data-en="Safari Vehicles" data-sw="Magari ya Safari">Safari Vehicles</a>
-                    </li>
-                    <li><a href="contact.html" data-en="Contact Us" data-sw="Wasiliana Nasi">Contact Us</a></li>
-                </ul>
-            </nav>
-            <button class="mobile-toggle" id="mobile-toggle" onclick="toggleMobileMenu()"
-                aria-label="Open navigation menu">
-                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-            </button>
-            <div class="header-actions">
-                <div class="header-toggles">
-                    <button class="toggle-btn lang-toggle" onclick="toggleLang()">SW</button>
-                    <button class="toggle-btn theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+    <!-- -- Header -- -->
+        <header class="header">
+        <div class="header-main-nav">
+            <div class="container header-content">
+                <div class="logo">
+                    <a href="index.html" class="logo-wrap">
+                        <img src="assets/logo.png" alt="Century Adventures Logo">
+                        <span class="brand-name">CENTURY<span class="brand-subname"> ADVENTURES</span><span class="brand-slogan" data-en="Discover. Explore. Experience." data-sw="Gundua. Chunguza. Shuhudia.">Discover. Explore. Experience.</span></span>
+                    </a>
                 </div>
-                <a href="enquire.html" class="btn btn-primary enquire-btn" data-en="ENQUIRE" data-sw="ULIZA">ENQUIRE</a>
+                <nav class="nav">
+                    <button class="nav-close-btn" id="nav-close-btn" aria-label="Close navigation menu"><i class="fas fa-times"></i> <span data-en="Close" data-sw="Funga">Close</span></button>
+                    <ul>
+                        <li class="mobile-only-action mobile-menu-title"><i class="fas fa-bars"></i> MENU</li>
+                        <li class="mobile-only-action mobile-menu-controls">
+                            <button class="toggle-btn lang-toggle" onclick="toggleLang(event)">SWAHILI</button>
+                            <button class="toggle-btn theme-toggle" onclick="toggleTheme(event)"><i class="fas fa-moon"></i> <span class="toggle-text">DARK</span></button>
+                        </li>
+                        <li><a href="index.html" id="nav-home" data-en="Home" data-sw="Nyumbani">Home</a></li>
+                        <li class="dropdown">
+                            <a href="safaris.html" id="nav-safaris" data-en="Safaris" data-sw="Safari">Safaris <i class="fas fa-chevron-down"></i></a>
+                            <span class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></span>
+                            <ul class="dropdown-menu">
+                                <li><a href="safaris.html" data-en="All Tours &amp; Safaris" data-sw="Safari na Ziara Zote">All Tours &amp; Safaris</a></li>
+                                <li><a href="3-day-serengeti-safari.html" data-en="3-Day Serengeti Safari" data-sw="Safari ya Siku 3 Serengeti">3-Day Serengeti Safari</a></li>
+                                <li><a href="6-day-northern-tanzania-highlights.html" data-en="6-Day Northern Highlights" data-sw="Siku 6 Vivutio vya Kaskazini">6-Day Northern Highlights</a></li>
+                                <li><a href="10-days-luxury-safari-zanzibar.html" data-en="10-Day Luxury &amp; Zanzibar" data-sw="Siku 10 Anasa na Zanzibar">10-Day Luxury &amp; Zanzibar</a></li>
+                                <li><a href="12-days-best-of-south-and-north.html" data-en="12-Day South &amp; North" data-sw="Siku 12 Kusini na Kaskazini">12-Day South &amp; North</a></li>
+                                <li><a href="13-days-tanzania-safari-beach.html" data-en="13-Day Safari &amp; Beach" data-sw="Siku 13 Safari na Pwani">13-Day Safari &amp; Beach</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="destinations.html" id="nav-destinations" data-en="Destinations" data-sw="Maeneo">Destinations <i class="fas fa-chevron-down"></i></a>
+                            <span class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></span>
+                            <ul class="dropdown-menu">
+                                <li><a href="serengeti.html" data-en="Serengeti National Park" data-sw="Hifadhi ya Serengeti">Serengeti National Park</a></li>
+                                <li><a href="ngorongoro.html" data-en="Ngorongoro Conservation Area" data-sw="Ngorongoro">Ngorongoro Conservation Area</a></li>
+                                <li><a href="tarangire.html" data-en="Tarangire National Park" data-sw="Hifadhi ya Tarangire">Tarangire National Park</a></li>
+                                <li><a href="manyara.html" data-en="Lake Manyara National Park" data-sw="Hifadhi ya Manyara">Lake Manyara National Park</a></li>
+                                <li><a href="ruaha.html" data-en="Ruaha National Park" data-sw="Hifadhi ya Ruaha">Ruaha National Park</a></li>
+                                <li><a href="selous.html" data-en="Selous Game Reserve" data-sw="Hifadhi ya Selous">Selous Game Reserve</a></li>
+                                <li><a href="mikumi.html" data-en="Mikumi National Park" data-sw="Hifadhi ya Mikumi">Mikumi National Park</a></li>
+                                <li><a href="katavi.html" data-en="Katavi National Park" data-sw="Hifadhi ya Katavi">Katavi National Park</a></li>
+                                <li><a href="gombe.html" data-en="Gombe Stream National Park" data-sw="Hifadhi ya Gombe">Gombe Stream National Park</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="experiences.html" id="nav-experiences" data-en="Experiences" data-sw="Uzoefu">Experiences <i class="fas fa-chevron-down"></i></a>
+                            <span class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></span>
+                            <ul class="dropdown-menu">
+                                <li><a href="family-safaris.html" data-en="Family Safaris" data-sw="Safari za Familia">Family Safaris</a></li>
+                                <li><a href="migration-safaris.html" data-en="Migration Safaris" data-sw="Safari za Uhamiaji">Migration Safaris</a></li>
+                                <li><a href="honeymoon-safaris.html" data-en="Honeymoon Safaris" data-sw="Safari za Fungate">Honeymoon Safaris</a></li>
+                                <li><a href="volunteer.html" data-en="Volunteer Programs" data-sw="Mipango ya Kujitolea">Volunteer Programs</a></li>
+                                <li><a href="vehicles.html" data-en="Safari Vehicles" data-sw="Magari ya Safari">Safari Vehicles</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about.html" id="nav-about" data-en="About Us" data-sw="Kuhusu Sisi">About Us</a></li>
+                        <li class="dropdown">
+                            <a href="#" id="nav-resources" data-en="Travel Guide" data-sw="Mwongozo wa Safari">Travel Guide <i class="fas fa-chevron-down"></i></a>
+                            <span class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></span>
+                            <ul class="dropdown-menu">
+                                <li><a href="blog.html" data-en="Travel Blog" data-sw="Blogu yetu">Travel Blog</a></li>
+                                <li><a href="faq.html" data-en="FAQs" data-sw="Maswali ya Kawaida">FAQs</a></li>
+                                <li><a href="gallery.html" data-en="Photo Gallery" data-sw="Picha za Safari">Photo Gallery</a></li>
+                                <li><a href="testimonials.html" data-en="Testimonials" data-sw="Shuhuda">Testimonials</a></li>
+                                <li><a href="best-time-to-visit-tanzania.html" data-en="Best Time to Visit" data-sw="Wakati Bora wa Kuja">Best Time to Visit</a></li>
+                                <li><a href="health-safety-tanzania.html" data-en="Health &amp; Safety" data-sw="Afya na Usalama">Health &amp; Safety</a></li>
+                                <li><a href="obtaining-visa-tanzania.html" data-en="Visa Information" data-sw="Visa ya Safari">Visa Information</a></li>
+                                <li><a href="what-to-wear-safari.html" data-en="Safari Packing Guide" data-sw="Nguo za Safari">Safari Packing Guide</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact.html" id="nav-contact" data-en="Contact Us" data-sw="Wasiliana Nasi">Contact Us</a></li>
+                        <li class="mobile-only-action book-now-item"><a href="book.html" class="btn btn-primary enquire-btn" data-en="BOOK NOW" data-sw="WEKA NAFASI">BOOK NOW</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Mobile Hamburger Menu Button (Three Lines) -->
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Open navigation menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+
+                <div class="header-actions">
+                    <div class="header-toggles">
+                        <button class="toggle-btn lang-toggle" onclick="toggleLang(event)">SWAHILI</button>
+                        <button class="toggle-btn theme-toggle" onclick="toggleTheme(event)"><i class="fas fa-moon"></i> <span class="toggle-text">DARK</span></button>
+                    </div>
+                    <a href="book.html" class="btn btn-primary enquire-btn" data-en="BOOK NOW" data-sw="WEKA NAFASI">BOOK NOW</a>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- ══ Hero ══ -->
+    <!-- -- Hero -- -->
     <section class="vol-hero" id="home">
         <div class="vol-hero-bg"></div>
         <div class="vol-hero-overlay"></div>
@@ -868,7 +915,7 @@
         </div>
     </section>
 
-    <!-- ══ Stat Bar ══ -->
+    <!-- -- Stat Bar -- -->
     <div class="stat-bar">
         <div class="container">
             <div class="stat-bar-grid">
@@ -893,7 +940,7 @@
         </div>
     </div>
 
-    <!-- ══ Editorial Intro ══ -->
+    <!-- -- Editorial Intro -- -->
     <section class="editorial-intro">
         <div class="container">
             <div class="editorial-grid">
@@ -925,14 +972,14 @@
                             data-sw="&ldquo;Njia bora ya kujipata ni kujipoteza katika huduma kwa wengine.&rdquo;">
                             "The best way to find yourself is to lose yourself in the service of others."
                         </p>
-                        <cite data-en="— Mahatma Gandhi" data-sw="— Mahatma Gandhi">— Mahatma Gandhi</cite>
+                        <cite data-en="� Mahatma Gandhi" data-sw="� Mahatma Gandhi">� Mahatma Gandhi</cite>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ══ Volunteer Opportunities ══ -->
+    <!-- -- Volunteer Opportunities -- -->
     <section class="vol-opportunities" id="opportunities">
         <div class="container">
             <div class="section-top">
@@ -952,7 +999,7 @@
                 <div class="opp-card scroll-reveal">
                     <div class="opp-card-icon"><i class="fas fa-book-reader" style="color: var(--accent-gold);"></i>
                     </div>
-                    <h3 data-en="📚 Education &amp; Teaching Support" data-sw="📚 Usaidizi wa Elimu na Ufundishaji">📚
+                    <h3 data-en="?? Education &amp; Teaching Support" data-sw="?? Usaidizi wa Elimu na Ufundishaji">??
                         Education &amp; Teaching Support</h3>
                     <p data-en="Assist teachers, support classroom activities, organize educational workshops, and help students develop valuable skills."
                         data-sw="Saidia walimu, saidia shughuli za darasani, andaa warsha za elimu, na wasaidie wanafunzi kukuza ujuzi wenye thamani.">
@@ -963,7 +1010,7 @@
                 <!-- Opp 2 -->
                 <div class="opp-card scroll-reveal">
                     <div class="opp-card-icon"><i class="fas fa-baby" style="color: var(--accent-gold);"></i></div>
-                    <h3 data-en="👶 Child Development Programs" data-sw="👶 Programu za Maendeleo ya Mtoto">👶 Child
+                    <h3 data-en="?? Child Development Programs" data-sw="?? Programu za Maendeleo ya Mtoto">?? Child
                         Development Programs</h3>
                     <p data-en="Support childcare centers, after-school activities, mentorship programs, and educational initiatives for children."
                         data-sw="Saidia vituo vya malezi ya watoto, shughuli za baada ya shule, programu za ushauri, na mipango ya elimu kwa watoto.">
@@ -975,8 +1022,8 @@
                 <div class="opp-card scroll-reveal">
                     <div class="opp-card-icon"><i class="fas fa-clinic-medical" style="color: var(--accent-gold);"></i>
                     </div>
-                    <h3 data-en="🏥 Healthcare &amp; Community Outreach"
-                        data-sw="🏥 Huduma ya Afya na Ufikiaji wa Jamii">🏥 Healthcare &amp; Community Outreach</h3>
+                    <h3 data-en="?? Healthcare &amp; Community Outreach"
+                        data-sw="?? Huduma ya Afya na Ufikiaji wa Jamii">?? Healthcare &amp; Community Outreach</h3>
                     <p data-en="Participate in health awareness campaigns, community wellness programs, and public health initiatives alongside local professionals."
                         data-sw="Shiriki katika kampeni za uelewa wa afya, programu za ustawi wa jamii, na mipango ya afya ya umma pamoja na wataalamu wa ndani.">
                         Participate in health awareness campaigns, community wellness programs, and public health
@@ -986,7 +1033,7 @@
                 <!-- Opp 4 -->
                 <div class="opp-card scroll-reveal">
                     <div class="opp-card-icon"><i class="fas fa-seedling" style="color: var(--accent-gold);"></i></div>
-                    <h3 data-en="🌱 Environmental Conservation" data-sw="🌱 Uhifadhi wa Mazingira">🌱 Environmental
+                    <h3 data-en="?? Environmental Conservation" data-sw="?? Uhifadhi wa Mazingira">?? Environmental
                         Conservation</h3>
                     <p data-en="Join tree-planting projects, ecosystem restoration efforts, waste management campaigns, and sustainability initiatives."
                         data-sw="Jiunge na miradi ya kupanda miti, juhudi za kurejesha mfumo wa ikolojia, kampeni za udhibiti wa taka, na mipango ya uendelevu.">
@@ -997,8 +1044,8 @@
                 <!-- Opp 5 -->
                 <div class="opp-card scroll-reveal">
                     <div class="opp-card-icon"><i class="fas fa-paw" style="color: var(--accent-gold);"></i></div>
-                    <h3 data-en="🦁 Wildlife &amp; Conservation Support"
-                        data-sw="🦁 Usaidizi wa Wanyamapori na Uhifadhi">🦁 Wildlife &amp; Conservation Support</h3>
+                    <h3 data-en="?? Wildlife &amp; Conservation Support"
+                        data-sw="?? Usaidizi wa Wanyamapori na Uhifadhi">?? Wildlife &amp; Conservation Support</h3>
                     <p data-en="Contribute to wildlife conservation awareness programs and support projects focused on protecting Tanzania's natural resources."
                         data-sw="Changia katika programu za uelewa wa uhifadhi wa wanyamapori na usaidie miradi inayolenga kulinda maliasili za Tanzania.">
                         Contribute to wildlife conservation awareness programs and support projects focused on
@@ -1008,7 +1055,7 @@
                 <!-- Opp 6 -->
                 <div class="opp-card scroll-reveal">
                     <div class="opp-card-icon"><i class="fas fa-tint" style="color: var(--accent-gold);"></i></div>
-                    <h3 data-en="💧 Water &amp; Sanitation Projects" data-sw="💧 Miradi ya Maji na Usafi">💧 Water &amp;
+                    <h3 data-en="?? Water &amp; Sanitation Projects" data-sw="?? Miradi ya Maji na Usafi">?? Water &amp;
                         Sanitation Projects</h3>
                     <p data-en="Assist with community programs that promote access to clean water, hygiene education, and sanitation improvements."
                         data-sw="Saidia kwa programu za jamii zinazohimiza upatikanaji wa maji safi, elimu ya usafi wa mazingira, na maboresho ya usafi.">
@@ -1019,7 +1066,7 @@
                 <!-- Opp 7 -->
                 <div class="opp-card scroll-reveal">
                     <div class="opp-card-icon"><i class="fas fa-home" style="color: var(--accent-gold);"></i></div>
-                    <h3 data-en="🏡 Community Development" data-sw="🏡 Maendeleo ya Jamii">🏡 Community Development</h3>
+                    <h3 data-en="?? Community Development" data-sw="?? Maendeleo ya Jamii">?? Community Development</h3>
                     <p data-en="Work alongside local communities on projects that enhance livelihoods, infrastructure, and sustainable development."
                         data-sw="Fanya kazi pamoja na jamii za mitaa kwenye miradi inayoboresha maisha, miundombinu, na maendeleo endelevu.">
                         Work alongside local communities on projects that enhance livelihoods, infrastructure, and
@@ -1029,8 +1076,8 @@
                 <!-- Opp 8 -->
                 <div class="opp-card scroll-reveal">
                     <div class="opp-card-icon"><i class="fas fa-female" style="color: var(--accent-gold);"></i></div>
-                    <h3 data-en="👩💼 Women Empowerment Initiatives" data-sw="👩💼 Mipango ya Kukuza Uwezo wa Wanawake">
-                        👩💼 Women Empowerment Initiatives</h3>
+                    <h3 data-en="???? Women Empowerment Initiatives" data-sw="???? Mipango ya Kukuza Uwezo wa Wanawake">
+                        ???? Women Empowerment Initiatives</h3>
                     <p data-en="Support programs that promote entrepreneurship, education, leadership, and economic opportunities for women."
                         data-sw="Saidia programu zinazohimiza ujasiriamali, elimu, uongozi, na fursa za kiuchumi kwa wanawake.">
                         Support programs that promote entrepreneurship, education, leadership, and economic
@@ -1040,7 +1087,7 @@
                 <!-- Opp 9 -->
                 <div class="opp-card scroll-reveal">
                     <div class="opp-card-icon"><i class="fas fa-running" style="color: var(--accent-gold);"></i></div>
-                    <h3 data-en="⚽ Youth Leadership &amp; Sports" data-sw="⚽ Uongozi wa Vijana na Michezo">⚽ Youth
+                    <h3 data-en="? Youth Leadership &amp; Sports" data-sw="? Uongozi wa Vijana na Michezo">? Youth
                         Leadership &amp; Sports</h3>
                     <p data-en="Help organize sports activities, leadership workshops, life-skills training, and youth development programs."
                         data-sw="Saidia kuandaa shughuli za michezo, warsha za uongozi, mafunzo ya stadi za maisha, na programu za maendeleo ya vijana.">
@@ -1052,8 +1099,8 @@
                 <div class="opp-card scroll-reveal">
                     <div class="opp-card-icon"><i class="fas fa-paint-brush" style="color: var(--accent-gold);"></i>
                     </div>
-                    <h3 data-en="🎨 Arts, Culture &amp; Creative Projects"
-                        data-sw="🎨 Sanaa, Utamaduni na Miradi ya Ubunifu">🎨 Arts, Culture &amp; Creative Projects</h3>
+                    <h3 data-en="?? Arts, Culture &amp; Creative Projects"
+                        data-sw="?? Sanaa, Utamaduni na Miradi ya Ubunifu">?? Arts, Culture &amp; Creative Projects</h3>
                     <p data-en="Share creative skills through art, music, dance, photography, and cultural exchange activities."
                         data-sw="Shiriki ujuzi wa ubunifu kupitia sanaa, muziki, ngoma, upigaji picha, na shughuli za kubadilishana utamaduni.">
                         Share creative skills through art, music, dance, photography, and cultural exchange activities.
@@ -1062,8 +1109,8 @@
                 <!-- Opp 11 -->
                 <div class="opp-card scroll-reveal">
                     <div class="opp-card-icon"><i class="fas fa-laptop" style="color: var(--accent-gold);"></i></div>
-                    <h3 data-en="💻 Digital Skills &amp; Tech Training"
-                        data-sw="💻 Ujuzi wa Kidijitali na Mafunzo ya Teknolojia">💻 Digital Skills &amp; Tech Training
+                    <h3 data-en="?? Digital Skills &amp; Tech Training"
+                        data-sw="?? Ujuzi wa Kidijitali na Mafunzo ya Teknolojia">?? Digital Skills &amp; Tech Training
                     </h3>
                     <p data-en="Assist with computer literacy, digital education, entrepreneurship training, and technology-based learning programs."
                         data-sw="Saidia katika kujifunza kompyuta, elimu ya kidijitali, mafunzo ya ujasiriamali, na programu za kujifunza kulingana na teknolojia.">
@@ -1075,8 +1122,8 @@
                 <div class="opp-card scroll-reveal">
                     <div class="opp-card-icon"><i class="fas fa-chart-line" style="color: var(--accent-gold);"></i>
                     </div>
-                    <h3 data-en="📈 Business &amp; Entrepreneurship" data-sw="📈 Usaidizi wa Biashara na Ujasiriamali">
-                        📈 Business &amp; Entrepreneurship</h3>
+                    <h3 data-en="?? Business &amp; Entrepreneurship" data-sw="?? Usaidizi wa Biashara na Ujasiriamali">
+                        ?? Business &amp; Entrepreneurship</h3>
                     <p data-en="Mentor aspiring entrepreneurs and contribute to projects that strengthen local businesses and economic growth."
                         data-sw="Mshauri wajasiriamali wanaochipukia na uchangie miradi inayochochea biashara za ndani na ukuaji wa kiuchumi.">
                         Mentor aspiring entrepreneurs and contribute to projects that strengthen local businesses and
@@ -1087,7 +1134,7 @@
         </div>
     </section>
 
-    <!-- ══ Program Benefits ══ -->
+    <!-- -- Program Benefits -- -->
     <section class="vol-benefits">
         <div class="container">
             <div class="section-top">
@@ -1153,7 +1200,7 @@
         </div>
     </section>
 
-    <!-- ══ Who Can Volunteer ══ -->
+    <!-- -- Who Can Volunteer -- -->
     <section class="vol-profiles">
         <div class="container">
             <div class="section-top">
@@ -1200,7 +1247,7 @@
         </div>
     </section>
 
-    <!-- ══ What You'll Gain ══ -->
+    <!-- -- What You'll Gain -- -->
     <section class="vol-gains">
         <div class="container">
             <div class="section-top">
@@ -1212,42 +1259,42 @@
                 <div class="gain-card scroll-reveal">
                     <div class="gain-card-icon"><i class="fas fa-globe-africa"></i></div>
                     <div>
-                        <h4 data-en="🌍 Meaningful Cultural Exchange" data-sw="🌍 Ubadilishanaji wa Utamaduni">🌍
+                        <h4 data-en="?? Meaningful Cultural Exchange" data-sw="?? Ubadilishanaji wa Utamaduni">??
                             Meaningful Cultural Exchange</h4>
                     </div>
                 </div>
                 <div class="gain-card scroll-reveal">
                     <div class="gain-card-icon"><i class="fas fa-handshake"></i></div>
                     <div>
-                        <h4 data-en="🤝 Lifelong Friendships &amp; Connections" data-sw="🤝 Urafiki wa Maisha Yote">🤝
+                        <h4 data-en="?? Lifelong Friendships &amp; Connections" data-sw="?? Urafiki wa Maisha Yote">??
                             Lifelong Friendships &amp; Connections</h4>
                     </div>
                 </div>
                 <div class="gain-card scroll-reveal">
                     <div class="gain-card-icon"><i class="fas fa-book-open"></i></div>
                     <div>
-                        <h4 data-en="📖 Personal &amp; Professional Growth"
-                            data-sw="📖 Kukua Kibinafsi &amp; Kitaaluma">📖 Personal &amp; Professional Growth</h4>
+                        <h4 data-en="?? Personal &amp; Professional Growth"
+                            data-sw="?? Kukua Kibinafsi &amp; Kitaaluma">?? Personal &amp; Professional Growth</h4>
                     </div>
                 </div>
                 <div class="gain-card scroll-reveal">
                     <div class="gain-card-icon"><i class="fas fa-lightbulb"></i></div>
                     <div>
-                        <h4 data-en="💡 New Skills and Experiences" data-sw="💡 Ujuzi Mpya na Uzoefu">💡 New Skills and
+                        <h4 data-en="?? New Skills and Experiences" data-sw="?? Ujuzi Mpya na Uzoefu">?? New Skills and
                             Experiences</h4>
                     </div>
                 </div>
                 <div class="gain-card scroll-reveal">
                     <div class="gain-card-icon"><i class="fas fa-heart"></i></div>
                     <div>
-                        <h4 data-en="❤️ Satisfaction of Making Positive Impact"
-                            data-sw="❤️ Kuridhika kwa Kufanya Athari Chanya">❤️ Satisfaction of Making Impact</h4>
+                        <h4 data-en="?? Satisfaction of Making Positive Impact"
+                            data-sw="?? Kuridhika kwa Kufanya Athari Chanya">?? Satisfaction of Making Impact</h4>
                     </div>
                 </div>
                 <div class="gain-card scroll-reveal">
                     <div class="gain-card-icon"><i class="fas fa-camera-retro"></i></div>
                     <div>
-                        <h4 data-en="📸 Unforgettable Memories of Tanzania" data-sw="📸 Kumbukumbu za Tanzania">📸
+                        <h4 data-en="?? Unforgettable Memories of Tanzania" data-sw="?? Kumbukumbu za Tanzania">??
                             Unforgettable Memories of Tanzania</h4>
                     </div>
                 </div>
@@ -1257,9 +1304,55 @@
 
 
 
-    <!-- ══ Footer ══ -->
+    <!-- -- Footer -- -->
     <!-- Footer Contact Info -->
-    <div class="footer-top">
+    
+    <!-- Custom Experience Form Section -->
+    <section class="section custom-experience-section" style="background: var(--section-bg); padding: 60px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+        <div class="container" style="max-width: 700px;">
+            <span class="sub-heading" style="text-align: center; display: block;" data-en="TAILOR-MADE JOURNEYS" data-sw="SAFARI ZILIZOBINAFSISHWA">TAILOR-MADE JOURNEYS</span>
+            <h2 style="text-align: center; margin-bottom: 30px; font-family: 'Playfair Display', serif;" data-en="Get a Custom Experience" data-sw="Pata Uzoefu Maalum">Get a Custom Experience</h2>
+            
+            <form class="custom-experience-form" style="background: var(--card-bg); padding: 30px; border-radius: 16px; border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 15px; box-shadow: var(--shadow-md);">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                        <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-main);" data-en="Your Name" data-sw="Jina Lako">Name</label>
+                        <input type="text" name="name" required placeholder="Full Name" style="padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-main);">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                        <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-main);" data-en="Email Address" data-sw="Barua Pepe">Email</label>
+                        <input type="email" name="email" required placeholder="your@email.com" style="padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-main);">
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                        <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-main);" data-en="Phone Number" data-sw="Namba ya Simu">Phone</label>
+                        <input type="tel" name="phone" placeholder="+1234567890" style="padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-main);">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                        <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-main);" data-en="Experience Style" data-sw="Aina ya Uzoefu">Experience Style</label>
+                        <select name="experience_style" style="padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-main); font-size: 0.9rem;">
+                            <option value="Honeymoon" >Honeymoon Safari</option>
+                            <option value="Family" >Family Safari</option>
+                            <option value="Migration" >Great Migration Tracking</option>
+                            <option value="Volunteer" selected>Volunteer Program</option>
+                            <option value="Zanzibar">Zanzibar Beach Retreat</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <label style="font-size: 0.8rem; font-weight: 600; color: var(--text-main);" data-en="Travel Plan Details / Special Requests" data-sw="Maelezo ya Safari / Ombi Maalum">Message</label>
+                    <textarea name="message" placeholder="Tell us more about your dream experience, number of guests, travel dates, etc..." required style="padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-main); min-height: 100px; resize: vertical;"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="padding: 12px; font-weight: 700; width: 100%; margin-top: 10px;" data-en="GET A CUSTOM EXPERIENCE" data-sw="PATA UZOEFU MAALUM">GET A CUSTOM EXPERIENCE</button>
+            </form>
+        </div>
+    </section>
+
+<div class="footer-top">
         <div class="container">
             <h2><i class="fas fa-phone-alt"></i> +255 747 115 390</h2>
             <a href="enquire.html" class="btn enquire-btn" data-en="CONTACT US TODAY!" data-sw="WASILIANA NASI LEO!">CONTACT US TODAY!</a>
@@ -1297,8 +1390,9 @@
                 <p data-en="Ohio Street" data-sw="Mtaa wa Ohio">Ohio Street</p>
                 <p><i class="fas fa-map-marker-alt"></i> Dar es Salaam, Tanzania</p>
                 <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/255747115390" target="_blank" style="color: inherit;">+255 747 115 390</a></p>
-                <p><i class="fas fa-envelope"></i> <a href="mailto:info@centuryadventures.com" style="color: inherit;">info@centuryadventures.com</a></p>
-                <p><i class="fas fa-envelope"></i> <a href="mailto:bookings@centuryadventures.com" style="color: inherit;">bookings@centuryadventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@century-adventures.com?subject=General%20Inquiry" style="color: inherit;">info@century-adventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:bookings@century-adventures.com?subject=Safari%20Booking%20Request" style="color: inherit;">bookings@century-adventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:visit@century-adventures.com?subject=Trip%20Planning%20Inquiry" style="color: inherit;">visit@century-adventures.com</a></p>
             </div>
             <div class="footer-col link-col collapsible">
                 <h3 data-en="POPULAR PLACES" data-sw="MAENEO MAARUFU">POPULAR PLACES</h3>
@@ -1352,7 +1446,7 @@
                 <a href="https://www.youtube.com/@CenturyAdventures" target="_blank"><i class="fab fa-youtube"></i></a>
                 <a href="https://www.instagram.com/century_adventures?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
                 <a href="https://wa.me/255747115390"><i class="fab fa-whatsapp"></i></a>
-                <a href="mailto:info@centuryadventures.com"><i class="fas fa-envelope"></i></a>
+                <a href="mailto:info@century-adventures.com?subject=General%20Inquiry"><i class="fas fa-envelope"></i></a>
             </div>
             <p>&copy; Copyright 2012 - 2026 | Century Adventures</p>
         </div>

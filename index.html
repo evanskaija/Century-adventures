@@ -343,6 +343,391 @@
         /* Ensure no section bleeds past screen */
         section, .section { max-width: 100vw; overflow-x: hidden; }
     }
+
+    /* Luxury Safari Collection Section Styles */
+    .luxury-safari-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-strong) !important;
+    }
+    .luxury-safari-card:hover img {
+        transform: scale(1.05);
+    }
+    .luxury-safari-card a.btn:hover {
+        background: var(--accent-gold) !important;
+        color: #000 !important;
+        border-color: var(--accent-gold) !important;
+    }
+
+    /* Hero Section Flex Layout with Floating Logo beside text */
+    .hero-flex-layout {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 60px;
+        width: 100%;
+        text-align: left;
+    }
+    
+    .hero-text-wrap {
+        flex: 1.2;
+        max-width: 650px;
+    }
+    
+    .hero-logo-floating-wrap {
+        flex: 0.8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .hero-logo-floating {
+        width: 280px;
+        height: auto;
+        filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.6));
+        animation: heroLogoFloat 4s ease-in-out infinite;
+    }
+    
+    @keyframes heroLogoFloat {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+    
+    /* Enforce left-alignment within hero text wrap */
+    .hero-text-wrap .hero-main-title {
+        text-align: left !important;
+        margin-left: 0 !important;
+    }
+    .hero-text-wrap .hero-subtitle {
+        text-align: left !important;
+        margin-left: 0 !important;
+    }
+    .hero-text-wrap .hero-description {
+        text-align: left !important;
+        margin-left: 0 !important;
+    }
+    .hero-text-wrap .hero-btn-group {
+        justify-content: flex-start !important;
+    }
+    
+    /* Responsive layout: stack vertically on mobile/tablet */
+    @media (max-width: 991px) {
+        .hero-flex-layout {
+            flex-direction: column;
+            gap: 40px;
+            text-align: center;
+        }
+        
+        .hero-text-wrap {
+            max-width: 100%;
+            text-align: center;
+        }
+        
+        .hero-text-wrap .hero-main-title,
+        .hero-text-wrap .hero-subtitle,
+        .hero-text-wrap .hero-description {
+            text-align: center !important;
+            margin: 0 auto 15px auto !important;
+        }
+        
+        .hero-text-wrap .hero-btn-group {
+            justify-content: center !important;
+        }
+        
+        .hero-logo-floating {
+            width: 180px;
+        }
+    }
+
+    /* Premium fade-out blur mask for sliding/marquee tracks to eliminate hard visual edges */
+    .marquee-wrapper, .destinations-slider-wrapper {
+        mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%) !important;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%) !important;
+    }
+
+    /* Unified Card Box Sizes and Hover Animations (matching Luxury Safari Collection) */
+    .experience-card, .safari-card.mini-card, .destination-card, .tip-item-pro {
+        background: var(--section-bg) !important;
+        border-radius: 16px !important;
+        overflow: hidden !important;
+        box-shadow: var(--shadow-soft) !important;
+        border: 1px solid var(--border-color) !important;
+        transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    }
+    
+    .experience-card:hover, .safari-card.mini-card:hover, .destination-card:hover, .tip-item-pro:hover {
+        transform: translateY(-8px) !important;
+        box-shadow: var(--shadow-strong) !important;
+    }
+    
+    .experience-card img, .safari-card.mini-card img, .destination-card img {
+        transition: transform 0.5s ease !important;
+    }
+    
+    .experience-card:hover img, .safari-card.mini-card:hover img, .destination-card:hover img {
+        transform: scale(1.05) !important;
+    }
+
+    /* Fixed Box Sizing & Layout matching Luxury Cards */
+    .experience-card {
+        display: flex !important;
+        flex-direction: column !important;
+        height: 420px !important;
+        width: 280px !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .experience-card img {
+        height: 170px !important;
+        width: 100% !important;
+        object-fit: cover !important;
+    }
+
+    .experience-content {
+        padding: 20px 24px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        flex-grow: 1 !important;
+        justify-content: space-between !important;
+        gap: 8px !important;
+        height: calc(100% - 170px) !important;
+        box-sizing: border-box !important;
+    }
+
+    .experience-card h3 {
+        font-family: 'Playfair Display', serif !important;
+        font-size: 1.15rem !important;
+        font-weight: 700 !important;
+        margin: 4px 0 8px !important;
+        height: 45px !important;
+        overflow: hidden !important;
+        line-height: 1.3 !important;
+    }
+
+    .experience-card p {
+        font-size: 0.85rem !important;
+        color: var(--text-muted) !important;
+        line-height: 1.5 !important;
+        margin: 0 !important;
+        flex-grow: 1 !important;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
+    /* Top Safaris Section Cards uniformity */
+    .safari-card.mini-card {
+        display: flex !important;
+        flex-direction: column !important;
+        height: 420px !important;
+        width: 280px !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .safari-card.mini-card img {
+        height: 170px !important;
+        width: 100% !important;
+        object-fit: cover !important;
+    }
+
+    .safari-content {
+        padding: 20px 24px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        flex-grow: 1 !important;
+        justify-content: space-between !important;
+        gap: 8px !important;
+        height: calc(100% - 170px) !important;
+        box-sizing: border-box !important;
+    }
+
+    .safari-card.mini-card h3 {
+        font-family: 'Playfair Display', serif !important;
+        font-size: 1.15rem !important;
+        font-weight: 700 !important;
+        margin: 4px 0 8px !important;
+        height: 45px !important;
+        overflow: hidden !important;
+        line-height: 1.3 !important;
+    }
+
+    .safari-card.mini-card p {
+        font-size: 0.85rem !important;
+        color: var(--text-muted) !important;
+        line-height: 1.5 !important;
+        margin: 0 !important;
+        flex-grow: 1 !important;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .safari-card.mini-card .price {
+        margin: 0 !important;
+        font-weight: 800 !important;
+        color: var(--accent-gold) !important;
+        font-size: 1.1rem !important;
+    }
+
+    /* Travel Tips Section vertical column conversion */
+    .tip-item-pro {
+        display: flex !important;
+        flex-direction: column !important;
+        height: 320px !important;
+        width: 280px !important;
+        flex-shrink: 0 !important;
+        box-sizing: border-box !important;
+        justify-content: space-between !important;
+        padding: 20px 24px !important;
+        gap: 12px !important;
+    }
+
+    .tip-icon-pro {
+        width: 50px !important;
+        height: 50px !important;
+        margin-bottom: 0px !important;
+    }
+
+    .tip-info-pro {
+        display: flex !important;
+        flex-direction: column !important;
+        flex-grow: 1 !important;
+        justify-content: space-between !important;
+        height: calc(100% - 62px) !important;
+        width: 100% !important;
+    }
+
+    .tip-item-pro h3 {
+        font-family: 'Playfair Display', serif !important;
+        font-size: 1.15rem !important;
+        font-weight: 700 !important;
+        margin: 0 0 8px 0 !important;
+        height: 30px !important;
+        overflow: hidden !important;
+        line-height: 1.3 !important;
+    }
+
+    .tip-item-pro p {
+        font-size: 0.85rem !important;
+        color: var(--text-muted) !important;
+        line-height: 1.5 !important;
+        margin: 0 0 10px 0 !important;
+        flex-grow: 1 !important;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
+    /* Destinations Card Overlays */
+    .card-overlay {
+        padding: 24px !important;
+    }
+
+    /* General Heading styling overrides */
+    .experience-card h3, .safari-card h3, .destination-card h3, .tip-item-pro h3 {
+        font-family: 'Playfair Display', serif !important;
+        font-weight: 700 !important;
+        color: var(--primary-green) !important;
+    }
+
+    [data-theme="dark"] .experience-card h3, 
+    [data-theme="dark"] .safari-card h3, 
+    [data-theme="dark"] .destination-card h3,
+    [data-theme="dark"] .tip-item-pro h3 {
+        color: var(--accent-gold) !important;
+    }
+
+    /* Button alignment to match Luxury cards */
+    .safari-card .btn {
+        display: block !important;
+        border: 1px solid var(--accent-gold) !important;
+        background: transparent !important;
+        color: var(--accent-gold) !important;
+        font-size: 0.8rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 1px !important;
+        text-transform: uppercase !important;
+        padding: 12px 20px !important;
+        border-radius: 8px !important;
+        text-align: center !important;
+        text-decoration: none !important;
+        transition: all 0.3s ease !important;
+        box-shadow: none !important;
+        transform: none !important;
+        margin-top: 5px !important;
+    }
+
+    .safari-card .btn:hover {
+        background: var(--accent-gold) !important;
+        color: #000 !important;
+        border-color: var(--accent-gold) !important;
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    @media (max-width: 1024px) {
+        .stats-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 30px !important;
+        }
+        .stat-item-col:nth-child(3) {
+            border-right: none !important;
+        }
+        .luxury-cards-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 20px !important;
+        }
+        .features-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 25px !important;
+        }
+    }
+    @media (max-width: 768px) {
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+        }
+        .stat-item-col {
+            border-right: none !important;
+        }
+        .features-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+        }
+    }
+    @media (max-width: 580px) {
+        .stats-grid {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+            justify-items: start !important;
+        }
+        .stat-item-col {
+            justify-content: start !important;
+        }
+        .luxury-cards-grid {
+            grid-template-columns: 1fr !important;
+        }
+        .features-grid {
+            grid-template-columns: 1fr !important;
+            justify-items: start !important;
+            text-align: left !important;
+        }
+        .features-grid > div {
+            flex-direction: row !important;
+            justify-content: start !important;
+            gap: 15px !important;
+        }
+        .stats-bar-card {
+            padding: 20px !important;
+        }
+        .features-bar {
+            padding: 25px !important;
+        }
+    }
     </style>
     <script>
         (function() {
@@ -461,24 +846,31 @@
     <section class="hero home-hero" id="home" style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.45)), url('assets/lion5.jpeg'); background-size: cover; background-position: center 30%;">
         <div class="hero-overlay"></div>
         <div class="container hero-content">
-            <h1 class="hero-main-title">
-                <span class="discover-word" data-en="DISCOVER" data-sw="GUNDUA">DISCOVER</span>
-                <span class="tanzania-word" data-en="TANZANIA" data-sw="TANZANIA">TANZANIA</span>
-            </h1>
-            <p class="hero-subtitle" data-en="Luxury Safaris • Beach Escapes • Authentic Adventures" 
-               data-sw="Safari za Kifahari • Fukwe za Zanzibar • Safari Halisi za Afrika">
-                Luxury Safaris • Beach Escapes • Authentic Adventures
-            </p>
-            
-            <p class="hero-description" 
-               data-en="Explore the wild beauty of Tanzania with expert local guides. From the Great Migration in Serengeti to the white-sand beaches of Zanzibar."
-               data-sw="Chunguza uzuri wa ajabu wa Tanzania ukiwa na waongozaji wetu wataalamu. Kuanzia Uhamiaji Mkuu Serengeti hadi fukwe za mchanga mweupe za Zanzibar.">
-                Explore the wild beauty of Tanzania with expert local guides. From the Great Migration in Serengeti to the white-sand beaches of Zanzibar.
-            </p>
-
-            <div class="hero-btn-group">
-                <a href="safaris.html" class="btn btn-primary" data-en="PLAN YOUR SAFARI" data-sw="PANGA SAFARI YAKO">PLAN YOUR SAFARI</a>
-                <a href="destinations.html" class="btn btn-outline" data-en="EXPLORE DESTINATIONS" data-sw="MAENEO YA KUTEMBELEA">EXPLORE DESTINATIONS</a>
+            <div class="hero-flex-layout">
+                <div class="hero-text-wrap">
+                    <h1 class="hero-main-title">
+                        <span class="discover-word" data-en="DISCOVER" data-sw="GUNDUA">DISCOVER</span>
+                        <span class="tanzania-word" data-en="TANZANIA" data-sw="TANZANIA">TANZANIA</span>
+                    </h1>
+                    <p class="hero-subtitle" data-en="Luxury Safaris • Beach Escapes • Authentic Adventures" 
+                       data-sw="Safari za Kifahari • Fukwe za Zanzibar • Safari Halisi za Afrika">
+                        Luxury Safaris • Beach Escapes • Authentic Adventures
+                    </p>
+                    
+                    <p class="hero-description" 
+                       data-en="Explore the wild beauty of Tanzania with expert local guides. From the Great Migration in Serengeti to the white-sand beaches of Zanzibar."
+                       data-sw="Chunguza uzuri wa ajabu wa Tanzania ukiwa na waongozaji wetu wataalamu. Kuanzia Uhamiaji Mkuu Serengeti hadi fukwe za mchanga mweupe za Zanzibar.">
+                        Explore the wild beauty of Tanzania with expert local guides. From the Great Migration in Serengeti to the white-sand beaches of Zanzibar.
+                    </p>
+        
+                    <div class="hero-btn-group">
+                        <a href="safaris.html" class="btn btn-primary" data-en="PLAN YOUR SAFARI" data-sw="PANGA SAFARI YAKO">PLAN YOUR SAFARI</a>
+                        <a href="destinations.html" class="btn btn-outline" data-en="EXPLORE DESTINATIONS" data-sw="MAENEO YA KUTEMBELEA">EXPLORE DESTINATIONS</a>
+                    </div>
+                </div>
+                <div class="hero-logo-floating-wrap">
+                    <img src="assets/logo.png" alt="Century Adventures Logo" class="hero-logo-floating">
+                </div>
             </div>
         </div>
     </section>
@@ -957,6 +1349,173 @@
         </div>
     </section>
 
+    <!-- Luxury Safari Collection Section -->
+    <section class="section luxury-safari-collection-section" style="background-color: var(--bg-color); padding: 80px 0 100px;">
+        <div class="container">
+            <!-- 1. Stats Bar (Resembling the top part of the image) -->
+            <div class="stats-bar-card" style="background: var(--section-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 30px 40px; margin-bottom: 70px; box-shadow: var(--shadow-soft);">
+                <div class="stats-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; align-items: center; justify-items: center;">
+                    
+                    <!-- Stat 1: 14+ Years Experience -->
+                    <div class="stat-item-col" style="display: flex; align-items: center; gap: 15px; border-right: 1px solid var(--border-color); width: 100%; justify-content: center;">
+                        <div class="stat-icon" style="color: var(--accent-gold); font-size: 2.8rem; display: flex; align-items: center;"><i class="fa-solid fa-award"></i></div>
+                        <div class="stat-info-text" style="text-align: left;">
+                            <span class="stat-number" style="display: block; font-size: 1.8rem; font-weight: 700; color: var(--primary-green); line-height: 1.1;">14+</span>
+                            <span class="stat-label" style="font-size: 0.68rem; font-weight: 600; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase;" data-en="Years Experience" data-sw="Miaka ya Uzoefu">Years Experience</span>
+                        </div>
+                    </div>
+
+                    <!-- Stat 2: 10,000+ Happy Travelers -->
+                    <div class="stat-item-col" style="display: flex; align-items: center; gap: 15px; border-right: 1px solid var(--border-color); width: 100%; justify-content: center;">
+                        <div class="stat-icon" style="color: var(--accent-gold); font-size: 2.8rem; display: flex; align-items: center;"><i class="fa-solid fa-users"></i></div>
+                        <div class="stat-info-text" style="text-align: left;">
+                            <span class="stat-number" style="display: block; font-size: 1.8rem; font-weight: 700; color: var(--primary-green); line-height: 1.1;">10,000+</span>
+                            <span class="stat-label" style="font-size: 0.68rem; font-weight: 600; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase;" data-en="Happy Travelers" data-sw="Wasafiri Wenye Furaha">Happy Travelers</span>
+                        </div>
+                    </div>
+
+                    <!-- Stat 3: 50+ Custom Itineraries -->
+                    <div class="stat-item-col" style="display: flex; align-items: center; gap: 15px; border-right: 1px solid var(--border-color); width: 100%; justify-content: center;">
+                        <div class="stat-icon" style="color: var(--accent-gold); font-size: 2.8rem; display: flex; align-items: center;"><i class="fa-solid fa-suitcase-medical"></i></div>
+                        <div class="stat-info-text" style="text-align: left;">
+                            <span class="stat-number" style="display: block; font-size: 1.8rem; font-weight: 700; color: var(--primary-green); line-height: 1.1;">50+</span>
+                            <span class="stat-label" style="font-size: 0.68rem; font-weight: 600; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase;" data-en="Custom Itineraries" data-sw="Ratiba Maalum">Custom Itineraries</span>
+                        </div>
+                    </div>
+
+                    <!-- Stat 4: 100% Local Experts -->
+                    <div class="stat-item-col" style="display: flex; align-items: center; gap: 15px; border-right: 1px solid var(--border-color); width: 100%; justify-content: center;">
+                        <div class="stat-icon" style="color: var(--accent-gold); font-size: 2.8rem; display: flex; align-items: center;"><i class="fa-solid fa-map-location-dot"></i></div>
+                        <div class="stat-info-text" style="text-align: left;">
+                            <span class="stat-number" style="display: block; font-size: 1.8rem; font-weight: 700; color: var(--primary-green); line-height: 1.1;">100%</span>
+                            <span class="stat-label" style="font-size: 0.68rem; font-weight: 600; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase;" data-en="Local Experts" data-sw="Wataalamu wa Mitaa">Local Experts</span>
+                        </div>
+                    </div>
+
+                    <!-- Stat 5: 24/7 Travel Support -->
+                    <div class="stat-item-col" style="display: flex; align-items: center; gap: 15px; width: 100%; justify-content: center;">
+                        <div class="stat-icon" style="color: var(--accent-gold); font-size: 2.8rem; display: flex; align-items: center;"><i class="fa-solid fa-headset"></i></div>
+                        <div class="stat-info-text" style="text-align: left;">
+                            <span class="stat-number" style="display: block; font-size: 1.8rem; font-weight: 700; color: var(--primary-green); line-height: 1.1;">24/7</span>
+                            <span class="stat-label" style="font-size: 0.68rem; font-weight: 600; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase;" data-en="Travel Support" data-sw="Msaada 24/7">Travel Support</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 2. Section Heading -->
+            <div class="section-title-wrap" style="text-align: center; margin-bottom: 50px; position: relative;">
+                <h2 style="font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; color: var(--primary-green); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px;" data-en="Luxury Safari Collection" data-sw="Mkusanyiko wa Safari za Kifahari">Luxury Safari Collection</h2>
+                <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
+                    <div style="height: 1px; width: 80px; background: var(--accent-gold);"></div>
+                    <i class="fa-solid fa-paw" style="color: var(--accent-gold); font-size: 1.1rem;"></i>
+                    <div style="height: 1px; width: 80px; background: var(--accent-gold);"></div>
+                </div>
+            </div>
+
+            <!-- 3. Luxury Collection Cards Grid -->
+            <div class="luxury-cards-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 60px;">
+                
+                <!-- Card 1: 6 Day Northern Tanzania Safari (Best Seller) -->
+                <div class="luxury-safari-card" style="background: var(--section-bg); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-soft); display: flex; flex-direction: column; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <!-- Orange Best Seller Ribbon -->
+                    <div style="position: absolute; top: 15px; left: 15px; background: #eab308; color: #000; font-size: 10px; font-weight: 700; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.15); z-index: 5;" data-en="BEST SELLER" data-sw="MAUZO BORA">Best Seller</div>
+                    
+                    <div style="height: 200px; overflow: hidden; position: relative;">
+                        <img src="assets/lion5.jpeg" alt="Northern Tanzania Safari" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                    </div>
+                    <div style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; gap: 20px;">
+                        <div>
+                            <span style="font-size: 0.75rem; font-weight: 600; color: var(--accent-gold); letter-spacing: 1px; text-transform: uppercase;">6 Day</span>
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--primary-green); line-height: 1.3; margin: 6px 0 12px; height: 50px; overflow: hidden;" data-en="Northern Tanzania Safari" data-sw="Safari ya Kaskazini mwa Tanzania">Northern Tanzania Safari</h3>
+                            <span style="font-size: 0.9rem; color: var(--text-muted);">From <strong style="color: var(--primary-green); font-size: 1.15rem;">$2,450</strong> / Person</span>
+                        </div>
+                        <a href="6-day-northern-tanzania-highlights.html" class="btn" style="border: 1px solid var(--accent-gold); background: transparent; color: var(--accent-gold); font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 20px; border-radius: 8px; text-align: center; text-decoration: none; transition: all 0.3s ease;" data-en="View Itinerary" data-sw="Angalia Ratiba">View Itinerary</a>
+                    </div>
+                </div>
+
+                <!-- Card 2: 10 Days Luxury Safari & Zanzibar Retreat -->
+                <div class="luxury-safari-card" style="background: var(--section-bg); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-soft); display: flex; flex-direction: column; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <div style="height: 200px; overflow: hidden; position: relative;">
+                        <img src="assets/Zanzibar.jpg" alt="Luxury Safari & Zanzibar" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                    </div>
+                    <div style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; gap: 20px;">
+                        <div>
+                            <span style="font-size: 0.75rem; font-weight: 600; color: var(--accent-gold); letter-spacing: 1px; text-transform: uppercase;">10 Days</span>
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--primary-green); line-height: 1.3; margin: 6px 0 12px; height: 50px; overflow: hidden;" data-en="Luxury Safari &amp; Zanzibar Retreat" data-sw="Safari ya Kifahari na Zanzibar">Luxury Safari &amp; Zanzibar Retreat</h3>
+                            <span style="font-size: 0.9rem; color: var(--text-muted);">From <strong style="color: var(--primary-green); font-size: 1.15rem;">$8,522</strong> / Person</span>
+                        </div>
+                        <a href="10-days-luxury-safari-zanzibar.html" class="btn" style="border: 1px solid var(--accent-gold); background: transparent; color: var(--accent-gold); font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 20px; border-radius: 8px; text-align: center; text-decoration: none; transition: all 0.3s ease;" data-en="View Itinerary" data-sw="Angalia Ratiba">View Itinerary</a>
+                    </div>
+                </div>
+
+                <!-- Card 3: 10 Days Great Migration Safari -->
+                <div class="luxury-safari-card" style="background: var(--section-bg); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-soft); display: flex; flex-direction: column; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <div style="height: 200px; overflow: hidden; position: relative;">
+                        <img src="assets/century1.jpg" alt="Great Migration Safari" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                    </div>
+                    <div style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; gap: 20px;">
+                        <div>
+                            <span style="font-size: 0.75rem; font-weight: 600; color: var(--accent-gold); letter-spacing: 1px; text-transform: uppercase;">10 Days</span>
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--primary-green); line-height: 1.3; margin: 6px 0 12px; height: 50px; overflow: hidden;" data-en="Great Migration Safari" data-sw="Safari ya Uhamiaji Mkuu">Great Migration Safari</h3>
+                            <span style="font-size: 0.9rem; color: var(--text-muted);">From <strong style="color: var(--primary-green); font-size: 1.15rem;">$7,250</strong> / Person</span>
+                        </div>
+                        <a href="10-days-tanzania-great-migration.html" class="btn" style="border: 1px solid var(--accent-gold); background: transparent; color: var(--accent-gold); font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 20px; border-radius: 8px; text-align: center; text-decoration: none; transition: all 0.3s ease;" data-en="View Itinerary" data-sw="Angalia Ratiba">View Itinerary</a>
+                    </div>
+                </div>
+
+                <!-- Card 4: 12 Days South & North Tanzania Safari -->
+                <div class="luxury-safari-card" style="background: var(--section-bg); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-soft); display: flex; flex-direction: column; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <div style="height: 200px; overflow: hidden; position: relative;">
+                        <img src="assets/05TMMT-IM1105-mara-mara-tented-lodge-1475.jpg" alt="South & North Safari" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                    </div>
+                    <div style="padding: 24px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; gap: 20px;">
+                        <div>
+                            <span style="font-size: 0.75rem; font-weight: 600; color: var(--accent-gold); letter-spacing: 1px; text-transform: uppercase;">12 Days</span>
+                            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--primary-green); line-height: 1.3; margin: 6px 0 12px; height: 50px; overflow: hidden;" data-en="South &amp; North Tanzania Safari" data-sw="Safari ya Kusini na Kaskazini">South &amp; North Tanzania Safari</h3>
+                            <span style="font-size: 0.9rem; color: var(--text-muted);">From <strong style="color: var(--primary-green); font-size: 1.15rem;">$6,980</strong> / Person</span>
+                        </div>
+                        <a href="12-days-best-of-south-and-north.html" class="btn" style="border: 1px solid var(--accent-gold); background: transparent; color: var(--accent-gold); font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 20px; border-radius: 8px; text-align: center; text-decoration: none; transition: all 0.3s ease;" data-en="View Itinerary" data-sw="Angalia Ratiba">View Itinerary</a>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Bottom Features Bar (resembling the image footer icons) -->
+            <div class="features-bar" style="background-color: var(--primary-green); border-radius: 16px; padding: 25px 40px; box-shadow: var(--shadow-soft);">
+                <div class="features-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; align-items: center; justify-items: center; text-align: center; color: white;">
+                    <!-- Feature 1 -->
+                    <div style="display: flex; flex-direction: column; gap: 8px; align-items: center; width: 100%;">
+                        <i class="fa-solid fa-hotel" style="color: var(--accent-gold); font-size: 1.5rem;"></i>
+                        <span style="font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;" data-en="Handpicked Lodges &amp; Camps" data-sw="Hoteli na Kambi Zilizoteuliwa">Handpicked Lodges &amp; Camps</span>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div style="display: flex; flex-direction: column; gap: 8px; align-items: center; width: 100%;">
+                        <i class="fa-solid fa-user-tie" style="color: var(--accent-gold); font-size: 1.5rem;"></i>
+                        <span style="font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;" data-en="Expert Local Guides" data-sw="Waongozaji Wataalamu">Expert Local Guides</span>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div style="display: flex; flex-direction: column; gap: 8px; align-items: center; width: 100%;">
+                        <i class="fa-solid fa-truck-monster" style="color: var(--accent-gold); font-size: 1.5rem;"></i>
+                        <span style="font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;" data-en="Private 4x4 Safari Vehicles" data-sw="Magari Binafsi ya Safari ya 4x4">Private 4x4 Safari Vehicles</span>
+                    </div>
+                    <!-- Feature 4 -->
+                    <div style="display: flex; flex-direction: column; gap: 8px; align-items: center; width: 100%;">
+                        <i class="fa-solid fa-leaf" style="color: var(--accent-gold); font-size: 1.5rem;"></i>
+                        <span style="font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;" data-en="Sustainable Tourism" data-sw="Utalii Endelevu">Sustainable Tourism</span>
+                    </div>
+                    <!-- Feature 5 -->
+                    <div style="display: flex; flex-direction: column; gap: 8px; align-items: center; width: 100%;">
+                        <i class="fa-solid fa-shield-halved" style="color: var(--accent-gold); font-size: 1.5rem;"></i>
+                        <span style="font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;" data-en="Safety First Always" data-sw="Usalama Kwanza Daima">Safety First Always</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <!-- Instagram Feed Section -->
     <section class="section instagram-section" style="padding: 100px 0; background: var(--bg-color);">
         <div class="container">
@@ -1024,8 +1583,8 @@
                 <p data-en="Ohio Street" data-sw="Mtaa wa Ohio">Ohio Street</p>
                 <p><i class="fas fa-map-marker-alt"></i> Dar es Salaam, Tanzania</p>
                 <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/255747115390" target="_blank" style="color: inherit;">+255 747 115 390</a></p>
-                <p><i class="fas fa-envelope"></i> <a href="mailto:info@centuryadventures.com" style="color: inherit;">info@centuryadventures.com</a></p>
-                <p><i class="fas fa-envelope"></i> <a href="mailto:bookings@centuryadventures.com" style="color: inherit;">bookings@centuryadventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@century-adventures.com?subject=General%20Inquiry" style="color: inherit;">info@century-adventures.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:bookings@century-adventures.com?subject=Safari%20Booking%20Request" style="color: inherit;">bookings@century-adventures.com</a></p>
             </div>
             <div class="footer-col link-col collapsible">
                 <h3 data-en="POPULAR PLACES" data-sw="MAENEO MAARUFU">POPULAR PLACES</h3>
@@ -1079,7 +1638,7 @@
                 <a href="https://www.youtube.com/@CenturyAdventures" target="_blank"><i class="fab fa-youtube"></i></a>
                 <a href="https://www.instagram.com/century_adventures?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
                 <a href="https://wa.me/255747115390"><i class="fab fa-whatsapp"></i></a>
-                <a href="mailto:info@centuryadventures.com"><i class="fas fa-envelope"></i></a>
+                <a href="mailto:info@century-adventures.com?subject=General%20Inquiry"><i class="fas fa-envelope"></i></a>
             </div>
             <p>&copy; Copyright 2012 - 2026 | Century Adventures</p>
         </div>

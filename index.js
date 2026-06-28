@@ -1,5 +1,21 @@
 // Century Adventures - Premium Safari Interactivity
 
+// Force clear service worker and cache for development updates
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(registrations => {
+        for (let registration of registrations) {
+            registration.unregister();
+        }
+    });
+}
+if ('caches' in window) {
+    caches.keys().then(names => {
+        for (let name of names) {
+            caches.delete(name);
+        }
+    });
+}
+
 // ── Global: Mobile Menu Toggle (called via onclick from HTML) ──
 function toggleMobileMenu() {
     // Rely on DOM click event listener to prevent double-trigger issues
@@ -19,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="logo">
                         <a href="index.html" class="logo-wrap">
                             <img src="assets/logo.png" alt="Century Adventures Logo">
-                            <span class="brand-name">CENTURY ADVENTURES<span data-en="Discover. Explore. Experience." data-sw="Gundua. Chunguza. Shuhudia.">Discover. Explore. Experience.</span></span>
+                            <span class="brand-name">CENTURY<span class="brand-subname"> ADVENTURES</span><span class="brand-slogan" data-en="Discover. Explore. Experience." data-sw="Gundua. Chunguza. Shuhudia.">Discover. Explore. Experience.</span></span>
                         </a>
                     </div>
                     <nav class="nav">
@@ -28,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <li class="mobile-only-action mobile-menu-title"><i class="fas fa-bars"></i> MENU</li>
                             <li class="mobile-only-action mobile-menu-controls">
                                 <button class="toggle-btn lang-toggle" onclick="toggleLang(event)">SWAHILI</button>
-                                <button class="toggle-btn theme-toggle" onclick="toggleTheme(event)"><i class="fas fa-moon"></i> DARK</button>
+                                <button class="toggle-btn theme-toggle" onclick="toggleTheme(event)"><i class="fas fa-moon"></i> <span class="toggle-text">DARK</span></button>
                             </li>
                             <li><a href="index.html" id="nav-home" data-en="Home" data-sw="Nyumbani">Home</a></li>
                             <li class="dropdown">
@@ -99,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="header-actions">
                         <div class="header-toggles">
                             <button class="toggle-btn lang-toggle" onclick="toggleLang(event)">SWAHILI</button>
-                            <button class="toggle-btn theme-toggle" onclick="toggleTheme(event)"><i class="fas fa-moon"></i> DARK</button>
+                            <button class="toggle-btn theme-toggle" onclick="toggleTheme(event)"><i class="fas fa-moon"></i> <span class="toggle-text">DARK</span></button>
                         </div>
                         <a href="book.html" class="btn btn-primary enquire-btn" data-en="BOOK NOW" data-sw="WEKA NAFASI">BOOK NOW</a>
                     </div>
@@ -158,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
         themeBtns.forEach(themeBtn => {
             if (themeBtn) {
                 // Update button label text
-                themeBtn.innerHTML = `<i class="${theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon'}"></i> ${theme === 'dark' ? 'LIGHT' : 'DARK'}`;
+                themeBtn.innerHTML = `<i class="${theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon'}"></i> <span class="toggle-text">${theme === 'dark' ? 'LIGHT' : 'DARK'}</span>`;
             }
         });
     };
@@ -780,7 +796,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update lang toggle button label
         const langBtns = document.querySelectorAll('.lang-toggle');
         langBtns.forEach(btn => {
-            btn.textContent = lang === 'en' ? 'SWAHILI' : 'ENGLISH';
+            btn.innerHTML = lang === 'en'
+                ? '<span class="lang-label active">EN</span><span class="lang-divider">/</span><span class="lang-label">SW</span>'
+                : '<span class="lang-label">EN</span><span class="lang-divider">/</span><span class="lang-label active">SW</span>';
         });
 
         // Update Read More button labels to match current language
@@ -889,9 +907,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Click anywhere outside nav to close
     document.addEventListener('click', (e) => {
         if (nav && nav.classList.contains('active')) {
-            // Prevent drawer from closing if click target is detached from DOM
             if (!e.target.isConnected) return;
-            
             if (!nav.contains(e.target) && mobileToggle && !mobileToggle.contains(e.target)) {
                 closeMenu();
             }
@@ -1462,8 +1478,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <span>Serengeti: 28°C</span>
         </div>
     `;
-    // document.body.appendChild(weatherSection); // Available for dynamic injection
-
     // ── Global Form Submission Handler ──
     document.addEventListener('submit', (e) => {
         // Prevent actual page navigation/reload
@@ -1489,6 +1503,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const isBookForm = window.location.pathname.includes('book.html') && form.id === 'mainBookingForm';
         const isEnquireForm = window.location.pathname.includes('enquire.html') && form.id === 'mainBookingForm';
         const isSafariPageBookingForm = form.classList.contains('booking-form') && !isBookForm && !isContactForm;
+        const isCustomExperienceForm = form.classList.contains('custom-experience-form') || form.id === 'customExperienceForm';
         
         if (isContactForm) {
             name = form.querySelector('#name')?.value || '';
@@ -1508,6 +1523,20 @@ document.addEventListener('DOMContentLoaded', () => {
                    `• Safari Type: ${safariType}\n` +
                    `• Travel Date: ${travelDate}\n` +
                    `• Guests: ${travelers}\n` +
+                   `• Message: ${message}`;
+        } else if (isCustomExperienceForm) {
+            name = form.querySelector('[name="name"]')?.value || '';
+            email = form.querySelector('[name="email"]')?.value || '';
+            phone = form.querySelector('[name="phone"]')?.value || '';
+            const style = form.querySelector('[name="experience_style"]')?.value || '';
+            message = form.querySelector('[name="message"]')?.value || '';
+            
+            categoryId = 'sales';
+            text = `✨ Custom Experience Request:\n` +
+                   `• Name: ${name}\n` +
+                   `• Email: ${email}\n` +
+                   `• Phone: ${phone}\n` +
+                   `• Experience Style: ${style}\n` +
                    `• Message: ${message}`;
         } else if (isBookForm) {
             // Text inputs
@@ -1641,7 +1670,7 @@ document.addEventListener('DOMContentLoaded', () => {
                    `• Travelers: ${adults} Adults, ${children} Children\n` +
                    `• Travel Date: ${travelDate}\n` +
                    `• Special Requests: ${message}`;
-                   
+                    
             const durationMatch = packageName.match(/(\d+)-Day/i);
             const duration = durationMatch ? parseInt(durationMatch[1]) : 7;
             const guests = adults + children;
@@ -1697,9 +1726,9 @@ document.addEventListener('DOMContentLoaded', () => {
             
             let department = 'info';
             if (categoryId === 'safari') department = 'booking';
-            else if (categoryId === 'pricing') department = 'sales';
+            else if (categoryId === 'pricing' || categoryId === 'sales') department = 'sales';
             else if (categoryId === 'problem' || categoryId === 'support') department = 'support';
-
+ 
             const conv = {
                 id: 'conv-' + Date.now(),
                 visitorId: visitorIdVal,
@@ -1718,32 +1747,34 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             conversations.push(conv);
             localStorage.setItem('century-conversations', JSON.stringify(conversations));
-
+ 
             // Trigger mailto route to configured department email address
             const getRouteEmail = () => {
                 const defaults = {
-                    info: 'info@centuryadventures.com',
-                    booking: 'bookings@centuryadventures.com',
-                    support: 'support@centuryadventures.com',
-                    sales: 'sales@centuryadventures.com'
+                    info: 'info@century-adventures.com',
+                    booking: 'bookings@century-adventures.com',
+                    support: 'admin@century-adventures.com',
+                    sales: 'visit@century-adventures.com',
+                    visit: 'visit@century-adventures.com'
                 };
                 try {
                     const saved = JSON.parse(localStorage.getItem('century-routing-emails')) || defaults;
                     if (isBookForm || isSafariPageBookingForm) return saved.booking || defaults.booking;
-                    if (isEnquireForm) return saved.sales || defaults.sales;
+                    if (isEnquireForm || isCustomExperienceForm) return saved.sales || defaults.sales;
                     return saved.info || defaults.info;
                 } catch(e) {
                     if (isBookForm || isSafariPageBookingForm) return defaults.booking;
-                    if (isEnquireForm) return defaults.sales;
+                    if (isEnquireForm || isCustomExperienceForm) return defaults.sales;
                     return defaults.info;
                 }
             };
             const routeEmail = getRouteEmail();
-            const subjectPrefix = isBookForm || isSafariPageBookingForm ? 'Safari Booking Request' : (isEnquireForm ? 'Quote Inquiry' : 'Contact Inquiry');
+            const ccEmail = 'admin@century-adventures.com';
+            const subjectPrefix = isBookForm || isSafariPageBookingForm ? 'Safari Booking Request' : (isEnquireForm ? 'Quote Inquiry' : (isCustomExperienceForm ? 'Custom Experience Request' : 'Contact Inquiry'));
             const mailSubject = `${subjectPrefix} - Century Adventures`;
             const mailBody = `${text}\n\nVisitor ID: ${visitorIdVal}`;
             
-            window.open(`mailto:${routeEmail}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`, '_self');
+            window.open(`mailto:${routeEmail}?cc=${ccEmail}&subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`, '_self');
         }
         
         // Show alerts
@@ -1752,6 +1783,12 @@ document.addEventListener('DOMContentLoaded', () => {
             alertMsg = lang === 'sw' 
                 ? 'Asante kwa ombi lako! Ombi lako limepokelewa. Wataalamu wetu wa safari watawasiliana nawe ndani ya saa 24 ili kukusaidia kupanga safari yako.'
                 : 'Thank you for your enquiry! Your request has been received. Our safari experts will contact you within 24 hours to help plan your adventure.';
+            alert(alertMsg);
+            form.reset();
+        } else if (isCustomExperienceForm) {
+            alertMsg = lang === 'sw'
+                ? 'Asante! Ombi lako la uzoefu maalum limepokelewa. Washauri wetu watawasiliana nawe ndani ya saa 24.'
+                : 'Thank you! Your custom experience request has been received. Our travel planners will contact you within 24 hours.';
             alert(alertMsg);
             form.reset();
         } else if (form.classList.contains('pay-form')) {
@@ -2081,6 +2118,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── Premium Safari Assistant Widget Injection ──
     const initCommunicationCenter = () => {
+        // ── Page-load timestamp for spam protection ──
+        const PAGE_LOAD_TIME = Date.now();
+
+        // ── Reusable backend submit helper ──
+        const submitToBackend = async (formType, payload) => {
+            const elapsed = Math.floor((Date.now() - PAGE_LOAD_TIME) / 1000);
+            const body = Object.assign({ form_type: formType, _elapsed: elapsed, website: '' }, payload);
+            try {
+                const res = await fetch('submit-form.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body),
+                });
+                return await res.json();
+            } catch (err) {
+                console.warn('[CenturyAdv] Backend submit failed, email not sent:', err);
+                return { success: false, message: 'Network error' };
+            }
+        };
+
         // ── Data Layer: localStorage persistence ──
         const VISITOR_KEY = 'century-visitor-id';
         const CONV_KEY = 'century-conversations';
@@ -2129,10 +2186,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const getRoutingEmails = () => {
             const defaults = {
-                info: 'info@centuryadventures.com',
-                booking: 'bookings@centuryadventures.com',
-                support: 'support@centuryadventures.com',
-                sales: 'sales@centuryadventures.com'
+                info: 'info@century-adventures.com',
+                booking: 'bookings@century-adventures.com',
+                support: 'admin@century-adventures.com',
+                sales: 'visit@century-adventures.com',
+                admin: 'admin@century-adventures.com'
             };
             try {
                 return JSON.parse(localStorage.getItem('century-routing-emails')) || defaults;
@@ -2233,7 +2291,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <span style="font-size: 0.75rem; font-weight: 600;">💬 Chat with a Safari Expert</span>
                                 <i class="fas fa-chevron-right comm-menu-arrow"></i>
                             </div>
-                            <a href="mailto:info@centuryadventures.com" class="comm-menu-item" style="padding: 10px 12px; margin: 0; background: #fff; text-decoration: none; color: inherit;">
+                            <a href="mailto:info@century-adventures.com?cc=admin@century-adventures.com" class="comm-menu-item" style="padding: 10px 12px; margin: 0; background: #fff; text-decoration: none; color: inherit;">
                                 <i class="far fa-envelope comm-menu-icon" style="color: var(--accent-gold); font-size: 0.95rem;"></i>
                                 <span style="font-size: 0.75rem; font-weight: 600;">📧 Send an Email</span>
                                 <i class="fas fa-chevron-right comm-menu-arrow"></i>
@@ -2270,6 +2328,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <option value="Accommodation">Accommodation</option>
                             <option value="Volunteer Programs">Volunteer Programs</option>
                             <option value="General Inquiries">General Inquiries</option>
+                            <option value="Website Issues">Website Issues</option>
                         </select>
                         <label>Your Message</label>
                         <textarea name="message" placeholder="Type your message details here..." required></textarea>
@@ -2698,11 +2757,14 @@ document.addEventListener('DOMContentLoaded', () => {
             convs.push(conv);
             saveConversations(convs);
 
-            // Open mailto with quote details
-            const subject = encodeURIComponent('Quote Request - Century Adventures');
-            const body = encodeURIComponent(`Quote Request from Century Adventures Website\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nDestination: ${dest}\nTravel Dates: ${dates}\nNumber of Travelers: ${travelers}\nBudget Range: ${budget}\nAdditional Details: ${details}\n\nVisitor ID: ${visitorId}`);
-            const emails = getRoutingEmails();
-            window.open(`mailto:${emails.sales}?subject=${subject}&body=${body}`, '_self');
+            // Submit to PHP backend
+            submitToBackend('quote', {
+                name, email, phone,
+                destination: dest, dates, travelers, budget, details,
+                conv_id: conv.id,
+            }).then(result => {
+                if (!result.success) console.warn('[CenturyAdv] Quote email error:', result.message);
+            });
 
             form.style.display = 'none';
             document.getElementById('quoteSuccess').style.display = 'block';
@@ -2749,11 +2811,14 @@ document.addEventListener('DOMContentLoaded', () => {
             convs.push(conv);
             saveConversations(convs);
 
-            // Open mailto
-            const subject = encodeURIComponent(`Issue Report - ${issueType} - Century Adventures`);
-            const body = encodeURIComponent(`Issue Report from Century Adventures Website\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nIssue Type: ${issueType}\nDescription: ${description}\n\nVisitor ID: ${visitorId}`);
-            const emails = getRoutingEmails();
-            window.open(`mailto:${emails.support}?subject=${subject}&body=${body}`, '_self');
+            // Submit to PHP backend
+            submitToBackend('report', {
+                name, email, phone,
+                issue_type: issueType, description,
+                conv_id: conv.id,
+            }).then(result => {
+                if (!result.success) console.warn('[CenturyAdv] Report email error:', result.message);
+            });
 
             form.style.display = 'none';
             document.getElementById('reportSuccess').style.display = 'block';
@@ -2775,16 +2840,23 @@ document.addEventListener('DOMContentLoaded', () => {
             // Update visitor identity so identity changes persist
             identifyVisitor(name, email);
 
-            // Map subject to category ID
+            // Map subject to category ID and department according to routing rules
             let categoryId = 'general';
-            if (subject === 'Safari Bookings') categoryId = 'safari';
-            else if (subject === 'Accommodation') categoryId = 'accommodation';
-            else if (subject === 'Volunteer Programs') categoryId = 'volunteer';
-
             let department = 'info';
-            if (categoryId === 'safari') department = 'booking';
-            else if (categoryId === 'accommodation') department = 'info';
-            else if (categoryId === 'volunteer') department = 'info';
+
+            if (subject === 'Safari Bookings') {
+                categoryId = 'safari';
+                department = 'booking';
+            } else if (subject === 'Destinations' || subject === 'Volunteer Programs' || subject === 'General Inquiries') {
+                categoryId = 'general';
+                department = 'info';
+            } else if (subject === 'Travel Plans' || subject === 'Accommodation') {
+                categoryId = 'support';
+                department = 'visit';
+            } else if (subject === 'Website Issues') {
+                categoryId = 'problem';
+                department = 'admin';
+            }
 
             const convs = loadConversations();
             const conv = {
@@ -2806,16 +2878,13 @@ document.addEventListener('DOMContentLoaded', () => {
             convs.push(conv);
             saveConversations(convs);
 
-            // Open mailto trigger for notification
-            const emails = getRoutingEmails();
-            let targetEmail = emails.info;
-            if (categoryId === 'safari') targetEmail = emails.booking;
-            else if (categoryId === 'accommodation') targetEmail = emails.info;
-            else if (categoryId === 'volunteer') targetEmail = emails.info;
-
-            const mailSubject = encodeURIComponent(`[Century Adventures Support] ${subject}`);
-            const mailBody = encodeURIComponent(`New Inquiry from Century Adventures Support Center:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nSubject: ${subject}\nMessage: ${message}\n\nVisitor ID: ${visitorId}`);
-            window.open(`mailto:${targetEmail}?subject=${mailSubject}&body=${mailBody}`, '_self');
+            // Submit to PHP backend
+            submitToBackend('support', {
+                name, email, phone, subject, message,
+                conv_id: conv.id,
+            }).then(result => {
+                if (!result.success) console.warn('[CenturyAdv] Support email error:', result.message);
+            });
 
             form.style.display = 'none';
             const successEl = document.getElementById('supportSuccess');
@@ -3086,29 +3155,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentLang = localStorage.getItem('century-lang') || 'en';
     applyLang(currentLang);
 
-    // Register PWA Service Worker (with forced update check)
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('sw.js')
-                .then(registration => {
-                    console.log('Century Adventures PWA Service Worker registered:', registration.scope);
-                    // Check for updates every time the page loads
-                    registration.update();
-                    // When a new SW is found, tell it to activate immediately
-                    registration.addEventListener('updatefound', () => {
-                        const newWorker = registration.installing;
-                        newWorker.addEventListener('statechange', () => {
-                            if (newWorker.state === 'activated') {
-                                console.log('New Century Adventures SW activated – refreshing for latest content.');
-                            }
-                        });
-                    });
-                })
-                .catch(error => {
-                    console.error('Century Adventures PWA Service Worker registration failed:', error);
-                });
-        });
-    }
+    // PWA Service Worker Registration suspended for development cache clearance
 
     console.log("Century Adventures Exceptional Features: Weather, Currency, Wishlist & Comparison Engines Ready.");
 });

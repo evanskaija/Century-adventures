@@ -45,6 +45,10 @@
     --accent-gold: #f2c94c; 
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -71,20 +75,22 @@ body {
 /* Header Toggles */
 .header-toggles {
     display: flex;
-    gap: 8px;
-    margin-right: 10px;
-    border-right: 1px solid var(--border-color);
-    padding-right: 10px;
+    gap: 2px;
+    margin-right: 0;
+    border-right: none;
+    padding-right: 0;
+    align-items: center;
 }
 
 .header .header-toggles .toggle-btn {
     color: #ffffff !important;
-    border: 1px solid rgba(255, 255, 255, 0.35) !important;
-    background: rgba(0, 0, 0, 0.12) !important;
-    font-size: 0.68rem;
-    padding: 6px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    background: rgba(255,255,255,0.07) !important;
+    font-size: 0.6rem;
+    padding: 4px 7px;
     white-space: nowrap;
     flex-shrink: 0;
+    border-radius: 4px;
 }
 
 .header .header-toggles .toggle-btn:hover {
@@ -218,7 +224,11 @@ body {
 }
 
 .header-main-nav {
-    padding: 10px 0;
+    width: 100%;
+    flex: 1 1 100%;
+    display: flex;
+    align-items: center;
+    padding: 0;
 }
 
 .header.scrolled {
@@ -267,11 +277,20 @@ body {
     white-space: nowrap;
     transition: var(--transition);
     text-decoration: none;
-    display: flex;
-    flex-direction: column;
+    display: block;
 }
 
-.brand-name span {
+.brand-subname {
+    display: inline !important;
+    font-family: inherit !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    color: inherit !important;
+    letter-spacing: inherit !important;
+    text-transform: inherit !important;
+}
+
+.brand-name .brand-slogan {
     display: block;
     font-size: 0.58rem !important;
     letter-spacing: 0.8px !important;
@@ -284,18 +303,42 @@ body {
 
 .header-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    gap: 0;
 }
 
 @media (min-width: 993px) {
     .header .logo {
-        margin-right: 40px;
+        margin-right: 10px;
         flex-shrink: 0;
     }
 
+    .header .logo img,
+    .header .logo-wrap img {
+        height: 54px !important;
+    }
+
     .header .nav {
-        margin-left: 24px;
+        flex-shrink: 1;
+        min-width: 0;
+        overflow: visible;
+    }
+
+    .header .nav ul {
+        gap: 0;
+    }
+
+    .header .nav ul li a {
+        font-size: 0.72rem !important;
+        padding: 6px 5px !important;
+        letter-spacing: 0px !important;
+    }
+
+    .header-actions {
+        margin-left: auto !important;
+        padding-left: 14px;
+        flex-shrink: 0;
     }
 }
 
@@ -312,7 +355,7 @@ body {
     display: flex;
     list-style: none;
     align-items: center;
-    gap: 10px;
+    gap: 4px;
 }
 
 .dropdown {
@@ -412,16 +455,19 @@ body {
 
 .enquire-btn {
     text-decoration: none !important;
-    padding: 10px 22px !important;
-    font-size: 0.78rem !important;
+    padding: 7px 14px !important;
+    font-size: 0.7rem !important;
     border-radius: 30px !important;
-    margin-left: 10px;
+    margin-left: 3px;
+    white-space: nowrap;
 }
 
 .header-actions {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 2px;
+    flex-shrink: 0;
+    margin-left: auto;
 }
 
 /* Destinations Dropdown Down Scroll */
@@ -1100,6 +1146,35 @@ h2 {
     display: none;
 }
 
+/* ── Mobile: Close button shows inside right-side drawer ── */
+@media (max-width: 992px) {
+    .nav-close-btn {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        position: absolute !important;
+        top: 14px !important;
+        right: 14px !important;
+        width: 40px !important;
+        height: 40px !important;
+        border-radius: 50% !important;
+        background: rgba(255,255,255,0.12) !important;
+        border: 1.5px solid rgba(255,255,255,0.25) !important;
+        color: #ffffff !important;
+        font-size: 1.1rem !important;
+        cursor: pointer !important;
+        z-index: 10010 !important;
+        transition: background 0.2s ease !important;
+        padding: 0 !important;
+    }
+    .nav-close-btn span {
+        display: none !important;
+    }
+    .nav-close-btn:hover {
+        background: rgba(255,255,255,0.22) !important;
+    }
+}
+
 /* ── Mobile Nav Overlay (dark backdrop behind slide-out menu) ── */
 .nav-overlay {
     position: fixed;
@@ -1201,37 +1276,43 @@ h2 {
         box-sizing: border-box !important;
     }
 
-    /* ── Slide-out nav panel ── */
+    /* ── Slide-out nav panel: Slide from RIGHT ── */
     .nav {
         position: fixed;
         top: 0;
-        right: -105%;
-        width: 325px;
-        max-width: 85vw;
+        right: -105%; /* Slide from right */
+        left: auto !important;
+        width: 340px;
+        max-width: 88vw;
         height: 100vh;
-        background: linear-gradient(135deg, rgba(27, 67, 50, 0.98) 0%, rgba(139, 94, 60, 0.98) 50%, rgba(212, 175, 55, 0.15) 100%) !important;
+        background: linear-gradient(160deg, #1b4332 0%, #2d4a2d 40%, #4a3520 80%, rgba(212, 175, 55, 0.12) 100%) !important;
         backdrop-filter: blur(24px) !important;
         -webkit-backdrop-filter: blur(24px) !important;
         z-index: 10005 !important;
-        padding: 50px 0 20px 0; /* Clear circular close button */
+        padding: 0;
         transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        box-shadow: -15px 0 45px rgba(0,0,0,0.25) !important;
+        box-shadow: -15px 0 50px rgba(0,0,0,0.4) !important;
         overflow-y: auto;
         overflow-x: hidden;
         display: flex;
         flex-direction: column;
-        border-left: 1px solid rgba(212, 175, 55, 0.3) !important;
+        border-left: 1px solid rgba(212, 175, 55, 0.25) !important;
+        border-right: none !important;
         border-top-left-radius: 24px !important;
         border-bottom-left-radius: 24px !important;
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
         -webkit-overflow-scrolling: touch;
         box-sizing: border-box;
     }
     [data-theme="dark"] .nav {
-        background: linear-gradient(135deg, rgba(15, 40, 30, 0.98) 0%, rgba(95, 60, 40, 0.98) 50%, rgba(175, 140, 45, 0.15) 100%) !important;
-        border-left: 1px solid rgba(212, 175, 55, 0.3) !important;
+        background: linear-gradient(160deg, #0d2618 0%, #1a2e1a 40%, #2e1f0d 80%, rgba(175, 140, 45, 0.12) 100%) !important;
+        border-left: 1px solid rgba(212, 175, 55, 0.25) !important;
+        border-right: none !important;
     }
     .nav.active {
         right: 0;
+        left: auto !important;
     }
 
     /* Clean links display: no slide-in animation to guarantee zero rendering lag, text blur, or flicker */
@@ -1348,6 +1429,111 @@ h2 {
         align-items: center;
         gap: 10px;
     }
+
+    /* ── Mobile nav: relative for positioning close button ── */
+    .nav {
+        position: fixed;
+    }
+
+    /* ── Mobile: MENU title row ── */
+    .mobile-menu-title {
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        padding: 72px 28px 16px 28px !important;
+        font-size: 1.25rem !important;
+        font-weight: 800 !important;
+        letter-spacing: 2px !important;
+        color: #ffffff !important;
+        text-transform: uppercase !important;
+        font-family: 'Cinzel', serif !important;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+        margin-bottom: 8px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        list-style: none !important;
+    }
+    .mobile-menu-title i {
+        color: var(--accent-gold) !important;
+        font-size: 1.1rem !important;
+    }
+
+    /* ── Mobile: SWAHILI / DARK toggle row ── */
+    .mobile-menu-controls {
+        display: flex !important;
+        gap: 10px !important;
+        padding: 8px 28px 18px 28px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.15) !important;
+        margin-bottom: 4px !important;
+        list-style: none !important;
+    }
+    .mobile-menu-controls .toggle-btn {
+        flex: 1 !important;
+        padding: 9px 12px !important;
+        font-size: 0.78rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.8px !important;
+        border-radius: 8px !important;
+        border: 1.5px solid rgba(255,255,255,0.3) !important;
+        background: rgba(255,255,255,0.08) !important;
+        color: #ffffff !important;
+        cursor: pointer !important;
+        text-align: center !important;
+        transition: background 0.2s ease !important;
+        white-space: nowrap !important;
+    }
+    .mobile-menu-controls .toggle-btn:hover {
+        background: rgba(212, 175, 55, 0.2) !important;
+        border-color: var(--accent-gold) !important;
+    }
+    .mobile-menu-controls .lang-toggle {
+        color: var(--accent-gold) !important;
+        border-color: var(--accent-gold) !important;
+        background: rgba(212, 175, 55, 0.1) !important;
+    }
+
+    /* ── Mobile: BOOK NOW pill at bottom ── */
+    .mobile-only-action.book-now-item {
+        display: flex !important;
+        padding: 20px 28px 28px 28px !important;
+        margin-top: auto !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        border-top: 1px solid rgba(212, 175, 55, 0.15) !important;
+        list-style: none !important;
+    }
+    .mobile-only-action.book-now-item a {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        padding: 14px 24px !important;
+        border-radius: 50px !important;
+        background: var(--accent-gold) !important;
+        color: #1a0a00 !important;
+        font-size: 1rem !important;
+        font-weight: 800 !important;
+        letter-spacing: 2px !important;
+        text-decoration: none !important;
+        border: none !important;
+        border-left: none !important;
+        text-transform: uppercase !important;
+        box-shadow: 0 4px 20px rgba(212, 175, 55, 0.35) !important;
+        transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
+    }
+    .mobile-only-action.book-now-item a:hover {
+        background: #f0cc50 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 28px rgba(212, 175, 55, 0.55) !important;
+    }
+
+    /* ── Mobile: Hide items that are desktop-only ── */
+    .mobile-only-action {
+        display: flex !important;
+    }
+
     /* ── Mobile Header Size ── */
     .header {
         width: 100% !important;
@@ -1406,19 +1592,25 @@ h2 {
     }
 
     .brand-name {
-        font-size: clamp(0.75rem, 3.2vw, 1.1rem) !important;
+        font-size: clamp(0.65rem, 2.8vw, 0.95rem) !important;
         font-family: 'Cinzel', serif !important;
         color: var(--accent-gold) !important;
-        display: block !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
+        display: inline-flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        flex-wrap: nowrap !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        white-space: nowrap !important;
+        letter-spacing: 0.5px !important;
     }
 
-    .brand-name span {
-        display: block !important;
-        font-size: 0.42rem !important;
-        letter-spacing: 1.5px !important;
-        color: #ffffff !important;
+    .brand-name .brand-subname {
+        display: inline !important;
+        font-size: inherit !important;
+        letter-spacing: inherit !important;
+        color: inherit !important;
+        white-space: nowrap !important;
     }
 
     /* ── Mobile Toggle (Reduced size) ── */
@@ -3457,8 +3649,8 @@ iframe.goog-te-menu-frame {
 
     /* ── Experts section ── */
     .experts-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
     }
 
     /* ── Promo box ── */
@@ -3522,7 +3714,7 @@ iframe.goog-te-menu-frame {
         letter-spacing: 0.8px !important;
     }
 
-    .brand-name span {
+    .brand-name .brand-slogan {
         font-size: 0.38rem !important;
         letter-spacing: 1px !important;
     }
@@ -7253,182 +7445,7 @@ iframe.goog-te-menu-frame {
     justify-content: center;
 }
 
-/* Keep the full home navigation fitting across the desktop header */
-@media (min-width: 993px) {
-    .header {
-        width: 100% !important;
-        max-width: 100% !important;
-        top: 0 !important;
-        border-radius: 0 !important;
-        border-left: none !important;
-        border-right: none !important;
-        border-top: none !important;
-        margin: 0 !important;
-        padding: 8px 0;
-    }
-
-    .header .container.header-content {
-        max-width: none;
-        padding-left: clamp(12px, 1.35vw, 22px);
-        padding-right: clamp(12px, 1.35vw, 22px);
-        gap: clamp(8px, 1vw, 16px);
-    }
-
-    /* Connect the dropdown menu directly to the header strip with bottom border radius */
-    .dropdown-menu,
-    .nav ul li.dropdown .dropdown-menu {
-        top: 100% !important;
-        border-top-left-radius: 0 !important;
-        border-top-right-radius: 0 !important;
-        border-bottom-left-radius: 12px !important;
-        border-bottom-right-radius: 12px !important;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
-    }
-
-    .header .logo {
-        flex: 0 1 245px;
-        margin-right: 0;
-    }
-
-    .logo-wrap {
-        gap: 9px;
-    }
-
-    .header .logo img,
-    .logo-wrap img {
-        height: 62px;
-    }
-
-
-
-    .brand-name {
-        font-size: clamp(1.15rem, 1.35vw, 1.6rem);
-        letter-spacing: 1.2px;
-    }
-
-    .brand-name span {
-        font-size: clamp(0.55rem, 0.65vw, 0.75rem);
-        letter-spacing: 2.2px;
-        margin-top: 4px;
-    }
-
-    /* ── Hero section desktop adjustments ── */
-    .hero {
-        margin-top: 78px !important;
-        padding-top: 90px !important;
-        padding-bottom: 25px !important;
-        height: calc(100vh - 78px) !important;
-        min-height: 650px !important;
-    }
-
-    .hero-logo-large {
-        margin-top: 45px !important;
-        margin-bottom: 20px !important;
-    }
-
-    .hero-logo-large img {
-        height: 135px !important;
-    }
-
-    .hero h1 {
-        font-size: clamp(3.2rem, 4vw, 4.2rem) !important;
-        margin-bottom: 18px !important;
-    }
-
-    .hero-tagline {
-        font-size: clamp(1.1rem, 1.25vw, 1.45rem) !important;
-        margin-bottom: 24px !important;
-    }
-
-    .hero-desc {
-        font-size: clamp(0.92rem, 1.05vw, 1.15rem) !important;
-        max-width: 800px !important;
-        margin-bottom: 28px !important;
-    }
-
-    .header .nav {
-        margin-left: 0;
-        min-width: 0;
-    }
-
-    .header .nav > ul {
-        flex-wrap: nowrap;
-        gap: clamp(2px, 0.35vw, 6px);
-        justify-content: center;
-        padding: 6px 18px;
-        margin: 0;
-        background: rgba(0, 0, 0, 0.22);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 50px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .header .nav ul li a {
-        font-size: clamp(0.58rem, 0.62vw, 0.68rem) !important;
-        padding: 4px clamp(4px, 0.46vw, 7px);
-        letter-spacing: 0.2px;
-    }
-
-    .header .nav ul li a i {
-        font-size: 0.62em;
-        margin-left: 3px;
-    }
-
-    .header-actions {
-        flex: 0 0 auto;
-        gap: 4px;
-        margin-left: 0;
-        padding: 2px;
-    }
-
-    .header-toggles {
-        gap: 4px;
-        margin-right: 4px;
-        padding-right: 6px;
-    }
-
-    .header .header-toggles .toggle-btn {
-        padding: 4px 6px;
-        font-size: 0.52rem;
-        letter-spacing: 0.15px;
-    }
-
-    .header .enquire-btn {
-        margin-left: 0;
-        padding: 7px 13px !important;
-        font-size: 0.62rem !important;
-        letter-spacing: 0.25px;
-    }
-}
-
-@media (min-width: 993px) and (max-width: 1180px) {
-    .header {
-        top: 8px;
-    }
-
-    .header .container.header-content {
-        flex-wrap: wrap;
-        row-gap: 6px;
-    }
-
-    .header .logo {
-        flex-basis: auto;
-    }
-
-    .header .nav {
-        flex: 1 0 100%;
-        order: 3;
-    }
-
-    .header .nav > ul {
-        justify-content: center;
-    }
-
-    .header .nav ul li a {
-        font-size: 0.62rem !important;
-        padding: 3px 7px;
-    }
-}
+/* Removed duplicate desktop header styling */
 
 .destinations-slider-container {
     position: relative;
@@ -7690,7 +7707,7 @@ iframe.goog-te-menu-frame {
         max-width: calc(100vw - 172px) !important;
     }
 
-    .brand-name span {
+    .brand-name .brand-slogan {
         display: none !important;
     }
 
@@ -10259,50 +10276,7 @@ html:not([data-theme="dark"]) .dropdown-menu a.active {
     }
 }
 
-/* ── Header Grid layout on Desktop ── */
-@media (min-width: 993px) {
-    .header-content {
-        display: grid !important;
-        grid-template-areas: 
-            "logo actions"
-            "nav nav" !important;
-        grid-template-columns: auto auto !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        row-gap: 15px !important;
-    }
-    
-    .logo {
-        grid-area: logo !important;
-    }
-    
-    .header-actions {
-        grid-area: actions !important;
-        display: flex !important;
-        align-items: center !important;
-        background: transparent !important;
-        padding: 0 !important;
-        border-radius: 0 !important;
-        gap: 12px !important;
-    }
-    
-    .nav {
-        grid-area: nav !important;
-        width: 100% !important;
-        display: flex !important;
-        justify-content: center !important;
-        margin: 0 !important;
-        padding-top: 12px !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
-    }
-    
-    .nav ul {
-        display: flex !important;
-        justify-content: center !important;
-        width: 100% !important;
-        gap: 18px !important;
-    }
-}
+/* Removed desktop grid layout styling */
 
 /* ── Admin Dashboard Common Styles & Authentication Overlay ── */
 /* NOTE: Dark variable block removed – use body.admin-theme.dark-mode below instead */
@@ -11652,90 +11626,7 @@ body.admin-theme:not(.dark-mode) [style*="color:#0f766e"] { color: #0f766e !impo
     }
 }
 
-/* ==========================================
-   DESKTOP SINGLE-LINE HEADER REFINEMENTS
-   ========================================== */
-@media (min-width: 993px) {
-    /* Force main header content into a single row */
-    .header-content {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        gap: clamp(15px, 2vw, 35px) !important;
-        grid-template-areas: none !important;
-        grid-template-columns: none !important;
-        height: 75px !important;
-        row-gap: 0 !important;
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
-    }
-
-    .logo {
-        grid-area: auto !important;
-        flex: 0 0 auto !important;
-    }
-
-    .header-actions {
-        grid-area: auto !important;
-        flex: 0 0 auto !important;
-        display: flex !important;
-        align-items: center !important;
-        background: transparent !important;
-        padding: 0 !important;
-        border-radius: 0 !important;
-        gap: 15px !important;
-    }
-
-    /* Hide language/theme toggles on desktop for clean premium look */
-    .header-toggles {
-        display: none !important;
-    }
-
-    /* Center navigation links */
-    .header .nav {
-        grid-area: auto !important;
-        flex: 1 1 auto !important;
-        display: flex !important;
-        justify-content: center !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        border-top: none !important;
-    }
-
-    /* Remove capsule styling from nav links on desktop */
-    .header .nav > ul {
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        background: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        border-radius: 0 !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        gap: clamp(12px, 1.8vw, 28px) !important;
-    }
-
-    /* Premium white text navigation links */
-    .header .nav ul li a {
-        color: #ffffff !important;
-        font-size: clamp(0.85rem, 0.95vw, 1.05rem) !important;
-        font-weight: 600 !important;
-        letter-spacing: 0.5px !important;
-        text-transform: uppercase !important;
-        padding: 8px 12px !important;
-        transition: color 0.3s ease !important;
-        background: transparent !important;
-        border: none !important;
-    }
-
-    /* Gold active & hover links */
-    .header .nav ul li a:hover,
-    .header .nav ul li a.active {
-        color: var(--accent-gold) !important;
-    }
-}
+/* Removed single line refinements duplicate */
 
 /* ==========================================
    HOMEPAGE TRANSPARENT HERO OVERLAY
@@ -11796,69 +11687,141 @@ body.transparent-header-active .home-hero {
         border-top: none !important;
         border-left: none !important;
         border-right: none !important;
+        box-sizing: border-box !important;
+        padding-left: 15px !important; /* Header padding 15px left */
+        padding-right: 20px !important; /* Header padding 20px right */
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        background: #0b1a13 !important; /* Solid deep forest green */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
     }
-}
 
-@media (max-width: 768px) {
-    .header {
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        border-radius: 0 !important;
-        border-top: none !important;
-        border-left: none !important;
-        border-right: none !important;
-    }
-}
-
-/* ==========================================
-   MOBILE HEADER TOGGLE SQUEEZED TO THE RIGHT & STYLE IMPROVEMENTS
-   ========================================== */
-@media (max-width: 992px) {
+    /* Force header-content into a single-line flexbox spanning 100% width */
     .header-content {
         display: flex !important;
         flex-direction: row !important;
         justify-content: space-between !important;
         align-items: center !important;
         width: 100% !important;
-        padding-left: 18px !important;
-        padding-right: 18px !important;
+        max-width: 100% !important; /* Disable any container max-width limit */
+        padding-left: 0 !important; /* Padding handled by .header container */
+        padding-right: 0 !important;
+        gap: clamp(25px, 4vw, 40px) !important; /* Gap between title and menu: 25px-40px minimum */
         box-sizing: border-box !important;
+        margin: 0 !important;
+        height: 72px !important;
     }
 
+    /* Hide header-actions on mobile to make hamburger menu sit at extreme right */
     .header-actions {
         display: none !important;
     }
 
+    /* Logo section styling on mobile: Keep logo and text on the left side */
+    .logo {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        max-width: calc(100% - 68px) !important; /* Reserve space for the 48px hamburger + padding */
+        min-width: 0 !important;
+        flex-shrink: 1 !important;
+        overflow: visible !important;
+    }
+
+    .logo-wrap {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        min-width: 0 !important;
+        width: 100% !important;
+        gap: 8px !important;
+        overflow: visible !important;
+    }
+
+    .header .logo img,
+    .logo img,
+    .logo-wrap img {
+        height: 40px !important;
+        width: 40px !important;
+        aspect-ratio: 1 / 1 !important;
+        background: #ffffff !important;
+        border-radius: 50% !important;
+        padding: 3px !important;
+        box-sizing: border-box !important;
+        object-fit: contain !important;
+        flex-shrink: 0 !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    /* Mobile brand name: ONE horizontal line — CENTURY ADVENTURES side by side */
+    .brand-name {
+        font-family: 'Cinzel', serif !important;
+        display: inline-flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        flex-wrap: nowrap !important;
+        white-space: nowrap !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        min-width: 0 !important;
+        color: var(--accent-gold) !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        font-size: clamp(11px, 3.4vw, 16px) !important;
+        letter-spacing: 0.5px !important;
+        line-height: 1 !important;
+    }
+
+    /* brand-subname is inline — sits right after CENTURY on the same row */
+    .brand-subname {
+        display: inline !important;
+        font-size: inherit !important;
+        letter-spacing: inherit !important;
+        color: inherit !important;
+        margin-top: 0 !important;
+        white-space: nowrap !important;
+    }
+
+    .brand-name .brand-slogan {
+        display: none !important; /* Hide slogan on mobile for cleaner header */
+    }
+
+    /* Configure circular mobile menu toggle: placed at far right corner */
     .mobile-toggle {
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
         align-items: center !important;
         gap: 5px !important;
-        width: 46px !important;
-        height: 46px !important;
+        width: 48px !important; /* Minimum size 48px */
+        height: 48px !important;
+        min-width: 48px !important;
+        min-height: 48px !important;
         padding: 0 !important;
-        background: var(--accent-gold) !important; /* Gold background for easy visibility */
-        border: none !important;
+        background: transparent !important; /* Transparent background */
+        border: 2px solid var(--accent-gold) !important; /* Gold border outline */
         border-radius: 50% !important; /* Circular background */
         cursor: pointer !important;
-        z-index: 10010 !important; /* Sits above slide-in nav menu */
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
-        margin-left: auto !important; /* Force to the absolute right side */
-        transition: background 0.3s ease, transform 0.2s ease !important;
+        z-index: 200000 !important; /* High z-index to stay visible above all elements */
+        box-shadow: none !important;
+        
+        position: absolute !important; /* Placed independently in the top-right corner */
+        top: 12px !important; /* Keep 10px-15px space from the top edge */
+        right: 15px !important; /* Keep 10px-15px space from the right edge */
+        margin: 0 !important;
+        flex-shrink: 0 !important;
+        transition: border-color 0.3s ease, transform 0.2s ease !important;
     }
 
     [data-theme="dark"] .mobile-toggle {
-        background: var(--accent-gold) !important;
+        background: transparent !important;
+        border-color: var(--accent-gold) !important;
     }
 
     .mobile-toggle .bar {
-        width: 22px !important; /* Wider bars for readability */
+        width: 22px !important;
         height: 2px !important;
-        background: #000000 !important; /* Black bars on gold background for high contrast */
+        background: var(--accent-gold) !important; /* Gold bars on transparent background */
         border-radius: 2px !important;
         display: block !important;
         transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
@@ -11878,3 +11841,499 @@ body.transparent-header-active .home-hero {
     }
 }
 
+/* Specific overrides for screens below 480px */
+@media (max-width: 480px) {
+    .header .logo img,
+    .logo img,
+    .logo-wrap img {
+        height: 34px !important;
+        width: 34px !important;
+    }
+
+    .brand-name {
+        font-size: clamp(9px, 3vw, 13px) !important;
+    }
+
+    .mobile-toggle {
+        right: 10px !important;
+    }
+}
+
+/* ==========================================
+   PREMIUM DESKTOP HEADER — CLEAN 3-COLUMN LAYOUT
+   LEFT: Logo + Brand | CENTER: Nav Pill | RIGHT: Toggles + Book Now
+   ========================================== */
+@media (min-width: 993px) {
+    /* ── Hero section desktop adjustments ── */
+    .hero {
+        margin-top: 80px !important;
+        padding-top: 90px !important;
+        padding-bottom: 25px !important;
+        height: calc(100vh - 80px) !important;
+        min-height: 650px !important;
+    }
+
+    .hero-logo-large {
+        margin-top: 45px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .hero-logo-large img {
+        height: 135px !important;
+    }
+
+    .hero h1 {
+        font-size: clamp(3.2rem, 4vw, 4.2rem) !important;
+        margin-bottom: 18px !important;
+    }
+
+    .hero-tagline {
+        font-size: clamp(1.1rem, 1.25vw, 1.45rem) !important;
+        margin-bottom: 24px !important;
+    }
+
+    .hero-desc {
+        font-size: clamp(0.92rem, 1.05vw, 1.15rem) !important;
+        max-width: 800px !important;
+        margin-bottom: 28px !important;
+    }
+
+    /* ── Header Container ── */
+    .header {
+        height: 80px !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        z-index: 9999 !important;
+        background: rgba(11, 26, 19, 0.92) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.15) !important;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3) !important;
+        display: flex !important;
+        align-items: center !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    [data-theme="dark"] .header {
+        background: rgba(5, 12, 9, 0.95) !important;
+        border-color: rgba(212, 175, 55, 0.1) !important;
+    }
+
+    /* Header content container */
+    .header-content {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+        padding: 0 clamp(6px, 1.2vw, 16px) !important;
+        gap: clamp(6px, 1vw, 16px) !important;
+        box-sizing: border-box !important;
+        height: 80px !important;
+    }
+
+    /* COLUMN 1: Logo & Brand */
+    .logo {
+        flex: 0 0 auto !important;
+        display: flex !important;
+        align-items: center !important;
+        min-width: 0 !important;
+    }
+
+    .logo-wrap {
+        display: flex !important;
+        align-items: center !important;
+        gap: clamp(4px, 0.5vw, 8px) !important;
+        text-decoration: none !important;
+        flex-shrink: 0 !important;
+    }
+
+    .logo img,
+    .logo-wrap img {
+        height: clamp(32px, 2.8vw, 42px) !important;
+        width: auto !important;
+        object-fit: contain !important;
+        transition: transform 0.3s ease !important;
+    }
+
+    .logo-wrap:hover img {
+        transform: scale(1.05) !important;
+    }
+
+    .brand-name {
+        display: block !important;
+        font-family: 'Cinzel', serif !important;
+        font-size: clamp(10.5px, 0.8vw, 13.5px) !important;
+        font-weight: 800 !important;
+        color: #ffffff !important;
+        line-height: 1.15 !important;
+        white-space: nowrap !important;
+        text-transform: uppercase !important;
+        letter-spacing: clamp(0.3px, 0.05vw, 0.8px) !important;
+    }
+
+    .brand-subname {
+        display: inline !important;
+        color: var(--accent-gold) !important;
+        font-size: inherit !important;
+        font-weight: inherit !important;
+        letter-spacing: inherit !important;
+    }
+
+    .brand-name .brand-slogan {
+        display: none !important; /* slogan hidden on desktop header for clean look */
+    }
+
+    /* COLUMN 2: Navigation Pill Menu */
+    .header .nav {
+        flex: 0 1 auto !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        min-width: 0 !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        position: static !important;
+        width: auto !important;
+        height: auto !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    .header .nav > ul {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        flex-wrap: nowrap !important;
+        gap: clamp(2px, 0.3vw, 10px) !important;
+        padding: 4px clamp(4px, 0.5vw, 10px) !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 50px !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+    }
+
+    .header .nav ul li {
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .header .nav ul li a {
+        font-size: clamp(9px, 0.55vw, 11px) !important;
+        font-weight: 600 !important;
+        padding: 5px clamp(3px, 0.4vw, 8px) !important;
+        letter-spacing: 0.3px !important;
+        color: #ffffff !important;
+        border-radius: 30px !important;
+        border: none !important;
+        white-space: nowrap !important;
+        display: flex !important;
+        align-items: center !important;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+
+
+    .header .nav ul li a:hover,
+    .header .nav ul li a.active {
+        background: rgba(255, 255, 255, 0.1) !important;
+        color: var(--accent-gold) !important;
+    }
+
+    /* Dropdown Chevron */
+    .dropdown {
+        position: relative !important;
+    }
+
+    .dropdown > a i {
+        font-size: 0.5rem !important;
+        margin-left: 2px !important;
+        transition: transform 0.3s ease !important;
+    }
+
+    .dropdown:hover > a i {
+        transform: rotate(180deg) !important;
+        color: var(--accent-gold) !important;
+    }
+
+    /* Dropdown Menu Panel */
+    .dropdown-menu {
+        border-radius: 14px !important;
+        padding: 10px 0 !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        background: rgba(11, 26, 19, 0.96) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    [data-theme="dark"] .dropdown-menu {
+        background: rgba(5, 12, 9, 0.98) !important;
+    }
+
+    .dropdown-menu li a {
+        padding: 10px 24px !important;
+        font-size: 0.85rem !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+    }
+
+    .dropdown-menu li a:hover {
+        padding-left: 28px !important;
+        background: rgba(212, 175, 55, 0.1) !important;
+        color: var(--accent-gold) !important;
+    }
+
+    /* COLUMN 3: Actions (Toggles & Book Now) */
+    .header-actions {
+        flex: 0 0 auto !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: clamp(4px, 0.5vw, 8px) !important;
+    }
+
+    .header-toggles {
+        display: flex !important;
+        align-items: center !important;
+        gap: clamp(3px, 0.3vw, 6px) !important;
+        background: transparent !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        padding-right: clamp(4px, 0.5vw, 8px) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.15) !important;
+    }
+
+    .lang-toggle,
+    .theme-toggle {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 4px clamp(4px, 0.5vw, 8px) !important;
+        border-radius: 50px !important;
+        font-size: clamp(9px, 0.55vw, 10px) !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.6px !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        color: #ffffff !important;
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .lang-toggle:hover,
+    .theme-toggle:hover {
+        background: rgba(255, 255, 255, 0.12) !important;
+        border-color: var(--accent-gold) !important;
+    }
+
+    .theme-toggle:hover {
+        background: var(--accent-gold) !important;
+        color: #000000 !important;
+        box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3) !important;
+    }
+
+    .theme-toggle i {
+        font-size: 0.75rem !important;
+        transition: transform 0.5s ease !important;
+    }
+
+    .theme-toggle:hover i {
+        transform: rotate(360deg) !important;
+    }
+
+    /* Enquire / Book Now CTA Button */
+    .header .enquire-btn {
+        margin-left: 0 !important;
+        padding: 7px clamp(8px, 0.8vw, 14px) !important;
+        font-size: clamp(9.5px, 0.6vw, 11px) !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.6px !important;
+        border-radius: 50px !important;
+        background: linear-gradient(135deg, var(--accent-gold) 0%, #c5a044 100%) !important;
+        color: #000000 !important;
+        box-shadow: 0 4px 12px rgba(212, 175, 55, 0.25) !important;
+        border: none !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    .header .enquire-btn:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4) !important;
+        background: linear-gradient(135deg, #f7d070 0%, var(--accent-gold) 100%) !important;
+    }
+
+    /* Hide language/theme toggle text on smaller viewports */
+    @media (max-width: 1200px) {
+        .theme-toggle .toggle-text {
+            display: none !important;
+        }
+    }
+}
+
+/* ============================================================
+   DEFINITIVE HEADER LAYOUT OVERRIDE
+   Layout: [LOGO] [NAV flex:1] [EN/SW pill] [DARK] [BOOK NOW]
+   Works in both English and Swahili without any overlap.
+   This block is at the END of the file so it wins all cascades.
+   ============================================================ */
+@media (min-width: 993px) {
+
+    /* 1. Header content: classic 4-section flex row */
+    .header-content {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 0 !important;
+        position: relative !important;
+        width: 100% !important;
+    }
+
+    /* 2. Logo — fixed width, never shrinks */
+    .header .logo,
+    .header .logo-wrap {
+        flex: 0 0 auto !important;
+        margin-right: 12px !important;
+    }
+
+    /* 3. Nav — gets all available space in the middle
+          max-width leaves guaranteed room for the actions panel */
+    .header .nav {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        max-width: calc(100% - 290px) !important;
+        overflow: visible !important;
+        position: static !important;
+        transform: none !important;
+    }
+
+    /* 4. Nav list — horizontal row, no wrap, tight gaps */
+    .header .nav > ul {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        gap: 0 !important;
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* 5. Nav links — compact enough for Swahili text */
+    .header .nav ul li a {
+        font-size: 0.7rem !important;
+        padding: 6px 6px !important;
+        letter-spacing: 0 !important;
+        white-space: nowrap !important;
+        font-weight: 700 !important;
+    }
+
+    /* 6. Actions panel — flex:0 so it never shrinks,
+          pushed right by auto margin on nav */
+    .header-actions {
+        position: static !important;
+        transform: none !important;
+        flex: 0 0 auto !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        margin-left: auto !important;
+        padding-left: 16px !important;
+        border-left: 1px solid rgba(255,255,255,0.18) !important;
+    }
+
+    /* 7. EN/SW pill — own rounded container, fixed width */
+    .header-toggles {
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .header .lang-toggle {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        min-width: 72px !important;
+        width: auto !important;
+        padding: 5px 10px !important;
+        background: rgba(255,255,255,0.1) !important;
+        border: 1px solid rgba(255,255,255,0.3) !important;
+        border-radius: 20px !important;
+        font-size: 0.65rem !important;
+        font-weight: 700 !important;
+        color: #fff !important;
+        cursor: pointer !important;
+        white-space: nowrap !important;
+        letter-spacing: 0.5px !important;
+        gap: 3px !important;
+    }
+
+    .header .lang-toggle .lang-label {
+        opacity: 0.6 !important;
+        transition: opacity 0.2s !important;
+    }
+
+    .header .lang-toggle .lang-label.active {
+        opacity: 1 !important;
+        color: var(--accent-gold) !important;
+    }
+
+    .header .lang-toggle .lang-divider {
+        opacity: 0.4 !important;
+        font-size: 0.6rem !important;
+    }
+
+    /* 8. DARK/GIZA toggle — own pill */
+    .header .theme-toggle {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 4px !important;
+        padding: 5px 10px !important;
+        min-width: 60px !important;
+        background: rgba(255,255,255,0.08) !important;
+        border: 1px solid rgba(255,255,255,0.2) !important;
+        border-radius: 20px !important;
+        font-size: 0.62rem !important;
+        font-weight: 700 !important;
+        color: #fff !important;
+        white-space: nowrap !important;
+    }
+
+    /* 9. BOOK NOW / WEKA NAFASI button */
+    .header-actions .enquire-btn {
+        padding: 7px 16px !important;
+        font-size: 0.72rem !important;
+        margin-left: 4px !important;
+        white-space: nowrap !important;
+        border-radius: 30px !important;
+    }
+}
+
+/* Slightly reduce nav fonts at mid-range screens */
+@media (min-width: 993px) and (max-width: 1200px) {
+    .header .nav ul li a {
+        font-size: 0.65rem !important;
+        padding: 6px 4px !important;
+    }
+
+    .header .nav {
+        max-width: calc(100% - 270px) !important;
+    }
+}
+
+
+/* HERO-BEHIND-HEADER FIX — excludes .lux-hero (10-day luxury page keeps its own layout) */
+.hero:not(.lux-hero), .page-hero:not(.lux-hero), .trip-hero:not(.lux-hero) { margin-top: -80px !important; padding-top: calc(80px + 60px) !important; min-height: 90vh !important; }
+.hero-content, .hero .container, .trip-hero .container { position: relative; z-index: 2; }
+body:has(.hero:not(.lux-hero)) .header, body:has(.page-hero:not(.lux-hero)) .header, body:has(.trip-hero) .header { background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 70%, transparent 100%) !important; box-shadow: none !important; border-bottom: none !important; }
+body:has(.hero:not(.lux-hero)) .header.scrolled, body:has(.page-hero:not(.lux-hero)) .header.scrolled, body:has(.trip-hero) .header.scrolled { background: rgba(11,26,19,0.95) !important; box-shadow: 0 4px 30px rgba(0,0,0,0.3) !important; border-bottom: 1px solid rgba(212,175,55,0.15) !important; backdrop-filter: blur(15px) !important; }
