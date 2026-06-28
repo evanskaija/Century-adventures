@@ -456,8 +456,11 @@
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
-            }
         }
+
+        // Auto-refresh when background database sync completes
+        window.addEventListener('century-bookings-updated', loadStats);
+        window.addEventListener('century-conversations-updated', loadStats);
     </script>
 </body>
 </html>

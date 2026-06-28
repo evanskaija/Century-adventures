@@ -92,35 +92,7 @@ async function syncWithDatabase() {
     const PASSCODE = 'centuryadmin';
     const SYNC_URL = 'sync-data.php';
 
-    // --- 1. Push conversations ---
-    try {
-        const convs = JSON.parse(localStorage.getItem('century-conversations') || '[]');
-        if (convs.length > 0) {
-            await fetch(SYNC_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ passcode: PASSCODE, action: 'push_conversations', conversations: convs }),
-            });
-        }
-    } catch (e) {
-        console.warn('[AdminSync] push_conversations failed:', e);
-    }
-
-    // --- 2. Push bookings ---
-    try {
-        const bookings = JSON.parse(localStorage.getItem('century-bookings') || '[]');
-        if (bookings.length > 0) {
-            await fetch(SYNC_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ passcode: PASSCODE, action: 'push_bookings', bookings }),
-            });
-        }
-    } catch (e) {
-        console.warn('[AdminSync] push_bookings failed:', e);
-    }
-
-    // --- 3. Pull latest conversations from DB back into localStorage ---
+    // --- 1. Pull latest conversations from DB back into localStorage ---
     try {
         const res  = await fetch(SYNC_URL, {
             method: 'POST',
@@ -128,27 +100,32 @@ async function syncWithDatabase() {
             body: JSON.stringify({ passcode: PASSCODE, action: 'pull_conversations' }),
         });
         const data = await res.json();
-        if (data.success && Array.isArray(data.conversations) && data.conversations.length > 0) {
-            // Merge: DB conversations take precedence (they may have staff replies)
-            const local = JSON.parse(localStorage.getItem('century-conversations') || '[]');
-            const localMap = {};
-            local.forEach(c => { localMap[c.id] = c; });
-
-            data.conversations.forEach(dbConv => {
-                const existing = localMap[dbConv.id];
-                // Prefer whichever version has more messages
-                if (!existing || dbConv.messages.length >= (existing.messages || []).length) {
-                    localMap[dbConv.id] = dbConv;
-                }
-            });
-
-            const merged = Object.values(localMap).sort((a, b) => b.updatedAt - a.updatedAt);
-            localStorage.setItem('century-conversations', JSON.stringify(merged));
-            // Refresh unread badge after merge
+        if (data.success && Array.isArray(data.conversations)) {
+            // Server database conversations is the absolute source of truth
+            localStorage.setItem('century-conversations', JSON.stringify(data.conversations));
+            
+            // Refresh unread badge
             updateUnreadSmsBadge();
+            
+            // Dispatch update event for active message panels
+            window.dispatchEvent(new CustomEvent('century-conversations-updated'));
         }
     } catch (e) {
         console.warn('[AdminSync] pull_conversations failed:', e);
+    }
+
+    // --- 2. Pull latest bookings/submissions from DB back into localStorage ---
+    try {
+        const res = await fetch(`get-submissions.php?type=bookings&passcode=${PASSCODE}`);
+        const data = await res.json();
+        if (data.success && Array.isArray(data.data)) {
+            localStorage.setItem('century-bookings', JSON.stringify(data.data));
+            
+            // Dispatch update event for active dashboards
+            window.dispatchEvent(new CustomEvent('century-bookings-updated'));
+        }
+    } catch (e) {
+        console.warn('[AdminSync] pull_bookings failed:', e);
     }
 }
 

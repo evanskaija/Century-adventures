@@ -92,23 +92,53 @@ switch ($action) {
             jsonError('conversations must be an array.');
         }
         $db = getDb();
-        $upsert = $db->prepare("
-            INSERT INTO conversations (conv_id, visitor_id, category_id, messages, status, created_at, updated_at)
-            VALUES (:conv_id, :visitor_id, :category_id, :messages, :status, :created_at, :updated_at)
-            ON CONFLICT(conv_id) DO UPDATE SET
-                messages   = excluded.messages,
-                status     = excluded.status,
-                updated_at = excluded.updated_at
-        ");
         $saved = 0;
         foreach ($convs as $c) {
             $convId  = $c['id']         ?? null;
             if (!$convId) continue;
+            
+            // Safe merge: fetch existing messages first to prevent overwriting updates
+            $query = $db->prepare("SELECT messages FROM conversations WHERE conv_id = :id");
+            $query->execute([':id' => $convId]);
+            $existingRow = $query->fetch(PDO::FETCH_ASSOC);
+            
+            $incomingMessages = $c['messages'] ?? [];
+            if ($existingRow) {
+                $dbMessages = json_decode($existingRow['messages'] ?? '[]', true) ?? [];
+                $mergedMap = [];
+                // Load existing database messages
+                foreach ($dbMessages as $msg) {
+                    $mId = $msg['id'] ?? ('msg-' . ($msg['timestamp'] ?? time()));
+                    $mergedMap[$mId] = $msg;
+                }
+                // Merge incoming (e.g. from local caches)
+                foreach ($incomingMessages as $msg) {
+                    $mId = $msg['id'] ?? ('msg-' . ($msg['timestamp'] ?? time()));
+                    $mergedMap[$mId] = $msg;
+                }
+                $finalMessages = array_values($mergedMap);
+                // Sort by timestamp
+                usort($finalMessages, function($a, $b) {
+                    return ($a['timestamp'] ?? 0) <=> ($b['timestamp'] ?? 0);
+                });
+            } else {
+                $finalMessages = $incomingMessages;
+            }
+
+            $upsert = $db->prepare("
+                INSERT INTO conversations (conv_id, visitor_id, category_id, messages, status, created_at, updated_at)
+                VALUES (:conv_id, :visitor_id, :category_id, :messages, :status, :created_at, :updated_at)
+                ON CONFLICT(conv_id) DO UPDATE SET
+                    messages   = excluded.messages,
+                    status     = excluded.status,
+                    updated_at = excluded.updated_at
+            ");
+
             $upsert->execute([
                 ':conv_id'     => $convId,
                 ':visitor_id'  => $c['visitorId']  ?? '',
                 ':category_id' => $c['categoryId'] ?? 'general',
-                ':messages'    => json_encode($c['messages'] ?? [], JSON_UNESCAPED_UNICODE),
+                ':messages'    => json_encode($finalMessages, JSON_UNESCAPED_UNICODE),
                 ':status'      => $c['status']     ?? 'open',
                 ':created_at'  => isset($c['createdAt'])
                     ? date('Y-m-d H:i:s', intval($c['createdAt'] / 1000))

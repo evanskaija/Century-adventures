@@ -239,6 +239,10 @@
                 row.style.display = text.includes(q) ? '' : 'none';
             });
         }
+
+        // Auto-refresh when background database sync completes
+        window.addEventListener('century-bookings-updated', renderCustomers);
+        window.addEventListener('century-conversations-updated', renderCustomers);
     </script>
 </body>
 </html>

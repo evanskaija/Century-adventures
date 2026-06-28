@@ -1128,13 +1128,23 @@
             if (updateInterval) clearInterval(updateInterval);
         }
 
-        function showWorkspace() {
+        async function showWorkspace() {
             document.getElementById('authOverlay').style.display = 'none';
             document.getElementById('adminWorkspace').style.display = 'flex';
+            
+            // Pull latest from database immediately
+            if (typeof syncWithDatabase === 'function') {
+                await syncWithDatabase();
+            }
             loadConversations();
             renderDepartmentTabs();
             renderConversations();
-            updateInterval = setInterval(() => {
+            
+            updateInterval = setInterval(async () => {
+                // Poll database in background
+                if (typeof syncWithDatabase === 'function') {
+                    await syncWithDatabase();
+                }
                 const scrollArea = document.getElementById('chatMessagesArea');
                 if (!scrollArea) return;
                 const wasAtBottom = scrollArea.scrollHeight - scrollArea.clientHeight <= scrollArea.scrollTop + 50;

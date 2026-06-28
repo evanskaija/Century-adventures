@@ -2602,6 +2602,33 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             updateBadge();
 
+            // Save visitor messages to server DB
+            if (sender === 'visitor') {
+                let visitorName = 'Valued Guest';
+                let visitorEmail = '';
+                if (visitorId && visitorId.includes('(')) {
+                    const parts = visitorId.split('(');
+                    visitorName = parts[0].trim();
+                    visitorEmail = parts[1].replace(')', '').trim();
+                }
+                
+                fetch('chat-message.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        conv_id: convId,
+                        text: text,
+                        name: visitorName,
+                        email: visitorEmail
+                    })
+                }).then(res => res.json())
+                  .then(resData => {
+                      if (!resData.success) console.warn('[CenturyAdv] Chat save error:', resData.message);
+                  }).catch(err => {
+                      console.warn('[CenturyAdv] Chat save network error:', err);
+                  });
+            }
+
             // If visitor message, trigger email notification link
             if (sender === 'visitor') {
                 const cat = getCatByID(conv.categoryId);
@@ -2917,17 +2944,30 @@ document.addEventListener('DOMContentLoaded', () => {
         // ── Real-Time Polling for Admin Replies ──
         setInterval(() => {
             if (panel.classList.contains('active') && activeConvId && chatViewEl && chatViewEl.classList.contains('active')) {
-                const convs = loadConversations();
-                const activeConv = convs.find(c => c.id === activeConvId);
-                if (activeConv) {
-                    const currentCount = activeConv.messages.length;
-                    if (currentCount !== lastMsgCount) {
-                        lastMsgCount = currentCount;
-                        renderMessages(activeConv);
-                    }
-                }
+                fetch(`chat-history.php?conv_id=${activeConvId}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success && Array.isArray(data.messages)) {
+                            const convs = loadConversations();
+                            const idx = convs.findIndex(c => c.id === activeConvId);
+                            if (idx !== -1) {
+                                const localMsgs = convs[idx].messages || [];
+                                // If server has more messages or different messages, sync
+                                if (data.messages.length !== localMsgs.length) {
+                                    convs[idx].messages = data.messages;
+                                    convs[idx].updatedAt = Date.now();
+                                    saveConversations(convs);
+                                    renderMessages(convs[idx]);
+                                    lastMsgCount = data.messages.length;
+                                    updateBadge();
+                                }
+                            }
+                        }
+                    }).catch(err => {
+                        console.warn('[CenturyAdv] Chat poll error:', err);
+                    });
             }
-        }, 1500);
+        }, 3000);
     };
 
     // ── Read More: Auto-collapse long descriptive text sections ──
