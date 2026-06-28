@@ -85,107 +85,14 @@ $action = $body['action'] ?? '';
 
 switch ($action) {
 
-    // ── Push conversations from localStorage to DB ────────────────────────────
+    // ── Push conversations from localStorage to DB (DEPRECATED - Single Source of Truth Enabled) ──
     case 'push_conversations':
-        $convs = $body['conversations'] ?? [];
-        if (!is_array($convs)) {
-            jsonError('conversations must be an array.');
-        }
-        $db = getDb();
-        $saved = 0;
-        foreach ($convs as $c) {
-            $convId  = $c['id']         ?? null;
-            if (!$convId) continue;
-            
-            // Safe merge: fetch existing messages first to prevent overwriting updates
-            $query = $db->prepare("SELECT messages FROM conversations WHERE conv_id = :id");
-            $query->execute([':id' => $convId]);
-            $existingRow = $query->fetch(PDO::FETCH_ASSOC);
-            
-            $incomingMessages = $c['messages'] ?? [];
-            if ($existingRow) {
-                $dbMessages = json_decode($existingRow['messages'] ?? '[]', true) ?? [];
-                $mergedMap = [];
-                // Load existing database messages
-                foreach ($dbMessages as $msg) {
-                    $mId = $msg['id'] ?? ('msg-' . ($msg['timestamp'] ?? time()));
-                    $mergedMap[$mId] = $msg;
-                }
-                // Merge incoming (e.g. from local caches)
-                foreach ($incomingMessages as $msg) {
-                    $mId = $msg['id'] ?? ('msg-' . ($msg['timestamp'] ?? time()));
-                    $mergedMap[$mId] = $msg;
-                }
-                $finalMessages = array_values($mergedMap);
-                // Sort by timestamp
-                usort($finalMessages, function($a, $b) {
-                    return ($a['timestamp'] ?? 0) <=> ($b['timestamp'] ?? 0);
-                });
-            } else {
-                $finalMessages = $incomingMessages;
-            }
-
-            $upsert = $db->prepare("
-                INSERT INTO conversations (conv_id, visitor_id, category_id, messages, status, created_at, updated_at)
-                VALUES (:conv_id, :visitor_id, :category_id, :messages, :status, :created_at, :updated_at)
-                ON CONFLICT(conv_id) DO UPDATE SET
-                    messages   = excluded.messages,
-                    status     = excluded.status,
-                    updated_at = excluded.updated_at
-            ");
-
-            $upsert->execute([
-                ':conv_id'     => $convId,
-                ':visitor_id'  => $c['visitorId']  ?? '',
-                ':category_id' => $c['categoryId'] ?? 'general',
-                ':messages'    => json_encode($finalMessages, JSON_UNESCAPED_UNICODE),
-                ':status'      => $c['status']     ?? 'open',
-                ':created_at'  => isset($c['createdAt'])
-                    ? date('Y-m-d H:i:s', intval($c['createdAt'] / 1000))
-                    : date('Y-m-d H:i:s'),
-                ':updated_at'  => isset($c['updatedAt'])
-                    ? date('Y-m-d H:i:s', intval($c['updatedAt'] / 1000))
-                    : date('Y-m-d H:i:s'),
-            ]);
-            $saved++;
-        }
-        jsonSuccess("Synced $saved conversations to database.");
+        jsonSuccess("Sync push ignored. Server database is the single source of truth.");
         break;
 
-    // ── Push bookings from localStorage to DB ────────────────────────────────
+    // ── Push bookings from localStorage to DB (DEPRECATED - Single Source of Truth Enabled) ──
     case 'push_bookings':
-        $bookings = $body['bookings'] ?? [];
-        if (!is_array($bookings)) {
-            jsonError('bookings must be an array.');
-        }
-        $db = getDb();
-        $check  = $db->prepare("SELECT id FROM submissions WHERE form_type='booking' AND extra_data LIKE :ref");
-        $insert = $db->prepare("
-            INSERT INTO submissions (form_type, name, email, phone, subject, message, extra_data, created_at)
-            VALUES ('booking', :name, :email, :phone, :subject, :message, :extra, :created_at)
-        ");
-        $saved = 0;
-        foreach ($bookings as $b) {
-            // Avoid duplicates by reference ID
-            $ref = $b['ref'] ?? $b['id'] ?? '';
-            if ($ref) {
-                $check->execute([':ref' => "%$ref%"]);
-                if ($check->fetchColumn()) continue; // Already exists
-            }
-            $insert->execute([
-                ':name'       => $b['name']    ?? '',
-                ':email'      => $b['email']   ?? '',
-                ':phone'      => $b['phone']   ?? '',
-                ':subject'    => $b['safari']  ?? $b['tour'] ?? 'Safari Booking',
-                ':message'    => $b['notes']   ?? '',
-                ':extra'      => json_encode($b, JSON_UNESCAPED_UNICODE),
-                ':created_at' => isset($b['date'])
-                    ? date('Y-m-d H:i:s', strtotime($b['date']))
-                    : date('Y-m-d H:i:s'),
-            ]);
-            $saved++;
-        }
-        jsonSuccess("Synced $saved bookings to database.");
+        jsonSuccess("Sync push ignored. Server database is the single source of truth.");
         break;
 
     // ── Update submission status (e.g. open → resolved) ──────────────────────
