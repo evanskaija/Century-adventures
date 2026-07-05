@@ -1513,8 +1513,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const travelDate = form.querySelector('#travel_date')?.value || '';
             const travelers = form.querySelector('#travelers')?.value || '';
             message = form.querySelector('#message')?.value || '';
-            
-            categoryId = (safariType === 'wildlife' || safariType === 'custom') ? 'safari' : 'travel';
+            // Contact page messages must always go to General Contact (infor@) department
+            categoryId = 'general';
             
             text = `📬 Contact Us Form Inquiry:\n` +
                    `• Name: ${name}\n` +

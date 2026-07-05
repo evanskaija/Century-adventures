@@ -113,9 +113,9 @@ function handleContact(array $d, string $name, string $email, string $phone, str
     $subject = sanitize($d['subject'] ?? 'General Inquiry');
     $convId  = sanitize($d['conv_id'] ?? 'conv-' . time() . '-' . rand(1000, 9999));
     
-    // Automatically route based on selected subject
-    $dept = getDepartmentFromSubject($subject, 'info');
-    $cat  = getCategoryFromSubject($subject, 'general');
+    // Contact page messages must always go to General Contact (infor@) department
+    $dept = 'info';
+    $cat  = 'general';
 
     // Save submission under routed department
     saveSubmission($dept, [
