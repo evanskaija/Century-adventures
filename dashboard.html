@@ -450,12 +450,7 @@
 
         // Messages integration
         function openSupportChat() {
-            if (window.openSafariSupport) {
-                window.openSafariSupport();
-            } else {
-                const btn = document.getElementById('commFloatBtn');
-                if (btn) btn.click();
-            }
+            window.location.href = 'contact.html';
         }
 
         // Poll for unread messages badge
