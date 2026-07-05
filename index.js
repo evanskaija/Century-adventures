@@ -1751,11 +1751,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // Trigger mailto route to configured department email address
             const getRouteEmail = () => {
                 const defaults = {
-                    info: 'info@century-adventures.com',
+                    info: 'infor@century-adventures.com',
                     booking: 'bookings@century-adventures.com',
-                    support: 'admin@century-adventures.com',
                     sales: 'visit@century-adventures.com',
-                    visit: 'visit@century-adventures.com'
+                    support: 'support@century-adventures.com',
+                    admin: 'admin@century-adventures.com'
                 };
                 try {
                     const saved = JSON.parse(localStorage.getItem('century-routing-emails')) || defaults;

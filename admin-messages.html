@@ -1335,7 +1335,7 @@
                 const info = extractCustomerInfo(activeConv);
                 const catObj = CATEGORIES[activeConv.categoryId] || { emoji: '💬', label: 'General' };
                 const dept = getConversationDepartment(activeConv);
-                const fromAddr = DEPT_FROM[dept] || 'info@century-adventures.com';
+                const fromAddr = DEPT_FROM[dept] || 'infor@century-adventures.com';
                 const ticketRef = '#' + activeConv.id.slice(-8).toUpperCase();
                 document.getElementById('activeVisitorId').textContent = info.name;
                 document.getElementById('activeCatTag').textContent = `${catObj.emoji} ${catObj.label}`;
@@ -1422,7 +1422,7 @@
             const convIndex = conversations.findIndex(c => c.id === activeConvId);
             const dept = convIndex !== -1 ? getConversationDepartment(conversations[convIndex]) : 'info';
             const now = Date.now();
-            const msgEntry = { id: 'msg-' + now + '-staff', sender: 'staff', text, timestamp: now, from: DEPT_FROM[dept] || 'info@century-adventures.com' };
+            const msgEntry = { id: 'msg-' + now + '-staff', sender: 'staff', text, timestamp: now, from: DEPT_FROM[dept] || 'infor@century-adventures.com' };
             
             if (convIndex !== -1) {
                 conversations[convIndex].messages.push(msgEntry);

@@ -258,20 +258,24 @@
                     </h3>
                     <form id="routingEmailsForm" onsubmit="saveRoutingEmails(event)" style="display: flex; flex-direction: column; gap: 15px;">
                         <div style="display: flex; flex-direction: column; gap: 5px;">
-                            <label style="color: #64748b; font-size: 12px; font-weight: 600;">General & Info (info@)</label>
-                            <input type="email" id="emailInfo" required placeholder="info@century-adventures.com" style="padding: 10px; border-radius: 8px;">
+                            <label style="color: #64748b; font-size: 12px; font-weight: 600;">General Contact (infor@)</label>
+                            <input type="email" id="emailInfo" required placeholder="infor@century-adventures.com" style="padding: 10px; border-radius: 8px;">
                         </div>
                         <div style="display: flex; flex-direction: column; gap: 5px;">
-                            <label style="color: #64748b; font-size: 12px; font-weight: 600;">Safari Bookings (bookings@)</label>
+                            <label style="color: #64748b; font-size: 12px; font-weight: 600;">Bookings & Reservations (bookings@)</label>
                             <input type="email" id="emailBooking" required placeholder="bookings@century-adventures.com" style="padding: 10px; border-radius: 8px;">
                         </div>
                         <div style="display: flex; flex-direction: column; gap: 5px;">
-                            <label style="color: #64748b; font-size: 12px; font-weight: 600;">Administration & Support (admin@)</label>
-                            <input type="email" id="emailSupport" required placeholder="admin@century-adventures.com" style="padding: 10px; border-radius: 8px;">
+                            <label style="color: #64748b; font-size: 12px; font-weight: 600;">Destination & Trip Planning (visit@)</label>
+                            <input type="email" id="emailSales" required placeholder="visit@century-adventures.com" style="padding: 10px; border-radius: 8px;">
                         </div>
                         <div style="display: flex; flex-direction: column; gap: 5px;">
-                            <label style="color: #64748b; font-size: 12px; font-weight: 600;">Sales & Custom Trips (visit@)</label>
-                            <input type="email" id="emailSales" required placeholder="visit@century-adventures.com" style="padding: 10px; border-radius: 8px;">
+                            <label style="color: #64748b; font-size: 12px; font-weight: 600;">Customer Support (support@)</label>
+                            <input type="email" id="emailSupport" required placeholder="support@century-adventures.com" style="padding: 10px; border-radius: 8px;">
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 5px;">
+                            <label style="color: #64748b; font-size: 12px; font-weight: 600;">Website Administration (admin@)</label>
+                            <input type="email" id="emailAdmin" required placeholder="admin@century-adventures.com" style="padding: 10px; border-radius: 8px;">
                         </div>
                         <button type="submit" class="btn-primary" style="margin-top: 5px; width: 100%;">Save Routing Emails</button>
                     </form>
@@ -291,16 +295,18 @@
 
             // Load routing emails
             const defaults = {
-                info: 'info@century-adventures.com',
+                info: 'infor@century-adventures.com',
                 booking: 'bookings@century-adventures.com',
-                support: 'admin@century-adventures.com',
-                sales: 'visit@century-adventures.com'
+                sales: 'visit@century-adventures.com',
+                support: 'support@century-adventures.com',
+                admin: 'admin@century-adventures.com'
             };
             const current = JSON.parse(localStorage.getItem('century-routing-emails')) || defaults;
             document.getElementById('emailInfo').value = current.info || defaults.info;
             document.getElementById('emailBooking').value = current.booking || defaults.booking;
-            document.getElementById('emailSupport').value = current.support || defaults.support;
             document.getElementById('emailSales').value = current.sales || defaults.sales;
+            document.getElementById('emailSupport').value = current.support || defaults.support;
+            document.getElementById('emailAdmin').value = current.admin || defaults.admin;
 
             // Load admin profile settings
             const adminName = localStorage.getItem('century-admin-name') || 'Administrator';
@@ -368,8 +374,9 @@
             const config = {
                 info: document.getElementById('emailInfo').value.trim(),
                 booking: document.getElementById('emailBooking').value.trim(),
+                sales: document.getElementById('emailSales').value.trim(),
                 support: document.getElementById('emailSupport').value.trim(),
-                sales: document.getElementById('emailSales').value.trim()
+                admin: document.getElementById('emailAdmin').value.trim()
             };
             localStorage.setItem('century-routing-emails', JSON.stringify(config));
             alert('Department routing emails updated successfully! Inquiries will now target these addresses.');
