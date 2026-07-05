@@ -103,18 +103,35 @@ $deptCode = 'info';
 if (isset($ticket['form_type'])) {
     $deptCode = $ticket['form_type'];
 } else {
-    $deptCode = getDepartmentFromSubject($formType, 'info');
+    $deptCode = $formType;
 }
 
-$deptLabels = [
-    'booking' => 'Safari Bookings',
-    'info'    => 'General Inquiries',
-    'visit'   => 'Trip Planning',
-    'admin'   => 'Website Issues'
-];
-$friendlyDeptLabel = $deptLabels[$deptCode] ?? 'General Inquiries';
+// Canonical department mapping
+$canonicalDept = match(strtolower(trim($deptCode))) {
+    'booking', 'bookings', 'quote' => 'booking',
+    'safari_inquiry', 'destination_inquiry', 'enquiry', 'visit', 'planner' => 'visit',
+    'support', 'support_request', 'live_chat_offline', 'chat_offline' => 'support',
+    'report', 'admin', 'website', 'issue', 'feedback' => 'admin',
+    default => 'info'
+};
 
-$fromEmail = 'admin@century-adventures.com';
+$deptLabels = [
+    'booking' => 'Bookings & Reservations',
+    'visit'   => 'Destination & Trip Planning',
+    'support' => 'Customer Support',
+    'info'    => 'General Contact',
+    'admin'   => 'Website Administration'
+];
+$friendlyDeptLabel = $deptLabels[$canonicalDept] ?? 'General Inquiries';
+
+$fromEmail = match($canonicalDept) {
+    'booking' => 'bookings@century-adventures.com',
+    'visit'   => 'visit@century-adventures.com',
+    'support' => 'support@century-adventures.com',
+    'admin'   => 'admin@century-adventures.com',
+    default   => 'infor@century-adventures.com'
+};
+
 $fromLabel = 'Century Adventures ' . $friendlyDeptLabel;
 
 // ── Build Subject Line ─────────────────────────────────────────────────────────
@@ -198,7 +215,7 @@ $emailSent = false;
 $emailError = '';
 
 try {
-    $result = $mailer->send($customerEmail, $customerName, $subject, $emailBody, $fromEmail, EMAIL_ADMIN, $threading);
+    $result = $mailer->send($customerEmail, $customerName, $subject, $emailBody, $fromEmail, EMAIL_ADMIN, $threading, $fromEmail, $fromLabel);
     if ($result['success']) {
         $emailSent = true;
     } else {

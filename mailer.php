@@ -33,13 +33,15 @@ class Mailer {
         string $htmlBody,
         ?string $replyTo = null,
         ?string $ccEmail = null,
-        array $threading = []
+        array $threading = [],
+        ?string $fromEmail = null,
+        ?string $fromName = null
     ): array {
 
         try {
             $this->connect();
             $this->authenticate();
-            $this->sendMail($toEmail, $toName, $subject, $htmlBody, $replyTo, $ccEmail, $threading);
+            $this->sendMail($toEmail, $toName, $subject, $htmlBody, $replyTo, $ccEmail, $threading, $fromEmail, $fromName);
             $this->quit();
             return ['success' => true, 'log' => $this->log, 'error' => ''];
         } catch (Exception $e) {
@@ -120,15 +122,23 @@ class Mailer {
         string $htmlBody,
         ?string $replyTo,
         ?string $ccEmail,
-        array $threading = []
+        array $threading = [],
+        ?string $fromEmail = null,
+        ?string $fromName = null
     ): void {
 
-        $from    = SMTP_FROM;
-        $fromEnc = $this->encodeHeader(SMTP_FROM_NAME);
+        // Envelope sender MUST remain the authenticated Zoho email address (SMTP_FROM)
+        $envelopeFrom = SMTP_FROM;
+
+        // Custom display headers
+        $headerFrom = $fromEmail ?: SMTP_FROM;
+        $headerFromName = $fromName ?: SMTP_FROM_NAME;
+
+        $fromEnc = $this->encodeHeader($headerFromName);
         $toEnc   = $this->encodeHeader($toName);
 
         // MAIL FROM
-        $this->write("MAIL FROM:<$from>");
+        $this->write("MAIL FROM:<$envelopeFrom>");
         $this->read('250');
 
         // RCPT TO (primary recipient)
@@ -150,13 +160,14 @@ class Mailer {
         $plainText = strip_tags(str_replace(['<br>', '<br/>', '<br />'], "\n", $htmlBody));
         $plainText = html_entity_decode($plainText, ENT_QUOTES, 'UTF-8');
 
-        $headers  = "From: $fromEnc <" . SMTP_FROM . ">\r\n";
+        $headers  = "From: $fromEnc <$headerFrom>\r\n";
         $headers .= "To: $toEnc <$toEmail>\r\n";
         if ($ccEmail) {
             $headers .= "Cc: $ccEmail\r\n";
         }
-        // Force Reply-To to match the main sender (admin@) to bypass Zoho restrictions
-        $headers .= "Reply-To: " . SMTP_FROM . "\r\n";
+        // Use custom replyTo if provided, otherwise default to the headerFrom
+        $actualReplyTo = $replyTo ?: $headerFrom;
+        $headers .= "Reply-To: <$actualReplyTo>\r\n";
         if (!empty($threading['message_id'])) {
             $headers .= "Message-ID: " . $threading['message_id'] . "\r\n";
         }

@@ -149,25 +149,27 @@
                             <h3 style="margin: 0;">Inquiries by Department</h3>
                             <span style="font-size: 11px; color: #94a3b8; border: 1px solid rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 8px;">Weekly traffic</span>
                         </div>
-                        <p style="font-size: 12px; color: #94a3b8; margin: 0 0 15px 0; line-height: 1.4;">Communication logs and records mapped to four departments.</p>
+                        <p style="font-size: 12px; color: #94a3b8; margin: 0 0 15px 0; line-height: 1.4;">Communication logs and records mapped to five departments.</p>
                     </div>
 
-                    <!-- Custom SVG Donut Chart showing 4 places -->
+                    <!-- Custom SVG Donut Chart showing 5 places -->
                     <div style="display: flex; align-items: center; gap: 25px; margin: 10px 0;">
                         <svg width="100" height="100" viewBox="0 0 36 36" style="transform: rotate(-90deg); flex-shrink: 0;">
                             <circle cx="18" cy="18" r="15.915" fill="none" stroke="#2a3347" stroke-width="3"></circle>
-                            <!-- Segment 1: Info (25% -> stroke-dasharray 25 75) -->
-                            <circle cx="18" cy="18" r="15.915" fill="none" stroke="#5c5cfc" stroke-width="3" stroke-dasharray="25 75" stroke-dashoffset="0"></circle>
-                            <!-- Segment 2: Booking (35% -> stroke-dasharray 35 65) -->
-                            <circle cx="18" cy="18" r="15.915" fill="none" stroke="#34d399" stroke-width="3" stroke-dasharray="35 65" stroke-dashoffset="-25"></circle>
-                            <!-- Segment 3: Support (15% -> stroke-dasharray 15 85) -->
-                            <circle cx="18" cy="18" r="15.915" fill="none" stroke="#fbbf24" stroke-width="3" stroke-dasharray="15 85" stroke-dashoffset="-60"></circle>
-                            <!-- Segment 4: Sales (25% -> stroke-dasharray 25 75) -->
-                            <circle cx="18" cy="18" r="15.915" fill="none" stroke="#f43f5e" stroke-width="3" stroke-dasharray="25 75" stroke-dashoffset="-75"></circle>
+                            <!-- Segment 1: Info (20%) -->
+                            <circle cx="18" cy="18" r="15.915" fill="none" stroke="#5c5cfc" stroke-width="3" stroke-dasharray="20 80" stroke-dashoffset="0"></circle>
+                            <!-- Segment 2: Booking (20%) -->
+                            <circle cx="18" cy="18" r="15.915" fill="none" stroke="#34d399" stroke-width="3" stroke-dasharray="20 80" stroke-dashoffset="-20"></circle>
+                            <!-- Segment 3: Trip Planning (20%) -->
+                            <circle cx="18" cy="18" r="15.915" fill="none" stroke="#f43f5e" stroke-width="3" stroke-dasharray="20 80" stroke-dashoffset="-40"></circle>
+                            <!-- Segment 4: Support (20%) -->
+                            <circle cx="18" cy="18" r="15.915" fill="none" stroke="#fbbf24" stroke-width="3" stroke-dasharray="20 80" stroke-dashoffset="-60"></circle>
+                            <!-- Segment 5: Admin (20%) -->
+                            <circle cx="18" cy="18" r="15.915" fill="none" stroke="#a855f7" stroke-width="3" stroke-dasharray="20 80" stroke-dashoffset="-80"></circle>
                         </svg>
                         <div style="display: flex; flex-direction: column; gap: 8px; flex-grow: 1;">
                             <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px;">
-                                <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 8px; height: 8px; background: #5c5cfc; border-radius: 50%;"></span> Info (info@)</span>
+                                <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 8px; height: 8px; background: #5c5cfc; border-radius: 50%;"></span> Info (infor@)</span>
                                 <strong id="deptCountInfo" style="color: #ffffff;">0</strong>
                             </div>
                             <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px;">
@@ -175,12 +177,16 @@
                                 <strong id="deptCountBooking" style="color: #ffffff;">0</strong>
                             </div>
                             <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px;">
+                                <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 8px; height: 8px; background: #f43f5e; border-radius: 50%;"></span> Trip Planning (visit@)</span>
+                                <strong id="deptCountVisit" style="color: #ffffff;">0</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px;">
                                 <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 8px; height: 8px; background: #fbbf24; border-radius: 50%;"></span> Support (support@)</span>
                                 <strong id="deptCountSupport" style="color: #ffffff;">0</strong>
                             </div>
                             <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px;">
-                                <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 8px; height: 8px; background: #f43f5e; border-radius: 50%;"></span> Sales (sales@)</span>
-                                <strong id="deptCountSales" style="color: #ffffff;">0</strong>
+                                <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 8px; height: 8px; background: #a855f7; border-radius: 50%;"></span> Admin (admin@)</span>
+                                <strong id="deptCountAdmin" style="color: #ffffff;">0</strong>
                             </div>
                         </div>
                     </div>
@@ -188,7 +194,7 @@
                     <!-- Inbox Shortcuts -->
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 15px;">
                         <a href="admin-messages.html?dept=booking" style="background: rgba(255,255,255,0.05); color: #ffffff; text-decoration: none; padding: 10px; border-radius: 12px; font-size: 11px; font-weight: 600; text-align: center; border: 1px solid rgba(255,255,255,0.04); transition: all 0.2s;">View Booking Logs</a>
-                        <a href="admin-messages.html?dept=sales" style="background: #5c5cfc; color: #ffffff; text-decoration: none; padding: 10px; border-radius: 12px; font-size: 11px; font-weight: 600; text-align: center; box-shadow: 0 4px 12px rgba(92, 92, 252, 0.2); border: 1px solid transparent; transition: all 0.2s;">View Sales Inbox</a>
+                        <a href="admin-messages.html?dept=visit" style="background: #5c5cfc; color: #ffffff; text-decoration: none; padding: 10px; border-radius: 12px; font-size: 11px; font-weight: 600; text-align: center; box-shadow: 0 4px 12px rgba(92, 92, 252, 0.2); border: 1px solid transparent; transition: all 0.2s;">View Travel Inbox</a>
                     </div>
                 </div>
 
@@ -312,14 +318,18 @@
 
             // Mappings function
             function getConversationDepartment(c) {
-                if (c.department) return c.department;
+                if (c.department) {
+                    if (c.department === 'sales') return 'visit';
+                    return c.department;
+                }
                 if (c.categoryId === 'safari') return 'booking';
-                if (c.categoryId === 'pricing') return 'sales';
-                if (c.categoryId === 'problem' || c.categoryId === 'support') return 'support';
+                if (c.categoryId === 'pricing') return 'visit';
+                if (c.categoryId === 'problem') return 'admin';
+                if (c.categoryId === 'support') return 'support';
                 return 'info';
             }
 
-            const depts = { info: 0, booking: 0, support: 0, sales: 0 };
+            const depts = { info: 0, booking: 0, visit: 0, support: 0, admin: 0 };
             conversations.forEach(c => {
                 const d = getConversationDepartment(c);
                 if (depts[d] !== undefined) {
@@ -329,8 +339,9 @@
 
             document.getElementById('deptCountInfo').textContent = depts.info;
             document.getElementById('deptCountBooking').textContent = depts.booking;
+            document.getElementById('deptCountVisit').textContent = depts.visit;
             document.getElementById('deptCountSupport').textContent = depts.support;
-            document.getElementById('deptCountSales').textContent = depts.sales;
+            document.getElementById('deptCountAdmin').textContent = depts.admin;
 
             // Load bookings
             let bookings = [];

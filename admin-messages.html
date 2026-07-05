@@ -1102,7 +1102,7 @@
             }
             const params = new URLSearchParams(window.location.search);
             const deptParam = params.get('dept');
-            if (deptParam && ['info', 'booking', 'support', 'sales'].includes(deptParam)) {
+            if (deptParam && ['info', 'booking', 'visit', 'support', 'admin'].includes(deptParam)) {
                 activeDeptFilter = deptParam;
             }
         });
@@ -1196,26 +1196,29 @@
 
         function getConversationDepartment(c) {
             if (c.department) {
-                if (c.department === 'visit' || c.department === 'admin') return 'support';
+                if (c.department === 'sales') return 'visit';
                 return c.department;
             }
             if (c.categoryId === 'safari') return 'booking';
-            if (c.categoryId === 'pricing') return 'sales';
-            if (c.categoryId === 'problem' || c.categoryId === 'support') return 'support';
+            if (c.categoryId === 'pricing') return 'visit';
+            if (c.categoryId === 'problem') return 'admin';
+            if (c.categoryId === 'support') return 'support';
             return 'info';
         }
 
         const DEPT_FROM = { 
-            info:    'info@century-adventures.com', 
+            info:    'infor@century-adventures.com', 
             booking: 'bookings@century-adventures.com', 
-            sales:   'bookings@century-adventures.com', 
-            support: 'visit@century-adventures.com' 
+            visit:   'visit@century-adventures.com', 
+            support: 'support@century-adventures.com',
+            admin:   'admin@century-adventures.com' 
         };
         const DEPT_FORM_TYPE = { 
             info:    'contact', 
             booking: 'booking', 
-            sales:   'quote', 
-            support: 'report' 
+            visit:   'enquiry', 
+            support: 'support',
+            admin:   'report' 
         };
 
         function setDeptFilter(dept) { 
@@ -1227,7 +1230,7 @@
         function renderDepartmentTabs() {
             const container = document.getElementById('deptTabsContainer');
             if (!container) return;
-            const counts = { all:0, info:0, booking:0, support:0, sales:0 };
+            const counts = { all:0, info:0, booking:0, visit:0, support:0, admin:0 };
             conversations.forEach(c => { 
                 counts.all++; 
                 const d = getConversationDepartment(c); 
@@ -1237,8 +1240,9 @@
                 <button class="dept-tab ${activeDeptFilter==='all'?'active':''}" onclick="setDeptFilter('all')">All <span class="dept-tab-count">${counts.all}</span></button>
                 <button class="dept-tab ${activeDeptFilter==='info'?'active':''}" onclick="setDeptFilter('info')">📧 Info <span class="dept-tab-count">${counts.info}</span></button>
                 <button class="dept-tab ${activeDeptFilter==='booking'?'active':''}" onclick="setDeptFilter('booking')">🦁 Booking <span class="dept-tab-count">${counts.booking}</span></button>
+                <button class="dept-tab ${activeDeptFilter==='visit'?'active':''}" onclick="setDeptFilter('visit')">🌍 Trip Planning <span class="dept-tab-count">${counts.visit}</span></button>
                 <button class="dept-tab ${activeDeptFilter==='support'?'active':''}" onclick="setDeptFilter('support')">🛠 Support <span class="dept-tab-count">${counts.support}</span></button>
-                <button class="dept-tab ${activeDeptFilter==='sales'?'active':''}" onclick="setDeptFilter('sales')">💰 Sales <span class="dept-tab-count">${counts.sales}</span></button>`;
+                <button class="dept-tab ${activeDeptFilter==='admin'?'active':''}" onclick="setDeptFilter('admin')">⚙️ Admin <span class="dept-tab-count">${counts.admin}</span></button>`;
         }
 
         function loadConversations() {
@@ -1374,12 +1378,11 @@
             const info = extractCustomerInfo(conv);
             let html = '';
             const DEPT_LABELS = {
-                booking: 'Safari Bookings',
-                info:    'General Inquiries',
-                visit:   'Trip Planning',
-                admin:   'Website Issues',
+                booking: 'Bookings & Reservations',
+                visit:   'Destination & Trip Planning',
+                info:    'General Contact',
                 support: 'Customer Support',
-                sales:   'Sales & Quotations'
+                admin:   'Website Administration'
             };
             conv.messages.forEach(msg => {
                 const isVisitor = msg.sender === 'visitor';

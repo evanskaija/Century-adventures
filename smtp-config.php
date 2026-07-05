@@ -19,9 +19,10 @@ define('SMTP_FROM_NAME','Century Adventures');
 
 // ── Business Email Routing ───────────────────────────────────────────────────
 define('EMAIL_ADMIN',    'admin@century-adventures.com');
-define('EMAIL_INFO',     'info@century-adventures.com');
+define('EMAIL_INFO',     'infor@century-adventures.com');
 define('EMAIL_BOOKINGS', 'bookings@century-adventures.com');
 define('EMAIL_VISIT',    'visit@century-adventures.com');
+define('EMAIL_SUPPORT',  'support@century-adventures.com');
 
 // ── Database Path ────────────────────────────────────────────────────────────
 define('DB_PATH', __DIR__ . '/database.sqlite');

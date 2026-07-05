@@ -124,7 +124,7 @@ function handleContact(array $d, string $name, string $email, string $phone, str
     ]);
 
     // Ticket System Core Initialization
-    $ticketId = ensureTicket($convId, $name, $email, $subject, $dept, 'open');
+    $ticketId = ensureTicket($convId, $name, $email, $subject, $dept, 'open', $phone);
     $msgText  = "Subject: $subject\nMessage: $message\nPhone: $phone";
     $msgEntry = [
         'id'        => 'msg-' . time() . '-visitor',
@@ -187,7 +187,7 @@ function handleBooking(array $d, string $name, string $email, string $phone, str
 
     // Ticket System Core Initialization
     $subject  = "Safari Booking: $safari";
-    $ticketId = ensureTicket($convId, $name, $email, $subject, 'booking', 'open');
+    $ticketId = ensureTicket($convId, $name, $email, $subject, 'booking', 'open', $phone);
     
     $msgText  = "Safari Package: $safari\nArrival: $arrDate\nDeparture: $depDate\nAdults: $adults\nChildren: $children\nLodging: $lodging\nSpecial Requests: $message\nPhone: $phone";
     $msgEntry = [
@@ -249,7 +249,7 @@ function handleEnquiry(array $d, string $name, string $email, string $phone, str
 
     // Ticket System Core Initialization
     $subject  = "Safari Inquiry: $safari";
-    $ticketId = ensureTicket($convId, $name, $email, $subject, 'enquiry', 'open');
+    $ticketId = ensureTicket($convId, $name, $email, $subject, 'enquiry', 'open', $phone);
     
     $msgText  = "Enquiry about: $safari\nTravel Date: $date\nGuests: $guests\nDetails: $message\nPhone: $phone";
     $msgEntry = [
@@ -298,17 +298,15 @@ function handleSupport(array $d, string $name, string $email, string $phone, str
     $subject  = sanitize($d['subject'] ?? 'General Inquiry');
     $convId   = sanitize($d['conv_id'] ?? 'conv-' . time() . '-' . rand(1000, 9999));
 
-    // Automatically route based on selected subject
-    $dept = getDepartmentFromSubject($subject, 'info');
     $cat  = getCategoryFromSubject($subject, 'general');
 
-    saveSubmission($dept, [
+    saveSubmission('support', [
         'name' => $name, 'email' => $email, 'phone' => $phone,
         'subject' => $subject, 'message' => $message,
     ]);
 
     // Ticket System Core Initialization
-    $ticketId = ensureTicket($convId, $name, $email, $subject, $dept, 'open');
+    $ticketId = ensureTicket($convId, $name, $email, $subject, 'support', 'open', $phone);
     
     $msgText  = "Subject: $subject\nMessage: $message\nPhone: $phone";
     $msgEntry = [
@@ -319,7 +317,7 @@ function handleSupport(array $d, string $name, string $email, string $phone, str
     ];
     appendTicketMessage($convId, $msgEntry, $name, $email, $cat);
 
-    $routing = getDepartmentRouting($dept);
+    $routing = getDepartmentRouting('support');
     $initialMsgId = buildInitialMessageId($ticketId);
 
     $staffBody = buildFieldsTable("New Support Message ($ticketId)", 'Safari Support Widget', [
@@ -367,7 +365,7 @@ function handleQuote(array $d, string $name, string $email, string $phone, strin
 
     // Ticket System Core Initialization
     $subject  = "Safari Quote Request: $destination";
-    $ticketId = ensureTicket($convId, $name, $email, $subject, 'quote', 'open');
+    $ticketId = ensureTicket($convId, $name, $email, $subject, 'quote', 'open', $phone);
     
     $msgText  = "Destination: $destination\nDates: $dates\nTravelers: $travelers\nBudget: $budget\nDetails: $message\nPhone: $phone";
     $msgEntry = [
@@ -424,7 +422,7 @@ function handleReport(array $d, string $name, string $email, string $phone, stri
 
     // Ticket System Core Initialization
     $subject  = "Issue Report: $issueType";
-    $ticketId = ensureTicket($convId, $name, $email, $subject, 'report', 'open');
+    $ticketId = ensureTicket($convId, $name, $email, $subject, 'report', 'open', $phone);
     
     $msgText  = "Issue Type: $issueType\nDescription: $message\nPhone: $phone";
     $msgEntry = [
@@ -487,7 +485,7 @@ function handlePlanner(array $d, string $name, string $email, string $phone, str
 
     // Ticket System Core Initialization
     $subject  = "Custom Safari Plan Request";
-    $ticketId = ensureTicket($convId, $name, $email, $subject, 'planner', 'open');
+    $ticketId = ensureTicket($convId, $name, $email, $subject, 'planner', 'open', $phone);
     
     $msgText  = "Destinations: $destinations\nActivities: $activities\nLodging: $lodging\nAdults: $adults\nChildren: $children\nTravel Date: $date\nEstimated Cost/Budget: $budget\nNotes: $message\nPhone: $phone";
     $msgEntry = [

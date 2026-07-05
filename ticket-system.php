@@ -37,27 +37,41 @@ function ensureTicket(
     string $email,
     string $subject,
     string $formType,
-    string $status = 'open'
+    string $status = 'open',
+    string $phone = '',
+    string $department = '',
+    string $assignedEmail = ''
 ): string {
     $db = getTicketDb();
     $ticketId = generateTicketId($convId);
 
+    // Resolve routing info to record metadata
+    $routing = getDepartmentRouting($formType);
+    $finalDept = $department ?: ($routing['dept'] ?? 'GENERAL CONTACT');
+    $finalAssignedEmail = $assignedEmail ?: ($routing['to'] ?? 'infor@century-adventures.com');
+
     $db->prepare("
-        INSERT INTO tickets (ticket_id, conv_id, customer_name, customer_email, subject, form_type, status, created_at, updated_at)
-        VALUES (:tid, :conv, :name, :email, :subject, :form_type, :status, datetime('now'), datetime('now'))
+        INSERT INTO tickets (ticket_id, conv_id, customer_name, customer_email, customer_phone, department, assigned_email, subject, form_type, status, created_at, updated_at)
+        VALUES (:tid, :conv, :name, :email, :phone, :dept, :assigned_email, :subject, :form_type, :status, datetime('now'), datetime('now'))
         ON CONFLICT(conv_id) DO UPDATE SET
             customer_name  = excluded.customer_name,
             customer_email = excluded.customer_email,
+            customer_phone = CASE WHEN excluded.customer_phone != '' THEN excluded.customer_phone ELSE customer_phone END,
+            department     = excluded.department,
+            assigned_email = excluded.assigned_email,
             subject        = excluded.subject,
             updated_at     = datetime('now')
     ")->execute([
-        ':tid'       => $ticketId,
-        ':conv'      => $convId,
-        ':name'      => $name,
-        ':email'     => $email,
-        ':subject'   => $subject,
-        ':form_type' => $formType,
-        ':status'    => $status,
+        ':tid'            => $ticketId,
+        ':conv'           => $convId,
+        ':name'           => $name,
+        ':email'          => $email,
+        ':phone'          => $phone,
+        ':dept'           => $finalDept,
+        ':assigned_email' => $finalAssignedEmail,
+        ':subject'        => $subject,
+        ':form_type'      => $formType,
+        ':status'         => $status,
     ]);
 
     return $ticketId;
@@ -282,26 +296,41 @@ function getCategoryFromSubject(string $subject, string $default = 'general'): s
  * Return the correct TO email and Reply-To based on form type.
  */
 function getDepartmentRouting(string $formType): array {
-    return match(true) {
-        in_array($formType, ['booking','planner','quote']) => [
+    return match(strtolower(trim($formType))) {
+        // BOOKINGS & RESERVATIONS -> bookings@century-adventures.com
+        'booking', 'bookings', 'quote' => [
             'to'       => EMAIL_BOOKINGS,
             'label'    => 'Century Adventures Bookings',
             'reply_to' => 'bookings@century-adventures.com',
+            'dept'     => 'BOOKINGS & RESERVATIONS',
         ],
-        in_array($formType, ['report','visit','support']) => [
+        // DESTINATION & TRIP PLANNING -> visit@century-adventures.com
+        'safari_inquiry', 'destination_inquiry', 'enquiry', 'visit', 'planner' => [
             'to'       => EMAIL_VISIT,
             'label'    => 'Century Adventures Trip Planning',
             'reply_to' => 'visit@century-adventures.com',
+            'dept'     => 'DESTINATION & TRIP PLANNING',
         ],
-        in_array($formType, ['admin','website']) => [
+        // CUSTOMER SUPPORT -> support@century-adventures.com
+        'support', 'support_request', 'live_chat_offline', 'chat_offline' => [
+            'to'       => EMAIL_SUPPORT,
+            'label'    => 'Century Adventures Support',
+            'reply_to' => 'support@century-adventures.com',
+            'dept'     => 'CUSTOMER SUPPORT',
+        ],
+        // WEBSITE ADMINISTRATION -> admin@century-adventures.com
+        'report', 'admin', 'website', 'issue', 'feedback' => [
             'to'       => EMAIL_ADMIN,
             'label'    => 'Century Adventures Administration',
             'reply_to' => 'admin@century-adventures.com',
+            'dept'     => 'WEBSITE ADMINISTRATION',
         ],
+        // GENERAL CONTACT -> infor@century-adventures.com
         default => [
             'to'       => EMAIL_INFO,
             'label'    => 'Century Adventures General Contact',
-            'reply_to' => 'info@century-adventures.com',
+            'reply_to' => 'infor@century-adventures.com',
+            'dept'     => 'GENERAL CONTACT',
         ],
     };
 }
@@ -317,6 +346,17 @@ function getTicketDb(): PDO {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->exec("PRAGMA journal_mode=WAL;");
 
+    // Run schema migrations for pre-existing tables
+    try {
+        $pdo->exec("ALTER TABLE tickets ADD COLUMN customer_phone TEXT;");
+    } catch (Exception $e) {}
+    try {
+        $pdo->exec("ALTER TABLE tickets ADD COLUMN department TEXT;");
+    } catch (Exception $e) {}
+    try {
+        $pdo->exec("ALTER TABLE tickets ADD COLUMN assigned_email TEXT;");
+    } catch (Exception $e) {}
+
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS tickets (
             id              INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -324,6 +364,9 @@ function getTicketDb(): PDO {
             conv_id         TEXT UNIQUE,
             customer_name   TEXT,
             customer_email  TEXT,
+            customer_phone  TEXT,
+            department      TEXT,
+            assigned_email  TEXT,
             subject         TEXT,
             form_type       TEXT DEFAULT 'contact',
             status          TEXT DEFAULT 'open',
