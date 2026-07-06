@@ -134,17 +134,18 @@ function handleContact(array $d, string $name, string $email, string $phone, str
     ];
     appendTicketMessage($convId, $msgEntry, $name, $email, $cat);
 
-    $routing = getDepartmentRouting($dept);
+    $routing = getDepartmentRouting($subject, 'contact');
     $initialMsgId = buildInitialMessageId($ticketId);
 
     // Staff notification email
     $staffBody = buildFieldsTable("New Contact Form Submission ($ticketId)", 'Contact Page', [
-        'Ticket ID'  => "<strong>$ticketId</strong>",
-        'Full Name'  => $name,
-        'Email'      => "<a href='mailto:$email'>$email</a>",
-        'Phone'      => $phone ?: 'Not provided',
-        'Subject'    => $subject,
-        'Message'    => nl2br(htmlspecialchars($message)),
+        'Ticket ID'      => "<strong>$ticketId</strong>",
+        'Customer Name'  => $name,
+        'Email Address'  => "<a href='mailto:$email'>$email</a>",
+        'Phone Number'   => $phone ?: 'Not provided',
+        'Subject'        => $subject,
+        'Message'        => nl2br(htmlspecialchars($message)),
+        'Date Submitted' => date('Y-m-d H:i:s'),
     ]);
     $staffHtml = buildEmailTemplate(
         "New Contact Inquiry [$ticketId] – Century Adventures",
@@ -157,7 +158,7 @@ function handleContact(array $d, string $name, string $email, string $phone, str
     $confirmHtml = buildEmailTemplate(
         "We received your message [$ticketId] – Century Adventures",
         "Thank you $name, we will get back to you shortly.",
-        buildConfirmation($name, "Thank you for contacting us! (Ticket $ticketId)", "We've received your message regarding <strong>$subject</strong>. Your inquiry has been registered under ticket number <strong>$ticketId</strong>. One of our team members will respond within 24 hours.")
+        buildConfirmation($name, "Thank you for contacting us! (Ticket $ticketId)", "Thank you for contacting Century Adventures. We have received your enquiry and will respond shortly.")
     );
     sendMailWithHeaders($email, $name, "✅ We received your message [$ticketId] – Century Adventures", $confirmHtml, $routing['reply_to'], null, [
         'message_id'  => buildReplyMessageId($ticketId),
@@ -198,22 +199,24 @@ function handleBooking(array $d, string $name, string $email, string $phone, str
     ];
     appendTicketMessage($convId, $msgEntry, $name, $email, 'safari');
 
-    $routing = getDepartmentRouting('booking');
+    $routing = getDepartmentRouting($subject, 'booking');
     $initialMsgId = buildInitialMessageId($ticketId);
 
     $staffBody = buildFieldsTable("New Safari Booking Request ($ticketId)", 'Book Now Form', [
         'Ticket ID'        => "<strong>$ticketId</strong>",
-        'Full Name'        => $name,
-        'Email'            => "<a href='mailto:$email'>$email</a>",
-        'Phone'            => $phone ?: 'Not provided',
+        'Customer Name'    => $name,
+        'Email Address'    => "<a href='mailto:$email'>$email</a>",
+        'Phone Number'     => $phone ?: 'Not provided',
         'Country'          => $country ?: 'Not provided',
+        'Subject'          => $subject,
         'Safari Package'   => $safari,
         'Arrival Date'     => $arrDate ?: 'TBD',
         'Departure Date'   => $depDate ?: 'TBD',
         'Adults'           => $adults ?: 'Not specified',
         'Children'         => $children ?: '0',
         'Lodging Level'    => $lodging ?: 'Not specified',
-        'Special Requests' => nl2br(htmlspecialchars($message)) ?: 'None',
+        'Message'          => nl2br(htmlspecialchars($message)) ?: 'None',
+        'Date Submitted'   => date('Y-m-d H:i:s'),
     ]);
     $staffHtml = buildEmailTemplate(
         "New Booking Request [$ticketId] – Century Adventures",
@@ -225,7 +228,7 @@ function handleBooking(array $d, string $name, string $email, string $phone, str
     $confirmHtml = buildEmailTemplate(
         "Booking Request Received [$ticketId] – Century Adventures",
         "Hi $name, your booking request has been received!",
-        buildConfirmation($name, "Booking Request Received! (Ticket $ticketId)", "Your booking request for <strong>$safari</strong> has been registered under ticket number <strong>$ticketId</strong>. Our team will confirm availability and send a detailed itinerary within 24 hours.")
+        buildConfirmation($name, "Booking Request Received! (Ticket $ticketId)", "Thank you for contacting Century Adventures. We have received your enquiry and will respond shortly.")
     );
     sendMailWithHeaders($email, $name, "🦁 Booking Request Received [$ticketId] – Century Adventures", $confirmHtml, $routing['reply_to'], null, [
         'message_id'  => buildReplyMessageId($ticketId),
@@ -260,18 +263,20 @@ function handleEnquiry(array $d, string $name, string $email, string $phone, str
     ];
     appendTicketMessage($convId, $msgEntry, $name, $email, 'safari');
 
-    $routing = getDepartmentRouting('enquiry');
+    $routing = getDepartmentRouting($subject, 'enquiry');
     $initialMsgId = buildInitialMessageId($ticketId);
 
     $staffBody = buildFieldsTable("New Safari Enquiry ($ticketId)", 'Enquire Form', [
-        'Ticket ID'   => "<strong>$ticketId</strong>",
-        'Full Name'   => $name,
-        'Email'       => "<a href='mailto:$email'>$email</a>",
-        'Phone'       => $phone ?: 'Not provided',
-        'Safari'      => $safari,
-        'Travel Date' => $date ?: 'TBD',
-        'Guests'      => $guests ?: 'Not specified',
-        'Message'     => nl2br(htmlspecialchars($message)) ?: 'None',
+        'Ticket ID'      => "<strong>$ticketId</strong>",
+        'Customer Name'  => $name,
+        'Email Address'  => "<a href='mailto:$email'>$email</a>",
+        'Phone Number'   => $phone ?: 'Not provided',
+        'Subject'        => $subject,
+        'Safari'         => $safari,
+        'Travel Date'    => $date ?: 'TBD',
+        'Guests'         => $guests ?: 'Not specified',
+        'Message'        => nl2br(htmlspecialchars($message)) ?: 'None',
+        'Date Submitted' => date('Y-m-d H:i:s'),
     ]);
     $staffHtml = buildEmailTemplate(
         "New Enquiry [$ticketId] – Century Adventures",
@@ -283,7 +288,7 @@ function handleEnquiry(array $d, string $name, string $email, string $phone, str
     $confirmHtml = buildEmailTemplate(
         "We received your enquiry [$ticketId] – Century Adventures",
         "Hi $name, we received your enquiry!",
-        buildConfirmation($name, "Enquiry Received! (Ticket $ticketId)", "Thank you for your interest in <strong>$safari</strong>. Your enquiry has been registered under ticket number <strong>$ticketId</strong>. Our team will send you a personalized itinerary and quote within 24 hours.")
+        buildConfirmation($name, "Enquiry Received! (Ticket $ticketId)", "Thank you for contacting Century Adventures. We have received your enquiry and will respond shortly.")
     );
     sendMailWithHeaders($email, $name, "📬 Enquiry Received [$ticketId] – Century Adventures", $confirmHtml, $routing['reply_to'], null, [
         'message_id'  => buildReplyMessageId($ticketId),
@@ -317,16 +322,17 @@ function handleSupport(array $d, string $name, string $email, string $phone, str
     ];
     appendTicketMessage($convId, $msgEntry, $name, $email, $cat);
 
-    $routing = getDepartmentRouting('support');
+    $routing = getDepartmentRouting($subject, 'support');
     $initialMsgId = buildInitialMessageId($ticketId);
 
     $staffBody = buildFieldsTable("New Support Message ($ticketId)", 'Safari Support Widget', [
-        'Ticket ID' => "<strong>$ticketId</strong>",
-        'Name'    => $name,
-        'Email'   => "<a href='mailto:$email'>$email</a>",
-        'Phone'   => $phone ?: 'Not provided',
-        'Subject' => $subject,
-        'Message' => nl2br(htmlspecialchars($message)),
+        'Ticket ID'      => "<strong>$ticketId</strong>",
+        'Customer Name'  => $name,
+        'Email Address'  => "<a href='mailto:$email'>$email</a>",
+        'Phone Number'   => $phone ?: 'Not provided',
+        'Subject'        => $subject,
+        'Message'        => nl2br(htmlspecialchars($message)),
+        'Date Submitted' => date('Y-m-d H:i:s'),
     ]);
     $staffHtml = buildEmailTemplate(
         "Support Message [$ticketId] – Century Adventures",
@@ -339,7 +345,7 @@ function handleSupport(array $d, string $name, string $email, string $phone, str
     $confirmHtml = buildEmailTemplate(
         "Support Inquiry Received [$ticketId] – Century Adventures",
         "Hi $name, we received your support inquiry!",
-        buildConfirmation($name, "Support Inquiry Received! (Ticket $ticketId)", "We've registered your widget support inquiry under ticket number <strong>$ticketId</strong>. Our team will get back to you shortly.")
+        buildConfirmation($name, "Support Inquiry Received! (Ticket $ticketId)", "Thank you for contacting Century Adventures. We have received your enquiry and will respond shortly.")
     );
     sendMailWithHeaders($email, $name, "💬 Support Inquiry Received [$ticketId] – Century Adventures", $confirmHtml, $routing['reply_to'], null, [
         'message_id'  => buildReplyMessageId($ticketId),
@@ -376,19 +382,21 @@ function handleQuote(array $d, string $name, string $email, string $phone, strin
     ];
     appendTicketMessage($convId, $msgEntry, $name, $email, 'pricing');
 
-    $routing = getDepartmentRouting('quote');
+    $routing = getDepartmentRouting($subject, 'quote');
     $initialMsgId = buildInitialMessageId($ticketId);
 
     $staffBody = buildFieldsTable("New Quote Request ($ticketId)", 'Safari Widget', [
-        'Ticket ID'     => "<strong>$ticketId</strong>",
-        'Name'          => $name,
-        'Email'         => "<a href='mailto:$email'>$email</a>",
-        'Phone'         => $phone ?: 'Not provided',
-        'Destination'   => $destination ?: 'Not specified',
-        'Travel Dates'  => $dates ?: 'Flexible',
-        'Travelers'     => $travelers ?: 'Not specified',
-        'Budget (USD)'  => $budget ?: 'Flexible',
-        'Details'       => nl2br(htmlspecialchars($message)) ?: 'None',
+        'Ticket ID'      => "<strong>$ticketId</strong>",
+        'Customer Name'  => $name,
+        'Email Address'  => "<a href='mailto:$email'>$email</a>",
+        'Phone Number'   => $phone ?: 'Not provided',
+        'Subject'        => $subject,
+        'Destination'    => $destination ?: 'Not specified',
+        'Travel Dates'   => $dates ?: 'Flexible',
+        'Travelers'      => $travelers ?: 'Not specified',
+        'Budget (USD)'   => $budget ?: 'Flexible',
+        'Message'        => nl2br(htmlspecialchars($message)) ?: 'None',
+        'Date Submitted' => date('Y-m-d H:i:s'),
     ]);
     $staffHtml = buildEmailTemplate(
         "Quote Request [$ticketId] – Century Adventures",
@@ -400,7 +408,7 @@ function handleQuote(array $d, string $name, string $email, string $phone, strin
     $confirmHtml = buildEmailTemplate(
         "Quote Request Received [$ticketId] – Century Adventures",
         "Hi $name, your quote request was received!",
-        buildConfirmation($name, "Quote Request Received! (Ticket $ticketId)", "We've received your quote request for <strong>$destination</strong> (Ticket <strong>$ticketId</strong>). Our specialists will prepare a personalized itinerary and email you within 24 hours.")
+        buildConfirmation($name, "Quote Request Received! (Ticket $ticketId)", "Thank you for contacting Century Adventures. We have received your enquiry and will respond shortly.")
     );
     sendMailWithHeaders($email, $name, "📋 Quote Request Received [$ticketId] – Century Adventures", $confirmHtml, $routing['reply_to'], null, [
         'message_id'  => buildReplyMessageId($ticketId),
@@ -433,16 +441,18 @@ function handleReport(array $d, string $name, string $email, string $phone, stri
     ];
     appendTicketMessage($convId, $msgEntry, $name, $email, 'problem');
 
-    $routing = getDepartmentRouting('report');
+    $routing = getDepartmentRouting($subject, 'report');
     $initialMsgId = buildInitialMessageId($ticketId);
 
     $staffBody = buildFieldsTable("Issue Report ($ticketId)", 'Support Widget', [
-        'Ticket ID'   => "<strong>$ticketId</strong>",
-        'Name'        => $name,
-        'Email'       => "<a href='mailto:$email'>$email</a>",
-        'Phone'       => $phone ?: 'Not provided',
-        'Issue Type'  => $issueType,
-        'Description' => nl2br(htmlspecialchars($message)),
+        'Ticket ID'      => "<strong>$ticketId</strong>",
+        'Customer Name'  => $name,
+        'Email Address'  => "<a href='mailto:$email'>$email</a>",
+        'Phone Number'   => $phone ?: 'Not provided',
+        'Subject'        => $subject,
+        'Issue Type'     => $issueType,
+        'Message'        => nl2br(htmlspecialchars($message)),
+        'Date Submitted' => date('Y-m-d H:i:s'),
     ]);
     $staffHtml = buildEmailTemplate(
         "Issue Report [$ticketId] – Century Adventures",
@@ -455,7 +465,7 @@ function handleReport(array $d, string $name, string $email, string $phone, stri
     $confirmHtml = buildEmailTemplate(
         "Issue Report Received [$ticketId] – Century Adventures",
         "Hi $name, we received your report!",
-        buildConfirmation($name, "Issue Report Received! (Ticket $ticketId)", "We've registered your issue report regarding <strong>$issueType</strong> under ticket number <strong>$ticketId</strong>. Our technical support team will review it shortly.")
+        buildConfirmation($name, "Issue Report Received! (Ticket $ticketId)", "Thank you for contacting Century Adventures. We have received your enquiry and will respond shortly.")
     );
     sendMailWithHeaders($email, $name, "⚠️ Issue Report Received [$ticketId] – Century Adventures", $confirmHtml, $routing['reply_to'], null, [
         'message_id'  => buildReplyMessageId($ticketId),
@@ -496,22 +506,24 @@ function handlePlanner(array $d, string $name, string $email, string $phone, str
     ];
     appendTicketMessage($convId, $msgEntry, $name, $email, 'safari');
 
-    $routing = getDepartmentRouting('planner');
+    $routing = getDepartmentRouting($subject, 'planner');
     $initialMsgId = buildInitialMessageId($ticketId);
 
     $staffBody = buildFieldsTable("Custom Safari Planner Submission ($ticketId)", 'Safari Planner', [
-        'Ticket ID'     => "<strong>$ticketId</strong>",
-        'Name'          => $name,
-        'Email'         => "<a href='mailto:$email'>$email</a>",
-        'Phone'         => $phone ?: 'Not provided',
-        'Destinations'  => $destinations ?: 'Not specified',
-        'Activities'    => $activities   ?: 'Not specified',
-        'Lodging'       => $lodging      ?: 'Not specified',
-        'Adults'        => $adults       ?: 'Not specified',
-        'Children'      => $children,
-        'Travel Date'   => $date         ?: 'TBD',
-        'Est. Cost'     => $budget       ?: 'N/A',
-        'Special Notes' => nl2br(htmlspecialchars($message)) ?: 'None',
+        'Ticket ID'      => "<strong>$ticketId</strong>",
+        'Customer Name'  => $name,
+        'Email Address'  => "<a href='mailto:$email'>$email</a>",
+        'Phone Number'   => $phone ?: 'Not provided',
+        'Subject'        => $subject,
+        'Destinations'   => $destinations ?: 'Not specified',
+        'Activities'     => $activities   ?: 'Not specified',
+        'Lodging'        => $lodging      ?: 'Not specified',
+        'Adults'         => $adults       ?: 'Not specified',
+        'Children'       => $children,
+        'Travel Date'    => $date         ?: 'TBD',
+        'Est. Cost'      => $budget       ?: 'N/A',
+        'Message'        => nl2br(htmlspecialchars($message)) ?: 'None',
+        'Date Submitted' => date('Y-m-d H:i:s'),
     ]);
     $staffHtml = buildEmailTemplate(
         "Custom Safari Plan [$ticketId] – Century Adventures",
@@ -523,7 +535,7 @@ function handlePlanner(array $d, string $name, string $email, string $phone, str
     $confirmHtml = buildEmailTemplate(
         "Your Safari Plan Was Received [$ticketId] – Century Adventures",
         "Hi $name, we received your custom safari plan!",
-        buildConfirmation($name, "Custom Safari Plan Received! (Ticket $ticketId)", "Fantastic! We've registered your custom safari plan under ticket number <strong>$ticketId</strong>. Our expert team will review your destinations and activities and send you a tailored itinerary within 24–48 hours.")
+        buildConfirmation($name, "Custom Safari Plan Received! (Ticket $ticketId)", "Thank you for contacting Century Adventures. We have received your enquiry and will respond shortly.")
     );
     sendMailWithHeaders($email, $name, "🗺️ Your Custom Safari Plan [$ticketId] – Century Adventures", $confirmHtml, $routing['reply_to'], null, [
         'message_id'  => buildReplyMessageId($ticketId),

@@ -24,6 +24,31 @@ function toggleMobileMenu() {
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Century Adventures experience initialized!');
     
+    // Pre-fill destination parameter on enquire.html page based on referrer or URL query
+    if (window.location.pathname.includes('enquire.html')) {
+        const urlParams = new URLSearchParams(window.location.search);
+        let destParam = urlParams.get('destination');
+        if (!destParam && document.referrer) {
+            try {
+                const refUrl = new URL(document.referrer);
+                const refPath = refUrl.pathname.toLowerCase();
+                if (refPath.includes('serengeti')) destParam = 'serengeti';
+                else if (refPath.includes('ngorongoro')) destParam = 'ngorongoro';
+                else if (refPath.includes('tarangire')) destParam = 'tarangire';
+                else if (refPath.includes('manyara')) destParam = 'manyara';
+                else if (refPath.includes('zanzibar')) destParam = 'zanzibar';
+                else if (refPath.includes('kilimanjaro')) destParam = 'kilimanjaro';
+            } catch(e) {
+                // Ignore parsing errors
+            }
+        }
+        if (destParam) {
+            const destSelect = document.querySelector('select[name="destination"]');
+            if (destSelect) {
+                destSelect.value = destParam.toLowerCase();
+            }
+        }
+    }
     // Standard Header Injection for Unified Navigation & Toggles
     const injectHeader = () => {
         const header = document.querySelector('header.header');
@@ -1713,8 +1738,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         
-        // Save conversation if text was generated
-        if (text) {
+            // Save to century-conversations local storage
             let conversations = [];
             try {
                 conversations = JSON.parse(localStorage.getItem('century-conversations')) || [];
@@ -1748,60 +1772,160 @@ document.addEventListener('DOMContentLoaded', () => {
             conversations.push(conv);
             localStorage.setItem('century-conversations', JSON.stringify(conversations));
  
-            // Trigger mailto route to configured department email address
-            const getRouteEmail = () => {
-                const defaults = {
-                    info: 'infor@century-adventures.com',
-                    booking: 'bookings@century-adventures.com',
-                    sales: 'visit@century-adventures.com',
-                    support: 'support@century-adventures.com',
-                    admin: 'admin@century-adventures.com'
-                };
-                try {
-                    const saved = JSON.parse(localStorage.getItem('century-routing-emails')) || defaults;
-                    if (isBookForm || isSafariPageBookingForm) return saved.booking || defaults.booking;
-                    if (isEnquireForm || isCustomExperienceForm) return saved.sales || defaults.sales;
-                    return saved.info || defaults.info;
-                } catch(e) {
-                    if (isBookForm || isSafariPageBookingForm) return defaults.booking;
-                    if (isEnquireForm || isCustomExperienceForm) return defaults.sales;
-                    return defaults.info;
-                }
+            // Disable button and add loading spinner
+            const submitBtn = form.querySelector('button[type="submit"]');
+            let originalBtnHtml = '';
+            if (submitBtn) {
+                originalBtnHtml = submitBtn.innerHTML;
+                submitBtn.classList.add('btn-loading');
+                submitBtn.disabled = true;
+            }
+
+            // Construct payload based on the form type
+            let payload = {
+                name: name,
+                email: email,
+                phone: phone,
+                message: message,
+                conv_id: conv.id,
+                _elapsed: 99,
+                website: ""
             };
-            const routeEmail = getRouteEmail();
-            const ccEmail = 'admin@century-adventures.com';
-            const subjectPrefix = isBookForm || isSafariPageBookingForm ? 'Safari Booking Request' : (isEnquireForm ? 'Quote Inquiry' : (isCustomExperienceForm ? 'Custom Experience Request' : 'Contact Inquiry'));
-            const mailSubject = `${subjectPrefix} - Century Adventures`;
-            const mailBody = `${text}\n\nVisitor ID: ${visitorIdVal}`;
-            
-            window.open(`mailto:${routeEmail}?cc=${ccEmail}&subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`, '_self');
-        }
-        
-        // Show alerts
-        let alertMsg = '';
-        if (isBookForm || isSafariPageBookingForm || isEnquireForm || form.classList.contains('booking-form') || form.id === 'mainBookingForm') {
-            alertMsg = lang === 'sw' 
-                ? 'Asante kwa ombi lako! Ombi lako limepokelewa. Wataalamu wetu wa safari watawasiliana nawe ndani ya saa 24 ili kukusaidia kupanga safari yako.'
-                : 'Thank you for your enquiry! Your request has been received. Our safari experts will contact you within 24 hours to help plan your adventure.';
-            alert(alertMsg);
-            form.reset();
-        } else if (isCustomExperienceForm) {
-            alertMsg = lang === 'sw'
-                ? 'Asante! Ombi lako la uzoefu maalum limepokelewa. Washauri wetu watawasiliana nawe ndani ya saa 24.'
-                : 'Thank you! Your custom experience request has been received. Our travel planners will contact you within 24 hours.';
-            alert(alertMsg);
-            form.reset();
+
+            if (isContactForm) {
+                payload.form_type = 'contact';
+                payload.subject = form.querySelector('#safari_type')?.value || 'Contact Us';
+                payload.safari_type = payload.subject;
+                payload.travel_date = form.querySelector('#travel_date')?.value || '';
+                payload.travelers = form.querySelector('#travelers')?.value || '';
+            } else if (isCustomExperienceForm) {
+                payload.form_type = 'booking';
+                payload.subject = 'Package Booking';
+                payload.safari = form.querySelector('[name="experience_style"]')?.value || 'Custom Experience';
+                payload.experience_style = payload.safari;
+            } else if (isBookForm) {
+                const textInputs = Array.from(form.querySelectorAll('input[type="text"]'));
+                const country = textInputs[1]?.value || '';
+                const destinations = Array.from(form.querySelectorAll('input[name="destinations"]:checked')).map(cb => cb.value);
+                const numInputs = Array.from(form.querySelectorAll('input[type="number"]'));
+                const adults = parseInt(numInputs[0]?.value) || 1;
+                const children = parseInt(numInputs[1]?.value) || 0;
+                const dateInputs = Array.from(form.querySelectorAll('input[type="date"]'));
+                const arrival = dateInputs[0]?.value || '';
+                const departure = dateInputs[1]?.value || '';
+                const travelStyle = form.querySelector('input[name="travel_style"]:checked')?.value || 'Budget';
+
+                payload.form_type = 'booking';
+                payload.subject = 'Book Now';
+                payload.safari = destinations.join(', ') || 'Custom Safari';
+                payload.country = country;
+                payload.arrival_date = arrival;
+                payload.departure_date = departure;
+                payload.adults = adults;
+                payload.children = children;
+                payload.lodging = travelStyle;
+            } else if (isEnquireForm) {
+                const guests = form.querySelector('[name="guests"]')?.value || '';
+                const travelDate = form.querySelector('[name="travel_date"]')?.value || '';
+                const destination = form.querySelector('[name="destination"]')?.value || '';
+                const experience = form.querySelector('[name="experience_type"]')?.value || '';
+                const budget = form.querySelector('[name="budget"]')?.value || '';
+
+                payload.form_type = 'enquiry';
+                
+                // If it is one of the destination keywords, make that the subject
+                const dests = ['serengeti', 'ngorongoro', 'tarangire', 'manyara', 'zanzibar', 'kilimanjaro'];
+                let subVal = 'Request Quote';
+                if (destination && dests.includes(destination.toLowerCase())) {
+                    // Capitalize first letter
+                    subVal = destination.charAt(0).toUpperCase() + destination.slice(1);
+                }
+                payload.subject = subVal;
+                payload.safari = destination || experience || 'General Safari Enquiry';
+                payload.date = travelDate;
+                payload.guests = guests;
+                payload.budget = budget;
+                payload.experience_type = experience;
+            } else if (isSafariPageBookingForm) {
+                const country = form.querySelector('input[placeholder*="Country"], input[placeholder*="Your Country"]')?.value || '';
+                const numInputs = Array.from(form.querySelectorAll('input[type="number"]'));
+                const adults = parseInt(numInputs[0]?.value) || 1;
+                const children = parseInt(numInputs[1]?.value) || 0;
+                const travelDate = form.querySelector('input[type="date"]')?.value || '';
+                const packageName = document.querySelector('.trip-hero h1')?.textContent || document.title.split('|')[0].trim() || 'Safari Package';
+
+                payload.form_type = 'booking';
+                payload.subject = 'Book Now';
+                payload.safari = packageName;
+                payload.country = country;
+                payload.arrival_date = travelDate;
+                payload.adults = adults;
+                payload.children = children;
+                payload.lodging = 'midrange';
+            } else {
+                payload.form_type = 'contact';
+                payload.subject = 'Contact Us';
+            }
+
+            // POST form to backend submit-form.php
+            fetch('submit-form.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(res => {
+                if (!res.ok) throw new Error('Response error');
+                return res.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    let successTitle = lang === 'sw' ? 'Mwasilisho Umefanikiwa!' : 'Submission Successful!';
+                    let successMsg = '';
+                    
+                    if (isBookForm || isSafariPageBookingForm || isEnquireForm) {
+                        successMsg = lang === 'sw'
+                            ? 'Asante kwa ombi lako! Ombi lako limepokelewa. Wataalamu wetu wa safari watawasiliana nawe ndani ya saa 24 ili kukusaidia kupanga safari yako.'
+                            : 'Thank you for contacting Century Adventures. We have received your enquiry and will respond shortly.';
+                    } else if (isCustomExperienceForm) {
+                        successMsg = lang === 'sw'
+                            ? 'Asante! Ombi lako la uzoefu maalum limepokelewa. Washauri wetu watawasiliana nawe ndani ya saa 24.'
+                            : 'Thank you! Your custom experience request has been received. Our travel planners will contact you within 24 hours.';
+                    } else {
+                        successMsg = lang === 'sw'
+                            ? 'Asante! Ujumbe wako umetumwa kwa mafanikio. Washauri wetu watawasiliana nawe hivi karibuni.'
+                            : 'Thank you! Your inquiry has been sent successfully. Our consultants will contact you shortly.';
+                    }
+                    
+                    showPremiumAlert(successTitle, successMsg, 'fa-check-circle');
+                    form.reset();
+                } else {
+                    let errTitle = lang === 'sw' ? 'Itilafu' : 'Error';
+                    let errMsg = data.message || (lang === 'sw' ? 'Kuna hitilafu iliyotokea. Tafadhali jaribu tena.' : 'Something went wrong. Please try again.');
+                    showPremiumAlert(errTitle, errMsg, 'fa-exclamation-triangle');
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                let errTitle = lang === 'sw' ? 'Itilafu ya Mtandao' : 'Network Error';
+                let errMsg = lang === 'sw'
+                    ? 'Imeshindwa kuwasiliana na seva. Tafadhali angalia mtandao wako.'
+                    : 'Failed to connect to the server. Please check your network connection.';
+                showPremiumAlert(errTitle, errMsg, 'fa-wifi');
+            })
+            .finally(() => {
+                if (submitBtn) {
+                    submitBtn.innerHTML = originalBtnHtml;
+                    submitBtn.classList.remove('btn-loading');
+                    submitBtn.disabled = false;
+                }
+            });
         } else if (form.classList.contains('pay-form')) {
-            alertMsg = lang === 'sw'
+            const alertMsg = lang === 'sw'
                 ? 'Asante! Maelezo yako salama ya malipo yamewasilishwa kwa uhakiki. Tutashughulikia uhifadhi wako mara moja na kukutumia barua pepe ya uthibitisho.'
                 : 'Thank you! Your secure payment details have been submitted for verification. We will process your booking immediately and send a confirmation email.';
-            alert(alertMsg);
-            form.reset();
-        } else {
-            alertMsg = lang === 'sw'
-                ? 'Asante! Ujumbe wako umetumwa kwa mafanikio. Washauri wetu watawasiliana nawe hivi karibuni.'
-                : 'Thank you! Your inquiry has been sent successfully. Our consultants will contact you shortly.';
-            alert(alertMsg);
+            showPremiumAlert(lang === 'sw' ? 'Malipo Yamepokelewa' : 'Payment Received', alertMsg, 'fa-credit-card');
             form.reset();
         }
     });
@@ -2347,3 +2471,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log("Century Adventures Exceptional Features: Weather, Currency, Wishlist & Comparison Engines Ready.");
 });
+
+/**
+ * Premium UI Success Modal Alert
+ */
+function showPremiumAlert(title, message, iconClass = 'fa-check-circle') {
+    let overlay = document.querySelector('.premium-alert-overlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'premium-alert-overlay';
+        overlay.innerHTML = `
+            <div class="premium-alert-card">
+                <div class="premium-alert-icon"><i class="fas"></i></div>
+                <div class="premium-alert-title"></div>
+                <div class="premium-alert-message"></div>
+                <button class="premium-alert-btn">OK</button>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+        overlay.querySelector('.premium-alert-btn').addEventListener('click', () => {
+            overlay.classList.remove('active');
+        });
+    }
+    
+    overlay.querySelector('.premium-alert-icon i').className = `fas ${iconClass}`;
+    overlay.querySelector('.premium-alert-title').textContent = title;
+    overlay.querySelector('.premium-alert-message').textContent = message;
+    
+    // Trigger CSS animation reflow
+    overlay.offsetHeight;
+    overlay.classList.add('active');
+}
+

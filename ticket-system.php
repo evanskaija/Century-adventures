@@ -46,7 +46,7 @@ function ensureTicket(
     $ticketId = generateTicketId($convId);
 
     // Resolve routing info to record metadata
-    $routing = getDepartmentRouting($formType);
+    $routing = getDepartmentRouting($subject, $formType);
     $finalDept = $department ?: ($routing['dept'] ?? 'GENERAL CONTACT');
     $finalAssignedEmail = $assignedEmail ?: ($routing['to'] ?? 'infor@century-adventures.com');
 
@@ -295,44 +295,70 @@ function getCategoryFromSubject(string $subject, string $default = 'general'): s
 /**
  * Return the correct TO email and Reply-To based on form type.
  */
-function getDepartmentRouting(string $formType): array {
-    return match(strtolower(trim($formType))) {
-        // BOOKINGS & RESERVATIONS -> bookings@century-adventures.com
-        'booking', 'bookings', 'quote' => [
-            'to'       => EMAIL_BOOKINGS,
-            'label'    => 'Century Adventures Bookings',
-            'reply_to' => 'bookings@century-adventures.com',
-            'dept'     => 'BOOKINGS & RESERVATIONS',
-        ],
-        // DESTINATION & TRIP PLANNING -> visit@century-adventures.com
-        'safari_inquiry', 'destination_inquiry', 'enquiry', 'visit', 'planner' => [
-            'to'       => EMAIL_VISIT,
-            'label'    => 'Century Adventures Trip Planning',
-            'reply_to' => 'visit@century-adventures.com',
-            'dept'     => 'DESTINATION & TRIP PLANNING',
-        ],
-        // CUSTOMER SUPPORT -> support@century-adventures.com
-        'support', 'support_request', 'live_chat_offline', 'chat_offline' => [
-            'to'       => EMAIL_SUPPORT,
-            'label'    => 'Century Adventures Support',
-            'reply_to' => 'support@century-adventures.com',
-            'dept'     => 'CUSTOMER SUPPORT',
-        ],
-        // WEBSITE ADMINISTRATION -> admin@century-adventures.com
-        'report', 'admin', 'website', 'issue', 'feedback' => [
-            'to'       => EMAIL_ADMIN,
-            'label'    => 'Century Adventures Administration',
-            'reply_to' => 'admin@century-adventures.com',
-            'dept'     => 'WEBSITE ADMINISTRATION',
-        ],
-        // GENERAL CONTACT -> infor@century-adventures.com
-        default => [
-            'to'       => EMAIL_INFO,
-            'label'    => 'Century Adventures General Contact',
-            'reply_to' => 'infor@century-adventures.com',
-            'dept'     => 'GENERAL CONTACT',
-        ],
-    };
+function getDepartmentRouting(string $subject, string $formType = ''): array {
+    $sub = strtolower(trim($subject));
+    $type = strtolower(trim($formType));
+
+    // 1. Booking Enquiries -> bookings@century-adventures.com
+    $bookings = ['book now', 'reserve safari', 'package booking', 'request quote'];
+    foreach ($bookings as $b) {
+        if (str_contains($sub, $b) || $type === 'booking' || $type === 'quote' || $type === 'planner') {
+            return [
+                'to'       => EMAIL_BOOKINGS,
+                'label'    => 'Century Adventures Bookings',
+                'reply_to' => 'bookings@century-adventures.com',
+                'dept'     => 'BOOKINGS & RESERVATIONS',
+            ];
+        }
+    }
+
+    // 2. Destination Enquiries -> visit@century-adventures.com
+    $destinations = ['serengeti', 'ngorongoro', 'tarangire', 'lake manyara', 'manyara', 'zanzibar', 'kilimanjaro'];
+    foreach ($destinations as $dest) {
+        if (str_contains($sub, $dest) || str_contains($type, $dest)) {
+            return [
+                'to'       => EMAIL_VISIT,
+                'label'    => 'Century Adventures Trip Planning',
+                'reply_to' => 'visit@century-adventures.com',
+                'dept'     => 'DESTINATION & TRIP PLANNING',
+            ];
+        }
+    }
+
+    // 3. Support Requests -> support@century-adventures.com
+    $support = ['existing booking support', 'customer assistance', 'help center requests'];
+    foreach ($support as $s) {
+        if (str_contains($sub, $s) || $type === 'support') {
+            return [
+                'to'       => EMAIL_SUPPORT,
+                'label'    => 'Century Adventures Support',
+                'reply_to' => 'support@century-adventures.com',
+                'dept'     => 'CUSTOMER SUPPORT',
+            ];
+        }
+    }
+
+    // 4. Website Issues -> admin@century-adventures.com
+    $admin = ['report problem', 'technical issue', 'website feedback', 'report', 'admin'];
+    foreach ($admin as $a) {
+        if (str_contains($sub, $a) || $type === 'report') {
+            return [
+                'to'       => EMAIL_ADMIN,
+                'label'    => 'Century Adventures Administration',
+                'reply_to' => 'admin@century-adventures.com',
+                'dept'     => 'WEBSITE ADMINISTRATION',
+            ];
+        }
+    }
+
+    // 5. General Contact Enquiries -> infor@century-adventures.com
+    // Default fallback
+    return [
+        'to'       => EMAIL_INFO,
+        'label'    => 'Century Adventures General Contact',
+        'reply_to' => 'infor@century-adventures.com',
+        'dept'     => 'GENERAL CONTACT',
+    ];
 }
 
 
