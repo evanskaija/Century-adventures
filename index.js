@@ -1876,8 +1876,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify(payload)
             })
-            .then(res => {
-                if (!res.ok) throw new Error('Response error');
+            .then(async res => {
+                if (!res.ok) {
+                    const text = await res.text();
+                    throw new Error(`HTTP ${res.status}: ${text || 'Response error'}`);
+                }
                 return res.json();
             })
             .then(data => {
@@ -1905,10 +1908,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(err => {
                 console.error(err);
-                let errMsg = lang === 'sw'
-                    ? 'Imeshindwa kuwasiliana na seva. Tafadhali angalia mtandao wako.'
-                    : 'Failed to connect to the server. Please check your network connection.';
-                alert(errMsg);
+                alert(`❌ Error: ${err.message}`);
             })
             .finally(() => {
                 if (submitBtn) {
