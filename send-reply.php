@@ -86,16 +86,25 @@ if (!$replyText) {
 }
 
 // ── Ticket Lookup / Initialization ────────────────────────────────────────────
-if ($convId) {
-    $ticket = getTicketByConvId($convId);
-    if ($ticket) {
-        $ticketId = $ticket['ticket_id'];
+try {
+    if ($convId) {
+        $ticket = getTicketByConvId($convId);
+        if ($ticket) {
+            $ticketId = $ticket['ticket_id'];
+        } else {
+            $ticketId = ensureTicket($convId, $customerName, $customerEmail, 'Inquiry Reply', $formType, 'replied');
+        }
     } else {
+        $convId = 'conv-' . time() . '-' . rand(1000, 9999);
         $ticketId = ensureTicket($convId, $customerName, $customerEmail, 'Inquiry Reply', $formType, 'replied');
     }
-} else {
-    $convId = 'conv-' . time() . '-' . rand(1000, 9999);
-    $ticketId = ensureTicket($convId, $customerName, $customerEmail, 'Inquiry Reply', $formType, 'replied');
+} catch (Exception $e) {
+    echo json_encode([
+        'success' => false,
+        'message' => 'Database Connection Failed',
+        'error_detail' => $e->getMessage()
+    ]);
+    exit;
 }
 
 // ── Determine Department and Force Sender Email to Admin ─────────────────────
@@ -238,10 +247,20 @@ if ($emailSent) {
         'msg'     => $msgEntry,
     ]);
 } else {
+    $friendlyError = 'SMTP Connection Failed';
+    $errLower = strtolower($emailError);
+    if (str_contains($errLower, 'auth') || str_contains($errLower, '235') || str_contains($errLower, '535') || str_contains($errLower, 'password')) {
+        $friendlyError = 'SMTP Authentication Failed';
+    } elseif (str_contains($errLower, 'timeout') || str_contains($errLower, 'timed out') || str_contains($errLower, 'timedout')) {
+        $friendlyError = 'SMTP Connection Timed Out';
+    } elseif ($emailError) {
+        $friendlyError = $emailError;
+    }
+    
     echo json_encode([
         'success' => false,
         'email_failed' => true,
-        'message' => "Reply saved in portal but email delivery failed.",
+        'message' => $friendlyError,
         'error_detail' => $emailError,
         'from'    => $fromEmail,
         'msg'     => $msgEntry,
