@@ -32,7 +32,11 @@ define('HONEYPOT_FIELD', 'website');   // Hidden field name; must be empty on su
 define('MIN_SUBMIT_TIME', 3);          // Seconds since page load (bot guard)
 define('ALLOWED_ORIGINS', [            // Domains allowed to POST to the API
     'http://localhost',
+    'http://localhost:8000',
+    'http://localhost:8080',
     'http://127.0.0.1',
+    'http://127.0.0.1:8000',
+    'http://127.0.0.1:8080',
     'https://century-adventures.com',
     'https://www.century-adventures.com',
 ]);
