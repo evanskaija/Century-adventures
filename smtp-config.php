@@ -12,9 +12,9 @@
 define('SMTP_HOST',     'smtp.zoho.com');
 define('SMTP_PORT',     465);              // 465 = SSL  |  587 = STARTTLS
 define('SMTP_SECURE',   'ssl');            // 'ssl' or 'tls'
-define('SMTP_USER',     'admin@century-adventures.com');   // Zoho login email
+define('SMTP_USER',     'infor@century-adventures.com');   // Zoho login email
 define('SMTP_PASS',     'centuryadmin');         // Zoho App-specific password
-define('SMTP_FROM',     'admin@century-adventures.com');   // Must match SMTP_USER on Zoho
+define('SMTP_FROM',     'infor@century-adventures.com');   // Must match SMTP_USER on Zoho
 define('SMTP_FROM_NAME','Century Adventures');
 
 // ── Business Email Routing ───────────────────────────────────────────────────
