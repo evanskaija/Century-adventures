@@ -1738,7 +1738,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         
-            // Save to century-conversations local storage
+        // Save conversation if text was generated
+        if (text) {
             let conversations = [];
             try {
                 conversations = JSON.parse(localStorage.getItem('century-conversations')) || [];
@@ -1881,9 +1882,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(data => {
                 if (data.success) {
-                    let successTitle = lang === 'sw' ? 'Mwasilisho Umefanikiwa!' : 'Submission Successful!';
                     let successMsg = '';
-                    
                     if (isBookForm || isSafariPageBookingForm || isEnquireForm) {
                         successMsg = lang === 'sw'
                             ? 'Asante kwa ombi lako! Ombi lako limepokelewa. Wataalamu wetu wa safari watawasiliana nawe ndani ya saa 24 ili kukusaidia kupanga safari yako.'
@@ -1897,22 +1896,19 @@ document.addEventListener('DOMContentLoaded', () => {
                             ? 'Asante! Ujumbe wako umetumwa kwa mafanikio. Washauri wetu watawasiliana nawe hivi karibuni.'
                             : 'Thank you! Your inquiry has been sent successfully. Our consultants will contact you shortly.';
                     }
-                    
-                    showPremiumAlert(successTitle, successMsg, 'fa-check-circle');
+                    alert(successMsg);
                     form.reset();
                 } else {
-                    let errTitle = lang === 'sw' ? 'Itilafu' : 'Error';
                     let errMsg = data.message || (lang === 'sw' ? 'Kuna hitilafu iliyotokea. Tafadhali jaribu tena.' : 'Something went wrong. Please try again.');
-                    showPremiumAlert(errTitle, errMsg, 'fa-exclamation-triangle');
+                    alert(errMsg);
                 }
             })
             .catch(err => {
                 console.error(err);
-                let errTitle = lang === 'sw' ? 'Itilafu ya Mtandao' : 'Network Error';
                 let errMsg = lang === 'sw'
                     ? 'Imeshindwa kuwasiliana na seva. Tafadhali angalia mtandao wako.'
                     : 'Failed to connect to the server. Please check your network connection.';
-                showPremiumAlert(errTitle, errMsg, 'fa-wifi');
+                alert(errMsg);
             })
             .finally(() => {
                 if (submitBtn) {
@@ -1925,7 +1921,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const alertMsg = lang === 'sw'
                 ? 'Asante! Maelezo yako salama ya malipo yamewasilishwa kwa uhakiki. Tutashughulikia uhifadhi wako mara moja na kukutumia barua pepe ya uthibitisho.'
                 : 'Thank you! Your secure payment details have been submitted for verification. We will process your booking immediately and send a confirmation email.';
-            showPremiumAlert(lang === 'sw' ? 'Malipo Yamepokelewa' : 'Payment Received', alertMsg, 'fa-credit-card');
+            alert(alertMsg);
             form.reset();
         }
     });
@@ -2472,34 +2468,5 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Century Adventures Exceptional Features: Weather, Currency, Wishlist & Comparison Engines Ready.");
 });
 
-/**
- * Premium UI Success Modal Alert
- */
-function showPremiumAlert(title, message, iconClass = 'fa-check-circle') {
-    let overlay = document.querySelector('.premium-alert-overlay');
-    if (!overlay) {
-        overlay = document.createElement('div');
-        overlay.className = 'premium-alert-overlay';
-        overlay.innerHTML = `
-            <div class="premium-alert-card">
-                <div class="premium-alert-icon"><i class="fas"></i></div>
-                <div class="premium-alert-title"></div>
-                <div class="premium-alert-message"></div>
-                <button class="premium-alert-btn">OK</button>
-            </div>
-        `;
-        document.body.appendChild(overlay);
-        overlay.querySelector('.premium-alert-btn').addEventListener('click', () => {
-            overlay.classList.remove('active');
-        });
-    }
-    
-    overlay.querySelector('.premium-alert-icon i').className = `fas ${iconClass}`;
-    overlay.querySelector('.premium-alert-title').textContent = title;
-    overlay.querySelector('.premium-alert-message').textContent = message;
-    
-    // Trigger CSS animation reflow
-    overlay.offsetHeight;
-    overlay.classList.add('active');
-}
+
 
