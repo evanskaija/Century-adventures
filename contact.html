@@ -906,25 +906,31 @@
                 <!-- Right Column: Interactive Form -->
                 <div class="form-container-card scroll-reveal-right">
                     <h3 data-en="Send Us a Message" data-sw="Tuma Ujumbe Kwetu">Send Us a Message</h3>
-                    <form action="#" method="POST">
+                    <!-- Success Message Alert -->
+                    <div id="contact-success-alert" style="display: none; background: rgba(197, 160, 68, 0.15); border: 1px solid var(--accent-gold); color: var(--text-main); padding: 16px 24px; border-radius: 12px; margin-bottom: 24px; font-weight: 500; font-size: 0.95rem; align-items: center; gap: 12px; animation: fadeDown 0.5s ease;">
+                        <i class="fas fa-check-circle" style="font-size: 1.25rem; color: var(--accent-gold);"></i>
+                        <span data-en="Thank you! Your message has been sent successfully. We will get back to you shortly." data-sw="Asante! Ujumbe wako umetumwa kwa mafanikio. Tutawasiliana nawe hivi karibuni.">Thank you! Your message has been sent successfully. We will get back to you shortly.</span>
+                    </div>
+                    <form action="send-contact.php" method="POST">
+                        <input type="hidden" name="department" value="general">
                         <div class="form-grid">
                             <div class="form-field">
                                 <label for="name" data-en="Full Name" data-sw="Jina Kamili">Full Name</label>
-                                <input type="text" id="name" required placeholder="John Doe">
+                                <input type="text" id="name" name="name" required placeholder="John Doe">
                             </div>
                             <div class="form-field">
                                 <label for="email" data-en="Email Address" data-sw="Barua Pepe">Email Address</label>
-                                <input type="email" id="email" required placeholder="john@example.com">
+                                <input type="email" id="email" name="email" required placeholder="john@example.com">
                             </div>
                             <div class="form-field">
                                 <label for="phone" data-en="Phone / WhatsApp" data-sw="Simu / WhatsApp">Phone /
                                     WhatsApp</label>
-                                <input type="tel" id="phone" placeholder="+1 (123) 456-7890">
+                                <input type="tel" id="phone" name="phone" placeholder="+1 (123) 456-7890">
                             </div>
                             <div class="form-field">
                                 <label for="safari_type" data-en="Safari Type" data-sw="Aina ya Safari">Safari
                                     Type</label>
-                                <select id="safari_type">
+                                <select id="safari_type" name="safari_type">
                                     <option value="wildlife" data-en="Wildlife Safari" data-sw="Safari ya Wanyamapori">
                                         Wildlife Safari</option>
                                     <option value="beach" data-en="Beach Holiday" data-sw="Likizo ya Ufukweni">Beach
@@ -940,12 +946,12 @@
                             <div class="form-field">
                                 <label for="travel_date" data-en="Preferred Travel Date"
                                     data-sw="Tarehe ya Kusafiri">Preferred Travel Date</label>
-                                <input type="date" id="travel_date">
+                                <input type="date" id="travel_date" name="travel_date">
                             </div>
                             <div class="form-field">
                                 <label for="travelers" data-en="Number of Guests" data-sw="Idadi ya Wageni">Number of
                                     Guests</label>
-                                <select id="travelers">
+                                <select id="travelers" name="travelers">
                                     <option value="1">1 Guest</option>
                                     <option value="2" selected>2 Guests</option>
                                     <option value="3-5">3 - 5 Guests</option>
@@ -956,7 +962,7 @@
                             <div class="form-field form-group-full">
                                 <label for="message" data-en="Tell us about your dream trip"
                                     data-sw="Tuambie kuhusu safari yako ya ndoto">Tell us about your dream trip</label>
-                                <textarea id="message" rows="6"
+                                <textarea id="message" name="message" rows="6"
                                     placeholder="Share details like your interests, preferences, and estimated budget..."></textarea>
                             </div>
                             <div class="form-group-full" style="margin-top: 10px;">
@@ -1199,6 +1205,18 @@
     </footer>
 
     <script src="index.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') === '1') {
+                const alertEl = document.getElementById('contact-success-alert');
+                if (alertEl) {
+                    alertEl.style.display = 'flex';
+                    // Scroll to the alert
+                    alertEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        });
+    </script>
 </body>
-
 </html>
