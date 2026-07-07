@@ -911,8 +911,7 @@
                         <i class="fas fa-check-circle" style="font-size: 1.25rem; color: var(--accent-gold);"></i>
                         <span data-en="Thank you! Your message has been sent successfully. We will get back to you shortly." data-sw="Asante! Ujumbe wako umetumwa kwa mafanikio. Tutawasiliana nawe hivi karibuni.">Thank you! Your message has been sent successfully. We will get back to you shortly.</span>
                     </div>
-                    <form action="send-contact.php" method="POST">
-                        <input type="hidden" name="department" value="general">
+                    <form id="contact-form" action="mailto:infor@century-adventures.com?subject=General Inquiry" method="POST" enctype="text/plain">
                         <div class="form-grid">
                             <div class="form-field">
                                 <label for="name" data-en="Full Name" data-sw="Jina Kamili">Full Name</label>
@@ -1215,6 +1214,56 @@
                     // Scroll to the alert
                     alertEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
+            }
+
+            const form = document.getElementById('contact-form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const phone = document.getElementById('phone').value;
+                    
+                    const safariSelect = document.getElementById('safari_type');
+                    const safariText = safariSelect.options[safariSelect.selectedIndex].text;
+                    
+                    const travelDate = document.getElementById('travel_date').value || 'Not specified';
+                    const travelers = document.getElementById('travelers').value;
+                    const message = document.getElementById('message').value;
+                    
+                    const subject = "General Inquiry";
+                    const body = `Hello Century Adventures,
+
+I would like to submit a new enquiry through the website.
+
+--- DETAILS ---
+Name: ${name}
+Email: ${email}
+Phone/WhatsApp: ${phone}
+Safari Type: ${safariText}
+Preferred Travel Date: ${travelDate}
+Number of Guests: ${travelers}
+
+--- MESSAGE ---
+${message}`;
+
+                    const mailtoUrl = `mailto:infor@century-adventures.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                    
+                    // Show success alert immediately
+                    const alertEl = document.getElementById('contact-success-alert');
+                    if (alertEl) {
+                        alertEl.style.display = 'flex';
+                        alertEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    
+                    // Trigger mailto redirection via temporary anchor
+                    const mailtoLink = document.createElement('a');
+                    mailtoLink.href = mailtoUrl;
+                    document.body.appendChild(mailtoLink);
+                    mailtoLink.click();
+                    document.body.removeChild(mailtoLink);
+                });
             }
         });
     </script>
