@@ -1874,8 +1874,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Add Web3Forms configuration parameters
-            payload.access_key = '2be1626d-7278-47ca-9c67-bbe1f79e93ca';
+            payload.access_key = '82e74c8a-43c0-45dc-ba8e-7aa3542b09d0';
             payload.from_name = 'Century Adventures Website';
+            payload.to_email = 'admin@century-adventures.com';
             if (!payload.subject) {
                 payload.subject = 'New Enquiry - Century Adventures';
             }
