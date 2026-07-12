@@ -1,5 +1,14 @@
 // Century Adventures - Premium Safari Interactivity
 
+// Canonical Redirect to HTTPS & www (excluding local development)
+if (!['localhost', '127.0.0.1'].includes(window.location.hostname)) {
+    if (window.location.hostname === 'century-adventures.com') {
+        window.location.replace('https://www.century-adventures.com' + window.location.pathname + window.location.search + window.location.hash);
+    } else if (window.location.protocol === 'http:') {
+        window.location.replace('https://' + window.location.hostname + window.location.pathname + window.location.search + window.location.hash);
+    }
+}
+
 // Force clear service worker and cache for development updates
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.getRegistrations().then(registrations => {

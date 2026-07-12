@@ -1,0 +1,6 @@
+RewriteEngine On
+
+# Redirect non-www to www and force HTTPS
+RewriteCond %{HTTP_HOST} ^century-adventures\.com [NC,OR]
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://www.century-adventures.com/$1 [L,R=301]

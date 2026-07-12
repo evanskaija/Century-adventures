@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://www.century-adventures.com/$1",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "century-adventures.com"
+        }
+      ]
+    }
+  ]
+}
