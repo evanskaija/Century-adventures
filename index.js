@@ -1873,11 +1873,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 payload.subject = 'Contact Us';
             }
 
-            // POST form to backend submit-form.php
-            fetch('submit-form.php', {
+            // Add Web3Forms configuration parameters
+            payload.access_key = '2be1626d-7278-47ca-9c67-bbe1f79e93ca';
+            payload.from_name = 'Century Adventures Website';
+            if (!payload.subject) {
+                payload.subject = 'New Enquiry - Century Adventures';
+            }
+
+            // POST form to Web3Forms API
+            fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
                 body: JSON.stringify(payload)
             })
