@@ -919,8 +919,16 @@
                             you! Your message has been sent successfully. We will get back to you shortly.</span>
                     </div>
 
+                    <!-- Web3Forms -->
+                    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                        <!-- Web3Forms Access Key -->
+                        <input type="hidden" name="access_key" value="2be1626d-7278-47ca-9c67-bbe1f79e93ca">
 
-                    <form id="contact-form" action="/api/send-email" method="POST">
+                        <!-- Email Settings -->
+                        <input type="hidden" name="subject" value="New Safari Enquiry - Century Adventures">
+                        <input type="hidden" name="from_name" value="Century Adventures Website">
+                        <input type="hidden" name="redirect" value="https://www.century-adventures.com/contact.html?success=true">
+
                         <div class="form-grid">
                             <div class="form-field">
                                 <label for="name" data-en="Full Name" data-sw="Jina Kamili">Full Name</label>
@@ -931,52 +939,39 @@
                                 <input type="email" id="email" name="email" required placeholder="john@example.com">
                             </div>
                             <div class="form-field">
-                                <label for="phone" data-en="Phone / WhatsApp" data-sw="Simu / WhatsApp">Phone /
-                                    WhatsApp</label>
-                                <input type="tel" id="phone" name="phone" placeholder="+1 (123) 456-7890">
+                                <label for="phone" data-en="Phone / WhatsApp" data-sw="Simu / WhatsApp">Phone / WhatsApp</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+255 747 115 390">
                             </div>
                             <div class="form-field">
-                                <label for="safari_type" data-en="Safari Type" data-sw="Aina ya Safari">Safari
-                                    Type</label>
+                                <label for="safari_type" data-en="Safari Type" data-sw="Aina ya Safari">Safari Type</label>
                                 <select id="safari_type" name="safari_type">
-                                    <option value="wildlife" data-en="Wildlife Safari" data-sw="Safari ya Wanyamapori">
-                                        Wildlife Safari</option>
-                                    <option value="beach" data-en="Beach Holiday" data-sw="Likizo ya Ufukweni">Beach
-                                        Holiday</option>
-                                    <option value="trekking" data-en="Mountain Trekking" data-sw="Kupanda Milima">
-                                        Mountain Trekking</option>
-                                    <option value="volunteer" data-en="Volunteer Program"
-                                        data-sw="Programu ya Kujitolea">Volunteer Program</option>
-                                    <option value="custom" data-en="Custom Adventure" data-sw="Safari Maalum">Custom
-                                        Adventure</option>
+                                    <option value="Wildlife Safari" data-en="Wildlife Safari" data-sw="Safari ya Wanyamapori">Wildlife Safari</option>
+                                    <option value="Beach Holiday" data-en="Beach Holiday" data-sw="Likizo ya Ufukweni">Beach Holiday</option>
+                                    <option value="Mountain Trekking" data-en="Mountain Trekking" data-sw="Kupanda Milima">Mountain Trekking</option>
+                                    <option value="Volunteer Program" data-en="Volunteer Program" data-sw="Programu ya Kujitolea">Volunteer Program</option>
+                                    <option value="Custom Adventure" data-en="Custom Adventure" data-sw="Safari Maalum">Custom Adventure</option>
                                 </select>
                             </div>
                             <div class="form-field">
-                                <label for="travel_date" data-en="Preferred Travel Date"
-                                    data-sw="Tarehe ya Kusafiri">Preferred Travel Date</label>
+                                <label for="travel_date" data-en="Preferred Travel Date" data-sw="Tarehe ya Kusafiri">Preferred Travel Date</label>
                                 <input type="date" id="travel_date" name="travel_date">
                             </div>
                             <div class="form-field">
-                                <label for="travelers" data-en="Number of Guests" data-sw="Idadi ya Wageni">Number of
-                                    Guests</label>
+                                <label for="travelers" data-en="Number of Guests" data-sw="Idadi ya Wageni">Number of Guests</label>
                                 <select id="travelers" name="travelers">
-                                    <option value="1">1 Guest</option>
-                                    <option value="2" selected>2 Guests</option>
-                                    <option value="3-5">3 - 5 Guests</option>
-                                    <option value="6-10">6 - 10 Guests</option>
-                                    <option value="10+">10+ Guests</option>
+                                    <option value="1 Guest">1 Guest</option>
+                                    <option value="2 Guests" selected>2 Guests</option>
+                                    <option value="3-5 Guests">3 - 5 Guests</option>
+                                    <option value="6-10 Guests">6 - 10 Guests</option>
+                                    <option value="10+ Guests">10+ Guests</option>
                                 </select>
                             </div>
                             <div class="form-field form-group-full">
-                                <label for="message" data-en="Tell us about your dream trip"
-                                    data-sw="Tuambie kuhusu safari yako ya ndoto">Tell us about your dream trip</label>
-                                <textarea id="message" name="message" rows="6"
-                                    placeholder="Share details like your interests, preferences, and estimated budget..."></textarea>
+                                <label for="message" data-en="Tell us about your dream trip" data-sw="Tuambie kuhusu safari yako ya ndoto">Tell us about your dream trip</label>
+                                <textarea id="message" name="message" rows="6" placeholder="Share details like your interests, preferences, and estimated budget..." required></textarea>
                             </div>
                             <div class="form-group-full" style="margin-top: 10px;">
-                                <button type="submit" class="btn btn-primary"
-                                    style="width: 100%; padding: 18px 0; font-size: 0.9rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;"
-                                    data-en="SEND ENQUIRY" data-sw="TUMA MAOMBI">SEND ENQUIRY</button>
+                                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 18px 0; font-size: 0.9rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;" data-en="SEND ENQUIRY" data-sw="TUMA MAOMBI">SEND ENQUIRY</button>
                             </div>
                         </div>
                     </form>
@@ -1285,59 +1280,17 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-
-            const form = document.getElementById('contact-form');
-
-            if (form) {
-                form.addEventListener('submit', async function (e) {
-                    e.preventDefault();
-
-                    const formData = {
-                        name: document.getElementById('name').value,
-                        email: document.getElementById('email').value,
-                        phone: document.getElementById('phone').value,
-                        safari_type: document.getElementById('safari_type').value,
-                        travel_date: document.getElementById('travel_date').value,
-                        travelers: document.getElementById('travelers').value,
-                        message: document.getElementById('message').value
-                    };
-
-                    try {
-                        const response = await fetch('/api/send-email', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(formData)
-                        });
-
-                        const result = await response.json();
-
-                        if (result.success) {
-
-                            const alertEl = document.getElementById('contact-success-alert');
-
-                            if (alertEl) {
-                                alertEl.style.display = 'flex';
-                                alertEl.scrollIntoView({
-                                    behavior: 'smooth',
-                                    block: 'center'
-                                });
-                            }
-
-                            form.reset();
-
-                        } else {
-                            alert("Message failed. Please try again.");
-                        }
-
-                    } catch (error) {
-                        console.error(error);
-                        alert("Connection error. Please try again.");
-                    }
-                });
+            const params = new URLSearchParams(window.location.search);
+            if (params.get("success") === "true") {
+                const alertBox = document.getElementById("contact-success-alert");
+                if (alertBox) {
+                    alertBox.style.display = "flex";
+                    alertBox.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+                }
             }
-
         });
     </script>
 
