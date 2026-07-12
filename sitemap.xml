@@ -5,66 +5,79 @@
   <url>
     <loc>https://www.century-adventures.com/</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/about.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/contact.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/safaris.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/experiences.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/vehicles.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/accommodations.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/activities.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/volunteer.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/testimonials.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/planner.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/book.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/enquire.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
 
@@ -72,51 +85,61 @@
   <url>
     <loc>https://www.century-adventures.com/destinations.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/serengeti.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/ngorongoro.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/tarangire.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/manyara.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/ruaha.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/selous.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/mikumi.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/katavi.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/gombe.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
@@ -124,21 +147,25 @@
   <url>
     <loc>https://www.century-adventures.com/family-safaris.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/honeymoon-safaris.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/migration-safaris.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/zanzibar-beach.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
@@ -146,86 +173,103 @@
   <url>
     <loc>https://www.century-adventures.com/3-day-serengeti-safari.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/6-day-northern-tanzania-highlights.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/7-day-great-ruaha-mikumi.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/8-days-best-tanzania-luxury.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/9-days-ultimate-southern-tanzania.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/10-day-best-of-tanzania-honeymoon.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/10-day-mikumi-ruaha-matema.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/10-days-bush-to-beach.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/10-days-luxury-safari-zanzibar.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/10-days-southern-tanzania-udzungwa.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/10-days-tanzania-great-migration.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/11-days-best-of-northern-parks-zanzibar.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/11-days-fly-in-southern-tanzania.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/11-days-serengeti-zanzibar.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/12-days-best-of-south-and-north.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/12-days-wildlife-safari-cultural-highlights.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/13-days-tanzania-safari-beach.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
@@ -233,46 +277,55 @@
   <url>
     <loc>https://www.century-adventures.com/blog.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/faq.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/gallery.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/best-time-to-visit-tanzania.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/health-safety-tanzania.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/obtaining-visa-tanzania.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/what-to-wear-safari.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/solo-female-travel-tanzania.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.century-adventures.com/dar-es-salaam-highlights.html</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
