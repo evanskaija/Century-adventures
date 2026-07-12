@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin-dashboard.html
+Disallow: /admin-customers.html
+Disallow: /admin-messages.html
+Disallow: /admin-settings.html
+Disallow: /admin-tours.html
+Disallow: /dashboard.html
+Disallow: /payment.html
+
+Sitemap: https://www.century-adventures.com/sitemap.xml
