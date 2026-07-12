@@ -1505,10 +1505,15 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     // ── Global Form Submission Handler ──
     document.addEventListener('submit', (e) => {
+        const form = e.target;
+        
+        // If form submits to Vercel Serverless Function, let it submit naturally
+        if (form.getAttribute('action') && form.getAttribute('action').startsWith('/api/')) {
+            return;
+        }
+
         // Prevent actual page navigation/reload
         e.preventDefault();
-        
-        const form = e.target;
         
         // Skip assistant widget forms as they are handled by their own listeners
         if (form.id === 'quoteForm' || form.id === 'reportForm' || form.id === 'supportForm') {
