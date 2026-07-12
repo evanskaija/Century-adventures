@@ -138,7 +138,7 @@ $fromEmail = match($canonicalDept) {
     'visit'   => 'visit@century-adventures.com',
     'support' => 'support@century-adventures.com',
     'admin'   => 'admin@century-adventures.com',
-    default   => 'infor@century-adventures.com'
+    default   => 'admin@century-adventures.com'
 };
 
 $fromLabel = 'Century Adventures ' . $friendlyDeptLabel;

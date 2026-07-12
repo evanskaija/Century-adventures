@@ -1538,7 +1538,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const travelDate = form.querySelector('#travel_date')?.value || '';
             const travelers = form.querySelector('#travelers')?.value || '';
             message = form.querySelector('#message')?.value || '';
-            // Contact page messages must always go to General Contact (infor@) department
+            // Contact page messages must always go to General Contact (admin@) department
             categoryId = 'general';
             
             text = `📬 Contact Us Form Inquiry:\n` +

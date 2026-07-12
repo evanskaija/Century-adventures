@@ -12,24 +12,24 @@ $mail = new PHPMailer(true);
 try {
     // Zoho SMTP settings
     $mail->isSMTP();
-    $mail->Host = "smtp.zoho.com";
+    $mail->Host = "smtppro.zoho.com";
     $mail->SMTPAuth = true;
 
-    $mail->Username = "infor@century-adventures.com";
-    $mail->Password = "centuryadmin"; // Zoho App-specific password
+    $mail->Username = "admin@century-adventures.com";
+    $mail->Password = "cU7qAcMZYmqv"; // Zoho App-specific password
 
     $mail->SMTPSecure = "ssl";
     $mail->Port = 465;
 
     // Sender
     $mail->setFrom(
-        "infor@century-adventures.com",
+        "admin@century-adventures.com",
         "Century Adventures Website"
     );
 
     // Receiver
     $mail->addAddress(
-        "infor@century-adventures.com"
+        "admin@century-adventures.com"
     );
 
     // Customer reply

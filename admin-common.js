@@ -28,7 +28,7 @@ const TRANSLATION_DICTIONARY = {
         "Reset Registry": "Weka Upya Sajili",
         "Technical Support (support@)": "Msaada wa Kiufundi (support@)",
         "Sales & Custom Quotes (visit@)": "Mauzo na Nukuu Maalum (visit@)",
-        "General & Info (infor@)": "Jumla na Habari (infor@)",
+        "General & Info (admin@)": "Jumla na Habari (admin@)",
         "Safari Bookings (bookings@)": "Uhifadhi wa Safari (bookings@)",
         "Email Routing Setup": "Usanidi wa Kuelekeza Barua Pepe",
         "Change Passcode": "Badilisha Nenosiri",

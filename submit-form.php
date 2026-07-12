@@ -113,7 +113,7 @@ function handleContact(array $d, string $name, string $email, string $phone, str
     $subject = sanitize($d['subject'] ?? 'General Inquiry');
     $convId  = sanitize($d['conv_id'] ?? 'conv-' . time() . '-' . rand(1000, 9999));
     
-    // Contact page messages must always go to General Contact (infor@) department
+    // Contact page messages must always go to General Contact (admin@) department
     $dept = 'info';
     $cat  = 'general';
 

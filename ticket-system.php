@@ -48,7 +48,7 @@ function ensureTicket(
     // Resolve routing info to record metadata
     $routing = getDepartmentRouting($subject, $formType);
     $finalDept = $department ?: ($routing['dept'] ?? 'GENERAL CONTACT');
-    $finalAssignedEmail = $assignedEmail ?: ($routing['to'] ?? 'infor@century-adventures.com');
+    $finalAssignedEmail = $assignedEmail ?: ($routing['to'] ?? 'admin@century-adventures.com');
 
     $db->prepare("
         INSERT INTO tickets (ticket_id, conv_id, customer_name, customer_email, customer_phone, department, assigned_email, subject, form_type, status, created_at, updated_at)
@@ -351,12 +351,12 @@ function getDepartmentRouting(string $subject, string $formType = ''): array {
         }
     }
 
-    // 5. General Contact Enquiries -> infor@century-adventures.com
+    // 5. General Contact Enquiries -> admin@century-adventures.com
     // Default fallback
     return [
         'to'       => EMAIL_INFO,
         'label'    => 'Century Adventures General Contact',
-        'reply_to' => 'infor@century-adventures.com',
+        'reply_to' => 'admin@century-adventures.com',
         'dept'     => 'GENERAL CONTACT',
     ];
 }
