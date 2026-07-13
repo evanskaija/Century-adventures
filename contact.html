@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -919,16 +919,24 @@
                             you! Your message has been sent successfully. We will get back to you shortly.</span>
                     </div>
 
+                    <!-- Error Message Alert -->
+                    <div id="contact-error-alert"
+                        style="display: none; background: rgba(220, 53, 69, 0.15); border: 1px solid #dc3545; color: var(--text-main); padding: 16px 24px; border-radius: 12px; margin-bottom: 24px; font-weight: 500; font-size: 0.95rem; align-items: center; gap: 12px; animation: fadeDown 0.5s ease;">
+                        <i class="fas fa-times-circle" style="font-size: 1.25rem; color: #dc3545;"></i>
+                        <span
+                            data-en="Something went wrong. Please try again later."
+                            data-sw="Kuna hitilafu iliyotokea. Tafadhali jaribu tena baadaye.">Something went wrong. Please try again later.</span>
+                    </div>
+
                     <!-- Web3Forms -->
                     <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
                         <!-- Web3Forms Access Key -->
-                        <input type="hidden" name="access_key" value="82e74c8a-43c0-45dc-ba8e-7aa3542b09d0">
+                        <input type="hidden" name="access_key" value="6d284837-3b82-4940-8af1-5dea38d4bc25">
 
                         <!-- Email Settings -->
-                        <input type="hidden" name="subject" value="New Safari Enquiry - Century Adventures">
-                        <input type="hidden" name="from_name" value="Century Adventures Website">
-                        <input type="hidden" name="to_email" value="admin@century-adventures.com">
-                        <input type="hidden" name="redirect" value="https://www.century-adventures.com/contact.html?success=true">
+                        <input type="hidden" name="subject" value="New Contact Enquiry - Century Adventures">
+                        <input type="hidden" name="form_name" value="Century Adventures Contact Form">
+                        <input type="hidden" name="replyto" value="@">
 
                         <div class="form-grid">
                             <div class="form-field">

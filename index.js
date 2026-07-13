@@ -1516,11 +1516,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('submit', (e) => {
         const form = e.target;
         
-        // If form submits to Vercel Serverless Function, let it submit naturally
-        if (form.getAttribute('action') && form.getAttribute('action').startsWith('/api/')) {
-            return;
-        }
-
         // Prevent actual page navigation/reload
         e.preventDefault();
         
@@ -1808,10 +1803,10 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             if (isContactForm) {
-                payload.form_name = 'Contact Us Form';
+                payload.form_name = form.querySelector('input[name="form_name"]')?.value || 'Contact Us Form';
                 payload.form_type = 'contact';
-                payload.subject = form.querySelector('#safari_type')?.value || 'Contact Us';
-                payload.safari_type = payload.subject;
+                payload.subject = form.querySelector('input[name="subject"]')?.value || form.querySelector('#safari_type')?.value || 'Contact Us';
+                payload.safari_type = form.querySelector('#safari_type')?.value || '';
                 payload.travel_date = form.querySelector('#travel_date')?.value || '';
                 payload.travelers = form.querySelector('#travelers')?.value || '';
             } else if (isCustomExperienceForm) {
@@ -1889,15 +1884,27 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Add Web3Forms configuration parameters
-            payload.access_key = 'WEB3FORMS_ACCESS_KEY';
-            payload.from_name = 'Century Adventures Website';
-            payload.to_email = 'admin@century-adventures.com';
+            payload.access_key = form.querySelector('input[name="access_key"]')?.value || '6d284837-3b82-4940-8af1-5dea38d4bc25';
+            payload.from_name = form.querySelector('input[name="from_name"]')?.value || 'Century Adventures Website';
+            payload.to_email = form.querySelector('input[name="to_email"]')?.value || 'admin@century-adventures.com';
             payload.replyto = email;
             payload.submission_time = new Date().toLocaleString("en-US", { timeZone: "Africa/Nairobi" }) + " (EAT)";
-            if (!payload.subject) {
-                payload.subject = `New ${payload.form_name || 'Enquiry'} from ${name || 'Visitor'}`;
+
+            const formSubject = form.querySelector('input[name="subject"]')?.value;
+            const formName = form.querySelector('input[name="form_name"]')?.value;
+
+            if (formName) {
+                payload.form_name = formName;
+            }
+
+            if (formSubject) {
+                payload.subject = formSubject;
             } else {
-                payload.subject = `[${payload.form_name || 'Enquiry'}] ${payload.subject} from ${name || 'Visitor'}`;
+                if (!payload.subject) {
+                    payload.subject = `New ${payload.form_name || 'Enquiry'} from ${name || 'Visitor'}`;
+                } else {
+                    payload.subject = `[${payload.form_name || 'Enquiry'}] ${payload.subject} from ${name || 'Visitor'}`;
+                }
             }
 
             payload.source_page = window.location.href;
@@ -1934,16 +1941,77 @@ document.addEventListener('DOMContentLoaded', () => {
                             ? 'Asante! Ujumbe wako umetumwa kwa mafanikio. Washauri wetu watawasiliana nawe hivi karibuni.'
                             : 'Thank you! Your inquiry has been sent successfully. Our consultants will contact you shortly.';
                     }
-                    alert(successMsg);
+                    
+                    if (isContactForm) {
+                        const successAlert = document.getElementById("contact-success-alert");
+                        if (successAlert) {
+                            successAlert.style.display = "flex";
+                            successAlert.scrollIntoView({
+                                behavior: "smooth",
+                                block: "center"
+                            });
+                        } else {
+                            alert(successMsg);
+                        }
+                        const errorAlert = document.getElementById("contact-error-alert");
+                        if (errorAlert) {
+                            errorAlert.style.display = "none";
+                        }
+                    } else {
+                        alert(successMsg);
+                    }
                     form.reset();
                 } else {
                     let errMsg = data.message || (lang === 'sw' ? 'Kuna hitilafu iliyotokea. Tafadhali jaribu tena.' : 'Something went wrong. Please try again.');
-                    alert(errMsg);
+                    if (isContactForm) {
+                        const errorAlert = document.getElementById("contact-error-alert");
+                        if (errorAlert) {
+                            const errorSpan = errorAlert.querySelector('span');
+                            if (errorSpan) {
+                                errorSpan.textContent = errMsg;
+                            }
+                            errorAlert.style.display = "flex";
+                            errorAlert.scrollIntoView({
+                                behavior: "smooth",
+                                block: "center"
+                            });
+                        } else {
+                            alert(errMsg);
+                        }
+                        const successAlert = document.getElementById("contact-success-alert");
+                        if (successAlert) {
+                            successAlert.style.display = "none";
+                        }
+                    } else {
+                        alert(errMsg);
+                    }
                 }
             })
             .catch(err => {
                 console.error(err);
-                alert(`❌ Error: ${err.message}`);
+                let errMsg = `❌ Error: ${err.message}`;
+                if (isContactForm) {
+                    const errorAlert = document.getElementById("contact-error-alert");
+                    if (errorAlert) {
+                        const errorSpan = errorAlert.querySelector('span');
+                        if (errorSpan) {
+                            errorSpan.textContent = errMsg;
+                        }
+                        errorAlert.style.display = "flex";
+                        errorAlert.scrollIntoView({
+                            behavior: "smooth",
+                            block: "center"
+                        });
+                    } else {
+                        alert(errMsg);
+                    }
+                    const successAlert = document.getElementById("contact-success-alert");
+                    if (successAlert) {
+                        successAlert.style.display = "none";
+                    }
+                } else {
+                    alert(errMsg);
+                }
             })
             .finally(() => {
                 if (submitBtn) {
