@@ -7,8 +7,23 @@ function checkCredentials() {
     return true;
   }
   try {
-    const envPath = path.resolve(process.cwd(), ".env");
-    if (fs.existsSync(envPath)) {
+    const candidates = [
+      path.resolve(process.cwd(), ".env"),
+      path.resolve(process.cwd(), "..", ".env"),
+      path.resolve(process.cwd(), "Century-adventures-main", ".env"),
+      path.resolve(__dirname, ".env"),
+      path.resolve(__dirname, "..", ".env"),
+      path.resolve(__dirname, "..", "..", ".env"),
+      path.resolve(__dirname, "..", "Century-adventures-main", ".env")
+    ];
+    let envPath = "";
+    for (const c of candidates) {
+      if (fs.existsSync(c)) {
+        envPath = c;
+        break;
+      }
+    }
+    if (envPath) {
       const envContent = fs.readFileSync(envPath, "utf-8");
       envContent.split("\n").forEach(line => {
         const match = line.match(/^\s*([\w.-]+)\s*=\s*(.*)?\s*$/);
