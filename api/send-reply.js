@@ -1,4 +1,34 @@
 const nodemailer = require("nodemailer");
+const fs = require("fs");
+const path = require("path");
+
+function checkCredentials() {
+  if (process.env.ZOHO_EMAIL && process.env.ZOHO_PASSWORD) {
+    return true;
+  }
+  try {
+    const envPath = path.resolve(process.cwd(), ".env");
+    if (fs.existsSync(envPath)) {
+      const envContent = fs.readFileSync(envPath, "utf-8");
+      envContent.split("\n").forEach(line => {
+        const match = line.match(/^\s*([\w.-]+)\s*=\s*(.*)?\s*$/);
+        if (match) {
+          const key = match[1];
+          let value = match[2] || "";
+          if (value.length > 0 && value.charAt(0) === '"' && value.charAt(value.length - 1) === '"') {
+            value = value.substring(1, value.length - 1);
+          } else if (value.length > 0 && value.charAt(0) === "'" && value.charAt(value.length - 1) === "'") {
+            value = value.substring(1, value.length - 1);
+          }
+          process.env[key] = value.trim();
+        }
+      });
+    }
+  } catch (err) {
+    console.warn("Could not read local .env file:", err);
+  }
+  return !!(process.env.ZOHO_EMAIL && process.env.ZOHO_PASSWORD);
+}
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -26,6 +56,13 @@ export default async function handler(req, res) {
     return res.status(400).json({ success: false, message: "Customer email is required" });
   }
 
+  if (!checkCredentials()) {
+    return res.status(500).json({
+      success: false,
+      error: "SMTP credentials (ZOHO_EMAIL and ZOHO_PASSWORD) are not configured. Please set them in your environment variables or create a .env file at the project root."
+    });
+  }
+
   // Set sender and target details
   const senderEmail = process.env.ZOHO_EMAIL;
   const replyToEmail = process.env.ZOHO_EMAIL;
@@ -35,7 +72,6 @@ export default async function handler(req, res) {
   let subject = `[Century Adventures] Update regarding your inquiry ${ticket_ref || ""}`;
 
   if (structured_response) {
-    // Structured response template
     const {
       ref_number,
       tour_package,
@@ -110,7 +146,6 @@ export default async function handler(req, res) {
       ` : ""}
     `;
   } else {
-    // Plain text reply template wrapped in elegant layout
     mainContentHtml = `
       <p style="font-size: 15px; margin-bottom: 20px;">Dear ${customer_name || "Valued Client"},</p>
       <div style="font-size: 15px; line-height: 1.6; color: #2d3748; white-space: pre-wrap; margin-bottom: 30px;">${reply_text}</div>

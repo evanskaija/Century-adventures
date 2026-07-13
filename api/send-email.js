@@ -1,8 +1,45 @@
 const nodemailer = require("nodemailer");
+const fs = require("fs");
+const path = require("path");
+
+function checkCredentials() {
+  if (process.env.ZOHO_EMAIL && process.env.ZOHO_PASSWORD) {
+    return true;
+  }
+  try {
+    const envPath = path.resolve(process.cwd(), ".env");
+    if (fs.existsSync(envPath)) {
+      const envContent = fs.readFileSync(envPath, "utf-8");
+      envContent.split("\n").forEach(line => {
+        const match = line.match(/^\s*([\w.-]+)\s*=\s*(.*)?\s*$/);
+        if (match) {
+          const key = match[1];
+          let value = match[2] || "";
+          if (value.length > 0 && value.charAt(0) === '"' && value.charAt(value.length - 1) === '"') {
+            value = value.substring(1, value.length - 1);
+          } else if (value.length > 0 && value.charAt(0) === "'" && value.charAt(value.length - 1) === "'") {
+            value = value.substring(1, value.length - 1);
+          }
+          process.env[key] = value.trim();
+        }
+      });
+    }
+  } catch (err) {
+    console.warn("Could not read local .env file:", err);
+  }
+  return !!(process.env.ZOHO_EMAIL && process.env.ZOHO_PASSWORD);
+}
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Method not allowed" });
+  }
+
+  if (!checkCredentials()) {
+    return res.status(500).json({
+      success: false,
+      error: "SMTP credentials (ZOHO_EMAIL and ZOHO_PASSWORD) are not configured. Please set them in your environment variables or create a .env file at the project root."
+    });
   }
 
   const { name, email, message, form_type, subject, source_page } = req.body;
@@ -61,7 +98,6 @@ export default async function handler(req, res) {
   for (const [key, label] of Object.entries(fieldLabels)) {
     if (req.body[key] !== undefined && req.body[key] !== "") {
       let val = req.body[key];
-      // Format arrays/lists nicely if present
       if (Array.isArray(val)) {
         val = val.join(", ");
       }
