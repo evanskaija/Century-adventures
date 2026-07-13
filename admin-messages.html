@@ -1541,6 +1541,11 @@
             const ticketRef     = textarea.dataset.ticketRef || '';
             const btn = document.querySelector('.btn-send-reply');
 
+            if (!customerEmail) { 
+                showToast('Cannot send reply. Customer email not found.', 'error'); 
+                return; 
+            }
+
             const convIndex = conversations.findIndex(c => c.id === activeConvId);
             const dept = convIndex !== -1 ? getConversationDepartment(conversations[convIndex]) : 'info';
             const now = Date.now();
@@ -1554,8 +1559,29 @@
                 }
             }
 
+            // Create signature & body content
+            const subject = `Re: [Century Adventures Inquiry ${ticketRef}] Update regarding your safari request`;
+            const bodyText = `Dear ${customerName},\n\n` +
+                             `${text}\n\n` +
+                             `Sincerely,\n` +
+                             `Century Adventures Sales & Reservations Team\n` +
+                             `Phone: +255 744 333 444 | Email: info@century-adventures.com\n` +
+                             `Address: Serengeti Block B, Arusha, Tanzania\n\n` +
+                             `Follow Us:\n` +
+                             `Website: https://www.century-adventures.com\n` +
+                             `Facebook: https://www.facebook.com/profile.php?id=61577731823809\n` +
+                             `Instagram: https://www.instagram.com\n` +
+                             `TripAdvisor: https://www.tripadvisor.com\n\n` +
+                             `--------------------------------------------------\n` +
+                             `Original Inquiry Reference:\n` +
+                             `${originalInquiryText}`;
+
+            // Open mailto link
+            const mailtoUrl = `mailto:${encodeURIComponent(customerEmail)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+            window.location.href = mailtoUrl;
+
+            // Log locally in chat dashboard
             const msgEntry = { id: 'msg-' + now + '-staff', sender: 'staff', text, timestamp: now, from: DEPT_FROM[dept] || 'visit@century-adventures.com' };
-            
             if (convIndex !== -1) {
                 conversations[convIndex].messages.push(msgEntry);
                 conversations[convIndex].updatedAt = now;
@@ -1570,43 +1596,7 @@
                 if (area) area.scrollTop = area.scrollHeight;
             }
 
-            if (!customerEmail) { 
-                showToast('Cannot send reply. Customer email not found.', 'error'); 
-                return; 
-            }
-            btn.disabled = true; 
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-            try {
-                const res = await fetch('/api/send-reply', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        passcode:       'centuryadmin',
-                        conv_id:        activeConvId,
-                        customer_email: customerEmail,
-                        customer_name:  customerName,
-                        reply_text:     text,
-                        form_type:      formType,
-                        ticket_ref:     ticketRef,
-                        original_inquiry: originalInquiryText
-                    })
-                });
-                if (res.status === 404) {
-                    showToast('❌ Error: send-reply endpoint not found', 'error');
-                    return;
-                }
-                const result = await res.json();
-                if (result.success) {
-                    showToast(`Reply sent successfully to ${customerEmail}`, 'success');
-                } else {
-                    showToast('❌ Error: ' + (result.message || 'Failed'), 'error');
-                }
-            } catch(err) { 
-                showToast('❌ Error: Failed to connect to server', 'error'); 
-            } finally { 
-                btn.disabled = false; 
-                btn.innerHTML = '<i class="fas fa-paper-plane"></i>'; 
-            }
+            showToast("Opening local mail client to send response...", "success");
         }
 
         async function sendStructuredReply() {
@@ -1615,7 +1605,6 @@
             const customerName  = textarea.dataset.customerName || 'Guest';
             const formType      = textarea.dataset.formType || 'contact';
             const ticketRef     = textarea.dataset.ticketRef || '';
-            const btn = document.querySelector('#structuredReplyContainer button');
 
             const refNumber = document.getElementById('quoteRef').value.trim();
             const tourPackage = document.getElementById('quotePackage').value.trim();
@@ -1627,14 +1616,10 @@
 
             if (!activeConvId) return;
 
-            // Generate structured response preview text for chat logs
-            const text = `💼 Structured Safari Offer Sent:\n` +
-                         `• Ref: ${refNumber}\n` +
-                         `• Package: ${tourPackage}\n` +
-                         `• Dates: ${travelDates}\n` +
-                         `• Quote: ${priceQuotation}\n` +
-                         `• Availability: ${availabilityStatus}\n` +
-                         `• Notes: ${notes.substring(0, 100)}${notes.length > 100 ? '...' : ''}`;
+            if (!customerEmail) { 
+                showToast('Cannot send reply. Customer email not found.', 'error'); 
+                return; 
+            }
 
             const convIndex = conversations.findIndex(c => c.id === activeConvId);
             const dept = convIndex !== -1 ? getConversationDepartment(conversations[convIndex]) : 'info';
@@ -1649,8 +1634,51 @@
                 }
             }
 
-            const msgEntry = { id: 'msg-' + now + '-staff', sender: 'staff', text, timestamp: now, from: DEPT_FROM[dept] || 'visit@century-adventures.com' };
-            
+            // Generate structured response preview text for chat logs
+            const logText = `💼 Structured Safari Offer Sent:\n` +
+                            `• Ref: ${refNumber}\n` +
+                            `• Package: ${tourPackage}\n` +
+                            `• Dates: ${travelDates}\n` +
+                            `• Quote: ${priceQuotation}\n` +
+                            `• Availability: ${availabilityStatus}\n` +
+                            `• Notes: ${notes.substring(0, 100)}${notes.length > 100 ? '...' : ''}`;
+
+            const subject = `Century Adventures Safari Quote ${refNumber || ticketRef} - ${tourPackage}`;
+            const bodyText = `Dear ${customerName},\n\n` +
+                             `Thank you for choosing Century Adventures. We are pleased to provide a structured quotation and availability update for your custom safari booking:\n\n` +
+                             `==================================================\n` +
+                             `OFFICIAL SAFARI QUOTATION\n` +
+                             `Ref: ${refNumber || 'N/A'}\n` +
+                             `==================================================\n` +
+                             `• Tour Package: ${tourPackage || 'Custom Safari Itinerary'}\n` +
+                             `• Travel Dates: ${travelDates || 'To be decided'}\n` +
+                             `• Price / Quotation: ${priceQuotation || 'Contact for pricing'}\n` +
+                             `• Availability Status: ${availabilityStatus || 'Pending'}\n\n` +
+                             `--------------------------------------------------\n` +
+                             `Tour Program Details:\n` +
+                             `${notes || 'N/A'}\n\n` +
+                             `--------------------------------------------------\n` +
+                             `Booking Terms & Conditions:\n` +
+                             `${termsConditions || 'Standard terms apply.'}\n\n` +
+                             `Sincerely,\n` +
+                             `Century Adventures Sales & Reservations Team\n` +
+                             `Phone: +255 744 333 444 | Email: info@century-adventures.com\n` +
+                             `Address: Serengeti Block B, Arusha, Tanzania\n\n` +
+                             `Follow Us:\n` +
+                             `Website: https://www.century-adventures.com\n` +
+                             `Facebook: https://www.facebook.com/profile.php?id=61577731823809\n` +
+                             `Instagram: https://www.instagram.com\n` +
+                             `TripAdvisor: https://www.tripadvisor.com\n\n` +
+                             `--------------------------------------------------\n` +
+                             `Original Inquiry Reference:\n` +
+                             `${originalInquiryText}`;
+
+            // Open mailto link
+            const mailtoUrl = `mailto:${encodeURIComponent(customerEmail)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+            window.location.href = mailtoUrl;
+
+            // Log locally in chat dashboard
+            const msgEntry = { id: 'msg-' + now + '-staff', sender: 'staff', text: logText, timestamp: now, from: DEPT_FROM[dept] || 'visit@century-adventures.com' };
             if (convIndex !== -1) {
                 conversations[convIndex].messages.push(msgEntry);
                 conversations[convIndex].updatedAt = now;
@@ -1664,55 +1692,8 @@
                 if (area) area.scrollTop = area.scrollHeight;
             }
 
-            if (!customerEmail) { 
-                showToast('Cannot send reply. Customer email not found.', 'error'); 
-                return; 
-            }
-            
-            const btnOriginalHtml = btn.innerHTML;
-            btn.disabled = true; 
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending Quote...';
-            try {
-                const res = await fetch('/api/send-reply', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        passcode:       'centuryadmin',
-                        conv_id:        activeConvId,
-                        customer_email: customerEmail,
-                        customer_name:  customerName,
-                        structured_response: {
-                            ref_number: refNumber,
-                            tour_package: tourPackage,
-                            price_quotation: priceQuotation,
-                            travel_dates: travelDates,
-                            availability_status: availabilityStatus,
-                            notes: notes,
-                            terms_conditions: termsConditions
-                        },
-                        form_type:      formType,
-                        ticket_ref:     ticketRef,
-                        original_inquiry: originalInquiryText
-                    })
-                });
-                if (res.status === 404) {
-                    showToast('❌ Error: send-reply endpoint not found', 'error');
-                    return;
-                }
-                const result = await res.json();
-                if (result.success) {
-                    showToast(`Structured proposal sent successfully to ${customerEmail}`, 'success');
-                    // Reset to text mode
-                    setReplyMode('text');
-                } else {
-                    showToast('❌ Error: ' + (result.message || 'Failed'), 'error');
-                }
-            } catch(err) { 
-                showToast('❌ Error: Failed to connect to server', 'error'); 
-            } finally { 
-                btn.disabled = false; 
-                btn.innerHTML = btnOriginalHtml; 
-            }
+            showToast("Opening local mail client to send proposal...", "success");
+            setReplyMode('text');
         }
 
         function updateActiveStatus(status) {

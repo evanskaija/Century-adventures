@@ -1808,17 +1808,20 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             if (isContactForm) {
+                payload.form_name = 'Contact Us Form';
                 payload.form_type = 'contact';
                 payload.subject = form.querySelector('#safari_type')?.value || 'Contact Us';
                 payload.safari_type = payload.subject;
                 payload.travel_date = form.querySelector('#travel_date')?.value || '';
                 payload.travelers = form.querySelector('#travelers')?.value || '';
             } else if (isCustomExperienceForm) {
+                payload.form_name = 'Custom Tour Request Form';
                 payload.form_type = 'booking';
                 payload.subject = 'Package Booking';
                 payload.safari = form.querySelector('[name="experience_style"]')?.value || 'Custom Experience';
                 payload.experience_style = payload.safari;
             } else if (isBookForm) {
+                payload.form_name = 'Booking Request Form';
                 const textInputs = Array.from(form.querySelectorAll('input[type="text"]'));
                 const country = textInputs[1]?.value || '';
                 const destinations = Array.from(form.querySelectorAll('input[name="destinations"]:checked')).map(cb => cb.value);
@@ -1840,6 +1843,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 payload.children = children;
                 payload.lodging = travelStyle;
             } else if (isEnquireForm) {
+                payload.form_name = 'Safari Inquiry Form';
                 const guests = form.querySelector('[name="guests"]')?.value || '';
                 const travelDate = form.querySelector('[name="travel_date"]')?.value || '';
                 const destination = form.querySelector('[name="destination"]')?.value || '';
@@ -1862,6 +1866,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 payload.budget = budget;
                 payload.experience_type = experience;
             } else if (isSafariPageBookingForm) {
+                payload.form_name = 'Safari Inquiry Form';
                 const country = form.querySelector('input[placeholder*="Country"], input[placeholder*="Your Country"]')?.value || '';
                 const numInputs = Array.from(form.querySelectorAll('input[type="number"]'));
                 const adults = parseInt(numInputs[0]?.value) || 1;
@@ -1878,22 +1883,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 payload.children = children;
                 payload.lodging = 'midrange';
             } else {
+                payload.form_name = 'Contact Form';
                 payload.form_type = 'contact';
                 payload.subject = 'Contact Us';
             }
 
             // Add Web3Forms configuration parameters
-            payload.access_key = '82e74c8a-43c0-45dc-ba8e-7aa3542b09d0';
+            payload.access_key = 'WEB3FORMS_ACCESS_KEY';
             payload.from_name = 'Century Adventures Website';
             payload.to_email = 'admin@century-adventures.com';
+            payload.replyto = email;
+            payload.submission_time = new Date().toLocaleString("en-US", { timeZone: "Africa/Nairobi" }) + " (EAT)";
             if (!payload.subject) {
-                payload.subject = 'New Enquiry - Century Adventures';
+                payload.subject = `New ${payload.form_name || 'Enquiry'} from ${name || 'Visitor'}`;
+            } else {
+                payload.subject = `[${payload.form_name || 'Enquiry'}] ${payload.subject} from ${name || 'Visitor'}`;
             }
 
             payload.source_page = window.location.href;
 
-            // POST form to local API
-            fetch('/api/send-email', {
+            // POST form to Web3Forms API
+            fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
