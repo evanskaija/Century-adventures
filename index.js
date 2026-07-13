@@ -1890,8 +1890,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 payload.subject = 'New Enquiry - Century Adventures';
             }
 
-            // POST form to Web3Forms API
-            fetch('https://api.web3forms.com/submit', {
+            payload.source_page = window.location.href;
+
+            // POST form to local API
+            fetch('/api/send-email', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

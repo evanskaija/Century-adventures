@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1074,11 +1074,66 @@
                             <!-- Loaded dynamically -->
                         </div>
 
-                        <!-- Input Bar -->
-                        <div class="chat-input-bar">
+                        <!-- Reply Mode Selector -->
+                        <div class="reply-mode-selector" style="display: flex; gap: 10px; padding: 12px 25px; background: var(--admin-card-bg); border-top: 1px solid var(--admin-border); flex-shrink: 0;">
+                            <button type="button" class="reply-mode-btn" id="btnModeText" onclick="setReplyMode('text')" style="background: #5c5cfc; border: none; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; color: #ffffff; transition: all 0.2s;">
+                                <i class="fas fa-comment-alt"></i> Text Response
+                            </button>
+                            <button type="button" class="reply-mode-btn" id="btnModeForm" onclick="setReplyMode('form')" style="background: transparent; border: none; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; color: var(--admin-text-muted); transition: all 0.2s;">
+                                <i class="fas fa-file-invoice-dollar"></i> Structured Offer Form
+                            </button>
+                        </div>
+
+                        <!-- Text Reply Input Bar -->
+                        <div class="chat-input-bar" id="textReplyContainer" style="display: flex; flex-shrink: 0;">
                             <textarea id="replyTextarea" placeholder="Type a reply... (Press Enter to send, Shift+Enter for new line)" onkeydown="handleInputKeydown(event)"></textarea>
                             <button class="btn-send-reply" onclick="sendReply()">
                                 <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+
+                        <!-- Structured Reply Form Container -->
+                        <div class="structured-reply-form" id="structuredReplyContainer" style="display: none; flex-direction: column; gap: 12px; padding: 20px 25px; background: var(--admin-card-bg); border-top: 1px solid var(--admin-border); max-height: 380px; overflow-y: auto; box-sizing: border-box; flex-shrink: 0;">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                                <div class="form-group" style="display: flex; flex-direction: column; gap: 4px;">
+                                    <label style="font-size: 11px; font-weight: 700; color: var(--admin-text-muted); text-transform: uppercase;">Reference Number</label>
+                                    <input type="text" id="quoteRef" style="width:100%; padding:9px 12px; border:1px solid #cbd5e1; border-radius:8px; font-size:13px; outline:none; font-family:inherit; box-sizing: border-box; background: var(--admin-card-bg); color: var(--admin-text);" placeholder="e.g. CA-BK-12345">
+                                </div>
+                                <div class="form-group" style="display: flex; flex-direction: column; gap: 4px;">
+                                    <label style="font-size: 11px; font-weight: 700; color: var(--admin-text-muted); text-transform: uppercase;">Tour Package</label>
+                                    <input type="text" id="quotePackage" style="width:100%; padding:9px 12px; border:1px solid #cbd5e1; border-radius:8px; font-size:13px; outline:none; font-family:inherit; box-sizing: border-box; background: var(--admin-card-bg); color: var(--admin-text);" placeholder="e.g. 7-Day Serengeti Classic">
+                                </div>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                                <div class="form-group" style="display: flex; flex-direction: column; gap: 4px;">
+                                    <label style="font-size: 11px; font-weight: 700; color: var(--admin-text-muted); text-transform: uppercase;">Travel Dates</label>
+                                    <input type="text" id="quoteDates" style="width:100%; padding:9px 12px; border:1px solid #cbd5e1; border-radius:8px; font-size:13px; outline:none; font-family:inherit; box-sizing: border-box; background: var(--admin-card-bg); color: var(--admin-text);" placeholder="e.g. Oct 12 - Oct 19, 2026">
+                                </div>
+                                <div class="form-group" style="display: flex; flex-direction: column; gap: 4px;">
+                                    <label style="font-size: 11px; font-weight: 700; color: var(--admin-text-muted); text-transform: uppercase;">Price / Quotation</label>
+                                    <input type="text" id="quotePrice" style="width:100%; padding:9px 12px; border:1px solid #cbd5e1; border-radius:8px; font-size:13px; outline:none; font-family:inherit; box-sizing: border-box; background: var(--admin-card-bg); color: var(--admin-text);" placeholder="e.g. $2,450.00 per person">
+                                </div>
+                            </div>
+                            <div class="form-group" style="display: flex; flex-direction: column; gap: 4px;">
+                                <label style="font-size: 11px; font-weight: 700; color: var(--admin-text-muted); text-transform: uppercase;">Availability Status</label>
+                                <select id="quoteAvailability" style="width:100%; padding:9px 12px; border:1px solid #cbd5e1; border-radius:8px; font-size:13px; outline:none; font-family:inherit; box-sizing: border-box; background: var(--admin-card-bg); color: var(--admin-text);">
+                                    <option value="Available">Available (Booking Offered)</option>
+                                    <option value="Confirmed">Confirmed (Booking Secured)</option>
+                                    <option value="Pending">Pending (Subject to confirmation)</option>
+                                    <option value="Waitlisted">Waitlisted (Fully booked, standby)</option>
+                                    <option value="Unavailable">Unavailable (Fully booked)</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="display: flex; flex-direction: column; gap: 4px;">
+                                <label style="font-size: 11px; font-weight: 700; color: var(--admin-text-muted); text-transform: uppercase;">Notes / Custom Itinerary Summary</label>
+                                <textarea id="quoteNotes" style="width:100%; min-height:60px; max-height:100px; padding:9px 12px; border:1px solid #cbd5e1; border-radius:8px; font-size:13px; outline:none; font-family:inherit; box-sizing: border-box; resize: vertical; background: var(--admin-card-bg); color: var(--admin-text);" placeholder="Detail custom inclusions, options or highlights..."></textarea>
+                            </div>
+                            <div class="form-group" style="display: flex; flex-direction: column; gap: 4px;">
+                                <label style="font-size: 11px; font-weight: 700; color: var(--admin-text-muted); text-transform: uppercase;">Terms & Conditions</label>
+                                <textarea id="quoteTerms" style="width:100%; min-height:60px; max-height:100px; padding:9px 12px; border:1px solid #cbd5e1; border-radius:8px; font-size:13px; outline:none; font-family:inherit; box-sizing: border-box; resize: vertical; background: var(--admin-card-bg); color: var(--admin-text);" placeholder="Default standard Terms & Conditions..."></textarea>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="sendStructuredReply()" style="padding: 12px; font-weight: 700; width: 100%; border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; border: none; cursor: pointer; background: #5c5cfc; color: #ffffff;">
+                                <i class="fas fa-paper-plane"></i> Send Structured Offer
                             </button>
                         </div>
                     </div>
@@ -1087,9 +1142,74 @@
         </div>
     </div>
 
-    <script>
         const CONV_KEY = 'century-conversations';
         let conversations = [];
+        let currentReplyMode = 'text';
+
+        function setReplyMode(mode) {
+            currentReplyMode = mode;
+            const btnText = document.getElementById('btnModeText');
+            const btnForm = document.getElementById('btnModeForm');
+            const textContainer = document.getElementById('textReplyContainer');
+            const formContainer = document.getElementById('structuredReplyContainer');
+            if (!btnText || !btnForm || !textContainer || !formContainer) return;
+            
+            if (mode === 'text') {
+                btnText.style.backgroundColor = '#5c5cfc';
+                btnText.style.color = '#ffffff';
+                btnForm.style.backgroundColor = 'transparent';
+                btnForm.style.color = 'var(--admin-text-muted)';
+                textContainer.style.display = 'flex';
+                formContainer.style.display = 'none';
+            } else {
+                btnForm.style.backgroundColor = '#5c5cfc';
+                btnForm.style.color = '#ffffff';
+                btnText.style.backgroundColor = 'transparent';
+                btnText.style.color = 'var(--admin-text-muted)';
+                textContainer.style.display = 'none';
+                formContainer.style.display = 'flex';
+            }
+        }
+
+        function prefillStructuredForm(conv) {
+            const ticketRef = conv.id.slice(-8).toUpperCase();
+            document.getElementById('quoteRef').value = `CA-BK-${ticketRef}`;
+            
+            let packName = "";
+            let dates = "";
+            
+            // Try to extract tour package and dates from the message thread
+            if (conv.messages && conv.messages.length > 0) {
+                conv.messages.forEach(m => {
+                    if (m.sender === 'visitor') {
+                        const lines = m.text.split('\n');
+                        lines.forEach(line => {
+                            const trimLine = line.trim();
+                            // Look for Package
+                            if (trimLine.toLowerCase().includes('package:') || trimLine.includes('🦁 Safari Booking Request:')) {
+                                const parts = trimLine.split(':');
+                                if (parts.length > 1 && parts[1].trim()) packName = parts[1].trim();
+                            }
+                            // Look for Dates
+                            if (trimLine.toLowerCase().includes('dates:') || trimLine.toLowerCase().includes('travel date:') || trimLine.toLowerCase().includes('date:')) {
+                                const parts = trimLine.split(':');
+                                if (parts.length > 1 && parts[1].trim()) dates = parts[1].trim();
+                            }
+                        });
+                    }
+                });
+            }
+
+            document.getElementById('quotePackage').value = packName || "Tanzania Classic Safari";
+            document.getElementById('quoteDates').value = dates || "October 2026 (Flexible)";
+            document.getElementById('quotePrice').value = "$2,450.00 per traveler";
+            document.getElementById('quoteAvailability').value = "Available";
+            document.getElementById('quoteNotes').value = "Thank you for your inquiry! We have customized this itinerary to match your request details. Let us know if you want to make any adjustments.";
+            document.getElementById('quoteTerms').value = 
+                "1. A 30% deposit is required to confirm your booking.\n" +
+                "2. Final balance payment is due 45 days prior to your travel date.\n" +
+                "3. Free cancellation up to 60 days before trip. 50% refund up to 30 days. No refund under 30 days.";
+        }
         let activeConvId = null;
         let updateInterval = null;
         let activeDeptFilter = 'all';
@@ -1358,6 +1478,8 @@
                 }
 
                 renderChatMessages(activeConv);
+                setReplyMode('text');
+                prefillStructuredForm(activeConv);
                 const area = document.getElementById('chatMessagesArea');
                 setTimeout(() => { area.scrollTop = area.scrollHeight; }, 50);
                 if (window.innerWidth <= 768) { 
@@ -1422,6 +1544,16 @@
             const convIndex = conversations.findIndex(c => c.id === activeConvId);
             const dept = convIndex !== -1 ? getConversationDepartment(conversations[convIndex]) : 'info';
             const now = Date.now();
+
+            // Extract original inquiry text for quoting in the reply email
+            let originalInquiryText = "";
+            if (convIndex !== -1) {
+                const firstMsg = conversations[convIndex].messages[0];
+                if (firstMsg) {
+                    originalInquiryText = firstMsg.text;
+                }
+            }
+
             const msgEntry = { id: 'msg-' + now + '-staff', sender: 'staff', text, timestamp: now, from: DEPT_FROM[dept] || 'visit@century-adventures.com' };
             
             if (convIndex !== -1) {
@@ -1445,7 +1577,7 @@
             btn.disabled = true; 
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
             try {
-                const res = await fetch('send-reply.php', {
+                const res = await fetch('/api/send-reply', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -1455,11 +1587,12 @@
                         customer_name:  customerName,
                         reply_text:     text,
                         form_type:      formType,
-                        ticket_ref:     ticketRef
+                        ticket_ref:     ticketRef,
+                        original_inquiry: originalInquiryText
                     })
                 });
                 if (res.status === 404) {
-                    showToast('❌ Error: send-reply.php Not Found', 'error');
+                    showToast('❌ Error: send-reply endpoint not found', 'error');
                     return;
                 }
                 const result = await res.json();
@@ -1473,6 +1606,112 @@
             } finally { 
                 btn.disabled = false; 
                 btn.innerHTML = '<i class="fas fa-paper-plane"></i>'; 
+            }
+        }
+
+        async function sendStructuredReply() {
+            const textarea = document.getElementById('replyTextarea');
+            const customerEmail = textarea.dataset.customerEmail || '';
+            const customerName  = textarea.dataset.customerName || 'Guest';
+            const formType      = textarea.dataset.formType || 'contact';
+            const ticketRef     = textarea.dataset.ticketRef || '';
+            const btn = document.querySelector('#structuredReplyContainer button');
+
+            const refNumber = document.getElementById('quoteRef').value.trim();
+            const tourPackage = document.getElementById('quotePackage').value.trim();
+            const travelDates = document.getElementById('quoteDates').value.trim();
+            const priceQuotation = document.getElementById('quotePrice').value.trim();
+            const availabilityStatus = document.getElementById('quoteAvailability').value;
+            const notes = document.getElementById('quoteNotes').value.trim();
+            const termsConditions = document.getElementById('quoteTerms').value.trim();
+
+            if (!activeConvId) return;
+
+            // Generate structured response preview text for chat logs
+            const text = `💼 Structured Safari Offer Sent:\n` +
+                         `• Ref: ${refNumber}\n` +
+                         `• Package: ${tourPackage}\n` +
+                         `• Dates: ${travelDates}\n` +
+                         `• Quote: ${priceQuotation}\n` +
+                         `• Availability: ${availabilityStatus}\n` +
+                         `• Notes: ${notes.substring(0, 100)}${notes.length > 100 ? '...' : ''}`;
+
+            const convIndex = conversations.findIndex(c => c.id === activeConvId);
+            const dept = convIndex !== -1 ? getConversationDepartment(conversations[convIndex]) : 'info';
+            const now = Date.now();
+            
+            // Gather original inquiry thread text for quoting
+            let originalInquiryText = "";
+            if (convIndex !== -1) {
+                const firstMsg = conversations[convIndex].messages[0];
+                if (firstMsg) {
+                    originalInquiryText = firstMsg.text;
+                }
+            }
+
+            const msgEntry = { id: 'msg-' + now + '-staff', sender: 'staff', text, timestamp: now, from: DEPT_FROM[dept] || 'visit@century-adventures.com' };
+            
+            if (convIndex !== -1) {
+                conversations[convIndex].messages.push(msgEntry);
+                conversations[convIndex].updatedAt = now;
+                conversations[convIndex].status = 'replied';
+                conversations[convIndex].unread = 1;
+                saveConversations();
+                renderChatMessages(conversations[convIndex]);
+                document.getElementById('activeStatusSelect').value = 'replied';
+                renderConversations();
+                const area = document.getElementById('chatMessagesArea');
+                if (area) area.scrollTop = area.scrollHeight;
+            }
+
+            if (!customerEmail) { 
+                showToast('Cannot send reply. Customer email not found.', 'error'); 
+                return; 
+            }
+            
+            const btnOriginalHtml = btn.innerHTML;
+            btn.disabled = true; 
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending Quote...';
+            try {
+                const res = await fetch('/api/send-reply', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        passcode:       'centuryadmin',
+                        conv_id:        activeConvId,
+                        customer_email: customerEmail,
+                        customer_name:  customerName,
+                        structured_response: {
+                            ref_number: refNumber,
+                            tour_package: tourPackage,
+                            price_quotation: priceQuotation,
+                            travel_dates: travelDates,
+                            availability_status: availabilityStatus,
+                            notes: notes,
+                            terms_conditions: termsConditions
+                        },
+                        form_type:      formType,
+                        ticket_ref:     ticketRef,
+                        original_inquiry: originalInquiryText
+                    })
+                });
+                if (res.status === 404) {
+                    showToast('❌ Error: send-reply endpoint not found', 'error');
+                    return;
+                }
+                const result = await res.json();
+                if (result.success) {
+                    showToast(`Structured proposal sent successfully to ${customerEmail}`, 'success');
+                    // Reset to text mode
+                    setReplyMode('text');
+                } else {
+                    showToast('❌ Error: ' + (result.message || 'Failed'), 'error');
+                }
+            } catch(err) { 
+                showToast('❌ Error: Failed to connect to server', 'error'); 
+            } finally { 
+                btn.disabled = false; 
+                btn.innerHTML = btnOriginalHtml; 
             }
         }
 
